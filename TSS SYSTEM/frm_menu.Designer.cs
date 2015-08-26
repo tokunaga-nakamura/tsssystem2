@@ -92,6 +92,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_buhin_seihin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -583,6 +584,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_buhin_seihin);
             this.tabPage3.Controls.Add(this.btn_3_seihin_kousei_m);
             this.tabPage3.Controls.Add(this.btn_3_seihin_kensaku);
             this.tabPage3.Controls.Add(this.btn_3_seihin_m);
@@ -601,7 +603,7 @@
             // 
             // btn_3_seihin_kousei_m
             // 
-            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 256);
+            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 285);
             this.btn_3_seihin_kousei_m.Name = "btn_3_seihin_kousei_m";
             this.btn_3_seihin_kousei_m.Size = new System.Drawing.Size(180, 23);
             this.btn_3_seihin_kousei_m.TabIndex = 11;
@@ -902,6 +904,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_buhin_seihin
+            // 
+            this.btn_buhin_seihin.Location = new System.Drawing.Point(194, 285);
+            this.btn_buhin_seihin.Name = "btn_buhin_seihin";
+            this.btn_buhin_seihin.Size = new System.Drawing.Size(180, 23);
+            this.btn_buhin_seihin.TabIndex = 12;
+            this.btn_buhin_seihin.Text = "部品→製品検索";
+            this.btn_buhin_seihin.UseVisualStyleBackColor = true;
+            this.btn_buhin_seihin.Click += new System.EventHandler(this.btn_buhin_seihin_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1040,6 +1052,7 @@
         private System.Windows.Forms.Button btn_3_seihin_kousei_m;
         private System.Windows.Forms.Button btn_3_seihin_kensaku;
         private System.Windows.Forms.Button btn_3_seihin_m;
+        private System.Windows.Forms.Button btn_buhin_seihin;
     }
 }
 

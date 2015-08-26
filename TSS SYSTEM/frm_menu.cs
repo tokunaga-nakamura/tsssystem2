@@ -372,5 +372,13 @@ namespace TSS_SYSTEM
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
+
+        private void btn_buhin_seihin_Click(object sender, EventArgs e)
+        {
+            //製品構成マスタ
+            frm_buhin_to_seihin frm_skm = new frm_buhin_to_seihin();
+            frm_skm.ShowDialog(this);
+            frm_skm.Dispose();
+        }
     }
 }
