@@ -735,35 +735,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 支払番号選択画面
-        //祖払い番号選択画面（DataTable版）の呼び出し
-        public string siharai_no_select_dt(string in_torihikisaki_cd, DataTable in_dt_siharai_no)
-        {
-            //マウスのX座標を取得する
-            int x = System.Windows.Forms.Cursor.Position.X;
-            //マウスのY座標を取得する
-            int y = System.Windows.Forms.Cursor.Position.Y;
-
-            //string out_torihikisaki_cd = "";   //戻り値用
-            string out_siharai_no = "";   //戻り値用
-            frm_siharai_no_select sns = new frm_siharai_no_select();
-
-            //フォームをマウスの位置に表示する
-            sns.Left = x;
-            sns.Top = y;
-            sns.StartPosition = FormStartPosition.Manual;
-
-            //子画面のプロパティに値をセットする
-            sns.ppt_str_torihikisaki_cd = in_torihikisaki_cd;
-            sns.ppt_dt_siharai_no = in_dt_siharai_no;
-            sns.ShowDialog();
-            //子画面から値を取得する
-            out_siharai_no = sns.ppt_str_siharai_no;
-            sns.Dispose();
-            return out_siharai_no;
-        }
-        #endregion
-
         #region 部品検索画面
         //部品検索画面の呼び出し
         public string search_buhin(string in_mode, string in_cd)
@@ -990,7 +961,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        public string out_str_seihin_kousei_no { get; set; }
+        //public string out_str_seihin_kousei_no { get; set; }
 
         #region try_string_to_date メソッド
         /// <summary>
@@ -1275,6 +1246,110 @@ namespace TSS_SYSTEM
             return bl;
         }
         #endregion
+
+        #region hasu_keisan メソッド
+        /// <summary>
+        /// 取引先コードと数値を受け取り端数処理して返す</summary>
+        /// <param name="in_cd">
+        /// string 取得する取引先コード</param>
+        /// <param name="in_double">
+        /// double 端数処理する数値</param>
+        /// <returns>
+        /// double 端数処理後の数値
+        /// エラー等は-9999999999</returns>
+        public double hasu_keisan(string in_cd,double in_double)
+        {
+            double out_double = -9999999999;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_double = -9999999999;
+            }
+            else
+            {
+                //端数処理単位
+                int w_hasu_syori_tani;
+                switch (w_dt.Rows[0]["hasu_syori_tani"].ToString())
+                {
+                    case "0":
+                        //円未満
+                        w_hasu_syori_tani = 1;
+                        break;
+                    case "1":
+                        //10円未満
+                        w_hasu_syori_tani = 10;
+                        break;
+                    case "2":
+                        //100円未満
+                        w_hasu_syori_tani = 100;
+                        break;
+                    default:
+                        //存在しない区分
+                        w_hasu_syori_tani = -1;
+                        break;
+                }
+                //端数処理単位に異常があったら抜ける
+                if(w_hasu_syori_tani == -1)
+                {
+                    out_double = -9999999999;
+                    return out_double;
+                }
+                //端数区分
+                switch (w_dt.Rows[0]["hasu_kbn"].ToString())
+                {
+                    case "0":
+                        //切り捨て
+                        out_double = Math.Truncate(in_double / w_hasu_syori_tani) * w_hasu_syori_tani;
+                        break;
+                    case "1":
+                        //四捨五入
+                        out_double = Math.Round(in_double / w_hasu_syori_tani, MidpointRounding.AwayFromZero) * w_hasu_syori_tani;
+                        break;
+                    case "2":
+                        //切り上げ
+                        out_double = Math.Ceiling(in_double / w_hasu_syori_tani) * w_hasu_syori_tani;
+                        break;
+                    default:
+                        //存在しない区分
+                        out_double = -9999999999;
+                        break;
+                }
+            }
+            return out_double;
+        }
+        #endregion
+
+        #region 支払番号選択画面
+        //祖払い番号選択画面（DataTable版）の呼び出し
+        public string siharai_no_select_dt(string in_torihikisaki_cd, DataTable in_dt_siharai_no)
+        {
+            //マウスのX座標を取得する
+            int x = System.Windows.Forms.Cursor.Position.X;
+            //マウスのY座標を取得する
+            int y = System.Windows.Forms.Cursor.Position.Y;
+
+            //string out_torihikisaki_cd = "";   //戻り値用
+            string out_siharai_no = "";   //戻り値用
+            frm_siharai_no_select sns = new frm_siharai_no_select();
+
+            //フォームをマウスの位置に表示する
+            sns.Left = x;
+            sns.Top = y;
+            sns.StartPosition = FormStartPosition.Manual;
+
+            //子画面のプロパティに値をセットする
+            sns.ppt_str_torihikisaki_cd = in_torihikisaki_cd;
+            sns.ppt_dt_siharai_no = in_dt_siharai_no;
+            sns.ShowDialog();
+            //子画面から値を取得する
+            out_siharai_no = sns.ppt_str_siharai_no;
+            sns.Dispose();
+            return out_siharai_no;
+        }
+        #endregion
+
+
 
 
     }
