@@ -171,7 +171,13 @@ namespace TSS_SYSTEM
         {
             form_close_true();
         }
-       }
+
+        private void btn_cancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            //form_close_false();
+        }
+    }
         
         
     

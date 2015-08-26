@@ -73,6 +73,7 @@
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_torihikisaki_name.Enabled = false;
             this.tb_torihikisaki_name.Location = new System.Drawing.Point(150, 12);
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
@@ -83,6 +84,7 @@
             // tb_torihikisaki_cd
             // 
             this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.LightGray;
+            this.tb_torihikisaki_cd.Enabled = false;
             this.tb_torihikisaki_cd.Location = new System.Drawing.Point(87, 12);
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.ReadOnly = true;
@@ -146,6 +148,7 @@
             this.btn_cancel.TabIndex = 1;
             this.btn_cancel.Text = "キャンセル";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click_1);
             // 
             // btn_sentaku
             // 

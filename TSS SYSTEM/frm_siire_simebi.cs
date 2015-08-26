@@ -53,17 +53,20 @@ namespace TSS_SYSTEM
         
         private void tb_siire_simebi_Validating(object sender, CancelEventArgs e)
         {
-            if (tss.try_string_to_date(tb_siire_simebi.Text.ToString()))
+            if (tb_siire_simebi.Text != "")
             {
-                tb_siire_simebi.Text = tss.out_datetime.ToShortDateString();
-            }
-            else
-            {
-                MessageBox.Show("仕入締日の値が異常です。yyyymmddで入力してください。");
-                tb_siire_simebi.Focus();
-            }
+                if (tss.try_string_to_date(tb_siire_simebi.Text.ToString()))
+                {
+                    tb_siire_simebi.Text = tss.out_datetime.ToShortDateString();
+                }
+                else
+                {
+                    MessageBox.Show("仕入締日の値が異常です。yyyymmddで入力してください。");
+                    tb_siire_simebi.Focus();
+                }
 
-            //tb_siire_simebi.Clear();
+            }
+            
             dgv_siire_simebi.Rows.Clear();
             tb_create_user_cd.Clear();
             tb_create_datetime.Clear();

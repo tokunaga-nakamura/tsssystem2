@@ -68,6 +68,7 @@
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.btn_turoku = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -244,6 +245,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.label2);
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer3.Panel1.Controls.Add(this.label3);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_name);
@@ -300,6 +302,7 @@
             this.dgv_mibarai.RowTemplate.Height = 21;
             this.dgv_mibarai.Size = new System.Drawing.Size(880, 108);
             this.dgv_mibarai.TabIndex = 0;
+            this.dgv_mibarai.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_mibarai_RowEnter);
             // 
             // splitContainer4
             // 
@@ -593,6 +596,15 @@
             this.ss_status.TabIndex = 8;
             this.ss_status.Text = "statusStrip1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(503, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 12);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "支入締日処理をしてないと表示されません。";
+            // 
             // frm_siharai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -602,7 +614,7 @@
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_siharai";
-            this.Text = "frm_siharai";
+            this.Text = "支払処理";
             this.Load += new System.EventHandler(this.frm_siharai_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -684,5 +696,6 @@
         private System.Windows.Forms.TextBox tb_siharai_goukei;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
