@@ -139,6 +139,7 @@
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
             this.splitContainer3.SplitterDistance = 66;
             this.splitContainer3.TabIndex = 8;
+            this.splitContainer3.TabStop = false;
             // 
             // btn_syukei
             // 
@@ -250,6 +251,7 @@
             this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(154, 19);
             this.tb_torihikisaki_name.TabIndex = 10;
+            this.tb_torihikisaki_name.TabStop = false;
             // 
             // tb_torihikisaki_cd
             // 

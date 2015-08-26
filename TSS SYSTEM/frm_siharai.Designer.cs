@@ -41,6 +41,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -68,7 +69,6 @@
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.btn_turoku = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -260,6 +260,16 @@
             this.splitContainer3.Size = new System.Drawing.Size(884, 184);
             this.splitContainer3.SplitterDistance = 68;
             this.splitContainer3.TabIndex = 8;
+            this.splitContainer3.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(503, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 12);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "支入締日処理をしてないと表示されません。";
             // 
             // tb_torihikisaki_name
             // 
@@ -270,6 +280,7 @@
             this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(154, 19);
             this.tb_torihikisaki_name.TabIndex = 2;
+            this.tb_torihikisaki_name.TabStop = false;
             // 
             // tb_torihikisaki_cd
             // 
@@ -358,6 +369,7 @@
             this.splitContainer7.Size = new System.Drawing.Size(884, 103);
             this.splitContainer7.SplitterDistance = 42;
             this.splitContainer7.TabIndex = 27;
+            this.splitContainer7.TabStop = false;
             // 
             // btn_siharai_syori
             // 
@@ -377,6 +389,7 @@
             this.tb_mibarai_goukei.ReadOnly = true;
             this.tb_mibarai_goukei.Size = new System.Drawing.Size(160, 19);
             this.tb_mibarai_goukei.TabIndex = 5;
+            this.tb_mibarai_goukei.TabStop = false;
             this.tb_mibarai_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn_siharai_hensyu
@@ -463,6 +476,7 @@
             this.splitContainer5.Size = new System.Drawing.Size(884, 181);
             this.splitContainer5.SplitterDistance = 91;
             this.splitContainer5.TabIndex = 4;
+            this.splitContainer5.TabStop = false;
             // 
             // dgv_siharai
             // 
@@ -504,7 +518,9 @@
             this.splitContainer6.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer6.Panel2.Controls.Add(this.btn_turoku);
             this.splitContainer6.Size = new System.Drawing.Size(884, 86);
+            this.splitContainer6.SplitterDistance = 51;
             this.splitContainer6.TabIndex = 4;
+            this.splitContainer6.TabStop = false;
             // 
             // label1
             // 
@@ -523,6 +539,7 @@
             this.tb_kurikosi_zandaka.ReadOnly = true;
             this.tb_kurikosi_zandaka.Size = new System.Drawing.Size(160, 19);
             this.tb_kurikosi_zandaka.TabIndex = 11;
+            this.tb_kurikosi_zandaka.TabStop = false;
             this.tb_kurikosi_zandaka.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox11
@@ -544,6 +561,7 @@
             this.tb_siharai_goukei.ReadOnly = true;
             this.tb_siharai_goukei.Size = new System.Drawing.Size(120, 19);
             this.tb_siharai_goukei.TabIndex = 27;
+            this.tb_siharai_goukei.TabStop = false;
             this.tb_siharai_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn_tuika
@@ -603,15 +621,6 @@
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 8;
             this.ss_status.Text = "statusStrip1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(503, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 12);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "支入締日処理をしてないと表示されません。";
             // 
             // frm_siharai
             // 
