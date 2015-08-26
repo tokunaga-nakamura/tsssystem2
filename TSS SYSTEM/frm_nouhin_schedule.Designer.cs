@@ -511,6 +511,7 @@
             this.btn_csv.TabIndex = 1;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
             // 
             // btn_insatu
             // 
