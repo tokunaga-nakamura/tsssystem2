@@ -13,9 +13,9 @@ namespace TSS_SYSTEM
     public partial class frm_uriage : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
-        double w_uriage_no; //連番退避用
-        int w_seikyu_sime_dd; //請求締日
-        int w_seikyuu_flg = 0;  //請求済レコードがあったら1
+        double w_uriage_no;         //連番退避用
+        int w_seikyu_sime_dd;       //請求締日
+        int w_seikyuu_flg = 0;      //請求済レコードがあったら1
 
         public frm_uriage()
         {
@@ -950,6 +950,8 @@ namespace TSS_SYSTEM
                     w_hanbai_tanka = 0;
                 }
                 w_uriage_kingaku = w_uriage_su * w_hanbai_tanka;
+                //端数処理
+                w_uriage_kingaku = tss.hasu_keisan(tb_torihikisaki_cd.Text.ToString(),w_uriage_kingaku);
                 dgv_m.Rows[e.RowIndex].Cells[10].Value = w_uriage_kingaku.ToString("0.00");
 
                 //売上合計の再計算

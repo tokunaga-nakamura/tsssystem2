@@ -102,7 +102,7 @@
             // 
             // btn_hyouji
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(383, 26);
+            this.btn_hyouji.Location = new System.Drawing.Point(383, 28);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(108, 23);
             this.btn_hyouji.TabIndex = 3;
@@ -186,6 +186,7 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -238,6 +239,7 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -260,7 +262,7 @@
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(205, 30);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(166, 30);
             this.tb_torihikisaki_name.MaxLength = 2;
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
@@ -269,10 +271,10 @@
             // 
             // tb_torihikisaki_cd
             // 
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(120, 30);
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 30);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
-            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(85, 19);
+            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(48, 19);
             this.tb_torihikisaki_cd.TabIndex = 1;
             this.tb_torihikisaki_cd.TextChanged += new System.EventHandler(this.tb_torihikisaki_cd_TextChanged);
             this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating_1);
@@ -305,6 +307,8 @@
             // 
             this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -324,6 +328,7 @@
             // 
             this.splitContainer7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer7.IsSplitterFixed = true;
             this.splitContainer7.Location = new System.Drawing.Point(0, 0);
             this.splitContainer7.Name = "splitContainer7";
             this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -353,7 +358,7 @@
             // 
             // btn_siharai_syori
             // 
-            this.btn_siharai_syori.Location = new System.Drawing.Point(12, 7);
+            this.btn_siharai_syori.Location = new System.Drawing.Point(10, 9);
             this.btn_siharai_syori.Name = "btn_siharai_syori";
             this.btn_siharai_syori.Size = new System.Drawing.Size(145, 23);
             this.btn_siharai_syori.TabIndex = 3;
@@ -373,7 +378,7 @@
             // 
             // btn_siharai_hensyu
             // 
-            this.btn_siharai_hensyu.Location = new System.Drawing.Point(187, 7);
+            this.btn_siharai_hensyu.Location = new System.Drawing.Point(186, 9);
             this.btn_siharai_hensyu.Name = "btn_siharai_hensyu";
             this.btn_siharai_hensyu.Size = new System.Drawing.Size(75, 23);
             this.btn_siharai_hensyu.TabIndex = 4;
@@ -439,6 +444,8 @@
             // 
             this.splitContainer5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
             this.splitContainer5.Location = new System.Drawing.Point(0, 0);
             this.splitContainer5.Name = "splitContainer5";
             this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -451,7 +458,7 @@
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
             this.splitContainer5.Size = new System.Drawing.Size(884, 181);
-            this.splitContainer5.SplitterDistance = 74;
+            this.splitContainer5.SplitterDistance = 91;
             this.splitContainer5.TabIndex = 4;
             // 
             // dgv_siharai
@@ -463,7 +470,7 @@
             this.dgv_siharai.Location = new System.Drawing.Point(0, 0);
             this.dgv_siharai.Name = "dgv_siharai";
             this.dgv_siharai.RowTemplate.Height = 21;
-            this.dgv_siharai.Size = new System.Drawing.Size(880, 70);
+            this.dgv_siharai.Size = new System.Drawing.Size(880, 87);
             this.dgv_siharai.TabIndex = 8;
             this.dgv_siharai.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siharai_CellEndEdit);
             this.dgv_siharai.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_siharai_DataError);
@@ -473,6 +480,8 @@
             // 
             this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
             this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -491,8 +500,7 @@
             this.splitContainer6.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer6.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer6.Panel2.Controls.Add(this.btn_turoku);
-            this.splitContainer6.Size = new System.Drawing.Size(884, 103);
-            this.splitContainer6.SplitterDistance = 51;
+            this.splitContainer6.Size = new System.Drawing.Size(884, 86);
             this.splitContainer6.TabIndex = 4;
             // 
             // label1
@@ -558,7 +566,7 @@
             // 
             // btn_insatu
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(589, 12);
+            this.btn_insatu.Location = new System.Drawing.Point(91, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
             this.btn_insatu.TabIndex = 3;
@@ -567,7 +575,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 12);
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
@@ -577,7 +585,7 @@
             // 
             // btn_turoku
             // 
-            this.btn_turoku.Location = new System.Drawing.Point(698, 12);
+            this.btn_turoku.Location = new System.Drawing.Point(10, 3);
             this.btn_turoku.Name = "btn_turoku";
             this.btn_turoku.Size = new System.Drawing.Size(75, 23);
             this.btn_turoku.TabIndex = 9;
