@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{126A2F2B-9DDA-4551-9A67-0E89A9720C52}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TSS_SYSTEM</RootNamespace>
+    <AssemblyName>TSS SYSTEM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GrapeCity.ActiveReports.Calendar.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Chart.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Dashboard.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Design.Win.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Diagnostics.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Document.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Document.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Excel.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Html.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Image.Unsafe.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Image.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Pdf.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Rdf.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Word.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Xaml.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Xml.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Extensibility.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Interop.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=x86" />
+    <Reference Include="GrapeCity.ActiveReports.OracleClient.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Serializer.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Win.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Wpf.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.VisualStudio.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Web.Design.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.ActiveReports.Web.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="Oracle.DataAccess, Version=2.112.4.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\app\nakamura_2\product\11.2.0\client_1\ODP.NET\bin\4\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frm_siharai_no_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siharai_no_select.Designer.cs">
+      <DependentUpon>frm_siharai_no_select.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_buhin_idou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_idou.Designer.cs">
+      <DependentUpon>frm_buhin_idou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_buhin_nyusyukkoidou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_nyusyukkoidou.Designer.cs">
+      <DependentUpon>frm_buhin_nyusyukkoidou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_bank_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_bank_m.Designer.cs">
+      <DependentUpon>frm_bank_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_buhin_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_m.Designer.cs">
+      <DependentUpon>frm_buhin_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_eigyou_calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_eigyou_calendar.Designer.cs">
+      <DependentUpon>frm_eigyou_calendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_juchuu_nyuuryoku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_juchuu_nyuuryoku.Designer.cs">
+      <DependentUpon>frm_juchuu_nyuuryoku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_kubun_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kubun_m.Designer.cs">
+      <DependentUpon>frm_kubun_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_kubun_meisyou_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kubun_meisyou_m.Designer.cs">
+      <DependentUpon>frm_kubun_meisyou_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_kubun_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kubun_select.Designer.cs">
+      <DependentUpon>frm_kubun_select.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_kubun_select_dt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kubun_select_dt.Designer.cs">
+      <DependentUpon>frm_kubun_select_dt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_menu.Designer.cs">
+      <DependentUpon>frm_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_message_log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_message_log.Designer.cs">
+      <DependentUpon>frm_message_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_nouhin_schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nouhin_schedule.Designer.cs">
+      <DependentUpon>frm_nouhin_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_nouhin_schedule_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nouhin_schedule_preview.Designer.cs">
+      <DependentUpon>frm_nouhin_schedule_preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_buhin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_buhin.Designer.cs">
+      <DependentUpon>frm_search_buhin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_juchu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_juchu.Designer.cs">
+      <DependentUpon>frm_search_juchu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_seihin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_seihin.Designer.cs">
+      <DependentUpon>frm_search_seihin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_torihikisaki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_torihikisaki.Designer.cs">
+      <DependentUpon>frm_search_torihikisaki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_uriage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_uriage.Designer.cs">
+      <DependentUpon>frm_search_uriage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seihin_kousei_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_kousei_m.Designer.cs">
+      <DependentUpon>frm_seihin_kousei_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seihin_kousei_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_kousei_select.Designer.cs">
+      <DependentUpon>frm_seihin_kousei_select.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seihin_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_m.Designer.cs">
+      <DependentUpon>frm_seihin_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_select_juchu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_select_juchu.Designer.cs">
+      <DependentUpon>frm_select_juchu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_siharai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siharai.Designer.cs">
+      <DependentUpon>frm_siharai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_siire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siire.Designer.cs">
+      <DependentUpon>frm_siire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_siire_simebi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siire_simebi.Designer.cs">
+      <DependentUpon>frm_siire_simebi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_table_maintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_table_maintenance.Designer.cs">
+      <DependentUpon>frm_table_maintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_torihikisaki_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_torihikisaki_m.Designer.cs">
+      <DependentUpon>frm_torihikisaki_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_torihikisaki_tantou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_torihikisaki_tantou.Designer.cs">
+      <DependentUpon>frm_torihikisaki_tantou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_uriage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage.Designer.cs">
+      <DependentUpon>frm_uriage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_user_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_user_m.Designer.cs">
+      <DependentUpon>frm_user_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rpt_nouhin_schedule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_nouhin_schedule.Designer.cs">
+      <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TssSystemLibrary.cs" />
+    <EmbeddedResource Include="frm_siharai_no_select.resx">
+      <DependentUpon>frm_siharai_no_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_idou.resx">
+      <DependentUpon>frm_buhin_idou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_nyusyukkoidou.resx">
+      <DependentUpon>frm_buhin_nyusyukkoidou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bank_m.resx">
+      <DependentUpon>frm_bank_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_m.resx">
+      <DependentUpon>frm_buhin_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_eigyou_calendar.resx">
+      <DependentUpon>frm_eigyou_calendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_juchuu_nyuuryoku.resx">
+      <DependentUpon>frm_juchuu_nyuuryoku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kubun_m.resx">
+      <DependentUpon>frm_kubun_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kubun_meisyou_m.resx">
+      <DependentUpon>frm_kubun_meisyou_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kubun_select.resx">
+      <DependentUpon>frm_kubun_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kubun_select_dt.resx">
+      <DependentUpon>frm_kubun_select_dt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_menu.resx">
+      <DependentUpon>frm_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_message_log.resx">
+      <DependentUpon>frm_message_log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_nouhin_schedule.resx">
+      <DependentUpon>frm_nouhin_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_nouhin_schedule_preview.resx">
+      <DependentUpon>frm_nouhin_schedule_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_buhin.resx">
+      <DependentUpon>frm_search_buhin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_juchu.resx">
+      <DependentUpon>frm_search_juchu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_seihin.resx">
+      <DependentUpon>frm_search_seihin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_torihikisaki.resx">
+      <DependentUpon>frm_search_torihikisaki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_uriage.resx">
+      <DependentUpon>frm_search_uriage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_kousei_m.resx">
+      <DependentUpon>frm_seihin_kousei_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_kousei_select.resx">
+      <DependentUpon>frm_seihin_kousei_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_m.resx">
+      <DependentUpon>frm_seihin_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_select_juchu.resx">
+      <DependentUpon>frm_select_juchu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_siharai.resx">
+      <DependentUpon>frm_siharai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_siire.resx">
+      <DependentUpon>frm_siire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_siire_simebi.resx">
+      <DependentUpon>frm_siire_simebi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_table_maintenance.resx">
+      <DependentUpon>frm_table_maintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_torihikisaki_m.resx">
+      <DependentUpon>frm_torihikisaki_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_torihikisaki_tantou.resx">
+      <DependentUpon>frm_torihikisaki_tantou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage.resx">
+      <DependentUpon>frm_uriage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_user_m.resx">
+      <DependentUpon>frm_user_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="rpt_nouhin_schedule.resx">
+      <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="rpt_uriage_denpyou.rdlx">
+      <SubType>Component</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
