@@ -82,6 +82,12 @@
     <Compile Include="frm_buhin_to_seihin.Designer.cs">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_seihin_to_zaiko.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_to_zaiko.Designer.cs">
+      <DependentUpon>frm_seihin_to_zaiko.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_siharai_no_select.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     <Compile Include="TssSystemLibrary.cs" />
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_to_zaiko.resx">
+      <DependentUpon>frm_seihin_to_zaiko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siharai_no_select.resx">
       <DependentUpon>frm_siharai_no_select.cs</DependentUpon>
