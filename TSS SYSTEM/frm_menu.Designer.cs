@@ -63,6 +63,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_buhin_seihin = new System.Windows.Forms.Button();
             this.btn_3_seihin_kousei_m = new System.Windows.Forms.Button();
             this.btn_3_seihin_kensaku = new System.Windows.Forms.Button();
             this.btn_3_seihin_m = new System.Windows.Forms.Button();
@@ -92,7 +93,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_buhin_seihin = new System.Windows.Forms.Button();
+            this.btn_seihim_to_zaiko = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -584,6 +585,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_seihim_to_zaiko);
             this.tabPage3.Controls.Add(this.btn_buhin_seihin);
             this.tabPage3.Controls.Add(this.btn_3_seihin_kousei_m);
             this.tabPage3.Controls.Add(this.btn_3_seihin_kensaku);
@@ -600,6 +602,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btn_buhin_seihin
+            // 
+            this.btn_buhin_seihin.Location = new System.Drawing.Point(194, 314);
+            this.btn_buhin_seihin.Name = "btn_buhin_seihin";
+            this.btn_buhin_seihin.Size = new System.Drawing.Size(180, 23);
+            this.btn_buhin_seihin.TabIndex = 12;
+            this.btn_buhin_seihin.Text = "部品→製品検索";
+            this.btn_buhin_seihin.UseVisualStyleBackColor = true;
+            this.btn_buhin_seihin.Click += new System.EventHandler(this.btn_buhin_seihin_Click);
             // 
             // btn_3_seihin_kousei_m
             // 
@@ -904,15 +916,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_buhin_seihin
+            // btn_seihim_to_zaiko
             // 
-            this.btn_buhin_seihin.Location = new System.Drawing.Point(194, 285);
-            this.btn_buhin_seihin.Name = "btn_buhin_seihin";
-            this.btn_buhin_seihin.Size = new System.Drawing.Size(180, 23);
-            this.btn_buhin_seihin.TabIndex = 12;
-            this.btn_buhin_seihin.Text = "部品→製品検索";
-            this.btn_buhin_seihin.UseVisualStyleBackColor = true;
-            this.btn_buhin_seihin.Click += new System.EventHandler(this.btn_buhin_seihin_Click);
+            this.btn_seihim_to_zaiko.Location = new System.Drawing.Point(380, 314);
+            this.btn_seihim_to_zaiko.Name = "btn_seihim_to_zaiko";
+            this.btn_seihim_to_zaiko.Size = new System.Drawing.Size(180, 23);
+            this.btn_seihim_to_zaiko.TabIndex = 13;
+            this.btn_seihim_to_zaiko.Text = "製品別部品在庫照会";
+            this.btn_seihim_to_zaiko.UseVisualStyleBackColor = true;
+            this.btn_seihim_to_zaiko.Click += new System.EventHandler(this.btn_seihim_to_zaiko_Click);
             // 
             // frm_menu
             // 
@@ -1053,6 +1065,7 @@
         private System.Windows.Forms.Button btn_3_seihin_kensaku;
         private System.Windows.Forms.Button btn_3_seihin_m;
         private System.Windows.Forms.Button btn_buhin_seihin;
+        private System.Windows.Forms.Button btn_seihim_to_zaiko;
     }
 }
 
