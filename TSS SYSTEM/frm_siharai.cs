@@ -40,7 +40,6 @@ namespace TSS_SYSTEM
             tb_siharai_no.Enabled = true;
         }
 
-
        //支払処理ボタン押したときの処理
         private void btn_siharai_syori_Click_1(object sender, EventArgs e)
         {
