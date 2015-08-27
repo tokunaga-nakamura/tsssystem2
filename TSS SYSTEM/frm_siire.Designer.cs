@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_siire));
             this.label3 = new System.Windows.Forms.Label();
             this.dtp_siire_date = new System.Windows.Forms.DateTimePicker();
@@ -98,7 +98,7 @@
             this.dtp_siire_date.Location = new System.Drawing.Point(118, 35);
             this.dtp_siire_date.Name = "dtp_siire_date";
             this.dtp_siire_date.Size = new System.Drawing.Size(107, 19);
-            this.dtp_siire_date.TabIndex = 25;
+            this.dtp_siire_date.TabIndex = 1;
             this.dtp_siire_date.ValueChanged += new System.EventHandler(this.dtp_siire_date_ValueChanged);
             // 
             // textBox11
@@ -129,7 +129,7 @@
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(50, 19);
-            this.tb_torihikisaki_cd.TabIndex = 1;
+            this.tb_torihikisaki_cd.TabIndex = 3;
             this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox4
@@ -161,7 +161,7 @@
             this.tb_siire_no.MaxLength = 10;
             this.tb_siire_no.Name = "tb_siire_no";
             this.tb_siire_no.Size = new System.Drawing.Size(67, 19);
-            this.tb_siire_no.TabIndex = 12;
+            this.tb_siire_no.TabIndex = 0;
             this.tb_siire_no.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_siire_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_no_Validating);
             // 
@@ -170,7 +170,7 @@
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 3;
+            this.btn_touroku.TabIndex = 4;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
             this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
@@ -189,7 +189,7 @@
             this.tb_siire_denpyou_no.MaxLength = 40;
             this.tb_siire_denpyou_no.Name = "tb_siire_denpyou_no";
             this.tb_siire_denpyou_no.Size = new System.Drawing.Size(239, 19);
-            this.tb_siire_denpyou_no.TabIndex = 0;
+            this.tb_siire_denpyou_no.TabIndex = 2;
             this.tb_siire_denpyou_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_denpyou_no_Validating);
             // 
             // dgv_siire
@@ -211,6 +211,7 @@
             this.dgv_siire.RowTemplate.Height = 21;
             this.dgv_siire.Size = new System.Drawing.Size(880, 316);
             this.dgv_siire.TabIndex = 0;
+            this.dgv_siire.TabStop = false;
             this.dgv_siire.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellEndEdit);
             // 
             // Column2
@@ -221,8 +222,8 @@
             // 
             // Column3
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column3.HeaderText = "部品名";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -230,26 +231,26 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "0.00";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "0.00";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column4.HeaderText = "仕入数量";
             this.Column4.Name = "Column4";
             this.Column4.Width = 80;
             // 
             // Column5
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column5.HeaderText = "仕入単価";
             this.Column5.Name = "Column5";
             // 
             // Column6
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column6.HeaderText = "仕入金額（税抜）";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -257,11 +258,11 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle11.Format = "N0";
-            dataGridViewCellStyle11.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column7.HeaderText = "仕入締日";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -269,8 +270,8 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column8.HeaderText = "支払計上日";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -296,7 +297,7 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 5;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);

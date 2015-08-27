@@ -13,7 +13,7 @@ namespace TSS_SYSTEM
     public partial class frm_siharai : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
-        string w_str = "07";
+        //string w_str = "07";
         double w_siharai_no;
         string w_mibarai;
         
@@ -22,122 +22,10 @@ namespace TSS_SYSTEM
             InitializeComponent();
         }
 
-        //取引先コード変更時の処理
-        private void tb_torihikisaki_cd_Validating_1(object sender, CancelEventArgs e)
-        {
-            btn_siharai_syori.Enabled = false;
-            
-            //dgv_mibarai.Rows.Clear();
-            DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select torihikisaki_name,syouhizei_sansyutu_kbn from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
-
-            if (dt_work.Rows.Count == 0)
-            {
-                tb_torihikisaki_name.Text = "";
-                btn_siharai_syori.Enabled = false;
-                btn_hyouji.Enabled = false;
-                return;
-            }
-
-            else
-            {
-                tb_torihikisaki_name.Text = dt_work.Rows[0][0].ToString();
-                btn_hyouji.Enabled = true;
-            }
-        }
-
-        //未払い一覧表示
-        private void btn_hyouji_Click(object sender, EventArgs e)
-        {
-            
-            DataTable dt_work = new DataTable();
-            tss.GetUser();
-            dt_work = tss.OracleSelect("select siire_simebi,siire_kingaku,syouhizeigaku,siharaigaku from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siharai_kanryou_flg = '0' ORDER BY SIIRE_SIMEBI");
-            int rc = dt_work.Rows.Count;
-            dt_work.Columns.Add("mibaraigaku",Type.GetType("System.Int32"));
-
-
-            if(rc == 0)
-            {
-                MessageBox.Show("未払いはありません");
-                btn_siharai_syori.Enabled = false;
-                return;
-            }
-
-            else
-            {
-                for (int i = 0; i < rc; i++)
-                {
-                    double goukeikingaku = double.Parse(dt_work.Rows[i][1].ToString()) + double.Parse(dt_work.Rows[i][2].ToString());
-                    double mibaraigaku;
-
-                    if (dt_work.Rows[i][3].ToString() == "")
-                    {
-                        dt_work.Rows[i][3] = 0;
-                        mibaraigaku = goukeikingaku;
-                    }
-                    else
-                    {
-                        mibaraigaku = goukeikingaku - double.Parse(dt_work.Rows[i][3].ToString());
-                    }
-
-                    dt_work.Rows[i][4] = mibaraigaku;
-
-                    dgv_mibarai.DataSource = dt_work;
-
-
-                    dgv_mibarai.Columns[0].HeaderText = "仕入締日";
-                    dgv_mibarai.Columns[1].HeaderText = "仕入金額";
-                    dgv_mibarai.Columns[2].HeaderText = "消費税額";
-                    dgv_mibarai.Columns[3].HeaderText = "支払金額";
-                    dgv_mibarai.Columns[4].HeaderText = "未払金額";
-                        
-
-                    //使用数量右寄せ、カンマ区切り
-                    dgv_mibarai.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[1].DefaultCellStyle.Format = "#,0.##";
-
-                    dgv_mibarai.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[2].DefaultCellStyle.Format = "#,0.##";
-
-                    dgv_mibarai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[3].DefaultCellStyle.Format = "#,0.##";
-
-                    dgv_mibarai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.##";
-
-                    //１行のみ選択可能（複数行の選択不可）
-                    dgv_mibarai.MultiSelect = false;
-                    //セルを選択すると行全体が選択されるようにする
-                    dgv_mibarai.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    //削除不可にする（コードからは削除可）
-                    dgv_mibarai.AllowUserToDeleteRows = false;
-
-                    btn_siharai_syori.Enabled = false;
-                    //btn_siharai_hensyu.Enabled = false;
-                }
-
-            }
-
-            //未払合計額の表示
-            object obj = dt_work.Compute("Sum(mibaraigaku)", null);
-            double goukeikingku = double.Parse(obj.ToString());
-
-            tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.##");
-        
-        }
-
-        private void btn_siharai_syori_Click(object sender, EventArgs e)
-        {
-            tb_siharai_no.Enabled = true;
-            
-        }
-
         //フォームロード時にボタンの制限
         private void frm_siharai_Load(object sender, EventArgs e)
         {
             w_siharai_no = tss.GetSeq("07");
-            btn_hyouji.Enabled = false;
             tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
             btn_siharai_syori.Enabled = false;
             btn_siharai_hensyu.Enabled = false;
@@ -146,10 +34,12 @@ namespace TSS_SYSTEM
             btn_tuika.Enabled = false;
         }
 
-        private void tb_siharai_date_Validating(object sender, CancelEventArgs e)
+        //支払処理ボタンクリック時の処理
+        private void btn_siharai_syori_Click(object sender, EventArgs e)
         {
-            
+            tb_siharai_no.Enabled = true;
         }
+
 
        //支払処理ボタン押したときの処理
         private void btn_siharai_syori_Click_1(object sender, EventArgs e)
@@ -168,50 +58,18 @@ namespace TSS_SYSTEM
             dt_work.Columns.Add("siharai_bikou");
 
             dgv_siharai.DataSource = dt_work;
- 
-            tb_siharai_date.Focus();
             
             dgv_siharai.Rows[0].Cells[0].Value = str;
             dgv_siharai.Rows[0].Cells[3].Value = 0;
             dgv_siharai.Rows[0].Cells[4].Value = 0;
             dgv_siharai.Rows[0].Cells[5].Value = 0;
             dgv_siharai.Rows[0].Cells[6].Value = 0;
-            
-            //使用数量右寄せ、カンマ区切り
-            dgv_siharai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[3].DefaultCellStyle.Format = "#,0.##";
-
-            dgv_siharai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[4].DefaultCellStyle.Format = "#,0.##";
-
-            dgv_siharai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[5].DefaultCellStyle.Format = "#,0.##";
-
-            dgv_siharai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0.##";
 
 
-            dgv_siharai.Columns[0].HeaderText = "仕入締日";
-            dgv_siharai.Columns[1].HeaderText = "顧客請求番号";
-            dgv_siharai.Columns[2].HeaderText = "支払区分";
-            dgv_siharai.Columns[3].HeaderText = "支払額";
-            dgv_siharai.Columns[4].HeaderText = "手数料";
-            dgv_siharai.Columns[5].HeaderText = "相殺";
-            dgv_siharai.Columns[6].HeaderText = "支払合計";
-            dgv_siharai.Columns[7].HeaderText = "備考";
+            //支払処理データグリッドビューの書式設定
+            dgv_siharai_disp();
 
-            //DataGridView1にユーザーが新しい行を追加できないようにする
-            dgv_siharai.AllowUserToAddRows = false;
-
-            //指定列の書式設定
-            dgv_siharai.Columns[0].ReadOnly = true;
-            dgv_siharai.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
-
-            tb_siharai_date.Enabled = true;
-            tb_siharai_no.Enabled = true;
-
-            btn_tuika.Enabled = true;
-
+            tb_siharai_date.Focus();
         }
 
         //支払処理のデータグリッドビューのセルの値を変更したとき
@@ -267,10 +125,8 @@ namespace TSS_SYSTEM
                 siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
                 tb_siharai_goukei.Text = siharai_soukei.ToString("#,0.##");
 
-                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString();
+                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0.##");
             }
-
-
         }
 
         //支払日のテキストボックスからフォーカスが離れたとき
@@ -287,7 +143,6 @@ namespace TSS_SYSTEM
                     MessageBox.Show("支払日の値が異常です。yyyymmddで入力してください。");
                     tb_siharai_date.Focus();
                 }
-
             }
         }
 
@@ -301,7 +156,6 @@ namespace TSS_SYSTEM
         private void btn_turoku_Click(object sender, EventArgs e)
         {
             DataTable dt_work = new DataTable();
-
 
             //登録前に全ての項目をチェック
             //支払番号
@@ -397,46 +251,8 @@ namespace TSS_SYSTEM
             }
 
             //チェックが済んだら、データベースに登録
-            
-            //支払マスタに同じ支払ナンバーのレコードが存在するか確認
-            tss.GetUser();
-            dt_work = tss.OracleSelect("select * from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text + "'");
-            int rc = dt_work.Rows.Count;
-            int rc2 = dgv_siharai.Rows.Count;
-
-            double siharai = double.Parse(tb_siharai_goukei.Text.ToString());
-            double sisan = double.Parse(w_mibarai) - siharai;
-            
-            //支払額と未払額の差異確認
-            if(sisan != 0)
-            {
-                DialogResult result = MessageBox.Show("未払額と支払額が一致しませんが、よろしいですか？",
-                        "支払登録",
-                        MessageBoxButtons.OKCancel,
-                        MessageBoxIcon.Exclamation,
-                        MessageBoxDefaultButton.Button2);
-                
-                //OKなら支払マスタ更新処理
-                if (result == DialogResult.OK)
-                {
-                    siharai_kousin();
-                }
-
-
-                else if (result == DialogResult.Cancel)
-                {
-                    //「キャンセル」が選択された時
-                    Console.WriteLine("「キャンセル」しました");
-                    return;
-                }
-            }
-
-            else
-            {
-                //支払マスタ更新処理
-                siharai_kousin();
-            }
-               
+            //支払マスタ更新処理
+            siharai_kousin();   
         }
 
 
@@ -503,7 +319,7 @@ namespace TSS_SYSTEM
                 siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
                 tb_siharai_goukei.Text = siharai_soukei.ToString("#,0.##");
 
-                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString();
+                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0.##");
             }
         }
 
@@ -515,25 +331,30 @@ namespace TSS_SYSTEM
         //取引先コード変更時の処理
         private void tb_torihikisaki_cd_TextChanged(object sender, EventArgs e)
         {
+            btn_siharai_hensyu.Enabled = false;
             tb_torihikisaki_name.Text = "";
-            dgv_mibarai.Rows.Clear();
+            //dgv_mibarai.Rows.Clear();
             btn_siharai_syori.Enabled = false;
-            btn_hyouji.Enabled = false;
         }
 
-        private void dgv_mibarai_disp() //未払一覧のデータグリッドビューの更新メソッド
+        //未払一覧のデータグリッドビューの更新メソッド
+        private void dgv_mibarai_disp() 
         {
-
             DataTable dt_work = new DataTable();
             tss.GetUser();
-            dt_work = tss.OracleSelect("select siire_simebi,siire_kingaku,syouhizeigaku,siharaigaku from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siharai_kanryou_flg = '0' ORDER BY SIIRE_SIMEBI");
+            dt_work = tss.OracleSelect("select siire_simebi,siire_kingaku,syouhizeigaku,siire_kingaku + syouhizeigaku,siharaigaku  from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siharai_kanryou_flg = '0' ORDER BY SIIRE_SIMEBI");
             int rc = dt_work.Rows.Count;
+            //dt_work.Columns.Add("siiregoukei", Type.GetType("System.Int32")).SetOrdinal(3);;
             dt_work.Columns.Add("mibaraigaku", Type.GetType("System.Int32"));
-
 
             if (rc == 0)
             {
                 MessageBox.Show("未払いはありません");
+                
+                //データグリッドビューを空にする
+                DataTable dt_work2 = new DataTable();
+                dgv_mibarai.DataSource = dt_work2;
+
                 btn_siharai_syori.Enabled = false;
                 return;
             }
@@ -545,17 +366,17 @@ namespace TSS_SYSTEM
                     double goukeikingaku = double.Parse(dt_work.Rows[i][1].ToString()) + double.Parse(dt_work.Rows[i][2].ToString());
                     double mibaraigaku;
 
-                    if (dt_work.Rows[i][3].ToString() == "")
+                    if (dt_work.Rows[i][4].ToString() == "")
                     {
-                        dt_work.Rows[i][3] = 0;
+                        dt_work.Rows[i][4] = 0;
                         mibaraigaku = goukeikingaku;
                     }
                     else
                     {
-                        mibaraigaku = goukeikingaku - double.Parse(dt_work.Rows[i][3].ToString());
+                        mibaraigaku = goukeikingaku - double.Parse(dt_work.Rows[i][4].ToString());
                     }
 
-                    dt_work.Rows[i][4] = mibaraigaku;
+                    dt_work.Rows[i][5] = mibaraigaku;
 
                     dgv_mibarai.DataSource = dt_work;
 
@@ -563,9 +384,9 @@ namespace TSS_SYSTEM
                     dgv_mibarai.Columns[0].HeaderText = "仕入締日";
                     dgv_mibarai.Columns[1].HeaderText = "仕入金額";
                     dgv_mibarai.Columns[2].HeaderText = "消費税額";
-                    dgv_mibarai.Columns[3].HeaderText = "支払金額";
-                    dgv_mibarai.Columns[4].HeaderText = "未払金額";
-
+                    dgv_mibarai.Columns[3].HeaderText = "仕入合計金額";
+                    dgv_mibarai.Columns[4].HeaderText = "支払金額";
+                    dgv_mibarai.Columns[5].HeaderText = "未払金額";
 
                     //使用数量右寄せ、カンマ区切り
                     dgv_mibarai.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -582,6 +403,8 @@ namespace TSS_SYSTEM
                     dgv_mibarai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.##";
 
+                    dgv_mibarai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0.##";
 
 
                     //１行のみ選択可能（複数行の選択不可）
@@ -595,11 +418,10 @@ namespace TSS_SYSTEM
 
                 }
             }
- 
 
-            object obj = dt_work.Compute("Sum(mibaraigaku)", null);
+            //未払合計テキストボックスへ値を入れる
+            object obj = dt_work.Compute("SUM(mibaraigaku)", null);
             double goukeikingku = double.Parse(obj.ToString());
-
             tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.##");
         
         }
@@ -656,8 +478,6 @@ namespace TSS_SYSTEM
 
                 //仕入マスタ更新メソッド実行
                 siire_kousin();
-                
-    
 
             }
 
@@ -710,6 +530,7 @@ namespace TSS_SYSTEM
             
             dgv_mibarai_disp();
 
+            //テキストボックスを空にする
             tb_siharai_date.Text = "";
             tb_create_user_cd.Text = "";
             tb_create_datetime.Text = "";
@@ -723,6 +544,7 @@ namespace TSS_SYSTEM
             w_siharai_no = tss.GetSeq("07");
             tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
 
+        　　//データグリッドビューを空にする
             DataTable dt_work2 = new DataTable();
             dgv_siharai.DataSource = dt_work2; 
             
@@ -744,7 +566,7 @@ namespace TSS_SYSTEM
              if(dt_work.Rows[0][7].ToString() == "1")
             {
   　　　　　////////////////////////////ここのSQL参考になる（日付をキーにしたアップデート）/////////////////////////////////////////////////////////
-                 tss.OracleUpdate("UPDATE TSS_siire_m SET shiharai_date = "
+                 tss.OracleUpdate("UPDATE TSS_siire_m SET siharai_date = "
                     + "to_date('" + tb_siharai_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),"       
                     + "UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = "
                     + "to_date('" + dgv_siharai.Rows[0].Cells[0].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS')");    
@@ -911,7 +733,7 @@ namespace TSS_SYSTEM
 
         private void btn_siharai_hensyu_Click(object sender, EventArgs e)
         {
-            w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString();
+            //w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString();
 
             //選択用のdatatableの作成
             DataTable dt_work = new DataTable();
@@ -933,7 +755,7 @@ namespace TSS_SYSTEM
 
                 if(w_dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("データがありません。");
+                    //MessageBox.Show("データがありません。");
                     tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
                     tb_siharai_no.Focus();
                     return;
@@ -965,34 +787,94 @@ namespace TSS_SYSTEM
                     {
                         double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
                         w_dt2.Rows[i][6] = goukei;
-                   
                     }
 
                     dgv_siharai.DataSource = w_dt2;
 
-                    dgv_siharai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0.##";
-
-                    dgv_siharai.Columns[6].HeaderText = "支払合計";
-                    dgv_siharai.Columns[7].HeaderText = "備考";
-
-                    //DataGridView1にユーザーが新しい行を追加できないようにする
-                    dgv_siharai.AllowUserToAddRows = false;
-
-                    dgv_siharai.Columns[0].ReadOnly = true;
-                    dgv_siharai.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
-
-                    tb_siharai_date.Enabled = true;
-                    tb_siharai_no.Enabled = true;
+                    dgv_siharai_disp();
 
                     btn_tuika.Enabled = true;
-
                 }
+        }
+
+        //支払データグリッドビューの書式設定
+        private void dgv_siharai_disp()
+        {
+            dgv_siharai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_siharai.Columns[3].DefaultCellStyle.Format = "#,0.##";
+
+            dgv_siharai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_siharai.Columns[4].DefaultCellStyle.Format = "#,0.##";
+
+            dgv_siharai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_siharai.Columns[5].DefaultCellStyle.Format = "#,0.##";
+
+            dgv_siharai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0.##";
+
+
+            dgv_siharai.Columns[0].HeaderText = "仕入締日";
+            dgv_siharai.Columns[1].HeaderText = "顧客請求番号";
+            dgv_siharai.Columns[2].HeaderText = "支払区分";
+            dgv_siharai.Columns[3].HeaderText = "支払額";
+            dgv_siharai.Columns[4].HeaderText = "手数料";
+            dgv_siharai.Columns[5].HeaderText = "相殺";
+            dgv_siharai.Columns[6].HeaderText = "支払合計";
+            dgv_siharai.Columns[7].HeaderText = "備考";
+
+
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_siharai.AllowUserToAddRows = false;
+
+            dgv_siharai.Columns[0].ReadOnly = true;
+            dgv_siharai.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
+
+            tb_siharai_date.Enabled = true;
+            tb_siharai_no.Enabled = true;
+
+            btn_tuika.Enabled = true;
         }
 
         private void dgv_mibarai_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             btn_siharai_syori.Enabled = true;
+            btn_siharai_hensyu.Enabled = true;
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
+
+        //取引先コード変更時のメソッド
+        private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
+        {
+            btn_siharai_syori.Enabled = false;
+
+            //dgv_mibarai.Rows.Clear();
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select torihikisaki_name,syouhizei_sansyutu_kbn from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
+
+            if (dt_work.Rows.Count == 0)
+            {
+                tb_torihikisaki_name.Text = "";
+                btn_siharai_syori.Enabled = false;
+
+
+                //データグリッドビューを空にする
+                DataTable dt_work2 = new DataTable();
+                dgv_mibarai.DataSource = dt_work2;
+
+                return;
+            }
+
+            else
+            {
+                tb_torihikisaki_name.Text = dt_work.Rows[0][0].ToString();
+            }
+
+            dgv_mibarai_disp();
+
             btn_siharai_hensyu.Enabled = true;
         }
     }

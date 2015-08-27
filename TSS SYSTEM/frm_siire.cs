@@ -752,7 +752,7 @@ namespace TSS_SYSTEM
         {
             //既存仕入の表示
             DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select siire_no, seq,torihikisaki_cd, siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,TO_CHAR(siire_simebi, 'YYYY/MM/DD'),TO_CHAR(shiharai_date, 'YYYY/MM/DD'),bikou,DELETE_FLG,create_user_cd,create_datetime,update_user_cd,update_datetime from tss_siire_m where siire_denpyo_no = '" + tb_siire_denpyou_no.Text.ToString() + "' ORDER BY SEQ");
+            dt_work = tss.OracleSelect("select siire_no, seq,torihikisaki_cd, siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,TO_CHAR(siire_simebi, 'YYYY/MM/DD'),TO_CHAR(siharai_date, 'YYYY/MM/DD'),bikou,DELETE_FLG,create_user_cd,create_datetime,update_user_cd,update_datetime from tss_siire_m where siire_denpyo_no = '" + tb_siire_denpyou_no.Text.ToString() + "' ORDER BY SEQ");
             int rc = dt_work.Rows.Count;
 
             if (dt_work.Rows.Count == 0)
@@ -761,7 +761,7 @@ namespace TSS_SYSTEM
                 dgv_siire.Rows.Clear();
                 tb_torihikisaki_cd.Clear();
                 tb_torihikisaki_name.Clear();
-                dtp_siire_date.Value = DateTime.Today;
+                //dtp_siire_date.Value = DateTime.Today;
                 //tb_siire_denpyou_no.Clear();
                 tb_create_user_cd.Clear();
                 tb_create_datetime.Clear();
