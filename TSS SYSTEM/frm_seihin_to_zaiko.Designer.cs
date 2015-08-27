@@ -46,7 +46,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_list_hanei = new System.Windows.Forms.Button();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_csv = new System.Windows.Forms.Button();
@@ -109,6 +109,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -161,6 +162,7 @@
             this.splitContainer3.Size = new System.Drawing.Size(880, 435);
             this.splitContainer3.SplitterDistance = 79;
             this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.TabStop = false;
             // 
             // tb_seisan_sitai_daisuu
             // 
@@ -189,6 +191,7 @@
             this.tb_seisan_kanou_daisuu.Size = new System.Drawing.Size(63, 19);
             this.tb_seisan_kanou_daisuu.TabIndex = 7;
             this.tb_seisan_kanou_daisuu.TabStop = false;
+            this.tb_seisan_kanou_daisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox7
             // 
@@ -284,7 +287,7 @@
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.button3);
+            this.splitContainer4.Panel1.Controls.Add(this.btn_list_hanei);
             this.splitContainer4.Panel1.Controls.Add(this.textBox9);
             this.splitContainer4.Panel1.Controls.Add(this.tb_seisan_sitai_daisuu);
             // 
@@ -296,14 +299,15 @@
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
             // 
-            // button3
+            // btn_list_hanei
             // 
-            this.button3.Location = new System.Drawing.Point(177, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "リストに反映";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_list_hanei.Location = new System.Drawing.Point(177, 3);
+            this.btn_list_hanei.Name = "btn_list_hanei";
+            this.btn_list_hanei.Size = new System.Drawing.Size(75, 23);
+            this.btn_list_hanei.TabIndex = 1;
+            this.btn_list_hanei.Text = "リストに反映";
+            this.btn_list_hanei.UseVisualStyleBackColor = true;
+            this.btn_list_hanei.Click += new System.EventHandler(this.btn_list_hanei_Click);
             // 
             // dgv_m
             // 
@@ -404,7 +408,7 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_list_hanei;
         private System.Windows.Forms.DataGridView dgv_m;
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;

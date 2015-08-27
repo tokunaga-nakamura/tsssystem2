@@ -99,8 +99,8 @@ namespace TSS_SYSTEM
                 w_dt_row["seihin_kousei_no"] = dr["seihin_kousei_no"].ToString();
                 w_dt_row["seihin_kousei_name"] = w_dt_seihin_kousei_name.Rows[0]["seihin_kousei_name"].ToString();
                 w_dt_m.Rows.Add(w_dt_row);
-                dgv_disp();
             }
+            dgv_disp();
         }
 
         private void dgv_disp()
