@@ -16,7 +16,8 @@ namespace TSS_SYSTEM
         DataTable dt_m = new DataTable();
         string w_str = "06";
         double w_siire_no;
-        
+       
+
         public frm_siire()
         {
             InitializeComponent();
@@ -98,11 +99,7 @@ namespace TSS_SYSTEM
                    }
                }
             }
-            
-
-            
             return out_siire_simebi;
-
         }
 
         //取引先マスタから、端数区分と端数処理単位を持ってきて、仕入金額を計算するメソッド
@@ -134,10 +131,6 @@ namespace TSS_SYSTEM
         {
             w_siire_no = tss.GetSeq("06");
             tb_siire_no.Text = w_siire_no.ToString("0000000000");
-            
-            //SEQ();
-
-            dgv_siire_disp();
         }
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
@@ -156,15 +149,14 @@ namespace TSS_SYSTEM
                 //無し
                 MessageBox.Show("入力された取引先コードが存在しません。取引先マスタに登録してください。");
                 tb_torihikisaki_cd.Focus();
-
             }
             else
             {
                 //既存データ有
                 tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+                dgv_siire.Enabled = true;
                 dgv_siire.Focus();
             }
-            
         }
 
        //データグリッドビューに値を入力した際の処理
@@ -172,164 +164,168 @@ namespace TSS_SYSTEM
         {
             DataGridView dgv = (DataGridView)sender;
             DataTable dt_work2 = new DataTable();
+
+            dt_work2 = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
             int j2 = dt_work2.Rows.Count;
-                dt_work2 = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
-        
 
-                string hasu_kbn = dt_work2.Rows[j2][22].ToString();//端数区分　0:切捨て　1:四捨五入　2:切上げ
-                string hasu_syori_tani = dt_work2.Rows[j2][23].ToString();//端数処理単位　0:円未満 1:十円未満 2:百円未満
-
-
-            //部品コードが入力されたならば、部品名と仕入単価を部品マスターから取得して表示（部品コードが空欄の際のエラー回避）
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value == null)
+            if(j2 != 0)
             {
-                return;
+                string hasu_kbn = dt_work2.Rows[j2-1][22].ToString();//端数区分　0:切捨て　1:四捨五入　2:切上げ
+                string hasu_syori_tani = dt_work2.Rows[j2-1][23].ToString();//端数処理単位　0:円未満 1:十円未満 2:百円未満
+
+                //部品コードが入力されたならば、部品名と仕入単価を部品マスターから取得して表示（部品コードが空欄の際のエラー回避）
+                if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value == null)
+                {
+                    return;
+                }
+                //部品コードが入力されたならば、部品名と仕入単価を部品マスターから取得して表示
+                if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != null)
+                {
+                    int i = e.RowIndex;
+
+                    DataTable dtTmp = (DataTable)dgv_siire.DataSource;
+
+                    //部品コードをキーに、部品名、仕入単価を引っ張ってくる
+
+                    DataTable dt_work = new DataTable();
+                    int j = dt_work.Rows.Count;
+
+                    dt_work = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + dgv.CurrentCell.Value.ToString() + "'");
+
+                    //取引先マスタの区分を取得
+                    string seikyu_simebi = dt_work2.Rows[j2-1][13].ToString();//請求締日
+                    string kaisyu_tuki = dt_work2.Rows[j2-1][14].ToString();//回収月
+                    string kaisyu_hi = dt_work2.Rows[j2-1][15].ToString();//回収日
+
+                    string siharai_simebi = dt_work2.Rows[j2-1][16].ToString();//支払締日
+                    string siharai_tuki = dt_work2.Rows[j2-1][17].ToString();//支払月
+                    string siharai_hi = dt_work2.Rows[j2-1][18].ToString();//支払日
+
+                    if (dt_work.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
+                        dgv.Rows[i].Cells[1].Value = "";
+                        dgv_siire.Focus();
+                        dgv_siire.CurrentCell = dgv_siire[0, i];
+                    }
+                    else //データグリッドビューに一行ずつ値を入れていく
+                    {
+                        dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
+                        dgv.Rows[i].Cells[3].Value = dt_work.Rows[j][8].ToString();
+
+                        //仕入締日計算メソッドの値をstring型に変換してデータグリッドビューに表示
+                        string str_siire_simebi = (get_siire_simebi(dtp_siire_date.Value)).ToShortDateString();
+                        dgv.Rows[i].Cells[5].Value = str_siire_simebi;
+                    }
+                    return;
+                }
+
+                if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() == null && dgv.CurrentCell.Value.ToString() == "")
+                {
+                    return;
+                }
+
+                //仕入数量が入力されたならば、仕入単価と数量を掛け算して仕入金額に表示（取引先マスタの端数処理も組み込む）
+                if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value == null)
+                {
+                    return;
+                }
+
+                if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value.ToString() != null && dgv.CurrentCell.Value.ToString() != "")
+                {
+                    int i = e.RowIndex;
+
+                    DataTable dtTmp = (DataTable)dgv_siire.DataSource;
+
+                    //仕入金額計算
+
+                    //仕入数量の小数点第三位を切捨て
+                    double db = double.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
+                    double dValue = ToRoundDown(db, 2);
+                    dgv_siire.Rows[i].Cells[2].Value = dValue;
+
+                    //仕入単価の小数点第三位を切捨て
+                    double db2 = double.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
+                    double dValue2 = ToRoundDown(db2, 2);
+                    dgv_siire.Rows[i].Cells[3].Value = dValue2;
+
+
+                    double suryou;
+                    double tanka;
+                    double siire_kingaku;
+
+                    suryou = dValue;
+                    tanka = dValue2;
+
+                    siire_kingaku = suryou * tanka;
+
+                    //端数処理 円未満の処理
+                    if (hasu_syori_tani == "0" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku);
+                    }
+
+                    if (hasu_syori_tani == "0" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku, MidpointRounding.AwayFromZero);
+                    }
+
+                    if (hasu_syori_tani == "0" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku);
+                    }
+
+                    //端数処理 10円未満の処理
+                    //切捨て
+                    if (hasu_syori_tani == "1" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku / 10) * 10;
+                    }
+                    //四捨五入
+                    if (hasu_syori_tani == "1" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku / 10) * 10;
+                    }
+                    //切上げ
+                    if (hasu_syori_tani == "1" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku / 10) * 10;
+                    }
+
+                    //端数処理 100円未満の処理
+                    //切捨て
+                    if (hasu_syori_tani == "2" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku / 100) * 100;
+                    }
+                    //四捨五入
+                    if (hasu_syori_tani == "2" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku / 100) * 100;
+                    }
+                    //切上げ
+                    if (hasu_syori_tani == "2" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku / 100) * 100;
+                    }
+
+                    dgv.Rows[i].Cells[4].Value = siire_kingaku;
+
+                }
+
+                if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value.ToString() == null && dgv.CurrentCell.Value.ToString() == "")
+                {
+                    return;
+
+                }
             }
-            //部品コードが入力されたならば、部品名と仕入単価を部品マスターから取得して表示
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != null)
+               
+            if(j2 == 0)
             {
-                int i = e.RowIndex;
-
-                DataTable dtTmp = (DataTable)dgv_siire.DataSource;
-
-                //部品コードをキーに、部品名、仕入単価を引っ張ってくる
-
-                DataTable dt_work = new DataTable();
-                int j = dt_work.Rows.Count;
-                
-                
-                dt_work = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + dgv.CurrentCell.Value.ToString() + "'");
-
-                //取引先マスタの区分を取得
-                string seikyu_simebi = dt_work2.Rows[j2][13].ToString();//請求締日
-                string kaisyu_tuki = dt_work2.Rows[j2][14].ToString();//回収月
-                string kaisyu_hi = dt_work2.Rows[j2][15].ToString();//回収日
-
-                string siharai_simebi = dt_work2.Rows[j2][16].ToString();//支払締日
-                string siharai_tuki = dt_work2.Rows[j2][17].ToString();//支払月
-                string siharai_hi = dt_work2.Rows[j2][18].ToString();//支払日
-
-                if (dt_work.Rows.Count <= 0)
-                {
-                    MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
-                    dgv.Rows[i].Cells[1].Value = "";
-                    dgv_siire.Focus();
-                    dgv_siire.CurrentCell = dgv_siire[0, i];
-                }
-                else //データグリッドビューに一行ずつ値を入れていく
-                {
-                    dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
-                    dgv.Rows[i].Cells[3].Value = dt_work.Rows[j][8].ToString();
-
-                    //仕入締日計算メソッドの値をstring型に変換してデータグリッドビューに表示
-                    string str_siire_simebi = (get_siire_simebi(dtp_siire_date.Value)).ToShortDateString();
-                    dgv.Rows[i].Cells[5].Value = str_siire_simebi;
-                }
-                return;
+                MessageBox.Show("取引先コードを入力してください");
             }
             
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() == null && dgv.CurrentCell.Value.ToString() == "")
-            {
-                return;
-            }
-
-
-            //仕入数量が入力されたならば、仕入単価と数量を掛け算して仕入金額に表示（取引先マスタの端数処理も組み込む）
-            if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value == null)
-            {
-                return;
-            }
-
-            if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value.ToString() != null)
-            {
-                int i = e.RowIndex;
-
-                DataTable dtTmp = (DataTable)dgv_siire.DataSource;
-
-                //仕入金額計算
-                
-                //仕入数量の小数点第三位を切捨て
-                double db = double.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
-                double dValue = ToRoundDown(db, 2);
-                dgv_siire.Rows[i].Cells[2].Value = dValue;
-
-                //仕入単価の小数点第三位を切捨て
-                double db2 = double.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
-                double dValue2 = ToRoundDown(db2, 2);
-                dgv_siire.Rows[i].Cells[3].Value = dValue2;
-
-
-                double suryou;
-                double tanka;
-                double siire_kingaku;
-
-                suryou = dValue;
-                tanka = dValue2; 
-
-                siire_kingaku = suryou * tanka;
-
-                //端数処理 円未満の処理
-                if(hasu_syori_tani == "0" && hasu_kbn == "0")
-                {
-                    siire_kingaku = Math.Floor(siire_kingaku);
-                }
-
-                if (hasu_syori_tani == "0" && hasu_kbn == "1")
-                {
-                    siire_kingaku = Math.Round(siire_kingaku, MidpointRounding.AwayFromZero);
-                }
-
-                if (hasu_syori_tani == "0" && hasu_kbn == "2")
-                {
-                    siire_kingaku = Math.Ceiling(siire_kingaku);
-                }
-
-                //端数処理 10円未満の処理
-                //切捨て
-                if (hasu_syori_tani == "1" && hasu_kbn == "0")
-                {
-                    siire_kingaku = Math.Floor(siire_kingaku / 10) * 10;
-                }
-                //四捨五入
-                if (hasu_syori_tani == "1" && hasu_kbn == "1")
-                {
-                    siire_kingaku = Math.Round(siire_kingaku / 10) * 10;
-                }
-                //切上げ
-                if (hasu_syori_tani == "1" && hasu_kbn == "2")
-                {
-                    siire_kingaku = Math.Ceiling(siire_kingaku / 10) * 10;
-                }
-
-                //端数処理 100円未満の処理
-                //切捨て
-                if (hasu_syori_tani == "2" && hasu_kbn == "0")
-                {
-                    siire_kingaku = Math.Floor(siire_kingaku / 100) * 100;
-                }
-                //四捨五入
-                if (hasu_syori_tani == "2" && hasu_kbn == "1")
-                {
-                    siire_kingaku = Math.Round(siire_kingaku / 100) * 100;
-                }
-                //切上げ
-                if (hasu_syori_tani == "2" && hasu_kbn == "2")
-                {
-                    siire_kingaku = Math.Ceiling(siire_kingaku / 100) * 100;
-                }
-
-                dgv.Rows[i].Cells[4].Value = siire_kingaku;
-
-            }
-
-            if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value.ToString() == null && dgv.CurrentCell.Value.ToString() == "")
-            {
-                return;
-
-            }
-
         }
-
         //データグリッドビューに入力された数値の小数点以下第三桁を切り捨てる
         public static double ToRoundDown(double dValue, int iDigits)
         {
@@ -366,7 +362,7 @@ namespace TSS_SYSTEM
             //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
             {
-                MessageBox.Show("取引先コードは6文字で入力してください。");
+                MessageBox.Show("取引先コードを入力してください。");
                 tb_torihikisaki_cd.Focus();
                 return;
             }
@@ -385,7 +381,7 @@ namespace TSS_SYSTEM
             //テキストボックスとデータグリッドビューの入力内容チェック
             for (int i = 0; i < dgvrc - 1; i++)
             {
-                if (dgv_siire.Rows[i].Cells[0].Value == null || tss.StringByte(dgv_siire.Rows[i].Cells[0].Value.ToString()) > 16)
+                if (dgv_siire.Rows[i].Cells[0].Value == null || dgv_siire.Rows[i].Cells[0].Value.ToString() == "" || tss.StringByte(dgv_siire.Rows[i].Cells[0].Value.ToString()) > 16)
                 {
                     MessageBox.Show("部品コードの値が異常です");
                     return;
@@ -397,19 +393,19 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                if (dgv_siire.Rows[i].Cells[2].Value == null || tss.StringByte(dgv_siire.Rows[i].Cells[2].Value.ToString()) > 12)
+                if (dgv_siire.Rows[i].Cells[2].Value == null || dgv_siire.Rows[i].Cells[2].Value.ToString() == "" || tss.StringByte(dgv_siire.Rows[i].Cells[2].Value.ToString()) > 12)
                 {
                     MessageBox.Show("仕入数量の値が異常です");
                     return;
                 }
 
-                if (dgv_siire.Rows[i].Cells[3].Value == null || tss.StringByte(dgv_siire.Rows[i].Cells[3].Value.ToString()) > 12)
+                if (dgv_siire.Rows[i].Cells[3].Value == null || dgv_siire.Rows[i].Cells[3].Value.ToString() == "" || tss.StringByte(dgv_siire.Rows[i].Cells[3].Value.ToString()) > 12)
                 {
                     MessageBox.Show("仕入単価を入力してください");
                     return;
                 }
 
-                if (dgv_siire.Rows[i].Cells[4].Value == null)
+                if (dgv_siire.Rows[i].Cells[4].Value == null || dgv_siire.Rows[i].Cells[4].Value.ToString() == "")
                 {
                     MessageBox.Show("仕入締日を入力してください");
                     return;
@@ -451,11 +447,8 @@ namespace TSS_SYSTEM
                               + dgv_siire.Rows[i].Cells[4].Value.ToString() + "','"
                               + tb_siire_denpyou_no.Text.ToString() + "','"
                               + dgv_siire.Rows[i].Cells[5].Value.ToString() + "','"
-                            //+ "to_date('" + dgv_siire.Rows[i].Cells[5].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
-                            //+ "to_date('" + dgv_siire.Rows[i].Cells[6].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                               + dgv_siire.Rows[i].Cells[7].Value.ToString() + "','"
                               + tss.user_cd + "',SYSDATE)");
-
 
                     if (bl != true)
                     {
@@ -550,8 +543,6 @@ namespace TSS_SYSTEM
                     tb_siire_no.Text = w_siire_no.ToString("0000000000");
                     
                     return;
-                    
-
                 }
                 //「いいえ」が選択された時
                 else if (result == DialogResult.Cancel)
@@ -649,8 +640,9 @@ namespace TSS_SYSTEM
         private void tb_siire_no_Validating(object sender, CancelEventArgs e)
         {
 
-            //入力された仕入番号を"0000000000"形式の文字列に変換
+            //入力された売上番号を"0000000000"形式の文字列に変換
             double w_double;
+
             if (double.TryParse(tb_siire_no.Text.ToString(), out w_double))
             {
                 tb_siire_no.Text = w_double.ToString("0000000000");
@@ -673,13 +665,20 @@ namespace TSS_SYSTEM
             {
                 //既存仕入の表示
                 DataTable dt_work = new DataTable();
-                dt_work = tss.OracleSelect("select siire_no, seq,torihikisaki_cd, siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,TO_CHAR(siire_simebi, 'YYYY/MM/DD'),TO_CHAR(shiharai_date, 'YYYY/MM/DD'),bikou,DELETE_FLG,create_user_cd,create_datetime,update_user_cd,update_datetime from tss_siire_m where siire_no = '" + tb_siire_no.Text.ToString() + "' ORDER BY SEQ");
+                dt_work = tss.OracleSelect("select siire_no, seq,torihikisaki_cd, siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,TO_CHAR(siire_simebi, 'YYYY/MM/DD'),TO_CHAR(siharai_date, 'YYYY/MM/DD'),bikou,DELETE_FLG,create_user_cd,create_datetime,update_user_cd,update_datetime from tss_siire_m where siire_no = '" + tb_siire_no.Text.ToString() + "' ORDER BY SEQ");
                 int rc = dt_work.Rows.Count;
                 
                 if (dt_work.Rows.Count == 0)
                 {
-                    MessageBox.Show("データがありません。");
+                    //MessageBox.Show("データがありません。");
+                    //tb_siire_no.Text = w_siire_no.ToString("0000000000");
+                    //tb_siire_no.Focus();
+                    //return;
+
+
+                    //MessageBox.Show("データがありません。");
                     dgv_siire.Rows.Clear();
+
                     tb_torihikisaki_cd.Clear();
                     tb_torihikisaki_name.Clear();
                     dtp_siire_date.Value = DateTime.Today;
@@ -810,6 +809,79 @@ namespace TSS_SYSTEM
         {
             tss.HardCopy();
         }
-   
+
+        private void dgv_siire_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            
+            if(e.ColumnIndex == 2)
+            {
+                if (e.FormattedValue.ToString() != "")
+                {
+                    //仕入数量チェック
+                    if (chk_siire_su(e.FormattedValue.ToString()) == false)
+                    {
+                        MessageBox.Show("仕入数は-999999999.99～9999999999.99の範囲で入力してください。");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+  
+            }
+
+            if (e.ColumnIndex == 3)
+            {
+                if (e.FormattedValue.ToString() != "")
+                {
+                    //仕入数量チェック
+                    if (chk_tanka(e.FormattedValue.ToString()) == false)
+                    {
+                        MessageBox.Show("単価は-999999999.99～9999999999.99の範囲で入力してください。");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
+        }
+
+
+
+        private bool chk_siire_su(string in_str)
+        {
+            bool bl = true; //戻り値
+
+            double w_siire_su;
+            if (double.TryParse(in_str, out w_siire_su))
+            {
+                if (w_siire_su > 9999999999.99 || w_siire_su < -999999999.99)
+                {
+                    bl = false;
+                }
+            }
+            else
+            {
+                bl = false;
+            }
+            return bl;
+        }
+
+        private bool chk_tanka(string in_str)
+        {
+            bool bl = true; //戻り値
+
+            double w_tanka;
+            if (double.TryParse(in_str, out w_tanka))
+            {
+                if (w_tanka > 9999999999.99 || w_tanka < -999999999.99)
+                {
+                    bl = false;
+                }
+            }
+            else
+            {
+                bl = false;
+            }
+            return bl;
+        }
     }
 }

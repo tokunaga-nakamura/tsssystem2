@@ -36,10 +36,6 @@ namespace TSS_SYSTEM
             this.Close();
         }
 
-        private void btn_kensaku_Click(object sender, EventArgs e)
-        {
-            kensaku();
-        }
 
         private void kensaku()
         {
@@ -60,14 +56,14 @@ namespace TSS_SYSTEM
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "siire_no >= '" + tb_siire_no1.Text.ToString() + "' and uriage_no <= '" + tb_siire_no2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "siire_no >= '" + tb_siire_no1.Text.ToString() + "' and siire_no <= '" + tb_siire_no2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_no => '" + tb_siire_no2.Text.ToString() + "' and uriage_no <= '" + tb_siire_no1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "siire_no => '" + tb_siire_no2.Text.ToString() + "' and siire_no <= '" + tb_siire_no1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -92,25 +88,25 @@ namespace TSS_SYSTEM
             {
                 if (tb_siire_date1.Text != "")
                 {
-                    if (chk_uriage_date(tb_siire_date1.Text))
+                    if (chk_siire_date(tb_siire_date1.Text))
                     {
                         tb_siire_date1.Text = tss.out_datetime.ToShortDateString();
                     }
                     else
                     {
-                        MessageBox.Show("売上計上日に異常があります。");
+                        MessageBox.Show("仕入計上日に異常があります。");
                         tb_siire_date1.Focus();
                     }
                 }
                 if (tb_siire_date2.Text != "")
                 {
-                    if (chk_uriage_date(tb_siire_date2.Text))
+                    if (chk_siire_date(tb_siire_date2.Text))
                     {
                         tb_siire_date2.Text = tss.out_datetime.ToShortDateString();
                     }
                     else
                     {
-                        MessageBox.Show("売上計上日に異常があります。");
+                        MessageBox.Show("仕入計上日に異常があります。");
                         tb_siire_date2.Focus();
                     }
                 }
@@ -118,21 +114,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "uriage_date = TO_DATE('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/DD')";
+                    sql_where[sql_cnt] = "siire_date = TO_DATE('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/DD')";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "uriage_date >= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/DD') and uriage_date <= to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/DD')";
+                        sql_where[sql_cnt] = "siire_date >= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/DD') and siire_date <= to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/DD')";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_date => to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/dd') and uriage_date <= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/dd')";
+                            sql_where[sql_cnt] = "siire_date => to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/dd') and siire_date <= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/dd')";
                             sql_cnt++;
                         }
             }
@@ -141,7 +137,7 @@ namespace TSS_SYSTEM
             //取引先コード
             if (tb_buhin_cd.Text != "")
             {
-                if (chk_seihin_cd(tb_buhin_cd.Text))
+                if (chk_buhin_cd(tb_buhin_cd.Text))
                 {
                     sql_where[sql_cnt] = "buhin_cd = '" + tb_buhin_cd.Text.ToString() + "'";
                     sql_cnt++;
@@ -163,7 +159,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select * from tss_siire_m where ";
+            string sql = "select siire_no,torihikisaki_cd,siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,siire_simebi,siharai_date,bikou from tss_siire_m where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -172,6 +168,9 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
+
+            sql = sql + " ORDER BY SIIRE_NO";
+
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);
         }
@@ -193,7 +192,7 @@ namespace TSS_SYSTEM
             return bl;
         }
 
-        private bool chk_uriage_date(string in_str)
+        private bool chk_siire_date(string in_str)
         {
             bool bl = true; //戻り値
             if (tss.try_string_to_date(in_str) == false)
@@ -203,11 +202,11 @@ namespace TSS_SYSTEM
             return bl;
         }
 
-        private bool chk_seihin_cd(string in_seihin_cd)
+        private bool chk_buhin_cd(string in_buhin_cd)
         {
             bool bl = true; //戻り値
             DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select * from tss_seihin_m where seihin_cd  = '" + in_seihin_cd.ToString() + "'");
+            dt_work = tss.OracleSelect("select * from tss_buhin_m where buhin_cd  = '" + in_buhin_cd.ToString() + "'");
             if (dt_work.Rows.Count <= 0)
             {
                 //無し
@@ -246,7 +245,7 @@ namespace TSS_SYSTEM
             dt_m = in_dt;
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_m.Columns[0].HeaderText = "仕入番号";
-            dgv_m.Columns[1].HeaderText = "行番号";
+            dgv_m.Columns[1].HeaderText = "取引先コード";
             dgv_m.Columns[2].HeaderText = "仕入計上日";
             dgv_m.Columns[3].HeaderText = "部品コード";
             dgv_m.Columns[4].HeaderText = "部品名";
@@ -280,7 +279,7 @@ namespace TSS_SYSTEM
             if (dt_m.Rows.Count != 0)
             {
                 string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
-                string w_str_filename = "売上マスタ検索結果" + w_str_now + ".csv";
+                string w_str_filename = "仕入マスタ検索結果" + w_str_now + ".csv";
                 if (tss.DataTableCSV(dt_m, true, w_str_filename, "\"", true))
                 {
                     MessageBox.Show("保存されました。");
@@ -294,7 +293,6 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
-
         }
 
         private void dgv_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -305,7 +303,7 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void frm_search_uriage_Load(object sender, EventArgs e)
+        private void frm_search_siire_Load(object sender, EventArgs e)
         {
             switch (str_mode)
             {
@@ -388,7 +386,7 @@ namespace TSS_SYSTEM
         {
             if (tb_siire_date1.Text != "")
             {
-                if (chk_uriage_date(tb_siire_date1.Text))
+                if (chk_siire_date(tb_siire_date1.Text))
                 {
                     tb_siire_date1.Text = tss.out_datetime.ToShortDateString();
                 }
@@ -400,11 +398,11 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void tb_uriage_date2_Validating(object sender, CancelEventArgs e)
+        private void tb_siire_date2_Validating(object sender, CancelEventArgs e)
         {
             if (tb_siire_date1.Text != "")
             {
-                if (chk_uriage_date(tb_siire_date2.Text))
+                if (chk_siire_date(tb_siire_date2.Text))
                 {
                     tb_siire_date2.Text = tss.out_datetime.ToShortDateString();
                 }
@@ -431,11 +429,11 @@ namespace TSS_SYSTEM
             w_dt = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + in_cd + "'");
             if (w_dt.Rows.Count == 0)
             {
-                MessageBox.Show("製品コードに異常があります。");
+                MessageBox.Show("部品コードに異常があります。");
             }
             else
             {
-                out_name = w_dt.Rows[0]["seihin_name"].ToString();
+                out_name = w_dt.Rows[0]["buhin_name"].ToString();
             }
             return out_name;
         }
@@ -444,13 +442,18 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_seihin("2", "");
+            w_cd = tss.search_buhin("2", "");
             if (w_cd != "")
             {
                 tb_buhin_cd.Text = w_cd;
                 tb_buhin_name.Text = get_buhin_name(tb_buhin_cd.Text);
                 btn_kensaku.Focus();
             }
+        }
+
+        private void btn_kensaku_Click(object sender, EventArgs e)
+        {
+            kensaku();
         }
     }
 }
