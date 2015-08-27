@@ -139,6 +139,7 @@
             this.dgv_kubun_m.RowTemplate.Height = 21;
             this.dgv_kubun_m.Size = new System.Drawing.Size(284, 181);
             this.dgv_kubun_m.TabIndex = 0;
+            this.dgv_kubun_m.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_kubun_m_RowEnter);
             // 
             // btn_cancel
             // 

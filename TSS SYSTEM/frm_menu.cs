@@ -388,5 +388,16 @@ namespace TSS_SYSTEM
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
+
+        private void btn_siire_kensaku_Click(object sender, EventArgs e)
+        {
+            //検索画面へ
+            frm_search_siire frm_siken = new frm_search_siire();
+            //子画面のプロパティに値をセットする
+            frm_siken.str_mode = "1";
+            frm_siken.ShowDialog();
+            //子フォームの解放
+            frm_siken.Dispose();
+        }
     }
 }

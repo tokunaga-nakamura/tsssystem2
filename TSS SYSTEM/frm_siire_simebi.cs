@@ -554,7 +554,7 @@ namespace TSS_SYSTEM
 
                 if (result == DialogResult.OK)
                 {
-                    bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharaigaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku
+                    bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siire_kingaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku
                                 + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     
                     
@@ -592,7 +592,32 @@ namespace TSS_SYSTEM
                         tb_update_user_cd.Text = tss.user_cd;
                         tb_update_datetime.Text = DateTime.Now.ToString();
                         MessageBox.Show("仕入締日処理登録しました。");
-                    }               
+                    }
+
+
+                    //買掛マスタの支払完了フラグ更新
+                    string str = dgv_siire_simebi.Rows[0].Cells[0].Value.ToString();
+                    string str2 = str.Substring(0, 10);
+                    
+                    dt_work = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
+
+                    string siharaigaku = dt_work.Rows[0]["siharaigaku"].ToString();
+                    string siiregaku = dt_work.Rows[0]["siire_kingaku"].ToString();
+                    string syouhizei_gaku = dt_work.Rows[0]["syouhizeigaku"].ToString();
+
+                    double keisan = double.Parse(siiregaku) + double.Parse(syouhizei_gaku) - double.Parse(siharaigaku);
+
+                    if (keisan == 0)
+                    {
+                        tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+                    }
+                    else
+                    {
+                        tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+                    }
+
+                    MessageBox.Show("買掛マスタの支払完了フラグ処理しました。");
+
 
 
                 }
@@ -641,6 +666,11 @@ namespace TSS_SYSTEM
         private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
     }
 }

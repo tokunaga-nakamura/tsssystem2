@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_siharai));
-            this.btn_hyouji = new System.Windows.Forms.Button();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.tb_update_user_cd = new System.Windows.Forms.TextBox();
@@ -100,16 +99,6 @@
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_hyouji
-            // 
-            this.btn_hyouji.Location = new System.Drawing.Point(383, 28);
-            this.btn_hyouji.Name = "btn_hyouji";
-            this.btn_hyouji.Size = new System.Drawing.Size(108, 23);
-            this.btn_hyouji.TabIndex = 3;
-            this.btn_hyouji.Text = "未払一覧表示";
-            this.btn_hyouji.UseVisualStyleBackColor = true;
-            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
             // 
             // tb_update_datetime
             // 
@@ -213,6 +202,7 @@
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -248,7 +238,6 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.label2);
-            this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer3.Panel1.Controls.Add(this.label3);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_name);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_cd);
@@ -265,16 +254,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(503, 33);
+            this.label2.Location = new System.Drawing.Point(13, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 12);
+            this.label2.Size = new System.Drawing.Size(280, 12);
             this.label2.TabIndex = 33;
-            this.label2.Text = "支入締日処理をしてないと表示されません。";
+            this.label2.Text = "未払一覧　※仕入締日処理をしてないと表示されません。";
             // 
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(166, 30);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(166, 17);
             this.tb_torihikisaki_name.MaxLength = 2;
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
@@ -284,18 +273,18 @@
             // 
             // tb_torihikisaki_cd
             // 
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 30);
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 17);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(48, 19);
             this.tb_torihikisaki_cd.TabIndex = 1;
             this.tb_torihikisaki_cd.TextChanged += new System.EventHandler(this.tb_torihikisaki_cd_TextChanged);
-            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating_1);
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(12, 30);
+            this.textBox4.Location = new System.Drawing.Point(12, 17);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(108, 19);
@@ -421,7 +410,6 @@
             this.tb_siharai_date.Size = new System.Drawing.Size(160, 19);
             this.tb_siharai_date.TabIndex = 7;
             this.tb_siharai_date.Leave += new System.EventHandler(this.tb_siharai_date_Leave);
-            this.tb_siharai_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_date_Validating);
             // 
             // textBox7
             // 
@@ -674,7 +662,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_hyouji;
         private System.Windows.Forms.TextBox tb_update_datetime;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox tb_update_user_cd;

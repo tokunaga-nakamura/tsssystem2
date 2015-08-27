@@ -152,6 +152,7 @@ namespace TSS_SYSTEM
             tb_torihikisaki_cd.Text = ppt_str_torihikisaki_cd;
             tb_torihikisaki_cd.Focus();
 
+            btn_sentaku.Enabled = false;
 
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select siharai_no,siharai_date from tss_siharai_m where torihikisaki_cd  = '" + tb_torihikisaki_cd.Text.ToString() + "' ORDER BY siharai_no");
@@ -176,6 +177,11 @@ namespace TSS_SYSTEM
         {
             this.Close();
             //form_close_false();
+        }
+
+        private void dgv_kubun_m_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_sentaku.Enabled = true;
         }
     }
         

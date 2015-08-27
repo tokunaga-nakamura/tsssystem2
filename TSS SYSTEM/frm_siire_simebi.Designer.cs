@@ -82,6 +82,7 @@
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -343,7 +344,7 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 4;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
