@@ -1562,19 +1562,22 @@ namespace TSS_SYSTEM
                         }
                     }
                     //レコード新規・追加判断
+                    if(double.TryParse(dr3["siyou_su"].ToString(), out w_dou_siyou_su2) == false)
+                    {
+                        w_dou_siyou_su2 = 0;                    
+                    }
                     if(w_juufuku_flg == 0)
                     {
                         //重複無しの場合、新規に作成
                         out_dr = out_dt.NewRow();
                         out_dr["buhin_cd"] = dr3["buhin_cd"].ToString();
-                        out_dr["siyou_su"] = dr3["siyou_su"].ToString();
+                        out_dr["siyou_su"] = w_dou_siyou_su2.ToString("0.00");
                         out_dt.Rows.Add(out_dr);
                     }
                     else
                     {
                         //重複ありの場合は、既存レコードに使用数を足す
                         double.TryParse(out_dt.Rows[w_out_row]["siyou_su"].ToString(), out w_dou_siyou_su);
-                        double.TryParse(dr3["siyou_su"].ToString(), out w_dou_siyou_su2);
                         out_dt.Rows[w_out_row]["siyou_su"] = (w_dou_siyou_su + w_dou_siyou_su2).ToString("0.00");
                     }
                 }
