@@ -166,18 +166,21 @@ namespace TSS_SYSTEM
         private bool chk_uriage_su(string in_str)
         {
             bool bl = true; //戻り値
-
-            double w_uriage_su;
-            if (double.TryParse(in_str, out w_uriage_su))
+            //空白は許容する
+            if(in_str != "" && in_str != null)
             {
-                if (w_uriage_su > 9999999999.99 || w_uriage_su < -999999999.99)
+                double w_uriage_su;
+                if (double.TryParse(in_str, out w_uriage_su))
+                {
+                    if (w_uriage_su > 9999999999.99 || w_uriage_su < -999999999.99)
+                    {
+                        bl = false;
+                    }
+                }
+                else
                 {
                     bl = false;
                 }
-            }
-            else
-            {
-                bl = false;
             }
             return bl;
         }
@@ -186,17 +189,21 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値
 
-            double w_hanbai_tanka;
-            if (double.TryParse(in_str, out w_hanbai_tanka))
+            //空白は許容する
+            if(in_str != "" && in_str != null)
             {
-                if (w_hanbai_tanka > 9999999999.99 || w_hanbai_tanka < -999999999.99)
+                double w_hanbai_tanka;
+                if (double.TryParse(in_str, out w_hanbai_tanka))
+                {
+                    if (w_hanbai_tanka > 9999999999.99 || w_hanbai_tanka < -999999999.99)
+                    {
+                        bl = false;
+                    }
+                }
+                else
                 {
                     bl = false;
                 }
-            }
-            else
-            {
-                bl = false;
             }
             return bl;
         }

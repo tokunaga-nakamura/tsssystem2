@@ -413,7 +413,7 @@ namespace TSS_SYSTEM
 
         private void tb_uriage_date2_Validating(object sender, CancelEventArgs e)
         {
-            if (tb_uriage_date1.Text != "")
+            if (tb_uriage_date2.Text != "")
             {
                 if (chk_uriage_date(tb_uriage_date2.Text))
                 {
