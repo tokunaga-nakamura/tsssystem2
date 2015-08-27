@@ -31,27 +31,27 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seihin_to_zaiko));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.tb_seisan_sitai_daisuu = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.lbl_seihin_kousei_msg = new System.Windows.Forms.Label();
             this.tb_seisan_kanou_daisuu = new System.Windows.Forms.TextBox();
+            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.tb_seihin_kousei_name = new System.Windows.Forms.TextBox();
             this.tb_seihin_kousei_no = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.tb_seihin_name = new System.Windows.Forms.TextBox();
-            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_list_hanei = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tb_seisan_sitai_daisuu = new System.Windows.Forms.TextBox();
             this.dgv_m = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
-            this.lbl_seihin_kousei_msg = new System.Windows.Forms.Label();
+            this.btn_csv = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,6 +102,15 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(108, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "製品毎の部品在庫状況を確認できます。";
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -109,6 +118,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -161,24 +171,15 @@
             this.splitContainer3.Size = new System.Drawing.Size(880, 435);
             this.splitContainer3.SplitterDistance = 79;
             this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.TabStop = false;
             // 
-            // tb_seisan_sitai_daisuu
+            // lbl_seihin_kousei_msg
             // 
-            this.tb_seisan_sitai_daisuu.Location = new System.Drawing.Point(108, 5);
-            this.tb_seisan_sitai_daisuu.Name = "tb_seisan_sitai_daisuu";
-            this.tb_seisan_sitai_daisuu.Size = new System.Drawing.Size(63, 19);
-            this.tb_seisan_sitai_daisuu.TabIndex = 0;
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox9.Location = new System.Drawing.Point(8, 5);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(100, 19);
-            this.textBox9.TabIndex = 8;
-            this.textBox9.TabStop = false;
-            this.textBox9.Text = "生産したい台数";
+            this.lbl_seihin_kousei_msg.AutoSize = true;
+            this.lbl_seihin_kousei_msg.Location = new System.Drawing.Point(509, 31);
+            this.lbl_seihin_kousei_msg.Name = "lbl_seihin_kousei_msg";
+            this.lbl_seihin_kousei_msg.Size = new System.Drawing.Size(0, 12);
+            this.lbl_seihin_kousei_msg.TabIndex = 8;
             // 
             // tb_seisan_kanou_daisuu
             // 
@@ -189,6 +190,16 @@
             this.tb_seisan_kanou_daisuu.Size = new System.Drawing.Size(63, 19);
             this.tb_seisan_kanou_daisuu.TabIndex = 7;
             this.tb_seisan_kanou_daisuu.TabStop = false;
+            this.tb_seisan_kanou_daisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tb_seihin_cd
+            // 
+            this.tb_seihin_cd.Location = new System.Drawing.Point(110, 3);
+            this.tb_seihin_cd.Name = "tb_seihin_cd";
+            this.tb_seihin_cd.Size = new System.Drawing.Size(107, 19);
+            this.tb_seihin_cd.TabIndex = 0;
+            this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
+            this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
             // 
             // textBox7
             // 
@@ -242,15 +253,6 @@
             this.tb_seihin_name.TabIndex = 2;
             this.tb_seihin_name.TabStop = false;
             // 
-            // tb_seihin_cd
-            // 
-            this.tb_seihin_cd.Location = new System.Drawing.Point(110, 3);
-            this.tb_seihin_cd.Name = "tb_seihin_cd";
-            this.tb_seihin_cd.Size = new System.Drawing.Size(107, 19);
-            this.tb_seihin_cd.TabIndex = 0;
-            this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
-            this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
@@ -261,16 +263,6 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "製品コード";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(795, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "終了";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // splitContainer4
             // 
@@ -284,7 +276,7 @@
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.button3);
+            this.splitContainer4.Panel1.Controls.Add(this.btn_list_hanei);
             this.splitContainer4.Panel1.Controls.Add(this.textBox9);
             this.splitContainer4.Panel1.Controls.Add(this.tb_seisan_sitai_daisuu);
             // 
@@ -296,14 +288,33 @@
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
             // 
-            // button3
+            // btn_list_hanei
             // 
-            this.button3.Location = new System.Drawing.Point(177, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "リストに反映";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_list_hanei.Location = new System.Drawing.Point(177, 3);
+            this.btn_list_hanei.Name = "btn_list_hanei";
+            this.btn_list_hanei.Size = new System.Drawing.Size(75, 23);
+            this.btn_list_hanei.TabIndex = 1;
+            this.btn_list_hanei.Text = "リストに反映";
+            this.btn_list_hanei.UseVisualStyleBackColor = true;
+            this.btn_list_hanei.Click += new System.EventHandler(this.btn_list_hanei_Click);
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox9.Location = new System.Drawing.Point(8, 5);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(100, 19);
+            this.textBox9.TabIndex = 8;
+            this.textBox9.TabStop = false;
+            this.textBox9.Text = "生産したい台数";
+            // 
+            // tb_seisan_sitai_daisuu
+            // 
+            this.tb_seisan_sitai_daisuu.Location = new System.Drawing.Point(108, 5);
+            this.tb_seisan_sitai_daisuu.Name = "tb_seisan_sitai_daisuu";
+            this.tb_seisan_sitai_daisuu.Size = new System.Drawing.Size(63, 19);
+            this.tb_seisan_sitai_daisuu.TabIndex = 0;
             // 
             // dgv_m
             // 
@@ -315,24 +326,6 @@
             this.dgv_m.Size = new System.Drawing.Size(876, 311);
             this.dgv_m.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "製品毎の部品在庫状況を確認できます。";
-            // 
-            // btn_csv
-            // 
-            this.btn_csv.Location = new System.Drawing.Point(91, 3);
-            this.btn_csv.Name = "btn_csv";
-            this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 1;
-            this.btn_csv.Text = "CSV出力";
-            this.btn_csv.UseVisualStyleBackColor = true;
-            // 
             // btn_insatu
             // 
             this.btn_insatu.Location = new System.Drawing.Point(10, 3);
@@ -342,13 +335,25 @@
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
             // 
-            // lbl_seihin_kousei_msg
+            // btn_csv
             // 
-            this.lbl_seihin_kousei_msg.AutoSize = true;
-            this.lbl_seihin_kousei_msg.Location = new System.Drawing.Point(509, 31);
-            this.lbl_seihin_kousei_msg.Name = "lbl_seihin_kousei_msg";
-            this.lbl_seihin_kousei_msg.Size = new System.Drawing.Size(0, 12);
-            this.lbl_seihin_kousei_msg.TabIndex = 8;
+            this.btn_csv.Location = new System.Drawing.Point(91, 3);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 1;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(795, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "終了";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frm_seihin_to_zaiko
             // 
@@ -404,7 +409,7 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_list_hanei;
         private System.Windows.Forms.DataGridView dgv_m;
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;

@@ -1027,7 +1027,7 @@ namespace TSS_SYSTEM
 
         #region get_seihin_name メソッド
         /// <summary>
-        /// "製品コードを受け取り製品名を返す</summary>
+        /// 製品コードを受け取り製品名を返す</summary>
         /// <param name="in_cd">
         /// 製品名を取得する製品コード</param>
         /// <returns>
@@ -1052,7 +1052,7 @@ namespace TSS_SYSTEM
 
         #region get_seihin_kousei_no メソッド
         /// <summary>
-        /// "製品コードを受け取り製品構成番号</summary>
+        /// 製品コードを受け取り製品構成番号を返す</summary>
         /// <param name="in_cd">
         /// 製品コード</param>
         /// <returns>
@@ -1077,11 +1077,11 @@ namespace TSS_SYSTEM
 
         #region get_seihin_kousei_name メソッド
         /// <summary>
-        /// "製品コードを受け取り製品構成番号</summary>
+        /// 製品コードを受け取り製品構成名称を返す</summary>
         /// <param name="in_cd">
         /// 製品コード</param>
         /// <returns>
-        /// string 製品構成番号
+        /// string 製品構成名称
         /// エラー等、取得できない場合はnull</returns>
         public string get_seihin_kousei_name(string in_cd)
         {
@@ -1108,6 +1108,77 @@ namespace TSS_SYSTEM
             return out_str;
         }
         #endregion
+
+        #region get_buhin_name メソッド
+        /// <summary>
+        /// 部品コードを受け取り部品名を返す</summary>
+        /// <param name="in_cd">
+        /// 部品コード</param>
+        /// <returns>
+        /// string 部品名
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_buhin_name(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_buhin_m where buhin_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["buhin_name"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_zaiko メソッド
+        /// <summary>
+        /// 部品コードと在庫区分を受け取り在庫数を返す</summary>
+        /// <param name="string in_cd">
+        /// 部品コード</param>
+        /// <param name="string in_kbn">
+        /// 在庫区分 "01":フリー "02":ロット "03":その他 "**":全て</param>
+        /// <returns>
+        /// string 在庫数（各区分の合計値を返す）
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_zaiko(string in_cd,string in_kbn)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            if(in_kbn == "01" || in_kbn == "02")
+            {
+                w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "' and zaiko_kbn = '" + in_kbn + "'");
+            }
+            else
+            {
+                if(in_kbn == "03")
+                {
+                    w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "' and zaiko_kbn <> '01' and zaiko_kbn <> '02'");
+                }
+                else
+                {
+                    if(in_kbn == "**")
+                    {
+                        w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "'");
+                    }
+                }
+            }
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0][0].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+
 
         #region get_seihin_tanka メソッド
         /// <summary>
@@ -1407,6 +1478,117 @@ namespace TSS_SYSTEM
             return out_siharai_no;
         }
         #endregion
+
+        #region get_seihin_kousei_mattan メソッド
+        /// <summary>
+        /// 製品コードと製品構成番号を受け取り製品構成の末端部品を返す</summary>
+        /// <param name="string in_cd">
+        /// 製品コード</param>
+        /// <param name="string in_no">
+        /// 製品構成番号</param>
+        /// <returns>
+        /// DataTable 末端部品（buhin_cd,siyou_su）
+        /// エラー等、取得できない場合はnull</returns>
+        public DataTable get_seihin_kousei_mattan(string in_cd,string in_no)
+        {
+
+            DataTable out_dt = new DataTable();  //戻り値用
+            out_dt.Columns.Add("buhin_cd");
+            out_dt.Columns.Add("siyou_su");
+            DataRow out_dr;
+
+            DataTable w_dt2 = new DataTable();  //互換部品と親部品を除いたデータ用
+            w_dt2.Columns.Add("buhin_cd");
+            w_dt2.Columns.Add("siyou_su");
+            DataRow dr2;
+
+            double w_dou_siyou_su;  //使用数計算用
+            double w_dou_siyou_su2; //使用数計算用
+
+            //第一段階
+            //対象となる製品構成（製品コード＋製品構成番号）を抽出
+            DataTable w_dt1 = new DataTable();
+            w_dt1 = OracleSelect("select * from tss_seihin_kousei_m where seihin_cd = '" + in_cd + "' and seihin_kousei_no = '" + in_no + "' order by buhin_cd asc");
+            if (w_dt1.Rows.Count >= 1)
+            {
+                //第二段階
+                //親レコードと互換部品レコードを除き、末端部品のみを抽出し、w_dt2を作成する
+                int w_oyako_flg = 0;    //0:末端部品（加減算対象） 1:親部品（加減算しない）
+
+                foreach (DataRow dr1 in w_dt1.Rows)
+                {
+                    w_oyako_flg = 0;
+                    //互換部品コードに値が入っているレコードは除外
+                    if (dr1["gokan_buhin_cd"].ToString() != "" && dr1["gokan_buhin_cd"].ToString() != null)
+                    {
+                        w_oyako_flg = 1;
+                    }
+                    else
+                    {
+                        //自分を親部品として登録されているレコードは除外する
+                        for (int i = 0; i < w_dt1.Rows.Count; i++)
+                        {
+                            if (dr1["buhin_cd"].ToString() == w_dt1.Rows[i]["oya_buhin_cd"].ToString())
+                            {
+                                w_oyako_flg = 1;
+                                break;
+                            }
+                        }
+                    }
+                    //末端部品をw_dt2に追加
+                    if (w_oyako_flg == 0)
+                    {
+                        dr2 = w_dt2.NewRow();
+                        dr2["buhin_cd"] = dr1["buhin_cd"].ToString();
+                        dr2["siyou_su"] = dr1["siyou_su"].ToString();
+                        w_dt2.Rows.Add(dr2);
+                    }
+                }
+                //末端部品(w_dt2)を部品コードで集約し、部品毎の使用数の集計をしたデータをout_dtに作成する
+                int w_juufuku_flg;  //部品コードの重複フラグ 0:重複無し 1:重複あり
+                int w_out_row;      //重複した部品コードのrowインデックス
+                foreach (DataRow dr3 in w_dt2.Rows)
+                {
+                    //自分を親部品として登録されているレコードは除外する
+                    w_juufuku_flg = 0;
+                    w_out_row = -1;
+                    for (int i = 0; i < out_dt.Rows.Count; i++)
+                    {
+                        if (dr3["buhin_cd"].ToString() == out_dt.Rows[i]["buhin_cd"].ToString())
+                        {
+                            w_juufuku_flg = 1;
+                            w_out_row = i;
+                            break;
+                        }
+                    }
+                    //レコード新規・追加判断
+                    if(double.TryParse(dr3["siyou_su"].ToString(), out w_dou_siyou_su2) == false)
+                    {
+                        w_dou_siyou_su2 = 0;                    
+                    }
+                    if(w_juufuku_flg == 0)
+                    {
+                        //重複無しの場合、新規に作成
+                        out_dr = out_dt.NewRow();
+                        out_dr["buhin_cd"] = dr3["buhin_cd"].ToString();
+                        out_dr["siyou_su"] = w_dou_siyou_su2.ToString("0.00");
+                        out_dt.Rows.Add(out_dr);
+                    }
+                    else
+                    {
+                        //重複ありの場合は、既存レコードに使用数を足す
+                        double.TryParse(out_dt.Rows[w_out_row]["siyou_su"].ToString(), out w_dou_siyou_su);
+                        out_dt.Rows[w_out_row]["siyou_su"] = (w_dou_siyou_su + w_dou_siyou_su2).ToString("0.00");
+                    }
+                }
+            }
+            return out_dt;
+        }
+        #endregion
+
+
+
+
 
 
 
