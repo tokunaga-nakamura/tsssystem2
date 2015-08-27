@@ -1050,6 +1050,65 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region get_seihin_kousei_no メソッド
+        /// <summary>
+        /// "製品コードを受け取り製品構成番号</summary>
+        /// <param name="in_cd">
+        /// 製品コード</param>
+        /// <returns>
+        /// string 製品構成番号
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_seihin_kousei_no(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_seihin_m where seihin_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["seihin_kousei_no"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_seihin_kousei_name メソッド
+        /// <summary>
+        /// "製品コードを受け取り製品構成番号</summary>
+        /// <param name="in_cd">
+        /// 製品コード</param>
+        /// <returns>
+        /// string 製品構成番号
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_seihin_kousei_name(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_seihin_m where seihin_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                DataTable w_dt2 = new DataTable();
+                w_dt2 = OracleSelect("select * from tss_seihin_kousei_name_m where seihin_cd = '" + in_cd + "' and seihin_kousei_no = '" + w_dt.Rows[0]["seihin_kousei_no"].ToString() + "'");
+                if (w_dt2.Rows.Count == 0)
+                {
+                    out_str = null;
+                }
+                else
+                {
+                    out_str = w_dt2.Rows[0]["seihin_kousei_name"].ToString();
+                }
+            }
+            return out_str;
+        }
+        #endregion
+
         #region get_seihin_tanka メソッド
         /// <summary>
         /// 製品コードを受け取り販売単価を返す</summary>

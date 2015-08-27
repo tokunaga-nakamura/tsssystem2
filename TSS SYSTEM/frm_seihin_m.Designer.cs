@@ -507,9 +507,9 @@
             // tb_seihin_kousei_name
             // 
             this.tb_seihin_kousei_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(146, 202);
+            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(112, 202);
             this.tb_seihin_kousei_name.Name = "tb_seihin_kousei_name";
-            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(308, 19);
+            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(342, 19);
             this.tb_seihin_kousei_name.TabIndex = 14;
             this.tb_seihin_kousei_name.TabStop = false;
             // 
@@ -550,7 +550,7 @@
             this.tb_seihin_kousei_no.Location = new System.Drawing.Point(93, 202);
             this.tb_seihin_kousei_no.MaxLength = 2;
             this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
-            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(53, 19);
+            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(19, 19);
             this.tb_seihin_kousei_no.TabIndex = 11;
             this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
             // 

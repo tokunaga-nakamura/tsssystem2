@@ -375,8 +375,16 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_seihin_Click(object sender, EventArgs e)
         {
-            //製品構成マスタ
+            //部品→製品検索
             frm_buhin_to_seihin frm_skm = new frm_buhin_to_seihin();
+            frm_skm.ShowDialog(this);
+            frm_skm.Dispose();
+        }
+
+        private void btn_seihim_to_zaiko_Click(object sender, EventArgs e)
+        {
+            //製品別部品在庫照会
+            frm_seihin_to_zaiko frm_skm = new frm_seihin_to_zaiko();
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
