@@ -156,388 +156,6 @@
 								<Width>2.5cm</Width>
 								<ZIndex>10</ZIndex>
 							</Textbox>
-							<Table Name="Table1">
-								<DataSetName>DataSet1</DataSetName>
-								<Details>
-									<TableRows>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox25">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value>=Fields!JUCHU_CD1.Value + "-" + Fields!JUCHU_CD2.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox1">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!URIAGE_SU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox31">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!HANBAI_TANKA.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox13">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!URIAGE_KINGAKU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox27">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value>=Fields!BIKOU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox22">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox2">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox32">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox14">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox24">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox19">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox3">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox33">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox15">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox21">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox16">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox10">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox34">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox28">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox18">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox4">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox11">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox35">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox29">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox6">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-									</TableRows>
-								</Details>
-								<Height>3.8cm</Height>
-								<Left>0.978999cm</Left>
-								<TableColumns>
-									<TableColumn>
-										<Width>7.722775cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>1.695292cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>2.493077cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>2.7cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>3.4cm</Width>
-									</TableColumn>
-								</TableColumns>
-								<Top>3.5cm</Top>
-								<Width>18.01114cm</Width>
-								<ZIndex>11</ZIndex>
-							</Table>
 							<Textbox Name="TextBox5">
 								<Height>1cm</Height>
 								<Left>2.2cm</Left>
@@ -566,6 +184,83 @@
 								<Width>2.7cm</Width>
 								<ZIndex>13</ZIndex>
 							</Textbox>
+							<List Name="List1">
+								<Height>1cm</Height>
+								<Left>0.7cm</Left>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<ReportItems>
+									<Textbox Name="TextBox1">
+										<Height>0.5cm</Height>
+										<Style>
+											<PaddingBottom>2pt</PaddingBottom>
+											<PaddingLeft>2pt</PaddingLeft>
+											<PaddingRight>2pt</PaddingRight>
+											<PaddingTop>2pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD1.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox2">
+										<Height>0.5cm</Height>
+										<Style>
+											<PaddingBottom>2pt</PaddingBottom>
+											<PaddingLeft>2pt</PaddingLeft>
+											<PaddingRight>2pt</PaddingRight>
+											<PaddingTop>2pt</PaddingTop>
+										</Style>
+										<Top>0.5cm</Top>
+										<Value>=Fields!SEIHIN_NAME.Value</Value>
+										<Width>9.1cm</Width>
+										<ZIndex>1</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox3">
+										<Height>0.5cm</Height>
+										<Left>9.1cm</Left>
+										<Style>
+											<PaddingBottom>2pt</PaddingBottom>
+											<PaddingLeft>2pt</PaddingLeft>
+											<PaddingRight>2pt</PaddingRight>
+											<PaddingTop>2pt</PaddingTop>
+										</Style>
+										<Top>0.5cm</Top>
+										<Value>1234567890123456</Value>
+										<Width>3.3cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox4">
+										<DataElementName>TextBox3</DataElementName>
+										<Height>0.5cm</Height>
+										<Left>12.4cm</Left>
+										<Style>
+											<PaddingBottom>2pt</PaddingBottom>
+											<PaddingLeft>2pt</PaddingLeft>
+											<PaddingRight>2pt</PaddingRight>
+											<PaddingTop>2pt</PaddingTop>
+										</Style>
+										<Top>0.5cm</Top>
+										<Value>1234567890123456</Value>
+										<Width>3.3cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox6">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.5cm</Height>
+										<Left>3.6cm</Left>
+										<Style>
+											<PaddingBottom>2pt</PaddingBottom>
+											<PaddingLeft>2pt</PaddingLeft>
+											<PaddingRight>2pt</PaddingRight>
+											<PaddingTop>2pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD2.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+								</ReportItems>
+								<Top>3.5cm</Top>
+								<Width>18cm</Width>
+								<ZIndex>14</ZIndex>
+							</List>
 						</ReportItems>
 					</Page>
 				</Pages>
@@ -650,7 +345,7 @@
 				</Field>
 			</Fields>
 			<Query>
-				<CommandText>select * from tss_uriage_m where torihikisaki_cd = '041055'</CommandText>
+				<CommandText>select * from tss_uriage_denpyou_trn</CommandText>
 				<DataSourceName>DataSource1</DataSourceName>
 			</Query>
 		</DataSet>

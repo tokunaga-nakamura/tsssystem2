@@ -74,6 +74,7 @@
             this.btn_syukko = new System.Windows.Forms.Button();
             this.btn_nyuko = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_siire_kensaku = new System.Windows.Forms.Button();
             this.btn_siharai = new System.Windows.Forms.Button();
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
@@ -94,7 +95,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_siire_kensaku = new System.Windows.Forms.Button();
+            this.btn_uriage_denpyou_insatu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -521,6 +522,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_uriage_denpyou_insatu);
             this.tabPage2.Controls.Add(this.btn_uriage_kensaku);
             this.tabPage2.Controls.Add(this.btn_uriage);
             this.tabPage2.Controls.Add(this.btn_juchu_kensaku);
@@ -546,7 +548,7 @@
             // 
             // btn_uriage
             // 
-            this.btn_uriage.Location = new System.Drawing.Point(8, 96);
+            this.btn_uriage.Location = new System.Drawing.Point(6, 96);
             this.btn_uriage.Name = "btn_uriage";
             this.btn_uriage.Size = new System.Drawing.Size(180, 23);
             this.btn_uriage.TabIndex = 7;
@@ -576,7 +578,7 @@
             // 
             // btn_juchuu_nyuuryoku
             // 
-            this.btn_juchuu_nyuuryoku.Location = new System.Drawing.Point(8, 6);
+            this.btn_juchuu_nyuuryoku.Location = new System.Drawing.Point(3, 6);
             this.btn_juchuu_nyuuryoku.Name = "btn_juchuu_nyuuryoku";
             this.btn_juchuu_nyuuryoku.Size = new System.Drawing.Size(180, 23);
             this.btn_juchuu_nyuuryoku.TabIndex = 0;
@@ -716,6 +718,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btn_siire_kensaku
+            // 
+            this.btn_siire_kensaku.Location = new System.Drawing.Point(192, 32);
+            this.btn_siire_kensaku.Name = "btn_siire_kensaku";
+            this.btn_siire_kensaku.Size = new System.Drawing.Size(180, 23);
+            this.btn_siire_kensaku.TabIndex = 10;
+            this.btn_siire_kensaku.Text = "仕入検索";
+            this.btn_siire_kensaku.UseVisualStyleBackColor = true;
+            this.btn_siire_kensaku.Click += new System.EventHandler(this.btn_siire_kensaku_Click);
             // 
             // btn_siharai
             // 
@@ -928,15 +940,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_siire_kensaku
+            // btn_uriage_denpyou_insatu
             // 
-            this.btn_siire_kensaku.Location = new System.Drawing.Point(192, 32);
-            this.btn_siire_kensaku.Name = "btn_siire_kensaku";
-            this.btn_siire_kensaku.Size = new System.Drawing.Size(180, 23);
-            this.btn_siire_kensaku.TabIndex = 10;
-            this.btn_siire_kensaku.Text = "仕入検索";
-            this.btn_siire_kensaku.UseVisualStyleBackColor = true;
-            this.btn_siire_kensaku.Click += new System.EventHandler(this.btn_siire_kensaku_Click);
+            this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 125);
+            this.btn_uriage_denpyou_insatu.Name = "btn_uriage_denpyou_insatu";
+            this.btn_uriage_denpyou_insatu.Size = new System.Drawing.Size(182, 23);
+            this.btn_uriage_denpyou_insatu.TabIndex = 9;
+            this.btn_uriage_denpyou_insatu.Text = "売上伝票印刷";
+            this.btn_uriage_denpyou_insatu.UseVisualStyleBackColor = true;
+            this.btn_uriage_denpyou_insatu.Click += new System.EventHandler(this.btn_uriage_denpyou_insatu_Click);
             // 
             // frm_menu
             // 
@@ -1079,6 +1091,7 @@
         private System.Windows.Forms.Button btn_buhin_seihin;
         private System.Windows.Forms.Button btn_seihim_to_zaiko;
         private System.Windows.Forms.Button btn_siire_kensaku;
+        private System.Windows.Forms.Button btn_uriage_denpyou_insatu;
     }
 }
 
