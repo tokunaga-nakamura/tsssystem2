@@ -64,7 +64,6 @@
             this.tb_siharai_goukei = new System.Windows.Forms.TextBox();
             this.btn_tuika = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.btn_turoku = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
@@ -209,6 +208,7 @@
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -221,7 +221,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 184;
+            this.splitContainer2.SplitterDistance = 187;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -246,7 +246,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_mibarai);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 184);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 187);
             this.splitContainer3.SplitterDistance = 68;
             this.splitContainer3.TabIndex = 8;
             this.splitContainer3.TabStop = false;
@@ -302,7 +302,7 @@
             this.dgv_mibarai.ReadOnly = true;
             this.dgv_mibarai.RowHeadersVisible = false;
             this.dgv_mibarai.RowTemplate.Height = 21;
-            this.dgv_mibarai.Size = new System.Drawing.Size(880, 108);
+            this.dgv_mibarai.Size = new System.Drawing.Size(880, 111);
             this.dgv_mibarai.TabIndex = 0;
             this.dgv_mibarai.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_mibarai_RowEnter);
             // 
@@ -323,7 +323,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 288);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 285);
             this.splitContainer4.SplitterDistance = 103;
             this.splitContainer4.TabIndex = 4;
             // 
@@ -410,6 +410,7 @@
             this.tb_siharai_date.Size = new System.Drawing.Size(160, 19);
             this.tb_siharai_date.TabIndex = 7;
             this.tb_siharai_date.Leave += new System.EventHandler(this.tb_siharai_date_Leave);
+            this.tb_siharai_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_date_Validating);
             // 
             // textBox7
             // 
@@ -461,8 +462,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(884, 181);
-            this.splitContainer5.SplitterDistance = 91;
+            this.splitContainer5.Size = new System.Drawing.Size(884, 178);
+            this.splitContainer5.SplitterDistance = 88;
             this.splitContainer5.TabIndex = 4;
             this.splitContainer5.TabStop = false;
             // 
@@ -475,9 +476,10 @@
             this.dgv_siharai.Location = new System.Drawing.Point(0, 0);
             this.dgv_siharai.Name = "dgv_siharai";
             this.dgv_siharai.RowTemplate.Height = 21;
-            this.dgv_siharai.Size = new System.Drawing.Size(880, 87);
+            this.dgv_siharai.Size = new System.Drawing.Size(880, 84);
             this.dgv_siharai.TabIndex = 8;
             this.dgv_siharai.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siharai_CellEndEdit);
+            this.dgv_siharai.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_siharai_CellValidating);
             this.dgv_siharai.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_siharai_DataError);
             this.dgv_siharai.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgv_siharai_RowsRemoved);
             // 
@@ -502,7 +504,6 @@
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer6.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer6.Panel2.Controls.Add(this.btn_turoku);
             this.splitContainer6.Size = new System.Drawing.Size(884, 86);
@@ -573,21 +574,12 @@
             this.textBox8.TabStop = false;
             this.textBox8.Text = "支払総計";
             // 
-            // btn_insatu
-            // 
-            this.btn_insatu.Location = new System.Drawing.Point(91, 3);
-            this.btn_insatu.Name = "btn_insatu";
-            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 3;
-            this.btn_insatu.Text = "印刷";
-            this.btn_insatu.UseVisualStyleBackColor = true;
-            // 
             // btn_syuuryou
             // 
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 12;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
@@ -597,7 +589,7 @@
             this.btn_turoku.Location = new System.Drawing.Point(10, 3);
             this.btn_turoku.Name = "btn_turoku";
             this.btn_turoku.Size = new System.Drawing.Size(75, 23);
-            this.btn_turoku.TabIndex = 9;
+            this.btn_turoku.TabIndex = 11;
             this.btn_turoku.Text = "登録";
             this.btn_turoku.UseVisualStyleBackColor = true;
             this.btn_turoku.Click += new System.EventHandler(this.btn_turoku_Click);
@@ -688,7 +680,6 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.Button btn_turoku;
         private System.Windows.Forms.Button btn_tuika;
-        private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.StatusStrip ss_status;
         private System.Windows.Forms.TextBox textBox5;

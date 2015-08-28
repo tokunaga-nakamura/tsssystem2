@@ -408,7 +408,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    MessageBox.Show("売上計上日に異常があります。");
+                    MessageBox.Show("仕入計上日に異常があります。");
                     tb_siire_date2.Focus();
                 }
             }

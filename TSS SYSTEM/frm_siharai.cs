@@ -16,7 +16,7 @@ namespace TSS_SYSTEM
         //string w_str = "07";
         double w_siharai_no;
         string w_mibarai;
-        
+
         public frm_siharai()
         {
             InitializeComponent();
@@ -40,24 +40,24 @@ namespace TSS_SYSTEM
             tb_siharai_no.Enabled = true;
         }
 
-       //支払処理ボタン押したときの処理
+        //支払処理ボタン押したときの処理
         private void btn_siharai_syori_Click_1(object sender, EventArgs e)
         {
             string str = dgv_mibarai.CurrentRow.Cells[0].Value.ToString();
             w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString();
-            
+
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select siire_simebi,kokyaku_seikyu_no,siharai_kbn,siharaigaku,tesuryou,sousai from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str.ToString() + "'");
             dt_work.Rows.Clear();
 
-            dt_work.Rows.InsertAt(dt_work.NewRow(),1);
+            dt_work.Rows.InsertAt(dt_work.NewRow(), 1);
 
             //型式指定のカラム追加
             dt_work.Columns.Add("siharai_goukei", Type.GetType("System.Int32"));
             dt_work.Columns.Add("siharai_bikou");
 
             dgv_siharai.DataSource = dt_work;
-            
+
             dgv_siharai.Rows[0].Cells[0].Value = str;
             dgv_siharai.Rows[0].Cells[3].Value = 0;
             dgv_siharai.Rows[0].Cells[4].Value = 0;
@@ -66,9 +66,18 @@ namespace TSS_SYSTEM
 
 
             //支払処理データグリッドビューの書式設定
+            tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
+
+            tb_siharai_date.Text = "";
+            tb_create_user_cd.Text = "";
+            tb_create_datetime.Text = "";
+            tb_update_user_cd.Text = "";
+            tb_update_datetime.Text = "";
+
             dgv_siharai_disp();
 
             tb_siharai_date.Focus();
+
         }
 
         //支払処理のデータグリッドビューのセルの値を変更したとき
@@ -82,14 +91,20 @@ namespace TSS_SYSTEM
             double sousai = new double();
             double siharai_goukei = new double();
             double siharai_soukei = new double();
-            
-       
+
+
+            if (dgv.Rows[i].Cells[3].Value == DBNull.Value || dgv.Rows[i].Cells[4].Value == DBNull.Value || dgv.Rows[i].Cells[5].Value == DBNull.Value)
+            {
+                dgv.Rows[i].Cells[6].Value = DBNull.Value;
+                return;
+            }
+
             siharaigaku = double.Parse(dgv.Rows[i].Cells[3].Value.ToString());
             tesuryou = double.Parse(dgv.Rows[i].Cells[4].Value.ToString());
             sousai = double.Parse(dgv.Rows[i].Cells[5].Value.ToString());
             siharai_goukei = siharaigaku + tesuryou + sousai;
-            
-            
+
+
             if (dgv.Columns[e.ColumnIndex].Index == 3 && dgv.CurrentCell.Value == null)
             {
                 return;
@@ -98,7 +113,7 @@ namespace TSS_SYSTEM
             {
                 dgv.Rows[i].Cells[6].Value = siharai_goukei;
             }
-            
+
             if (dgv.Columns[e.ColumnIndex].Index == 4 && dgv.CurrentCell.Value == null)
             {
                 return;
@@ -107,7 +122,7 @@ namespace TSS_SYSTEM
             {
                 dgv.Rows[i].Cells[6].Value = siharai_goukei;
             }
-            
+
             if (dgv.Columns[e.ColumnIndex].Index == 5 && dgv.CurrentCell.Value == null)
             {
                 return;
@@ -119,7 +134,7 @@ namespace TSS_SYSTEM
 
             int rc2 = dgv_siharai.Rows.Count;
 
-            for (int j = 0; j < rc2 ; j++)
+            for (int j = 0; j < rc2; j++)
             {
                 siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
                 tb_siharai_goukei.Text = siharai_soukei.ToString("#,0.##");
@@ -131,18 +146,7 @@ namespace TSS_SYSTEM
         //支払日のテキストボックスからフォーカスが離れたとき
         private void tb_siharai_date_Leave(object sender, EventArgs e)
         {
-            if (tb_siharai_date.Text != "")
-            {
-                if (tss.try_string_to_date(tb_siharai_date.Text.ToString()))
-                {
-                    tb_siharai_date.Text = tss.out_datetime.ToShortDateString();
-                }
-                else
-                {
-                    MessageBox.Show("支払日の値が異常です。yyyymmddで入力してください。");
-                    tb_siharai_date.Focus();
-                }
-            }
+
         }
 
         //private void splitContainer6_Panel2_Paint(object sender, PaintEventArgs e)
@@ -150,11 +154,20 @@ namespace TSS_SYSTEM
 
         //}
 
-        
+
         //登録ボタンクリック
         private void btn_turoku_Click(object sender, EventArgs e)
         {
             DataTable dt_work = new DataTable();
+
+
+            //取引先コードのチェック
+            if (chk_torihikisaki_cd() == false)
+            {
+                MessageBox.Show("取引先コードを入力してください。");
+                tb_torihikisaki_cd.Focus();
+                return;
+            }
 
             //登録前に全ての項目をチェック
             //支払番号
@@ -185,15 +198,22 @@ namespace TSS_SYSTEM
             tss.GetUser();  //ユーザー情報の取得
 
             //テキストボックスとデータグリッドビューの入力内容チェック
-            for (int i = 0; i < dgvrc　; i++)
+            for (int i = 0; i < dgvrc; i++)
             {
+
+                //if (dgv_siharai.Rows[i].Cells[0].Value == null &&dgv_siharai.Rows[i].Cells[1].Value == null && dgv_siharai.Rows[i].Cells[2].Value == null && dgv_siharai.Rows[i].Cells[3].Value == null && dgv_siharai.Rows[i].Cells[4].Value == null && dgv_siharai.Rows[i].Cells[5].Value == null && dgv_siharai.Rows[i].Cells[6].Value == null && dgv_siharai.Rows[i].Cells[7].Value == null)
+                //{
+                //    MessageBox.Show("空白行登録できません");
+                //    return;
+                //}
+
                 if (dgv_siharai.Rows[i].Cells[0].Value == null || tss.StringByte(dgv_siharai.Rows[i].Cells[0].Value.ToString()) > 20)
                 {
                     MessageBox.Show("仕入締日の値が異常です");
                     return;
                 }
 
-                if (dgv_siharai.Rows[i].Cells[2].Value == null )
+                if (dgv_siharai.Rows[i].Cells[2].Value == null)
                 {
                     MessageBox.Show("支払区分を入力してください");
                     return;
@@ -251,9 +271,22 @@ namespace TSS_SYSTEM
 
             //チェックが済んだら、データベースに登録
             //支払マスタ更新処理
-            siharai_kousin();   
+            siharai_kousin();
+
+            btn_tuika.Enabled = false;
         }
 
+        //取引先コードチェック用
+        private bool chk_torihikisaki_cd()
+        {
+            bool bl = true; //戻り値用
+
+            if (tb_torihikisaki_cd.Text == null || tb_torihikisaki_cd.Text.Length > 6 || tb_torihikisaki_cd.Text.Length < 6)
+            {
+                bl = false;
+            }
+            return bl;
+        }
 
         //支払番号チェック用
         private bool chk_siharai_no()
@@ -278,7 +311,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
-        
+
         //支払のデータグリッドビューに1行追加するメソッド
         private void btn_tuika_Click(object sender, EventArgs e)
         {
@@ -287,7 +320,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            else
+            if (dgv_siharai.Rows.Count != 0)
             {
                 int rn = dgv_siharai.CurrentCell.RowIndex;
                 DataTable dtTmp = (DataTable)this.dgv_siharai.DataSource;
@@ -304,6 +337,45 @@ namespace TSS_SYSTEM
 
                 dgv_siharai.DataSource = dtTmp;
             }
+            else
+            {
+                string str = dgv_mibarai.CurrentRow.Cells[0].Value.ToString();
+                w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString();
+
+                DataTable dt_work = new DataTable();
+                dt_work = tss.OracleSelect("select siire_simebi,kokyaku_seikyu_no,siharai_kbn,siharaigaku,tesuryou,sousai from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str.ToString() + "'");
+                dt_work.Rows.Clear();
+
+                dt_work.Rows.InsertAt(dt_work.NewRow(), 1);
+
+                //型式指定のカラム追加
+                dt_work.Columns.Add("siharai_goukei", Type.GetType("System.Int32"));
+                dt_work.Columns.Add("siharai_bikou");
+
+                dgv_siharai.DataSource = dt_work;
+
+                dgv_siharai.Rows[0].Cells[0].Value = str;
+                dgv_siharai.Rows[0].Cells[3].Value = 0;
+                dgv_siharai.Rows[0].Cells[4].Value = 0;
+                dgv_siharai.Rows[0].Cells[5].Value = 0;
+                dgv_siharai.Rows[0].Cells[6].Value = 0;
+
+                //支払処理データグリッドビューの書式設定
+                tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
+
+                tb_siharai_date.Text = "";
+                tb_create_user_cd.Text = "";
+                tb_create_datetime.Text = "";
+                tb_update_user_cd.Text = "";
+                tb_update_datetime.Text = "";
+
+                dgv_siharai_disp();
+
+                tb_siharai_date.Focus();
+            }
+
+
+
         }
 
         //支払のデータグリッドビューから1行削除した時のメソッド
@@ -337,7 +409,7 @@ namespace TSS_SYSTEM
         }
 
         //未払一覧のデータグリッドビューの更新メソッド
-        private void dgv_mibarai_disp() 
+        private void dgv_mibarai_disp()
         {
             DataTable dt_work = new DataTable();
             tss.GetUser();
@@ -349,7 +421,7 @@ namespace TSS_SYSTEM
             if (rc == 0)
             {
                 MessageBox.Show("未払いはありません");
-                
+
                 //データグリッドビューを空にする
                 DataTable dt_work2 = new DataTable();
                 dgv_mibarai.DataSource = dt_work2;
@@ -422,7 +494,7 @@ namespace TSS_SYSTEM
             object obj = dt_work.Compute("SUM(mibaraigaku)", null);
             double goukeikingku = double.Parse(obj.ToString());
             tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.##");
-        
+
         }
 
         private void siharai_kousin() //支払マスタの更新
@@ -435,7 +507,7 @@ namespace TSS_SYSTEM
 
             double siharai = double.Parse(tb_siharai_goukei.Text.ToString());
             double sisan = double.Parse(w_mibarai) - siharai;
-            
+
             //支払マスタにレコードがない場合
             if (rc == 0)
             {
@@ -526,7 +598,7 @@ namespace TSS_SYSTEM
                 //買掛マスタ更新メソッド実行
                 kaikake_kousin();
             }
-            
+
             dgv_mibarai_disp();
 
             //テキストボックスを空にする
@@ -543,13 +615,13 @@ namespace TSS_SYSTEM
             w_siharai_no = tss.GetSeq("07");
             tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
 
-        　　//データグリッドビューを空にする
+            //データグリッドビューを空にする
             DataTable dt_work2 = new DataTable();
-            dgv_siharai.DataSource = dt_work2; 
-            
+            dgv_siharai.DataSource = dt_work2;
+
         }
 
-         private void siire_kousin() //仕入マスタの更新処理
+        private void siire_kousin() //仕入マスタの更新処理
         {
             DataTable dt_work = new DataTable();
             DateTime siharaibi = DateTime.Parse(tb_siharai_date.Text.ToString());
@@ -558,24 +630,24 @@ namespace TSS_SYSTEM
             string str2 = str.Substring(0, 10);
             int rc = dt_work.Rows.Count;
 
-            dt_work =  tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
+            dt_work = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
 
             //支払完了フラグの確認
             //買掛マスタの支払完了フラグが立っていたら、仕入マスタの支払日をアップデート
-             if(dt_work.Rows[0][7].ToString() == "1")
+            if (dt_work.Rows[0][7].ToString() == "1")
             {
-  　　　　　////////////////////////////ここのSQL参考になる（日付をキーにしたアップデート）/////////////////////////////////////////////////////////
-                 tss.OracleUpdate("UPDATE TSS_siire_m SET siharai_date = "
-                    + "to_date('" + tb_siharai_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),"       
-                    + "UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = "
-                    + "to_date('" + dgv_siharai.Rows[0].Cells[0].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS')");    
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-             
+                ////////////////////////////ここのSQL参考になる（日付をキーにしたアップデート）/////////////////////////////////////////////////////////
+                tss.OracleUpdate("UPDATE TSS_siire_m SET siharai_date = "
+                   + "to_date('" + tb_siharai_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),"
+                   + "UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = "
+                   + "to_date('" + dgv_siharai.Rows[0].Cells[0].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             }
 
             else
             {
-             
+
             }
         }
 
@@ -588,7 +660,7 @@ namespace TSS_SYSTEM
 
             DataTable dt_work = new DataTable();
             string siire_simebi = dgv_siharai.CurrentRow.Cells[0].Value.ToString();
-            string siire_simebi2 =  siire_simebi.Substring(0, 10);
+            string siire_simebi2 = siire_simebi.Substring(0, 10);
 
             dt_work = tss.OracleSelect("select siharaigaku,tesuryou,sousai from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + siire_simebi2.ToString() + "'");
             object obj = dt_work.Compute("Sum(siharaigaku)", null);
@@ -619,7 +691,7 @@ namespace TSS_SYSTEM
                 string siiregaku = dt_work.Rows[0]["siire_kingaku"].ToString();
                 string syouhizeigaku = dt_work.Rows[0]["syouhizeigaku"].ToString();
 
-                double keisan = double.Parse(siiregaku) + double.Parse(syouhizeigaku) - double.Parse(siharaigaku) ; 
+                double keisan = double.Parse(siiregaku) + double.Parse(syouhizeigaku) - double.Parse(siharaigaku);
 
                 if (keisan == 0)
                 {
@@ -629,7 +701,7 @@ namespace TSS_SYSTEM
                 {
                     tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
                 }
-                
+
                 MessageBox.Show("買掛処理登録しました。");
             }
 
@@ -641,7 +713,7 @@ namespace TSS_SYSTEM
 
             //入力された売上番号を"0000000000"形式の文字列に変換
             double w_double;
-            
+
             if (double.TryParse(tb_siharai_no.Text.ToString(), out w_double))
             {
                 tb_siharai_no.Text = w_double.ToString("0000000000");
@@ -662,20 +734,20 @@ namespace TSS_SYSTEM
             }
             else
             {
-               //既存支払の表示
+                //既存支払の表示
                 DataTable w_dt = new DataTable();
                 w_dt = tss.OracleSelect("select * from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
                 int rc = w_dt.Rows.Count;
 
 
-                if(w_dt.Rows.Count == 0)
+                if (w_dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("データがありません。");
+                    //MessageBox.Show("データがありません。");
                     tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
                     tb_siharai_no.Focus();
                     return;
                 }
- 
+
                 else
                 {
                     string siharai_date = w_dt.Rows[0][5].ToString();
@@ -691,16 +763,16 @@ namespace TSS_SYSTEM
                     DataTable w_dt2 = new DataTable();
                     w_dt2 = tss.OracleSelect("select siire_simebi,kokyaku_seikyu_no,siharai_kbn,siharaigaku,tesuryou,sousai,bikou from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
 
-                    
+
                     ///////データテーブルの指定列にカラム追加するコード///////////////////////////////////////////////
-                    w_dt2.Columns.Add("goukeikingaku", Type.GetType("System.Int32")).SetOrdinal(6);;
+                    w_dt2.Columns.Add("goukeikingaku", Type.GetType("System.Int32")).SetOrdinal(6); ;
                     //////////////////////////////////////////////////////////////////////////////////////////////////
 
                     for (int i = 0; i < rc; i++)
                     {
                         double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
                         w_dt2.Rows[i][6] = goukei;
-                   
+
                     }
 
                     dgv_siharai.DataSource = w_dt2;
@@ -746,54 +818,54 @@ namespace TSS_SYSTEM
             tb_siharai_no.Enabled = true;
             tb_siharai_no.Text = str_w;
 
-           //既存支払の表示
-                DataTable w_dt = new DataTable();
-                w_dt = tss.OracleSelect("select * from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
-                int rc = w_dt.Rows.Count;
+            //既存支払の表示
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select * from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
+            int rc = w_dt.Rows.Count;
 
 
-                if(w_dt.Rows.Count == 0)
+            if (w_dt.Rows.Count == 0)
+            {
+                //MessageBox.Show("データがありません。");
+                tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
+                tb_siharai_no.Focus();
+                return;
+            }
+
+            else
+            {
+                //dgv_siharai.Rows.Clear();
+
+                string siharai_date = w_dt.Rows[0][5].ToString();
+                string siharai_date2 = siharai_date.Substring(0, 10);
+                tb_siharai_date.Text = siharai_date2;
+
+                tb_create_user_cd.Text = w_dt.Rows[0][11].ToString();
+                tb_create_datetime.Text = w_dt.Rows[0][12].ToString();
+
+                tb_update_user_cd.Text = w_dt.Rows[0][13].ToString();
+                tb_update_datetime.Text = w_dt.Rows[0][14].ToString();
+
+                DataTable w_dt2 = new DataTable();
+                w_dt2 = tss.OracleSelect("select siire_simebi,kokyaku_seikyu_no,siharai_kbn,siharaigaku,tesuryou,sousai,bikou from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
+
+
+                ///////データテーブルの指定列にカラム追加するコード
+                w_dt2.Columns.Add("goukeikingaku", Type.GetType("System.Int32")).SetOrdinal(6); ;
+
+
+                for (int i = 0; i < rc; i++)
                 {
-                    //MessageBox.Show("データがありません。");
-                    tb_siharai_no.Text = w_siharai_no.ToString("0000000000");
-                    tb_siharai_no.Focus();
-                    return;
+                    double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
+                    w_dt2.Rows[i][6] = goukei;
                 }
- 
-                else
-                {
-                    //dgv_siharai.Rows.Clear();
-                    
-                    string siharai_date = w_dt.Rows[0][5].ToString();
-                    string siharai_date2 = siharai_date.Substring(0, 10);
-                    tb_siharai_date.Text = siharai_date2;
 
-                    tb_create_user_cd.Text = w_dt.Rows[0][11].ToString();
-                    tb_create_datetime.Text = w_dt.Rows[0][12].ToString();
+                dgv_siharai.DataSource = w_dt2;
 
-                    tb_update_user_cd.Text = w_dt.Rows[0][13].ToString();
-                    tb_update_datetime.Text = w_dt.Rows[0][14].ToString();
+                dgv_siharai_disp();
 
-                    DataTable w_dt2 = new DataTable();
-                    w_dt2 = tss.OracleSelect("select siire_simebi,kokyaku_seikyu_no,siharai_kbn,siharaigaku,tesuryou,sousai,bikou from tss_siharai_m where siharai_no = '" + tb_siharai_no.Text.ToString() + "'");
-
-                    
-                    ///////データテーブルの指定列にカラム追加するコード
-                    w_dt2.Columns.Add("goukeikingaku", Type.GetType("System.Int32")).SetOrdinal(6);;
-
-
-                    for (int i = 0; i < rc; i++)
-                    {
-                        double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
-                        w_dt2.Rows[i][6] = goukei;
-                    }
-
-                    dgv_siharai.DataSource = w_dt2;
-
-                    dgv_siharai_disp();
-
-                    btn_tuika.Enabled = true;
-                }
+                btn_tuika.Enabled = true;
+            }
         }
 
         //支払データグリッドビューの書式設定
@@ -827,6 +899,8 @@ namespace TSS_SYSTEM
 
             dgv_siharai.Columns[0].ReadOnly = true;
             dgv_siharai.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
+
+            dgv_siharai.Columns[6].ReadOnly = true;
 
             tb_siharai_date.Enabled = true;
             tb_siharai_no.Enabled = true;
@@ -875,6 +949,55 @@ namespace TSS_SYSTEM
             dgv_mibarai_disp();
 
             btn_siharai_hensyu.Enabled = true;
+        }
+
+        private void tb_siharai_date_Validating(object sender, CancelEventArgs e)
+        {
+            if (tb_siharai_date.Text != "")
+            {
+                if (tss.try_string_to_date(tb_siharai_date.Text.ToString()))
+                {
+                    tb_siharai_date.Text = tss.out_datetime.ToShortDateString();
+                }
+                else
+                {
+                    MessageBox.Show("支払日の値が異常です。yyyymmddで入力してください。");
+                    tb_siharai_date.Focus();
+                }
+            }
+        }
+
+        private void dgv_siharai_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            int i = e.RowIndex;
+
+            if (e.ColumnIndex == 3)
+            {
+                if ((dgv.Rows[e.RowIndex].Cells[3] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
+                {
+                    e.Cancel = true;
+                    //dgv.Rows[i].Cells[3].Value = 0;
+                }
+            }
+
+            if (e.ColumnIndex == 4)
+            {
+                if ((dgv.Rows[e.RowIndex].Cells[4] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
+                {
+                    e.Cancel = true;
+                    //dgv.Rows[i].Cells[4].Value = 0;
+                }
+            }
+           
+            if (e.ColumnIndex == 5)
+            {
+                if ((dgv.Rows[e.RowIndex].Cells[5] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
+                {
+                    e.Cancel = true;
+                    //dgv.Rows[i].Cells[4].Value = 0;
+                }
+            }
         }
     }
 }
