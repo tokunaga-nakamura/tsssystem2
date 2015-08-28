@@ -331,7 +331,7 @@ namespace TSS_SYSTEM
                          {
 
                              //「いいえ」が選択された時
-
+                             tb_seihin_kousei_name.Focus();
                              return;
                          }
                         
@@ -339,13 +339,17 @@ namespace TSS_SYSTEM
                          else if (result2 == DialogResult.Cancel)
                          {
                              //「キャンセル」が選択された時
-                             Console.WriteLine("「キャンセル」が選択されました");
+                             //Console.WriteLine("「キャンセル」が選択されました");
+                             tb_seihin_kousei_no.Clear();
                              return;
-
                          }
-                           
                      }
-
+                  
+                    if (result == DialogResult.Cancel)
+                   {
+                       tb_seihin_kousei_no.Clear();
+                       return;
+                   }
                 }
 
                 //製品構成に登録がなく、01から新規に登録する（コピーしないで）
@@ -873,6 +877,11 @@ namespace TSS_SYSTEM
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
 
     }

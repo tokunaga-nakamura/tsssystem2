@@ -19,29 +19,45 @@ namespace TSS_SYSTEM
             InitializeComponent();
         }
 
+        private string get_torihikisaki_name(string in_torihikisaki_cd)
+        {
+            string out_torihikisaki_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_torihikisaki_name = "";
+            }
+            else
+            {
+                out_torihikisaki_name = dt_work.Rows[0]["torihikisaki_name"].ToString();
+            }
+            return out_torihikisaki_name;
+        }
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
-            DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select torihikisaki_name,syouhizei_sansyutu_kbn from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
-
-            if(dt_work.Rows.Count == 0)
+            if (tb_torihikisaki_cd.Text == "")
             {
+                tb_torihikisaki_name.Text = "";
                 return;
             }
-            
+
+            //bool bl = true; //戻り値
+            DataTable dt_work1 = new DataTable();
+            dt_work1 = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  = '" + tb_torihikisaki_cd.Text + "'");
+            if (dt_work1.Rows.Count <= 0)
+            {
+                //無し
+                MessageBox.Show("入力された取引先コードが存在しません。取引先マスタに登録してください。");
+                tb_torihikisaki_cd.Focus();
+            }
             else
             {
-                tb_torihikisaki_name.Text = dt_work.Rows[0][0].ToString();
+                //既存データ有
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+
             }
-
-            tb_siire_simebi.Clear();
-            dgv_siire_simebi.Rows.Clear();
-            tb_create_user_cd.Clear();
-            tb_create_datetime.Clear();
-            tb_update_user_cd.Clear();
-            tb_update_datetime.Clear();
-
 
         }
 
@@ -77,6 +93,14 @@ namespace TSS_SYSTEM
 
         private void btn_syukei_Click(object sender, EventArgs e)
         {
+            //取引先コードのチェック
+            if (chk_torihikisaki_cd() == false)
+            {
+                MessageBox.Show("取引先コードを入力してください。");
+                tb_torihikisaki_cd.Focus();
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
             DataTable dt_work2= new DataTable();
             DataTable dt_work3= new DataTable();
@@ -99,7 +123,6 @@ namespace TSS_SYSTEM
                 tb_update_user_cd.Text = st_update_user_cd;
                 tb_update_datetime.Text = st_update_datetime;
 
-
             }
 
             string syouhizei_kbn = dt_work.Rows[0][0].ToString();
@@ -114,7 +137,6 @@ namespace TSS_SYSTEM
                     dt_work3 = tss.OracleSelect("select siire_kingaku from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     //消費税計算カラム追加
                     dt_work3.Columns.Add("syouhizei", typeof(double));
-                    //dt_work3.Columns.Add("syouhizei_keisan", typeof(double));
                     int rc = dt_work3.Rows.Count;
                     double siire_goukei;
                     double syouhizei_goukei;
@@ -207,7 +229,6 @@ namespace TSS_SYSTEM
                     dt_work3 = tss.OracleSelect("select siire_no,sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "' GROUP　BY　siire_no  ORDER BY siire_no");
                     //消費税計算カラム追加
                     dt_work3.Columns.Add("syouhizei", typeof(double));
-                    //dt_work3.Columns.Add("syouhizei_keisan", typeof(double));
                     int rc = dt_work3.Rows.Count;
                     double siire_goukei;
                     double syouhizei_goukei;
@@ -216,9 +237,6 @@ namespace TSS_SYSTEM
                     for (int i = 0; i < rc; i++)
                     {
                         double syouhizeigaku = double.Parse(dt_work3.Rows[i][1].ToString()) * zeiritu;
-
-                        //dt_work3.Rows[i][1] = double.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
-                        //dt_work3.Rows[1][1] = double.Parse(dt_work3.Rows[1][0].ToString()) * zeiritu;
 
                         //端数処理 円未満の処理
                         if (hasu_syori_tani == "0" && hasu_kbn == "0")
@@ -273,8 +291,6 @@ namespace TSS_SYSTEM
 
                         dt_work3.Rows[i][2] = syouhizeigaku;
 
-                        //siire_goukei = dt_work3.Compute("Sum(家賃)", null); ;
-
 
                     }
 
@@ -306,7 +322,6 @@ namespace TSS_SYSTEM
                     dt_work3 = tss.OracleSelect("select sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     //消費税計算カラム追加
                     dt_work3.Columns.Add("syouhizei", typeof(double));
-                    //dt_work3.Columns.Add("syouhizei_keisan", typeof(double));
                     int rc = dt_work3.Rows.Count;
                     double siire_goukei;
                     double syouhizei_goukei;
@@ -315,9 +330,6 @@ namespace TSS_SYSTEM
                     for (int i = 0; i < rc; i++)
                     {
                         double syouhizeigaku = double.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
-
-                        //dt_work3.Rows[i][1] = double.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
-                        //dt_work3.Rows[1][1] = double.Parse(dt_work3.Rows[1][0].ToString()) * zeiritu;
 
 
                         //端数処理 円未満の処理
@@ -417,7 +429,7 @@ namespace TSS_SYSTEM
             //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
             {
-                MessageBox.Show("取引先コードは6バイト以内で入力してください。");
+                MessageBox.Show("取引先コードを入力してください。");
                 tb_torihikisaki_cd.Focus();
                 return;
             }
@@ -476,36 +488,10 @@ namespace TSS_SYSTEM
             int rc = dt_work.Rows.Count;
             int rc2= dgv_siire_simebi.Rows.Count;
 
-            //既存の買掛マスタから、繰越額があるか確認
-            //DataTable dt_work2 = new DataTable();
-            //dt_work2 = tss.OracleSelect("select siire_simebi,kurikosigaku,kaikake_zandaka from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'　ORDER BY siire_simebi");
-            //int rc3 = dt_work2.Rows.Count;
-
-            
-            
-
-
             //買掛マスタにレコードがない場合
             if(rc == 0)
             {
-                //double kurikosigaku = double.Parse(dt_work2.Rows[rc3 - 1][2].ToString()); //直近の仕入締日の買掛残高を繰越額に入れる
-                //double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
-                //double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
-                //double kaikake_zandaka = kurikosigaku + siirekingaku + syouhizeigaku;
-
-
-                //bool bl = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd, kurikosigaku,siire_simebi,siire_kingaku,syouhizeigaku,kaikake_zandaka,create_user_cd,create_datetime) values ('"
-
-                //          + tb_torihikisaki_cd.Text.ToString() + "','"
-                //          + kurikosigaku + "','"
-                //          + tb_siire_simebi.Text.ToString() + "','"
-                //          + dgv_siire_simebi.Rows[0].Cells[1].Value.ToString() + "','"
-                //          + dgv_siire_simebi.Rows[0].Cells[2].Value.ToString() + "','"
-                //          + kaikake_zandaka + "','"
-                //          + tss.user_cd + "',SYSDATE)");
-                
-                
-                    
+        
                     double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
                     double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
                     
@@ -545,10 +531,10 @@ namespace TSS_SYSTEM
                         MessageBoxDefaultButton.Button2);
 
 
-                //double kurikosigaku = double.Parse(dt_work2.Rows[rc3 - 2][2].ToString()); //直近の仕入締日の買掛残高を繰越額に入れる
+                //直近の仕入締日の買掛残高を繰越額に入れる
                 double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
                 double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
-                //double kaikake_zandaka = kurikosigaku + siirekingaku + syouhizeigaku;
+                
 
 
 
@@ -557,27 +543,6 @@ namespace TSS_SYSTEM
                     bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siire_kingaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku
                                 + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     
-                    
-                    //bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET kurikosigaku = '"
-                    //            + kurikosigaku + "',siharaigaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku + "',kaikake_zandaka = '" + kaikake_zandaka
-                    //            + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
-                    
-                    
-                    ////仕入マスタから削除してインサート
-                    //tss.OracleDelete("delete from kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
-
-                    //bool bl = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd, kurikosigaku,siire_simebi,siire_kingaku,syouhizeigaku,kaikake_zandaka,create_user_cd,create_datetime,update_user_cd,update_datetime) values ('"
-
-                    //          + tb_torihikisaki_cd.Text.ToString() + "','"
-                    //          + kurikosigaku + "','"
-                    //          + tb_siire_simebi.Text.ToString() + "','"
-                    //          + dgv_siire_simebi.Rows[0].Cells[1].Value.ToString() + "','"
-                    //          + dgv_siire_simebi.Rows[0].Cells[2].Value.ToString() + "','"
-                    //          + kaikake_zandaka + "','"
-                    //          + tb_create_user_cd.Text.ToString() + "',"//←カンマがあると、日付をインサートする際にエラーになるので注意する
-                    //          + "to_date('" + tb_create_datetime.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
-                    //          + tss.user_cd + "',SYSDATE)");
-
 
                     if (bl != true)
                     {
@@ -587,8 +552,6 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        //tb_create_user_cd.Text = tss.user_cd;
-                        //tb_create_datetime.Text = DateTime.Now.ToString();
                         tb_update_user_cd.Text = tss.user_cd;
                         tb_update_datetime.Text = DateTime.Now.ToString();
                         MessageBox.Show("仕入締日処理登録しました。");
@@ -616,9 +579,7 @@ namespace TSS_SYSTEM
                         tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
                     }
 
-                    MessageBox.Show("買掛マスタの支払完了フラグ処理しました。");
-
-
+                    //MessageBox.Show("買掛マスタの支払完了フラグ処理しました。");
 
                 }
                 //「いいえ」が選択された時
@@ -630,7 +591,6 @@ namespace TSS_SYSTEM
 
 
         }
-
 
 
         //取引先コードチェック用

@@ -388,7 +388,7 @@
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_siire_simebi";
-            this.Text = "仕入締日確定処理";
+            this.Text = "仕入締日処理";
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();

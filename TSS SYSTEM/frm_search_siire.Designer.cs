@@ -70,6 +70,7 @@
             this.btn_csv.TabIndex = 2;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
             // 
             // btn_insatu
             // 
@@ -107,6 +108,8 @@
             this.tb_buhin_cd.Name = "tb_buhin_cd";
             this.tb_buhin_cd.Size = new System.Drawing.Size(110, 19);
             this.tb_buhin_cd.TabIndex = 7;
+            this.tb_buhin_cd.DoubleClick += new System.EventHandler(this.tb_buhinn_cd_DoubleClick);
+            this.tb_buhin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd_Validating);
             // 
             // textBox2
             // 
@@ -127,6 +130,7 @@
             this.btn_kensaku.TabIndex = 8;
             this.btn_kensaku.Text = "検索";
             this.btn_kensaku.UseVisualStyleBackColor = true;
+            this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
             // 
             // tb_torihikisaki_name
             // 
@@ -189,6 +193,7 @@
             this.tb_siire_date2.Name = "tb_siire_date2";
             this.tb_siire_date2.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_date2.TabIndex = 4;
+            this.tb_siire_date2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date2_Validating);
             // 
             // tb_siire_date1
             // 
@@ -197,6 +202,7 @@
             this.tb_siire_date1.Name = "tb_siire_date1";
             this.tb_siire_date1.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_date1.TabIndex = 3;
+            this.tb_siire_date1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date1_Validating);
             // 
             // tb_torihikisaki_cd
             // 
@@ -206,6 +212,8 @@
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(50, 19);
             this.tb_torihikisaki_cd.TabIndex = 2;
+            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox4
             // 
@@ -225,6 +233,7 @@
             this.tb_siire_no2.Name = "tb_siire_no2";
             this.tb_siire_no2.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_no2.TabIndex = 1;
+            this.tb_siire_no2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date2_Validating);
             // 
             // tb_siire_no1
             // 
@@ -233,6 +242,7 @@
             this.tb_siire_no1.Name = "tb_siire_no1";
             this.tb_siire_no1.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_no1.TabIndex = 0;
+            this.tb_siire_no1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date1_Validating);
             // 
             // textBox1
             // 
@@ -320,6 +330,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_search_siire";
             this.Text = "仕入検索";
+            this.Load += new System.EventHandler(this.frm_search_siire_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

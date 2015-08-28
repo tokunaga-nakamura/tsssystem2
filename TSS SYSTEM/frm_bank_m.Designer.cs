@@ -124,6 +124,7 @@
             // tb_kouza_no
             // 
             this.tb_kouza_no.Location = new System.Drawing.Point(93, 78);
+            this.tb_kouza_no.MaxLength = 10;
             this.tb_kouza_no.Name = "tb_kouza_no";
             this.tb_kouza_no.Size = new System.Drawing.Size(145, 19);
             this.tb_kouza_no.TabIndex = 5;
@@ -181,6 +182,7 @@
             // tb_siten_cd
             // 
             this.tb_siten_cd.Location = new System.Drawing.Point(93, 53);
+            this.tb_siten_cd.MaxLength = 3;
             this.tb_siten_cd.Name = "tb_siten_cd";
             this.tb_siten_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_siten_cd.TabIndex = 3;
@@ -247,7 +249,7 @@
             // tb_bank_cd
             // 
             this.tb_bank_cd.Location = new System.Drawing.Point(93, 28);
-            this.tb_bank_cd.MaxLength = 6;
+            this.tb_bank_cd.MaxLength = 3;
             this.tb_bank_cd.Name = "tb_bank_cd";
             this.tb_bank_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_bank_cd.TabIndex = 1;
