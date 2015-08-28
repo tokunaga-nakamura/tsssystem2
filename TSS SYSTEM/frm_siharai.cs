@@ -506,7 +506,7 @@ namespace TSS_SYSTEM
             int rc2 = dgv_siharai.Rows.Count;
 
             double siharai = double.Parse(tb_siharai_goukei.Text.ToString());
-            double sisan = double.Parse(w_mibarai) - siharai;
+            //double sisan = double.Parse(w_mibarai) - siharai;
 
             //支払マスタにレコードがない場合
             if (rc == 0)
