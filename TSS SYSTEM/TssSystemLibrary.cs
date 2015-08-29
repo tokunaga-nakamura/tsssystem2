@@ -1178,8 +1178,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
-
         #region get_seihin_tanka メソッド
         /// <summary>
         /// 製品コードを受け取り販売単価を返す</summary>
@@ -1587,8 +1585,72 @@ namespace TSS_SYSTEM
         #endregion
 
 
+        #region get_juchu_uriage_su メソッド
+        /// <summary>
+        /// 売上番号を受け取り売上数を返す</summary>
+        /// <param name="string in_torihikisaki_cd">
+        /// 取引先コード</param>
+        /// <param name="string in_juchu_cd1">
+        /// 受注コード1</param>
+        /// <param name="string in_juchu_cd2">
+        /// 受注コード2</param>
+        /// <returns>
+        /// string 売上数
+        /// エラー等、取得できない場合は""</returns>
+        public string get_juchu_uriage_su(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_uriage_su)
+        {
+            string out_str = null; //戻り値用
+            double w_dou1;
+            double w_dou2;
 
 
+            DataTable w_dt_m = new DataTable();
+            w_dt_m = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if(w_dt_m.Rows.Count == 0)
+            {
+                out_str = "";
+            }
+            else
+            {
+                double.TryParse(in_uriage_su, out w_dou1);  //今回の売上数
+                double.TryParse(w_dt_m.Rows[0]["uriage_su"].ToString(), out w_dou2);  //受注マスタの売上合計数
+
+
+                out_str = (w_dou1 + w_dou2).ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_juchu_juchu_su メソッド
+        /// <summary>
+        /// 売上番号を受け取り受注数を返す</summary>
+        /// <param name="string in_torihikisaki_cd">
+        /// 取引先コード</param>
+        /// <param name="string in_juchu_cd1">
+        /// 受注コード1</param>
+        /// <param name="string in_juchu_cd2">
+        /// 受注コード2</param>
+        /// <returns>
+        /// string 受注数
+        /// エラー等、取得できない場合は""</returns>
+        public string get_juchu_juchu_su(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            string out_str = null; //戻り値用
+
+            DataTable w_dt_m = new DataTable();
+            w_dt_m = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if (w_dt_m.Rows.Count == 0)
+            {
+                out_str = "";
+            }
+            else
+            {
+                out_str = w_dt_m.Rows[0]["juchu_su"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
 
 
 

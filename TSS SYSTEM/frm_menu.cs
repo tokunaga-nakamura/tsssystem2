@@ -399,5 +399,13 @@ namespace TSS_SYSTEM
             //子フォームの解放
             frm_siken.Dispose();
         }
+
+        private void btn_uriage_denpyou_insatu_Click(object sender, EventArgs e)
+        {
+            //伝票印刷
+            frm_uriage_denpyou_preview frm_rpt = new frm_uriage_denpyou_preview();
+            frm_rpt.ShowDialog(this);
+            frm_rpt.Dispose();
+        }
     }
 }

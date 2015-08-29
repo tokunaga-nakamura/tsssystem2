@@ -8,563 +8,997 @@
 					<Page>
 						<ReportItems>
 							<Textbox Name="tb_seikyu_yyyy">
-								<Height>0.5cm</Height>
-								<Left>15cm</Left>
+								<Height>0.4cm</Height>
+								<Left>15.2cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<Format>yyyy</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Value>2015</Value>
-								<Width>1.1cm</Width>
+								<Top>10cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.9cm</Width>
+								<ZIndex>1</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_seikyu_dd">
-								<Height>0.5cm</Height>
-								<Left>17.8cm</Left>
+								<Height>0.4cm</Height>
+								<Left>17.9cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<Format>dd</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Value>30</Value>
-								<Width>0.6cm</Width>
+								<Top>10cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_seikyu_mm">
 								<DataElementName>tb_seikyu_yyyy</DataElementName>
-								<Height>0.5cm</Height>
-								<Left>16.6cm</Left>
+								<Height>0.4cm</Height>
+								<Left>16.7cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<Format>MM</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Value>12</Value>
-								<Width>0.6cm</Width>
+								<Top>10cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_torihikisaki_cd">
-								<Height>0.5cm</Height>
+								<Height>0.4cm</Height>
 								<Left>3.5cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>2.1cm</Top>
-								<Value>999999</Value>
+								<Top>2.3cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
 								<Width>1.5cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>2</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_torihikisaki_name">
 								<Height>0.5cm</Height>
-								<Left>0.7cm</Left>
+								<Left>0.899999cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.5cm</Top>
-								<Value>1234567890ABCDEFGHIJ1234567890ABCDEFGHIJ</Value>
+								<Top>1.7cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
 								<Width>9.6cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_kaisya_name">
 								<Height>0.5cm</Height>
-								<Left>10.7cm</Left>
+								<Left>11.6cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.1cm</Top>
+								<Top>11.2cm</Top>
 								<Value>株式会社　徳永製作所</Value>
 								<Width>5.5cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>4</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_kaisya_yubin_no">
 								<Height>0.5cm</Height>
-								<Left>10.7cm</Left>
+								<Left>11.6cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.6cm</Top>
+								<Top>11.7cm</Top>
 								<Value>〒956-0007</Value>
-								<Width>2.2cm</Width>
-								<ZIndex>4</ZIndex>
+								<Width>1.9cm</Width>
+								<ZIndex>5</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_kaisya_jusyo1">
 								<Height>0.5cm</Height>
-								<Left>12.9cm</Left>
+								<Left>13.5cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.6cm</Top>
+								<Top>11.7cm</Top>
 								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
-								<Width>6.1cm</Width>
-								<ZIndex>5</ZIndex>
+								<Width>5.4cm</Width>
+								<ZIndex>6</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_kaisya_tel_no">
 								<Height>0.5cm</Height>
-								<Left>10.7cm</Left>
+								<Left>11.6cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>2.1cm</Top>
+								<Top>12.2cm</Top>
 								<Value>TEL 0250-22-1881</Value>
-								<Width>3.3cm</Width>
-								<ZIndex>7</ZIndex>
+								<Width>2.8cm</Width>
+								<ZIndex>8</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_kaisya_fax_no">
 								<Height>0.5cm</Height>
-								<Left>14cm</Left>
+								<Left>14.6cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>2.1cm</Top>
+								<Top>12.2cm</Top>
 								<Value>FAX 0250-25-2940</Value>
-								<Width>3.3cm</Width>
-								<ZIndex>8</ZIndex>
+								<Width>2.9cm</Width>
+								<ZIndex>9</ZIndex>
 							</Textbox>
 							<Textbox Name="tb_denpyou_no">
-								<Height>0.5cm</Height>
-								<Left>15.8cm</Left>
+								<Height>0.4cm</Height>
+								<Left>15.9cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>0.5cm</Top>
-								<Value>9999999999</Value>
-								<Width>2.5cm</Width>
-								<ZIndex>10</ZIndex>
-							</Textbox>
-							<Table Name="Table1">
-								<DataSetName>DataSet1</DataSetName>
-								<Details>
-									<TableRows>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox25">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value>=Fields!JUCHU_CD1.Value + "-" + Fields!JUCHU_CD2.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox1">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!URIAGE_SU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox31">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!HANBAI_TANKA.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox13">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-																<TextAlign>Right</TextAlign>
-															</Style>
-															<Value>=Fields!URIAGE_KINGAKU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox27">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value>=Fields!BIKOU.Value</Value>
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox22">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox2">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox32">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox14">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox24">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox19">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox3">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox33">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox15">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox21">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox16">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox10">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox34">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox28">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox18">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-										<TableRow>
-											<Height>0.762cm</Height>
-											<TableCells>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox4">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox11">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox35">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox29">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-												<TableCell>
-													<ReportItems>
-														<Textbox Name="TextBox6">
-															<Style>
-																<PaddingBottom>2pt</PaddingBottom>
-																<PaddingLeft>2pt</PaddingLeft>
-																<PaddingRight>2pt</PaddingRight>
-																<PaddingTop>2pt</PaddingTop>
-															</Style>
-															<Value />
-														</Textbox>
-													</ReportItems>
-												</TableCell>
-											</TableCells>
-										</TableRow>
-									</TableRows>
-								</Details>
-								<Height>3.8cm</Height>
-								<Left>0.978999cm</Left>
-								<TableColumns>
-									<TableColumn>
-										<Width>7.722775cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>1.695292cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>2.493077cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>2.7cm</Width>
-									</TableColumn>
-									<TableColumn>
-										<Width>3.4cm</Width>
-									</TableColumn>
-								</TableColumns>
-								<Top>3.5cm</Top>
-								<Width>18.01114cm</Width>
+								<Top>10.5cm</Top>
+								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
+								<Width>1.9cm</Width>
 								<ZIndex>11</ZIndex>
-							</Table>
+							</Textbox>
 							<Textbox Name="TextBox5">
-								<Height>1cm</Height>
-								<Left>2.2cm</Left>
+								<Height>0.5cm</Height>
+								<Left>2cm</Left>
 								<Style>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>7.7cm</Top>
-								<Value>備考567890ABCDEFGHIJ1234567890ABCDEFGHIJ</Value>
-								<Width>8.3cm</Width>
-								<ZIndex>12</ZIndex>
+								<Top>7.9cm</Top>
+								<Value>ihureuirepepepre</Value>
+								<Width>8.5cm</Width>
+								<ZIndex>13</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox7">
-								<Height>0.75cm</Height>
-								<Left>12.9cm</Left>
+								<Height>0.5cm</Height>
+								<Left>13.1cm</Left>
 								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>#,###,###,###</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>7.8cm</Top>
+								<Value>=Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1")</Value>
+								<Width>2.3cm</Width>
+								<ZIndex>14</ZIndex>
+							</Textbox>
+							<List Name="List1">
+								<Height>0.8cm</Height>
+								<Left>0.8cm</Left>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<ReportItems>
+									<Textbox Name="TextBox1">
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD1.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox2">
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!SEIHIN_NAME.Value</Value>
+										<Width>9.1cm</Width>
+										<ZIndex>1</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox3">
+										<Height>0.4cm</Height>
+										<Left>6.9cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,##.##</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!URIAGE_SU.Value</Value>
+										<Width>2.7cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox4">
+										<DataElementName>TextBox3</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>9.4cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,###.00</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!HANBAI_TANKA.Value</Value>
+										<Width>2.7cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox6">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>3.8cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD2.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox8">
+										<DataElementName>TextBox7</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>12.3cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,###</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!URIAGE_KINGAKU.Value</Value>
+										<Width>2.3cm</Width>
+										<ZIndex>3</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox9">
+										<Height>0.4cm</Height>
+										<Left>14.7cm</Left>
+										<Style>
+											<Format>""</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=iif(Fields!JUCHU_CD1.Value = "", "", Fields!URIAGE_TTL_SU.Value &amp; " / " &amp; Fields!JUCHU_SU.Value)</Value>
+										<Width>3.1cm</Width>
+										<ZIndex>4</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox10">
+										<Height>0.4cm</Height>
+										<Left>14.7cm</Left>
+										<Style>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!BIKOU.Value</Value>
+										<Width>3.1cm</Width>
+										<ZIndex>5</ZIndex>
+									</Textbox>
+								</ReportItems>
+								<Top>3.6cm</Top>
+								<Width>17.9cm</Width>
+							</List>
+							<Textbox Name="TextBox11">
+								<Height>0.4cm</Height>
+								<Left>17.8cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+								</Style>
+								<Top>10.5cm</Top>
+								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
+								<Width>1.199999cm</Width>
+								<ZIndex>15</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox12">
+								<DataElementName>tb_kaisya_fax_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>14.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>7.3cm</Top>
-								<Value>9,999,999,999</Value>
-								<Width>2.7cm</Width>
+								<Top>22.2cm</Top>
+								<Value>FAX 0250-25-2940</Value>
+								<Width>2.9cm</Width>
+								<ZIndex>9</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox13">
+								<DataElementName>tb_kaisya_tel_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>22.2cm</Top>
+								<Value>TEL 0250-22-1881</Value>
+								<Width>2.8cm</Width>
+								<ZIndex>8</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox14">
+								<DataElementName>tb_seikyu_yyyy</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>16.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>MM</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>19.9cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox15">
+								<DataElementName>tb_kaisya_jusyo1</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>13.6cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>21.7cm</Top>
+								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
+								<Width>5.4cm</Width>
+								<ZIndex>6</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox16">
+								<DataElementName>TextBox11</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>17.8cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+								</Style>
+								<Top>20.4cm</Top>
+								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
+								<Width>1.199999cm</Width>
+								<ZIndex>15</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox17">
+								<DataElementName>tb_seikyu_yyyy</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>15.2cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>yyyy</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>19.9cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.9cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox18">
+								<DataElementName>tb_kaisya_name</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>21.2cm</Top>
+								<Value>株式会社　徳永製作所</Value>
+								<Width>5.5cm</Width>
+								<ZIndex>4</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox19">
+								<DataElementName>tb_denpyou_no</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>15.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>20.4cm</Top>
+								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
+								<Width>1.9cm</Width>
+								<ZIndex>11</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox20">
+								<DataElementName>tb_seikyu_dd</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>17.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>dd</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>19.9cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox21">
+								<DataElementName>tb_kaisya_yubin_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>21.7cm</Top>
+								<Value>〒956-0007</Value>
+								<Width>1.9cm</Width>
+								<ZIndex>5</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox22">
+								<DataElementName>tb_kaisya_fax_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>14.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>2.4cm</Top>
+								<Value>FAX 0250-25-2940</Value>
+								<Width>2.9cm</Width>
+								<ZIndex>9</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox23">
+								<DataElementName>tb_kaisya_tel_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>2.4cm</Top>
+								<Value>TEL 0250-22-1881</Value>
+								<Width>2.8cm</Width>
+								<ZIndex>8</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox24">
+								<DataElementName>tb_seikyu_yyyy</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>16.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>MM</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>0.2cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox25">
+								<DataElementName>tb_kaisya_jusyo1</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>13.6cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>1.9cm</Top>
+								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
+								<Width>5.4cm</Width>
+								<ZIndex>6</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox26">
+								<DataElementName>TextBox11</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>17.8cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+								</Style>
+								<Top>0.7cm</Top>
+								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
+								<Width>1.199999cm</Width>
+								<ZIndex>15</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox27">
+								<DataElementName>tb_seikyu_yyyy</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>15.2cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>yyyy</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>0.2cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.9cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox28">
+								<DataElementName>tb_kaisya_name</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>1.4cm</Top>
+								<Value>株式会社　徳永製作所</Value>
+								<Width>5.5cm</Width>
+								<ZIndex>4</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox29">
+								<DataElementName>tb_denpyou_no</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>15.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>0.7cm</Top>
+								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
+								<Width>1.9cm</Width>
+								<ZIndex>11</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox30">
+								<DataElementName>tb_seikyu_dd</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>17.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>dd</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>0.2cm</Top>
+								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
+								<Width>0.5cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox31">
+								<DataElementName>tb_kaisya_yubin_no</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>11.7cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>1.9cm</Top>
+								<Value>〒956-0007</Value>
+								<Width>1.9cm</Width>
+								<ZIndex>5</ZIndex>
+							</Textbox>
+							<List Name="List2">
+								<Height>0.8cm</Height>
+								<Left>0.8cm</Left>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<ReportItems>
+									<Textbox Name="TextBox32">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD1.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox33">
+										<DataElementName>TextBox2</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!SEIHIN_NAME.Value</Value>
+										<Width>9.1cm</Width>
+										<ZIndex>1</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox34">
+										<DataElementName>TextBox3</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>6.9cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,##.##</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!URIAGE_SU.Value</Value>
+										<Width>2.7cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox35">
+										<DataElementName>TextBox3</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>9.4cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,###.00</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!HANBAI_TANKA.Value</Value>
+										<Width>2.7cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox36">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>3.8cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD2.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox37">
+										<DataElementName>TextBox7</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>12.3cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,###</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!URIAGE_KINGAKU.Value</Value>
+										<Width>2.3cm</Width>
+										<ZIndex>3</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox38">
+										<DataElementName>TextBox9</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>14.7cm</Left>
+										<Style>
+											<Format>""</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=iif(Fields!JUCHU_CD1.Value = "", "", Fields!URIAGE_TTL_SU.Value &amp; " / " &amp; Fields!JUCHU_SU.Value)</Value>
+										<Width>3.1cm</Width>
+										<ZIndex>4</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox39">
+										<DataElementName>TextBox10</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>14.7cm</Left>
+										<Style>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!BIKOU.Value</Value>
+										<Width>3.1cm</Width>
+										<ZIndex>5</ZIndex>
+									</Textbox>
+								</ReportItems>
+								<Top>13.4cm</Top>
+								<Width>17.9cm</Width>
+							</List>
+							<List Name="List3">
+								<Height>0.8cm</Height>
+								<Left>0.8cm</Left>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<ReportItems>
+									<Textbox Name="TextBox40">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD1.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+									<Textbox Name="TextBox41">
+										<DataElementName>TextBox2</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>0.2cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!SEIHIN_NAME.Value</Value>
+										<Width>9.1cm</Width>
+										<ZIndex>1</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox42">
+										<DataElementName>TextBox3</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>6.9cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<Format>#,###,###,##.##</Format>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Top>0.4cm</Top>
+										<Value>=Fields!URIAGE_SU.Value</Value>
+										<Width>2.7cm</Width>
+										<ZIndex>2</ZIndex>
+									</Textbox>
+									<Textbox Name="TextBox44">
+										<DataElementName>TextBox1</DataElementName>
+										<Height>0.4cm</Height>
+										<Left>3.8cm</Left>
+										<Style>
+											<FontSize>9pt</FontSize>
+											<PaddingBottom>1pt</PaddingBottom>
+											<PaddingLeft>1pt</PaddingLeft>
+											<PaddingRight>1pt</PaddingRight>
+											<PaddingTop>1pt</PaddingTop>
+										</Style>
+										<Value>=Fields!JUCHU_CD2.Value</Value>
+										<Width>3.6cm</Width>
+									</Textbox>
+								</ReportItems>
+								<Top>23.3cm</Top>
+								<Width>17.9cm</Width>
+							</List>
+							<Textbox Name="TextBox48">
+								<DataElementName>TextBox5</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>2cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>17.8cm</Top>
+								<Value>ihureuirepepepre</Value>
+								<Width>8.5cm</Width>
 								<ZIndex>13</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox49">
+								<DataElementName>TextBox7</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>13.1cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<Format>#,###,###,###</Format>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>17.7cm</Top>
+								<Value>=Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1")</Value>
+								<Width>2.3cm</Width>
+								<ZIndex>14</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox50">
+								<DataElementName>TextBox5</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>2cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>27.7cm</Top>
+								<Value>ihureuirepepepre</Value>
+								<Width>8.5cm</Width>
+								<ZIndex>13</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox43">
+								<DataElementName>tb_torihikisaki_cd</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>3.5cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>12.1cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
+								<Width>1.5cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox45">
+								<DataElementName>tb_torihikisaki_name</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>0.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>11.5cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
+								<Width>9.6cm</Width>
+								<ZIndex>3</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox46">
+								<DataElementName>tb_torihikisaki_cd</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>3.5cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>1pt</PaddingBottom>
+									<PaddingLeft>1pt</PaddingLeft>
+									<PaddingRight>1pt</PaddingRight>
+									<PaddingTop>1pt</PaddingTop>
+								</Style>
+								<Top>22.1cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
+								<Width>1.5cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox47">
+								<DataElementName>tb_torihikisaki_name</DataElementName>
+								<Height>0.5cm</Height>
+								<Left>0.9cm</Left>
+								<Style>
+									<FontSize>9pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+								</Style>
+								<Top>21.5cm</Top>
+								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
+								<Width>9.6cm</Width>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 						</ReportItems>
 					</Page>
@@ -599,6 +1033,9 @@
 				</Field>
 				<Field Name="TORIHIKISAKI_CD">
 					<DataField>TORIHIKISAKI_CD</DataField>
+				</Field>
+				<Field Name="TORIHIKISAKI_NAME">
+					<DataField>TORIHIKISAKI_NAME</DataField>
 				</Field>
 				<Field Name="URIAGE_DATE">
 					<DataField>URIAGE_DATE</DataField>
@@ -636,6 +1073,12 @@
 				<Field Name="BIKOU">
 					<DataField>BIKOU</DataField>
 				</Field>
+				<Field Name="URIAGE_TTL_SU">
+					<DataField>URIAGE_TTL_SU</DataField>
+				</Field>
+				<Field Name="JUCHU_SU">
+					<DataField>JUCHU_SU</DataField>
+				</Field>
 				<Field Name="CREATE_USER_CD">
 					<DataField>CREATE_USER_CD</DataField>
 				</Field>
@@ -650,7 +1093,7 @@
 				</Field>
 			</Fields>
 			<Query>
-				<CommandText>select * from tss_uriage_m where torihikisaki_cd = '041055'</CommandText>
+				<CommandText>select * from tss_uriage_denpyou_trn</CommandText>
 				<DataSourceName>DataSource1</DataSourceName>
 			</Query>
 		</DataSet>
