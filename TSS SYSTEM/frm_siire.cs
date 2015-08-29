@@ -957,5 +957,17 @@ namespace TSS_SYSTEM
         {
             //return;
         }
+
+        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", "");
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd.Text = w_cd;
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyusyukkoidou));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
@@ -90,7 +90,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -113,6 +113,7 @@
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -133,8 +134,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_sakujyo);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
+            this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -164,7 +165,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_nyusyukkoidou);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
             this.splitContainer3.SplitterDistance = 147;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -199,20 +200,22 @@
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(203, 112);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(161, 112);
             this.tb_torihikisaki_name.MaxLength = 2;
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
-            this.tb_torihikisaki_name.Size = new System.Drawing.Size(154, 19);
+            this.tb_torihikisaki_name.Size = new System.Drawing.Size(196, 19);
             this.tb_torihikisaki_name.TabIndex = 10;
             // 
             // tb_torihikisaki_cd
             // 
+            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 112);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
-            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(85, 19);
+            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(45, 19);
             this.tb_torihikisaki_cd.TabIndex = 1;
+            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
             this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox4
@@ -283,9 +286,11 @@
             this.dgv_nyusyukkoidou.Name = "dgv_nyusyukkoidou";
             this.dgv_nyusyukkoidou.RowHeadersVisible = false;
             this.dgv_nyusyukkoidou.RowTemplate.Height = 21;
-            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 284);
+            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 285);
             this.dgv_nyusyukkoidou.TabIndex = 0;
+            this.dgv_nyusyukkoidou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellDoubleClick);
             this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
+            this.dgv_nyusyukkoidou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nyusyukkoidou_CellValidating);
             // 
             // Column2
             // 
@@ -317,10 +322,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column7.HeaderText = "数量";
             this.Column7.Name = "Column7";
             this.Column7.Width = 70;
@@ -362,7 +367,7 @@
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 539);
+            this.ss_status.Location = new System.Drawing.Point(0, 540);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 2;
@@ -372,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);

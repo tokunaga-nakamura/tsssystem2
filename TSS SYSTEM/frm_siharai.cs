@@ -143,18 +143,6 @@ namespace TSS_SYSTEM
             }
         }
 
-        //支払日のテキストボックスからフォーカスが離れたとき
-        private void tb_siharai_date_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void splitContainer6_Panel2_Paint(object sender, PaintEventArgs e)
-        //{
-
-        //}
-
-
         //登録ボタンクリック
         private void btn_turoku_Click(object sender, EventArgs e)
         {
@@ -186,7 +174,6 @@ namespace TSS_SYSTEM
                 return;
             }
 
-
             //データグリッドビューの中を1行ずつループしてチェック
             int dgvrc = dgv_siharai.Rows.Count;
             if (dgvrc == 0)
@@ -200,13 +187,6 @@ namespace TSS_SYSTEM
             //テキストボックスとデータグリッドビューの入力内容チェック
             for (int i = 0; i < dgvrc; i++)
             {
-
-                //if (dgv_siharai.Rows[i].Cells[0].Value == null &&dgv_siharai.Rows[i].Cells[1].Value == null && dgv_siharai.Rows[i].Cells[2].Value == null && dgv_siharai.Rows[i].Cells[3].Value == null && dgv_siharai.Rows[i].Cells[4].Value == null && dgv_siharai.Rows[i].Cells[5].Value == null && dgv_siharai.Rows[i].Cells[6].Value == null && dgv_siharai.Rows[i].Cells[7].Value == null)
-                //{
-                //    MessageBox.Show("空白行登録できません");
-                //    return;
-                //}
-
                 if (dgv_siharai.Rows[i].Cells[0].Value == null || tss.StringByte(dgv_siharai.Rows[i].Cells[0].Value.ToString()) > 20)
                 {
                     MessageBox.Show("仕入締日の値が異常です");
@@ -373,9 +353,6 @@ namespace TSS_SYSTEM
 
                 tb_siharai_date.Focus();
             }
-
-
-
         }
 
         //支払のデータグリッドビューから1行削除した時のメソッド
@@ -804,7 +781,7 @@ namespace TSS_SYSTEM
 
         private void btn_siharai_hensyu_Click(object sender, EventArgs e)
         {
-            //w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString();
+            //w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString(); ←　未払いデータグリッドビューが空だとエラーになる
 
             //選択用のdatatableの作成
             DataTable dt_work = new DataTable();
@@ -834,8 +811,6 @@ namespace TSS_SYSTEM
 
             else
             {
-                //dgv_siharai.Rows.Clear();
-
                 string siharai_date = w_dt.Rows[0][5].ToString();
                 string siharai_date2 = siharai_date.Substring(0, 10);
                 tb_siharai_date.Text = siharai_date2;
@@ -966,7 +941,8 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
+        
+        //支払データグリッドビューの支払額、手数料、相殺の金額セルに、空白は入れられない（空白の時にセル移動できない）ようにする（nullエラー回避のため）
         private void dgv_siharai_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -977,7 +953,6 @@ namespace TSS_SYSTEM
                 if ((dgv.Rows[e.RowIndex].Cells[3] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     e.Cancel = true;
-                    //dgv.Rows[i].Cells[3].Value = 0;
                 }
             }
 
@@ -986,7 +961,6 @@ namespace TSS_SYSTEM
                 if ((dgv.Rows[e.RowIndex].Cells[4] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     e.Cancel = true;
-                    //dgv.Rows[i].Cells[4].Value = 0;
                 }
             }
            
@@ -995,9 +969,36 @@ namespace TSS_SYSTEM
                 if ((dgv.Rows[e.RowIndex].Cells[5] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && (e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     e.Cancel = true;
-                    //dgv.Rows[i].Cells[4].Value = 0;
                 }
             }
+        }
+
+        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", "");
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd.Text = w_cd;
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+            }
+        }
+
+        private string get_torihikisaki_name(string in_torihikisaki_cd)
+        {
+            string out_torihikisaki_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_torihikisaki_name = "";
+            }
+            else
+            {
+                out_torihikisaki_name = dt_work.Rows[0]["torihikisaki_name"].ToString();
+            }
+            return out_torihikisaki_name;
         }
     }
 }
