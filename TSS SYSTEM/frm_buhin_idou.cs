@@ -62,10 +62,18 @@ namespace TSS_SYSTEM
         {
             DataGridView dgv = (DataGridView)sender;
 
-            //部品コードが入力されたならば、部品名を部品マスターから取得して表示
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value != null)
+            int i = e.RowIndex;
+
+            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value == null)
             {
-                int i = e.RowIndex;
+                dgv.Rows[i].Cells[1].Value = "";
+                return;
+            }
+
+            //部品コードが入力されたならば、部品名を部品マスターから取得して表示
+            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != "")
+            {
+                //int i = e.RowIndex;
 
                 DataTable dtTmp = (DataTable)dgv_idou.DataSource;
 
@@ -78,18 +86,16 @@ namespace TSS_SYSTEM
                 {
                     MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
                     dgv.Rows[i].Cells[1].Value = "";
-                    dgv_idou.Focus();
-                    dgv_idou.CurrentCell = dgv_idou[i, 0];
                 }
                 else
                 {
                     dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
-                    //dgv.CurrentCell = dgv.Rows[i].Cells[2]; 
-
+                    //dgv.CurrentCell = dgv.Rows[i].Cells[2]; //指定セルにフォーカスをあてるが、 コケるので使用しない
                 }
-
                 return;
             }
+
+
         }
 
         //登録ボタン押した時の処理
@@ -138,6 +144,11 @@ namespace TSS_SYSTEM
                     return;
                 }
                 //DataTable dt_work = new DataTable();
+                if (dgv_idou.Rows[i].Cells[3].Value == null)
+                {
+                    MessageBox.Show("取引先コードを入力してください");
+                    return;
+                }
                 dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[3].Value.ToString() + "'");
                 if (dt_work.Rows.Count <= 0)
                 {
@@ -149,11 +160,18 @@ namespace TSS_SYSTEM
                     MessageBox.Show("受注コード1を入力してください");
                     return;
                 }
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[3].Value != null && dgv_idou.Rows[i].Cells[4].Value != null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[4].Value != null && dgv_idou.Rows[i].Cells[5].Value != null)
                 {
                     MessageBox.Show("在庫区分01の時は、受注コード1、2に入力しないでください。");
                     return;
                 }
+
+                if (dgv_idou.Rows[i].Cells[6].Value == null)
+                {
+                    MessageBox.Show("移動先在庫区分を入力してください");
+                    return;
+                }
+                
                 dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '01' and kubun_cd = '" + dgv_idou.Rows[i].Cells[6].Value.ToString() + "'");
                 if (dt_work.Rows.Count <= 0)
                 {
@@ -161,15 +179,25 @@ namespace TSS_SYSTEM
                     return;
                 }
                 //dt_work = new DataTable();
+                if (dgv_idou.Rows[i].Cells[7].Value == null)
+                {
+                    MessageBox.Show("移動先取引先コードを入力してください");
+                    return;
+                }
                 dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[7].Value.ToString() + "'");
                 if (dt_work.Rows.Count <= 0)
                 {
                     MessageBox.Show("入力された移動先取引先コードが存在しません");
                     return;
                 }
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "02" && dgv_idou.Rows[0].Cells[8].Value == null)
+                {
+                    MessageBox.Show("移動先受注コード1を入力してください");
+                    return;
+                }
                 if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[8].Value != null && dgv_idou.Rows[i].Cells[9].Value != null)
                 {
-                    MessageBox.Show("移動先在庫区分が01の時は、受注コード1、2に入力しないでください。");
+                    MessageBox.Show("移動先在庫区分が01の時は、移動先受注コード1、2に入力しないでください。");
                     return;
                 }
 
@@ -265,7 +293,7 @@ namespace TSS_SYSTEM
                 {
 
                     //出庫処理の場合は、数量をマイナスにする
-                    int syukko = int.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) * -1;
+                    double syukko = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) * -1;
 
 
                     bool bl3 = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
@@ -280,10 +308,10 @@ namespace TSS_SYSTEM
 
                 if (dt_work5.Rows.Count != 0)
                 {
-                    int zaikosu1 = int.Parse(dt_work5.Rows[0][5].ToString());
-                    int zaikosu2 = int.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
+                    double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                    double zaikosu2 = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
 
-                    int zaikosu3 = zaikosu1 - zaikosu2;
+                    double zaikosu3 = zaikosu1 - zaikosu2;
 
                     bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[4].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[5].Value.ToString() + "'");
                 }
@@ -320,10 +348,10 @@ namespace TSS_SYSTEM
 
                 if (dt_work5.Rows.Count != 0)
                 {
-                    int zaikosu1 = int.Parse(dt_work5.Rows[0][5].ToString());
-                    int zaikosu2 = int.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
+                    double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                    double zaikosu2 = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
 
-                    int zaikosu3 = zaikosu1 + zaikosu2;
+                    double zaikosu3 = zaikosu1 + zaikosu2;
 
                     bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[9].Value.ToString() + "'");
 
@@ -352,15 +380,15 @@ namespace TSS_SYSTEM
 
         private void dgv_idou_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
+            //DataGridView dgv = sender as DataGridView;
 
-            if (e.ColumnIndex >= 0)
-            {
-                if (dgv.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
-                {
-                    SendKeys.Send("{F2}");
-                }
-            }
+            //if (e.ColumnIndex >= 0)
+            //{
+            //    if (dgv.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
+            //    {
+            //        SendKeys.Send("{F2}");
+            //    }
+            //}
         }
 
         private void dgv_idou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -375,6 +403,122 @@ namespace TSS_SYSTEM
                 if (w_buhin_cd != "")
                 {
                     dgv_idou.CurrentCell.Value = w_buhin_cd;
+                    dgv_idou.EndEdit();
+                }
+            }
+
+
+            if (i == 4)
+            {
+                string zaiko_kbn = dgv_idou.CurrentRow.Cells[2].Value.ToString();
+
+                if (zaiko_kbn == "01")
+                {
+                    return;
+                }
+
+                else
+                {
+                    //選択画面へ
+                    string w_juchu_cd;
+                    w_juchu_cd = tss.search_juchu("2", dgv_idou.CurrentRow.Cells[3].Value.ToString(), "", "", "");
+
+                    if (w_juchu_cd.ToString() != "")
+                    {
+                        string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
+                        string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+
+                        dgv_idou.CurrentRow.Cells[i].Value = str_w2.ToString();
+                        dgv_idou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                        dgv_idou.EndEdit();
+                    }
+                }
+            }
+            
+            if (i == 8)
+            {
+                string zaiko_kbn = dgv_idou.CurrentRow.Cells[6].Value.ToString();
+
+                if (zaiko_kbn == "01")
+                {
+                    return;
+                }
+
+                else
+                {
+                    //選択画面へ
+                    string w_juchu_cd;
+                    w_juchu_cd = tss.search_juchu("2", dgv_idou.CurrentRow.Cells[3].Value.ToString(), "", "", "");
+
+                    if (w_juchu_cd.ToString() != "")
+                    {
+                        string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
+                        string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+
+                        dgv_idou.CurrentRow.Cells[i].Value = str_w2.ToString();
+                        dgv_idou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                        dgv_idou.EndEdit();
+                    }
+                }
+            }
+
+        }
+
+        private void dgv_idou_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            int i = e.ColumnIndex;
+            int j = e.RowIndex;
+
+            if (i == 2)
+            {
+                string zaiko_kbn = e.FormattedValue.ToString();
+
+                //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
+                if (zaiko_kbn == "01")
+                {
+                    dgv_idou[4, j].Value = null;
+                    dgv_idou[5, j].Value = null;
+                    dgv_idou[4, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[5, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[4, j].ReadOnly = true;
+                    dgv_idou[5, j].ReadOnly = true;
+
+                    dgv_idou.EndEdit();
+                }
+                else
+                {
+                    dgv_idou[4, j].Style.BackColor = Color.White;
+                    dgv_idou[5, j].Style.BackColor = Color.White;
+                    dgv_idou[4, j].ReadOnly = false;
+                    dgv_idou[5, j].ReadOnly = false;
+
+                    dgv_idou.EndEdit();
+                }
+            }
+
+            if (i == 6)
+            {
+                string zaiko_kbn = e.FormattedValue.ToString();
+
+                //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
+                if (zaiko_kbn == "01")
+                {
+                    dgv_idou[8, j].Value = null;
+                    dgv_idou[9, j].Value = null;
+                    dgv_idou[8, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[9, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[8, j].ReadOnly = true;
+                    dgv_idou[9, j].ReadOnly = true;
+
+                    dgv_idou.EndEdit();
+                }
+                else
+                {
+                    dgv_idou[8, j].Style.BackColor = Color.White;
+                    dgv_idou[9, j].Style.BackColor = Color.White;
+                    dgv_idou[8, j].ReadOnly = false;
+                    dgv_idou[9, j].ReadOnly = false;
+
                     dgv_idou.EndEdit();
                 }
             }

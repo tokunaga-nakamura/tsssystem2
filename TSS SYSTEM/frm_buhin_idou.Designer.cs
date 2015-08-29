@@ -28,10 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_idou));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_idou = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.dtp_buhin_syori_date = new System.Windows.Forms.DateTimePicker();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -48,18 +60,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_idou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -101,6 +101,85 @@
             this.dgv_idou.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_idou_CellClick);
             this.dgv_idou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_idou_CellDoubleClick);
             this.dgv_idou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_idou_CellEndEdit);
+            this.dgv_idou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_idou_CellValidating);
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "部品コード";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 60;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column3.HeaderText = "部品名";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "在庫区分";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 60;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "取引先コード";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 70;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "受注コード1";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 70;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "受注コード2";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 70;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "移動先在庫区分";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 70;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "移動先取引先コード";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "移動先受注コード1";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 80;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "移動先受注コード2";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 80;
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column7.HeaderText = "数量";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 60;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "備考";
+            this.Column12.Name = "Column12";
             // 
             // label3
             // 
@@ -302,84 +381,6 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "部品コード";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 60;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column3.HeaderText = "部品名";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 120;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "在庫区分";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 60;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "取引先コード";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 70;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "受注コード1";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 70;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "受注コード2";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 70;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "移動先在庫区分";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 70;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "移動先取引先コード";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 80;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "移動先受注コード1";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 80;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "移動先受注コード2";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 80;
-            // 
-            // Column7
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column7.HeaderText = "数量";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 60;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "備考";
-            this.Column12.Name = "Column12";
             // 
             // frm_buhin_idou
             // 

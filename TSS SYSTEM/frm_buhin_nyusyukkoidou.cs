@@ -341,10 +341,10 @@ namespace TSS_SYSTEM
 
                     if (dt_work5.Rows.Count != 0)
                     {
-                        int zaikosu1 = int.Parse(dt_work5.Rows[0][5].ToString());
-                        int zaikosu2 = int.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                        double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                        double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                        int zaikosu3 = zaikosu1 + zaikosu2;
+                        double zaikosu3 = zaikosu1 + zaikosu2;
 
                         bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
 
@@ -460,7 +460,7 @@ namespace TSS_SYSTEM
                         {
 
                             //出庫処理の場合は、数量をマイナスにする
-                            int syukko = int.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) * -1;
+                            double syukko = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) * -1;
 
                             
                             bool bl3 = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
@@ -475,10 +475,10 @@ namespace TSS_SYSTEM
 
                         if (dt_work5.Rows.Count != 0)
                         {
-                            int zaikosu1 = int.Parse(dt_work5.Rows[0][5].ToString());
-                            int zaikosu2 = int.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                            double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                            double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                            int zaikosu3 = zaikosu1 - zaikosu2;
+                            double zaikosu3 = zaikosu1 - zaikosu2;
 
                             bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
                         }
