@@ -455,5 +455,10 @@ namespace TSS_SYSTEM
         {
             kensaku();
         }
+
+        private void btn_cancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

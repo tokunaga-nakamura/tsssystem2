@@ -405,5 +405,33 @@ namespace TSS_SYSTEM
                 return;
             }
         }
+
+        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", "");
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd.Text = w_cd;
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+            }
+        }
+
+        private string get_torihikisaki_name(string in_torihikisaki_cd)
+        {
+            string out_torihikisaki_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_torihikisaki_name = "";
+            }
+            else
+            {
+                out_torihikisaki_name = dt_work.Rows[0]["torihikisaki_name"].ToString();
+            }
+            return out_torihikisaki_name;
+        }
     }
 }

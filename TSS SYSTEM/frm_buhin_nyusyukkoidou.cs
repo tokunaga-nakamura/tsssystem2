@@ -103,7 +103,7 @@ namespace TSS_SYSTEM
             
             
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
-            dgv_nyusyukkoidou.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dgv_nyusyukkoidou.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
             dgv_nyusyukkoidou.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
@@ -486,10 +486,6 @@ namespace TSS_SYSTEM
                 
                     MessageBox.Show("出庫処理されました。");
 
-
-
-
-
                     SEQ();
                     tb_denpyou_no.Clear();
                     tb_torihikisaki_cd.Clear();
@@ -560,6 +556,7 @@ namespace TSS_SYSTEM
                 else
                 {
                     dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
+                    //dgv.CurrentCell = dgv.Rows[i].Cells[2]; //指定セルにフォーカスをあてるが、 コケるので使用しない
                 }              
                 return;
             }
@@ -582,6 +579,101 @@ namespace TSS_SYSTEM
        {
            int i = dgv_nyusyukkoidou.CurrentCell.RowIndex;
            dgv_nyusyukkoidou.Rows.RemoveAt(dgv_nyusyukkoidou.Rows[i].Index);
+       }
+
+       private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+       {
+           //選択画面へ
+           string w_cd;
+           w_cd = tss.search_torihikisaki("2", "");
+           if (w_cd != "")
+           {
+               tb_torihikisaki_cd.Text = w_cd;
+               tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+           }
+       }
+
+       private void btn_hardcopy_Click(object sender, EventArgs e)
+       {
+           tss.HardCopy();
+       }
+
+       private void dgv_nyusyukkoidou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+       {
+           int i = e.ColumnIndex;
+           
+           if(i == 0)
+           {
+               //選択画面へ
+               string w_buhin_cd;
+               w_buhin_cd = tss.search_buhin("2", "");
+               if (w_buhin_cd != "")
+               {
+                   dgv_nyusyukkoidou.CurrentCell.Value = w_buhin_cd;
+                   dgv_nyusyukkoidou.EndEdit();
+               }
+           }
+
+           if (i == 3)
+           {
+               string zaiko_kbn = dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString();
+               
+               if(zaiko_kbn == "01")
+               {
+                   return;
+               }
+               
+               else
+               {
+                   //選択画面へ
+                   string w_juchu_cd;
+                   w_juchu_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text, "", "", "");
+
+                   if (w_juchu_cd.ToString() != "")
+                   {
+                       string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
+                       string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+
+                       dgv_nyusyukkoidou.CurrentRow.Cells[i].Value = str_w2.ToString();
+                       dgv_nyusyukkoidou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                       dgv_nyusyukkoidou.EndEdit();
+                   }
+               }
+               
+           }
+
+       }
+
+       private void dgv_nyusyukkoidou_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+       {
+           int i = e.ColumnIndex;
+           int j = e.RowIndex;
+
+           if (i == 2)
+           {
+               string zaiko_kbn = e.FormattedValue.ToString();
+
+               //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
+               if (zaiko_kbn == "01")
+               {
+                   dgv_nyusyukkoidou[3,j].Style.BackColor = Color.LightGray;
+                   dgv_nyusyukkoidou[4,j].Style.BackColor = Color.LightGray;
+                   dgv_nyusyukkoidou[3,j].ReadOnly = true;
+                   dgv_nyusyukkoidou[4,j].ReadOnly = true;
+
+                   dgv_nyusyukkoidou.EndEdit();
+               }
+               else
+               {
+                   dgv_nyusyukkoidou[3, j].Style.BackColor = Color.White;
+                   dgv_nyusyukkoidou[4, j].Style.BackColor = Color.White;
+                   dgv_nyusyukkoidou[3, j].ReadOnly = false;
+                   dgv_nyusyukkoidou[4, j].ReadOnly = false;
+
+                   dgv_nyusyukkoidou.EndEdit();
+               }
+
+           }
        }
 
     }

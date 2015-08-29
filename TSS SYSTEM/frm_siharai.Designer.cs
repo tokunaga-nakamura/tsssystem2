@@ -273,12 +273,14 @@
             // 
             // tb_torihikisaki_cd
             // 
+            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 17);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(48, 19);
             this.tb_torihikisaki_cd.TabIndex = 1;
             this.tb_torihikisaki_cd.TextChanged += new System.EventHandler(this.tb_torihikisaki_cd_TextChanged);
+            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
             this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox4
@@ -409,7 +411,6 @@
             this.tb_siharai_date.Name = "tb_siharai_date";
             this.tb_siharai_date.Size = new System.Drawing.Size(160, 19);
             this.tb_siharai_date.TabIndex = 7;
-            this.tb_siharai_date.Leave += new System.EventHandler(this.tb_siharai_date_Leave);
             this.tb_siharai_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_date_Validating);
             // 
             // textBox7

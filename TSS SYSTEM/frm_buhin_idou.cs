@@ -63,7 +63,7 @@ namespace TSS_SYSTEM
             DataGridView dgv = (DataGridView)sender;
 
             //部品コードが入力されたならば、部品名を部品マスターから取得して表示
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != null)
+            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value != null)
             {
                 int i = e.RowIndex;
 
@@ -84,6 +84,8 @@ namespace TSS_SYSTEM
                 else
                 {
                     dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
+                    //dgv.CurrentCell = dgv.Rows[i].Cells[2]; 
+
                 }
 
                 return;
@@ -357,6 +359,23 @@ namespace TSS_SYSTEM
                 if (dgv.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn)
                 {
                     SendKeys.Send("{F2}");
+                }
+            }
+        }
+
+        private void dgv_idou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.ColumnIndex;
+
+            if (i == 0)
+            {
+                //選択画面へ
+                string w_buhin_cd;
+                w_buhin_cd = tss.search_buhin("2", "");
+                if (w_buhin_cd != "")
+                {
+                    dgv_idou.CurrentCell.Value = w_buhin_cd;
+                    dgv_idou.EndEdit();
                 }
             }
         }
