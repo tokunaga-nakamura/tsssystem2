@@ -314,6 +314,9 @@ namespace TSS_SYSTEM
 
             //合計を表示
             uriage_goukei_disp();
+
+            //備考２の表示
+            tb_bikou2.Text = in_dt.Rows[0]["bikou2"].ToString();
         }
 
         private void dgv_plus()
@@ -327,13 +330,13 @@ namespace TSS_SYSTEM
                     if (w_dt.Rows.Count == 0)
                     {
                         MessageBox.Show("受注情報がありません。");
-                        dgv_m.Rows[i].Cells[22].Value = "";
                         dgv_m.Rows[i].Cells[23].Value = "";
+                        dgv_m.Rows[i].Cells[24].Value = "";
                     }
                     else
                     {
-                        dgv_m.Rows[i].Cells[22].Value = w_dt.Rows[0]["uriage_su"].ToString();
-                        dgv_m.Rows[i].Cells[23].Value = w_dt.Rows[0]["juchu_su"].ToString();
+                        dgv_m.Rows[i].Cells[23].Value = w_dt.Rows[0]["uriage_su"].ToString();
+                        dgv_m.Rows[i].Cells[24].Value = w_dt.Rows[0]["juchu_su"].ToString();
                     }
                 }
             }
@@ -390,10 +393,11 @@ namespace TSS_SYSTEM
             dgv_m.Columns[15].HeaderText = "備考";
             dgv_m.Columns[16].HeaderText = "売上合計数";
             dgv_m.Columns[17].HeaderText = "受注数";
-            dgv_m.Columns[18].HeaderText = "作成者コード";
-            dgv_m.Columns[19].HeaderText = "作成日時";
-            dgv_m.Columns[20].HeaderText = "更新者コード";
-            dgv_m.Columns[21].HeaderText = "更新日時";
+            dgv_m.Columns[18].HeaderText = "備考２";
+            dgv_m.Columns[19].HeaderText = "作成者コード";
+            dgv_m.Columns[20].HeaderText = "作成日時";
+            dgv_m.Columns[21].HeaderText = "更新者コード";
+            dgv_m.Columns[22].HeaderText = "更新日時";
 
             //dgvにデータテーブル以外の項目を追加
             dgv_m.Columns.Add("ttl_uriage_su", "現在までの売上数");
@@ -416,10 +420,11 @@ namespace TSS_SYSTEM
             dgv_m.Columns[14].Visible = false;  //削除フラグ
             dgv_m.Columns[16].Visible = false;  //売上合計数
             dgv_m.Columns[17].Visible = false;  //受注数
-            dgv_m.Columns[18].Visible = false;  //作成者コード
-            dgv_m.Columns[19].Visible = false;  //作成日時
-            dgv_m.Columns[20].Visible = false;  //更新者コード
-            dgv_m.Columns[21].Visible = false;  //更新日時
+            dgv_m.Columns[18].Visible = false;  //備考２
+            dgv_m.Columns[19].Visible = false;  //作成者コード
+            dgv_m.Columns[20].Visible = false;  //作成日時
+            dgv_m.Columns[21].Visible = false;  //更新者コード
+            dgv_m.Columns[22].Visible = false;  //更新日時
 
             //列の文字数制限（TextBoxのMaxLengthと同じ動作になる）
             ((DataGridViewTextBoxColumn)dgv_m.Columns[5]).MaxInputLength = 16;  //受注コード1
@@ -431,13 +436,13 @@ namespace TSS_SYSTEM
 
             //列を編集不可にする
             dgv_m.Columns[11].ReadOnly = true;  //売上金額
-            dgv_m.Columns[22].ReadOnly = true;  //現在までの売上数
-            dgv_m.Columns[23].ReadOnly = true;  //受注数
+            dgv_m.Columns[23].ReadOnly = true;  //現在までの売上数
+            dgv_m.Columns[24].ReadOnly = true;  //受注数
 
             //編集不可の列をグレーにする
             dgv_m.Columns[10].DefaultCellStyle.BackColor = Color.Gainsboro; //売上金額
-            dgv_m.Columns[22].DefaultCellStyle.BackColor = Color.Gainsboro; //現在までの売上数
-            dgv_m.Columns[23].DefaultCellStyle.BackColor = Color.Gainsboro; //受注数
+            dgv_m.Columns[23].DefaultCellStyle.BackColor = Color.Gainsboro; //現在までの売上数
+            dgv_m.Columns[24].DefaultCellStyle.BackColor = Color.Gainsboro; //受注数
         }
 
         private void uriage_goukei_disp()
@@ -516,13 +521,13 @@ namespace TSS_SYSTEM
                     dgv_m.Rows[e.RowIndex].Cells[7].Value = w_seihin_cd;
                     dgv_m.Rows[e.RowIndex].Cells[8].Value = tss.get_seihin_name(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
                     dgv_m.Rows[e.RowIndex].Cells[10].Value = tss.get_seihin_tanka(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[22].Value = get_uriage_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[23].Value = get_juchu_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
+                    dgv_m.Rows[e.RowIndex].Cells[23].Value = get_uriage_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
+                    dgv_m.Rows[e.RowIndex].Cells[24].Value = get_juchu_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
                 }
                 else
                 {
-                    dgv_m.Rows[e.RowIndex].Cells[22].Value = "";
                     dgv_m.Rows[e.RowIndex].Cells[23].Value = "";
+                    dgv_m.Rows[e.RowIndex].Cells[24].Value = "";
                 }
             }
 
@@ -559,6 +564,20 @@ namespace TSS_SYSTEM
                     if (dgv_m.Rows[e.RowIndex].Cells[8].Value.ToString() == "")
                     {
                         MessageBox.Show("入力された製品コードは存在しません。");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
+            //製品名
+            if (e.ColumnIndex == 8)
+            {
+                //未入力は許容する
+                if (e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
+                {
+                    if(tss.StringByte(e.FormattedValue.ToString()) > 40)
+                    {
+                        MessageBox.Show("製品名は４０バイト以内で入力してください。");
                         e.Cancel = true;
                         return;
                     }
@@ -1038,7 +1057,7 @@ namespace TSS_SYSTEM
                 if(tb_uriage_no.Text.ToString() == w_uriage_no.ToString("0000000000"))
                 {
                     //新規
-                    w_sql = "INSERT INTO tss_uriage_m (uriage_no,seq,torihikisaki_cd,torihikisaki_name,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,delete_flg,bikou,uriage_ttl_su,juchu_su,create_user_cd,create_datetime)"
+                    w_sql = "INSERT INTO tss_uriage_m (uriage_no,seq,torihikisaki_cd,torihikisaki_name,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,delete_flg,bikou,uriage_ttl_su,juchu_su,bikou2,create_user_cd,create_datetime)"
                     + " VALUES ('" + tb_uriage_no.Text.ToString() + "','"
                     + dgv_m.Rows[i].Cells[1].Value.ToString() + "','"
                     + tb_torihikisaki_cd.Text.ToString() + "','"
@@ -1057,12 +1076,13 @@ namespace TSS_SYSTEM
                     + dgv_m.Rows[i].Cells[15].Value.ToString() + "','"
                     + tss.get_juchu_uriage_su(tb_torihikisaki_cd.Text.ToString(),dgv_m.Rows[i].Cells[5].Value.ToString(),dgv_m.Rows[i].Cells[6].Value.ToString(),dgv_m.Rows[i].Cells[9].Value.ToString()).ToString() + "','"
                     + tss.get_juchu_juchu_su(tb_torihikisaki_cd.Text.ToString(),dgv_m.Rows[i].Cells[5].Value.ToString(),dgv_m.Rows[i].Cells[6].Value.ToString()).ToString() + "','"
+                    + tb_bikou2.Text.ToString() + "','"
                     + tss.user_cd + "',sysdate)";
                 }
                 else
                 {
                     //既存
-                    w_sql = "INSERT INTO tss_uriage_m (uriage_no,seq,torihikisaki_cd,torihikisaki_name,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,delete_flg,bikou,uriage_ttl_su,juchu_su,update_user_cd,update_datetime)"
+                    w_sql = "INSERT INTO tss_uriage_m (uriage_no,seq,torihikisaki_cd,torihikisaki_name,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,delete_flg,bikou,uriage_ttl_su,juchu_su,bikou2,update_user_cd,update_datetime)"
                     + " VALUES ('" + tb_uriage_no.Text.ToString() + "','"
                     + dgv_m.Rows[i].Cells[1].Value.ToString() + "','"
                     + tb_torihikisaki_cd.Text.ToString() + "','"
@@ -1081,6 +1101,7 @@ namespace TSS_SYSTEM
                     + dgv_m.Rows[i].Cells[15].Value.ToString() + "','"
                     + tss.get_juchu_uriage_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[i].Cells[5].Value.ToString(), dgv_m.Rows[i].Cells[6].Value.ToString(), dgv_m.Rows[i].Cells[9].Value.ToString()).ToString() + "','"
                     + tss.get_juchu_juchu_su(tb_torihikisaki_cd.Text.ToString(),dgv_m.Rows[i].Cells[5].Value.ToString(),dgv_m.Rows[i].Cells[6].Value.ToString()).ToString() + "','"
+                    + tb_bikou2.Text.ToString() + "','"
                     + tss.user_cd + "',sysdate)";
                 }
                 if (tss.OracleInsert(w_sql) == false)
@@ -1187,6 +1208,23 @@ namespace TSS_SYSTEM
             frm_rpt.Dispose();
         }
 
+        private void tb_bikou2_Validating(object sender, CancelEventArgs e)
+        {
+            if(chk_bikou2() == false)
+            {
+                MessageBox.Show("備考は128バイト以内で入力してください。");
+                e.Cancel = true;
+            }
+        }
 
+        private bool chk_bikou2()
+        {
+            bool bl = true; //戻り値用
+            if(tss.StringByte(tb_bikou2.Text.ToString()) > 128)
+            {
+                bl = false;
+            }
+            return bl;
+        }
     }
 }

@@ -48,6 +48,8 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_bikou2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -257,6 +259,8 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.tb_bikou2);
+            this.splitContainer4.Panel2.Controls.Add(this.textBox2);
             this.splitContainer4.Panel2.Controls.Add(this.tb_uriage_goukei);
             this.splitContainer4.Panel2.Controls.Add(this.textBox10);
             this.splitContainer4.Size = new System.Drawing.Size(880, 352);
@@ -318,6 +322,26 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(10, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(36, 19);
+            this.textBox2.TabIndex = 4;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "備考";
+            // 
+            // tb_bikou2
+            // 
+            this.tb_bikou2.Location = new System.Drawing.Point(46, 3);
+            this.tb_bikou2.MaxLength = 128;
+            this.tb_bikou2.Name = "tb_bikou2";
+            this.tb_bikou2.Size = new System.Drawing.Size(513, 19);
+            this.tb_bikou2.TabIndex = 5;
+            this.tb_bikou2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou2_Validating);
+            // 
             // frm_uriage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -374,5 +398,7 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.Label lbl_seikyuu;
+        private System.Windows.Forms.TextBox tb_bikou2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

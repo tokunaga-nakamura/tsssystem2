@@ -108,8 +108,19 @@ namespace TSS_SYSTEM
         {
             uriage_read(tb_uriage_no.Text);
             seikyuu_check();
+            make_uriage_denpyou_trn();
             viewer_disp();
         }
+
+        private void make_uriage_denpyou_trn()
+        {
+            //伝票印刷用のトランファイルを削除
+            tss.OracleDelete("DROP TABLE tss_uriage_denpyou_trn CASCADE CONSTRAINTS");
+            //印刷用のトランファイルを作成
+            tss.OracleSelect("CREATE table tss_uriage_denpyou_trn AS SELECT * FROM tss_uriage_m where uriage_no = '" + tb_uriage_no.Text.ToString() + "'");
+        }
+
+
 
         private void viewer_disp()
         {

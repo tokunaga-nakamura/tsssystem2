@@ -18,7 +18,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>10cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.9cm</Width>
 								<ZIndex>1</ZIndex>
@@ -34,7 +34,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>10cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -51,7 +51,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>10cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -66,7 +66,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>2.3cm</Top>
+								<Top>2.1cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
 								<Width>1.5cm</Width>
 								<ZIndex>2</ZIndex>
@@ -81,7 +81,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.7cm</Top>
+								<Top>1.5cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
 								<Width>9.6cm</Width>
 								<ZIndex>3</ZIndex>
@@ -96,7 +96,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>11.2cm</Top>
+								<Top>11.1cm</Top>
 								<Value>株式会社　徳永製作所</Value>
 								<Width>5.5cm</Width>
 								<ZIndex>4</ZIndex>
@@ -111,7 +111,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>11.7cm</Top>
+								<Top>11.6cm</Top>
 								<Value>〒956-0007</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>5</ZIndex>
@@ -126,7 +126,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>11.7cm</Top>
+								<Top>11.6cm</Top>
 								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
 								<Width>5.4cm</Width>
 								<ZIndex>6</ZIndex>
@@ -141,7 +141,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>12.2cm</Top>
+								<Top>12.1cm</Top>
 								<Value>TEL 0250-22-1881</Value>
 								<Width>2.8cm</Width>
 								<ZIndex>8</ZIndex>
@@ -156,7 +156,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>12.2cm</Top>
+								<Top>12.1cm</Top>
 								<Value>FAX 0250-25-2940</Value>
 								<Width>2.9cm</Width>
 								<ZIndex>9</ZIndex>
@@ -171,7 +171,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>10.5cm</Top>
+								<Top>10.4cm</Top>
 								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>11</ZIndex>
@@ -186,8 +186,8 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>7.9cm</Top>
-								<Value>ihureuirepepepre</Value>
+								<Top>7.75cm</Top>
+								<Value>=First(Fields!BIKOU2.Value, "DataSet1")</Value>
 								<Width>8.5cm</Width>
 								<ZIndex>13</ZIndex>
 							</Textbox>
@@ -201,17 +201,18 @@
 									<PaddingLeft>1pt</PaddingLeft>
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
 								</Style>
-								<Top>7.8cm</Top>
-								<Value>=Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1")</Value>
+								<Top>7.7cm</Top>
+								<Value>=iif(Globals!PageNumber = Globals!TotalPages,Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1"),"*************")</Value>
 								<Width>2.3cm</Width>
 								<ZIndex>14</ZIndex>
 							</Textbox>
 							<List Name="List1">
 								<Height>0.8cm</Height>
 								<Left>0.8cm</Left>
-								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
-								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">4.1cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.9cm</dd:FixedWidth>
 								<ReportItems>
 									<Textbox Name="TextBox1">
 										<Height>0.4cm</Height>
@@ -223,8 +224,8 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD1.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!JUCHU_CD1.Value &amp; "   " &amp; Fields!JUCHU_CD2.Value</Value>
+										<Width>5cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox2">
 										<Height>0.4cm</Height>
@@ -277,7 +278,7 @@
 									<Textbox Name="TextBox6">
 										<DataElementName>TextBox1</DataElementName>
 										<Height>0.4cm</Height>
-										<Left>3.8cm</Left>
+										<Left>5.2cm</Left>
 										<Style>
 											<FontSize>9pt</FontSize>
 											<PaddingBottom>1pt</PaddingBottom>
@@ -285,8 +286,8 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD2.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Width>1.7cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox8">
 										<DataElementName>TextBox7</DataElementName>
@@ -334,7 +335,7 @@
 										<ZIndex>5</ZIndex>
 									</Textbox>
 								</ReportItems>
-								<Top>3.6cm</Top>
+								<Top>3.45cm</Top>
 								<Width>17.9cm</Width>
 							</List>
 							<Textbox Name="TextBox11">
@@ -348,7 +349,7 @@
 									<PaddingTop>1pt</PaddingTop>
 									<TextAlign>Right</TextAlign>
 								</Style>
-								<Top>10.5cm</Top>
+								<Top>10.4cm</Top>
 								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
 								<Width>1.199999cm</Width>
 								<ZIndex>15</ZIndex>
@@ -364,7 +365,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>22.2cm</Top>
+								<Top>22cm</Top>
 								<Value>FAX 0250-25-2940</Value>
 								<Width>2.9cm</Width>
 								<ZIndex>9</ZIndex>
@@ -380,7 +381,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>22.2cm</Top>
+								<Top>22cm</Top>
 								<Value>TEL 0250-22-1881</Value>
 								<Width>2.8cm</Width>
 								<ZIndex>8</ZIndex>
@@ -397,7 +398,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>19.9cm</Top>
+								<Top>19.8cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -413,7 +414,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>21.7cm</Top>
+								<Top>21.5cm</Top>
 								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
 								<Width>5.4cm</Width>
 								<ZIndex>6</ZIndex>
@@ -430,7 +431,7 @@
 									<PaddingTop>1pt</PaddingTop>
 									<TextAlign>Right</TextAlign>
 								</Style>
-								<Top>20.4cm</Top>
+								<Top>20.3cm</Top>
 								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
 								<Width>1.199999cm</Width>
 								<ZIndex>15</ZIndex>
@@ -447,7 +448,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>19.9cm</Top>
+								<Top>19.8cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.9cm</Width>
 								<ZIndex>1</ZIndex>
@@ -463,7 +464,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>21.2cm</Top>
+								<Top>21cm</Top>
 								<Value>株式会社　徳永製作所</Value>
 								<Width>5.5cm</Width>
 								<ZIndex>4</ZIndex>
@@ -479,7 +480,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>20.4cm</Top>
+								<Top>20.3cm</Top>
 								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>11</ZIndex>
@@ -496,7 +497,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>19.9cm</Top>
+								<Top>19.8cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -512,7 +513,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>21.7cm</Top>
+								<Top>21.5cm</Top>
 								<Value>〒956-0007</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>5</ZIndex>
@@ -528,7 +529,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>2.4cm</Top>
+								<Top>2.3cm</Top>
 								<Value>FAX 0250-25-2940</Value>
 								<Width>2.9cm</Width>
 								<ZIndex>9</ZIndex>
@@ -544,7 +545,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>2.4cm</Top>
+								<Top>2.3cm</Top>
 								<Value>TEL 0250-22-1881</Value>
 								<Width>2.8cm</Width>
 								<ZIndex>8</ZIndex>
@@ -561,7 +562,6 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>0.2cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -577,7 +577,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.9cm</Top>
+								<Top>1.8cm</Top>
 								<Value>新潟県新潟市秋葉区小戸下組2108</Value>
 								<Width>5.4cm</Width>
 								<ZIndex>6</ZIndex>
@@ -594,7 +594,7 @@
 									<PaddingTop>1pt</PaddingTop>
 									<TextAlign>Right</TextAlign>
 								</Style>
-								<Top>0.7cm</Top>
+								<Top>0.5cm</Top>
 								<Value>=Globals!PageNumber &amp; " / " &amp; Globals!TotalPages</Value>
 								<Width>1.199999cm</Width>
 								<ZIndex>15</ZIndex>
@@ -611,7 +611,6 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>0.2cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.9cm</Width>
 								<ZIndex>1</ZIndex>
@@ -627,7 +626,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.4cm</Top>
+								<Top>1.3cm</Top>
 								<Value>株式会社　徳永製作所</Value>
 								<Width>5.5cm</Width>
 								<ZIndex>4</ZIndex>
@@ -643,7 +642,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>0.7cm</Top>
+								<Top>0.5cm</Top>
 								<Value>=First(Fields!URIAGE_NO.Value, "DataSet1")</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>11</ZIndex>
@@ -660,7 +659,6 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>0.2cm</Top>
 								<Value>=First(Fields!URIAGE_DATE.Value, "DataSet1")</Value>
 								<Width>0.5cm</Width>
 								<ZIndex>1</ZIndex>
@@ -676,7 +674,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>1.9cm</Top>
+								<Top>1.8cm</Top>
 								<Value>〒956-0007</Value>
 								<Width>1.9cm</Width>
 								<ZIndex>5</ZIndex>
@@ -684,8 +682,8 @@
 							<List Name="List2">
 								<Height>0.8cm</Height>
 								<Left>0.8cm</Left>
-								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
-								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">4.1cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.9cm</dd:FixedWidth>
 								<ReportItems>
 									<Textbox Name="TextBox32">
 										<DataElementName>TextBox1</DataElementName>
@@ -698,8 +696,8 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD1.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!JUCHU_CD1.Value &amp; "   " &amp; Fields!JUCHU_CD2.Value</Value>
+										<Width>5cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox33">
 										<DataElementName>TextBox2</DataElementName>
@@ -754,7 +752,7 @@
 									<Textbox Name="TextBox36">
 										<DataElementName>TextBox1</DataElementName>
 										<Height>0.4cm</Height>
-										<Left>3.8cm</Left>
+										<Left>5.2cm</Left>
 										<Style>
 											<FontSize>9pt</FontSize>
 											<PaddingBottom>1pt</PaddingBottom>
@@ -762,8 +760,8 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD2.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Width>1.7cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox37">
 										<DataElementName>TextBox7</DataElementName>
@@ -813,14 +811,14 @@
 										<ZIndex>5</ZIndex>
 									</Textbox>
 								</ReportItems>
-								<Top>13.4cm</Top>
+								<Top>13.3cm</Top>
 								<Width>17.9cm</Width>
 							</List>
 							<List Name="List3">
 								<Height>0.8cm</Height>
 								<Left>0.8cm</Left>
-								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">3.7cm</dd:FixedHeight>
-								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.6cm</dd:FixedWidth>
+								<dd:FixedHeight xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">4.1cm</dd:FixedHeight>
+								<dd:FixedWidth xmlns:dd="http://schemas.datadynamics.com/reporting/2005/02/reportdefinition">17.9cm</dd:FixedWidth>
 								<ReportItems>
 									<Textbox Name="TextBox40">
 										<DataElementName>TextBox1</DataElementName>
@@ -833,8 +831,8 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD1.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!JUCHU_CD1.Value &amp; "   " &amp; Fields!JUCHU_CD2.Value</Value>
+										<Width>5cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox41">
 										<DataElementName>TextBox2</DataElementName>
@@ -872,7 +870,7 @@
 									<Textbox Name="TextBox44">
 										<DataElementName>TextBox1</DataElementName>
 										<Height>0.4cm</Height>
-										<Left>3.8cm</Left>
+										<Left>5.2cm</Left>
 										<Style>
 											<FontSize>9pt</FontSize>
 											<PaddingBottom>1pt</PaddingBottom>
@@ -880,11 +878,11 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!JUCHU_CD2.Value</Value>
-										<Width>3.6cm</Width>
+										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Width>1.7cm</Width>
 									</Textbox>
 								</ReportItems>
-								<Top>23.3cm</Top>
+								<Top>23.2cm</Top>
 								<Width>17.9cm</Width>
 							</List>
 							<Textbox Name="TextBox48">
@@ -898,8 +896,8 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>17.8cm</Top>
-								<Value>ihureuirepepepre</Value>
+								<Top>17.65cm</Top>
+								<Value>=First(Fields!BIKOU2.Value, "DataSet1")</Value>
 								<Width>8.5cm</Width>
 								<ZIndex>13</ZIndex>
 							</Textbox>
@@ -914,9 +912,10 @@
 									<PaddingLeft>1pt</PaddingLeft>
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
 								</Style>
-								<Top>17.7cm</Top>
-								<Value>=Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1")</Value>
+								<Top>17.6cm</Top>
+								<Value>=iif(Globals!PageNumber = Globals!TotalPages,Sum(Fields!URIAGE_KINGAKU.Value, "DataSet1"),"*************")</Value>
 								<Width>2.3cm</Width>
 								<ZIndex>14</ZIndex>
 							</Textbox>
@@ -931,8 +930,8 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>27.7cm</Top>
-								<Value>ihureuirepepepre</Value>
+								<Top>27.55cm</Top>
+								<Value>=First(Fields!BIKOU2.Value, "DataSet1")</Value>
 								<Width>8.5cm</Width>
 								<ZIndex>13</ZIndex>
 							</Textbox>
@@ -947,7 +946,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>12.1cm</Top>
+								<Top>12cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
 								<Width>1.5cm</Width>
 								<ZIndex>2</ZIndex>
@@ -963,7 +962,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>11.5cm</Top>
+								<Top>11.4cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
 								<Width>9.6cm</Width>
 								<ZIndex>3</ZIndex>
@@ -979,7 +978,7 @@
 									<PaddingRight>1pt</PaddingRight>
 									<PaddingTop>1pt</PaddingTop>
 								</Style>
-								<Top>22.1cm</Top>
+								<Top>21.9cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_CD.Value, "DataSet1")</Value>
 								<Width>1.5cm</Width>
 								<ZIndex>2</ZIndex>
@@ -995,7 +994,7 @@
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
-								<Top>21.5cm</Top>
+								<Top>21.3cm</Top>
 								<Value>=First(Fields!TORIHIKISAKI_NAME.Value, "DataSet1") &amp; "  様"</Value>
 								<Width>9.6cm</Width>
 								<ZIndex>3</ZIndex>
@@ -1078,6 +1077,9 @@
 				</Field>
 				<Field Name="JUCHU_SU">
 					<DataField>JUCHU_SU</DataField>
+				</Field>
+				<Field Name="BIKOU2">
+					<DataField>BIKOU2</DataField>
 				</Field>
 				<Field Name="CREATE_USER_CD">
 					<DataField>CREATE_USER_CD</DataField>
