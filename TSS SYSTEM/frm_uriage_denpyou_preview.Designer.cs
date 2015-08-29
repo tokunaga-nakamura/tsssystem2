@@ -33,12 +33,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hsrdcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_uriage_no = new System.Windows.Forms.TextBox();
             this.lbl_comment = new System.Windows.Forms.Label();
+            this.tb_uriage_no = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +90,7 @@
             this.btn_hsrdcopy.Name = "btn_hsrdcopy";
             this.btn_hsrdcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hsrdcopy.TabIndex = 0;
+            this.btn_hsrdcopy.TabStop = false;
             this.btn_hsrdcopy.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
@@ -114,15 +115,57 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // btn_syuuryou
+            // splitContainer3
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.lbl_comment);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_uriage_no);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.viewer1);
+            this.splitContainer3.Size = new System.Drawing.Size(880, 431);
+            this.splitContainer3.SplitterDistance = 27;
+            this.splitContainer3.TabIndex = 1;
+            this.splitContainer3.TabStop = false;
+            // 
+            // lbl_comment
+            // 
+            this.lbl_comment.AutoSize = true;
+            this.lbl_comment.Location = new System.Drawing.Point(207, 6);
+            this.lbl_comment.Name = "lbl_comment";
+            this.lbl_comment.Size = new System.Drawing.Size(0, 12);
+            this.lbl_comment.TabIndex = 2;
+            // 
+            // tb_uriage_no
+            // 
+            this.tb_uriage_no.Location = new System.Drawing.Point(70, 3);
+            this.tb_uriage_no.MaxLength = 10;
+            this.tb_uriage_no.Name = "tb_uriage_no";
+            this.tb_uriage_no.Size = new System.Drawing.Size(72, 19);
+            this.tb_uriage_no.TabIndex = 1;
+            this.tb_uriage_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_no_Validating);
+            this.tb_uriage_no.Validated += new System.EventHandler(this.tb_uriage_no_Validated);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(60, 19);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "売上番号";
             // 
             // viewer1
             // 
@@ -162,58 +205,15 @@
             this.viewer1.Size = new System.Drawing.Size(880, 400);
             this.viewer1.TabIndex = 0;
             // 
-            // splitContainer3
+            // btn_syuuryou
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.lbl_comment);
-            this.splitContainer3.Panel1.Controls.Add(this.tb_uriage_no);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.viewer1);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 431);
-            this.splitContainer3.SplitterDistance = 27;
-            this.splitContainer3.TabIndex = 1;
-            this.splitContainer3.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(60, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "売上番号";
-            // 
-            // tb_uriage_no
-            // 
-            this.tb_uriage_no.Location = new System.Drawing.Point(70, 3);
-            this.tb_uriage_no.MaxLength = 10;
-            this.tb_uriage_no.Name = "tb_uriage_no";
-            this.tb_uriage_no.Size = new System.Drawing.Size(72, 19);
-            this.tb_uriage_no.TabIndex = 1;
-            this.tb_uriage_no.Text = "1234567890";
-            this.tb_uriage_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_no_Validating);
-            this.tb_uriage_no.Validated += new System.EventHandler(this.tb_uriage_no_Validated);
-            // 
-            // lbl_comment
-            // 
-            this.lbl_comment.AutoSize = true;
-            this.lbl_comment.Location = new System.Drawing.Point(207, 6);
-            this.lbl_comment.Name = "lbl_comment";
-            this.lbl_comment.Size = new System.Drawing.Size(0, 12);
-            this.lbl_comment.TabIndex = 2;
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
             // frm_uriage_denpyou_preview
             // 

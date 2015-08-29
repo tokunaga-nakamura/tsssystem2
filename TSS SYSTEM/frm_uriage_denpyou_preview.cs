@@ -62,6 +62,18 @@ namespace TSS_SYSTEM
             }
             else
             {
+                //入力された売上番号を"0000000000"形式の文字列に変換
+                double w_double;
+                if (double.TryParse(tb_uriage_no.Text.ToString(), out w_double))
+                {
+                    tb_uriage_no.Text = w_double.ToString("0000000000");
+                }
+                else
+                {
+                    MessageBox.Show("売上番号に異常があります。");
+                    tb_uriage_no.Focus();
+                }
+
                 w_dt_m = tss.OracleSelect("select * from tss_uriage_m where uriage_no = '" + tb_uriage_no.Text + "' order by seq asc");
                 if(w_dt_m.Rows.Count == 0)
                 {

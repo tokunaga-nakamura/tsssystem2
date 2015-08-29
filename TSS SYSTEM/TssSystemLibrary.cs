@@ -1596,7 +1596,7 @@ namespace TSS_SYSTEM
         /// 受注コード2</param>
         /// <returns>
         /// string 売上数
-        /// エラー等、取得できない場合はnull</returns>
+        /// エラー等、取得できない場合は""</returns>
         public string get_juchu_uriage_su(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_uriage_su)
         {
             string out_str = null; //戻り値用
@@ -1608,7 +1608,7 @@ namespace TSS_SYSTEM
             w_dt_m = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
             if(w_dt_m.Rows.Count == 0)
             {
-                out_str = null;
+                out_str = "";
             }
             else
             {
@@ -1633,7 +1633,7 @@ namespace TSS_SYSTEM
         /// 受注コード2</param>
         /// <returns>
         /// string 受注数
-        /// エラー等、取得できない場合はnull</returns>
+        /// エラー等、取得できない場合は""</returns>
         public string get_juchu_juchu_su(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
         {
             string out_str = null; //戻り値用
@@ -1642,7 +1642,7 @@ namespace TSS_SYSTEM
             w_dt_m = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
             if (w_dt_m.Rows.Count == 0)
             {
-                out_str = null;
+                out_str = "";
             }
             else
             {
