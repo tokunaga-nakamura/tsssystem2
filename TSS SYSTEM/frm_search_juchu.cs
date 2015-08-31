@@ -230,7 +230,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "torihikisaki_cd => '" + tb_torihikisaki_cd2.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -255,7 +255,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "juchu_cd1 => '" + tb_juchu_cd1_2.Text.ToString() + "' and juchu_cd1_cd <= '" + tb_juchu_cd1_1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "juchu_cd1 >= '" + tb_juchu_cd1_2.Text.ToString() + "' and juchu_cd1_cd <= '" + tb_juchu_cd1_1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -280,7 +280,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "juchu_cd2 => '" + tb_juchu_cd2_2.Text.ToString() + "' and juchu_cd2_cd <= '" + tb_juchu_cd2_1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "juchu_cd2 >= '" + tb_juchu_cd2_2.Text.ToString() + "' and juchu_cd2_cd <= '" + tb_juchu_cd2_1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -322,7 +322,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "to_char(create_datetime,'yyyy/mm/dd') => '" + tb_create_date2.Text.ToString() + "' and to_date(create_datetime,'yyyy/mm/dd') <= '" + tb_create_date1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "to_char(create_datetime,'yyyy/mm/dd') >= '" + tb_create_date2.Text.ToString() + "' and to_date(create_datetime,'yyyy/mm/dd') <= '" + tb_create_date1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }

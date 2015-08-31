@@ -175,7 +175,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "seihin_cd => '" + tb_seihin_cd2.Text.ToString() + "' and seihin_cd <= '" + tb_seihin_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "seihin_cd >= '" + tb_seihin_cd2.Text.ToString() + "' and seihin_cd <= '" + tb_seihin_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
