@@ -185,9 +185,9 @@ namespace TSS_SYSTEM
             tb_seihin_cd.Text = "";
             tb_seihin_name.Text = "";
             tb_juchu_su.Text = "";
-            cb_nouhin_schedule.Checked = false;
-            cb_seisan_schedule.Checked = false;
-            cb_seisan_jisseki.Checked = false;
+            cb_nouhin_schedule.Checked = true;
+            cb_seisan_schedule.Checked = true;
+            cb_seisan_jisseki.Checked = true;
             tb_bikou.Text = "";
             tb_seisan_su.Text = "";
             tb_nouhin_su.Text = "";
