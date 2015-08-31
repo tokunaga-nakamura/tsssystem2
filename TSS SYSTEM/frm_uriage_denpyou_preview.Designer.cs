@@ -148,11 +148,13 @@
             // 
             // tb_uriage_no
             // 
+            this.tb_uriage_no.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_uriage_no.Location = new System.Drawing.Point(70, 3);
             this.tb_uriage_no.MaxLength = 10;
             this.tb_uriage_no.Name = "tb_uriage_no";
             this.tb_uriage_no.Size = new System.Drawing.Size(72, 19);
             this.tb_uriage_no.TabIndex = 1;
+            this.tb_uriage_no.DoubleClick += new System.EventHandler(this.tb_uriage_no_DoubleClick);
             this.tb_uriage_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_no_Validating);
             this.tb_uriage_no.Validated += new System.EventHandler(this.tb_uriage_no_Validated);
             // 

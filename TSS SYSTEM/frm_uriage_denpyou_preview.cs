@@ -132,7 +132,52 @@ namespace TSS_SYSTEM
             viewer1.LoadDocument("rpt_uriage_denpyou.rdlx");
         }
 
+        private void tb_uriage_no_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
 
+            //マウスのX座標を取得する
+            //int x = System.Windows.Forms.Cursor.Position.X;
+            //マウスのY座標を取得する
+            //int y = System.Windows.Forms.Cursor.Position.Y;
+
+            frm_search_uriage frm_sb = new frm_search_uriage();
+
+            //フォームをマウスの位置に表示する
+            //frm_sb.Left = x;
+            //frm_sb.Top = y;
+            //frm_sb.StartPosition = FormStartPosition.Manual;
+
+            //子画面のプロパティに値をセットする
+            frm_sb.str_mode = "2";
+            frm_sb.ShowDialog();
+            //子画面から値を取得する
+            w_cd = frm_sb.str_cd;
+            frm_sb.Dispose();
+
+            if (w_cd != "")
+            {
+                tb_uriage_no.Text = w_cd;
+                chk_uriage_no();
+            }
+        }
+
+        private void chk_uriage_no()
+        {
+            //入力された売上番号を"0000000000"形式の文字列に変換
+            double w_double;
+            if (double.TryParse(tb_uriage_no.Text.ToString(), out w_double))
+            {
+                tb_uriage_no.Text = w_double.ToString("0000000000");
+                viewer1.Focus();
+            }
+            else
+            {
+                MessageBox.Show("売上番号に異常があります。");
+                tb_uriage_no.Focus();
+            }
+        }
 
     }
 }
