@@ -44,12 +44,12 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.tb_bikou2 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_uriage_goukei = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tb_bikou2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -277,8 +277,29 @@
             this.dgv_m.RowTemplate.Height = 21;
             this.dgv_m.Size = new System.Drawing.Size(880, 319);
             this.dgv_m.TabIndex = 0;
+            this.dgv_m.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellDoubleClick);
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
+            // 
+            // tb_bikou2
+            // 
+            this.tb_bikou2.Location = new System.Drawing.Point(46, 3);
+            this.tb_bikou2.MaxLength = 128;
+            this.tb_bikou2.Name = "tb_bikou2";
+            this.tb_bikou2.Size = new System.Drawing.Size(513, 19);
+            this.tb_bikou2.TabIndex = 5;
+            this.tb_bikou2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou2_Validating);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(10, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(36, 19);
+            this.textBox2.TabIndex = 4;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "備考";
             // 
             // tb_uriage_goukei
             // 
@@ -321,26 +342,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(10, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(36, 19);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "備考";
-            // 
-            // tb_bikou2
-            // 
-            this.tb_bikou2.Location = new System.Drawing.Point(46, 3);
-            this.tb_bikou2.MaxLength = 128;
-            this.tb_bikou2.Name = "tb_bikou2";
-            this.tb_bikou2.Size = new System.Drawing.Size(513, 19);
-            this.tb_bikou2.TabIndex = 5;
-            this.tb_bikou2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou2_Validating);
             // 
             // frm_uriage
             // 

@@ -360,5 +360,14 @@ namespace TSS_SYSTEM
 
         }
 
+        private void tb_torihikisaki_cd_Validated(object sender, EventArgs e)
+        {
+            if (tb_torihikisaki_cd.Text != "")
+            {
+                tb_torihikisaki_name.Text = tss.get_torihikisaki_name(tb_torihikisaki_cd.Text);
+            }
+
+        }
+
     }
 }

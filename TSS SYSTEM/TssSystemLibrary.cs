@@ -1587,7 +1587,7 @@ namespace TSS_SYSTEM
 
         #region get_juchu_uriage_su メソッド
         /// <summary>
-        /// 売上番号を受け取り売上数を返す</summary>
+        /// 受注番号を受け取り売上数を返す</summary>
         /// <param name="string in_torihikisaki_cd">
         /// 取引先コード</param>
         /// <param name="string in_juchu_cd1">
@@ -1624,7 +1624,7 @@ namespace TSS_SYSTEM
 
         #region get_juchu_juchu_su メソッド
         /// <summary>
-        /// 売上番号を受け取り受注数を返す</summary>
+        /// 受注番号を受け取り受注数を返す</summary>
         /// <param name="string in_torihikisaki_cd">
         /// 取引先コード</param>
         /// <param name="string in_juchu_cd1">

@@ -453,6 +453,10 @@ namespace TSS_SYSTEM
             dgv_m.Columns[10].DefaultCellStyle.BackColor = Color.Gainsboro; //売上金額
             dgv_m.Columns[23].DefaultCellStyle.BackColor = Color.Gainsboro; //現在までの売上数
             dgv_m.Columns[24].DefaultCellStyle.BackColor = Color.Gainsboro; //受注数
+
+            //検索可能の列を水色にする
+            dgv_m.Columns[5].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード1
+            dgv_m.Columns[6].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード2
         }
 
         private void uriage_goukei_disp()
@@ -501,6 +505,11 @@ namespace TSS_SYSTEM
 
         private void dgv_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             DataGridView dgv = (DataGridView)sender;
 
             //新しい行のセルでなく、セルの内容が変更されている時だけ検証する
@@ -509,43 +518,6 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            //受注コード2
-            if (e.ColumnIndex == 6)
-            {
-                if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-
-                int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
-                int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
-                string w_seihin_cd;
-
-                if (dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString() != null && dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString() != "")
-                {
-                    w_juchu_cd1_flg = 1;
-                }
-                if (dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString() != null && dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString() != "")
-                {
-                    w_juchu_cd2_flg = 1;
-                }
-                //受注コード1または受注コード2のどちらかが入力されていたら、受注マスタを読み製品名を表示する
-                if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
-                {
-                    w_seihin_cd = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[7].Value = w_seihin_cd;
-                    dgv_m.Rows[e.RowIndex].Cells[8].Value = tss.get_seihin_name(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[10].Value = tss.get_seihin_tanka(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[23].Value = get_uriage_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[24].Value = get_juchu_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), e.FormattedValue.ToString());
-                }
-                else
-                {
-                    dgv_m.Rows[e.RowIndex].Cells[23].Value = "";
-                    dgv_m.Rows[e.RowIndex].Cells[24].Value = "";
-                }
-            }
 
             //製品コード
             if (e.ColumnIndex == 7)
@@ -581,13 +553,10 @@ namespace TSS_SYSTEM
                             return;
                         }
                     }
-                    dgv_m.Rows[e.RowIndex].Cells[8].Value = tss.get_seihin_name(e.FormattedValue.ToString());
-                    dgv_m.Rows[e.RowIndex].Cells[10].Value = tss.get_seihin_tanka(e.FormattedValue.ToString());
-                    if (dgv_m.Rows[e.RowIndex].Cells[8].Value.ToString() == "")
+                    if (tss.get_seihin_name(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString()) == null)
                     {
                         MessageBox.Show("入力された製品コードは存在しません。");
                         e.Cancel = true;
-                        return;
                     }
                 }
             }
@@ -998,6 +967,18 @@ namespace TSS_SYSTEM
 
         private void dgv_m_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
+            //受注コード2
+            if (e.ColumnIndex == 6)
+            {
+                chk_juchu(e.RowIndex);
+            }
+
+            //製品コード
+            if (e.ColumnIndex == 7)
+            {
+                chk_seihin_cd(e.RowIndex);
+            }
+
             //売上数
             if (e.ColumnIndex == 9)
             {
@@ -1259,5 +1240,92 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
+        private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                //受注コード1
+                //選択画面へ
+                string w_cd;
+                w_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), "", "");
+                if (w_cd.Length == 38)
+                {
+                    tb_torihikisaki_cd.Text = w_cd.Substring(0, 6).TrimEnd();
+                    dgv_m.Rows[e.RowIndex].Cells[5].Value = w_cd.Substring(6, 16).TrimEnd();
+                    dgv_m.Rows[e.RowIndex].Cells[6].Value = w_cd.Substring(22, 16).TrimEnd();
+                    dgv_m.EndEdit();
+                    chk_juchu(e.RowIndex);
+                }
+            }
+            if (e.ColumnIndex == 6)
+            {
+                //受注コード2
+                //選択画面へ
+                string w_cd;
+                w_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[e.RowIndex].Cells[5].Value.ToString(), dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString(), "");
+                if (w_cd.Length == 38)
+                {
+                    tb_torihikisaki_cd.Text = w_cd.Substring(0, 6).TrimEnd();
+                    dgv_m.Rows[e.RowIndex].Cells[5].Value = w_cd.Substring(6, 16).TrimEnd();
+                    dgv_m.Rows[e.RowIndex].Cells[6].Value = w_cd.Substring(22, 16).TrimEnd();
+                    dgv_m.EndEdit();
+                    chk_juchu(e.RowIndex);
+                }
+            }
+            if (e.ColumnIndex == 7)
+            {
+                //製品コード
+                //選択画面へ
+                string w_cd;
+                w_cd = tss.search_seihin("2", dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
+                if (w_cd != "")
+                {
+                    dgv_m.Rows[e.RowIndex].Cells[7].Value = w_cd;
+                    dgv_m.EndEdit();
+                    chk_seihin_cd(e.RowIndex);
+                }
+            }
+        }
+
+        private void chk_juchu(int in_RowIndex)
+        {
+            int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
+            int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
+            string w_seihin_cd;
+
+            if (dgv_m.Rows[in_RowIndex].Cells[5].Value.ToString() != null && dgv_m.Rows[in_RowIndex].Cells[5].Value.ToString() != "")
+            {
+                w_juchu_cd1_flg = 1;
+            }
+            if (dgv_m.Rows[in_RowIndex].Cells[6].Value.ToString() != null && dgv_m.Rows[in_RowIndex].Cells[6].Value.ToString() != "")
+            {
+                w_juchu_cd2_flg = 1;
+            }
+            //受注コード1または受注コード2のどちらかが入力されていたら、受注マスタを読み製品名を表示する
+            if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
+            {
+                w_seihin_cd = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[in_RowIndex].Cells[5].Value.ToString(), dgv_m.Rows[in_RowIndex].Cells[6].Value.ToString());
+                dgv_m.Rows[in_RowIndex].Cells[7].Value = w_seihin_cd;
+                dgv_m.Rows[in_RowIndex].Cells[8].Value = tss.get_seihin_name(dgv_m.Rows[in_RowIndex].Cells[7].Value.ToString());
+                dgv_m.Rows[in_RowIndex].Cells[10].Value = tss.get_seihin_tanka(dgv_m.Rows[in_RowIndex].Cells[7].Value.ToString());
+                dgv_m.Rows[in_RowIndex].Cells[23].Value = get_uriage_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[in_RowIndex].Cells[5].Value.ToString(), dgv_m.Rows[in_RowIndex].Cells[6].Value.ToString());
+                dgv_m.Rows[in_RowIndex].Cells[24].Value = get_juchu_su(tb_torihikisaki_cd.Text.ToString(), dgv_m.Rows[in_RowIndex].Cells[5].Value.ToString(), dgv_m.Rows[in_RowIndex].Cells[6].Value.ToString());
+            }
+            else
+            {
+                dgv_m.Rows[in_RowIndex].Cells[23].Value = "";
+                dgv_m.Rows[in_RowIndex].Cells[24].Value = "";
+            }
+        }
+
+        private void chk_seihin_cd(int in_RowIndex)
+        {
+            dgv_m.Rows[in_RowIndex].Cells[8].Value = tss.get_seihin_name(dgv_m.Rows[in_RowIndex].Cells[7].Value.ToString());
+            dgv_m.Rows[in_RowIndex].Cells[10].Value = tss.get_seihin_tanka(dgv_m.Rows[in_RowIndex].Cells[7].Value.ToString());
+        }
+
+
+
     }
 }

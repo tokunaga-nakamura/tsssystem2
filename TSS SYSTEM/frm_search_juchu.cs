@@ -147,20 +147,26 @@ namespace TSS_SYSTEM
         private void frm_search_juchu_Load(object sender, EventArgs e)
         {
             //引数が入っていたら、画面に表示
+            int w_flg = 0;
+            string w_sql = "";
             if (in_torihikisaki_cd.Length != 0)
             {
                 tb_torihikisaki_cd1.Text = in_torihikisaki_cd;
                 tb_torihikisaki_cd2.Text = in_torihikisaki_cd;
+                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'";
+                w_flg = 1;
             }
             if (in_juchu_cd1.Length != 0)
             {
                 tb_juchu_cd1_1.Text = in_juchu_cd1;
                 tb_juchu_cd1_2.Text = in_juchu_cd1;
+                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%'";
             }
             if (in_juchu_cd2.Length != 0)
             {
                 tb_juchu_cd2_1.Text = in_juchu_cd2;
                 tb_juchu_cd2_2.Text = in_juchu_cd2;
+                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%' and juchu_cd2 like '" + in_juchu_cd2 + "%'";
             }
             if (in_seihin_cd.Length != 0)
             {
@@ -181,6 +187,12 @@ namespace TSS_SYSTEM
                     {
                         //tb_torihikisaki_name.Text = str_name;
                         //kensaku();
+                    }
+                    if(w_flg == 1)
+                    {
+                        DataTable w_dt = new DataTable();
+                        w_dt = tss.OracleSelect(w_sql);
+                        list_disp(w_dt);
                     }
                     break;
                 default:

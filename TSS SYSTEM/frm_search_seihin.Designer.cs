@@ -126,6 +126,7 @@
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(46, 19);
             this.tb_torihikisaki_cd.TabIndex = 6;
             this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
+            this.tb_torihikisaki_cd.Validated += new System.EventHandler(this.tb_torihikisaki_cd_Validated);
             // 
             // textBox6
             // 
