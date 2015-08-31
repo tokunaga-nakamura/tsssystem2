@@ -33,6 +33,12 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if(tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if(tb_torihikisaki_cd.Text == "999999")
             {
                 MessageBox.Show("取引先コードのオール９は、システム予約コードの為、使用できません。");
@@ -1313,6 +1319,12 @@ namespace TSS_SYSTEM
 
         private void tb_juchu_cd1_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_juchu_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if(tb_juchu_cd1.Text == "9999999999999999")
             {
                 MessageBox.Show("受注コードのオール９は、システム予約コードの為、使用できません。");

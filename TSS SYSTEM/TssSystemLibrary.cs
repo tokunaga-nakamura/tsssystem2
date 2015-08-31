@@ -1652,7 +1652,27 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region Check_String_Escape メソッド
+        /// <summary>
+        /// 文字列に使用不可の文字（エスケープシーケンス）等が無いかチェックする</summary>
+        /// <param name="string in_str">チェックする文字列</param>
+        /// <returns>bool 正常:true 使用不可あり:false</returns>
+        public bool Check_String_Escape(string in_str)
+        {
+            bool out_bl = true; //戻り値用
 
+            if (in_str.IndexOf("'") >= 0 || in_str.IndexOf("%") >= 0 || in_str.IndexOf("\\") >= 0 || in_str.IndexOf("\"") >= 0 || in_str.IndexOf("*") >= 0)
+            {
+                MessageBox.Show("文字列に「 ' % \\ \" * 」は使用できません。");
+                out_bl = false;
+            }
+            else
+            {
+                out_bl = true;
+            }
+            return out_bl;
+        }
+        #endregion
 
 
     }
