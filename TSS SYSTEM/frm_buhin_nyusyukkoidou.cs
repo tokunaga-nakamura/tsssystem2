@@ -115,7 +115,6 @@ namespace TSS_SYSTEM
             //行ヘッダーを非表示にする
             dgv_nyusyukkoidou.RowHeadersVisible = true;
 
-
         }
 
         private void mode1()
