@@ -625,17 +625,18 @@ namespace TSS_SYSTEM
             w_dt_insatu = w_dt_view;
 
             //DataGridViewのカラムヘッダーテキストを変更する
-            dgv_nouhin_schedule.Columns[0].HeaderText = "取引先コード";
-            dgv_nouhin_schedule.Columns[1].HeaderText = "受注コード1";
-            dgv_nouhin_schedule.Columns[2].HeaderText = "受注コード2";
-            dgv_nouhin_schedule.Columns[3].HeaderText = "製品コード";
-            dgv_nouhin_schedule.Columns[4].HeaderText = "製品名";
-            dgv_nouhin_schedule.Columns[5].HeaderText = "受注数";
-            dgv_nouhin_schedule.Columns[6].HeaderText = "種別区分";
-            dgv_nouhin_schedule.Columns[7].HeaderText = "分類区分";
-            dgv_nouhin_schedule.Columns[8].HeaderText = "市場区分";
-            dgv_nouhin_schedule.Columns[9].HeaderText = "タイプ区分";
-            dgv_nouhin_schedule.Columns[41].HeaderText = "備考";
+            dgv_nouhin_schedule.Columns[0].HeaderText = "取引先略式名";
+            dgv_nouhin_schedule.Columns[1].HeaderText = "取引先コード";
+            dgv_nouhin_schedule.Columns[2].HeaderText = "受注コード1";
+            dgv_nouhin_schedule.Columns[3].HeaderText = "受注コード2";
+            dgv_nouhin_schedule.Columns[4].HeaderText = "製品コード";
+            dgv_nouhin_schedule.Columns[5].HeaderText = "製品名";
+            dgv_nouhin_schedule.Columns[6].HeaderText = "受注数";
+            dgv_nouhin_schedule.Columns[7].HeaderText = "種別区分";
+            dgv_nouhin_schedule.Columns[8].HeaderText = "分類区分";
+            dgv_nouhin_schedule.Columns[9].HeaderText = "市場区分";
+            dgv_nouhin_schedule.Columns[10].HeaderText = "タイプ区分";
+            dgv_nouhin_schedule.Columns[42].HeaderText = "備考";
 
             //休日をグレーにする
             DataTable w_dt_youbi = new DataTable();
