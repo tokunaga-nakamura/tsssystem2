@@ -96,6 +96,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_uriage_log = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -522,6 +523,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_uriage_log);
             this.tabPage2.Controls.Add(this.btn_uriage_denpyou_insatu);
             this.tabPage2.Controls.Add(this.btn_uriage_kensaku);
             this.tabPage2.Controls.Add(this.btn_uriage);
@@ -950,6 +952,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_uriage_log
+            // 
+            this.btn_uriage_log.Location = new System.Drawing.Point(375, 96);
+            this.btn_uriage_log.Name = "btn_uriage_log";
+            this.btn_uriage_log.Size = new System.Drawing.Size(180, 23);
+            this.btn_uriage_log.TabIndex = 10;
+            this.btn_uriage_log.Text = "売上ログ参照";
+            this.btn_uriage_log.UseVisualStyleBackColor = true;
+            this.btn_uriage_log.Click += new System.EventHandler(this.btn_uriage_log_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1092,6 +1104,7 @@
         private System.Windows.Forms.Button btn_seihim_to_zaiko;
         private System.Windows.Forms.Button btn_siire_kensaku;
         private System.Windows.Forms.Button btn_uriage_denpyou_insatu;
+        private System.Windows.Forms.Button btn_uriage_log;
     }
 }
 

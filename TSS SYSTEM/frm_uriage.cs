@@ -457,6 +457,7 @@ namespace TSS_SYSTEM
             //検索可能の列を水色にする
             dgv_m.Columns[5].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード1
             dgv_m.Columns[6].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード2
+            dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.PowderBlue; //製品コード
         }
 
         private void uriage_goukei_disp()
@@ -961,6 +962,10 @@ namespace TSS_SYSTEM
                             }
                         }
                     }
+                    else
+                    {
+                        uriage_log_write(dr);
+                    }
                 }
             }
         }
@@ -1325,7 +1330,10 @@ namespace TSS_SYSTEM
             dgv_m.Rows[in_RowIndex].Cells[10].Value = tss.get_seihin_tanka(dgv_m.Rows[in_RowIndex].Cells[7].Value.ToString());
         }
 
-
+        private void uriage_log_write(DataRow in_dr)
+        {
+            tss.OracleInsert("insert into tss_uriage_log_f (uriage_datetime,uriage_no,seq,torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,naiyou,create_user_cd,create_datetime) values (to_char(sysdate,'yyyy/mm/dd hh24:mi:ss'),'" + in_dr["uriage_no"].ToString() + "','" + in_dr["seq"].ToString() + "','" + in_dr["torihikisaki_cd"].ToString() + "','" + in_dr["juchu_cd1"].ToString() + "','" + in_dr["juchu_cd2"].ToString() + "','" + in_dr["seihin_cd"].ToString() + "','" + "製品構成の登録が無いため在庫消込を行いませんでした。" + "','" + tss.user_cd + "',sysdate)");
+        }
 
     }
 }

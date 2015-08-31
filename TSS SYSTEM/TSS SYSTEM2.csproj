@@ -292,6 +292,12 @@
     <Compile Include="frm_uriage_denpyou_preview.Designer.cs">
       <DependentUpon>frm_uriage_denpyou_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_uriage_log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage_log.Designer.cs">
+      <DependentUpon>frm_uriage_log.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_user_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_uriage_denpyou_preview.resx">
       <DependentUpon>frm_uriage_denpyou_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage_log.resx">
+      <DependentUpon>frm_uriage_log.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_user_m.resx">
       <DependentUpon>frm_user_m.cs</DependentUpon>
