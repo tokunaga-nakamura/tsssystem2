@@ -63,7 +63,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "siire_no => '" + tb_siire_no2.Text.ToString() + "' and siire_no <= '" + tb_siire_no1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "siire_no >= '" + tb_siire_no2.Text.ToString() + "' and siire_no <= '" + tb_siire_no1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -128,7 +128,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "siire_date => to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/dd') and siire_date <= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/dd')";
+                            sql_where[sql_cnt] = "siire_date >= to_date('" + tb_siire_date2.Text.ToString() + "','YYYY/MM/dd') and siire_date <= to_date('" + tb_siire_date1.Text.ToString() + "','YYYY/MM/dd')";
                             sql_cnt++;
                         }
             }

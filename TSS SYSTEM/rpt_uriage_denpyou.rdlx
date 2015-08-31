@@ -310,6 +310,7 @@
 										<Height>0.4cm</Height>
 										<Left>14.7cm</Left>
 										<Style>
+											<FontSize>9pt</FontSize>
 											<Format>""</Format>
 											<PaddingBottom>1pt</PaddingBottom>
 											<PaddingLeft>1pt</PaddingLeft>
@@ -324,6 +325,7 @@
 										<Height>0.4cm</Height>
 										<Left>14.7cm</Left>
 										<Style>
+											<FontSize>9pt</FontSize>
 											<PaddingBottom>1pt</PaddingBottom>
 											<PaddingLeft>1pt</PaddingLeft>
 											<PaddingRight>1pt</PaddingRight>
@@ -785,6 +787,7 @@
 										<Height>0.4cm</Height>
 										<Left>14.7cm</Left>
 										<Style>
+											<FontSize>9pt</FontSize>
 											<Format>""</Format>
 											<PaddingBottom>1pt</PaddingBottom>
 											<PaddingLeft>1pt</PaddingLeft>
@@ -800,6 +803,7 @@
 										<Height>0.4cm</Height>
 										<Left>14.7cm</Left>
 										<Style>
+											<FontSize>9pt</FontSize>
 											<PaddingBottom>1pt</PaddingBottom>
 											<PaddingLeft>1pt</PaddingLeft>
 											<PaddingRight>1pt</PaddingRight>

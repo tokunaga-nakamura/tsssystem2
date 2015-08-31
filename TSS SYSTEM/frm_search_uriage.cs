@@ -67,7 +67,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_no => '" + tb_uriage_no2.Text.ToString() + "' and uriage_no <= '" + tb_uriage_no1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "uriage_no >= '" + tb_uriage_no2.Text.ToString() + "' and uriage_no <= '" + tb_uriage_no1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -132,7 +132,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_date => to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/dd') and uriage_date <= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/dd')";
+                            sql_where[sql_cnt] = "uriage_date >= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/dd') and uriage_date <= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/dd')";
                             sql_cnt++;
                         }
             }
