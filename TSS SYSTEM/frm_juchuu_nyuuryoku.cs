@@ -1180,7 +1180,7 @@ namespace TSS_SYSTEM
                     {
                         if(e.FormattedValue.ToString() != "")
                         {
-                            if (e.FormattedValue.ToString().Length != 8)
+                            if (e.FormattedValue.ToString().Length != 8 && e.FormattedValue.ToString().Length != 10)
                             {
                                 e.Cancel = true;
                             }
