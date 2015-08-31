@@ -644,7 +644,6 @@ namespace TSS_SYSTEM
                        dgv_nyusyukkoidou.EndEdit();
                    }
                }
-               
            }
 
        }

@@ -88,6 +88,13 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
+            
             tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text);
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select seihin_kousei_no,seihin_kousei_name from tss_seihin_kousei_name_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "' ORDER BY seihin_kousei_no");

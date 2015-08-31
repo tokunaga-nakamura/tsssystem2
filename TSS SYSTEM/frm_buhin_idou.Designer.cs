@@ -255,6 +255,7 @@
             this.tb_denpyou_no.Name = "tb_denpyou_no";
             this.tb_denpyou_no.Size = new System.Drawing.Size(239, 19);
             this.tb_denpyou_no.TabIndex = 1;
+            this.tb_denpyou_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_denpyou_no_Validating);
             // 
             // textBox2
             // 

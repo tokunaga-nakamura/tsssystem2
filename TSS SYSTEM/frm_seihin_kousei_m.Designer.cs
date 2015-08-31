@@ -143,6 +143,7 @@
             this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 275);
             this.dgv_seihin_kousei.TabIndex = 0;
             this.dgv_seihin_kousei.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellEndEdit);
+            this.dgv_seihin_kousei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_seihin_kousei_CellValidating);
             this.dgv_seihin_kousei.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_seihin_kousei_DataError);
             // 
             // btn_syuuryou
@@ -223,9 +224,10 @@
             this.tb_seihin_kousei_no.MaxLength = 2;
             this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
             this.tb_seihin_kousei_no.Size = new System.Drawing.Size(83, 19);
-            this.tb_seihin_kousei_no.TabIndex = 42;
+            this.tb_seihin_kousei_no.TabIndex = 1;
             this.tb_seihin_kousei_no.TextChanged += new System.EventHandler(this.tb_seihin_kousei_no_TextChanged);
             this.tb_seihin_kousei_no.DoubleClick += new System.EventHandler(this.tb_seihin_kousei_no_DoubleClick);
+            this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
             // 
             // tb_seihin_kousei_name
             // 
@@ -233,8 +235,8 @@
             this.tb_seihin_kousei_name.Location = new System.Drawing.Point(203, 37);
             this.tb_seihin_kousei_name.Name = "tb_seihin_kousei_name";
             this.tb_seihin_kousei_name.Size = new System.Drawing.Size(222, 19);
-            this.tb_seihin_kousei_name.TabIndex = 35;
-            this.tb_seihin_kousei_name.TabStop = false;
+            this.tb_seihin_kousei_name.TabIndex = 2;
+            this.tb_seihin_kousei_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_name_Validating);
             // 
             // tb_update_datetime
             // 
@@ -253,7 +255,7 @@
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(83, 19);
-            this.tb_seihin_cd.TabIndex = 33;
+            this.tb_seihin_cd.TabIndex = 0;
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
@@ -330,6 +332,7 @@
             this.dgv_seihin_kousei_name.RowTemplate.Height = 21;
             this.dgv_seihin_kousei_name.Size = new System.Drawing.Size(392, 144);
             this.dgv_seihin_kousei_name.TabIndex = 43;
+            this.dgv_seihin_kousei_name.TabStop = false;
             // 
             // splitContainer2
             // 
