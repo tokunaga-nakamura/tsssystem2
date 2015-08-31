@@ -621,14 +621,7 @@ namespace TSS_SYSTEM
 
            if (i == 3)
            {
-               string zaiko_kbn = dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString();
-               
-               if(zaiko_kbn == "01")
-               {
-                   return;
-               }
-               
-               else
+               if (dgv_nyusyukkoidou.CurrentRow.Cells[2].Value == null || dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString() != "01")
                {
                    //選択画面へ
                    string w_juchu_cd;
@@ -644,6 +637,11 @@ namespace TSS_SYSTEM
                        dgv_nyusyukkoidou.EndEdit();
                    }
                }
+               else
+               {
+                   return;
+               }
+               
            }
 
        }
@@ -659,7 +657,6 @@ namespace TSS_SYSTEM
                e.Cancel = true;
                return;
            }
-
 
            if (i == 2)
            {
@@ -677,14 +674,13 @@ namespace TSS_SYSTEM
                }
                else
                {
-                   dgv_nyusyukkoidou[3, j].Style.BackColor = Color.White;
+                   dgv_nyusyukkoidou[3, j].Style.BackColor = Color.PowderBlue;
                    dgv_nyusyukkoidou[4, j].Style.BackColor = Color.White;
                    dgv_nyusyukkoidou[3, j].ReadOnly = false;
                    dgv_nyusyukkoidou[4, j].ReadOnly = false;
 
                    dgv_nyusyukkoidou.EndEdit();
                }
-
            }
        }
 
