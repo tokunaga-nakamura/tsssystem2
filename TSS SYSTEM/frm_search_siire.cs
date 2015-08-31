@@ -367,6 +367,14 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
+            
             if (tb_torihikisaki_cd.Text != null && tb_torihikisaki_cd.Text != "")
             {
                 if (chk_torihikisaki_cd(tb_torihikisaki_cd.Text))
@@ -384,6 +392,8 @@ namespace TSS_SYSTEM
 
         private void tb_siire_date1_Validating(object sender, CancelEventArgs e)
         {
+            
+
             if (tb_siire_date1.Text != "")
             {
                 if (chk_siire_date(tb_siire_date1.Text))
@@ -400,7 +410,7 @@ namespace TSS_SYSTEM
 
         private void tb_siire_date2_Validating(object sender, CancelEventArgs e)
         {
-            if (tb_siire_date1.Text != "")
+            if (tb_siire_date2.Text != "")
             {
                 if (chk_siire_date(tb_siire_date2.Text))
                 {
@@ -416,6 +426,13 @@ namespace TSS_SYSTEM
 
         private void tb_buhin_cd_Validating(object sender, CancelEventArgs e)
         {
+
+            if (tss.Check_String_Escape(tb_buhin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
             if (tb_buhin_cd.Text != "")
             {
                 tb_buhin_name.Text = get_buhin_name(tb_buhin_cd.Text);
@@ -459,6 +476,24 @@ namespace TSS_SYSTEM
         private void btn_cancel_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_siire_no1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siire_no1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_siire_no2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siire_no2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
     }
 }

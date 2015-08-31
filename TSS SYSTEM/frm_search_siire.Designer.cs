@@ -234,7 +234,7 @@
             this.tb_siire_no2.Name = "tb_siire_no2";
             this.tb_siire_no2.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_no2.TabIndex = 1;
-            this.tb_siire_no2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date2_Validating);
+            this.tb_siire_no2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_no2_Validating);
             // 
             // tb_siire_no1
             // 
@@ -243,7 +243,7 @@
             this.tb_siire_no1.Name = "tb_siire_no1";
             this.tb_siire_no1.Size = new System.Drawing.Size(74, 19);
             this.tb_siire_no1.TabIndex = 0;
-            this.tb_siire_no1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_date1_Validating);
+            this.tb_siire_no1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siire_no1_Validating);
             // 
             // textBox1
             // 
