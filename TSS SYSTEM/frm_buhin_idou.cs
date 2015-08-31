@@ -407,17 +407,29 @@ namespace TSS_SYSTEM
                 }
             }
 
+            if (i == 3 || i == 7)
+             {
+                 //選択画面へ
+                 string w_cd;
+                 w_cd = tss.search_torihikisaki("2", "");
+                 if (w_cd != "")
+                 {
+                     dgv_idou.CurrentCell.Value = w_cd;
+                     dgv_idou.EndEdit();
+                 }
+             }
+
+
 
             if (i == 4)
             {
-                string zaiko_kbn = dgv_idou.CurrentRow.Cells[2].Value.ToString();
-
-                if (zaiko_kbn == "01")
+                if (dgv_idou.CurrentRow.Cells[3].Value == null)
                 {
+                    MessageBox.Show("取引先コードを入力してください");
                     return;
                 }
-
-                else
+                
+                if (dgv_idou.CurrentRow.Cells[2].Value == null || dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
                 {
                     //選択画面へ
                     string w_juchu_cd;
@@ -432,23 +444,26 @@ namespace TSS_SYSTEM
                         dgv_idou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
                         dgv_idou.EndEdit();
                     }
+                }
+                else
+                {
+                    return;
                 }
             }
             
             if (i == 8)
             {
-                string zaiko_kbn = dgv_idou.CurrentRow.Cells[6].Value.ToString();
-
-                if (zaiko_kbn == "01")
+                if (dgv_idou.CurrentRow.Cells[7].Value == null)
                 {
+                    MessageBox.Show("移動先取引先コードを入力してください");
                     return;
                 }
-
-                else
+                
+                if (dgv_idou.CurrentRow.Cells[6].Value == null || dgv_idou.CurrentRow.Cells[6].Value.ToString() != "01")
                 {
                     //選択画面へ
                     string w_juchu_cd;
-                    w_juchu_cd = tss.search_juchu("2", dgv_idou.CurrentRow.Cells[3].Value.ToString(), "", "", "");
+                    w_juchu_cd = tss.search_juchu("2", dgv_idou.CurrentRow.Cells[7].Value.ToString(), "", "", "");
 
                     if (w_juchu_cd.ToString() != "")
                     {
@@ -459,6 +474,10 @@ namespace TSS_SYSTEM
                         dgv_idou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
                         dgv_idou.EndEdit();
                     }
+                }
+                else
+                {
+                    return;
                 }
             }
 
@@ -493,7 +512,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    dgv_idou[4, j].Style.BackColor = Color.White;
+                    dgv_idou[4, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[5, j].Style.BackColor = Color.White;
                     dgv_idou[4, j].ReadOnly = false;
                     dgv_idou[5, j].ReadOnly = false;
@@ -520,7 +539,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    dgv_idou[8, j].Style.BackColor = Color.White;
+                    dgv_idou[8, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[9, j].Style.BackColor = Color.White;
                     dgv_idou[8, j].ReadOnly = false;
                     dgv_idou[9, j].ReadOnly = false;

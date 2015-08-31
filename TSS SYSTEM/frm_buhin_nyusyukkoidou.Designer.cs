@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyusyukkoidou));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
@@ -46,6 +49,10 @@
             this.tb_denpyou_no = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dgv_nyusyukkoidou = new System.Windows.Forms.DataGridView();
+            this.btn_sakujyo = new System.Windows.Forms.Button();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.ss_status = new System.Windows.Forms.StatusStrip();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,10 +60,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_sakujyo = new System.Windows.Forms.Button();
-            this.btn_touroku = new System.Windows.Forms.Button();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.ss_status = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -293,49 +296,6 @@
             this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
             this.dgv_nyusyukkoidou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nyusyukkoidou_CellValidating);
             // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "部品コード";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 85;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "部品名";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 250;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "在庫区分";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "受注コード1";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "受注コード2";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column7.HeaderText = "数量";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 70;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "備考";
-            this.Column1.Name = "Column1";
-            // 
             // btn_sakujyo
             // 
             this.btn_sakujyo.Location = new System.Drawing.Point(10, 3);
@@ -373,6 +333,56 @@
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 2;
             this.ss_status.Text = "statusStrip1";
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column2.HeaderText = "部品コード";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 85;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.HeaderText = "部品名";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 250;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "在庫区分";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column5.HeaderText = "受注コード1";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "受注コード2";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column7.HeaderText = "数量";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 70;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "備考";
+            this.Column1.Name = "Column1";
             // 
             // frm_buhin_nyusyukkoidou
             // 
