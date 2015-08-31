@@ -31,6 +31,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_create_date2 = new System.Windows.Forms.TextBox();
+            this.tb_create_date1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_kensaku = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rb_uriage_all = new System.Windows.Forms.RadioButton();
@@ -55,9 +58,6 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tb_create_date1 = new System.Windows.Forms.TextBox();
-            this.tb_create_date2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -127,6 +127,33 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索条件";
+            // 
+            // tb_create_date2
+            // 
+            this.tb_create_date2.Location = new System.Drawing.Point(222, 118);
+            this.tb_create_date2.Name = "tb_create_date2";
+            this.tb_create_date2.Size = new System.Drawing.Size(100, 19);
+            this.tb_create_date2.TabIndex = 16;
+            this.tb_create_date2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_create_date2_Validating);
+            // 
+            // tb_create_date1
+            // 
+            this.tb_create_date1.Location = new System.Drawing.Point(116, 118);
+            this.tb_create_date1.Name = "tb_create_date1";
+            this.tb_create_date1.Size = new System.Drawing.Size(100, 19);
+            this.tb_create_date1.TabIndex = 15;
+            this.tb_create_date1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_create_date1_Validating);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(10, 118);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 19);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "登録日";
             // 
             // btn_kensaku
             // 
@@ -232,6 +259,7 @@
             this.tb_juchu_cd2_2.Name = "tb_juchu_cd2_2";
             this.tb_juchu_cd2_2.Size = new System.Drawing.Size(108, 19);
             this.tb_juchu_cd2_2.TabIndex = 8;
+            this.tb_juchu_cd2_2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_juchu_cd2_2_Validating);
             // 
             // tb_juchu_cd2_1
             // 
@@ -240,6 +268,7 @@
             this.tb_juchu_cd2_1.Name = "tb_juchu_cd2_1";
             this.tb_juchu_cd2_1.Size = new System.Drawing.Size(108, 19);
             this.tb_juchu_cd2_1.TabIndex = 7;
+            this.tb_juchu_cd2_1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_juchu_cd2_1_Validating);
             // 
             // textBox7
             // 
@@ -259,6 +288,7 @@
             this.tb_juchu_cd1_2.Name = "tb_juchu_cd1_2";
             this.tb_juchu_cd1_2.Size = new System.Drawing.Size(108, 19);
             this.tb_juchu_cd1_2.TabIndex = 5;
+            this.tb_juchu_cd1_2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_juchu_cd1_2_Validating);
             // 
             // tb_juchu_cd1_1
             // 
@@ -267,6 +297,7 @@
             this.tb_juchu_cd1_1.Name = "tb_juchu_cd1_1";
             this.tb_juchu_cd1_1.Size = new System.Drawing.Size(108, 19);
             this.tb_juchu_cd1_1.TabIndex = 4;
+            this.tb_juchu_cd1_1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_juchu_cd1_1_Validating);
             // 
             // textBox4
             // 
@@ -286,6 +317,7 @@
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(51, 19);
             this.tb_torihikisaki_cd2.TabIndex = 2;
+            this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // tb_torihikisaki_cd1
             // 
@@ -294,6 +326,7 @@
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(51, 19);
             this.tb_torihikisaki_cd1.TabIndex = 1;
+            this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
             // textBox1
             // 
@@ -380,33 +413,6 @@
             this.btn_cancel.Text = "キャンセル";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(10, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 19);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "登録日";
-            // 
-            // tb_create_date1
-            // 
-            this.tb_create_date1.Location = new System.Drawing.Point(116, 118);
-            this.tb_create_date1.Name = "tb_create_date1";
-            this.tb_create_date1.Size = new System.Drawing.Size(100, 19);
-            this.tb_create_date1.TabIndex = 15;
-            this.tb_create_date1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_create_date1_Validating);
-            // 
-            // tb_create_date2
-            // 
-            this.tb_create_date2.Location = new System.Drawing.Point(222, 118);
-            this.tb_create_date2.Name = "tb_create_date2";
-            this.tb_create_date2.Size = new System.Drawing.Size(100, 19);
-            this.tb_create_date2.TabIndex = 16;
-            this.tb_create_date2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_create_date2_Validating);
             // 
             // frm_search_juchu
             // 

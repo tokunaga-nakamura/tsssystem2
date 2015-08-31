@@ -26,6 +26,11 @@ namespace TSS_SYSTEM
 
         private void tb_user_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_user_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_user_cd.Text != "")
             {
@@ -304,44 +309,89 @@ namespace TSS_SYSTEM
 
         private void tb_syain_kbn_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_syain_kbn.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_syain_kbn_name.Text = get_syain_kbn(tb_syain_kbn.Text);
         }
 
         private void tb_busyo_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_busyo_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_busyo_cd_name.Text = get_busyo_cd(tb_busyo_cd.Text);
         }
         private void tb_login_kyoka_kbn_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_login_kyoka_kbn.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_login_kyoka_kbn_name.Text = get_login_kyoka_kbn(tb_login_kyoka_kbn.Text);
         }
         private void tb_kengen1_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen1_name.Text = get_kengen1(tb_kengen1.Text);
         }
 
         private void tb_kengen2_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen2_name.Text = get_kengen2(tb_kengen2.Text);
         }
 
         private void tb_kengen3_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen3.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen3_name.Text = get_kengen3(tb_kengen3.Text);
         }
 
         private void tb_kengen4_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen4.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen4_name.Text = get_kengen4(tb_kengen4.Text);
         }
 
         private void tb_kengen5_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen5.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen5_name.Text = get_kengen5(tb_kengen5.Text);
         }
 
         private void tb_kengen6_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kengen6.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             tb_kengen6_name.Text = get_kengen6(tb_kengen6.Text);
         }
 
@@ -914,6 +964,66 @@ namespace TSS_SYSTEM
             //選択画面へ
             this.tb_kengen6.Text = tss.kubun_cd_select_dt("権限（マスタ）", dt_work, tb_kengen6.Text);
             tb_kengen6_name.Text = get_kengen6(tb_kengen6.Text);
+        }
+
+        private void tb_user_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_user_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_user_name2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_user_name2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void mtb_password_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(mtb_password.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kinmu_time1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kinmu_time1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kinmu_time2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kinmu_time2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
 
 

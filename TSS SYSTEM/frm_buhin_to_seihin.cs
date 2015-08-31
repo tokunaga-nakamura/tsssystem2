@@ -27,7 +27,12 @@ namespace TSS_SYSTEM
 
         private void tb_buhin_cd_Validating(object sender, CancelEventArgs e)
         {
-            if(e.ToString() != null && e.ToString() != "")
+            if (tss.Check_String_Escape(tb_buhin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (e.ToString() != null && e.ToString() != "")
             {
                 w_dt_m = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + tb_buhin_cd.Text.ToString() + "'");
                 if(w_dt_m.Rows.Count != 0)

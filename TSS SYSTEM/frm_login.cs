@@ -18,6 +18,7 @@ namespace TSS_SYSTEM
 {
     public partial class frm_login : Form
     {
+        TssSystemLibrary tss = new TssSystemLibrary();
         public frm_login()
         {
             InitializeComponent();
@@ -82,6 +83,26 @@ namespace TSS_SYSTEM
         private void frm_login_Load(object sender, EventArgs e)
         {
             this.ActiveControl = this.tb_user_cd;
+        }
+
+        private void tb_user_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_user_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_password_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_password.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
     }
 }

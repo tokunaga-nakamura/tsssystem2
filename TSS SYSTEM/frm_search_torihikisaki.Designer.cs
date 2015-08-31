@@ -121,6 +121,7 @@
             this.tb_tel_no.Name = "tb_tel_no";
             this.tb_tel_no.Size = new System.Drawing.Size(206, 19);
             this.tb_tel_no.TabIndex = 10;
+            this.tb_tel_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_tel_no_Validating);
             // 
             // textBox10
             // 
@@ -140,6 +141,7 @@
             this.tb_jusyo2.Name = "tb_jusyo2";
             this.tb_jusyo2.Size = new System.Drawing.Size(206, 19);
             this.tb_jusyo2.TabIndex = 8;
+            this.tb_jusyo2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo2_Validating);
             // 
             // textBox8
             // 
@@ -159,6 +161,7 @@
             this.tb_jusyo1.Name = "tb_jusyo1";
             this.tb_jusyo1.Size = new System.Drawing.Size(206, 19);
             this.tb_jusyo1.TabIndex = 6;
+            this.tb_jusyo1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo1_Validating);
             // 
             // textBox6
             // 
@@ -178,6 +181,7 @@
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(206, 19);
             this.tb_torihikisaki_name.TabIndex = 4;
+            this.tb_torihikisaki_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_name_Validating);
             // 
             // textBox4
             // 
@@ -197,6 +201,7 @@
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(47, 19);
             this.tb_torihikisaki_cd2.TabIndex = 2;
+            this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // tb_torihikisaki_cd1
             // 
@@ -205,6 +210,7 @@
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(47, 19);
             this.tb_torihikisaki_cd1.TabIndex = 1;
+            this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
             // textBox1
             // 

@@ -232,6 +232,7 @@
             this.dgv_kubun_m.RowTemplate.Height = 21;
             this.dgv_kubun_m.Size = new System.Drawing.Size(880, 339);
             this.dgv_kubun_m.TabIndex = 0;
+            this.dgv_kubun_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_kubun_m_CellValidating);
             // 
             // btn_touroku
             // 

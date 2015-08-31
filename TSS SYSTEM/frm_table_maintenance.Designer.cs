@@ -157,6 +157,7 @@
             this.tb_sql.Name = "tb_sql";
             this.tb_sql.Size = new System.Drawing.Size(321, 19);
             this.tb_sql.TabIndex = 2;
+            this.tb_sql.Validating += new System.ComponentModel.CancelEventHandler(this.tb_sql_Validating);
             // 
             // label1
             // 

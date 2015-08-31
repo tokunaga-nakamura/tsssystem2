@@ -85,6 +85,7 @@
             this.tb_user_cd.Name = "tb_user_cd";
             this.tb_user_cd.Size = new System.Drawing.Size(172, 19);
             this.tb_user_cd.TabIndex = 0;
+            this.tb_user_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_user_cd_Validating);
             // 
             // tb_password
             // 
@@ -94,6 +95,7 @@
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(172, 19);
             this.tb_password.TabIndex = 1;
+            this.tb_password.Validating += new System.ComponentModel.CancelEventHandler(this.tb_password_Validating);
             // 
             // splitContainer1
             // 

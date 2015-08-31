@@ -392,6 +392,11 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             DataTable dt_work2 = new DataTable();
             dt_work2 = tss.OracleSelect("select torihikisaki_name from TSS_TORIHIKISAKI_M where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
 
@@ -432,6 +437,66 @@ namespace TSS_SYSTEM
                 out_torihikisaki_name = dt_work.Rows[0]["torihikisaki_name"].ToString();
             }
             return out_torihikisaki_name;
+        }
+
+        private void tb_bank_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bank_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_bank_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bank_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_siten_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siten_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_siten_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siten_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kouza_no_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kouza_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kouza_meigi_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kouza_meigi.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
     }
 }

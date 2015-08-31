@@ -62,6 +62,11 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //終了ボタンを考慮して、空白は許容する
             if (tb_torihikisaki_cd.Text != "")
             {
@@ -236,6 +241,11 @@ namespace TSS_SYSTEM
 
         private void tb_uriage_no_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_uriage_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             chk_uriage_no();
         }    
 
@@ -502,6 +512,12 @@ namespace TSS_SYSTEM
             //受注コード2
             if (e.ColumnIndex == 6)
             {
+                if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
                 int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
                 string w_seihin_cd;
@@ -534,6 +550,12 @@ namespace TSS_SYSTEM
             //製品コード
             if (e.ColumnIndex == 7)
             {
+                if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 //未入力は許容する
                 if(e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
                 {
@@ -572,6 +594,12 @@ namespace TSS_SYSTEM
             //製品名
             if (e.ColumnIndex == 8)
             {
+                if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 //未入力は許容する
                 if (e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
                 {
@@ -1210,7 +1238,12 @@ namespace TSS_SYSTEM
 
         private void tb_bikou2_Validating(object sender, CancelEventArgs e)
         {
-            if(chk_bikou2() == false)
+            if (tss.Check_String_Escape(tb_bikou2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (chk_bikou2() == false)
             {
                 MessageBox.Show("備考は128バイト以内で入力してください。");
                 e.Cancel = true;

@@ -465,6 +465,12 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if(tb_seihin_cd.Text != "")
             {
                 tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text);
@@ -554,6 +560,63 @@ namespace TSS_SYSTEM
                 bl = false;
             }
             return bl;
+        }
+
+        private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_torihikisaki_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_juchu_cd1_1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd1_1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_juchu_cd1_2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd1_2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_juchu_cd2_1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd2_1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_juchu_cd2_2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd2_2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
 
 

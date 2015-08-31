@@ -33,13 +33,12 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
-            if(tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
             {
                 e.Cancel = true;
                 return;
             }
-
-            if(tb_torihikisaki_cd.Text == "999999")
+            if (tb_torihikisaki_cd.Text == "999999")
             {
                 MessageBox.Show("取引先コードのオール９は、システム予約コードの為、使用できません。");
                 tb_torihikisaki_cd.Focus();
@@ -336,6 +335,11 @@ namespace TSS_SYSTEM
 
         private void tb_juchuu_cd2_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_juchu_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             if (tb_juchu_cd2.Text == "9999999999999999")
             {
                 MessageBox.Show("受注コードのオール９は、システム予約コードの為、使用できません。");
@@ -355,6 +359,11 @@ namespace TSS_SYSTEM
 
         private void tb_kousin_riyuu_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kousin_riyuu.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             kousin_check();
         }
 
@@ -1090,6 +1099,11 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_seihin_cd.Text != "")
             {
@@ -1207,6 +1221,11 @@ namespace TSS_SYSTEM
                     {
                         if (e.FormattedValue.ToString() != "")
                         {
+                            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
                             if (e.FormattedValue.ToString().Length > 2)
                             {
                                 e.Cancel = true;
@@ -1249,6 +1268,11 @@ namespace TSS_SYSTEM
                     {
                         if (e.FormattedValue.ToString() != "")
                         {
+                            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
                             if (e.FormattedValue.ToString().Length > 6)
                             {
                                 e.Cancel = true;
@@ -1329,6 +1353,15 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("受注コードのオール９は、システム予約コードの為、使用できません。");
                 tb_juchu_cd1.Focus();
+                return;
+            }
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
                 return;
             }
         }

@@ -64,6 +64,11 @@ namespace TSS_SYSTEM
 
         private void tb_buhin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_buhin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_buhin_cd.Text != "")
             {
@@ -658,6 +663,11 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_torihikisaki_cd.Text != "")
             {
@@ -675,6 +685,11 @@ namespace TSS_SYSTEM
 
         private void tb_tani_kbn_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_tani_kbn.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_tani_kbn.Text != "")
             {
@@ -692,6 +707,11 @@ namespace TSS_SYSTEM
 
         private void tb_siiresaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siiresaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //区分名称区分が空白の場合はOKとする
             if (tb_siiresaki_cd.Text != "")
             {
@@ -803,6 +823,11 @@ namespace TSS_SYSTEM
 
         private void tb_siire_kbn_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siire_kbn.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_siire_kbn.Text != "")
             {
@@ -815,6 +840,56 @@ namespace TSS_SYSTEM
                 {
                     tb_siire_kbn_name.Text = get_kubun_name("07", tb_siire_kbn.Text);
                 }
+            }
+
+        }
+
+        private void tb_buhin_name_Validating_1(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_buhin_hosoku_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_hosoku.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_maker_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_maker_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_hokan_basyo_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_hokan_basyo.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
             }
 
         }

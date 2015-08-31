@@ -321,6 +321,7 @@
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.Size = new System.Drawing.Size(301, 19);
             this.tb_buhin_name.TabIndex = 2;
+            this.tb_buhin_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_name_Validating_1);
             // 
             // tb_create_datetime
             // 
@@ -360,6 +361,7 @@
             this.tb_buhin_hosoku.Name = "tb_buhin_hosoku";
             this.tb_buhin_hosoku.Size = new System.Drawing.Size(301, 19);
             this.tb_buhin_hosoku.TabIndex = 3;
+            this.tb_buhin_hosoku.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_hosoku_Validating);
             // 
             // textBox32
             // 
@@ -390,6 +392,7 @@
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(301, 19);
             this.tb_bikou.TabIndex = 13;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // tb_torihikisaki_cd
             // 
@@ -430,6 +433,7 @@
             this.tb_hokan_basyo.Name = "tb_hokan_basyo";
             this.tb_hokan_basyo.Size = new System.Drawing.Size(301, 19);
             this.tb_hokan_basyo.TabIndex = 12;
+            this.tb_hokan_basyo.Validating += new System.ComponentModel.CancelEventHandler(this.tb_hokan_basyo_Validating);
             // 
             // textBox7
             // 
@@ -524,6 +528,7 @@
             this.tb_maker_name.Name = "tb_maker_name";
             this.tb_maker_name.Size = new System.Drawing.Size(301, 19);
             this.tb_maker_name.TabIndex = 6;
+            this.tb_maker_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_maker_name_Validating);
             // 
             // tb_hanbai_tanka
             // 

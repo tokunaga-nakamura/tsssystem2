@@ -380,6 +380,12 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if(tb_torihikisaki_cd.Text != null && tb_torihikisaki_cd.Text != "")
             {
                 if (chk_torihikisaki_cd(tb_torihikisaki_cd.Text))
@@ -429,6 +435,12 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if (tb_seihin_cd.Text != "")
             {
                 tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text);
@@ -462,6 +474,46 @@ namespace TSS_SYSTEM
                 tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text);
                 btn_kensaku.Focus();
             }
+        }
+
+        private void tb_uriage_no1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_uriage_no1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_uriage_no2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_uriage_no2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_juchu_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_juchu_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
 
 

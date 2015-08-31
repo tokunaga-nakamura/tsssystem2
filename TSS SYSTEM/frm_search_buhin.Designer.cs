@@ -206,6 +206,7 @@
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(47, 19);
             this.tb_torihikisaki_cd.TabIndex = 10;
             this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox10
             // 
@@ -225,6 +226,7 @@
             this.tb_maker_name.Name = "tb_maker_name";
             this.tb_maker_name.Size = new System.Drawing.Size(232, 19);
             this.tb_maker_name.TabIndex = 8;
+            this.tb_maker_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_maker_name_Validating);
             // 
             // textBox8
             // 
@@ -244,6 +246,7 @@
             this.tb_buhin_hosoku.Name = "tb_buhin_hosoku";
             this.tb_buhin_hosoku.Size = new System.Drawing.Size(232, 19);
             this.tb_buhin_hosoku.TabIndex = 6;
+            this.tb_buhin_hosoku.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_hosoku_Validating);
             // 
             // textBox6
             // 
@@ -263,6 +266,7 @@
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.Size = new System.Drawing.Size(232, 19);
             this.tb_buhin_name.TabIndex = 4;
+            this.tb_buhin_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_name_Validating);
             // 
             // textBox4
             // 
@@ -282,6 +286,7 @@
             this.tb_buhin_cd2.Name = "tb_buhin_cd2";
             this.tb_buhin_cd2.Size = new System.Drawing.Size(106, 19);
             this.tb_buhin_cd2.TabIndex = 2;
+            this.tb_buhin_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd2_Validating);
             // 
             // tb_buhin_cd1
             // 
@@ -290,6 +295,7 @@
             this.tb_buhin_cd1.Name = "tb_buhin_cd1";
             this.tb_buhin_cd1.Size = new System.Drawing.Size(106, 19);
             this.tb_buhin_cd1.TabIndex = 1;
+            this.tb_buhin_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd1_Validating);
             // 
             // textBox1
             // 
@@ -321,7 +327,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Size = new System.Drawing.Size(884, 452);
-            this.splitContainer2.SplitterDistance = 407;
+            this.splitContainer2.SplitterDistance = 406;
             this.splitContainer2.TabIndex = 0;
             // 
             // dgv_m
@@ -331,7 +337,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 403);
+            this.dgv_m.Size = new System.Drawing.Size(880, 402);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 

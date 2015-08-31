@@ -109,6 +109,7 @@
             this.tb_kouza_meigi.Name = "tb_kouza_meigi";
             this.tb_kouza_meigi.Size = new System.Drawing.Size(313, 19);
             this.tb_kouza_meigi.TabIndex = 6;
+            this.tb_kouza_meigi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kouza_meigi_Validating);
             // 
             // textBox17
             // 
@@ -128,6 +129,7 @@
             this.tb_kouza_no.Name = "tb_kouza_no";
             this.tb_kouza_no.Size = new System.Drawing.Size(145, 19);
             this.tb_kouza_no.TabIndex = 5;
+            this.tb_kouza_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kouza_no_Validating);
             // 
             // textBox15
             // 
@@ -167,6 +169,7 @@
             this.tb_siten_name.Name = "tb_siten_name";
             this.tb_siten_name.Size = new System.Drawing.Size(292, 19);
             this.tb_siten_name.TabIndex = 4;
+            this.tb_siten_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siten_name_Validating);
             // 
             // textBox11
             // 
@@ -186,6 +189,7 @@
             this.tb_siten_cd.Name = "tb_siten_cd";
             this.tb_siten_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_siten_cd.TabIndex = 3;
+            this.tb_siten_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siten_cd_Validating);
             // 
             // textBox9
             // 
@@ -204,6 +208,7 @@
             this.tb_bank_name.Name = "tb_bank_name";
             this.tb_bank_name.Size = new System.Drawing.Size(292, 19);
             this.tb_bank_name.TabIndex = 2;
+            this.tb_bank_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bank_name_Validating);
             // 
             // textBox7
             // 
@@ -255,6 +260,7 @@
             this.tb_bank_cd.Name = "tb_bank_cd";
             this.tb_bank_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_bank_cd.TabIndex = 1;
+            this.tb_bank_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bank_cd_Validating);
             // 
             // textBox1
             // 

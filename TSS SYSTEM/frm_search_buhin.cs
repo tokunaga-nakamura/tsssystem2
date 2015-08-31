@@ -421,6 +421,11 @@ namespace TSS_SYSTEM
 
         private void tb_siiresaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siiresaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_siiresaki_cd.Text != "")
             {
@@ -475,6 +480,11 @@ namespace TSS_SYSTEM
 
         private void tb_siire_kbn_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siire_kbn.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_siire_kbn.Text != "")
             {
@@ -505,6 +515,66 @@ namespace TSS_SYSTEM
                 out_kubun_name = dt_work.Rows[0]["kubun_name"].ToString();
             }
             return out_kubun_name;
+        }
+
+        private void tb_buhin_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_buhin_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_buhin_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_buhin_hosoku_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_buhin_hosoku.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_maker_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_maker_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
 
 
