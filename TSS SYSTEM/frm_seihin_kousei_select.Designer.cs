@@ -129,6 +129,7 @@
             this.dgv_kubun_m.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_kubun_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_kubun_m.Name = "dgv_kubun_m";
+            this.dgv_kubun_m.ReadOnly = true;
             this.dgv_kubun_m.RowTemplate.Height = 21;
             this.dgv_kubun_m.Size = new System.Drawing.Size(284, 181);
             this.dgv_kubun_m.TabIndex = 0;
