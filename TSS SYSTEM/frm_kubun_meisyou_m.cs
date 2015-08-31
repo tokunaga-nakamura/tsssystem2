@@ -134,6 +134,11 @@ namespace TSS_SYSTEM
         //区分コードの検証イベント
         private void tb_kubun_meisyou_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_kubun_meisyou_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //区分名称区分が空白の場合はOKとする
             if (tb_kubun_meisyou_cd.Text != "")
             {
@@ -186,6 +191,26 @@ namespace TSS_SYSTEM
                 bl = false;
             }
             return bl;
+        }
+
+        private void tb_kubun_meisyou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kubun_meisyou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
     }
 }

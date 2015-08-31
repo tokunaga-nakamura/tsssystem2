@@ -288,5 +288,65 @@ namespace TSS_SYSTEM
                 MessageBox.Show("出力するデータがありません。");
             }
         }
+
+        private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_jusyo1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_jusyo1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_jusyo2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_jusyo2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_tel_no_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_tel_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
     }
 }

@@ -304,6 +304,7 @@
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(385, 19);
             this.tb_bikou.TabIndex = 8;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // cb_nouhin_schedule
             // 

@@ -55,7 +55,12 @@ namespace TSS_SYSTEM
 
         private void tb_uriage_no_Validating(object sender, CancelEventArgs e)
         {
-            if(tb_uriage_no.Text == null || tb_uriage_no.Text == "")
+            if (tss.Check_String_Escape(tb_uriage_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
             {
                 MessageBox.Show("売上番号を入力してください。");
                 e.Cancel = true;

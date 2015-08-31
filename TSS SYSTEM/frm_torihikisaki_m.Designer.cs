@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_torihikisaki_m));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -376,6 +376,7 @@
             this.tb_kaisyu_tuki.Size = new System.Drawing.Size(27, 19);
             this.tb_kaisyu_tuki.TabIndex = 17;
             this.tb_kaisyu_tuki.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_kaisyu_tuki.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kaisyu_tuki_Validating);
             // 
             // label5
             // 
@@ -446,6 +447,7 @@
             this.tb_kaisyu_hi.Size = new System.Drawing.Size(27, 19);
             this.tb_kaisyu_hi.TabIndex = 19;
             this.tb_kaisyu_hi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_kaisyu_hi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kaisyu_hi_Validating);
             // 
             // tb_siharai_sime_date
             // 
@@ -456,6 +458,7 @@
             this.tb_siharai_sime_date.Size = new System.Drawing.Size(27, 19);
             this.tb_siharai_sime_date.TabIndex = 16;
             this.tb_siharai_sime_date.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_siharai_sime_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_sime_date_Validating);
             // 
             // tb_seikyu_sime_date
             // 
@@ -466,6 +469,7 @@
             this.tb_seikyu_sime_date.Size = new System.Drawing.Size(27, 19);
             this.tb_seikyu_sime_date.TabIndex = 15;
             this.tb_seikyu_sime_date.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_seikyu_sime_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seikyu_sime_date_Validating);
             // 
             // tb_siharai_tuki
             // 
@@ -476,6 +480,7 @@
             this.tb_siharai_tuki.Size = new System.Drawing.Size(26, 19);
             this.tb_siharai_tuki.TabIndex = 18;
             this.tb_siharai_tuki.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_siharai_tuki.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_tuki_Validating);
             // 
             // label30
             // 
@@ -504,6 +509,7 @@
             this.tb_siharai_hi.Size = new System.Drawing.Size(27, 19);
             this.tb_siharai_hi.TabIndex = 20;
             this.tb_siharai_hi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_siharai_hi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_hi_Validating);
             // 
             // label27
             // 
@@ -699,6 +705,7 @@
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(219, 19);
             this.tb_torihikisaki_name.TabIndex = 1;
+            this.tb_torihikisaki_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_name_Validating);
             // 
             // groupBox4
             // 
@@ -851,6 +858,7 @@
             this.tb_eigyou_end_time.Name = "tb_eigyou_end_time";
             this.tb_eigyou_end_time.Size = new System.Drawing.Size(107, 19);
             this.tb_eigyou_end_time.TabIndex = 14;
+            this.tb_eigyou_end_time.Validating += new System.ComponentModel.CancelEventHandler(this.tb_eigyou_end_time_Validating);
             // 
             // tb_torihikisaki_seisiki_name
             // 
@@ -860,6 +868,7 @@
             this.tb_torihikisaki_seisiki_name.Name = "tb_torihikisaki_seisiki_name";
             this.tb_torihikisaki_seisiki_name.Size = new System.Drawing.Size(307, 19);
             this.tb_torihikisaki_seisiki_name.TabIndex = 2;
+            this.tb_torihikisaki_seisiki_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_seisiki_name_Validating);
             // 
             // tb_eigyou_start_time
             // 
@@ -868,6 +877,7 @@
             this.tb_eigyou_start_time.Name = "tb_eigyou_start_time";
             this.tb_eigyou_start_time.Size = new System.Drawing.Size(107, 19);
             this.tb_eigyou_start_time.TabIndex = 13;
+            this.tb_eigyou_start_time.Validating += new System.ComponentModel.CancelEventHandler(this.tb_eigyou_start_time_Validating);
             // 
             // tb_kessan_start_mmdd
             // 
@@ -876,6 +886,7 @@
             this.tb_kessan_start_mmdd.Name = "tb_kessan_start_mmdd";
             this.tb_kessan_start_mmdd.Size = new System.Drawing.Size(79, 19);
             this.tb_kessan_start_mmdd.TabIndex = 11;
+            this.tb_kessan_start_mmdd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kessan_start_mmdd_Validating);
             // 
             // tb_daihyousya_name
             // 
@@ -884,6 +895,7 @@
             this.tb_daihyousya_name.Name = "tb_daihyousya_name";
             this.tb_daihyousya_name.Size = new System.Drawing.Size(147, 19);
             this.tb_daihyousya_name.TabIndex = 4;
+            this.tb_daihyousya_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_daihyousya_name_Validating);
             // 
             // tb_kessan_end_mmdd
             // 
@@ -892,6 +904,7 @@
             this.tb_kessan_end_mmdd.Name = "tb_kessan_end_mmdd";
             this.tb_kessan_end_mmdd.Size = new System.Drawing.Size(79, 19);
             this.tb_kessan_end_mmdd.TabIndex = 12;
+            this.tb_kessan_end_mmdd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kessan_end_mmdd_Validating);
             // 
             // tb_yubin_no
             // 
@@ -900,6 +913,7 @@
             this.tb_yubin_no.Name = "tb_yubin_no";
             this.tb_yubin_no.Size = new System.Drawing.Size(74, 19);
             this.tb_yubin_no.TabIndex = 5;
+            this.tb_yubin_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_yubin_no_Validating);
             // 
             // tb_torihikisaki_ryakusiki_moji
             // 
@@ -909,6 +923,7 @@
             this.tb_torihikisaki_ryakusiki_moji.Name = "tb_torihikisaki_ryakusiki_moji";
             this.tb_torihikisaki_ryakusiki_moji.Size = new System.Drawing.Size(74, 19);
             this.tb_torihikisaki_ryakusiki_moji.TabIndex = 3;
+            this.tb_torihikisaki_ryakusiki_moji.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_ryakusiki_moji_Validating);
             // 
             // tb_url
             // 
@@ -917,6 +932,7 @@
             this.tb_url.Name = "tb_url";
             this.tb_url.Size = new System.Drawing.Size(416, 19);
             this.tb_url.TabIndex = 10;
+            this.tb_url.Validating += new System.ComponentModel.CancelEventHandler(this.tb_url_Validating);
             // 
             // tb_jusyo1
             // 
@@ -925,6 +941,7 @@
             this.tb_jusyo1.Name = "tb_jusyo1";
             this.tb_jusyo1.Size = new System.Drawing.Size(282, 19);
             this.tb_jusyo1.TabIndex = 6;
+            this.tb_jusyo1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo1_Validating);
             // 
             // tb_tel_no
             // 
@@ -933,6 +950,7 @@
             this.tb_tel_no.Name = "tb_tel_no";
             this.tb_tel_no.Size = new System.Drawing.Size(116, 19);
             this.tb_tel_no.TabIndex = 8;
+            this.tb_tel_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_tel_no_Validating);
             // 
             // tb_jusyo2
             // 
@@ -941,6 +959,7 @@
             this.tb_jusyo2.Name = "tb_jusyo2";
             this.tb_jusyo2.Size = new System.Drawing.Size(342, 19);
             this.tb_jusyo2.TabIndex = 7;
+            this.tb_jusyo2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo2_Validating);
             // 
             // tb_fax_no
             // 
@@ -949,6 +968,7 @@
             this.tb_fax_no.Name = "tb_fax_no";
             this.tb_fax_no.Size = new System.Drawing.Size(128, 19);
             this.tb_fax_no.TabIndex = 9;
+            this.tb_fax_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_fax_no_Validating);
             // 
             // splitContainer4
             // 
@@ -1005,34 +1025,34 @@
             // dgv_tantousya
             // 
             this.dgv_tantousya.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_tantousya.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle64.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_tantousya.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle64;
             this.dgv_tantousya.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_tantousya.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle65.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_tantousya.DefaultCellStyle = dataGridViewCellStyle65;
             this.dgv_tantousya.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_tantousya.Location = new System.Drawing.Point(0, 0);
             this.dgv_tantousya.Name = "dgv_tantousya";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_tantousya.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle66.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_tantousya.RowHeadersDefaultCellStyle = dataGridViewCellStyle66;
             this.dgv_tantousya.RowTemplate.Height = 21;
             this.dgv_tantousya.Size = new System.Drawing.Size(880, 75);
             this.dgv_tantousya.TabIndex = 133;

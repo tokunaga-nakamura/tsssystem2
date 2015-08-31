@@ -33,6 +33,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_login_kyoka_kbn_name = new System.Windows.Forms.TextBox();
+            this.tb_login_kyoka_kbn = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_kinmu_time2 = new System.Windows.Forms.TextBox();
+            this.tb_kinmu_time1 = new System.Windows.Forms.TextBox();
             this.tb_kengen6_name = new System.Windows.Forms.TextBox();
             this.tb_kengen5_name = new System.Windows.Forms.TextBox();
             this.tb_kengen4_name = new System.Windows.Forms.TextBox();
@@ -87,12 +93,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.tb_kinmu_time1 = new System.Windows.Forms.TextBox();
-            this.tb_kinmu_time2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.tb_login_kyoka_kbn = new System.Windows.Forms.TextBox();
-            this.tb_login_kyoka_kbn_name = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -223,6 +223,64 @@
             this.splitContainer2.SplitterDistance = 435;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(238, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 12);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "0:不可 1:許可";
+            // 
+            // tb_login_kyoka_kbn_name
+            // 
+            this.tb_login_kyoka_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_login_kyoka_kbn_name.Location = new System.Drawing.Point(132, 128);
+            this.tb_login_kyoka_kbn_name.Name = "tb_login_kyoka_kbn_name";
+            this.tb_login_kyoka_kbn_name.ReadOnly = true;
+            this.tb_login_kyoka_kbn_name.Size = new System.Drawing.Size(100, 19);
+            this.tb_login_kyoka_kbn_name.TabIndex = 64;
+            this.tb_login_kyoka_kbn_name.TabStop = false;
+            // 
+            // tb_login_kyoka_kbn
+            // 
+            this.tb_login_kyoka_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_login_kyoka_kbn.Location = new System.Drawing.Point(110, 128);
+            this.tb_login_kyoka_kbn.Name = "tb_login_kyoka_kbn";
+            this.tb_login_kyoka_kbn.Size = new System.Drawing.Size(22, 19);
+            this.tb_login_kyoka_kbn.TabIndex = 6;
+            this.tb_login_kyoka_kbn.DoubleClick += new System.EventHandler(this.tb_login_kyoka_kbn_DoubleClick);
+            this.tb_login_kyoka_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_login_kyoka_kbn_Validating);
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox4.Location = new System.Drawing.Point(10, 128);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 19);
+            this.textBox4.TabIndex = 62;
+            this.textBox4.TabStop = false;
+            this.textBox4.Text = "ログイン許可区分";
+            // 
+            // tb_kinmu_time2
+            // 
+            this.tb_kinmu_time2.Location = new System.Drawing.Point(316, 153);
+            this.tb_kinmu_time2.MaxLength = 5;
+            this.tb_kinmu_time2.Name = "tb_kinmu_time2";
+            this.tb_kinmu_time2.Size = new System.Drawing.Size(100, 19);
+            this.tb_kinmu_time2.TabIndex = 8;
+            this.tb_kinmu_time2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kinmu_time2_Validating);
+            // 
+            // tb_kinmu_time1
+            // 
+            this.tb_kinmu_time1.Location = new System.Drawing.Point(110, 153);
+            this.tb_kinmu_time1.MaxLength = 5;
+            this.tb_kinmu_time1.Name = "tb_kinmu_time1";
+            this.tb_kinmu_time1.Size = new System.Drawing.Size(100, 19);
+            this.tb_kinmu_time1.TabIndex = 7;
+            this.tb_kinmu_time1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kinmu_time1_Validating);
             // 
             // tb_kengen6_name
             // 
@@ -389,6 +447,7 @@
             this.mtb_password.PasswordChar = '*';
             this.mtb_password.Size = new System.Drawing.Size(166, 19);
             this.mtb_password.TabIndex = 3;
+            this.mtb_password.Validating += new System.ComponentModel.CancelEventHandler(this.mtb_password_Validating);
             // 
             // tb_logout_datetime
             // 
@@ -460,6 +519,7 @@
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(760, 19);
             this.tb_bikou.TabIndex = 15;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // textBox33
             // 
@@ -701,6 +761,7 @@
             this.tb_user_name2.Name = "tb_user_name2";
             this.tb_user_name2.Size = new System.Drawing.Size(100, 19);
             this.tb_user_name2.TabIndex = 2;
+            this.tb_user_name2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_user_name2_Validating);
             // 
             // textBox5
             // 
@@ -720,6 +781,7 @@
             this.tb_user_name.Name = "tb_user_name";
             this.tb_user_name.Size = new System.Drawing.Size(313, 19);
             this.tb_user_name.TabIndex = 1;
+            this.tb_user_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_user_name_Validating);
             // 
             // textBox3
             // 
@@ -772,62 +834,6 @@
             this.button2.Text = "終了";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // tb_kinmu_time1
-            // 
-            this.tb_kinmu_time1.Location = new System.Drawing.Point(110, 153);
-            this.tb_kinmu_time1.MaxLength = 5;
-            this.tb_kinmu_time1.Name = "tb_kinmu_time1";
-            this.tb_kinmu_time1.Size = new System.Drawing.Size(100, 19);
-            this.tb_kinmu_time1.TabIndex = 7;
-            // 
-            // tb_kinmu_time2
-            // 
-            this.tb_kinmu_time2.Location = new System.Drawing.Point(316, 153);
-            this.tb_kinmu_time2.MaxLength = 5;
-            this.tb_kinmu_time2.Name = "tb_kinmu_time2";
-            this.tb_kinmu_time2.Size = new System.Drawing.Size(100, 19);
-            this.tb_kinmu_time2.TabIndex = 8;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(10, 128);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 19);
-            this.textBox4.TabIndex = 62;
-            this.textBox4.TabStop = false;
-            this.textBox4.Text = "ログイン許可区分";
-            // 
-            // tb_login_kyoka_kbn
-            // 
-            this.tb_login_kyoka_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_login_kyoka_kbn.Location = new System.Drawing.Point(110, 128);
-            this.tb_login_kyoka_kbn.Name = "tb_login_kyoka_kbn";
-            this.tb_login_kyoka_kbn.Size = new System.Drawing.Size(22, 19);
-            this.tb_login_kyoka_kbn.TabIndex = 6;
-            this.tb_login_kyoka_kbn.DoubleClick += new System.EventHandler(this.tb_login_kyoka_kbn_DoubleClick);
-            this.tb_login_kyoka_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_login_kyoka_kbn_Validating);
-            // 
-            // tb_login_kyoka_kbn_name
-            // 
-            this.tb_login_kyoka_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_login_kyoka_kbn_name.Location = new System.Drawing.Point(132, 128);
-            this.tb_login_kyoka_kbn_name.Name = "tb_login_kyoka_kbn_name";
-            this.tb_login_kyoka_kbn_name.ReadOnly = true;
-            this.tb_login_kyoka_kbn_name.Size = new System.Drawing.Size(100, 19);
-            this.tb_login_kyoka_kbn_name.TabIndex = 64;
-            this.tb_login_kyoka_kbn_name.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(238, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 12);
-            this.label4.TabIndex = 65;
-            this.label4.Text = "0:不可 1:許可";
             // 
             // frm_user_m
             // 

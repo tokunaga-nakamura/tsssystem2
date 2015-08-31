@@ -35,6 +35,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tb_bikou = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dgv_kubun = new System.Windows.Forms.DataGridView();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -161,6 +161,15 @@
             this.splitContainer3.SplitterDistance = 82;
             this.splitContainer3.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "現在の区分名称マスタ";
+            // 
             // btn_touroku
             // 
             this.btn_touroku.Location = new System.Drawing.Point(791, 53);
@@ -189,6 +198,7 @@
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(426, 19);
             this.tb_bikou.TabIndex = 2;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // textBox5
             // 
@@ -218,6 +228,7 @@
             this.tb_kubun_meisyou.Name = "tb_kubun_meisyou";
             this.tb_kubun_meisyou.Size = new System.Drawing.Size(239, 19);
             this.tb_kubun_meisyou.TabIndex = 1;
+            this.tb_kubun_meisyou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kubun_meisyou_Validating);
             // 
             // textBox2
             // 
@@ -253,15 +264,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "現在の区分名称マスタ";
             // 
             // frm_kubun_meisyou_m
             // 

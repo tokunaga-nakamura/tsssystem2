@@ -315,6 +315,7 @@
             this.tb_seisan_sitai_daisuu.Name = "tb_seisan_sitai_daisuu";
             this.tb_seisan_sitai_daisuu.Size = new System.Drawing.Size(63, 19);
             this.tb_seisan_sitai_daisuu.TabIndex = 0;
+            this.tb_seisan_sitai_daisuu.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_sitai_daisuu_Validating);
             // 
             // dgv_m
             // 

@@ -864,6 +864,11 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             if (tb_torihikisaki_cd.Text == "999999")
             {
                 MessageBox.Show("取引先コードのオール９は、システム予約コードの為、使用できません。");
@@ -872,6 +877,208 @@ namespace TSS_SYSTEM
             }
 
         }
+
+        private void tb_torihikisaki_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_seisiki_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_seisiki_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_ryakusiki_moji_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_ryakusiki_moji.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_daihyousya_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_daihyousya_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_yubin_no_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_yubin_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_jusyo1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_jusyo1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_jusyo2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_jusyo2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_tel_no_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_tel_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_fax_no_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_fax_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_url_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_url.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kessan_start_mmdd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kessan_start_mmdd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kessan_end_mmdd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kessan_end_mmdd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_eigyou_start_time_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_eigyou_start_time.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_eigyou_end_time_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_eigyou_end_time.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_seikyu_sime_date_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seikyu_sime_date.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_siharai_sime_date_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siharai_sime_date.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kaisyu_tuki_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kaisyu_tuki.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_siharai_tuki_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siharai_tuki.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_kaisyu_hi_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kaisyu_hi.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_siharai_hi_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_siharai_hi.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+
     }
 }
     

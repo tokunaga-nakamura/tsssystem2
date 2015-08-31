@@ -316,5 +316,45 @@ namespace TSS_SYSTEM
             }
         }
 
+        private void tb_seihin_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seihin_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_seihin_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seihin_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_seihin_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seihin_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
     }
 }

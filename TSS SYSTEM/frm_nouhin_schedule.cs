@@ -44,6 +44,11 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_torihikisaki_cd.Text != "")
             {

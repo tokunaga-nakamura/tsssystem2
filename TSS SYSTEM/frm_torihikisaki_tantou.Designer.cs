@@ -157,6 +157,7 @@
             this.tb_keitai_no.Name = "tb_keitai_no";
             this.tb_keitai_no.Size = new System.Drawing.Size(112, 19);
             this.tb_keitai_no.TabIndex = 43;
+            this.tb_keitai_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_keitai_no_Validating);
             // 
             // textBox23
             // 
@@ -175,6 +176,7 @@
             this.tb_fax_no.Name = "tb_fax_no";
             this.tb_fax_no.Size = new System.Drawing.Size(112, 19);
             this.tb_fax_no.TabIndex = 41;
+            this.tb_fax_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_fax_no_Validating);
             // 
             // textBox21
             // 
@@ -193,6 +195,7 @@
             this.tb_tel_no.Name = "tb_tel_no";
             this.tb_tel_no.Size = new System.Drawing.Size(112, 19);
             this.tb_tel_no.TabIndex = 39;
+            this.tb_tel_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_tel_no_Validating);
             // 
             // textBox19
             // 
@@ -211,6 +214,7 @@
             this.tb_jusyo2.Name = "tb_jusyo2";
             this.tb_jusyo2.Size = new System.Drawing.Size(361, 19);
             this.tb_jusyo2.TabIndex = 38;
+            this.tb_jusyo2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo2_Validating);
             // 
             // textBox17
             // 
@@ -229,6 +233,7 @@
             this.tb_jusyo1.Name = "tb_jusyo1";
             this.tb_jusyo1.Size = new System.Drawing.Size(361, 19);
             this.tb_jusyo1.TabIndex = 36;
+            this.tb_jusyo1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jusyo1_Validating);
             // 
             // textBox15
             // 
@@ -247,6 +252,7 @@
             this.tb_yubin_no.Name = "tb_yubin_no";
             this.tb_yubin_no.Size = new System.Drawing.Size(112, 19);
             this.tb_yubin_no.TabIndex = 33;
+            this.tb_yubin_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_yubin_no_Validating);
             // 
             // textBox13
             // 
@@ -265,6 +271,7 @@
             this.tb_yakusyoku.Name = "tb_yakusyoku";
             this.tb_yakusyoku.Size = new System.Drawing.Size(112, 19);
             this.tb_yakusyoku.TabIndex = 31;
+            this.tb_yakusyoku.Validating += new System.ComponentModel.CancelEventHandler(this.tb_yakusyoku_Validating);
             // 
             // textBox11
             // 
@@ -283,6 +290,7 @@
             this.tb_syozoku.Name = "tb_syozoku";
             this.tb_syozoku.Size = new System.Drawing.Size(112, 19);
             this.tb_syozoku.TabIndex = 29;
+            this.tb_syozoku.Validating += new System.ComponentModel.CancelEventHandler(this.tb_syozoku_Validating);
             // 
             // textBox9
             // 
@@ -301,6 +309,7 @@
             this.tb_tantousya_name.Name = "tb_tantousya_name";
             this.tb_tantousya_name.Size = new System.Drawing.Size(112, 19);
             this.tb_tantousya_name.TabIndex = 27;
+            this.tb_tantousya_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_tantousya_name_Validating);
             // 
             // textBox7
             // 
@@ -319,6 +328,7 @@
             this.tb_mail_address.Name = "tb_mail_address";
             this.tb_mail_address.Size = new System.Drawing.Size(361, 19);
             this.tb_mail_address.TabIndex = 26;
+            this.tb_mail_address.Validating += new System.ComponentModel.CancelEventHandler(this.tb_mail_address_Validating);
             // 
             // textBox2
             // 
@@ -348,6 +358,7 @@
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_torihikisaki_cd.TabIndex = 21;
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox5
             // 
@@ -367,6 +378,7 @@
             this.tb_tantousya_cd.Name = "tb_tantousya_cd";
             this.tb_tantousya_cd.Size = new System.Drawing.Size(112, 19);
             this.tb_tantousya_cd.TabIndex = 18;
+            this.tb_tantousya_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_tantousya_cd_Validating);
             // 
             // textBox1
             // 

@@ -213,5 +213,15 @@ namespace TSS_SYSTEM
                 MessageBox.Show("追加・更新するデータはありません。");
             }
         }
+
+        private void dgv_kubun_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
     }
 }

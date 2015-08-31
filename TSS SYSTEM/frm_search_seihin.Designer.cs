@@ -125,6 +125,7 @@
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(46, 19);
             this.tb_torihikisaki_cd.TabIndex = 6;
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
             // 
             // textBox6
             // 
@@ -144,6 +145,7 @@
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.Size = new System.Drawing.Size(232, 19);
             this.tb_seihin_name.TabIndex = 4;
+            this.tb_seihin_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_name_Validating);
             // 
             // textBox4
             // 
@@ -163,6 +165,7 @@
             this.tb_seihin_cd2.Name = "tb_seihin_cd2";
             this.tb_seihin_cd2.Size = new System.Drawing.Size(108, 19);
             this.tb_seihin_cd2.TabIndex = 2;
+            this.tb_seihin_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd2_Validating);
             // 
             // tb_seihin_cd1
             // 
@@ -171,6 +174,7 @@
             this.tb_seihin_cd1.Name = "tb_seihin_cd1";
             this.tb_seihin_cd1.Size = new System.Drawing.Size(108, 19);
             this.tb_seihin_cd1.TabIndex = 1;
+            this.tb_seihin_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd1_Validating);
             // 
             // textBox1
             // 

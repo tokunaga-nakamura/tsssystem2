@@ -32,6 +32,11 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
             //製品コード
             //未入力は許容する
             if(e.ToString() != null && e.ToString() != "")
@@ -248,6 +253,16 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
+        }
+
+        private void tb_seisan_sitai_daisuu_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seisan_sitai_daisuu.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
 
 
