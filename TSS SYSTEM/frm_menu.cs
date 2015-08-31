@@ -407,5 +407,13 @@ namespace TSS_SYSTEM
             frm_rpt.ShowDialog(this);
             frm_rpt.Dispose();
         }
+
+        private void btn_uriage_log_Click(object sender, EventArgs e)
+        {
+            //売上ログ参照
+            frm_uriage_log frm_skm = new frm_uriage_log();
+            frm_skm.ShowDialog(this);
+            frm_skm.Dispose();
+        }
     }
 }
