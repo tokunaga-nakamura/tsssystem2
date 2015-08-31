@@ -135,6 +135,14 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
+            
+            
             if (tb_torihikisaki_cd.Text == "")
             {
                 tb_torihikisaki_name.Text = "";
@@ -632,6 +640,12 @@ namespace TSS_SYSTEM
 
         private void tb_siire_no_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siire_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
 
             //入力された売上番号を"0000000000"形式の文字列に変換
             double w_double;
@@ -738,6 +752,14 @@ namespace TSS_SYSTEM
         //仕入伝票番号を変更した際の動き
         private void tb_siire_denpyou_no_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_siire_denpyou_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            
+            
+            
             //既存仕入の表示
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select siire_no, seq,torihikisaki_cd, siire_date,buhin_cd,buhin_name,siire_su,siire_tanka,siire_kingaku,siire_denpyo_no,TO_CHAR(siire_simebi, 'YYYY/MM/DD'),TO_CHAR(siharai_date, 'YYYY/MM/DD'),bikou,DELETE_FLG,create_user_cd,create_datetime,update_user_cd,update_datetime from tss_siire_m where siire_denpyo_no = '" + tb_siire_denpyou_no.Text.ToString() + "' ORDER BY SEQ");
@@ -812,8 +834,15 @@ namespace TSS_SYSTEM
             DataGridView dgv = (DataGridView)sender;
             int i = e.RowIndex;
 
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if (e.ColumnIndex == 0)
             {
+
                 if ((dgv.Rows[e.RowIndex].Cells[0] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     dgv.Rows[i].Cells[0].Value = "";
@@ -825,6 +854,8 @@ namespace TSS_SYSTEM
                     dgv.Rows[i].Cells[6].Value = "";
                     dgv.Rows[i].Cells[7].Value = "";
                 }
+
+               
                 else
                 {
                     DataTable dtTmp = (DataTable)dgv_siire.DataSource;
@@ -885,6 +916,7 @@ namespace TSS_SYSTEM
 
             if(e.ColumnIndex == 2)
             {
+                
                 if (e.FormattedValue.ToString() != "")
                 {
                     //仕入数量チェック

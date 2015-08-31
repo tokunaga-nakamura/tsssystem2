@@ -144,6 +144,12 @@ namespace TSS_SYSTEM
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
         {
 
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             if (tb_torihikisaki_cd.Text == "")
             {
                 tb_torihikisaki_name.Text = "";
@@ -648,6 +654,14 @@ namespace TSS_SYSTEM
            int i = e.ColumnIndex;
            int j = e.RowIndex;
 
+
+           if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+           {
+               e.Cancel = true;
+               return;
+           }
+
+
            if (i == 2)
            {
                string zaiko_kbn = e.FormattedValue.ToString();
@@ -672,6 +686,15 @@ namespace TSS_SYSTEM
                    dgv_nyusyukkoidou.EndEdit();
                }
 
+           }
+       }
+
+       private void tb_denpyou_no_Validating(object sender, CancelEventArgs e)
+       {
+           if (tss.Check_String_Escape(tb_denpyou_no.Text) == false)
+           {
+               e.Cancel = true;
+               return;
            }
        }
 

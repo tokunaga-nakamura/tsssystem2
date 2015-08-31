@@ -688,6 +688,13 @@ namespace TSS_SYSTEM
         private void tb_siharai_no_Validating(object sender, CancelEventArgs e)
         {
 
+            if (tss.Check_String_Escape(tb_siharai_no.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+
             //入力された売上番号を"0000000000"形式の文字列に変換
             double w_double;
 
@@ -899,6 +906,12 @@ namespace TSS_SYSTEM
         {
             btn_siharai_syori.Enabled = false;
 
+            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             //dgv_mibarai.Rows.Clear();
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select torihikisaki_name,syouhizei_sansyutu_kbn from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
@@ -928,6 +941,7 @@ namespace TSS_SYSTEM
 
         private void tb_siharai_date_Validating(object sender, CancelEventArgs e)
         {
+               
             if (tb_siharai_date.Text != "")
             {
                 if (tss.try_string_to_date(tb_siharai_date.Text.ToString()))
@@ -947,6 +961,15 @@ namespace TSS_SYSTEM
         {
             DataGridView dgv = (DataGridView)sender;
             int i = e.RowIndex;
+
+
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+
 
             if (e.ColumnIndex == 3)
             {
