@@ -123,8 +123,12 @@ namespace TSS_SYSTEM
                     mode2();
                     if (str_name != "")
                     {
-                        tb_seihin_name.Text = str_name;
-                        kensaku();
+                        DataTable w_dt = new DataTable();
+                        w_dt = tss.OracleSelect("select * from tss_seihin_m where seihin_cd like '" + str_name + "%' or seihin_name like '%" + str_name + "%'");
+                        list_disp(w_dt);
+
+                        //tb_seihin_name.Text = str_name;
+                        //kensaku();
                     }
                     break;
                 default:

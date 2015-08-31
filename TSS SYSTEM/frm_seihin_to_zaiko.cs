@@ -41,9 +41,7 @@ namespace TSS_SYSTEM
             //未入力は許容する
             if(e.ToString() != null && e.ToString() != "")
             {
-                DataTable w_dt_seihin = new DataTable();
-                w_dt_seihin = tss.OracleSelect("select * from tss_seihin_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
-                if(w_dt_seihin.Rows.Count == 0)
+                if (chk_seihin_cd() == false)
                 {
                     MessageBox.Show("入力された製品コードは存在しません。");
                     e.Cancel = true;
@@ -53,20 +51,7 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validated(object sender, EventArgs e)
         {
-            tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
-            tb_seihin_kousei_no.Text = tss.get_seihin_kousei_no(tb_seihin_cd.Text);
-            tb_seihin_kousei_name.Text = tss.get_seihin_kousei_name(tb_seihin_cd.Text);
-            if(tb_seihin_kousei_no.Text == null)
-            {
-                MessageBox.Show("入力した製品コードの製品は、製品構成が登録されていません。");
-                dgv_m.DataSource = null;
-                dgv_m = null;
-            }
-            else
-            {
-                list_make();
-                list_disp();
-            }
+            seihin_disp();
         }
 
         private void list_make()
@@ -265,9 +250,56 @@ namespace TSS_SYSTEM
 
         }
 
+        private void tb_seihin_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_seihin("2", tb_seihin_cd.Text.ToString());
+            if (w_cd != "")
+            {
+                tb_seihin_cd.Text = w_cd;
+                if (chk_seihin_cd() != true)
+                {
+                    MessageBox.Show("製品コードに異常があります。");
+                    tb_seihin_cd.Focus();
+                }
+                else
+                {
+                    seihin_disp();
+                }
+            }
 
+        }
 
+        private bool chk_seihin_cd()
+        {
+            bool bl = true; //戻り値用
+            DataTable w_dt_seihin = new DataTable();
+            w_dt_seihin = tss.OracleSelect("select * from tss_seihin_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+            if (w_dt_seihin.Rows.Count == 0)
+            {
+                bl = false;
+            }
+            return bl;
+        }
 
+        private void seihin_disp()
+        {
+            tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
+            tb_seihin_kousei_no.Text = tss.get_seihin_kousei_no(tb_seihin_cd.Text);
+            tb_seihin_kousei_name.Text = tss.get_seihin_kousei_name(tb_seihin_cd.Text);
+            if (tb_seihin_kousei_no.Text == null)
+            {
+                MessageBox.Show("入力した製品コードの製品は、製品構成が登録されていません。");
+                dgv_m.DataSource = null;
+                dgv_m = null;
+            }
+            else
+            {
+                list_make();
+                list_disp();
+            }
+        }
 
 
 

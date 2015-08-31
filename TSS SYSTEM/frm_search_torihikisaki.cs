@@ -96,8 +96,12 @@ namespace TSS_SYSTEM
                     mode2();
                     if (str_name != "")
                     {
-                        tb_torihikisaki_name.Text = str_name;
-                        kensaku();
+                        DataTable w_dt = new DataTable();
+                        w_dt = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd like '" + str_name + "%' or torihikisaki_name like '%" + str_name + "%'");
+                        list_disp(w_dt);
+
+                        //tb_torihikisaki_name.Text = str_name;
+                        //kensaku();
                     }
                     break;
                 default:

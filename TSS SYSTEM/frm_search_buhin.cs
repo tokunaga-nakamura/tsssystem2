@@ -120,8 +120,12 @@ namespace TSS_SYSTEM
                     mode2();
                     if(str_name != "")
                     {
-                        tb_buhin_name.Text = str_name;
-                        kensaku();
+                        DataTable w_dt = new DataTable();
+                        w_dt = tss.OracleSelect("select * from tss_buhin_m where buhin_cd like '" + str_name + "%' or buhin_name like '%" + str_name + "%'");
+                        list_disp(w_dt);
+
+                        //tb_buhin_name.Text = str_name;
+                        //kensaku();
                     }
                     break;
                 default:

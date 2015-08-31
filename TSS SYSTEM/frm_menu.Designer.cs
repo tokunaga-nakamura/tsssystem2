@@ -57,6 +57,7 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_uriage_denpyou_insatu = new System.Windows.Forms.Button();
             this.btn_uriage_kensaku = new System.Windows.Forms.Button();
             this.btn_uriage = new System.Windows.Forms.Button();
             this.btn_juchu_kensaku = new System.Windows.Forms.Button();
@@ -95,7 +96,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_uriage_denpyou_insatu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -536,9 +536,19 @@
             this.tabPage2.Text = "受注・売上・請求";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_uriage_denpyou_insatu
+            // 
+            this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 125);
+            this.btn_uriage_denpyou_insatu.Name = "btn_uriage_denpyou_insatu";
+            this.btn_uriage_denpyou_insatu.Size = new System.Drawing.Size(177, 23);
+            this.btn_uriage_denpyou_insatu.TabIndex = 9;
+            this.btn_uriage_denpyou_insatu.Text = "売上伝票印刷";
+            this.btn_uriage_denpyou_insatu.UseVisualStyleBackColor = true;
+            this.btn_uriage_denpyou_insatu.Click += new System.EventHandler(this.btn_uriage_denpyou_insatu_Click);
+            // 
             // btn_uriage_kensaku
             // 
-            this.btn_uriage_kensaku.Location = new System.Drawing.Point(194, 96);
+            this.btn_uriage_kensaku.Location = new System.Drawing.Point(189, 96);
             this.btn_uriage_kensaku.Name = "btn_uriage_kensaku";
             this.btn_uriage_kensaku.Size = new System.Drawing.Size(180, 23);
             this.btn_uriage_kensaku.TabIndex = 8;
@@ -550,7 +560,7 @@
             // 
             this.btn_uriage.Location = new System.Drawing.Point(6, 96);
             this.btn_uriage.Name = "btn_uriage";
-            this.btn_uriage.Size = new System.Drawing.Size(180, 23);
+            this.btn_uriage.Size = new System.Drawing.Size(177, 23);
             this.btn_uriage.TabIndex = 7;
             this.btn_uriage.Text = "売上";
             this.btn_uriage.UseVisualStyleBackColor = true;
@@ -558,7 +568,7 @@
             // 
             // btn_juchu_kensaku
             // 
-            this.btn_juchu_kensaku.Location = new System.Drawing.Point(194, 6);
+            this.btn_juchu_kensaku.Location = new System.Drawing.Point(189, 6);
             this.btn_juchu_kensaku.Name = "btn_juchu_kensaku";
             this.btn_juchu_kensaku.Size = new System.Drawing.Size(180, 23);
             this.btn_juchu_kensaku.TabIndex = 5;
@@ -939,16 +949,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_uriage_denpyou_insatu
-            // 
-            this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 125);
-            this.btn_uriage_denpyou_insatu.Name = "btn_uriage_denpyou_insatu";
-            this.btn_uriage_denpyou_insatu.Size = new System.Drawing.Size(182, 23);
-            this.btn_uriage_denpyou_insatu.TabIndex = 9;
-            this.btn_uriage_denpyou_insatu.Text = "売上伝票印刷";
-            this.btn_uriage_denpyou_insatu.UseVisualStyleBackColor = true;
-            this.btn_uriage_denpyou_insatu.Click += new System.EventHandler(this.btn_uriage_denpyou_insatu_Click);
             // 
             // frm_menu
             // 
