@@ -261,6 +261,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_kubun_m";
             this.Text = "区分マスタ";
             this.Load += new System.EventHandler(this.frm_kubun_m_Load);

@@ -33,18 +33,18 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_uriage_datetime1 = new System.Windows.Forms.TextBox();
-            this.tb_uriage_datetime2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
-            this.tb_seihin_name = new System.Windows.Forms.TextBox();
             this.btn_hyouji = new System.Windows.Forms.Button();
-            this.btn_insatu = new System.Windows.Forms.Button();
-            this.btn_csv = new System.Windows.Forms.Button();
+            this.tb_seihin_name = new System.Windows.Forms.TextBox();
+            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_uriage_datetime2 = new System.Windows.Forms.TextBox();
+            this.tb_uriage_datetime1 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.btn_csv = new System.Windows.Forms.Button();
+            this.btn_insatu = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -123,16 +123,6 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // btn_syuuryou
-            // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -161,45 +151,25 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
-            // textBox1
+            // btn_hyouji
             // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "売上日時";
+            this.btn_hyouji.Location = new System.Drawing.Point(795, 24);
+            this.btn_hyouji.Name = "btn_hyouji";
+            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
+            this.btn_hyouji.TabIndex = 6;
+            this.btn_hyouji.Text = "表示";
+            this.btn_hyouji.UseVisualStyleBackColor = true;
+            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
             // 
-            // tb_uriage_datetime1
+            // tb_seihin_name
             // 
-            this.tb_uriage_datetime1.Location = new System.Drawing.Point(116, 3);
-            this.tb_uriage_datetime1.MaxLength = 20;
-            this.tb_uriage_datetime1.Name = "tb_uriage_datetime1";
-            this.tb_uriage_datetime1.Size = new System.Drawing.Size(100, 19);
-            this.tb_uriage_datetime1.TabIndex = 1;
-            this.tb_uriage_datetime1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime1_Validating);
-            // 
-            // tb_uriage_datetime2
-            // 
-            this.tb_uriage_datetime2.Location = new System.Drawing.Point(222, 3);
-            this.tb_uriage_datetime2.MaxLength = 20;
-            this.tb_uriage_datetime2.Name = "tb_uriage_datetime2";
-            this.tb_uriage_datetime2.Size = new System.Drawing.Size(100, 19);
-            this.tb_uriage_datetime2.TabIndex = 2;
-            this.tb_uriage_datetime2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime2_Validating);
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(10, 28);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 19);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TabStop = false;
-            this.textBox4.Text = "製品コード";
+            this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_seihin_name.Location = new System.Drawing.Point(225, 28);
+            this.tb_seihin_name.Name = "tb_seihin_name";
+            this.tb_seihin_name.ReadOnly = true;
+            this.tb_seihin_name.Size = new System.Drawing.Size(354, 19);
+            this.tb_seihin_name.TabIndex = 5;
+            this.tb_seihin_name.TabStop = false;
             // 
             // tb_seihin_cd
             // 
@@ -212,43 +182,45 @@
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
-            // tb_seihin_name
+            // textBox4
             // 
-            this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(225, 28);
-            this.tb_seihin_name.Name = "tb_seihin_name";
-            this.tb_seihin_name.ReadOnly = true;
-            this.tb_seihin_name.Size = new System.Drawing.Size(354, 19);
-            this.tb_seihin_name.TabIndex = 5;
-            this.tb_seihin_name.TabStop = false;
+            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox4.Location = new System.Drawing.Point(10, 28);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 19);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.TabStop = false;
+            this.textBox4.Text = "製品コード";
             // 
-            // btn_hyouji
+            // tb_uriage_datetime2
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(795, 24);
-            this.btn_hyouji.Name = "btn_hyouji";
-            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
-            this.btn_hyouji.TabIndex = 6;
-            this.btn_hyouji.Text = "表示";
-            this.btn_hyouji.UseVisualStyleBackColor = true;
-            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
+            this.tb_uriage_datetime2.Location = new System.Drawing.Point(222, 3);
+            this.tb_uriage_datetime2.MaxLength = 20;
+            this.tb_uriage_datetime2.Name = "tb_uriage_datetime2";
+            this.tb_uriage_datetime2.Size = new System.Drawing.Size(100, 19);
+            this.tb_uriage_datetime2.TabIndex = 2;
+            this.tb_uriage_datetime2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime2_Validating);
             // 
-            // btn_insatu
+            // tb_uriage_datetime1
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
-            this.btn_insatu.Name = "btn_insatu";
-            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 1;
-            this.btn_insatu.Text = "印刷";
-            this.btn_insatu.UseVisualStyleBackColor = true;
+            this.tb_uriage_datetime1.Location = new System.Drawing.Point(116, 3);
+            this.tb_uriage_datetime1.MaxLength = 20;
+            this.tb_uriage_datetime1.Name = "tb_uriage_datetime1";
+            this.tb_uriage_datetime1.Size = new System.Drawing.Size(100, 19);
+            this.tb_uriage_datetime1.TabIndex = 1;
+            this.tb_uriage_datetime1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime1_Validating);
             // 
-            // btn_csv
+            // textBox1
             // 
-            this.btn_csv.Location = new System.Drawing.Point(91, 3);
-            this.btn_csv.Name = "btn_csv";
-            this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 2;
-            this.btn_csv.Text = "CSV出力";
-            this.btn_csv.UseVisualStyleBackColor = true;
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 19);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "売上日時";
             // 
             // dgv_m
             // 
@@ -260,6 +232,34 @@
             this.dgv_m.Size = new System.Drawing.Size(880, 373);
             this.dgv_m.TabIndex = 0;
             // 
+            // btn_csv
+            // 
+            this.btn_csv.Location = new System.Drawing.Point(91, 3);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 2;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            // 
+            // btn_insatu
+            // 
+            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
+            this.btn_insatu.Name = "btn_insatu";
+            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu.TabIndex = 1;
+            this.btn_insatu.Text = "印刷";
+            this.btn_insatu.UseVisualStyleBackColor = true;
+            // 
+            // btn_syuuryou
+            // 
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
             // frm_uriage_log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -267,6 +267,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_uriage_log";
             this.Text = "売上ログ参照";
             this.splitContainer1.Panel1.ResumeLayout(false);
