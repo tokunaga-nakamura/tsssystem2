@@ -57,6 +57,7 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_uriage_log = new System.Windows.Forms.Button();
             this.btn_uriage_denpyou_insatu = new System.Windows.Forms.Button();
             this.btn_uriage_kensaku = new System.Windows.Forms.Button();
             this.btn_uriage = new System.Windows.Forms.Button();
@@ -96,7 +97,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_uriage_log = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -538,6 +538,16 @@
             this.tabPage2.Text = "受注・売上・請求";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_uriage_log
+            // 
+            this.btn_uriage_log.Location = new System.Drawing.Point(375, 96);
+            this.btn_uriage_log.Name = "btn_uriage_log";
+            this.btn_uriage_log.Size = new System.Drawing.Size(180, 23);
+            this.btn_uriage_log.TabIndex = 10;
+            this.btn_uriage_log.Text = "売上ログ参照";
+            this.btn_uriage_log.UseVisualStyleBackColor = true;
+            this.btn_uriage_log.Click += new System.EventHandler(this.btn_uriage_log_Click);
+            // 
             // btn_uriage_denpyou_insatu
             // 
             this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 125);
@@ -934,7 +944,7 @@
             // 
             // btn_logout
             // 
-            this.btn_logout.Location = new System.Drawing.Point(710, 3);
+            this.btn_logout.Location = new System.Drawing.Point(724, 3);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(75, 23);
             this.btn_logout.TabIndex = 1;
@@ -944,23 +954,13 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(791, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(805, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_uriage_log
-            // 
-            this.btn_uriage_log.Location = new System.Drawing.Point(375, 96);
-            this.btn_uriage_log.Name = "btn_uriage_log";
-            this.btn_uriage_log.Size = new System.Drawing.Size(180, 23);
-            this.btn_uriage_log.TabIndex = 10;
-            this.btn_uriage_log.Text = "売上ログ参照";
-            this.btn_uriage_log.UseVisualStyleBackColor = true;
-            this.btn_uriage_log.Click += new System.EventHandler(this.btn_uriage_log_Click);
             // 
             // frm_menu
             // 
