@@ -157,10 +157,12 @@ namespace TSS_SYSTEM
         {
             DataGridView dgv = (DataGridView)sender;
 
+            int i2 = e.RowIndex;
 
             //部品コードが入力されたならば、部品名を部品マスターから取得して表示
             if (dgv.Columns[e.ColumnIndex].Index == 1 && dgv.CurrentCell.Value.ToString() == "")
             {
+                dgv.Rows[i2].Cells[2].Value = "";
                 return;
             }
             
@@ -180,11 +182,15 @@ namespace TSS_SYSTEM
                     MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
                     dgv.Rows[i].Cells[2].Value = "";
                     dgv_seihin_kousei.Focus();
-                    dgv_seihin_kousei.CurrentCell = dgv_seihin_kousei[1, i];
+                    //dgv_seihin_kousei.CurrentCell = dgv_seihin_kousei[1, i];
                 }
-                else
+                if (dt_work.Rows.Count > 0)
                 {
                     dgv.Rows[i].Cells[2].Value = dt_work.Rows[j][1].ToString();
+                }
+                if (dgv_seihin_kousei[1, i].Value == null)
+                {
+                    dgv.Rows[i].Cells[2].Value = "";
                 }
 
                 return;
@@ -197,6 +203,7 @@ namespace TSS_SYSTEM
             //互換部品コードが入力されたならば、部品名を部品マスターから取得して表示
             if (dgv.Columns[e.ColumnIndex].Index == 4 && dgv.CurrentCell.Value.ToString() == "")
             {
+                dgv.Rows[i2].Cells[5].Value = "";
                 return;
             }
             
@@ -861,9 +868,16 @@ namespace TSS_SYSTEM
             dgv_seihin_kousei.Columns[5].Width = 200;
             dgv_seihin_kousei.Columns[5].Width = 150;
 
+
+            //セルの色指定
+            dgv_seihin_kousei.Columns[1].DefaultCellStyle.BackColor = Color.PowderBlue;
+            dgv_seihin_kousei.Columns[2].DefaultCellStyle.BackColor = Color.LightGray;
+            dgv_seihin_kousei.Columns[4].DefaultCellStyle.BackColor = Color.PowderBlue;
+            dgv_seihin_kousei.Columns[5].DefaultCellStyle.BackColor = Color.LightGray;
+            
             //使用数量右寄せ、カンマ区切り
             dgv_seihin_kousei.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_seihin_kousei.Columns[3].DefaultCellStyle.Format = "#,0.##";
+            dgv_seihin_kousei.Columns[3].DefaultCellStyle.Format = "#,0.00";
             //部品名、互換部品名は入力不可
             dgv_seihin_kousei.Columns[2].ReadOnly = true;
             dgv_seihin_kousei.Columns[5].ReadOnly = true;
@@ -1075,6 +1089,59 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
+
+            int i = e.ColumnIndex;
+
+            if (i == 1 || i == 4)
+            {
+                string str1;
+                string str2;
+
+                DataTable dt_w = new DataTable();
+                DataTable dt_w2 = new DataTable();
+
+                dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_SEIHIN_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+                str1 = dt_w.Rows[0][0].ToString();
+
+                dt_w2 = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + e.FormattedValue.ToString() + "'");
+                if(dt_w2.Rows.Count == 0)
+                {
+                    return;
+                }
+
+                if (e.FormattedValue.ToString() == dgv_seihin_kousei.CurrentCell.Value.ToString())
+                {
+                   
+                }
+                else
+                {
+                    str2 = dt_w2.Rows[0][0].ToString();
+
+                    if (str1 != str2)
+                    {
+                        DialogResult result = MessageBox.Show("製品マスタの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                        "製品構成登録",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Exclamation,
+                        MessageBoxDefaultButton.Button2);
+
+                        if (result == DialogResult.OK)
+                        {
+                            dgv_seihin_kousei.EndEdit();
+                            //dgv_seihin_kousei.EndEdit();
+                            dgv_seihin_kousei.Focus();
+
+                        }
+                        if (result == DialogResult.Cancel)
+                        {
+                            e.Cancel = true;
+                            dgv_seihin_kousei.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                        }
+                    }
+                }
+                
+            }
+            
         }
 
         private void tb_seihin_kousei_name_Validating(object sender, CancelEventArgs e)
@@ -1083,6 +1150,77 @@ namespace TSS_SYSTEM
             {
                 e.Cancel = true;
                 return;
+            }
+        }
+
+        private void dgv_seihin_kousei_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.ColumnIndex;
+
+            if (i == 1 || i == 4)
+            {
+                //選択画面へ
+                string w_buhin_cd;
+                w_buhin_cd = tss.search_buhin("2", "");
+                
+                if (w_buhin_cd != "")
+                {
+                    dgv_seihin_kousei.CurrentCell.Value = w_buhin_cd;
+
+                    string str1;
+                    string str2;
+
+                    DataTable dt_w = new DataTable();
+                    DataTable dt_w2 = new DataTable();
+
+                    dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_SEIHIN_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+                    str1 = dt_w.Rows[0][0].ToString();
+
+                    dt_w2 = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
+                   
+                    if (dt_w2.Rows.Count == 0)
+                    {
+                        return;
+                    }
+
+                    //if (w_buhin_cd.ToString() == dgv_seihin_kousei.CurrentCell.Value.ToString())
+                    //{
+
+                    //}
+                    
+                    else
+                    {
+                        str2 = dt_w2.Rows[0][0].ToString();
+
+                        if (str1 != str2)
+                        {
+                            DialogResult result = MessageBox.Show("製品マスタの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                            "製品構成登録",
+                            MessageBoxButtons.OKCancel,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button2);
+
+                            if (result == DialogResult.OK)
+                            {
+                                dgv_seihin_kousei.EndEdit();
+                                //dgv_seihin_kousei.EndEdit();
+                                dgv_seihin_kousei.Focus();
+
+                            }
+                            if (result == DialogResult.Cancel)
+                            {
+                              
+                                dgv_seihin_kousei.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                return;
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    dgv_seihin_kousei.Rows[e.RowIndex].Cells[i+1].Value = tss.get_buhin_name(w_buhin_cd);
+                    dgv_seihin_kousei.EndEdit();
+                }
             }
         }
 

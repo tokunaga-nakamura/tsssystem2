@@ -540,7 +540,7 @@ namespace TSS_SYSTEM
                 dgv.Rows[i].Cells[1].Value = "";
                 return;
             }
-
+            
             //部品コードが入力されたならば、部品名を部品マスターから取得して表示
             if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != "")
             {
@@ -605,44 +605,50 @@ namespace TSS_SYSTEM
 
        private void dgv_nyusyukkoidou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
        {
-           int i = e.ColumnIndex;
            
-           if(i == 0)
-           {
-               //選択画面へ
-               string w_buhin_cd;
-               w_buhin_cd = tss.search_buhin("2", "");
-               if (w_buhin_cd != "")
-               {
-                   dgv_nyusyukkoidou.CurrentCell.Value = w_buhin_cd;
-                   dgv_nyusyukkoidou.EndEdit();
-               }
-           }
+               int i = e.ColumnIndex;
 
-           if (i == 3)
-           {
-               if (dgv_nyusyukkoidou.CurrentRow.Cells[2].Value == null || dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString() != "01")
+               if (i == 0)
                {
                    //選択画面へ
-                   string w_juchu_cd;
-                   w_juchu_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text, "", "", "");
-
-                   if (w_juchu_cd.ToString() != "")
+                   string w_buhin_cd;
+                   w_buhin_cd = tss.search_buhin("2", "");
+                   if (w_buhin_cd != "")
                    {
-                       string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
-                       string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
-
-                       dgv_nyusyukkoidou.CurrentRow.Cells[i].Value = str_w2.ToString();
-                       dgv_nyusyukkoidou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                       dgv_nyusyukkoidou.CurrentCell.Value = w_buhin_cd;
+                       dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[1].Value = tss.get_buhin_name(w_buhin_cd);
                        dgv_nyusyukkoidou.EndEdit();
+                       
                    }
                }
-               else
+
+               if (i == 3)
                {
-                   return;
-               }
+                   if (dgv_nyusyukkoidou.CurrentRow.Cells[2].Value == null || dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString() != "01")
+                   {
+                       //選択画面へ
+                       string w_juchu_cd;
+                       w_juchu_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text, "", "", "");
+
+                       if (w_juchu_cd.ToString() != "")
+                       {
+                           string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
+                           string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+
+                           dgv_nyusyukkoidou.CurrentRow.Cells[i].Value = str_w2.ToString();
+                           dgv_nyusyukkoidou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                           dgv_nyusyukkoidou.EndEdit();
+                       }
+                   }
+                   else
+                   {
+                       dgv_nyusyukkoidou.EndEdit();
+                       return;
+                   }
+
                
            }
+           
 
        }
 
@@ -656,6 +662,12 @@ namespace TSS_SYSTEM
            {
                e.Cancel = true;
                return;
+           }
+
+           if (i == 0)
+           {
+               dgv_nyusyukkoidou.EndEdit();
+           
            }
 
            if (i == 2)
@@ -682,6 +694,7 @@ namespace TSS_SYSTEM
                    dgv_nyusyukkoidou.EndEdit();
                }
            }
+
        }
 
        private void tb_denpyou_no_Validating(object sender, CancelEventArgs e)
