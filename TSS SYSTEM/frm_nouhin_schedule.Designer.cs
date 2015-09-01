@@ -172,7 +172,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer3.Size = new System.Drawing.Size(884, 436);
-            this.splitContainer3.SplitterDistance = 159;
+            this.splitContainer3.SplitterDistance = 123;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
@@ -190,9 +190,9 @@
             this.groupBox1.Controls.Add(this.tb_sijou_name);
             this.groupBox1.Controls.Add(this.cb_sijou_kbn);
             this.groupBox1.Controls.Add(this.tb_sijou_kbn);
-            this.groupBox1.Location = new System.Drawing.Point(10, 28);
+            this.groupBox1.Location = new System.Drawing.Point(490, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 121);
+            this.groupBox1.Size = new System.Drawing.Size(219, 111);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "区分を指定すると絞込みされます。";
@@ -232,7 +232,7 @@
             // tb_type_name
             // 
             this.tb_type_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_type_name.Location = new System.Drawing.Point(110, 93);
+            this.tb_type_name.Location = new System.Drawing.Point(110, 84);
             this.tb_type_name.Name = "tb_type_name";
             this.tb_type_name.ReadOnly = true;
             this.tb_type_name.Size = new System.Drawing.Size(90, 19);
@@ -242,7 +242,7 @@
             // cb_bunrui_kbn
             // 
             this.cb_bunrui_kbn.AutoSize = true;
-            this.cb_bunrui_kbn.Location = new System.Drawing.Point(6, 45);
+            this.cb_bunrui_kbn.Location = new System.Drawing.Point(6, 42);
             this.cb_bunrui_kbn.Name = "cb_bunrui_kbn";
             this.cb_bunrui_kbn.Size = new System.Drawing.Size(72, 16);
             this.cb_bunrui_kbn.TabIndex = 5;
@@ -253,7 +253,7 @@
             // tb_type_kbn
             // 
             this.tb_type_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_type_kbn.Location = new System.Drawing.Point(86, 93);
+            this.tb_type_kbn.Location = new System.Drawing.Point(86, 84);
             this.tb_type_kbn.MaxLength = 2;
             this.tb_type_kbn.Name = "tb_type_kbn";
             this.tb_type_kbn.Size = new System.Drawing.Size(24, 19);
@@ -264,7 +264,7 @@
             // tb_bunrui_name
             // 
             this.tb_bunrui_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_bunrui_name.Location = new System.Drawing.Point(110, 43);
+            this.tb_bunrui_name.Location = new System.Drawing.Point(110, 40);
             this.tb_bunrui_name.Name = "tb_bunrui_name";
             this.tb_bunrui_name.ReadOnly = true;
             this.tb_bunrui_name.Size = new System.Drawing.Size(90, 19);
@@ -274,7 +274,7 @@
             // cb_type_kbn
             // 
             this.cb_type_kbn.AutoSize = true;
-            this.cb_type_kbn.Location = new System.Drawing.Point(6, 95);
+            this.cb_type_kbn.Location = new System.Drawing.Point(6, 86);
             this.cb_type_kbn.Name = "cb_type_kbn";
             this.cb_type_kbn.Size = new System.Drawing.Size(74, 16);
             this.cb_type_kbn.TabIndex = 9;
@@ -285,7 +285,7 @@
             // tb_bunrui_kbn
             // 
             this.tb_bunrui_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_bunrui_kbn.Location = new System.Drawing.Point(86, 43);
+            this.tb_bunrui_kbn.Location = new System.Drawing.Point(86, 40);
             this.tb_bunrui_kbn.MaxLength = 2;
             this.tb_bunrui_kbn.Name = "tb_bunrui_kbn";
             this.tb_bunrui_kbn.Size = new System.Drawing.Size(24, 19);
@@ -296,7 +296,7 @@
             // tb_sijou_name
             // 
             this.tb_sijou_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_sijou_name.Location = new System.Drawing.Point(110, 68);
+            this.tb_sijou_name.Location = new System.Drawing.Point(110, 62);
             this.tb_sijou_name.Name = "tb_sijou_name";
             this.tb_sijou_name.ReadOnly = true;
             this.tb_sijou_name.Size = new System.Drawing.Size(90, 19);
@@ -306,7 +306,7 @@
             // cb_sijou_kbn
             // 
             this.cb_sijou_kbn.AutoSize = true;
-            this.cb_sijou_kbn.Location = new System.Drawing.Point(6, 70);
+            this.cb_sijou_kbn.Location = new System.Drawing.Point(6, 64);
             this.cb_sijou_kbn.Name = "cb_sijou_kbn";
             this.cb_sijou_kbn.Size = new System.Drawing.Size(72, 16);
             this.cb_sijou_kbn.TabIndex = 7;
@@ -317,7 +317,7 @@
             // tb_sijou_kbn
             // 
             this.tb_sijou_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_sijou_kbn.Location = new System.Drawing.Point(86, 68);
+            this.tb_sijou_kbn.Location = new System.Drawing.Point(86, 62);
             this.tb_sijou_kbn.MaxLength = 2;
             this.tb_sijou_kbn.Name = "tb_sijou_kbn";
             this.tb_sijou_kbn.Size = new System.Drawing.Size(24, 19);
@@ -327,7 +327,7 @@
             // 
             // btn_hyouji
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(795, 129);
+            this.btn_hyouji.Location = new System.Drawing.Point(795, 91);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
             this.btn_hyouji.TabIndex = 11;
@@ -338,7 +338,7 @@
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(289, 3);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(133, 28);
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(351, 19);
@@ -348,7 +348,7 @@
             // tb_torihikisaki_cd
             // 
             this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(240, 3);
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(84, 28);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(49, 19);
@@ -359,7 +359,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(166, 3);
+            this.textBox3.Location = new System.Drawing.Point(10, 28);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(74, 19);
@@ -448,8 +448,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 273);
-            this.splitContainer4.SplitterDistance = 141;
+            this.splitContainer4.Size = new System.Drawing.Size(884, 309);
+            this.splitContainer4.SplitterDistance = 159;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -460,9 +460,10 @@
             this.dgv_nouhin_schedule.Location = new System.Drawing.Point(0, 0);
             this.dgv_nouhin_schedule.Name = "dgv_nouhin_schedule";
             this.dgv_nouhin_schedule.RowTemplate.Height = 21;
-            this.dgv_nouhin_schedule.Size = new System.Drawing.Size(880, 137);
+            this.dgv_nouhin_schedule.Size = new System.Drawing.Size(880, 155);
             this.dgv_nouhin_schedule.TabIndex = 0;
             this.dgv_nouhin_schedule.TabStop = false;
+            this.dgv_nouhin_schedule.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_nouhin_schedule_CellMouseClick);
             // 
             // splitContainer5
             // 
@@ -479,7 +480,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dgv_nouhin_rireki);
-            this.splitContainer5.Size = new System.Drawing.Size(880, 124);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 142);
             this.splitContainer5.SplitterDistance = 26;
             this.splitContainer5.TabIndex = 0;
             // 
@@ -499,9 +500,10 @@
             this.dgv_nouhin_rireki.Location = new System.Drawing.Point(0, 0);
             this.dgv_nouhin_rireki.Name = "dgv_nouhin_rireki";
             this.dgv_nouhin_rireki.RowTemplate.Height = 21;
-            this.dgv_nouhin_rireki.Size = new System.Drawing.Size(880, 94);
+            this.dgv_nouhin_rireki.Size = new System.Drawing.Size(880, 112);
             this.dgv_nouhin_rireki.TabIndex = 0;
             this.dgv_nouhin_rireki.TabStop = false;
+            this.dgv_nouhin_rireki.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_nouhin_rireki_CellMouseClick);
             // 
             // btn_csv
             // 
