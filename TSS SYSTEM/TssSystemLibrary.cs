@@ -1000,6 +1000,25 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+
+        #region try_string_to_double メソッド
+        /// <summary>
+        /// 文字列を受け取りDouble型に変換し返す</summary>
+        /// <param name="in_str">変換前の文字列</param>
+        /// <returns>Double 変換後の値 変換不能時は-999999999</returns>
+        public double try_string_to_double(string in_str)
+        {
+            double out_dou;    //戻り値用
+
+            if(double.TryParse(in_str, out out_dou) == false)
+            {
+                out_dou = -999999999;
+            }
+            return out_dou;
+        }
+        #endregion
+
+
         #region get_torihikisaki_name メソッド
         /// <summary>
         /// 取引先コードを受け取り取引先名を返す</summary>

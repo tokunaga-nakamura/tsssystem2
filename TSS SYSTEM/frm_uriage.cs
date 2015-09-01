@@ -416,7 +416,7 @@ namespace TSS_SYSTEM
             //セルの値表示位置の設定
             dgv_m.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //seq
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //売上数
-            dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //販売単価
+            dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //販売単価
             dgv_m.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //売上金額
 
             //指定列を非表示にする
@@ -458,6 +458,20 @@ namespace TSS_SYSTEM
             dgv_m.Columns[5].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード1
             dgv_m.Columns[6].DefaultCellStyle.BackColor = Color.PowderBlue; //受注コード2
             dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.PowderBlue; //製品コード
+
+            //列を右詰にする
+            dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //売上数
+            dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //販売単価
+            dgv_m.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //売上金額
+            dgv_m.Columns[23].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //現在までの売上数
+            dgv_m.Columns[24].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //受注数
+
+            //書式を設定する
+            dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0.00";  //売上数
+            dgv_m.Columns[10].DefaultCellStyle.Format = "#,###,###,##0.00"; //販売単価
+            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,##0.00"; //売上金額
+            dgv_m.Columns[23].DefaultCellStyle.Format = "#,###,###,##0.00"; //現在までの売上数
+            dgv_m.Columns[24].DefaultCellStyle.Format = "#,###,###,##0.00"; //受注数
         }
 
         private void uriage_goukei_disp()
@@ -471,7 +485,7 @@ namespace TSS_SYSTEM
                     w_uriage_goukei = w_uriage_goukei + w_dou;
                 }
             }
-            tb_uriage_goukei.Text = w_uriage_goukei.ToString("#,0");
+            tb_uriage_goukei.Text = w_uriage_goukei.ToString("#,###,###,##0");
         }
 
         private void seikyuu_check()
@@ -523,12 +537,6 @@ namespace TSS_SYSTEM
             //製品コード
             if (e.ColumnIndex == 7)
             {
-                if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-
                 //未入力は許容する
                 if(e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
                 {
@@ -554,7 +562,8 @@ namespace TSS_SYSTEM
                             return;
                         }
                     }
-                    if (tss.get_seihin_name(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString()) == null)
+                    //製品コードのセルを抜けるときは必ず製品名を読み込む（製品名の変更は保持しない）
+                    if (tss.get_seihin_name(e.FormattedValue.ToString()) == null)
                     {
                         MessageBox.Show("入力された製品コードは存在しません。");
                         e.Cancel = true;

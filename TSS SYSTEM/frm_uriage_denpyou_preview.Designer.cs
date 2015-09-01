@@ -206,6 +206,7 @@
             this.viewer1.Sidebar.Width = 200;
             this.viewer1.Size = new System.Drawing.Size(880, 400);
             this.viewer1.TabIndex = 0;
+            this.viewer1.TabStop = false;
             // 
             // btn_syuuryou
             // 

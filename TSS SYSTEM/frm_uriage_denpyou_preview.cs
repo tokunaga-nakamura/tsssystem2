@@ -62,8 +62,8 @@ namespace TSS_SYSTEM
             }
             if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
             {
-                MessageBox.Show("売上番号を入力してください。");
-                e.Cancel = true;
+                //MessageBox.Show("売上番号を入力してください。");
+                //e.Cancel = true;
             }
             else
             {
@@ -111,6 +111,10 @@ namespace TSS_SYSTEM
 
         private void tb_uriage_no_Validated(object sender, EventArgs e)
         {
+            if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
+            {
+                return;
+            }
             uriage_read(tb_uriage_no.Text);
             seikyuu_check();
             make_uriage_denpyou_trn();

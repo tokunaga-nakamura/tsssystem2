@@ -164,9 +164,9 @@ namespace TSS_SYSTEM
                 cb_seisan_jisseki.Checked = false;
             }
             tb_bikou.Text = in_dt.Rows[0]["bikou"].ToString();
-            tb_seisan_su.Text = in_dt.Rows[0]["seisan_su"].ToString();
-            tb_nouhin_su.Text = in_dt.Rows[0]["nouhin_su"].ToString();
-            tb_uriage_su.Text = in_dt.Rows[0]["uriage_su"].ToString();
+            tb_seisan_su.Text = tss.try_string_to_double(in_dt.Rows[0]["seisan_su"].ToString()).ToString("#,###,###,###.##");
+            tb_nouhin_su.Text = tss.try_string_to_double(in_dt.Rows[0]["nouhin_su"].ToString()).ToString("#,###,###,###.##");
+            tb_uriage_su.Text = tss.try_string_to_double(in_dt.Rows[0]["uriage_su"].ToString()).ToString("#,###,###,##0.00");
             tb_uriage_kanryou_flg.Text = in_dt.Rows[0]["uriage_kanryou_flg"].ToString();
             tb_delete_flg.Text = in_dt.Rows[0]["delete_flg"].ToString();
             tb_kousin_riyuu.Text = "";
