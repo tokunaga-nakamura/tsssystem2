@@ -254,6 +254,13 @@ namespace TSS_SYSTEM
             ((DataGridViewTextBoxColumn)dgv_nounyuu_schedule.Columns[3]).MaxInputLength = 6;
             ((DataGridViewTextBoxColumn)dgv_nounyuu_schedule.Columns[4]).MaxInputLength = 128;
 
+            //列を右詰にする
+            dgv_nounyuu_schedule.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //書式を設定する
+            dgv_nounyuu_schedule.Columns[2].DefaultCellStyle.Format = "#,###,###,##0.00";
+
+
             //インデックス0の列のセルの背景色を水色にする
             //pp//dgv_nounyuu_schedule.Columns[5].DefaultCellStyle.BackColor = Color.Gainsboro;
             //pp//dgv_nounyuu_schedule.Columns[6].DefaultCellStyle.BackColor = Color.Gainsboro;
@@ -298,6 +305,17 @@ namespace TSS_SYSTEM
             dgv_uriage.Columns[9].HeaderText = "作成日";
             dgv_uriage.Columns[10].HeaderText = "更新者";
             dgv_uriage.Columns[11].HeaderText = "更新日";
+
+            //列を右詰にする
+            dgv_uriage.Columns["uriage_su"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_uriage.Columns["hanbai_tanka"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_uriage.Columns["uriage_kingaku"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //書式を設定する
+            dgv_uriage.Columns["uriage_su"].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_uriage.Columns["hanbai_tanka"].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_uriage.Columns["uriage_kingaku"].DefaultCellStyle.Format = "#,###,###,##0.00";
+
         }
 
         private void kousin_rireki_disp()
