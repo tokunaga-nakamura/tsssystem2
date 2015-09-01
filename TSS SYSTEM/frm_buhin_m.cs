@@ -194,6 +194,12 @@ namespace TSS_SYSTEM
             dgv_buhin_zaiko_m.Columns[2].HeaderText = "受注No1";
             dgv_buhin_zaiko_m.Columns[3].HeaderText = "受注No2";
             dgv_buhin_zaiko_m.Columns[4].HeaderText = "在庫数";
+
+            //右詰
+            dgv_buhin_zaiko_m.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //書式を設定する
+            dgv_buhin_zaiko_m.Columns[4].DefaultCellStyle.Format = "#,###,###,##0.00";
+
             //合計在庫数を求めて表示
             double w_zaiko_su = new double();
             for(int i = 0;i < dgv_buhin_zaiko_m.Rows.Count;i++)
@@ -245,6 +251,10 @@ namespace TSS_SYSTEM
             dgv_buhin_nyusyukko_m.Columns[9].HeaderText = "移動先受注No1";
             dgv_buhin_nyusyukko_m.Columns[10].HeaderText = "移動先受注No2";
             dgv_buhin_nyusyukko_m.Columns[11].HeaderText = "備考";
+            //右詰
+            dgv_buhin_nyusyukko_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //書式を設定する
+            dgv_buhin_nyusyukko_m.Columns[6].DefaultCellStyle.Format = "#,###,###,##0.00";
         }
 
         private string get_torihikisaki_name(string in_torihikisaki_cd)

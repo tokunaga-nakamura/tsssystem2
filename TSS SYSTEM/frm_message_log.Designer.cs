@@ -39,6 +39,7 @@
             this.dgv_message_log = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_kidoku = new System.Windows.Forms.Button();
             this.tb_kidoku_datetime = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.tb_user_cd_to = new System.Windows.Forms.TextBox();
@@ -53,7 +54,7 @@
             this.tb_message_datetime = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_kidoku = new System.Windows.Forms.Button();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,6 +76,10 @@
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -211,20 +216,10 @@
             // 
             // splitContainer5.Panel2
             // 
+            this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
             this.splitContainer5.Panel2.Controls.Add(this.btn_kidoku);
             this.splitContainer5.Panel2.Controls.Add(this.tb_kidoku_datetime);
             this.splitContainer5.Panel2.Controls.Add(this.textBox12);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_user_cd_to);
-            this.splitContainer5.Panel2.Controls.Add(this.textBox10);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_message_naiyou);
-            this.splitContainer5.Panel2.Controls.Add(this.textBox8);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_message_syori_name);
-            this.splitContainer5.Panel2.Controls.Add(this.textBox6);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_user_cd_to_name);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_user_cd_from);
-            this.splitContainer5.Panel2.Controls.Add(this.textBox3);
-            this.splitContainer5.Panel2.Controls.Add(this.tb_message_datetime);
-            this.splitContainer5.Panel2.Controls.Add(this.textBox1);
             this.splitContainer5.Size = new System.Drawing.Size(358, 435);
             this.splitContainer5.SplitterDistance = 30;
             this.splitContainer5.TabIndex = 0;
@@ -237,6 +232,16 @@
             this.label2.Size = new System.Drawing.Size(74, 12);
             this.label2.TabIndex = 0;
             this.label2.Text = "メッセージ内容";
+            // 
+            // btn_kidoku
+            // 
+            this.btn_kidoku.Location = new System.Drawing.Point(247, 376);
+            this.btn_kidoku.Name = "btn_kidoku";
+            this.btn_kidoku.Size = new System.Drawing.Size(75, 23);
+            this.btn_kidoku.TabIndex = 13;
+            this.btn_kidoku.Text = "既読にする";
+            this.btn_kidoku.UseVisualStyleBackColor = true;
+            this.btn_kidoku.Click += new System.EventHandler(this.btn_kidoku_Click);
             // 
             // tb_kidoku_datetime
             // 
@@ -283,11 +288,12 @@
             // tb_message_naiyou
             // 
             this.tb_message_naiyou.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_message_naiyou.Location = new System.Drawing.Point(103, 103);
+            this.tb_message_naiyou.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_message_naiyou.Location = new System.Drawing.Point(0, 0);
             this.tb_message_naiyou.Multiline = true;
             this.tb_message_naiyou.Name = "tb_message_naiyou";
             this.tb_message_naiyou.ReadOnly = true;
-            this.tb_message_naiyou.Size = new System.Drawing.Size(245, 269);
+            this.tb_message_naiyou.Size = new System.Drawing.Size(358, 270);
             this.tb_message_naiyou.TabIndex = 8;
             this.tb_message_naiyou.TabStop = false;
             // 
@@ -385,15 +391,32 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_kidoku
+            // splitContainer6
             // 
-            this.btn_kidoku.Location = new System.Drawing.Point(247, 376);
-            this.btn_kidoku.Name = "btn_kidoku";
-            this.btn_kidoku.Size = new System.Drawing.Size(75, 23);
-            this.btn_kidoku.TabIndex = 13;
-            this.btn_kidoku.Text = "既読にする";
-            this.btn_kidoku.UseVisualStyleBackColor = true;
-            this.btn_kidoku.Click += new System.EventHandler(this.btn_kidoku_Click);
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.textBox8);
+            this.splitContainer6.Panel1.Controls.Add(this.textBox6);
+            this.splitContainer6.Panel1.Controls.Add(this.tb_message_syori_name);
+            this.splitContainer6.Panel1.Controls.Add(this.textBox10);
+            this.splitContainer6.Panel1.Controls.Add(this.tb_message_datetime);
+            this.splitContainer6.Panel1.Controls.Add(this.tb_user_cd_from);
+            this.splitContainer6.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer6.Panel1.Controls.Add(this.tb_user_cd_to_name);
+            this.splitContainer6.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer6.Panel1.Controls.Add(this.tb_user_cd_to);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.tb_message_naiyou);
+            this.splitContainer6.Size = new System.Drawing.Size(358, 401);
+            this.splitContainer6.SplitterDistance = 127;
+            this.splitContainer6.TabIndex = 14;
             // 
             // frm_message_log
             // 
@@ -430,6 +453,12 @@
             this.splitContainer5.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel1.PerformLayout();
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            this.splitContainer6.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +491,6 @@
         private System.Windows.Forms.TextBox tb_kidoku_datetime;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button btn_kidoku;
+        private System.Windows.Forms.SplitContainer splitContainer6;
     }
 }

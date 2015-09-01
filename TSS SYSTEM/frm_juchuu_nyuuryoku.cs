@@ -632,6 +632,29 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
+        private bool chk_seihin_torihikisaki()
+        {
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_seihin_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //無し
+                bl = false;
+            }
+            else
+            {
+                //既存データ有
+                if(tb_torihikisaki_cd.Text.ToString() != dt_work.Rows[0]["torihikisaki_cd"].ToString())
+                {
+                    //製品マスタの取引先コードと受注の取引先コードが違う場合
+                    bl = false;
+                }
+            }
+            return bl;
+        }
+
         private bool chk_juchu_su()
         {
             bool bl = true; //戻り値
@@ -1133,6 +1156,21 @@ namespace TSS_SYSTEM
                 else
                 {
                     tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text);
+                    //製品マスタの取引先コードと受注の取引先コードが違う場合
+                    if(chk_seihin_torihikisaki() == false)
+                    {
+                        DialogResult result = MessageBox.Show("入力された製品コードの製品は、取引先コードが異なります。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            //「はい」が選択された時
+                        }
+                        else
+                        {
+                            //「いいえ」が選択された時
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
                 }
             }
         }

@@ -1318,7 +1318,7 @@ namespace TSS_SYSTEM
                     if(w_dt.Rows.Count == 0)
                     {
                         GetUser();
-                        ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い", "zaiko_proc(" + in_buhin_cd + "," + in_zaiko_kbn + "," + in_torihikisaki_cd + "," + in_juchu_cd1 + "," + in_juchu_cd2 + "," + in_su + ")");
+                        ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い(CODE:01)", "zaiko_proc(部品コード" + in_buhin_cd + ",在庫区分" + in_zaiko_kbn + ",取引先コード" + in_torihikisaki_cd + ",受注コード1" + in_juchu_cd1 + ",受注コード2" + in_juchu_cd2 + ",数" + in_su + ")");
                         bl = false;
                         return bl;
                     }
@@ -1326,7 +1326,7 @@ namespace TSS_SYSTEM
                 else
                 {
                     GetUser();
-                    ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い", "zaiko_proc(" + in_buhin_cd + "," + in_zaiko_kbn + "," + in_torihikisaki_cd + "," + in_juchu_cd1 + "," + in_juchu_cd2 + "," + in_su + ")");
+                    ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い(CODE:02)", "zaiko_proc(部品コード" + in_buhin_cd + ",在庫区分" + in_zaiko_kbn + ",取引先コード" + in_torihikisaki_cd + ",受注コード1" + in_juchu_cd1 + ",受注コード2" + in_juchu_cd2 + ",数" + in_su + ")");
                     bl = false;
                     return bl;
                 }
@@ -1356,7 +1356,7 @@ namespace TSS_SYSTEM
                 if (w_dt2.Rows.Count == 0)
                 {
                     GetUser();
-                    ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い", "zaiko_proc(" + in_buhin_cd + "," + in_zaiko_kbn + "," + in_torihikisaki_cd + "," + in_juchu_cd1 + "," + in_juchu_cd2 + "," + in_su + ")");
+                    ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い(CODE:03)", "zaiko_proc(部品コード" + in_buhin_cd + ",在庫区分" + in_zaiko_kbn + ",取引先コード" + in_torihikisaki_cd + ",受注コード1" + in_juchu_cd1 + ",受注コード2" + in_juchu_cd2 + ",数" + in_su + ")");
                     bl = false;
                     return bl;
                 }

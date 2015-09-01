@@ -45,6 +45,7 @@
             this.tb_seihin_name = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_list_hanei = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.tb_seisan_sitai_daisuu = new System.Windows.Forms.TextBox();
@@ -278,6 +279,7 @@
             // 
             // splitContainer4.Panel1
             // 
+            this.splitContainer4.Panel1.Controls.Add(this.label2);
             this.splitContainer4.Panel1.Controls.Add(this.btn_list_hanei);
             this.splitContainer4.Panel1.Controls.Add(this.textBox9);
             this.splitContainer4.Panel1.Controls.Add(this.tb_seisan_sitai_daisuu);
@@ -289,6 +291,15 @@
             this.splitContainer4.SplitterDistance = 33;
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(358, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(417, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "※この画面には、必要部品だけ表示されます。親部品、互換部品等は表示されません。";
             // 
             // btn_list_hanei
             // 
@@ -365,6 +376,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seihin_to_zaiko";
             this.Text = "製品別部品在庫";
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -417,5 +429,6 @@
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Label lbl_seihin_kousei_msg;
+        private System.Windows.Forms.Label label2;
     }
 }

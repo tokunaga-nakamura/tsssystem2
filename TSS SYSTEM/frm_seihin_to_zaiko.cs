@@ -39,7 +39,7 @@ namespace TSS_SYSTEM
             }
             //製品コード
             //未入力は許容する
-            if(e.ToString() != null && e.ToString() != "")
+            if(tb_seihin_cd.Text.ToString() != null && tb_seihin_cd.Text.ToString() != "")
             {
                 if (chk_seihin_cd() == false)
                 {
@@ -51,7 +51,10 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validated(object sender, EventArgs e)
         {
-            seihin_disp();
+            if (tb_seihin_cd.Text.ToString() != null && tb_seihin_cd.Text.ToString() != "")
+            {
+                seihin_disp();
+            }
         }
 
         private void list_make()

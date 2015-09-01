@@ -107,7 +107,7 @@
             // 
             // btn_tuika
             // 
-            this.btn_tuika.Location = new System.Drawing.Point(10, 11);
+            this.btn_tuika.Location = new System.Drawing.Point(10, 3);
             this.btn_tuika.Name = "btn_tuika";
             this.btn_tuika.Size = new System.Drawing.Size(108, 23);
             this.btn_tuika.TabIndex = 4;
@@ -117,7 +117,7 @@
             // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(685, 7);
+            this.btn_touroku.Location = new System.Drawing.Point(714, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 3;
@@ -140,7 +140,7 @@
             this.dgv_seihin_kousei.Location = new System.Drawing.Point(0, 0);
             this.dgv_seihin_kousei.Name = "dgv_seihin_kousei";
             this.dgv_seihin_kousei.RowTemplate.Height = 21;
-            this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 275);
+            this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 300);
             this.dgv_seihin_kousei.TabIndex = 0;
             this.dgv_seihin_kousei.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellEndEdit);
             this.dgv_seihin_kousei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_seihin_kousei_CellValidating);
@@ -148,7 +148,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(790, 7);
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
@@ -173,8 +173,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_seihin_kousei);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 431);
-            this.splitContainer3.SplitterDistance = 148;
+            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.SplitterDistance = 132;
             this.splitContainer3.TabIndex = 8;
             // 
             // splitContainer4
@@ -204,7 +204,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_seihin_kousei_name);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 148);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 132);
             this.splitContainer4.SplitterDistance = 484;
             this.splitContainer4.TabIndex = 33;
             // 
@@ -241,7 +241,7 @@
             // tb_update_datetime
             // 
             this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(93, 107);
+            this.tb_update_datetime.Location = new System.Drawing.Point(350, 106);
             this.tb_update_datetime.Name = "tb_update_datetime";
             this.tb_update_datetime.ReadOnly = true;
             this.tb_update_datetime.Size = new System.Drawing.Size(127, 19);
@@ -263,7 +263,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox3.Location = new System.Drawing.Point(10, 88);
+            this.textBox3.Location = new System.Drawing.Point(267, 87);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(38, 19);
@@ -274,7 +274,7 @@
             // tb_update_user_cd
             // 
             this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(48, 107);
+            this.tb_update_user_cd.Location = new System.Drawing.Point(305, 106);
             this.tb_update_user_cd.Name = "tb_update_user_cd";
             this.tb_update_user_cd.ReadOnly = true;
             this.tb_update_user_cd.Size = new System.Drawing.Size(45, 19);
@@ -294,7 +294,7 @@
             // tb_create_user_cd
             // 
             this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(48, 88);
+            this.tb_create_user_cd.Location = new System.Drawing.Point(305, 87);
             this.tb_create_user_cd.Name = "tb_create_user_cd";
             this.tb_create_user_cd.ReadOnly = true;
             this.tb_create_user_cd.Size = new System.Drawing.Size(45, 19);
@@ -304,7 +304,7 @@
             // tb_create_datetime
             // 
             this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(93, 88);
+            this.tb_create_datetime.Location = new System.Drawing.Point(350, 87);
             this.tb_create_datetime.Name = "tb_create_datetime";
             this.tb_create_datetime.ReadOnly = true;
             this.tb_create_datetime.Size = new System.Drawing.Size(127, 19);
@@ -314,7 +314,7 @@
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox9.Location = new System.Drawing.Point(10, 107);
+            this.textBox9.Location = new System.Drawing.Point(267, 106);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(38, 19);
@@ -330,7 +330,7 @@
             this.dgv_seihin_kousei_name.Name = "dgv_seihin_kousei_name";
             this.dgv_seihin_kousei_name.ReadOnly = true;
             this.dgv_seihin_kousei_name.RowTemplate.Height = 21;
-            this.dgv_seihin_kousei_name.Size = new System.Drawing.Size(392, 144);
+            this.dgv_seihin_kousei_name.Size = new System.Drawing.Size(392, 128);
             this.dgv_seihin_kousei_name.TabIndex = 43;
             this.dgv_seihin_kousei_name.TabStop = false;
             // 
@@ -354,7 +354,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 431;
+            this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
