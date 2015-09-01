@@ -238,7 +238,7 @@ namespace TSS_SYSTEM
             dgv_nounyuu_schedule.Columns[0].HeaderText = "納品日";
             dgv_nounyuu_schedule.Columns[1].HeaderText = "便";
             dgv_nounyuu_schedule.Columns[2].HeaderText = "納品数";
-            dgv_nounyuu_schedule.Columns[3].HeaderText = "納品者";
+            dgv_nounyuu_schedule.Columns[3].HeaderText = "納品者コード";
             dgv_nounyuu_schedule.Columns[4].HeaderText = "備考";
             //pp//dgv_nounyuu_schedule.Columns[5].HeaderText = "完納フラグ";
             //pp//dgv_nounyuu_schedule.Columns[6].HeaderText = "削除フラグ";
@@ -848,7 +848,7 @@ namespace TSS_SYSTEM
                     if(result == DialogResult.Yes)
                     {
                         //「はい」が選択された時
-                        tb_uriage_kanryou_flg.Text = "1";
+                        tb_uriage_kanryou_flg.Text = "0";
                         bl = true;
                     }
                     else
@@ -935,8 +935,8 @@ namespace TSS_SYSTEM
 
             bl_tss = tss.OracleUpdate("UPDATE tss_juchu_m SET torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "',juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "',juchu_cd2 = '" + tb_juchu_cd2.Text.ToString()
                                     + "',seihin_cd = '" + tb_seihin_cd.Text.ToString() + "',seisan_kbn = '" + w_seisan_kbn + "',nouhin_kbn = '" + w_nouhin_kbn + "',jisseki_kbn = '" + w_jisseki_kbn
-                                    + "',juchu_su = '" + tb_juchu_su.Text.ToString() + "',seisan_su = '" + "0" + "',nouhin_su = '" + "0" + "',uriage_su = '" + "0"
-                                    + "',uriage_kanryou_flg = '" + "0" + "',bikou = '" + tb_bikou.Text.ToString() + "',delete_flg = '" + "0"
+                                    + "',juchu_su = '" + tb_juchu_su.Text.ToString() //+ "',seisan_su = '" + "0" + "',nouhin_su = '" + "0" + "',uriage_su = '" + "0"
+                                    + "',uriage_kanryou_flg = '" + tb_uriage_kanryou_flg.Text.ToString() + "',bikou = '" + tb_bikou.Text.ToString() //+ "',delete_flg = '" + "0"
                                     + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'");
             if (bl_tss != true)
             {
