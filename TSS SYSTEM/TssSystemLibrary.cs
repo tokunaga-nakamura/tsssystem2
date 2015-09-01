@@ -10,7 +10,6 @@ using Oracle.DataAccess.Client; //（参照設定にも追加）
 using System.Data;              //OracleのUPDATE文の実行の際にIsolationLevelを指定するのに必要らしい
 using System.IO;                //StreamWriter
 
-
 namespace TSS_SYSTEM
 {
     #region TssSystemLibrary
@@ -1000,7 +999,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
         #region try_string_to_double メソッド
         /// <summary>
         /// 文字列を受け取りDouble型に変換し返す</summary>
@@ -1017,7 +1015,6 @@ namespace TSS_SYSTEM
             return out_dou;
         }
         #endregion
-
 
         #region get_torihikisaki_name メソッド
         /// <summary>
@@ -1603,7 +1600,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
         #region get_juchu_uriage_su メソッド
         /// <summary>
         /// 受注番号を受け取り売上数を返す</summary>
@@ -1692,7 +1688,6 @@ namespace TSS_SYSTEM
             return out_bl;
         }
         #endregion
-
 
     }
     #endregion

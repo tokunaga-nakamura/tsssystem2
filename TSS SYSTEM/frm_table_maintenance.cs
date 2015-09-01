@@ -124,12 +124,11 @@ namespace TSS_SYSTEM
 
         private void tb_sql_Validating(object sender, CancelEventArgs e)
         {
-            if (tss.Check_String_Escape(tb_sql.Text) == false)
-            {
-                e.Cancel = true;
-                return;
-            }
-
+            //if (tss.Check_String_Escape(tb_sql.Text) == false)
+            //{
+            //    e.Cancel = true;
+            //    return;
+            //}
         }
     }
 }

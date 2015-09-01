@@ -132,15 +132,15 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
+            this.splitContainer3.Panel1.Controls.Add(this.cb_table_name);
             this.splitContainer3.Panel1.Controls.Add(this.tb_sql);
             this.splitContainer3.Panel1.Controls.Add(this.label1);
-            this.splitContainer3.Panel1.Controls.Add(this.cb_table_name);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_table);
             this.splitContainer3.Size = new System.Drawing.Size(884, 439);
-            this.splitContainer3.SplitterDistance = 31;
+            this.splitContainer3.SplitterDistance = 32;
             this.splitContainer3.TabIndex = 0;
             // 
             // btn_hyouji
@@ -155,25 +155,25 @@
             // 
             // tb_sql
             // 
-            this.tb_sql.Location = new System.Drawing.Point(464, 5);
+            this.tb_sql.Location = new System.Drawing.Point(364, 5);
             this.tb_sql.Name = "tb_sql";
-            this.tb_sql.Size = new System.Drawing.Size(321, 19);
+            this.tb_sql.Size = new System.Drawing.Size(421, 19);
             this.tb_sql.TabIndex = 2;
             this.tb_sql.Validating += new System.ComponentModel.CancelEventHandler(this.tb_sql_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(305, 8);
+            this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 12);
+            this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "select * from \'TABLE_NAME\'";
+            this.label1.Text = "select * from ";
             // 
             // cb_table_name
             // 
             this.cb_table_name.FormattingEnabled = true;
-            this.cb_table_name.Location = new System.Drawing.Point(10, 5);
+            this.cb_table_name.Location = new System.Drawing.Point(93, 5);
             this.cb_table_name.Name = "cb_table_name";
             this.cb_table_name.Size = new System.Drawing.Size(265, 20);
             this.cb_table_name.TabIndex = 0;
@@ -187,7 +187,7 @@
             this.dgv_table.Location = new System.Drawing.Point(0, 0);
             this.dgv_table.Name = "dgv_table";
             this.dgv_table.RowTemplate.Height = 21;
-            this.dgv_table.Size = new System.Drawing.Size(880, 400);
+            this.dgv_table.Size = new System.Drawing.Size(880, 399);
             this.dgv_table.TabIndex = 0;
             // 
             // btn_csv
