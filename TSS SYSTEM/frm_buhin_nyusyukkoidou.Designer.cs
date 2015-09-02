@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyusyukkoidou));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
@@ -56,7 +56,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_sakujyo = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
@@ -134,7 +133,6 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_sakujyo);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
@@ -250,7 +248,7 @@
             this.tb_seq.MaxLength = 2;
             this.tb_seq.Name = "tb_seq";
             this.tb_seq.ReadOnly = true;
-            this.tb_seq.Size = new System.Drawing.Size(85, 19);
+            this.tb_seq.Size = new System.Drawing.Size(69, 19);
             this.tb_seq.TabIndex = 12;
             this.tb_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -294,20 +292,21 @@
             this.dgv_nyusyukkoidou.TabIndex = 0;
             this.dgv_nyusyukkoidou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellDoubleClick);
             this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
+            this.dgv_nyusyukkoidou.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellValidated);
             this.dgv_nyusyukkoidou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nyusyukkoidou_CellValidating);
             // 
             // Column2
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.PowderBlue;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column2.HeaderText = "部品コード";
             this.Column2.Name = "Column2";
             this.Column2.Width = 85;
             // 
             // Column3
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column3.HeaderText = "部品名";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -321,8 +320,8 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PowderBlue;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column5.HeaderText = "受注コード1";
             this.Column5.Name = "Column5";
             // 
@@ -333,10 +332,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column7.HeaderText = "数量";
             this.Column7.Name = "Column7";
             this.Column7.Width = 70;
@@ -345,16 +344,6 @@
             // 
             this.Column1.HeaderText = "備考";
             this.Column1.Name = "Column1";
-            // 
-            // btn_sakujyo
-            // 
-            this.btn_sakujyo.Location = new System.Drawing.Point(10, 3);
-            this.btn_sakujyo.Name = "btn_sakujyo";
-            this.btn_sakujyo.Size = new System.Drawing.Size(75, 23);
-            this.btn_sakujyo.TabIndex = 4;
-            this.btn_sakujyo.Text = "1行削除";
-            this.btn_sakujyo.UseVisualStyleBackColor = true;
-            this.btn_sakujyo.Click += new System.EventHandler(this.btn_sakujyo_Click);
             // 
             // btn_touroku
             // 
@@ -436,7 +425,6 @@
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.StatusStrip ss_status;
         private System.Windows.Forms.DataGridView dgv_nyusyukkoidou;
-        private System.Windows.Forms.Button btn_sakujyo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

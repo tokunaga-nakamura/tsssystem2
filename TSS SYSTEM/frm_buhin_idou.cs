@@ -407,23 +407,51 @@ namespace TSS_SYSTEM
                 }
             }
 
-            if (i == 3 || i == 7)
+            if (i == 3)
              {
-                 //選択画面へ
-                 string w_cd;
-                 w_cd = tss.search_torihikisaki("2", "");
-                 if (w_cd != "")
+
+                 if (dgv_idou.CurrentRow.Cells[2].Value == null || dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
                  {
-                     dgv_idou.CurrentCell.Value = w_cd;
-                     dgv_idou.EndEdit();
+                     //選択画面へ
+                     string w_cd;
+                     w_cd = tss.search_torihikisaki("2", "");
+                     if (w_cd != "")
+                     {
+                         dgv_idou.CurrentCell.Value = w_cd;
+                         dgv_idou.EndEdit();
+                     }
                  }
+                 else
+                 {
+                     return;
+                 }
+
              }
 
+            if (i == 7)
+            {
 
+                if (dgv_idou.CurrentRow.Cells[6].Value == null || dgv_idou.CurrentRow.Cells[6].Value.ToString() != "01")
+                {
+                    //選択画面へ
+                    string w_cd;
+                    w_cd = tss.search_torihikisaki("2", "");
+                    if (w_cd != "")
+                    {
+                        dgv_idou.CurrentCell.Value = w_cd;
+                        dgv_idou.EndEdit();
+                    }
+                }
+                else
+                {
+                    return;
+                }
+
+            }
 
             if (i == 4)
             {
-                if (dgv_idou.CurrentRow.Cells[3].Value == null)
+                if (dgv_idou.CurrentRow.Cells[3].Value == null && dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
                 {
                     MessageBox.Show("取引先コードを入力してください");
                     return;
@@ -453,7 +481,7 @@ namespace TSS_SYSTEM
             
             if (i == 8)
             {
-                if (dgv_idou.CurrentRow.Cells[7].Value == null)
+                if (dgv_idou.CurrentRow.Cells[7].Value == null && dgv_idou.CurrentRow.Cells[6].Value.ToString() != "01")
                 {
                     MessageBox.Show("移動先取引先コードを入力してください");
                     return;
@@ -498,13 +526,16 @@ namespace TSS_SYSTEM
             {
                 string zaiko_kbn = e.FormattedValue.ToString();
 
-                //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
+                //在庫区分が01（フリー）なら、取引先コードと受注コード1、2はリードオンリーで色をグレーにする。
                 if (zaiko_kbn == "01")
                 {
+                    dgv_idou[3, j].Value = null;
                     dgv_idou[4, j].Value = null;
                     dgv_idou[5, j].Value = null;
+                    dgv_idou[3, j].Style.BackColor = Color.LightGray;
                     dgv_idou[4, j].Style.BackColor = Color.LightGray;
                     dgv_idou[5, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[3, j].ReadOnly = true;
                     dgv_idou[4, j].ReadOnly = true;
                     dgv_idou[5, j].ReadOnly = true;
 
@@ -512,6 +543,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
+                    dgv_idou[3, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[4, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[5, j].Style.BackColor = Color.White;
                     dgv_idou[4, j].ReadOnly = false;
@@ -528,10 +560,13 @@ namespace TSS_SYSTEM
                 //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
                 if (zaiko_kbn == "01")
                 {
+                    dgv_idou[7, j].Value = null;
                     dgv_idou[8, j].Value = null;
                     dgv_idou[9, j].Value = null;
+                    dgv_idou[7, j].Style.BackColor = Color.LightGray;
                     dgv_idou[8, j].Style.BackColor = Color.LightGray;
                     dgv_idou[9, j].Style.BackColor = Color.LightGray;
+                    dgv_idou[7, j].ReadOnly = true;
                     dgv_idou[8, j].ReadOnly = true;
                     dgv_idou[9, j].ReadOnly = true;
 
@@ -539,6 +574,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
+                    dgv_idou[7, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[8, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[9, j].Style.BackColor = Color.White;
                     dgv_idou[8, j].ReadOnly = false;
@@ -547,6 +583,44 @@ namespace TSS_SYSTEM
                     dgv_idou.EndEdit();
                 }
             }
+
+            if (i == 3 || i == 8 )
+            {
+                if(dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString() == "")
+                {
+
+                }
+
+                if (dgv_idou.Rows[e.RowIndex].Cells[3].Value.ToString() == "")
+                {
+
+                }
+
+                if (dgv_idou.Rows[e.RowIndex].Cells[8].Value.ToString() == "")
+                {
+
+                }
+
+                else
+                {
+                    string str = dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string str2 = dgv_idou.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string str3 = dgv_idou.Rows[e.RowIndex].Cells[8].Value.ToString();
+
+                    DataTable dt_w = new DataTable();
+                    dt_w = tss.OracleSelect("select torihikisaki_cd from tss_buhin_m where buhin_cd  =  '" + str + "'");
+
+                    if (dt_w.Rows.Count == 0)
+                    {
+                      
+                    }
+
+
+                }
+                
+               
+            }
+
         }
 
         private void tb_denpyou_no_Validating(object sender, CancelEventArgs e)
@@ -555,6 +629,18 @@ namespace TSS_SYSTEM
             {
                 e.Cancel = true;
                 return;
+            }
+        }
+
+        private void dgv_idou_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 10)
+            {
+                if (dgv_idou.Rows[e.RowIndex].Cells[10].Value != null && dgv_idou.Rows[e.RowIndex].Cells[10].Value.ToString() != "")
+                {
+                    dgv_idou.Rows[e.RowIndex].Cells[10].Value = tss.try_string_to_double(dgv_idou.Rows[e.RowIndex].Cells[10].Value.ToString()).ToString("#,0.00");
+                }
+
             }
         }
     }
