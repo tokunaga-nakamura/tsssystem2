@@ -308,6 +308,7 @@ namespace TSS_SYSTEM
                 MessageBox.Show("取引先コードを入力してください");
             }
             
+             dgv_siire_disp();
         }
         //データグリッドビューに入力された数値の小数点以下第三桁を切り捨てる
         public static double ToRoundDown(double dValue, int iDigits)
@@ -603,13 +604,13 @@ namespace TSS_SYSTEM
 
             //使用数量右寄せ、カンマ区切り
             dgv_siire.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siire.Columns[2].DefaultCellStyle.Format = "#,0.##";
+            dgv_siire.Columns[2].DefaultCellStyle.Format = "#,0.00";
 
             dgv_siire.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siire.Columns[3].DefaultCellStyle.Format = "#,0.##";
+            dgv_siire.Columns[3].DefaultCellStyle.Format = "#,0.00";
 
             dgv_siire.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siire.Columns[4].DefaultCellStyle.Format = "#,0.##";
+            dgv_siire.Columns[4].DefaultCellStyle.Format = "#,0.00";
 
             //部品名、仕入金額、仕入締日、支払計上日は入力不可
             dgv_siire.Columns[1].ReadOnly = true;

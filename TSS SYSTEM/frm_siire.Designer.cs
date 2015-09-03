@@ -106,7 +106,7 @@
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(154, 19);
-            this.tb_torihikisaki_name.TabIndex = 10;
+            this.tb_torihikisaki_name.TabIndex = 4;
             this.tb_torihikisaki_name.TabStop = false;
             // 
             // tb_torihikisaki_cd
@@ -189,8 +189,7 @@
             this.dgv_siire.RowHeadersVisible = false;
             this.dgv_siire.RowTemplate.Height = 21;
             this.dgv_siire.Size = new System.Drawing.Size(880, 316);
-            this.dgv_siire.TabIndex = 0;
-            this.dgv_siire.TabStop = false;
+            this.dgv_siire.TabIndex = 5;
             this.dgv_siire.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellEndEdit);
             this.dgv_siire.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_siire_CellValidating);
             this.dgv_siire.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_siire_DataError);

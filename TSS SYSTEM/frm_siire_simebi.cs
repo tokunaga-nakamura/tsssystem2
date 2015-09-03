@@ -128,7 +128,6 @@ namespace TSS_SYSTEM
                 tb_create_datetime.Text = st_create_datetime;
                 tb_update_user_cd.Text = st_update_user_cd;
                 tb_update_datetime.Text = st_update_datetime;
-
             }
 
             string syouhizei_kbn = dt_work.Rows[0][0].ToString();
@@ -138,7 +137,7 @@ namespace TSS_SYSTEM
 
             if (dt_work4.Rows.Count != 0 )
             {
-                if (syouhizei_kbn == "0") //明細ごと
+                if (syouhizei_kbn == "1") //明細ごと
                 {
                     dt_work3 = tss.OracleSelect("select siire_kingaku from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     //消費税計算カラム追加
@@ -230,7 +229,7 @@ namespace TSS_SYSTEM
 
                 }
 
-                if (syouhizei_kbn == "1") //伝票ごと
+                if (syouhizei_kbn == "2") //伝票ごと
                 {
                     dt_work3 = tss.OracleSelect("select siire_no,sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "' GROUP　BY　siire_no  ORDER BY siire_no");
                     //消費税計算カラム追加
@@ -313,16 +312,16 @@ namespace TSS_SYSTEM
 
                     //使用数量右寄せ、カンマ区切り
                     dgv_siire_simebi.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0.##";
+                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0.00";
 
                     dgv_siire_simebi.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0.##";
+                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0.00";
 
                     dgv_siire_simebi.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0.##";
+                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0.00";
                 }
 
-                if (syouhizei_kbn == "2") // 請求合計
+                if (syouhizei_kbn == "3") // 請求合計
                 {
 
                     dt_work3 = tss.OracleSelect("select sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
