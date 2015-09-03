@@ -82,12 +82,13 @@
             // 
             // tb_seihin_cd
             // 
-            this.tb_seihin_cd.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_seihin_cd.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_seihin_cd.Location = new System.Drawing.Point(74, 12);
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(66, 19);
             this.tb_seihin_cd.TabIndex = 2;
             this.tb_seihin_cd.TabStop = false;
+            this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
             // textBox1
@@ -125,6 +126,7 @@
             // 
             // dgv_kubun_m
             // 
+            this.dgv_kubun_m.AllowUserToAddRows = false;
             this.dgv_kubun_m.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_kubun_m.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_kubun_m.Location = new System.Drawing.Point(0, 0);
@@ -160,6 +162,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "frm_seihin_kousei_select";
             this.Text = "製品構成選択";
             this.Load += new System.EventHandler(this.frm_seihin_kousei_select_Load);

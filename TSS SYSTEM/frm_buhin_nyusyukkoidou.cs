@@ -99,7 +99,7 @@ namespace TSS_SYSTEM
 
             //データグリッドビューの部品名は編集不可
             dgv_nyusyukkoidou.Columns[1].ReadOnly = true;
-            dgv_nyusyukkoidou.Columns["Column7"].DefaultCellStyle.Format = "#,0";
+            //dgv_nyusyukkoidou.Columns["Column7"].DefaultCellStyle.Format = "#,0";
             
             
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
@@ -114,6 +114,9 @@ namespace TSS_SYSTEM
             dgv_nyusyukkoidou.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
             //行ヘッダーを非表示にする
             dgv_nyusyukkoidou.RowHeadersVisible = true;
+            //数量の小数点桁数
+            dgv_nyusyukkoidou.Columns[5].DefaultCellStyle.Format = "#,0.00";
+   
 
         }
 
@@ -541,6 +544,29 @@ namespace TSS_SYSTEM
                 return;
             }
 
+            if (e.ColumnIndex == 0)
+            {
+               
+                if (tb_torihikisaki_cd.Text == "")
+                {
+                    if (dgv.CurrentCell.Value.ToString() == "")
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("取引先コードが入力されていません");
+                        dgv.Rows[i].Cells[0].Value = "";
+                        dgv.Rows[i].Cells[1].Value = "";
+                        tb_torihikisaki_cd.Focus();
+                        return;
+                    }
+                   
+                }
+
+            }
+
+
             //部品コードが入力されたならば、部品名を部品マスターから取得して表示
             if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != "")
             {
@@ -580,11 +606,6 @@ namespace TSS_SYSTEM
             tb_seq.Text = (w_seq).ToString("0000000000");
         }
 
-       private void btn_sakujyo_Click(object sender, EventArgs e)
-       {
-           int i = dgv_nyusyukkoidou.CurrentCell.RowIndex;
-           dgv_nyusyukkoidou.Rows.RemoveAt(dgv_nyusyukkoidou.Rows[i].Index);
-       }
 
        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
        {
@@ -605,44 +626,105 @@ namespace TSS_SYSTEM
 
        private void dgv_nyusyukkoidou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
        {
-           int i = e.ColumnIndex;
            
-           if(i == 0)
-           {
-               //選択画面へ
-               string w_buhin_cd;
-               w_buhin_cd = tss.search_buhin("2", "");
-               if (w_buhin_cd != "")
-               {
-                   dgv_nyusyukkoidou.CurrentCell.Value = w_buhin_cd;
-                   dgv_nyusyukkoidou.EndEdit();
-               }
-           }
+               int i = e.ColumnIndex;
 
-           if (i == 3)
-           {
-               if (dgv_nyusyukkoidou.CurrentRow.Cells[2].Value == null || dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString() != "01")
+               if (i == 0)
                {
-                   //選択画面へ
-                   string w_juchu_cd;
-                   w_juchu_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text, "", "", "");
 
-                   if (w_juchu_cd.ToString() != "")
+                   if (tb_torihikisaki_cd.Text != "")
                    {
-                       string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
-                       string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+                       //選択画面へ
+                       string w_buhin_cd;
+                       w_buhin_cd = tss.search_buhin("2", "");
 
-                       dgv_nyusyukkoidou.CurrentRow.Cells[i].Value = str_w2.ToString();
-                       dgv_nyusyukkoidou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
-                       dgv_nyusyukkoidou.EndEdit();
+                       if (w_buhin_cd != "")
+                       {
+                           dgv_nyusyukkoidou.CurrentCell.Value = w_buhin_cd;
+
+                           string str1;
+                           string str2;
+
+                           DataTable dt_w = new DataTable();
+
+                           dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
+                           str1 = dt_w.Rows[0][0].ToString();
+
+                           str2 = tb_torihikisaki_cd.Text.ToString();
+
+                           if (dt_w.Rows.Count == 0)
+                           {
+                               return;
+                           }
+
+                           else
+                           {
+
+                               if (str1 != str2)
+                               {
+                                   DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                                   "部品入出庫登録",
+                                   MessageBoxButtons.OKCancel,
+                                   MessageBoxIcon.Exclamation,
+                                   MessageBoxDefaultButton.Button2);
+
+                                   if (result == DialogResult.OK)
+                                   {
+                                       dgv_nyusyukkoidou.EndEdit();
+                                       //dgv_seihin_kousei.EndEdit();
+                                       dgv_nyusyukkoidou.Focus();
+
+                                   }
+                                   if (result == DialogResult.Cancel)
+                                   {
+
+                                       dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                       return;
+                                   }
+                               }
+                           }
+
+
+
+                           dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
+                           dgv_nyusyukkoidou.EndEdit();
+                       }
+                      
                    }
+                   else
+                   {
+                       MessageBox.Show("取引先コードが入力されていません");
+                       dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                       return;
+                   }
+                
                }
-               else
+
+               if (i == 3)
                {
-                   return;
-               }
-               
+                   if (dgv_nyusyukkoidou.CurrentRow.Cells[2].Value == null || dgv_nyusyukkoidou.CurrentRow.Cells[2].Value.ToString() != "01")
+                   {
+                       //選択画面へ
+                       string w_juchu_cd;
+                       w_juchu_cd = tss.search_juchu("2", tb_torihikisaki_cd.Text, "", "", "");
+
+                       if (w_juchu_cd.ToString() != "")
+                       {
+                           string str_w2 = w_juchu_cd.Substring(6, 16).TrimEnd();
+                           string str_w3 = w_juchu_cd.Substring(22).TrimEnd();
+
+                           dgv_nyusyukkoidou.CurrentRow.Cells[i].Value = str_w2.ToString();
+                           dgv_nyusyukkoidou.CurrentRow.Cells[i + 1].Value = str_w3.ToString();
+                           dgv_nyusyukkoidou.EndEdit();
+                       }
+                   }
+                   else
+                   {
+                       dgv_nyusyukkoidou.EndEdit();
+                       return;
+                   }
            }
+           
 
        }
 
@@ -656,6 +738,80 @@ namespace TSS_SYSTEM
            {
                e.Cancel = true;
                return;
+           }
+
+           if (i == 0)
+           {
+               if (tb_torihikisaki_cd.Text != "")
+               {
+                   //選択画面へ
+                   string w_buhin_cd = e.FormattedValue.ToString();
+
+                   if (w_buhin_cd != "")
+                   {
+
+                       string str1;
+                       string str2;
+
+                       DataTable dt_w = new DataTable();
+
+                       dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
+                       
+                       if(dt_w.Rows.Count == 0)
+                       {
+
+                       }
+                       else
+                       {
+                           str1 = dt_w.Rows[0][0].ToString();
+
+                       str2 = tb_torihikisaki_cd.Text.ToString();
+
+                       if (dt_w.Rows.Count == 0)
+                       {
+                           return;
+                       }
+
+                       else
+                       {
+
+                           if (str1 != str2)
+                           {
+                               DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                               "部品入出庫登録",
+                               MessageBoxButtons.OKCancel,
+                               MessageBoxIcon.Exclamation,
+                               MessageBoxDefaultButton.Button2);
+
+                               if (result == DialogResult.OK)
+                               {
+                                   dgv_nyusyukkoidou.EndEdit();
+                                   //dgv_seihin_kousei.EndEdit();
+                                   dgv_nyusyukkoidou.Focus();
+
+                               }
+                               if (result == DialogResult.Cancel)
+                               {
+                                   e.Cancel = true;
+                                   dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                   return;
+                               }
+                           }
+                       }
+
+                       dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
+                       dgv_nyusyukkoidou.EndEdit();
+                       }
+                  
+                   }
+
+               }
+               else
+               {
+
+                  
+               }
+           
            }
 
            if (i == 2)
@@ -682,6 +838,7 @@ namespace TSS_SYSTEM
                    dgv_nyusyukkoidou.EndEdit();
                }
            }
+
        }
 
        private void tb_denpyou_no_Validating(object sender, CancelEventArgs e)
@@ -690,6 +847,20 @@ namespace TSS_SYSTEM
            {
                e.Cancel = true;
                return;
+           }
+       }
+
+       private void dgv_nyusyukkoidou_CellValidated(object sender, DataGridViewCellEventArgs e)
+       {
+
+           
+           if(e.ColumnIndex == 5)
+           {
+               if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value != null && dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString() != "")
+               {
+                   dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value = tss.try_string_to_double(dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString()).ToString("#,0.00");
+               }
+               
            }
        }
 

@@ -49,10 +49,6 @@
             this.tb_denpyou_no = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dgv_nyusyukkoidou = new System.Windows.Forms.DataGridView();
-            this.btn_sakujyo = new System.Windows.Forms.Button();
-            this.btn_touroku = new System.Windows.Forms.Button();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.ss_status = new System.Windows.Forms.StatusStrip();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +56,9 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.ss_status = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -134,7 +133,6 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_sakujyo);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
@@ -250,7 +248,7 @@
             this.tb_seq.MaxLength = 2;
             this.tb_seq.Name = "tb_seq";
             this.tb_seq.ReadOnly = true;
-            this.tb_seq.Size = new System.Drawing.Size(85, 19);
+            this.tb_seq.Size = new System.Drawing.Size(69, 19);
             this.tb_seq.TabIndex = 12;
             this.tb_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -294,45 +292,8 @@
             this.dgv_nyusyukkoidou.TabIndex = 0;
             this.dgv_nyusyukkoidou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellDoubleClick);
             this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
+            this.dgv_nyusyukkoidou.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellValidated);
             this.dgv_nyusyukkoidou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nyusyukkoidou_CellValidating);
-            // 
-            // btn_sakujyo
-            // 
-            this.btn_sakujyo.Location = new System.Drawing.Point(10, 3);
-            this.btn_sakujyo.Name = "btn_sakujyo";
-            this.btn_sakujyo.Size = new System.Drawing.Size(75, 23);
-            this.btn_sakujyo.TabIndex = 4;
-            this.btn_sakujyo.Text = "1行削除";
-            this.btn_sakujyo.UseVisualStyleBackColor = true;
-            this.btn_sakujyo.Click += new System.EventHandler(this.btn_sakujyo_Click);
-            // 
-            // btn_touroku
-            // 
-            this.btn_touroku.Location = new System.Drawing.Point(714, 3);
-            this.btn_touroku.Name = "btn_touroku";
-            this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 3;
-            this.btn_touroku.Text = "登録";
-            this.btn_touroku.UseVisualStyleBackColor = true;
-            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
-            // 
-            // btn_syuuryou
-            // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // ss_status
-            // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
-            this.ss_status.Name = "ss_status";
-            this.ss_status.Size = new System.Drawing.Size(884, 22);
-            this.ss_status.TabIndex = 2;
-            this.ss_status.Text = "statusStrip1";
             // 
             // Column2
             // 
@@ -372,7 +333,7 @@
             // Column7
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.Format = "N2";
             dataGridViewCellStyle4.NullValue = null;
             this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column7.HeaderText = "数量";
@@ -383,6 +344,34 @@
             // 
             this.Column1.HeaderText = "備考";
             this.Column1.Name = "Column1";
+            // 
+            // btn_touroku
+            // 
+            this.btn_touroku.Location = new System.Drawing.Point(714, 3);
+            this.btn_touroku.Name = "btn_touroku";
+            this.btn_touroku.Size = new System.Drawing.Size(75, 23);
+            this.btn_touroku.TabIndex = 3;
+            this.btn_touroku.Text = "登録";
+            this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
+            // 
+            // btn_syuuryou
+            // 
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // ss_status
+            // 
+            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Name = "ss_status";
+            this.ss_status.Size = new System.Drawing.Size(884, 22);
+            this.ss_status.TabIndex = 2;
+            this.ss_status.Text = "statusStrip1";
             // 
             // frm_buhin_nyusyukkoidou
             // 
@@ -436,7 +425,6 @@
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.StatusStrip ss_status;
         private System.Windows.Forms.DataGridView dgv_nyusyukkoidou;
-        private System.Windows.Forms.Button btn_sakujyo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

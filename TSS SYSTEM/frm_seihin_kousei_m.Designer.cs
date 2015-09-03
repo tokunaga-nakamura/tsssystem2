@@ -142,6 +142,7 @@
             this.dgv_seihin_kousei.RowTemplate.Height = 21;
             this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 300);
             this.dgv_seihin_kousei.TabIndex = 0;
+            this.dgv_seihin_kousei.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellDoubleClick);
             this.dgv_seihin_kousei.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellEndEdit);
             this.dgv_seihin_kousei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_seihin_kousei_CellValidating);
             this.dgv_seihin_kousei.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_seihin_kousei_DataError);
@@ -161,6 +162,7 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -181,6 +183,7 @@
             // 
             this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
@@ -223,7 +226,7 @@
             this.tb_seihin_kousei_no.Location = new System.Drawing.Point(118, 37);
             this.tb_seihin_kousei_no.MaxLength = 2;
             this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
-            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(83, 19);
+            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(26, 19);
             this.tb_seihin_kousei_no.TabIndex = 1;
             this.tb_seihin_kousei_no.TextChanged += new System.EventHandler(this.tb_seihin_kousei_no_TextChanged);
             this.tb_seihin_kousei_no.DoubleClick += new System.EventHandler(this.tb_seihin_kousei_no_DoubleClick);
@@ -232,9 +235,9 @@
             // tb_seihin_kousei_name
             // 
             this.tb_seihin_kousei_name.BackColor = System.Drawing.SystemColors.Window;
-            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(203, 37);
+            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(143, 37);
             this.tb_seihin_kousei_name.Name = "tb_seihin_kousei_name";
-            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(222, 19);
+            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(282, 19);
             this.tb_seihin_kousei_name.TabIndex = 2;
             this.tb_seihin_kousei_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_name_Validating);
             // 
@@ -254,7 +257,7 @@
             this.tb_seihin_cd.Location = new System.Drawing.Point(118, 10);
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
-            this.tb_seihin_cd.Size = new System.Drawing.Size(83, 19);
+            this.tb_seihin_cd.Size = new System.Drawing.Size(59, 19);
             this.tb_seihin_cd.TabIndex = 0;
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
@@ -284,10 +287,10 @@
             // tb_seihin_name
             // 
             this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(203, 10);
+            this.tb_seihin_name.Location = new System.Drawing.Point(176, 10);
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.ReadOnly = true;
-            this.tb_seihin_name.Size = new System.Drawing.Size(222, 19);
+            this.tb_seihin_name.Size = new System.Drawing.Size(249, 19);
             this.tb_seihin_name.TabIndex = 34;
             this.tb_seihin_name.TabStop = false;
             // 
@@ -324,6 +327,7 @@
             // 
             // dgv_seihin_kousei_name
             // 
+            this.dgv_seihin_kousei_name.AllowUserToAddRows = false;
             this.dgv_seihin_kousei_name.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_seihin_kousei_name.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_seihin_kousei_name.Location = new System.Drawing.Point(0, 0);
