@@ -415,5 +415,13 @@ namespace TSS_SYSTEM
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
+
+        private void btn_seikyu_Click(object sender, EventArgs e)
+        {
+            //請求
+            frm_seikyu frm_skm = new frm_seikyu();
+            frm_skm.ShowDialog(this);
+            frm_skm.Dispose();
+        }
     }
 }

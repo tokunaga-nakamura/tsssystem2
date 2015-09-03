@@ -57,6 +57,9 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_nyukin = new System.Windows.Forms.Button();
+            this.btn_seikyu_preview = new System.Windows.Forms.Button();
+            this.btn_seikyu = new System.Windows.Forms.Button();
             this.btn_uriage_log = new System.Windows.Forms.Button();
             this.btn_uriage_denpyou_insatu = new System.Windows.Forms.Button();
             this.btn_uriage_kensaku = new System.Windows.Forms.Button();
@@ -523,6 +526,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_nyukin);
+            this.tabPage2.Controls.Add(this.btn_seikyu_preview);
+            this.tabPage2.Controls.Add(this.btn_seikyu);
             this.tabPage2.Controls.Add(this.btn_uriage_log);
             this.tabPage2.Controls.Add(this.btn_uriage_denpyou_insatu);
             this.tabPage2.Controls.Add(this.btn_uriage_kensaku);
@@ -538,11 +544,39 @@
             this.tabPage2.Text = "受注・売上・請求";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_nyukin
+            // 
+            this.btn_nyukin.Location = new System.Drawing.Point(6, 270);
+            this.btn_nyukin.Name = "btn_nyukin";
+            this.btn_nyukin.Size = new System.Drawing.Size(177, 23);
+            this.btn_nyukin.TabIndex = 13;
+            this.btn_nyukin.Text = "入金";
+            this.btn_nyukin.UseVisualStyleBackColor = true;
+            // 
+            // btn_seikyu_preview
+            // 
+            this.btn_seikyu_preview.Location = new System.Drawing.Point(6, 212);
+            this.btn_seikyu_preview.Name = "btn_seikyu_preview";
+            this.btn_seikyu_preview.Size = new System.Drawing.Size(177, 23);
+            this.btn_seikyu_preview.TabIndex = 12;
+            this.btn_seikyu_preview.Text = "請求書発行";
+            this.btn_seikyu_preview.UseVisualStyleBackColor = true;
+            // 
+            // btn_seikyu
+            // 
+            this.btn_seikyu.Location = new System.Drawing.Point(6, 183);
+            this.btn_seikyu.Name = "btn_seikyu";
+            this.btn_seikyu.Size = new System.Drawing.Size(177, 23);
+            this.btn_seikyu.TabIndex = 11;
+            this.btn_seikyu.Text = "請求";
+            this.btn_seikyu.UseVisualStyleBackColor = true;
+            this.btn_seikyu.Click += new System.EventHandler(this.btn_seikyu_Click);
+            // 
             // btn_uriage_log
             // 
-            this.btn_uriage_log.Location = new System.Drawing.Point(375, 96);
+            this.btn_uriage_log.Location = new System.Drawing.Point(372, 96);
             this.btn_uriage_log.Name = "btn_uriage_log";
-            this.btn_uriage_log.Size = new System.Drawing.Size(180, 23);
+            this.btn_uriage_log.Size = new System.Drawing.Size(177, 23);
             this.btn_uriage_log.TabIndex = 10;
             this.btn_uriage_log.Text = "売上ログ参照";
             this.btn_uriage_log.UseVisualStyleBackColor = true;
@@ -562,7 +596,7 @@
             // 
             this.btn_uriage_kensaku.Location = new System.Drawing.Point(189, 96);
             this.btn_uriage_kensaku.Name = "btn_uriage_kensaku";
-            this.btn_uriage_kensaku.Size = new System.Drawing.Size(180, 23);
+            this.btn_uriage_kensaku.Size = new System.Drawing.Size(177, 23);
             this.btn_uriage_kensaku.TabIndex = 8;
             this.btn_uriage_kensaku.Text = "売上検索";
             this.btn_uriage_kensaku.UseVisualStyleBackColor = true;
@@ -582,7 +616,7 @@
             // 
             this.btn_juchu_kensaku.Location = new System.Drawing.Point(189, 6);
             this.btn_juchu_kensaku.Name = "btn_juchu_kensaku";
-            this.btn_juchu_kensaku.Size = new System.Drawing.Size(180, 23);
+            this.btn_juchu_kensaku.Size = new System.Drawing.Size(177, 23);
             this.btn_juchu_kensaku.TabIndex = 5;
             this.btn_juchu_kensaku.Text = "受注検索";
             this.btn_juchu_kensaku.UseVisualStyleBackColor = true;
@@ -590,9 +624,9 @@
             // 
             // btn_nouhin_schedule
             // 
-            this.btn_nouhin_schedule.Location = new System.Drawing.Point(380, 35);
+            this.btn_nouhin_schedule.Location = new System.Drawing.Point(372, 35);
             this.btn_nouhin_schedule.Name = "btn_nouhin_schedule";
-            this.btn_nouhin_schedule.Size = new System.Drawing.Size(180, 23);
+            this.btn_nouhin_schedule.Size = new System.Drawing.Size(177, 23);
             this.btn_nouhin_schedule.TabIndex = 4;
             this.btn_nouhin_schedule.Text = "納品スケジュール参照";
             this.btn_nouhin_schedule.UseVisualStyleBackColor = true;
@@ -600,9 +634,9 @@
             // 
             // btn_juchuu_nyuuryoku
             // 
-            this.btn_juchuu_nyuuryoku.Location = new System.Drawing.Point(3, 6);
+            this.btn_juchuu_nyuuryoku.Location = new System.Drawing.Point(6, 6);
             this.btn_juchuu_nyuuryoku.Name = "btn_juchuu_nyuuryoku";
-            this.btn_juchuu_nyuuryoku.Size = new System.Drawing.Size(180, 23);
+            this.btn_juchuu_nyuuryoku.Size = new System.Drawing.Size(177, 23);
             this.btn_juchuu_nyuuryoku.TabIndex = 0;
             this.btn_juchuu_nyuuryoku.Text = "受注入力";
             this.btn_juchuu_nyuuryoku.UseVisualStyleBackColor = true;
@@ -1105,6 +1139,9 @@
         private System.Windows.Forms.Button btn_siire_kensaku;
         private System.Windows.Forms.Button btn_uriage_denpyou_insatu;
         private System.Windows.Forms.Button btn_uriage_log;
+        private System.Windows.Forms.Button btn_nyukin;
+        private System.Windows.Forms.Button btn_seikyu_preview;
+        private System.Windows.Forms.Button btn_seikyu;
     }
 }
 

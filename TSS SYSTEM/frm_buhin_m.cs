@@ -631,7 +631,7 @@ namespace TSS_SYSTEM
             //新規部品の場合は、フリー在庫のレコードを作成
             bool bl_tss = true;
             bl_tss = tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-                                    + " VALUES ('" + tb_buhin_cd.Text.ToString() + "','01','" + tb_torihikisaki_cd.Text.ToString() + "','9999999999999999','9999999999999999','0','" + tss.user_cd + "',SYSDATE)");
+                                    + " VALUES ('" + tb_buhin_cd.Text.ToString() + "','01','999999','9999999999999999','9999999999999999','0','" + tss.user_cd + "',SYSDATE)");
             if (bl_tss != true)
             {
                 tss.ErrorLogWrite(tss.user_cd, "部品マスタ／登録", "登録ボタン押下時の部品在庫マスタ作成OracleInsert");
