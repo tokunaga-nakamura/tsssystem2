@@ -951,7 +951,7 @@ namespace TSS_SYSTEM
                                     if(in_sign == -1 || w_uriage_flg == 1)
                                     {
                                         //マイナス売上または製品直接売上の場合はフリー在庫で調整
-                                        if(tss.zaiko_proc(dr3["buhin_cd"].ToString(), "01", dr["torihikisaki_cd"].ToString(), "9999999999999999", "9999999999999999", w_kagen_su,w_rireki_no,w_rireki_gyou,in_cd) == false)
+                                        if(tss.zaiko_proc(dr3["buhin_cd"].ToString(), "01", "999999", "9999999999999999", "9999999999999999", w_kagen_su,w_rireki_no,w_rireki_gyou,in_cd) == false)
                                         {
                                             MessageBox.Show("在庫の消し込み処理でエラーが発生しました。処理を中止します。");
                                             this.Close();
@@ -1158,14 +1158,7 @@ namespace TSS_SYSTEM
             {
                 if(w_seikyu_sime_dd >= w_gamen_sime_dd)
                 {
-                    //if(w_seikyu_sime_dd != 99)
-                    //{
-                    //    DateTime.TryParse(tb_uriage_date.Text.ToString().Substring(0,8) + w_seikyu_sime_dd.ToString("00"),out out_datetime);
-                    //}
-                    //else
-                    //{
-                    //    DateTime.TryParse(tb_uriage_date.Text.ToString().Substring(0, 8) + DateTime.DaysInMonth(w_gamen_sime_date.Year, w_gamen_sime_date.Month).ToString("00"), out out_datetime);
-                    //}
+
                 }
                 else
                 {

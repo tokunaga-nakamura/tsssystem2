@@ -74,16 +74,13 @@
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
-            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_seihin_kousei = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.btn_koutei_hennsyuu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_seihin_koutei = new System.Windows.Forms.DataGridView();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.btn_tanka_meisai_hensyuu = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv_tanka = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
@@ -671,7 +668,6 @@
             // 
             // splitContainer8.Panel1
             // 
-            this.splitContainer8.Panel1.Controls.Add(this.button4);
             this.splitContainer8.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer8.Panel2
@@ -680,15 +676,6 @@
             this.splitContainer8.Size = new System.Drawing.Size(457, 155);
             this.splitContainer8.SplitterDistance = 29;
             this.splitContainer8.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(375, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "編集？";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -741,7 +728,6 @@
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.btn_koutei_hennsyuu);
             this.splitContainer5.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer5.Panel2
@@ -750,15 +736,6 @@
             this.splitContainer5.Size = new System.Drawing.Size(415, 221);
             this.splitContainer5.SplitterDistance = 31;
             this.splitContainer5.TabIndex = 1;
-            // 
-            // btn_koutei_hennsyuu
-            // 
-            this.btn_koutei_hennsyuu.Location = new System.Drawing.Point(332, 3);
-            this.btn_koutei_hennsyuu.Name = "btn_koutei_hennsyuu";
-            this.btn_koutei_hennsyuu.Size = new System.Drawing.Size(75, 23);
-            this.btn_koutei_hennsyuu.TabIndex = 0;
-            this.btn_koutei_hennsyuu.Text = "編集";
-            this.btn_koutei_hennsyuu.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -791,7 +768,6 @@
             // 
             // splitContainer6.Panel1
             // 
-            this.splitContainer6.Panel1.Controls.Add(this.btn_tanka_meisai_hensyuu);
             this.splitContainer6.Panel1.Controls.Add(this.label2);
             // 
             // splitContainer6.Panel2
@@ -801,15 +777,6 @@
             this.splitContainer6.SplitterDistance = 29;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
-            // 
-            // btn_tanka_meisai_hensyuu
-            // 
-            this.btn_tanka_meisai_hensyuu.Location = new System.Drawing.Point(332, 3);
-            this.btn_tanka_meisai_hensyuu.Name = "btn_tanka_meisai_hensyuu";
-            this.btn_tanka_meisai_hensyuu.Size = new System.Drawing.Size(75, 23);
-            this.btn_tanka_meisai_hensyuu.TabIndex = 0;
-            this.btn_tanka_meisai_hensyuu.Text = "編集";
-            this.btn_tanka_meisai_hensyuu.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -924,7 +891,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.Button btn_koutei_hennsyuu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_seihin_koutei;
         private System.Windows.Forms.SplitContainer splitContainer6;
@@ -946,10 +912,8 @@
         private System.Windows.Forms.TextBox tb_seihin_kousei_no;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.SplitContainer splitContainer8;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_seihin_kousei;
-        private System.Windows.Forms.Button btn_tanka_meisai_hensyuu;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgv_tanka;
         private System.Windows.Forms.TextBox tb_tani_name;

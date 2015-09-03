@@ -869,9 +869,9 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            if (tb_torihikisaki_cd.Text == "999999")
+            if (tb_torihikisaki_cd.Text == "000000" || tb_torihikisaki_cd.Text == "999999")
             {
-                MessageBox.Show("取引先コードのオール９は、システム予約コードの為、使用できません。");
+                MessageBox.Show("取引先コードのオール０とオール９は、システム予約コードの為、使用できません。");
                 e.Cancel = true;
                 return;
             }
