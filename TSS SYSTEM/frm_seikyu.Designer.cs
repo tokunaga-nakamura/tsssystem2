@@ -35,9 +35,13 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.btn_syuukei = new System.Windows.Forms.Button();
-            this.tb_seikyu_simebi = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_seikyu_simebi = new System.Windows.Forms.TextBox();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_cd1 = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_cd2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +115,10 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.label2);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_torihikisaki_cd2);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_torihikisaki_cd1);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.btn_syuukei);
             this.splitContainer2.Panel1.Controls.Add(this.textBox3);
             this.splitContainer2.Panel1.Controls.Add(this.tb_seikyu_simebi);
@@ -125,22 +133,13 @@
             // 
             // btn_syuukei
             // 
-            this.btn_syuukei.Location = new System.Drawing.Point(473, 175);
+            this.btn_syuukei.Location = new System.Drawing.Point(579, 200);
             this.btn_syuukei.Name = "btn_syuukei";
             this.btn_syuukei.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuukei.TabIndex = 2;
+            this.btn_syuukei.TabIndex = 3;
             this.btn_syuukei.Text = "集計";
             this.btn_syuukei.UseVisualStyleBackColor = true;
             this.btn_syuukei.Click += new System.EventHandler(this.btn_syuukei_Click);
-            // 
-            // tb_seikyu_simebi
-            // 
-            this.tb_seikyu_simebi.Location = new System.Drawing.Point(397, 177);
-            this.tb_seikyu_simebi.Name = "tb_seikyu_simebi";
-            this.tb_seikyu_simebi.Size = new System.Drawing.Size(70, 19);
-            this.tb_seikyu_simebi.TabIndex = 1;
-            this.tb_seikyu_simebi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seikyu_simebi_Validating);
-            this.tb_seikyu_simebi.Validated += new System.EventHandler(this.tb_seikyu_simebi_Validated);
             // 
             // textBox3
             // 
@@ -153,15 +152,63 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "請求締日";
             // 
+            // tb_seikyu_simebi
+            // 
+            this.tb_seikyu_simebi.Location = new System.Drawing.Point(397, 177);
+            this.tb_seikyu_simebi.MaxLength = 10;
+            this.tb_seikyu_simebi.Name = "tb_seikyu_simebi";
+            this.tb_seikyu_simebi.Size = new System.Drawing.Size(70, 19);
+            this.tb_seikyu_simebi.TabIndex = 0;
+            this.tb_seikyu_simebi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seikyu_simebi_Validating);
+            this.tb_seikyu_simebi.Validated += new System.EventHandler(this.tb_seikyu_simebi_Validated);
+            // 
             // btn_syuuryou
             // 
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 1;
+            this.btn_syuuryou.TabIndex = 0;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(340, 202);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(77, 19);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "取引先コード";
+            // 
+            // tb_torihikisaki_cd1
+            // 
+            this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(417, 202);
+            this.tb_torihikisaki_cd1.MaxLength = 6;
+            this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
+            this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(45, 19);
+            this.tb_torihikisaki_cd1.TabIndex = 1;
+            this.tb_torihikisaki_cd1.Text = "0";
+            // 
+            // tb_torihikisaki_cd2
+            // 
+            this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(491, 202);
+            this.tb_torihikisaki_cd2.MaxLength = 6;
+            this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
+            this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(45, 19);
+            this.tb_torihikisaki_cd2.TabIndex = 2;
+            this.tb_torihikisaki_cd2.Text = "999999";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(468, 205);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "～";
             // 
             // frm_seikyu
             // 
@@ -199,5 +246,9 @@
         private System.Windows.Forms.TextBox tb_seikyu_simebi;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button btn_syuukei;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_torihikisaki_cd2;
+        private System.Windows.Forms.TextBox tb_torihikisaki_cd1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

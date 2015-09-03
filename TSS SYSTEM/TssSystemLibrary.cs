@@ -1731,6 +1731,36 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region get_syouhizeiritu メソッド
+        /// <summary>
+        /// 日付を受け取り、消費税率を返す</summary>
+        /// <param name="datetime in_datetime">消費税率算出日</param>
+        /// <returns>double 消費税率 エラー時は-1</returns>
+        public double get_syouhizeiritu(DateTime in_datetime)
+        {
+            double out_double; //戻り値用
+
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_syouhizei_m where TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') >= kaitei_date and TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') <= syuuryou_date");
+            if(w_dt.Rows.Count == 0)
+            {
+                out_double = -1;
+            }
+            else
+            {
+                out_double = try_string_to_double(w_dt.Rows[0]["zeiritu"].ToString());
+                if(out_double == -999999999)
+                {
+                    out_double = -1;
+                }
+            }
+            return out_double;
+        }
+        #endregion
+
+
+
+
     }
     #endregion
 }

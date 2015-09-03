@@ -824,16 +824,16 @@ namespace TSS_SYSTEM
             //行追加
             DataRow dr_work = dt_work.NewRow();
             dr_work["区分コード"] = "0";
+            dr_work["区分名"] = "請求合計";
+            dt_work.Rows.Add(dr_work);
+            dr_work["区分コード"] = "1";
             dr_work["区分名"] = "明細毎";
             dt_work.Rows.Add(dr_work);
             dr_work = dt_work.NewRow();
-            dr_work["区分コード"] = "1";
+            dr_work["区分コード"] = "2";
             dr_work["区分名"] = "伝票単位";
             dt_work.Rows.Add(dr_work);
             dr_work = dt_work.NewRow();
-            dr_work["区分コード"] = "2";
-            dr_work["区分名"] = "請求合計";
-            dt_work.Rows.Add(dr_work);
             //選択画面へ
             this.tb_syouhizei_sansyutu_kbn.Text = tss.kubun_cd_select_dt("消費税算出区分", dt_work,tb_syouhizei_sansyutu_kbn.Text);
             chk_syouhizei_sansyutu_kbn();   //消費税算出区分名の表示

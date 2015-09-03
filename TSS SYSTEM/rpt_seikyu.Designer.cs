@@ -89,6 +89,9 @@
             this.line8 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line12 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line13 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line14 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.textBox20 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.textBox21 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.textBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
@@ -125,6 +128,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -380,7 +385,7 @@
             // 
             // crossSectionLine1
             // 
-            this.crossSectionLine1.Bottom = 0F;
+            this.crossSectionLine1.Bottom = 0.3019685F;
             this.crossSectionLine1.Left = 0F;
             this.crossSectionLine1.LineWeight = 1F;
             this.crossSectionLine1.Name = "crossSectionLine1";
@@ -399,7 +404,7 @@
             // 
             // crossSectionLine2
             // 
-            this.crossSectionLine2.Bottom = 0F;
+            this.crossSectionLine2.Bottom = 0.3019685F;
             this.crossSectionLine2.Left = 5.83504F;
             this.crossSectionLine2.LineWeight = 1F;
             this.crossSectionLine2.Name = "crossSectionLine2";
@@ -407,7 +412,7 @@
             // 
             // crossSectionLine3
             // 
-            this.crossSectionLine3.Bottom = 0F;
+            this.crossSectionLine3.Bottom = 0.3019685F;
             this.crossSectionLine3.Left = 4.841339F;
             this.crossSectionLine3.LineWeight = 1F;
             this.crossSectionLine3.Name = "crossSectionLine3";
@@ -415,7 +420,7 @@
             // 
             // crossSectionLine4
             // 
-            this.crossSectionLine4.Bottom = 0F;
+            this.crossSectionLine4.Bottom = 0.3019685F;
             this.crossSectionLine4.Left = 6.834646F;
             this.crossSectionLine4.LineWeight = 1F;
             this.crossSectionLine4.Name = "crossSectionLine4";
@@ -423,7 +428,7 @@
             // 
             // crossSectionLine5
             // 
-            this.crossSectionLine5.Bottom = 0F;
+            this.crossSectionLine5.Bottom = 0.3019685F;
             this.crossSectionLine5.Left = 3.80315F;
             this.crossSectionLine5.LineWeight = 1F;
             this.crossSectionLine5.Name = "crossSectionLine5";
@@ -737,7 +742,7 @@
             this.textBox7,
             this.textBox8,
             this.textBox9});
-            this.detail.Height = 0.3020834F;
+            this.detail.Height = 0.2916667F;
             this.detail.Name = "detail";
             // 
             // textBox6
@@ -783,7 +788,11 @@
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.line8});
+            this.line8,
+            this.line14,
+            this.textBox20,
+            this.textBox21});
+            this.pageFooter.Height = 0.3229167F;
             this.pageFooter.Name = "pageFooter";
             // 
             // line8
@@ -824,6 +833,39 @@
             this.line13.X2 = 6.040946F;
             this.line13.Y1 = 1.031496F;
             this.line13.Y2 = 1.667717F;
+            // 
+            // line14
+            // 
+            this.line14.Height = 0.0001797676F;
+            this.line14.Left = 0F;
+            this.line14.LineWeight = 1F;
+            this.line14.Name = "line14";
+            this.line14.Top = 0.3019685F;
+            this.line14.Width = 6.834646F;
+            this.line14.X1 = 6.834646F;
+            this.line14.X2 = 0F;
+            this.line14.Y1 = 0.3019685F;
+            this.line14.Y2 = 0.3021483F;
+            // 
+            // textBox20
+            // 
+            this.textBox20.Height = 0.25F;
+            this.textBox20.Left = 0.07283465F;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Style = "font-size: 9pt; vertical-align: middle";
+            this.textBox20.Text = "消費税";
+            this.textBox20.Top = 0.02086614F;
+            this.textBox20.Width = 3.68819F;
+            // 
+            // textBox21
+            // 
+            this.textBox21.Height = 0.1566929F;
+            this.textBox21.Left = 5.907481F;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Style = "font-size: 9pt; text-align: right";
+            this.textBox21.Text = "9,999,999,999";
+            this.textBox21.Top = 0.07283465F;
+            this.textBox21.Width = 0.8854326F;
             // 
             // rpt_seikyu
             // 
@@ -884,6 +926,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -947,5 +991,8 @@
         private GrapeCity.ActiveReports.SectionReportModel.Label label17;
         private GrapeCity.ActiveReports.SectionReportModel.Line line12;
         private GrapeCity.ActiveReports.SectionReportModel.Line line13;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line14;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox20;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox21;
     }
 }
