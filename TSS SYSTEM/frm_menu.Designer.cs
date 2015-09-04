@@ -561,6 +561,7 @@
             this.btn_seikyu_preview.TabIndex = 12;
             this.btn_seikyu_preview.Text = "請求書発行";
             this.btn_seikyu_preview.UseVisualStyleBackColor = true;
+            this.btn_seikyu_preview.Click += new System.EventHandler(this.btn_seikyu_preview_Click);
             // 
             // btn_seikyu
             // 
@@ -568,7 +569,7 @@
             this.btn_seikyu.Name = "btn_seikyu";
             this.btn_seikyu.Size = new System.Drawing.Size(177, 23);
             this.btn_seikyu.TabIndex = 11;
-            this.btn_seikyu.Text = "請求";
+            this.btn_seikyu.Text = "請求締め処理";
             this.btn_seikyu.UseVisualStyleBackColor = true;
             this.btn_seikyu.Click += new System.EventHandler(this.btn_seikyu_Click);
             // 
