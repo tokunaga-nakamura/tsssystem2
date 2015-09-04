@@ -552,6 +552,7 @@
             this.btn_nyukin.TabIndex = 13;
             this.btn_nyukin.Text = "入金";
             this.btn_nyukin.UseVisualStyleBackColor = true;
+            this.btn_nyukin.Click += new System.EventHandler(this.btn_nyukin_Click);
             // 
             // btn_seikyu_preview
             // 

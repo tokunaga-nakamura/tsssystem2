@@ -431,5 +431,13 @@ namespace TSS_SYSTEM
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
+
+        private void btn_nyukin_Click(object sender, EventArgs e)
+        {
+            //入金
+            frm_nyukin frm_nk = new frm_nyukin();
+            frm_nk.ShowDialog(this);
+            frm_nk.Dispose();
+        }
     }
 }
