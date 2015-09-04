@@ -103,6 +103,12 @@
     <Compile Include="frm_seikyu.Designer.cs">
       <DependentUpon>frm_seikyu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_seikyu_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seikyu_preview.Designer.cs">
+      <DependentUpon>frm_seikyu_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_siharai_no_select.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seikyu.resx">
       <DependentUpon>frm_seikyu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seikyu_preview.resx">
+      <DependentUpon>frm_seikyu_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siharai_no_select.resx">
       <DependentUpon>frm_siharai_no_select.cs</DependentUpon>

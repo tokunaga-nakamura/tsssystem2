@@ -423,5 +423,13 @@ namespace TSS_SYSTEM
             frm_skm.ShowDialog(this);
             frm_skm.Dispose();
         }
+
+        private void btn_seikyu_preview_Click(object sender, EventArgs e)
+        {
+            //請求書印刷
+            frm_seikyu_preview frm_skm = new frm_seikyu_preview();
+            frm_skm.ShowDialog(this);
+            frm_skm.Dispose();
+        }
     }
 }
