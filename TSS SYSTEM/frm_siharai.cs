@@ -438,21 +438,21 @@ namespace TSS_SYSTEM
 
                     //使用数量右寄せ、カンマ区切り
                     dgv_mibarai.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[1].DefaultCellStyle.Format = "#,0.##";
+                    dgv_mibarai.Columns[1].DefaultCellStyle.Format = "#,0.00";
 
                     //dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.##";
 
                     dgv_mibarai.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[2].DefaultCellStyle.Format = "#,0.##";
+                    dgv_mibarai.Columns[2].DefaultCellStyle.Format = "#,0.00";
 
                     dgv_mibarai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[3].DefaultCellStyle.Format = "#,0.##";
+                    dgv_mibarai.Columns[3].DefaultCellStyle.Format = "#,0.00";
 
                     dgv_mibarai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.##";
+                    dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.00";
 
                     dgv_mibarai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0.##";
+                    dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0.00";
 
 
                     //１行のみ選択可能（複数行の選択不可）
@@ -470,7 +470,7 @@ namespace TSS_SYSTEM
             //未払合計テキストボックスへ値を入れる
             object obj = dt_work.Compute("SUM(mibaraigaku)", null);
             double goukeikingku = double.Parse(obj.ToString());
-            tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.##");
+            tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.00");
 
         }
 
