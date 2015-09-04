@@ -29,25 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyusyukkoidou));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtp_buhin_syori_date = new System.Windows.Forms.DateTimePicker();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
-            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_seq = new System.Windows.Forms.TextBox();
-            this.tb_denpyou_no = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.ss_status = new System.Windows.Forms.StatusStrip();
             this.dgv_nyusyukkoidou = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +50,15 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_touroku = new System.Windows.Forms.Button();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.ss_status = new System.Windows.Forms.StatusStrip();
+            this.dtp_buhin_syori_date = new System.Windows.Forms.DateTimePicker();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tb_seq = new System.Windows.Forms.TextBox();
+            this.tb_denpyou_no = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -152,22 +152,22 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.label3);
             this.splitContainer3.Panel1.Controls.Add(this.dtp_buhin_syori_date);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox11);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox2);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_name);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_cd);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox4);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox6);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox7);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seq);
             this.splitContainer3.Panel1.Controls.Add(this.tb_denpyou_no);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox9);
+            this.splitContainer3.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_nyusyukkoidou);
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
-            this.splitContainer3.SplitterDistance = 147;
+            this.splitContainer3.SplitterDistance = 145;
             this.splitContainer3.TabIndex = 8;
             // 
             // label3
@@ -179,175 +179,9 @@
             this.label3.Size = new System.Drawing.Size(0, 19);
             this.label3.TabIndex = 32;
             // 
-            // dtp_buhin_syori_date
-            // 
-            this.dtp_buhin_syori_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_buhin_syori_date.Location = new System.Drawing.Point(118, 62);
-            this.dtp_buhin_syori_date.Name = "dtp_buhin_syori_date";
-            this.dtp_buhin_syori_date.Size = new System.Drawing.Size(107, 19);
-            this.dtp_buhin_syori_date.TabIndex = 25;
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox11.Location = new System.Drawing.Point(10, 62);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(108, 19);
-            this.textBox11.TabIndex = 24;
-            this.textBox11.TabStop = false;
-            this.textBox11.Text = "日付";
-            // 
-            // tb_torihikisaki_name
-            // 
-            this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(161, 112);
-            this.tb_torihikisaki_name.MaxLength = 2;
-            this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
-            this.tb_torihikisaki_name.ReadOnly = true;
-            this.tb_torihikisaki_name.Size = new System.Drawing.Size(196, 19);
-            this.tb_torihikisaki_name.TabIndex = 10;
-            // 
-            // tb_torihikisaki_cd
-            // 
-            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(118, 112);
-            this.tb_torihikisaki_cd.MaxLength = 6;
-            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
-            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(45, 19);
-            this.tb_torihikisaki_cd.TabIndex = 1;
-            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
-            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(10, 112);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(108, 19);
-            this.textBox4.TabIndex = 9;
-            this.textBox4.TabStop = false;
-            this.textBox4.Text = "取引先コード";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(108, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "入出庫移動番号";
-            // 
-            // tb_seq
-            // 
-            this.tb_seq.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seq.Location = new System.Drawing.Point(118, 37);
-            this.tb_seq.MaxLength = 2;
-            this.tb_seq.Name = "tb_seq";
-            this.tb_seq.ReadOnly = true;
-            this.tb_seq.Size = new System.Drawing.Size(69, 19);
-            this.tb_seq.TabIndex = 12;
-            this.tb_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tb_denpyou_no
-            // 
-            this.tb_denpyou_no.Location = new System.Drawing.Point(118, 87);
-            this.tb_denpyou_no.MaxLength = 40;
-            this.tb_denpyou_no.Name = "tb_denpyou_no";
-            this.tb_denpyou_no.Size = new System.Drawing.Size(239, 19);
-            this.tb_denpyou_no.TabIndex = 0;
-            this.tb_denpyou_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_denpyou_no_Validating);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(10, 87);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(108, 19);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "伝票番号";
-            // 
-            // dgv_nyusyukkoidou
-            // 
-            this.dgv_nyusyukkoidou.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_nyusyukkoidou.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column1});
-            this.dgv_nyusyukkoidou.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_nyusyukkoidou.Location = new System.Drawing.Point(0, 0);
-            this.dgv_nyusyukkoidou.Name = "dgv_nyusyukkoidou";
-            this.dgv_nyusyukkoidou.RowHeadersVisible = false;
-            this.dgv_nyusyukkoidou.RowTemplate.Height = 21;
-            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 285);
-            this.dgv_nyusyukkoidou.TabIndex = 0;
-            this.dgv_nyusyukkoidou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellDoubleClick);
-            this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
-            this.dgv_nyusyukkoidou.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellValidated);
-            this.dgv_nyusyukkoidou.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nyusyukkoidou_CellValidating);
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column2.HeaderText = "部品コード";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 85;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column3.HeaderText = "部品名";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 250;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "在庫区分";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.PowderBlue;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column5.HeaderText = "受注コード1";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "受注コード2";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column7.HeaderText = "数量";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 70;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "備考";
-            this.Column1.Name = "Column1";
-            // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(714, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 3;
@@ -372,6 +206,165 @@
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 2;
             this.ss_status.Text = "statusStrip1";
+            // 
+            // dgv_nyusyukkoidou
+            // 
+            this.dgv_nyusyukkoidou.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_nyusyukkoidou.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column1});
+            this.dgv_nyusyukkoidou.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_nyusyukkoidou.Location = new System.Drawing.Point(0, 0);
+            this.dgv_nyusyukkoidou.Name = "dgv_nyusyukkoidou";
+            this.dgv_nyusyukkoidou.RowHeadersVisible = false;
+            this.dgv_nyusyukkoidou.RowTemplate.Height = 21;
+            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 287);
+            this.dgv_nyusyukkoidou.TabIndex = 1;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Column2.HeaderText = "部品コード";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 85;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column3.HeaderText = "部品名";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 250;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "在庫区分";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.PowderBlue;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column5.HeaderText = "受注コード1";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "受注コード2";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column7.HeaderText = "数量";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 70;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "備考";
+            this.Column1.Name = "Column1";
+            // 
+            // dtp_buhin_syori_date
+            // 
+            this.dtp_buhin_syori_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_buhin_syori_date.Location = new System.Drawing.Point(127, 65);
+            this.dtp_buhin_syori_date.Name = "dtp_buhin_syori_date";
+            this.dtp_buhin_syori_date.Size = new System.Drawing.Size(107, 19);
+            this.dtp_buhin_syori_date.TabIndex = 42;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(19, 65);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(108, 19);
+            this.textBox2.TabIndex = 41;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "日付";
+            // 
+            // tb_torihikisaki_name
+            // 
+            this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(170, 115);
+            this.tb_torihikisaki_name.MaxLength = 2;
+            this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
+            this.tb_torihikisaki_name.ReadOnly = true;
+            this.tb_torihikisaki_name.Size = new System.Drawing.Size(196, 19);
+            this.tb_torihikisaki_name.TabIndex = 39;
+            // 
+            // tb_torihikisaki_cd
+            // 
+            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(127, 115);
+            this.tb_torihikisaki_cd.MaxLength = 6;
+            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
+            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(45, 19);
+            this.tb_torihikisaki_cd.TabIndex = 36;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(19, 115);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(108, 19);
+            this.textBox6.TabIndex = 38;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "取引先コード";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox7.Location = new System.Drawing.Point(19, 40);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(108, 19);
+            this.textBox7.TabIndex = 34;
+            this.textBox7.TabStop = false;
+            this.textBox7.Text = "入出庫番号";
+            // 
+            // tb_seq
+            // 
+            this.tb_seq.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_seq.Location = new System.Drawing.Point(127, 40);
+            this.tb_seq.MaxLength = 2;
+            this.tb_seq.Name = "tb_seq";
+            this.tb_seq.ReadOnly = true;
+            this.tb_seq.Size = new System.Drawing.Size(69, 19);
+            this.tb_seq.TabIndex = 40;
+            this.tb_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tb_denpyou_no
+            // 
+            this.tb_denpyou_no.Location = new System.Drawing.Point(127, 90);
+            this.tb_denpyou_no.MaxLength = 40;
+            this.tb_denpyou_no.Name = "tb_denpyou_no";
+            this.tb_denpyou_no.Size = new System.Drawing.Size(239, 19);
+            this.tb_denpyou_no.TabIndex = 35;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox9.Location = new System.Drawing.Point(19, 90);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(108, 19);
+            this.textBox9.TabIndex = 37;
+            this.textBox9.TabStop = false;
+            this.textBox9.Text = "伝票番号";
             // 
             // frm_buhin_nyusyukkoidou
             // 
@@ -412,16 +405,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtp_buhin_syori_date;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox tb_torihikisaki_name;
-        private System.Windows.Forms.TextBox tb_torihikisaki_cd;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btn_touroku;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox tb_seq;
-        private System.Windows.Forms.TextBox tb_denpyou_no;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.StatusStrip ss_status;
         private System.Windows.Forms.DataGridView dgv_nyusyukkoidou;
@@ -432,5 +416,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DateTimePicker dtp_buhin_syori_date;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_torihikisaki_name;
+        private System.Windows.Forms.TextBox tb_torihikisaki_cd;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tb_seq;
+        private System.Windows.Forms.TextBox tb_denpyou_no;
+        private System.Windows.Forms.TextBox textBox9;
     }
 }
