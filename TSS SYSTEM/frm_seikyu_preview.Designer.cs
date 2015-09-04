@@ -35,21 +35,18 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.btn_preview = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rb_torihikisaki_cd = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_midasi = new System.Windows.Forms.TextBox();
             this.tb_simebi = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd1 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_simebi_midasi = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rb_seikyu_no = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_urikake_no_midasi = new System.Windows.Forms.TextBox();
             this.tb_urikake_no = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,8 +59,6 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -86,7 +81,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
             // splitContainer1.Panel2
@@ -138,20 +132,28 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.label1);
+            this.splitContainer3.Panel1.Controls.Add(this.rb_seikyu_no);
+            this.splitContainer3.Panel1.Controls.Add(this.rb_torihikisaki_cd);
             this.splitContainer3.Panel1.Controls.Add(this.btn_preview);
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_midasi);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_simebi);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_urikake_no_midasi);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_cd1);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_urikake_no);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_simebi_midasi);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_cd2);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.viewer1);
             this.splitContainer3.Size = new System.Drawing.Size(884, 439);
-            this.splitContainer3.SplitterDistance = 83;
+            this.splitContainer3.SplitterDistance = 79;
             this.splitContainer3.TabIndex = 0;
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(795, 53);
+            this.btn_preview.Location = new System.Drawing.Point(795, 49);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
@@ -159,25 +161,10 @@
             this.btn_preview.UseVisualStyleBackColor = true;
             this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.rb_torihikisaki_cd);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.tb_simebi);
-            this.groupBox2.Controls.Add(this.tb_torihikisaki_cd1);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.tb_torihikisaki_cd2);
-            this.groupBox2.Location = new System.Drawing.Point(316, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 71);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(227, 22);
+            this.label1.Location = new System.Drawing.Point(231, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 11;
@@ -186,7 +173,7 @@
             // rb_torihikisaki_cd
             // 
             this.rb_torihikisaki_cd.AutoSize = true;
-            this.rb_torihikisaki_cd.Location = new System.Drawing.Point(6, 20);
+            this.rb_torihikisaki_cd.Location = new System.Drawing.Point(10, 30);
             this.rb_torihikisaki_cd.Name = "rb_torihikisaki_cd";
             this.rb_torihikisaki_cd.Size = new System.Drawing.Size(95, 16);
             this.rb_torihikisaki_cd.TabIndex = 3;
@@ -194,93 +181,93 @@
             this.rb_torihikisaki_cd.Text = "取引先＋締日";
             this.rb_torihikisaki_cd.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tb_torihikisaki_midasi
             // 
-            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(107, 18);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(75, 19);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "取引先コード";
+            this.tb_torihikisaki_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_torihikisaki_midasi.Enabled = false;
+            this.tb_torihikisaki_midasi.Location = new System.Drawing.Point(111, 28);
+            this.tb_torihikisaki_midasi.Name = "tb_torihikisaki_midasi";
+            this.tb_torihikisaki_midasi.ReadOnly = true;
+            this.tb_torihikisaki_midasi.Size = new System.Drawing.Size(75, 19);
+            this.tb_torihikisaki_midasi.TabIndex = 4;
+            this.tb_torihikisaki_midasi.TabStop = false;
+            this.tb_torihikisaki_midasi.Text = "取引先コード";
             // 
             // tb_simebi
             // 
-            this.tb_simebi.Location = new System.Drawing.Point(182, 43);
+            this.tb_simebi.Enabled = false;
+            this.tb_simebi.Location = new System.Drawing.Point(186, 53);
             this.tb_simebi.MaxLength = 10;
             this.tb_simebi.Name = "tb_simebi";
             this.tb_simebi.Size = new System.Drawing.Size(70, 19);
             this.tb_simebi.TabIndex = 8;
+            this.tb_simebi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_simebi_Validating);
+            this.tb_simebi.Validated += new System.EventHandler(this.tb_simebi_Validated);
             // 
             // tb_torihikisaki_cd1
             // 
-            this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(182, 18);
+            this.tb_torihikisaki_cd1.Enabled = false;
+            this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(186, 28);
             this.tb_torihikisaki_cd1.MaxLength = 6;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(45, 19);
             this.tb_torihikisaki_cd1.TabIndex = 5;
+            this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
-            // textBox6
+            // tb_simebi_midasi
             // 
-            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox6.Location = new System.Drawing.Point(107, 43);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(75, 19);
-            this.textBox6.TabIndex = 7;
-            this.textBox6.TabStop = false;
-            this.textBox6.Text = "請求締日";
+            this.tb_simebi_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_simebi_midasi.Enabled = false;
+            this.tb_simebi_midasi.Location = new System.Drawing.Point(111, 53);
+            this.tb_simebi_midasi.Name = "tb_simebi_midasi";
+            this.tb_simebi_midasi.ReadOnly = true;
+            this.tb_simebi_midasi.Size = new System.Drawing.Size(75, 19);
+            this.tb_simebi_midasi.TabIndex = 7;
+            this.tb_simebi_midasi.TabStop = false;
+            this.tb_simebi_midasi.Text = "請求締日";
             // 
             // tb_torihikisaki_cd2
             // 
-            this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(244, 18);
+            this.tb_torihikisaki_cd2.Enabled = false;
+            this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(248, 28);
             this.tb_torihikisaki_cd2.MaxLength = 6;
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(45, 19);
             this.tb_torihikisaki_cd2.TabIndex = 6;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rb_seikyu_no);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.tb_urikake_no);
-            this.groupBox1.Location = new System.Drawing.Point(10, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 47);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
+            this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // rb_seikyu_no
             // 
             this.rb_seikyu_no.AutoSize = true;
             this.rb_seikyu_no.Checked = true;
-            this.rb_seikyu_no.Location = new System.Drawing.Point(6, 19);
+            this.rb_seikyu_no.Location = new System.Drawing.Point(10, 4);
             this.rb_seikyu_no.Name = "rb_seikyu_no";
             this.rb_seikyu_no.Size = new System.Drawing.Size(83, 16);
             this.rb_seikyu_no.TabIndex = 2;
             this.rb_seikyu_no.TabStop = true;
             this.rb_seikyu_no.Text = "請求書番号";
             this.rb_seikyu_no.UseVisualStyleBackColor = true;
+            this.rb_seikyu_no.CheckedChanged += new System.EventHandler(this.rb_seikyu_no_CheckedChanged);
             // 
-            // textBox1
+            // tb_urikake_no_midasi
             // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(107, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(75, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "請求書番号";
+            this.tb_urikake_no_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_urikake_no_midasi.Location = new System.Drawing.Point(111, 3);
+            this.tb_urikake_no_midasi.Name = "tb_urikake_no_midasi";
+            this.tb_urikake_no_midasi.ReadOnly = true;
+            this.tb_urikake_no_midasi.Size = new System.Drawing.Size(75, 19);
+            this.tb_urikake_no_midasi.TabIndex = 0;
+            this.tb_urikake_no_midasi.TabStop = false;
+            this.tb_urikake_no_midasi.Text = "請求書番号";
             // 
             // tb_urikake_no
             // 
-            this.tb_urikake_no.Location = new System.Drawing.Point(182, 18);
+            this.tb_urikake_no.Location = new System.Drawing.Point(186, 3);
             this.tb_urikake_no.MaxLength = 10;
             this.tb_urikake_no.Name = "tb_urikake_no";
             this.tb_urikake_no.Size = new System.Drawing.Size(70, 19);
             this.tb_urikake_no.TabIndex = 1;
+            this.tb_urikake_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_urikake_no_Validating);
             // 
             // viewer1
             // 
@@ -317,7 +304,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 348);
+            this.viewer1.Size = new System.Drawing.Size(880, 352);
             this.viewer1.TabIndex = 0;
             // 
             // btn_syuuryou
@@ -329,15 +316,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(601, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
             // 
             // frm_seikyu_preview
             // 
@@ -351,7 +329,6 @@
             this.Text = "請求書印刷";
             this.Load += new System.EventHandler(this.frm_seikyu_preview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -360,13 +337,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,21 +353,18 @@
         private System.Windows.Forms.Button btn_hardcopy;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_torihikisaki_midasi;
         private System.Windows.Forms.RadioButton rb_torihikisaki_cd;
         private System.Windows.Forms.RadioButton rb_seikyu_no;
         private System.Windows.Forms.TextBox tb_urikake_no;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_urikake_no_midasi;
         private System.Windows.Forms.Button btn_syuuryou;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tb_simebi_midasi;
         private System.Windows.Forms.TextBox tb_torihikisaki_cd2;
         private System.Windows.Forms.TextBox tb_torihikisaki_cd1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_simebi;
-        private System.Windows.Forms.GroupBox groupBox1;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
         private System.Windows.Forms.Button btn_preview;
-        private System.Windows.Forms.Label label2;
     }
 }

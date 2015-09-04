@@ -20,7 +20,7 @@ namespace TSS_SYSTEM
         double w_syouhizei = 0;
         double w_nyukin = 0;
         double w_zandaka = 0;
-
+        double w_seikyu = 0;
 
         public frm_seikyu()
         {
@@ -123,15 +123,15 @@ namespace TSS_SYSTEM
             foreach(DataRow dr in w_dt_torihikisaki.Rows)
             {
                 //初期値リセット
-                double w_kurikosi = 0;
-                double w_uriage = 0;
-                double w_syouhizei = 0;
-                double w_nyukin = 0;
-                double w_zandaka = 0;
-                double w_seikyu = 0;
+                w_kurikosi = 0;
+                w_uriage = 0;
+                w_syouhizei = 0;
+                w_nyukin = 0;
+                w_zandaka = 0;
+                w_seikyu = 0;
 
                 //既に集計済みの場合は、その請求番号を退避させる（再利用する為）
-                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "'");
+                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "' and uriage_simebi = '" + tb_seikyu_simebi.Text + "'");
                 if(w_dt_urikake.Rows.Count > 0)
                 {
                     w_urikake_no = w_dt_urikake.Rows[0]["urikake_no"].ToString();
@@ -163,18 +163,19 @@ namespace TSS_SYSTEM
                     double w_no;
                     w_no = tss.GetSeq("08");
                     w_urikake_no = w_no.ToString("0000000000");
-                    tss.OracleInsert("insert into (torihikisaki_cd,uriage_simebi,kurikosigaku,uriage_kingaku,syouhizeigaku,nyukingaku,nyukin_kanryou_flg,nyukingaku2,urikake_zandaka,urikake_no,create_user_cd,create_datetime) values ('" + dr["torihikisaki_cd"].ToString() + "','" + tb_seikyu_simebi.Text + "','" + w_kurikosi.ToString() + "','" + w_uriage.ToString() + "','" + w_syouhizei.ToString() + "','0','0','" + w_nyukin.ToString() + "','" + w_zandaka.ToString() + "','" + w_urikake_no + "','" + tss.user_cd + "',sysdate");
+                    tss.OracleInsert("insert into tss_urikake_m (torihikisaki_cd,uriage_simebi,kurikosigaku,uriage_kingaku,syouhizeigaku,nyukingaku,nyukin_kanryou_flg,nyukingaku2,urikake_zandaka,urikake_no,create_user_cd,create_datetime) values ('" + dr["torihikisaki_cd"].ToString() + "','" + tb_seikyu_simebi.Text + "','" + w_kurikosi.ToString() + "','" + w_uriage.ToString() + "','" + w_syouhizei.ToString() + "','0','0','" + w_nyukin.ToString() + "','" + w_zandaka.ToString() + "','" + w_urikake_no + "','" + tss.user_cd + "',sysdate)");
                     //売上マスタの請求番号（urikake_no）を更新
                     tss.OracleUpdate("update tss_uriage_m set urikake_no = '" + w_urikake_no + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
                 }
             }
+            MessageBox.Show("請求締め処理が完了しました。");
         }
 
         private double get_kurikosi(string in_cd)
         {
             double out_double;  //戻り値用
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
+            w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
             if(w_dt.Rows.Count == 0)
             {
                 out_double = 0;
@@ -237,7 +238,7 @@ namespace TSS_SYSTEM
             {
                 //消費税は明細毎
                 DataTable w_dt = new DataTable();
-                w_dt = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "'");
+                w_dt = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + tb_seikyu_simebi.Text + "'");
                 if (w_dt.Rows.Count == 0)
                 {
                     out_double = 0;
@@ -260,7 +261,7 @@ namespace TSS_SYSTEM
             {
                 //消費税は伝票毎（売上番号毎）
                 DataTable w_dt = new DataTable();
-                w_dt = tss.OracleSelect("select sum(uriage_kingaku) from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' group by uriage_no");
+                w_dt = tss.OracleSelect("select sum(uriage_kingaku) from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + tb_seikyu_simebi.Text + "' group by uriage_no");
                 if (w_dt.Rows.Count == 0)
                 {
                     out_double = 0;
@@ -291,7 +292,7 @@ namespace TSS_SYSTEM
             tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
             w_datetime = tss.out_datetime.AddMonths(-1).AddDays(+1);
 
-            w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(uriage_date,'YYYY/MM/DD') < '" + tb_seikyu_simebi.Text + "' and TO_CHAR(uriage_date,'YYYY/MM/DD') < '" + w_datetime.ToShortDateString() + "')");
+            w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + tb_seikyu_simebi.Text + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + w_datetime.ToShortDateString() + "'");
             if (w_dt.Rows.Count == 0)
             {
                 out_double = 0;
@@ -306,6 +307,26 @@ namespace TSS_SYSTEM
                 }
             }
             return out_double;
+        }
+
+        private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd1.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+        }
+
+        private void tb_torihikisaki_cd2_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_torihikisaki_cd2.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
         }
     }
 }
