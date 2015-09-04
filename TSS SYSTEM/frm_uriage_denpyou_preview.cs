@@ -63,7 +63,7 @@ namespace TSS_SYSTEM
             if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
             {
                 //MessageBox.Show("売上番号を入力してください。");
-                //e.Cancel = true;
+                e.Cancel = true;
             }
             else
             {
