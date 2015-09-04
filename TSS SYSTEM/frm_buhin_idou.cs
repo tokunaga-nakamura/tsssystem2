@@ -70,30 +70,6 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            //部品コードが入力されたならば、部品名を部品マスターから取得して表示
-            if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() != "")
-            {
-                //int i = e.RowIndex;
-
-                DataTable dtTmp = (DataTable)dgv_idou.DataSource;
-
-                //部品コードをキーに、部品名を引っ張ってくる
-
-                DataTable dt_work = new DataTable();
-                int j = dt_work.Rows.Count;
-                dt_work = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + dgv.CurrentCell.Value.ToString() + "'");
-                if (dt_work.Rows.Count <= 0)
-                {
-                    MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
-                    dgv.Rows[i].Cells[1].Value = "";
-                }
-                else
-                {
-                    dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
-                    //dgv.CurrentCell = dgv.Rows[i].Cells[2]; //指定セルにフォーカスをあてるが、 コケるので使用しない
-                }
-                return;
-            }
 
 
         }
@@ -136,25 +112,25 @@ namespace TSS_SYSTEM
                     MessageBox.Show("在庫区分を入力してください");
                     return;
                 }
-                //DataTable dt_work = new DataTable();
+               
                 dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '01' and kubun_cd = '" + dgv_idou.Rows[i].Cells[2].Value.ToString() + "'");
                 if (dt_work.Rows.Count <= 0)
                 {
                     MessageBox.Show("入力された在庫区分が存在しません");
                     return;
                 }
-                //DataTable dt_work = new DataTable();
-                if (dgv_idou.Rows[i].Cells[3].Value == null)
+                
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "01" && dgv_idou.Rows[i].Cells[3].Value == null)
                 {
                     MessageBox.Show("取引先コードを入力してください");
                     return;
                 }
-                dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[3].Value.ToString() + "'");
-                if (dt_work.Rows.Count <= 0)
-                {
-                    MessageBox.Show("入力された移動元の取引先コードが存在しません");
-                    return;
-                }
+                //dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[3].Value.ToString() + "'");
+                //if (dt_work.Rows.Count <= 0)
+                //{
+                //    MessageBox.Show("入力された移動元の取引先コードが存在しません");
+                //    return;
+                //}
                 if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_idou.Rows[0].Cells[4].Value == null)
                 {
                     MessageBox.Show("受注コード1を入力してください");
@@ -172,24 +148,24 @@ namespace TSS_SYSTEM
                     return;
                 }
                 
-                dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '01' and kubun_cd = '" + dgv_idou.Rows[i].Cells[6].Value.ToString() + "'");
-                if (dt_work.Rows.Count <= 0)
-                {
-                    MessageBox.Show("入力された移動先在庫区分が存在しません");
-                    return;
-                }
+                //dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '01' and kubun_cd = '" + dgv_idou.Rows[i].Cells[6].Value.ToString() + "'");
+                //if (dt_work.Rows.Count <= 0)
+                //{
+                //    MessageBox.Show("入力された移動先在庫区分が存在しません");
+                //    return;
+                //}
                 //dt_work = new DataTable();
-                if (dgv_idou.Rows[i].Cells[7].Value == null)
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "01" && dgv_idou.Rows[i].Cells[7].Value == null)
                 {
                     MessageBox.Show("移動先取引先コードを入力してください");
                     return;
                 }
-                dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[7].Value.ToString() + "'");
-                if (dt_work.Rows.Count <= 0)
-                {
-                    MessageBox.Show("入力された移動先取引先コードが存在しません");
-                    return;
-                }
+                //dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd  =  '" + dgv_idou.Rows[i].Cells[7].Value.ToString() + "'");
+                //if (dt_work.Rows.Count <= 0)
+                //{
+                //    MessageBox.Show("入力された移動先取引先コードが存在しません");
+                //    return;
+                //}
                 if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "02" && dgv_idou.Rows[0].Cells[8].Value == null)
                 {
                     MessageBox.Show("移動先受注コード1を入力してください");
@@ -224,20 +200,26 @@ namespace TSS_SYSTEM
                     dgv_idou.Rows[i].Cells[4].Value = 9999999999999999;
                 }
 
-              
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[4].Value == null && dgv_idou.Rows[i].Cells[5].Value == null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[3].Value == null && dgv_idou.Rows[i].Cells[4].Value == null && dgv_idou.Rows[i].Cells[5].Value == null)
                 {
+                    dgv_idou.Rows[i].Cells[3].Value = 999999;
                     dgv_idou.Rows[i].Cells[4].Value = 9999999999999999;
                     dgv_idou.Rows[i].Cells[5].Value = 9999999999999999;
+                }
+
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[3].Value == null)
+                {
+                    dgv_idou.Rows[i].Cells[3].Value = 999999;
                 }
 
                 if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[8].Value != null && dgv_idou.Rows[i].Cells[9].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[9].Value = 9999999999999999;
                 }
-                
-                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[8].Value == null && dgv_idou.Rows[i].Cells[9].Value == null)
+
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[7].Value == null && dgv_idou.Rows[i].Cells[8].Value == null && dgv_idou.Rows[i].Cells[9].Value == null)
                 {
+                    dgv_idou.Rows[i].Cells[7].Value = 999999;
                     dgv_idou.Rows[i].Cells[8].Value = 9999999999999999;
                     dgv_idou.Rows[i].Cells[9].Value = 9999999999999999;
                 }
@@ -250,6 +232,7 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < dgvrc2 - 1; i++)
             {
+                
                 bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
                                     + "03" + "','"
                                     + tb_seq.Text.ToString() + "','"
@@ -260,7 +243,7 @@ namespace TSS_SYSTEM
                                     + dgv_idou.Rows[i].Cells[3].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[4].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[5].Value.ToString() + "','"
-                                    + dgv_idou.Rows[i].Cells[10].Value.ToString() + "','"
+                                    + double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) + "','"
                                     + dgv_idou.Rows[i].Cells[6].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[7].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[8].Value.ToString() + "','"
@@ -313,7 +296,7 @@ namespace TSS_SYSTEM
 
                     double zaikosu3 = zaikosu1 - zaikosu2;
 
-                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[4].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[5].Value.ToString() + "'");
+                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + dgv_idou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[4].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[5].Value.ToString() + "'");
                 }
             }
 
@@ -353,7 +336,7 @@ namespace TSS_SYSTEM
 
                     double zaikosu3 = zaikosu1 + zaikosu2;
 
-                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[9].Value.ToString() + "'");
+                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + dgv_idou.Rows[i].Cells[7].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[9].Value.ToString() + "'");
 
                 }
             }
@@ -403,30 +386,83 @@ namespace TSS_SYSTEM
                 if (w_buhin_cd != "")
                 {
                     dgv_idou.CurrentCell.Value = w_buhin_cd;
+                    dgv_idou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
                     dgv_idou.EndEdit();
                 }
             }
 
             if (i == 3)
-             {
+            {
 
-                 if (dgv_idou.CurrentRow.Cells[2].Value == null || dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
-                 {
-                     //選択画面へ
-                     string w_cd;
-                     w_cd = tss.search_torihikisaki("2", "");
-                     if (w_cd != "")
-                     {
-                         dgv_idou.CurrentCell.Value = w_cd;
-                         dgv_idou.EndEdit();
-                     }
-                 }
-                 else
-                 {
-                     return;
-                 }
+                if (dgv_idou.CurrentRow.Cells[2].Value == null || dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
+                {
+                    //torihikisaki_dc_ck();
 
-             }
+                    //選択画面へ
+                    string w_cd;
+                    w_cd = tss.search_torihikisaki("2", "");
+                    if (w_cd != "")
+                    {
+                        dgv_idou.CurrentCell.Value = w_cd;
+
+
+
+                        if (dgv_idou.Rows[e.RowIndex].Cells[0].Value != null)
+                        {
+                            //torihikisaki_ckメソッド
+
+                            string str = dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            string str2 = w_cd;
+
+                            DataTable dt_w2 = new DataTable();
+                            dt_w2 = tss.OracleSelect("select torihikisaki_cd from tss_buhin_m where buhin_cd  =  '" + str + "'");
+
+                            if (dt_w2.Rows.Count == 0)
+                            {
+                                MessageBox.Show("入力された移動先取引先コードが存在しません");
+                                return;
+                            }
+                            else
+                            {
+                                string str3 = dt_w2.Rows[0][0].ToString();
+
+                                if (str2 == str3)
+                                {
+
+                                }
+                                else
+                                {
+                                    DialogResult result = MessageBox.Show("移動する部品コードの取引先コードと部品マスタの取引先コードが異なりますがよろしいですか？",
+                                      "部品入移動登録",
+                                      MessageBoxButtons.OKCancel,
+                                      MessageBoxIcon.Exclamation,
+                                      MessageBoxDefaultButton.Button2);
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        dgv_idou.EndEdit();
+                                        //dgv_seihin_kousei.EndEdit();
+                                        dgv_idou.Focus();
+
+                                    }
+                                    if (result == DialogResult.Cancel)
+                                    {
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    dgv_idou.EndEdit();
+                }
+
+                else
+                {
+                    return;
+                }
+
+            }
 
             if (i == 7)
             {
@@ -434,13 +470,62 @@ namespace TSS_SYSTEM
                 if (dgv_idou.CurrentRow.Cells[6].Value == null || dgv_idou.CurrentRow.Cells[6].Value.ToString() != "01")
                 {
                     //選択画面へ
-                    string w_cd;
-                    w_cd = tss.search_torihikisaki("2", "");
-                    if (w_cd != "")
-                    {
-                        dgv_idou.CurrentCell.Value = w_cd;
-                        dgv_idou.EndEdit();
-                    }
+                     string w_cd;
+                     w_cd = tss.search_torihikisaki("2", "");
+                     if (w_cd != "")
+                     {
+                         dgv_idou.CurrentCell.Value = w_cd;
+
+
+
+                         if (dgv_idou.Rows[e.RowIndex].Cells[0].Value != null)
+                         {
+                             //torihikisaki_ckメソッド
+
+                             string str = dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString();
+                             string str2 = w_cd;
+
+                             DataTable dt_w2 = new DataTable();
+                             dt_w2 = tss.OracleSelect("select torihikisaki_cd from tss_buhin_m where buhin_cd  =  '" + str + "'");
+
+                             if (dt_w2.Rows.Count == 0)
+                             {
+                                 MessageBox.Show("入力された移動先取引先コードが存在しません");
+                                 return;
+                             }
+                             else
+                             {
+                                 string str3 = dt_w2.Rows[0][0].ToString();
+
+                                 if (str2 == str3)
+                                 {
+
+                                 }
+                                 else
+                                 {
+                                     DialogResult result = MessageBox.Show("移動する部品コードの取引先コードと部品マスタの取引先コードが異なりますがよろしいですか？",
+                                       "部品入移動登録",
+                                       MessageBoxButtons.OKCancel,
+                                       MessageBoxIcon.Exclamation,
+                                       MessageBoxDefaultButton.Button2);
+
+                                     if (result == DialogResult.OK)
+                                     {
+                                         dgv_idou.EndEdit();
+                                         //dgv_seihin_kousei.EndEdit();
+                                         dgv_idou.Focus();
+
+                                     }
+                                     if (result == DialogResult.Cancel)
+                                     {
+                                         return;
+                                     }
+                                 }
+                             }
+                         }
+
+                     }
+                         dgv_idou.EndEdit();
                 }
                 else
                 {
@@ -451,6 +536,13 @@ namespace TSS_SYSTEM
 
             if (i == 4)
             {
+
+                if (dgv_idou.CurrentRow.Cells[2].Value == null)
+                {
+                    MessageBox.Show("取引先コードを入力してください");
+                    return;
+                }
+                
                 if (dgv_idou.CurrentRow.Cells[3].Value == null && dgv_idou.CurrentRow.Cells[2].Value.ToString() != "01")
                 {
                     MessageBox.Show("取引先コードを入力してください");
@@ -481,6 +573,12 @@ namespace TSS_SYSTEM
             
             if (i == 8)
             {
+                if (dgv_idou.CurrentRow.Cells[6].Value == null)
+                {
+                    MessageBox.Show("移動先取引先コードを入力してください");
+                    return;
+                }
+                
                 if (dgv_idou.CurrentRow.Cells[7].Value == null && dgv_idou.CurrentRow.Cells[6].Value.ToString() != "01")
                 {
                     MessageBox.Show("移動先取引先コードを入力してください");
@@ -516,15 +614,136 @@ namespace TSS_SYSTEM
             int i = e.ColumnIndex;
             int j = e.RowIndex;
 
+
+            if (dgv_idou.CurrentCell.Value == null)
+            { 
+            
+            }
+            else
+            {
+                if (e.FormattedValue.ToString() == dgv_idou.CurrentCell.Value.ToString())
+                {
+                    return;
+                }
+            }
+           
+
+
             if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
             {
                 e.Cancel = true;
                 return;
             }
 
+            if (i == 0)
+            {
+              
+                　　string w_buhin_cd = e.FormattedValue.ToString();
+
+                    if (w_buhin_cd != "")
+                    {
+                        DataTable dt_w = new DataTable();
+
+                        dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
+
+                        if (dt_w.Rows.Count == 0)
+                        {
+                            MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
+                            e.Cancel = true;
+                            dgv_idou.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = "";
+                            return;
+                        }
+
+
+                            //移動元取引先コードと移動先取引先コードがnullでない場合
+                            if (dgv_idou.Rows[j].Cells[3].Value != null)
+                            {
+                                string str = dt_w.Rows[0][0].ToString();
+                                string str2 = dgv_idou.Rows[j].Cells[3].Value.ToString();
+                                //string str3 = dgv_idou.Rows[j].Cells[7].Value.ToString();
+
+                                    if (str == str2)
+                                    {
+
+                                    }
+
+                                    //if (str == str3)
+                                    //{
+
+                                    //}
+
+                                    else
+                                    {
+                                        DialogResult result = MessageBox.Show("移動する部品コードの取引先コードと部品マスタの取引先コードが異なりますがよろしいですか？",
+                                          "部品入移動登録",
+                                          MessageBoxButtons.OKCancel,
+                                          MessageBoxIcon.Exclamation,
+                                          MessageBoxDefaultButton.Button2);
+
+                                        if (result == DialogResult.OK)
+                                        {
+                                            dgv_idou.EndEdit();
+                                            //dgv_seihin_kousei.EndEdit();
+                                            dgv_idou.Focus();
+
+                                        }
+                                        if (result == DialogResult.Cancel)
+                                        {
+                                            e.Cancel = true;
+                                            dgv_idou.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = "";
+                                            return;
+                                        }
+                                    }
+                                }
+
+                            if (dgv_idou.Rows[j].Cells[7].Value != null)
+                            {
+                                string str = dt_w.Rows[0][0].ToString();
+                                //string str2 = dgv_idou.Rows[j].Cells[3].Value.ToString();
+                                string str3 = dgv_idou.Rows[j].Cells[7].Value.ToString();
+
+                                //if (str == str2)
+                                //{
+
+                                //}
+
+                                if (str == str3)
+                                {
+
+                                }
+
+                                else
+                                {
+                                    DialogResult result = MessageBox.Show("移動する部品コードの取引先コードと部品マスタの取引先コードが異なりますがよろしいですか？",
+                                      "部品入移動登録",
+                                      MessageBoxButtons.OKCancel,
+                                      MessageBoxIcon.Exclamation,
+                                      MessageBoxDefaultButton.Button2);
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        dgv_idou.EndEdit();
+                                        //dgv_seihin_kousei.EndEdit();
+                                        dgv_idou.Focus();
+
+                                    }
+                                    if (result == DialogResult.Cancel)
+                                    {
+                                        e.Cancel = true;
+                                        dgv_idou.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = "";
+                                        return;
+                                    }
+                                }
+                            }                
+                            dgv_idou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
+                            dgv_idou.EndEdit();
+                        }
+                     }
+
             if (i == 2)
             {
                 string zaiko_kbn = e.FormattedValue.ToString();
+
 
                 //在庫区分が01（フリー）なら、取引先コードと受注コード1、2はリードオンリーで色をグレーにする。
                 if (zaiko_kbn == "01")
@@ -546,6 +765,7 @@ namespace TSS_SYSTEM
                     dgv_idou[3, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[4, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[5, j].Style.BackColor = Color.White;
+                    dgv_idou[3, j].ReadOnly = false;
                     dgv_idou[4, j].ReadOnly = false;
                     dgv_idou[5, j].ReadOnly = false;
 
@@ -556,6 +776,7 @@ namespace TSS_SYSTEM
             if (i == 6)
             {
                 string zaiko_kbn = e.FormattedValue.ToString();
+
 
                 //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
                 if (zaiko_kbn == "01")
@@ -577,6 +798,7 @@ namespace TSS_SYSTEM
                     dgv_idou[7, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[8, j].Style.BackColor = Color.PowderBlue;
                     dgv_idou[9, j].Style.BackColor = Color.White;
+                    dgv_idou[7, j].ReadOnly = false;
                     dgv_idou[8, j].ReadOnly = false;
                     dgv_idou[9, j].ReadOnly = false;
 
@@ -584,43 +806,79 @@ namespace TSS_SYSTEM
                 }
             }
 
-            if (i == 3 || i == 8 )
+            if (i == 3 || i == 7)
             {
-                if(dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString() == "")
+                
+                if (e.FormattedValue == null || e.FormattedValue.ToString() == "")
                 {
-
+                    return;
                 }
-
-                if (dgv_idou.Rows[e.RowIndex].Cells[3].Value.ToString() == "")
+                if (e.FormattedValue == dgv_idou.Rows[e.RowIndex].Cells[e.ColumnIndex].Value)
                 {
-
+                    return;
                 }
-
-                if (dgv_idou.Rows[e.RowIndex].Cells[8].Value.ToString() == "")
-                {
-
-                }
-
                 else
                 {
-                    string str = dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    string str2 = dgv_idou.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    string str3 = dgv_idou.Rows[e.RowIndex].Cells[8].Value.ToString();
-
                     DataTable dt_w = new DataTable();
-                    dt_w = tss.OracleSelect("select torihikisaki_cd from tss_buhin_m where buhin_cd  =  '" + str + "'");
+                    dt_w = tss.OracleSelect("select torihikisaki_name from tss_torihikisaki_m where torihikisaki_cd  =  '" + e.FormattedValue.ToString() + "'");
 
                     if (dt_w.Rows.Count == 0)
                     {
-                      
+                        MessageBox.Show("入力された取引先コードが存在しません");
+                        e.Cancel = true;
+                        return;
                     }
+                    else
+                    {
+                        if (dgv_idou.Rows[e.RowIndex].Cells[0].Value != null)
+                        {
+                            //torihikisaki_ck();
 
+                            string str = dgv_idou.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            string str2 = e.FormattedValue.ToString();
 
+                            DataTable dt_w2 = new DataTable();
+                            dt_w2 = tss.OracleSelect("select torihikisaki_cd from tss_buhin_m where buhin_cd  =  '" + str + "'");
+
+                            if (dt_w2.Rows.Count == 0)
+                            {
+                                MessageBox.Show("入力された移動先取引先コードが存在しません");
+                                return;
+                            }
+                            else
+                            {
+                                string str3 = dt_w2.Rows[0][0].ToString();
+
+                                if (str2 == str3)
+                                {
+
+                                }
+                                else
+                                {
+                                    DialogResult result = MessageBox.Show("移動する部品コードの取引先コードと部品マスタの取引先コードが異なりますがよろしいですか？",
+                                      "部品入移動登録",
+                                      MessageBoxButtons.OKCancel,
+                                      MessageBoxIcon.Exclamation,
+                                      MessageBoxDefaultButton.Button2);
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        dgv_idou.EndEdit();
+                                        //dgv_seihin_kousei.EndEdit();
+                                        dgv_idou.Focus();
+
+                                    }
+                                    if (result == DialogResult.Cancel)
+                                    {
+                                        e.Cancel = true;
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                
-               
             }
-
         }
 
         private void tb_denpyou_no_Validating(object sender, CancelEventArgs e)
@@ -643,6 +901,14 @@ namespace TSS_SYSTEM
 
             }
         }
+
+
+        private void torihikisaki_dc_ck()
+        {
+           
+        }
+
+
     }
 
 
