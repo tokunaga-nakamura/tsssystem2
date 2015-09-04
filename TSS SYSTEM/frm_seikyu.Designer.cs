@@ -148,6 +148,7 @@
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(45, 19);
             this.tb_torihikisaki_cd2.TabIndex = 1;
             this.tb_torihikisaki_cd2.Text = "999999";
+            this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // tb_torihikisaki_cd1
             // 
@@ -157,6 +158,7 @@
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(45, 19);
             this.tb_torihikisaki_cd1.TabIndex = 0;
             this.tb_torihikisaki_cd1.Text = "0";
+            this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
             // textBox1
             // 
