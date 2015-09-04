@@ -1741,7 +1741,7 @@ namespace TSS_SYSTEM
             double out_double; //戻り値用
 
             DataTable w_dt = new DataTable();
-            w_dt = OracleSelect("select * from tss_syouhizei_m where TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') >= kaitei_date and TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') <= syuuryou_date");
+            w_dt = OracleSelect("select * from tss_syouhizei_m where TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') >= kaitei_date and TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') <= syuryou_date");
             if(w_dt.Rows.Count == 0)
             {
                 out_double = -1;
