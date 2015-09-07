@@ -51,7 +51,6 @@ namespace TSS_SYSTEM
             else
             {
                 w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_simebi.Text.ToString() + "'");
-
             }
             if (w_dt_urikake.Rows.Count == 0)
             {
@@ -65,16 +64,14 @@ namespace TSS_SYSTEM
             {
                 //明細印刷用の売上情報の読み込み
                 w_dt_uriage = tss.OracleSelect("select seihin_cd,seihin_name,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd,seihin_name");
-
-
-
-
                 rpt_seikyu rpt = new rpt_seikyu();
                 //レポートへデータを受け渡す
                 rpt.DataSource = w_dt_uriage;
                 rpt.w_dr = dr;  //ヘッダー用の売掛マスタレコード
                 rpt.Run();
+                
                 this.viewer1.Document = rpt.Document;
+                //this.viewer1.Print(true,true,true);
             }
 
 

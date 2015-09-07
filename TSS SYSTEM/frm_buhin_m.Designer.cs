@@ -868,6 +868,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_buhin_m";
             this.Text = "部品マスタ";
+            this.Load += new System.EventHandler(this.frm_buhin_m_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

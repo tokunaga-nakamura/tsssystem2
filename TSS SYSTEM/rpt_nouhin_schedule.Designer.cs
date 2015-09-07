@@ -29,6 +29,38 @@
         {
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(rpt_nouhin_schedule));
             this.pageHeader = new GrapeCity.ActiveReports.SectionReportModel.PageHeader();
+            this.lbl_31 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_30 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_29 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_28 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_27 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_26 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_25 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_24 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_23 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_22 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_21 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_20 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_19 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_18 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_17 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_15 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_14 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_13 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_12 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_11 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_10 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_09 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_08 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_07 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_06 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_05 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_04 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_03 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_02 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label6 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.lbl_01 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.tb_hd_yyyymm = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.label1 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.tb_hd_torihikisaki_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -75,39 +107,7 @@
             this.label3 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label4 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label5 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.label6 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label7 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_01 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_04 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_02 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_03 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_06 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_05 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_10 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_08 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_09 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_07 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_13 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_12 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_11 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_14 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_15 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_17 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_18 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_19 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_20 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_21 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_22 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_23 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_24 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_25 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_26 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_27 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_28 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_29 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_30 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.lbl_31 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.line3 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.label39 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.crossSectionLine33 = new GrapeCity.ActiveReports.SectionReportModel.CrossSectionLine();
@@ -155,11 +155,43 @@
             this.tb_day_31 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.line1 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.tb_bikou = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.line5 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.reportInfo2 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
-            this.line5 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_09)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_08)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_07)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_06)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_05)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_04)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_03)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_02)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_01)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd_yyyymm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_name)).BeginInit();
@@ -171,39 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_01)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_04)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_02)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_03)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_06)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_05)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_08)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_09)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_07)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd21)).BeginInit();
@@ -342,6 +342,358 @@
             this.tb_hd41});
             this.pageHeader.Height = 1.072917F;
             this.pageHeader.Name = "pageHeader";
+            // 
+            // lbl_31
+            // 
+            this.lbl_31.Height = 0.2062993F;
+            this.lbl_31.HyperLink = null;
+            this.lbl_31.Left = 8.961812F;
+            this.lbl_31.Name = "lbl_31";
+            this.lbl_31.Style = "font-size: 6pt; text-align: center";
+            this.lbl_31.Text = "31";
+            this.lbl_31.Top = 0.8574803F;
+            this.lbl_31.Width = 0.2125974F;
+            // 
+            // lbl_30
+            // 
+            this.lbl_30.Height = 0.2051182F;
+            this.lbl_30.HyperLink = null;
+            this.lbl_30.Left = 8.749213F;
+            this.lbl_30.Name = "lbl_30";
+            this.lbl_30.Style = "font-size: 6pt; text-align: center";
+            this.lbl_30.Text = "30";
+            this.lbl_30.Top = 0.8574803F;
+            this.lbl_30.Width = 0.2125984F;
+            // 
+            // lbl_29
+            // 
+            this.lbl_29.Height = 0.2062993F;
+            this.lbl_29.HyperLink = null;
+            this.lbl_29.Left = 8.536614F;
+            this.lbl_29.Name = "lbl_29";
+            this.lbl_29.Style = "font-size: 6pt; text-align: center";
+            this.lbl_29.Text = "29";
+            this.lbl_29.Top = 0.8574803F;
+            this.lbl_29.Width = 0.2125984F;
+            // 
+            // lbl_28
+            // 
+            this.lbl_28.Height = 0.2062993F;
+            this.lbl_28.HyperLink = null;
+            this.lbl_28.Left = 8.324017F;
+            this.lbl_28.Name = "lbl_28";
+            this.lbl_28.Style = "font-size: 6pt; text-align: center";
+            this.lbl_28.Text = "28";
+            this.lbl_28.Top = 0.8574803F;
+            this.lbl_28.Width = 0.2125984F;
+            // 
+            // lbl_27
+            // 
+            this.lbl_27.Height = 0.2062993F;
+            this.lbl_27.HyperLink = null;
+            this.lbl_27.Left = 8.111418F;
+            this.lbl_27.Name = "lbl_27";
+            this.lbl_27.Style = "font-size: 6pt; text-align: center";
+            this.lbl_27.Text = "27";
+            this.lbl_27.Top = 0.8574803F;
+            this.lbl_27.Width = 0.2125984F;
+            // 
+            // lbl_26
+            // 
+            this.lbl_26.Height = 0.2062993F;
+            this.lbl_26.HyperLink = null;
+            this.lbl_26.Left = 7.898819F;
+            this.lbl_26.Name = "lbl_26";
+            this.lbl_26.Style = "font-size: 6pt; text-align: center";
+            this.lbl_26.Text = "26";
+            this.lbl_26.Top = 0.8574803F;
+            this.lbl_26.Width = 0.2125984F;
+            // 
+            // lbl_25
+            // 
+            this.lbl_25.Height = 0.2062993F;
+            this.lbl_25.HyperLink = null;
+            this.lbl_25.Left = 7.686221F;
+            this.lbl_25.Name = "lbl_25";
+            this.lbl_25.Style = "font-size: 6pt; text-align: center";
+            this.lbl_25.Text = "25";
+            this.lbl_25.Top = 0.8574803F;
+            this.lbl_25.Width = 0.2125984F;
+            // 
+            // lbl_24
+            // 
+            this.lbl_24.Height = 0.2062993F;
+            this.lbl_24.HyperLink = null;
+            this.lbl_24.Left = 7.473622F;
+            this.lbl_24.Name = "lbl_24";
+            this.lbl_24.Style = "font-size: 6pt; text-align: center";
+            this.lbl_24.Text = "24";
+            this.lbl_24.Top = 0.8574803F;
+            this.lbl_24.Width = 0.2125984F;
+            // 
+            // lbl_23
+            // 
+            this.lbl_23.Height = 0.2062993F;
+            this.lbl_23.HyperLink = null;
+            this.lbl_23.Left = 7.261024F;
+            this.lbl_23.Name = "lbl_23";
+            this.lbl_23.Style = "font-size: 6pt; text-align: center";
+            this.lbl_23.Text = "23";
+            this.lbl_23.Top = 0.8574803F;
+            this.lbl_23.Width = 0.2125984F;
+            // 
+            // lbl_22
+            // 
+            this.lbl_22.Height = 0.2062993F;
+            this.lbl_22.HyperLink = null;
+            this.lbl_22.Left = 7.048426F;
+            this.lbl_22.Name = "lbl_22";
+            this.lbl_22.Style = "font-size: 6pt; text-align: center";
+            this.lbl_22.Text = "22";
+            this.lbl_22.Top = 0.8574803F;
+            this.lbl_22.Width = 0.2125984F;
+            // 
+            // lbl_21
+            // 
+            this.lbl_21.Height = 0.2062993F;
+            this.lbl_21.HyperLink = null;
+            this.lbl_21.Left = 6.835827F;
+            this.lbl_21.Name = "lbl_21";
+            this.lbl_21.Style = "font-size: 6pt; text-align: center";
+            this.lbl_21.Text = "21";
+            this.lbl_21.Top = 0.8574803F;
+            this.lbl_21.Width = 0.2125984F;
+            // 
+            // lbl_20
+            // 
+            this.lbl_20.Height = 0.2051182F;
+            this.lbl_20.HyperLink = null;
+            this.lbl_20.Left = 6.623229F;
+            this.lbl_20.Name = "lbl_20";
+            this.lbl_20.Style = "font-size: 6pt; text-align: center";
+            this.lbl_20.Text = "20";
+            this.lbl_20.Top = 0.8574803F;
+            this.lbl_20.Width = 0.2125984F;
+            // 
+            // lbl_19
+            // 
+            this.lbl_19.Height = 0.2062993F;
+            this.lbl_19.HyperLink = null;
+            this.lbl_19.Left = 6.41063F;
+            this.lbl_19.Name = "lbl_19";
+            this.lbl_19.Style = "font-size: 6pt; text-align: center";
+            this.lbl_19.Text = "19";
+            this.lbl_19.Top = 0.8574803F;
+            this.lbl_19.Width = 0.2125984F;
+            // 
+            // lbl_18
+            // 
+            this.lbl_18.Height = 0.2051182F;
+            this.lbl_18.HyperLink = null;
+            this.lbl_18.Left = 6.198032F;
+            this.lbl_18.Name = "lbl_18";
+            this.lbl_18.Style = "font-size: 6pt; text-align: center";
+            this.lbl_18.Text = "18";
+            this.lbl_18.Top = 0.8574803F;
+            this.lbl_18.Width = 0.2125984F;
+            // 
+            // lbl_17
+            // 
+            this.lbl_17.Height = 0.2062993F;
+            this.lbl_17.HyperLink = null;
+            this.lbl_17.Left = 5.985434F;
+            this.lbl_17.Name = "lbl_17";
+            this.lbl_17.Style = "font-size: 6pt; text-align: center";
+            this.lbl_17.Text = "17";
+            this.lbl_17.Top = 0.8574803F;
+            this.lbl_17.Width = 0.2125984F;
+            // 
+            // lbl_16
+            // 
+            this.lbl_16.Height = 0.2062993F;
+            this.lbl_16.HyperLink = null;
+            this.lbl_16.Left = 5.772835F;
+            this.lbl_16.Name = "lbl_16";
+            this.lbl_16.Style = "font-size: 6pt; text-align: center";
+            this.lbl_16.Text = "16";
+            this.lbl_16.Top = 0.8574803F;
+            this.lbl_16.Width = 0.2125984F;
+            // 
+            // lbl_15
+            // 
+            this.lbl_15.Height = 0.2062993F;
+            this.lbl_15.HyperLink = null;
+            this.lbl_15.Left = 5.560237F;
+            this.lbl_15.Name = "lbl_15";
+            this.lbl_15.Style = "font-size: 6pt; text-align: center";
+            this.lbl_15.Text = "15";
+            this.lbl_15.Top = 0.8574803F;
+            this.lbl_15.Width = 0.2125984F;
+            // 
+            // lbl_14
+            // 
+            this.lbl_14.Height = 0.2062993F;
+            this.lbl_14.HyperLink = null;
+            this.lbl_14.Left = 5.347639F;
+            this.lbl_14.Name = "lbl_14";
+            this.lbl_14.Style = "font-size: 6pt; text-align: center";
+            this.lbl_14.Text = "14";
+            this.lbl_14.Top = 0.8574803F;
+            this.lbl_14.Width = 0.2125984F;
+            // 
+            // lbl_13
+            // 
+            this.lbl_13.Height = 0.2051182F;
+            this.lbl_13.HyperLink = null;
+            this.lbl_13.Left = 5.13504F;
+            this.lbl_13.Name = "lbl_13";
+            this.lbl_13.Style = "font-size: 6pt; text-align: center";
+            this.lbl_13.Text = "13";
+            this.lbl_13.Top = 0.8574803F;
+            this.lbl_13.Width = 0.2125984F;
+            // 
+            // lbl_12
+            // 
+            this.lbl_12.Height = 0.2062993F;
+            this.lbl_12.HyperLink = null;
+            this.lbl_12.Left = 4.922441F;
+            this.lbl_12.Name = "lbl_12";
+            this.lbl_12.Style = "font-size: 6pt; text-align: center";
+            this.lbl_12.Text = "12";
+            this.lbl_12.Top = 0.8574803F;
+            this.lbl_12.Width = 0.2125984F;
+            // 
+            // lbl_11
+            // 
+            this.lbl_11.Height = 0.2062993F;
+            this.lbl_11.HyperLink = null;
+            this.lbl_11.Left = 4.709843F;
+            this.lbl_11.Name = "lbl_11";
+            this.lbl_11.Style = "font-size: 6pt; text-align: center";
+            this.lbl_11.Text = "11";
+            this.lbl_11.Top = 0.8574803F;
+            this.lbl_11.Width = 0.2125984F;
+            // 
+            // lbl_10
+            // 
+            this.lbl_10.Height = 0.2062993F;
+            this.lbl_10.HyperLink = null;
+            this.lbl_10.Left = 4.497245F;
+            this.lbl_10.Name = "lbl_10";
+            this.lbl_10.Style = "font-size: 6pt; text-align: center";
+            this.lbl_10.Text = "10";
+            this.lbl_10.Top = 0.8574803F;
+            this.lbl_10.Width = 0.2125984F;
+            // 
+            // lbl_09
+            // 
+            this.lbl_09.Height = 0.2074802F;
+            this.lbl_09.HyperLink = null;
+            this.lbl_09.Left = 4.284647F;
+            this.lbl_09.Name = "lbl_09";
+            this.lbl_09.Style = "font-size: 6pt; text-align: center";
+            this.lbl_09.Text = "9";
+            this.lbl_09.Top = 0.8551182F;
+            this.lbl_09.Width = 0.2125984F;
+            // 
+            // lbl_08
+            // 
+            this.lbl_08.Height = 0.2062993F;
+            this.lbl_08.HyperLink = null;
+            this.lbl_08.Left = 4.072048F;
+            this.lbl_08.Name = "lbl_08";
+            this.lbl_08.Style = "font-size: 6pt; text-align: center";
+            this.lbl_08.Text = "8";
+            this.lbl_08.Top = 0.8574803F;
+            this.lbl_08.Width = 0.2125984F;
+            // 
+            // lbl_07
+            // 
+            this.lbl_07.Height = 0.2086614F;
+            this.lbl_07.HyperLink = null;
+            this.lbl_07.Left = 3.859449F;
+            this.lbl_07.Name = "lbl_07";
+            this.lbl_07.Style = "font-size: 6pt; text-align: center";
+            this.lbl_07.Text = "7";
+            this.lbl_07.Top = 0.8551182F;
+            this.lbl_07.Width = 0.2125984F;
+            // 
+            // lbl_06
+            // 
+            this.lbl_06.Height = 0.2086614F;
+            this.lbl_06.HyperLink = null;
+            this.lbl_06.Left = 3.646851F;
+            this.lbl_06.Name = "lbl_06";
+            this.lbl_06.Style = "font-size: 6pt; text-align: center";
+            this.lbl_06.Text = "6";
+            this.lbl_06.Top = 0.8551182F;
+            this.lbl_06.Width = 0.2125984F;
+            // 
+            // lbl_05
+            // 
+            this.lbl_05.Height = 0.2086614F;
+            this.lbl_05.HyperLink = null;
+            this.lbl_05.Left = 3.434252F;
+            this.lbl_05.Name = "lbl_05";
+            this.lbl_05.Style = "font-size: 6pt; text-align: center";
+            this.lbl_05.Text = "5";
+            this.lbl_05.Top = 0.8551182F;
+            this.lbl_05.Width = 0.2125984F;
+            // 
+            // lbl_04
+            // 
+            this.lbl_04.Height = 0.2086614F;
+            this.lbl_04.HyperLink = null;
+            this.lbl_04.Left = 3.221654F;
+            this.lbl_04.Name = "lbl_04";
+            this.lbl_04.Style = "font-size: 6pt; text-align: center";
+            this.lbl_04.Text = "4";
+            this.lbl_04.Top = 0.8551182F;
+            this.lbl_04.Width = 0.2125984F;
+            // 
+            // lbl_03
+            // 
+            this.lbl_03.Height = 0.2086614F;
+            this.lbl_03.HyperLink = null;
+            this.lbl_03.Left = 3.009055F;
+            this.lbl_03.Name = "lbl_03";
+            this.lbl_03.Style = "font-size: 6pt; text-align: center";
+            this.lbl_03.Text = "3";
+            this.lbl_03.Top = 0.8551182F;
+            this.lbl_03.Width = 0.2125984F;
+            // 
+            // lbl_02
+            // 
+            this.lbl_02.Height = 0.2086614F;
+            this.lbl_02.HyperLink = null;
+            this.lbl_02.Left = 2.796457F;
+            this.lbl_02.Name = "lbl_02";
+            this.lbl_02.Style = "font-size: 6pt; text-align: center";
+            this.lbl_02.Text = "2";
+            this.lbl_02.Top = 0.8551182F;
+            this.lbl_02.Width = 0.2125984F;
+            // 
+            // label6
+            // 
+            this.label6.Height = 0.1043307F;
+            this.label6.HyperLink = null;
+            this.label6.Left = 0.3334646F;
+            this.label6.Name = "label6";
+            this.label6.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
+            this.label6.Text = "製品名";
+            this.label6.Top = 0.9594489F;
+            this.label6.Width = 1.718898F;
+            // 
+            // lbl_01
+            // 
+            this.lbl_01.Height = 0.2074803F;
+            this.lbl_01.HyperLink = null;
+            this.lbl_01.Left = 2.583858F;
+            this.lbl_01.Name = "lbl_01";
+            this.lbl_01.Style = "font-size: 6pt; text-align: center";
+            this.lbl_01.Text = "1";
+            this.lbl_01.Top = 0.8551182F;
+            this.lbl_01.Width = 0.2125984F;
             // 
             // tb_hd_yyyymm
             // 
@@ -742,17 +1094,6 @@
             this.label5.Top = 0.8551182F;
             this.label5.Width = 0.6980316F;
             // 
-            // label6
-            // 
-            this.label6.Height = 0.1043307F;
-            this.label6.HyperLink = null;
-            this.label6.Left = 0.3334646F;
-            this.label6.Name = "label6";
-            this.label6.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
-            this.label6.Text = "製品名";
-            this.label6.Top = 0.9594489F;
-            this.label6.Width = 1.718898F;
-            // 
             // label7
             // 
             this.label7.Height = 0.1043306F;
@@ -763,347 +1104,6 @@
             this.label7.Text = "受注数";
             this.label7.Top = 0.8551182F;
             this.label7.Width = 0.5314962F;
-            // 
-            // lbl_01
-            // 
-            this.lbl_01.Height = 0.2074803F;
-            this.lbl_01.HyperLink = null;
-            this.lbl_01.Left = 2.583858F;
-            this.lbl_01.Name = "lbl_01";
-            this.lbl_01.Style = "font-size: 6pt; text-align: center";
-            this.lbl_01.Text = "1";
-            this.lbl_01.Top = 0.8551182F;
-            this.lbl_01.Width = 0.2125984F;
-            // 
-            // lbl_04
-            // 
-            this.lbl_04.Height = 0.2086614F;
-            this.lbl_04.HyperLink = null;
-            this.lbl_04.Left = 3.221654F;
-            this.lbl_04.Name = "lbl_04";
-            this.lbl_04.Style = "font-size: 6pt; text-align: center";
-            this.lbl_04.Text = "4";
-            this.lbl_04.Top = 0.8551182F;
-            this.lbl_04.Width = 0.2125984F;
-            // 
-            // lbl_02
-            // 
-            this.lbl_02.Height = 0.2086614F;
-            this.lbl_02.HyperLink = null;
-            this.lbl_02.Left = 2.796457F;
-            this.lbl_02.Name = "lbl_02";
-            this.lbl_02.Style = "font-size: 6pt; text-align: center";
-            this.lbl_02.Text = "2";
-            this.lbl_02.Top = 0.8551182F;
-            this.lbl_02.Width = 0.2125984F;
-            // 
-            // lbl_03
-            // 
-            this.lbl_03.Height = 0.2086614F;
-            this.lbl_03.HyperLink = null;
-            this.lbl_03.Left = 3.009055F;
-            this.lbl_03.Name = "lbl_03";
-            this.lbl_03.Style = "font-size: 6pt; text-align: center";
-            this.lbl_03.Text = "3";
-            this.lbl_03.Top = 0.8551182F;
-            this.lbl_03.Width = 0.2125984F;
-            // 
-            // lbl_06
-            // 
-            this.lbl_06.Height = 0.2086614F;
-            this.lbl_06.HyperLink = null;
-            this.lbl_06.Left = 3.646851F;
-            this.lbl_06.Name = "lbl_06";
-            this.lbl_06.Style = "font-size: 6pt; text-align: center";
-            this.lbl_06.Text = "6";
-            this.lbl_06.Top = 0.8551182F;
-            this.lbl_06.Width = 0.2125984F;
-            // 
-            // lbl_05
-            // 
-            this.lbl_05.Height = 0.2086614F;
-            this.lbl_05.HyperLink = null;
-            this.lbl_05.Left = 3.434252F;
-            this.lbl_05.Name = "lbl_05";
-            this.lbl_05.Style = "font-size: 6pt; text-align: center";
-            this.lbl_05.Text = "5";
-            this.lbl_05.Top = 0.8551182F;
-            this.lbl_05.Width = 0.2125984F;
-            // 
-            // lbl_10
-            // 
-            this.lbl_10.Height = 0.2062993F;
-            this.lbl_10.HyperLink = null;
-            this.lbl_10.Left = 4.497245F;
-            this.lbl_10.Name = "lbl_10";
-            this.lbl_10.Style = "font-size: 6pt; text-align: center";
-            this.lbl_10.Text = "10";
-            this.lbl_10.Top = 0.8574803F;
-            this.lbl_10.Width = 0.2125984F;
-            // 
-            // lbl_08
-            // 
-            this.lbl_08.Height = 0.2062993F;
-            this.lbl_08.HyperLink = null;
-            this.lbl_08.Left = 4.072048F;
-            this.lbl_08.Name = "lbl_08";
-            this.lbl_08.Style = "font-size: 6pt; text-align: center";
-            this.lbl_08.Text = "8";
-            this.lbl_08.Top = 0.8574803F;
-            this.lbl_08.Width = 0.2125984F;
-            // 
-            // lbl_09
-            // 
-            this.lbl_09.Height = 0.2074802F;
-            this.lbl_09.HyperLink = null;
-            this.lbl_09.Left = 4.284647F;
-            this.lbl_09.Name = "lbl_09";
-            this.lbl_09.Style = "font-size: 6pt; text-align: center";
-            this.lbl_09.Text = "9";
-            this.lbl_09.Top = 0.8551182F;
-            this.lbl_09.Width = 0.2125984F;
-            // 
-            // lbl_07
-            // 
-            this.lbl_07.Height = 0.2086614F;
-            this.lbl_07.HyperLink = null;
-            this.lbl_07.Left = 3.859449F;
-            this.lbl_07.Name = "lbl_07";
-            this.lbl_07.Style = "font-size: 6pt; text-align: center";
-            this.lbl_07.Text = "7";
-            this.lbl_07.Top = 0.8551182F;
-            this.lbl_07.Width = 0.2125984F;
-            // 
-            // lbl_13
-            // 
-            this.lbl_13.Height = 0.2051182F;
-            this.lbl_13.HyperLink = null;
-            this.lbl_13.Left = 5.13504F;
-            this.lbl_13.Name = "lbl_13";
-            this.lbl_13.Style = "font-size: 6pt; text-align: center";
-            this.lbl_13.Text = "13";
-            this.lbl_13.Top = 0.8574803F;
-            this.lbl_13.Width = 0.2125984F;
-            // 
-            // lbl_12
-            // 
-            this.lbl_12.Height = 0.2062993F;
-            this.lbl_12.HyperLink = null;
-            this.lbl_12.Left = 4.922441F;
-            this.lbl_12.Name = "lbl_12";
-            this.lbl_12.Style = "font-size: 6pt; text-align: center";
-            this.lbl_12.Text = "12";
-            this.lbl_12.Top = 0.8574803F;
-            this.lbl_12.Width = 0.2125984F;
-            // 
-            // lbl_11
-            // 
-            this.lbl_11.Height = 0.2062993F;
-            this.lbl_11.HyperLink = null;
-            this.lbl_11.Left = 4.709843F;
-            this.lbl_11.Name = "lbl_11";
-            this.lbl_11.Style = "font-size: 6pt; text-align: center";
-            this.lbl_11.Text = "11";
-            this.lbl_11.Top = 0.8574803F;
-            this.lbl_11.Width = 0.2125984F;
-            // 
-            // lbl_14
-            // 
-            this.lbl_14.Height = 0.2062993F;
-            this.lbl_14.HyperLink = null;
-            this.lbl_14.Left = 5.347639F;
-            this.lbl_14.Name = "lbl_14";
-            this.lbl_14.Style = "font-size: 6pt; text-align: center";
-            this.lbl_14.Text = "14";
-            this.lbl_14.Top = 0.8574803F;
-            this.lbl_14.Width = 0.2125984F;
-            // 
-            // lbl_15
-            // 
-            this.lbl_15.Height = 0.2062993F;
-            this.lbl_15.HyperLink = null;
-            this.lbl_15.Left = 5.560237F;
-            this.lbl_15.Name = "lbl_15";
-            this.lbl_15.Style = "font-size: 6pt; text-align: center";
-            this.lbl_15.Text = "15";
-            this.lbl_15.Top = 0.8574803F;
-            this.lbl_15.Width = 0.2125984F;
-            // 
-            // lbl_16
-            // 
-            this.lbl_16.Height = 0.2062993F;
-            this.lbl_16.HyperLink = null;
-            this.lbl_16.Left = 5.772835F;
-            this.lbl_16.Name = "lbl_16";
-            this.lbl_16.Style = "font-size: 6pt; text-align: center";
-            this.lbl_16.Text = "16";
-            this.lbl_16.Top = 0.8574803F;
-            this.lbl_16.Width = 0.2125984F;
-            // 
-            // lbl_17
-            // 
-            this.lbl_17.Height = 0.2062993F;
-            this.lbl_17.HyperLink = null;
-            this.lbl_17.Left = 5.985434F;
-            this.lbl_17.Name = "lbl_17";
-            this.lbl_17.Style = "font-size: 6pt; text-align: center";
-            this.lbl_17.Text = "17";
-            this.lbl_17.Top = 0.8574803F;
-            this.lbl_17.Width = 0.2125984F;
-            // 
-            // lbl_18
-            // 
-            this.lbl_18.Height = 0.2051182F;
-            this.lbl_18.HyperLink = null;
-            this.lbl_18.Left = 6.198032F;
-            this.lbl_18.Name = "lbl_18";
-            this.lbl_18.Style = "font-size: 6pt; text-align: center";
-            this.lbl_18.Text = "18";
-            this.lbl_18.Top = 0.8574803F;
-            this.lbl_18.Width = 0.2125984F;
-            // 
-            // lbl_19
-            // 
-            this.lbl_19.Height = 0.2062993F;
-            this.lbl_19.HyperLink = null;
-            this.lbl_19.Left = 6.41063F;
-            this.lbl_19.Name = "lbl_19";
-            this.lbl_19.Style = "font-size: 6pt; text-align: center";
-            this.lbl_19.Text = "19";
-            this.lbl_19.Top = 0.8574803F;
-            this.lbl_19.Width = 0.2125984F;
-            // 
-            // lbl_20
-            // 
-            this.lbl_20.Height = 0.2051182F;
-            this.lbl_20.HyperLink = null;
-            this.lbl_20.Left = 6.623229F;
-            this.lbl_20.Name = "lbl_20";
-            this.lbl_20.Style = "font-size: 6pt; text-align: center";
-            this.lbl_20.Text = "20";
-            this.lbl_20.Top = 0.8574803F;
-            this.lbl_20.Width = 0.2125984F;
-            // 
-            // lbl_21
-            // 
-            this.lbl_21.Height = 0.2062993F;
-            this.lbl_21.HyperLink = null;
-            this.lbl_21.Left = 6.835827F;
-            this.lbl_21.Name = "lbl_21";
-            this.lbl_21.Style = "font-size: 6pt; text-align: center";
-            this.lbl_21.Text = "21";
-            this.lbl_21.Top = 0.8574803F;
-            this.lbl_21.Width = 0.2125984F;
-            // 
-            // lbl_22
-            // 
-            this.lbl_22.Height = 0.2062993F;
-            this.lbl_22.HyperLink = null;
-            this.lbl_22.Left = 7.048426F;
-            this.lbl_22.Name = "lbl_22";
-            this.lbl_22.Style = "font-size: 6pt; text-align: center";
-            this.lbl_22.Text = "22";
-            this.lbl_22.Top = 0.8574803F;
-            this.lbl_22.Width = 0.2125984F;
-            // 
-            // lbl_23
-            // 
-            this.lbl_23.Height = 0.2062993F;
-            this.lbl_23.HyperLink = null;
-            this.lbl_23.Left = 7.261024F;
-            this.lbl_23.Name = "lbl_23";
-            this.lbl_23.Style = "font-size: 6pt; text-align: center";
-            this.lbl_23.Text = "23";
-            this.lbl_23.Top = 0.8574803F;
-            this.lbl_23.Width = 0.2125984F;
-            // 
-            // lbl_24
-            // 
-            this.lbl_24.Height = 0.2062993F;
-            this.lbl_24.HyperLink = null;
-            this.lbl_24.Left = 7.473622F;
-            this.lbl_24.Name = "lbl_24";
-            this.lbl_24.Style = "font-size: 6pt; text-align: center";
-            this.lbl_24.Text = "24";
-            this.lbl_24.Top = 0.8574803F;
-            this.lbl_24.Width = 0.2125984F;
-            // 
-            // lbl_25
-            // 
-            this.lbl_25.Height = 0.2062993F;
-            this.lbl_25.HyperLink = null;
-            this.lbl_25.Left = 7.686221F;
-            this.lbl_25.Name = "lbl_25";
-            this.lbl_25.Style = "font-size: 6pt; text-align: center";
-            this.lbl_25.Text = "25";
-            this.lbl_25.Top = 0.8574803F;
-            this.lbl_25.Width = 0.2125984F;
-            // 
-            // lbl_26
-            // 
-            this.lbl_26.Height = 0.2062993F;
-            this.lbl_26.HyperLink = null;
-            this.lbl_26.Left = 7.898819F;
-            this.lbl_26.Name = "lbl_26";
-            this.lbl_26.Style = "font-size: 6pt; text-align: center";
-            this.lbl_26.Text = "26";
-            this.lbl_26.Top = 0.8574803F;
-            this.lbl_26.Width = 0.2125984F;
-            // 
-            // lbl_27
-            // 
-            this.lbl_27.Height = 0.2062993F;
-            this.lbl_27.HyperLink = null;
-            this.lbl_27.Left = 8.111418F;
-            this.lbl_27.Name = "lbl_27";
-            this.lbl_27.Style = "font-size: 6pt; text-align: center";
-            this.lbl_27.Text = "27";
-            this.lbl_27.Top = 0.8574803F;
-            this.lbl_27.Width = 0.2125984F;
-            // 
-            // lbl_28
-            // 
-            this.lbl_28.Height = 0.2062993F;
-            this.lbl_28.HyperLink = null;
-            this.lbl_28.Left = 8.324017F;
-            this.lbl_28.Name = "lbl_28";
-            this.lbl_28.Style = "font-size: 6pt; text-align: center";
-            this.lbl_28.Text = "28";
-            this.lbl_28.Top = 0.8574803F;
-            this.lbl_28.Width = 0.2125984F;
-            // 
-            // lbl_29
-            // 
-            this.lbl_29.Height = 0.2062993F;
-            this.lbl_29.HyperLink = null;
-            this.lbl_29.Left = 8.536614F;
-            this.lbl_29.Name = "lbl_29";
-            this.lbl_29.Style = "font-size: 6pt; text-align: center";
-            this.lbl_29.Text = "29";
-            this.lbl_29.Top = 0.8574803F;
-            this.lbl_29.Width = 0.2125984F;
-            // 
-            // lbl_30
-            // 
-            this.lbl_30.Height = 0.2051182F;
-            this.lbl_30.HyperLink = null;
-            this.lbl_30.Left = 8.749213F;
-            this.lbl_30.Name = "lbl_30";
-            this.lbl_30.Style = "font-size: 6pt; text-align: center";
-            this.lbl_30.Text = "30";
-            this.lbl_30.Top = 0.8574803F;
-            this.lbl_30.Width = 0.2125984F;
-            // 
-            // lbl_31
-            // 
-            this.lbl_31.Height = 0.2062993F;
-            this.lbl_31.HyperLink = null;
-            this.lbl_31.Left = 8.961812F;
-            this.lbl_31.Name = "lbl_31";
-            this.lbl_31.Style = "font-size: 6pt; text-align: center";
-            this.lbl_31.Text = "31";
-            this.lbl_31.Top = 0.8574803F;
-            this.lbl_31.Width = 0.2125974F;
             // 
             // line3
             // 
@@ -1655,6 +1655,19 @@
             this.tb_bikou.Top = 0F;
             this.tb_bikou.Width = 1.651181F;
             // 
+            // line5
+            // 
+            this.line5.Height = 0F;
+            this.line5.Left = 0.02047244F;
+            this.line5.LineWeight = 1F;
+            this.line5.Name = "line5";
+            this.line5.Top = 0F;
+            this.line5.Width = 10.82559F;
+            this.line5.X1 = 0.02047244F;
+            this.line5.X2 = 10.84606F;
+            this.line5.Y1 = 0F;
+            this.line5.Y2 = 0F;
+            // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -1696,19 +1709,6 @@
             this.reportInfo2.Top = 0.04173229F;
             this.reportInfo2.Width = 2.076378F;
             // 
-            // line5
-            // 
-            this.line5.Height = 0F;
-            this.line5.Left = 0.02047244F;
-            this.line5.LineWeight = 1F;
-            this.line5.Name = "line5";
-            this.line5.Top = 0F;
-            this.line5.Width = 10.82559F;
-            this.line5.X1 = 0.02047244F;
-            this.line5.X2 = 10.84606F;
-            this.line5.Y1 = 0F;
-            this.line5.Y2 = 0F;
-            // 
             // rpt_nouhin_schedule
             // 
             this.MasterReport = false;
@@ -1728,6 +1728,38 @@
             "ic\"; ddo-char-set: 128", "Heading2", "Normal"));
             this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold; ddo-char-set: 128", "Heading3", "Normal"));
             this.ReportStart += new System.EventHandler(this.rpt_nouhin_schedule_ReportStart);
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_09)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_08)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_07)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_06)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_05)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_04)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_03)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_02)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbl_01)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd_yyyymm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_name)).EndInit();
@@ -1739,39 +1771,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_01)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_04)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_02)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_03)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_06)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_05)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_08)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_09)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_07)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd21)).EndInit();

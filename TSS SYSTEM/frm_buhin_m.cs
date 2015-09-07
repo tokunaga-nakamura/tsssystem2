@@ -13,10 +13,12 @@ namespace TSS_SYSTEM
     public partial class frm_buhin_m : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
+        public string pub_buhin_cd;
 
         public frm_buhin_m()
         {
             InitializeComponent();
+            pub_buhin_cd = "";
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -813,7 +815,7 @@ namespace TSS_SYSTEM
             if (w_buhin_cd != "")
             {
                 tb_buhin_cd.Text = w_buhin_cd;
-                chk_buhin_cd();   //決算区分名の表示
+                chk_buhin_cd();
             }
 
         }
@@ -925,6 +927,16 @@ namespace TSS_SYSTEM
             frm_bi.ShowDialog(this);
             frm_bi.Dispose();
             chk_buhin_cd();
+        }
+
+        private void frm_buhin_m_Load(object sender, EventArgs e)
+        {
+            //pub_buhin_cdに値が入っていたら、自動的に部品情報を表示する
+            if(pub_buhin_cd != "")
+            {
+                tb_buhin_cd.Text = pub_buhin_cd;
+                chk_buhin_cd();
+            }
         }
     }
 }

@@ -828,7 +828,6 @@ namespace TSS_SYSTEM
             {
                 frm_rpt.w_hd41 = "全て";
             }
-
             
             frm_rpt.ShowDialog();
             //子画面から値を取得する
@@ -875,32 +874,26 @@ namespace TSS_SYSTEM
             //納品スケジュール履歴
             for (int i = 0; i < dgv_nouhin_rireki.Rows.Count; i++)
             {
-                if (dgv_nouhin_rireki.Rows[e.RowIndex].Cells[0].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[0].Value.ToString() && dgv_nouhin_rireki.Rows[e.RowIndex].Cells[1].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[1].Value.ToString() && dgv_nouhin_rireki.Rows[e.RowIndex].Cells[2].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[2].Value.ToString())
-                {
-                    dgv_nouhin_rireki.Rows[i].DefaultCellStyle.BackColor = Color.MistyRose;
-                }
-                else
-                {
+                //if (dgv_nouhin_rireki.Rows[e.RowIndex].Cells[0].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[0].Value.ToString() && dgv_nouhin_rireki.Rows[e.RowIndex].Cells[1].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[1].Value.ToString() && dgv_nouhin_rireki.Rows[e.RowIndex].Cells[2].Value.ToString() == dgv_nouhin_rireki.Rows[i].Cells[2].Value.ToString())
+                //{
+                //    dgv_nouhin_rireki.Rows[i].DefaultCellStyle.BackColor = Color.MistyRose;
+                //}
+                //else
+                //{
                     dgv_nouhin_rireki.Rows[i].DefaultCellStyle.BackColor = Color.White;
-                }
+                //}
             }
         }
 
         private void dgv_nouhin_schedule_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //受注番号が同じ行を探し、同じだったら行の色を変えて、違ったら通常色にする
-            ////納品スケジュール
-            //for (int i = 0; i < dgv_nouhin_schedule.Rows.Count; i++)
-            //{
-            //    if (dgv_nouhin_schedule.Rows[i].Cells[1].Value.ToString() == dgv_nouhin_schedule.Rows[e.RowIndex].Cells[1].Value.ToString() && dgv_nouhin_schedule.Rows[i].Cells[2].Value.ToString() == dgv_nouhin_schedule.Rows[e.RowIndex].Cells[2].Value.ToString() && dgv_nouhin_schedule.Rows[i].Cells[3].Value.ToString() == dgv_nouhin_schedule.Rows[e.RowIndex].Cells[3].Value.ToString())
-            //    {
-            //        dgv_nouhin_schedule.Rows[i].DefaultCellStyle.BackColor = Color.MistyRose;
-            //    }
-            //    else
-            //    {
-            //        dgv_nouhin_schedule.Rows[i].DefaultCellStyle.BackColor = Color.White;
-            //    }
-            //}
+            //納品スケジュールがクリックされた場合
+            //全ての行の色を通常色にし、該当する履歴の行をピンクにする
+            //納品スケジュール
+            for (int i = 0; i < dgv_nouhin_schedule.Rows.Count; i++)
+            {
+                dgv_nouhin_schedule.Rows[i].DefaultCellStyle.BackColor = Color.White;
+            }
             //納品スケジュール履歴
             for (int i = 0; i < dgv_nouhin_rireki.Rows.Count; i++)
             {
