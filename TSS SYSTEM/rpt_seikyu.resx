@@ -120,8 +120,14 @@
   <data name="tb_seikyu.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="tb_seikyu.OutputFormat" xml:space="preserve">
+  <data name="textBox7.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="textBox8.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
+  </data>
+  <data name="textBox9.OutputFormat" xml:space="preserve">
+    <value>#,###</value>
   </data>
   <data name="textBox7.OutputFormat" xml:space="preserve">
     <value>#,##0.00</value>

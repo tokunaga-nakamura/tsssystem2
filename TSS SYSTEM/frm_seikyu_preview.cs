@@ -64,7 +64,7 @@ namespace TSS_SYSTEM
             foreach(DataRow dr in w_dt_urikake.Rows)
             {
                 //明細印刷用の売上情報の読み込み
-                w_dt_uriage = tss.OracleSelect("select seihin_cd,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd");
+                w_dt_uriage = tss.OracleSelect("select seihin_cd,seihin_name,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd,seihin_name");
 
 
 
