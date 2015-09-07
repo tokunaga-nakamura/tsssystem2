@@ -360,6 +360,14 @@ namespace TSS_SYSTEM
                 return;
             }
 
+            //入金日
+            if (tb_nyukin_date == null || tb_nyukin_date.Text.ToString()=="")
+            {
+                MessageBox.Show("入金日を入力してください（空白不可）");
+                tb_nyukin_date.Focus();
+                return;
+            }
+
             //データグリッドビューの中を1行ずつループしてチェック
             int dgvrc = dgv_m.Rows.Count;
 
@@ -504,7 +512,33 @@ namespace TSS_SYSTEM
 
         private void dgv_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-          
+            int j = e.ColumnIndex;
+
+            
+            if (j == 0)
+            {
+                if(e.FormattedValue.ToString() == "")
+                {
+                    dgv_m.Rows[e.RowIndex].Cells[j + 1].Value = "";
+                }
+                else
+                {
+                    DataTable dt_w = new DataTable();
+                    dt_w = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd = '12' and kubun_cd = '" + e.FormattedValue.ToString() + "'");
+
+                    if (dt_w.Rows.Count == 0)
+                    {
+                        MessageBox.Show("入金区分は1～5で入力してください");
+                        e.Cancel = true;
+                    }
+
+                    dgv_m.Rows[e.RowIndex].Cells[j + 1].Value = tss.kubun_name_select("12", e.FormattedValue.ToString());
+                    dgv_m.EndEdit();
+
+                }
+                
+
+            }
 
 
         }
@@ -532,7 +566,25 @@ namespace TSS_SYSTEM
 
         private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+          
+            ////選択画面へ
+            this.dgv_m.CurrentCell.Value = tss.kubun_cd_select("12", "");
+            dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = tss.kubun_name_select("12", dgv_m.CurrentCell.Value.ToString());
+            dgv_m.EndEdit();
 
+        }
+
+        private void dgv_m_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == 2)
+            {
+                if (dgv_m.Rows[e.RowIndex].Cells[2].Value != null && dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
+                {
+                    dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_double(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0.00");
+                }
+
+            }
         }
 
        }
