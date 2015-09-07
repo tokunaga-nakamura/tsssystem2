@@ -908,6 +908,11 @@ namespace TSS_SYSTEM
            
         }
 
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
+
 
     }
 

@@ -154,6 +154,25 @@ namespace TSS_SYSTEM
             dgv_kubun_m.Columns[0].HeaderText = "製品構成番号";
             dgv_kubun_m.Columns[1].HeaderText = "製品構成名称";
 
+            //リードオンリーにする
+            dgv_kubun_m.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_kubun_m.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_kubun_m.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_kubun_m.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_kubun_m.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_kubun_m.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_kubun_m.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_kubun_m.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_kubun_m.AllowUserToAddRows = false;
+
 
         }
 
@@ -210,7 +229,12 @@ namespace TSS_SYSTEM
                 //tb_juchu_su.Focus();
             }
         }
+
+        private void dgv_kubun_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            form_close_true();
         }
+    }
 
 
 

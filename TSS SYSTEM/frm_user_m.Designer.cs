@@ -756,7 +756,7 @@
             // 
             // tb_user_name2
             // 
-            this.tb_user_name2.Location = new System.Drawing.Point(529, 28);
+            this.tb_user_name2.Location = new System.Drawing.Point(481, 28);
             this.tb_user_name2.MaxLength = 10;
             this.tb_user_name2.Name = "tb_user_name2";
             this.tb_user_name2.Size = new System.Drawing.Size(100, 19);
@@ -769,7 +769,7 @@
             this.textBox5.Location = new System.Drawing.Point(429, 28);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 19);
+            this.textBox5.Size = new System.Drawing.Size(52, 19);
             this.textBox5.TabIndex = 4;
             this.textBox5.TabStop = false;
             this.textBox5.Text = "略式名";

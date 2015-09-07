@@ -49,6 +49,7 @@
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_kensaku);
             this.groupBox1.Controls.Add(this.tb_tel_no);
             this.groupBox1.Controls.Add(this.textBox10);
@@ -116,7 +118,7 @@
             // 
             // tb_tel_no
             // 
-            this.tb_tel_no.Location = new System.Drawing.Point(116, 118);
+            this.tb_tel_no.Location = new System.Drawing.Point(85, 118);
             this.tb_tel_no.MaxLength = 20;
             this.tb_tel_no.Name = "tb_tel_no";
             this.tb_tel_no.Size = new System.Drawing.Size(206, 19);
@@ -129,14 +131,14 @@
             this.textBox10.Location = new System.Drawing.Point(10, 118);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(100, 19);
+            this.textBox10.Size = new System.Drawing.Size(75, 19);
             this.textBox10.TabIndex = 9;
             this.textBox10.TabStop = false;
             this.textBox10.Text = "電話番号";
             // 
             // tb_jusyo2
             // 
-            this.tb_jusyo2.Location = new System.Drawing.Point(116, 93);
+            this.tb_jusyo2.Location = new System.Drawing.Point(85, 93);
             this.tb_jusyo2.MaxLength = 40;
             this.tb_jusyo2.Name = "tb_jusyo2";
             this.tb_jusyo2.Size = new System.Drawing.Size(206, 19);
@@ -149,14 +151,14 @@
             this.textBox8.Location = new System.Drawing.Point(10, 93);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(100, 19);
+            this.textBox8.Size = new System.Drawing.Size(75, 19);
             this.textBox8.TabIndex = 7;
             this.textBox8.TabStop = false;
             this.textBox8.Text = "住所２";
             // 
             // tb_jusyo1
             // 
-            this.tb_jusyo1.Location = new System.Drawing.Point(116, 68);
+            this.tb_jusyo1.Location = new System.Drawing.Point(85, 68);
             this.tb_jusyo1.MaxLength = 40;
             this.tb_jusyo1.Name = "tb_jusyo1";
             this.tb_jusyo1.Size = new System.Drawing.Size(206, 19);
@@ -169,14 +171,14 @@
             this.textBox6.Location = new System.Drawing.Point(10, 68);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(100, 19);
+            this.textBox6.Size = new System.Drawing.Size(75, 19);
             this.textBox6.TabIndex = 5;
             this.textBox6.TabStop = false;
             this.textBox6.Text = "住所１";
             // 
             // tb_torihikisaki_name
             // 
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(116, 43);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(85, 43);
             this.tb_torihikisaki_name.MaxLength = 40;
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(206, 19);
@@ -189,14 +191,14 @@
             this.textBox4.Location = new System.Drawing.Point(10, 43);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 19);
+            this.textBox4.Size = new System.Drawing.Size(75, 19);
             this.textBox4.TabIndex = 3;
             this.textBox4.TabStop = false;
             this.textBox4.Text = "取引先名";
             // 
             // tb_torihikisaki_cd2
             // 
-            this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(169, 18);
+            this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(149, 18);
             this.tb_torihikisaki_cd2.MaxLength = 6;
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(47, 19);
@@ -205,7 +207,7 @@
             // 
             // tb_torihikisaki_cd1
             // 
-            this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(116, 18);
+            this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(85, 18);
             this.tb_torihikisaki_cd1.MaxLength = 6;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(47, 19);
@@ -218,7 +220,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
+            this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "取引先コード";
@@ -306,6 +308,15 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(132, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "～";
+            // 
             // frm_search_torihikisaki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -360,5 +371,6 @@
         private System.Windows.Forms.TextBox tb_torihikisaki_name;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btn_kensaku;
+        private System.Windows.Forms.Label label1;
     }
 }

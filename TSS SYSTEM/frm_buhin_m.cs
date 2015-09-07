@@ -903,5 +903,28 @@ namespace TSS_SYSTEM
             }
 
         }
+
+        private void btn_nyuuko_Click(object sender, EventArgs e)
+        {
+            //入庫画面へ
+            tss.buhin_nyusyukkoidou("1");
+            chk_buhin_cd();
+        }
+
+        private void btn_syukko_Click(object sender, EventArgs e)
+        {
+            //出庫画面へ
+            tss.buhin_nyusyukkoidou("2");
+            chk_buhin_cd();
+        }
+
+        private void btn_idou_Click(object sender, EventArgs e)
+        {
+            //移動画面へ
+            frm_buhin_idou frm_bi = new frm_buhin_idou();
+            frm_bi.ShowDialog(this);
+            frm_bi.Dispose();
+            chk_buhin_cd();
+        }
     }
 }

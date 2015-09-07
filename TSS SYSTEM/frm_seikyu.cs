@@ -252,8 +252,9 @@ namespace TSS_SYSTEM
                     foreach(DataRow dr in w_dt.Rows)
                     {
                         out_double = out_double + tss.try_string_to_double(dr["uriage_kingaku"].ToString());
-                        w_syouhizei_once = tss.try_string_to_double(dr["uriage_kingaku"].ToString()) * w_zeiritu;
-                        w_syouhizei = w_syouhizei + tss.hasu_keisan(in_cd, w_syouhizei_once);
+                        //w_syouhizei_once = tss.try_string_to_double(dr["uriage_kingaku"].ToString()) * w_zeiritu;
+                        //w_syouhizei = w_syouhizei + tss.hasu_keisan(in_cd, w_syouhizei_once);
+                        w_syouhizei = w_syouhizei + tss.try_string_to_double(dr["syouhizeigaku"].ToString());
                     }
                 }
             }

@@ -63,7 +63,7 @@ namespace TSS_SYSTEM
             if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
             {
                 //MessageBox.Show("売上番号を入力してください。");
-                //e.Cancel = true;
+                e.Cancel = true;
             }
             else
             {
@@ -181,6 +181,11 @@ namespace TSS_SYSTEM
                 MessageBox.Show("売上番号に異常があります。");
                 tb_uriage_no.Focus();
             }
+        }
+
+        private void btn_hsrdcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
 
     }

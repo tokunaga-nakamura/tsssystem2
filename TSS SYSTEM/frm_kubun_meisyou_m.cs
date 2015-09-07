@@ -25,8 +25,7 @@ namespace TSS_SYSTEM
 
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
-            //Altキー＋Print Screenキーの送信
-            SendKeys.SendWait("%{PRTSC}");
+            tss.HardCopy();
         }
 
         private void frm_kubun_meisyou_m_Load(object sender, EventArgs e)

@@ -58,12 +58,28 @@ namespace TSS_SYSTEM
                 MessageBox.Show("印刷するデータがありません。");
                 return;
             }
-            rpt_seikyu rpt = new rpt_seikyu();
-            //レポートへデータを受け渡す
-            rpt.DataSource = w_dt_urikake;
 
-            rpt.Run();
-            this.viewer1.Document = rpt.Document;
+            DataTable w_dt_uriage = new DataTable();
+            //w_dt_urikakeのレコード数分、印刷を繰り返す
+            foreach(DataRow dr in w_dt_urikake.Rows)
+            {
+                //明細印刷用の売上情報の読み込み
+                w_dt_uriage = tss.OracleSelect("select seihin_cd,seihin_name,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd,seihin_name");
+
+
+
+
+                rpt_seikyu rpt = new rpt_seikyu();
+                //レポートへデータを受け渡す
+                rpt.DataSource = w_dt_uriage;
+                rpt.w_dr = dr;  //ヘッダー用の売掛マスタレコード
+                rpt.Run();
+                this.viewer1.Document = rpt.Document;
+            }
+
+
+
+
 
 
 
@@ -106,17 +122,37 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            //未入力は許容する
-            if(tb_urikake_no.Text.ToString() != null && tb_urikake_no.Text.ToString() != "")
+
+            if (tb_urikake_no.Text == null || tb_urikake_no.Text == "")
             {
+                //MessageBox.Show("売上番号を入力してください。");
+                e.Cancel = true;
+            }
+            else
+            {
+                //入力された売上番号を"0000000000"形式の文字列に変換
+                double w_double;
+                if (double.TryParse(tb_urikake_no.Text.ToString(), out w_double))
+                {
+                    tb_urikake_no.Text = w_double.ToString("0000000000");
+                }
+                else
+                {
+                    MessageBox.Show("請求番号に異常があります。");
+                    e.Cancel = true;
+                    return;
+                }
+
                 DataTable w_dt = new DataTable();
                 w_dt = tss.OracleSelect("select * from tss_urikake_m where urikake_no = '" + tb_urikake_no.Text.ToString() + "'");
-                if(w_dt.Rows.Count == 0)
+                if (w_dt.Rows.Count == 0)
                 {
                     MessageBox.Show("入力した請求番号は存在しません。");
                     e.Cancel = true;
                 }
             }
+
+
         }
 
         private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)
@@ -169,6 +205,11 @@ namespace TSS_SYSTEM
                 out_bl = false;
             }
             return out_bl;
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
 
     }

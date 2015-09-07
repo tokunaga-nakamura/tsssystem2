@@ -76,7 +76,7 @@
             this.label16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.tb_mm = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_seikyu = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.textBox19 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_urikake_no = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.label17 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.shape3 = new GrapeCity.ActiveReports.SectionReportModel.Shape();
@@ -88,10 +88,9 @@
             this.textBox8 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox9 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
-            this.line8 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line14 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.textBox20 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.textBox21 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_footer_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_footer_syouhizei = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.label13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_kaisya_tel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
@@ -121,15 +120,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.label16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_mm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seikyu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_urikake_no)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_syouhizei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -182,7 +181,7 @@
             this.label16,
             this.tb_mm,
             this.tb_seikyu,
-            this.textBox19,
+            this.tb_urikake_no,
             this.reportInfo1,
             this.label17,
             this.shape3,
@@ -208,7 +207,7 @@
             this.tb_kaisya_tel.Left = 4.168504F;
             this.tb_kaisya_tel.Name = "tb_kaisya_tel";
             this.tb_kaisya_tel.Style = "font-size: 9pt";
-            this.tb_kaisya_tel.Text = "TEL 0250-22-1881  FAX 0250-25-2940";
+            this.tb_kaisya_tel.Text = null;
             this.tb_kaisya_tel.Top = 0.8232284F;
             this.tb_kaisya_tel.Width = 2.666274F;
             // 
@@ -230,7 +229,7 @@
             this.tb_torihikisaki_name.LineSpacing = 3F;
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.Style = "font-family: MS UI Gothic; font-size: 14.25pt";
-            this.tb_torihikisaki_name.Text = "株式会社　カナYamadaホールディング.com　波動拳推進協会　様";
+            this.tb_torihikisaki_name.Text = null;
             this.tb_torihikisaki_name.Top = 0.5216536F;
             this.tb_torihikisaki_name.Width = 4.105118F;
             // 
@@ -251,7 +250,7 @@
             this.tb_kaisya_name.Left = 4.168504F;
             this.tb_kaisya_name.Name = "tb_kaisya_name";
             this.tb_kaisya_name.Style = "font-size: 12pt";
-            this.tb_kaisya_name.Text = "株式会社　徳永製作所";
+            this.tb_kaisya_name.Text = null;
             this.tb_kaisya_name.Top = 0.4374016F;
             this.tb_kaisya_name.Width = 2.666535F;
             // 
@@ -261,7 +260,7 @@
             this.tb_kaisya_jusyo.Left = 4.168504F;
             this.tb_kaisya_jusyo.Name = "tb_kaisya_jusyo";
             this.tb_kaisya_jusyo.Style = "font-size: 9pt";
-            this.tb_kaisya_jusyo.Text = "〒956-0007　新潟県新潟市秋葉区小戸下組2108";
+            this.tb_kaisya_jusyo.Text = null;
             this.tb_kaisya_jusyo.Top = 0.646063F;
             this.tb_kaisya_jusyo.Width = 2.666667F;
             // 
@@ -271,7 +270,7 @@
             this.tb_kaisya_bank.Left = 4.168504F;
             this.tb_kaisya_bank.Name = "tb_kaisya_bank";
             this.tb_kaisya_bank.Style = "font-size: 9pt; text-align: right";
-            this.tb_kaisya_bank.Text = "振込先　北越銀行　新津支店　当座　13045";
+            this.tb_kaisya_bank.Text = null;
             this.tb_kaisya_bank.Top = 1.718898F;
             this.tb_kaisya_bank.Width = 2.666142F;
             // 
@@ -387,7 +386,7 @@
             // 
             // crossSectionLine1
             // 
-            this.crossSectionLine1.Bottom = 0.3019685F;
+            this.crossSectionLine1.Bottom = 0.3436351F;
             this.crossSectionLine1.Left = 0F;
             this.crossSectionLine1.LineWeight = 1F;
             this.crossSectionLine1.Name = "crossSectionLine1";
@@ -406,7 +405,7 @@
             // 
             // crossSectionLine2
             // 
-            this.crossSectionLine2.Bottom = 0.3019685F;
+            this.crossSectionLine2.Bottom = 0.3436351F;
             this.crossSectionLine2.Left = 5.83504F;
             this.crossSectionLine2.LineWeight = 1F;
             this.crossSectionLine2.Name = "crossSectionLine2";
@@ -414,7 +413,7 @@
             // 
             // crossSectionLine3
             // 
-            this.crossSectionLine3.Bottom = 0.3019685F;
+            this.crossSectionLine3.Bottom = 0.3436351F;
             this.crossSectionLine3.Left = 4.841339F;
             this.crossSectionLine3.LineWeight = 1F;
             this.crossSectionLine3.Name = "crossSectionLine3";
@@ -422,7 +421,7 @@
             // 
             // crossSectionLine4
             // 
-            this.crossSectionLine4.Bottom = 0.3019685F;
+            this.crossSectionLine4.Bottom = 0.3436351F;
             this.crossSectionLine4.Left = 6.834646F;
             this.crossSectionLine4.LineWeight = 1F;
             this.crossSectionLine4.Name = "crossSectionLine4";
@@ -430,7 +429,7 @@
             // 
             // crossSectionLine5
             // 
-            this.crossSectionLine5.Bottom = 0.3019685F;
+            this.crossSectionLine5.Bottom = 0.3436351F;
             this.crossSectionLine5.Left = 3.80315F;
             this.crossSectionLine5.LineWeight = 1F;
             this.crossSectionLine5.Name = "crossSectionLine5";
@@ -545,7 +544,7 @@
             this.tb_torihikisaki_cd.Left = 0.07283465F;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Style = "font-size: 9pt; text-align: center";
-            this.tb_torihikisaki_cd.Text = "999999";
+            this.tb_torihikisaki_cd.Text = null;
             this.tb_torihikisaki_cd.Top = 1.948032F;
             this.tb_torihikisaki_cd.Width = 0.8649607F;
             // 
@@ -555,7 +554,7 @@
             this.tb_hiduke.Left = 0.9901575F;
             this.tb_hiduke.Name = "tb_hiduke";
             this.tb_hiduke.Style = "font-size: 9pt; text-align: center";
-            this.tb_hiduke.Text = "9999/99/99";
+            this.tb_hiduke.Text = null;
             this.tb_hiduke.Top = 1.948032F;
             this.tb_hiduke.Width = 0.8956693F;
             // 
@@ -565,7 +564,7 @@
             this.tb_kurikosi.Left = 0.02086614F;
             this.tb_kurikosi.Name = "tb_kurikosi";
             this.tb_kurikosi.Style = "font-size: 9pt; text-align: right";
-            this.tb_kurikosi.Text = "9,999,999,999";
+            this.tb_kurikosi.Text = null;
             this.tb_kurikosi.Top = 2.8F;
             this.tb_kurikosi.Width = 0.9169292F;
             // 
@@ -575,7 +574,7 @@
             this.tb_uriage.Left = 0.9897639F;
             this.tb_uriage.Name = "tb_uriage";
             this.tb_uriage.Style = "font-size: 9pt; text-align: right";
-            this.tb_uriage.Text = "9,999,999,999";
+            this.tb_uriage.Text = null;
             this.tb_uriage.Top = 2.8F;
             this.tb_uriage.Width = 0.8956695F;
             // 
@@ -585,7 +584,7 @@
             this.tb_syouhizei.Left = 1.927953F;
             this.tb_syouhizei.Name = "tb_syouhizei";
             this.tb_syouhizei.Style = "font-size: 9pt; text-align: right";
-            this.tb_syouhizei.Text = "9,999,999,999";
+            this.tb_syouhizei.Text = null;
             this.tb_syouhizei.Top = 2.8F;
             this.tb_syouhizei.Width = 0.8956695F;
             // 
@@ -595,7 +594,7 @@
             this.tb_nyukin.Left = 2.865355F;
             this.tb_nyukin.Name = "tb_nyukin";
             this.tb_nyukin.Style = "font-size: 9pt; text-align: right";
-            this.tb_nyukin.Text = "9,999,999,999";
+            this.tb_nyukin.Text = null;
             this.tb_nyukin.Top = 2.8F;
             this.tb_nyukin.Width = 0.8956695F;
             // 
@@ -605,7 +604,7 @@
             this.tb_zandaka.Left = 3.80315F;
             this.tb_zandaka.Name = "tb_zandaka";
             this.tb_zandaka.Style = "font-size: 9pt; text-align: right";
-            this.tb_zandaka.Text = "9,999,999,999";
+            this.tb_zandaka.Text = null;
             this.tb_zandaka.Top = 2.8F;
             this.tb_zandaka.Width = 0.8956695F;
             // 
@@ -681,7 +680,7 @@
             this.tb_mm.Left = 5.373622F;
             this.tb_mm.Name = "tb_mm";
             this.tb_mm.Style = "text-align: right";
-            this.tb_mm.Text = "99";
+            this.tb_mm.Text = null;
             this.tb_mm.Top = 2.177166F;
             this.tb_mm.Width = 0.2633858F;
             // 
@@ -690,20 +689,21 @@
             this.tb_seikyu.Height = 0.1665353F;
             this.tb_seikyu.Left = 5.352757F;
             this.tb_seikyu.Name = "tb_seikyu";
+            this.tb_seikyu.OutputFormat = resources.GetString("tb_seikyu.OutputFormat");
             this.tb_seikyu.Style = "font-size: 9pt; text-align: right";
-            this.tb_seikyu.Text = "9,999,999,999";
+            this.tb_seikyu.Text = null;
             this.tb_seikyu.Top = 2.716536F;
             this.tb_seikyu.Width = 1.419291F;
             // 
-            // textBox19
+            // tb_urikake_no
             // 
-            this.textBox19.Height = 0.1668143F;
-            this.textBox19.Left = 6.147244F;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Style = "font-size: 9pt";
-            this.textBox19.Text = "9999999999";
-            this.textBox19.Top = 0F;
-            this.textBox19.Width = 0.687746F;
+            this.tb_urikake_no.Height = 0.1668143F;
+            this.tb_urikake_no.Left = 6.147244F;
+            this.tb_urikake_no.Name = "tb_urikake_no";
+            this.tb_urikake_no.Style = "font-size: 9pt";
+            this.tb_urikake_no.Text = null;
+            this.tb_urikake_no.Top = 0F;
+            this.tb_urikake_no.Width = 0.687746F;
             // 
             // reportInfo1
             // 
@@ -773,66 +773,59 @@
             // 
             // textBox6
             // 
+            this.textBox6.DataField = "seihin_name";
             this.textBox6.Height = 0.25F;
             this.textBox6.Left = 0.07283465F;
             this.textBox6.Name = "textBox6";
             this.textBox6.Style = "font-size: 9pt; vertical-align: middle";
-            this.textBox6.Text = "IN-A-103 手載せ無し　足載せ有り　マウント～DIP～修正～組立～梱包～納品～再検";
+            this.textBox6.Text = null;
             this.textBox6.Top = 0.02086614F;
             this.textBox6.Width = 3.688189F;
             // 
             // textBox7
             // 
+            this.textBox7.DataField = "uriage_su";
             this.textBox7.Height = 0.1566929F;
             this.textBox7.Left = 3.864961F;
             this.textBox7.Name = "textBox7";
+            this.textBox7.OutputFormat = resources.GetString("textBox7.OutputFormat");
             this.textBox7.Style = "font-size: 9pt; text-align: right";
-            this.textBox7.Text = "9,999,999,999.99";
+            this.textBox7.Text = null;
             this.textBox7.Top = 0.07244095F;
             this.textBox7.Width = 0.9271653F;
             // 
             // textBox8
             // 
+            this.textBox8.DataField = "uriage_kingaku";
             this.textBox8.Height = 0.1566929F;
             this.textBox8.Left = 4.907875F;
             this.textBox8.Name = "textBox8";
+            this.textBox8.OutputFormat = resources.GetString("textBox8.OutputFormat");
             this.textBox8.Style = "font-size: 9pt; text-align: right";
-            this.textBox8.Text = "9,999,999,999";
+            this.textBox8.Text = null;
             this.textBox8.Top = 0.07244095F;
             this.textBox8.Width = 0.8854331F;
             // 
             // textBox9
             // 
+            this.textBox9.DataField = "syouhizeigaku";
             this.textBox9.Height = 0.1566929F;
             this.textBox9.Left = 5.907481F;
             this.textBox9.Name = "textBox9";
+            this.textBox9.OutputFormat = resources.GetString("textBox9.OutputFormat");
             this.textBox9.Style = "font-size: 9pt; text-align: right";
-            this.textBox9.Text = "9,999,999,999";
+            this.textBox9.Text = null;
             this.textBox9.Top = 0.07244095F;
             this.textBox9.Width = 0.8854327F;
             // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.line8,
             this.line14,
-            this.textBox20,
-            this.textBox21});
-            this.pageFooter.Height = 0.3229167F;
+            this.tb_footer_name,
+            this.tb_footer_syouhizei});
+            this.pageFooter.Height = 0.34375F;
             this.pageFooter.Name = "pageFooter";
-            // 
-            // line8
-            // 
-            this.line8.Height = 0.0001795292F;
-            this.line8.Left = 2.145767E-06F;
-            this.line8.LineWeight = 1F;
-            this.line8.Name = "line8";
-            this.line8.Top = 0F;
-            this.line8.Width = 6.834644F;
-            this.line8.X1 = 6.834646F;
-            this.line8.X2 = 2.145767E-06F;
-            this.line8.Y1 = 0F;
-            this.line8.Y2 = 0.0001795292F;
             // 
             // line14
             // 
@@ -840,32 +833,31 @@
             this.line14.Left = 0F;
             this.line14.LineWeight = 1F;
             this.line14.Name = "line14";
-            this.line14.Top = 0.3019685F;
+            this.line14.Top = 0.3437008F;
             this.line14.Width = 6.834646F;
             this.line14.X1 = 6.834646F;
             this.line14.X2 = 0F;
-            this.line14.Y1 = 0.3019685F;
-            this.line14.Y2 = 0.3021483F;
+            this.line14.Y1 = 0.3437008F;
+            this.line14.Y2 = 0.3438807F;
             // 
-            // textBox20
+            // tb_footer_name
             // 
-            this.textBox20.Height = 0.25F;
-            this.textBox20.Left = 0.07283465F;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Style = "font-size: 9pt; vertical-align: middle";
-            this.textBox20.Text = "消費税";
-            this.textBox20.Top = 0.02086614F;
-            this.textBox20.Width = 3.68819F;
+            this.tb_footer_name.Height = 0.3019685F;
+            this.tb_footer_name.Left = 0.07283465F;
+            this.tb_footer_name.Name = "tb_footer_name";
+            this.tb_footer_name.Style = "font-size: 9pt; vertical-align: middle";
+            this.tb_footer_name.Top = 0.02086614F;
+            this.tb_footer_name.Width = 3.68819F;
             // 
-            // textBox21
+            // tb_footer_syouhizei
             // 
-            this.textBox21.Height = 0.1566929F;
-            this.textBox21.Left = 5.907481F;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Style = "font-size: 9pt; text-align: right";
-            this.textBox21.Text = "9,999,999,999";
-            this.textBox21.Top = 0.07283465F;
-            this.textBox21.Width = 0.8854326F;
+            this.tb_footer_syouhizei.Height = 0.1566929F;
+            this.tb_footer_syouhizei.Left = 5.907481F;
+            this.tb_footer_syouhizei.Name = "tb_footer_syouhizei";
+            this.tb_footer_syouhizei.Style = "font-size: 9pt; text-align: right";
+            this.tb_footer_syouhizei.Text = null;
+            this.tb_footer_syouhizei.Top = 0.08346457F;
+            this.tb_footer_syouhizei.Width = 0.8854326F;
             // 
             // rpt_seikyu
             // 
@@ -920,15 +912,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.label16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_mm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seikyu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_urikake_no)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_syouhizei)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -952,7 +944,6 @@
         private GrapeCity.ActiveReports.SectionReportModel.Line line6;
         private GrapeCity.ActiveReports.SectionReportModel.Line line7;
         private GrapeCity.ActiveReports.SectionReportModel.CrossSectionLine crossSectionLine1;
-        private GrapeCity.ActiveReports.SectionReportModel.Line line8;
         private GrapeCity.ActiveReports.SectionReportModel.Label label2;
         private GrapeCity.ActiveReports.SectionReportModel.CrossSectionLine crossSectionLine2;
         private GrapeCity.ActiveReports.SectionReportModel.CrossSectionLine crossSectionLine3;
@@ -987,13 +978,13 @@
         private GrapeCity.ActiveReports.SectionReportModel.Label label16;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_mm;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_seikyu;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox19;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_urikake_no;
         private GrapeCity.ActiveReports.SectionReportModel.ReportInfo reportInfo1;
         private GrapeCity.ActiveReports.SectionReportModel.Label label17;
         private GrapeCity.ActiveReports.SectionReportModel.Line line12;
         private GrapeCity.ActiveReports.SectionReportModel.Line line13;
         private GrapeCity.ActiveReports.SectionReportModel.Line line14;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox20;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox21;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_footer_name;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_footer_syouhizei;
     }
 }

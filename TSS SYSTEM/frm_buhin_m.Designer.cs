@@ -712,6 +712,7 @@
             this.btn_syukko.TabIndex = 1;
             this.btn_syukko.Text = "出庫";
             this.btn_syukko.UseVisualStyleBackColor = true;
+            this.btn_syukko.Click += new System.EventHandler(this.btn_syukko_Click);
             // 
             // btn_idou
             // 
@@ -721,6 +722,7 @@
             this.btn_idou.TabIndex = 2;
             this.btn_idou.Text = "移動";
             this.btn_idou.UseVisualStyleBackColor = true;
+            this.btn_idou.Click += new System.EventHandler(this.btn_idou_Click);
             // 
             // btn_nyuuko
             // 
@@ -730,6 +732,7 @@
             this.btn_nyuuko.TabIndex = 0;
             this.btn_nyuuko.Text = "入庫";
             this.btn_nyuuko.UseVisualStyleBackColor = true;
+            this.btn_nyuuko.Click += new System.EventHandler(this.btn_nyuuko_Click);
             // 
             // label1
             // 

@@ -45,6 +45,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -81,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_kensaku);
             this.groupBox1.Controls.Add(this.tb_torihikisaki_name);
             this.groupBox1.Controls.Add(this.tb_torihikisaki_cd);
@@ -111,7 +113,7 @@
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(168, 68);
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(131, 68);
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
             this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(222, 19);
@@ -120,7 +122,7 @@
             // 
             // tb_torihikisaki_cd
             // 
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(116, 68);
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(85, 68);
             this.tb_torihikisaki_cd.MaxLength = 6;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Size = new System.Drawing.Size(46, 19);
@@ -134,14 +136,14 @@
             this.textBox6.Location = new System.Drawing.Point(10, 68);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(100, 19);
+            this.textBox6.Size = new System.Drawing.Size(75, 19);
             this.textBox6.TabIndex = 5;
             this.textBox6.TabStop = false;
             this.textBox6.Text = "取引先コード";
             // 
             // tb_seihin_name
             // 
-            this.tb_seihin_name.Location = new System.Drawing.Point(116, 43);
+            this.tb_seihin_name.Location = new System.Drawing.Point(85, 43);
             this.tb_seihin_name.MaxLength = 40;
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.Size = new System.Drawing.Size(232, 19);
@@ -154,14 +156,14 @@
             this.textBox4.Location = new System.Drawing.Point(10, 43);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 19);
+            this.textBox4.Size = new System.Drawing.Size(75, 19);
             this.textBox4.TabIndex = 3;
             this.textBox4.TabStop = false;
             this.textBox4.Text = "製品名";
             // 
             // tb_seihin_cd2
             // 
-            this.tb_seihin_cd2.Location = new System.Drawing.Point(230, 18);
+            this.tb_seihin_cd2.Location = new System.Drawing.Point(210, 18);
             this.tb_seihin_cd2.MaxLength = 16;
             this.tb_seihin_cd2.Name = "tb_seihin_cd2";
             this.tb_seihin_cd2.Size = new System.Drawing.Size(108, 19);
@@ -170,7 +172,7 @@
             // 
             // tb_seihin_cd1
             // 
-            this.tb_seihin_cd1.Location = new System.Drawing.Point(116, 18);
+            this.tb_seihin_cd1.Location = new System.Drawing.Point(85, 18);
             this.tb_seihin_cd1.MaxLength = 16;
             this.tb_seihin_cd1.Name = "tb_seihin_cd1";
             this.tb_seihin_cd1.Size = new System.Drawing.Size(108, 19);
@@ -183,7 +185,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
+            this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "製品コード";
@@ -263,6 +265,15 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(193, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "～";
+            // 
             // frm_search_seihin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -311,5 +322,6 @@
         private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Button btn_sentaku;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label label1;
     }
 }

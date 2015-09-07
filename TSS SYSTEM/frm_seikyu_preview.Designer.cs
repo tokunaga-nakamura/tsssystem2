@@ -34,17 +34,17 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.btn_preview = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.rb_seikyu_no = new System.Windows.Forms.RadioButton();
             this.rb_torihikisaki_cd = new System.Windows.Forms.RadioButton();
+            this.btn_preview = new System.Windows.Forms.Button();
             this.tb_torihikisaki_midasi = new System.Windows.Forms.TextBox();
             this.tb_simebi = new System.Windows.Forms.TextBox();
+            this.tb_urikake_no_midasi = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd1 = new System.Windows.Forms.TextBox();
+            this.tb_urikake_no = new System.Windows.Forms.TextBox();
             this.tb_simebi_midasi = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd2 = new System.Windows.Forms.TextBox();
-            this.rb_seikyu_no = new System.Windows.Forms.RadioButton();
-            this.tb_urikake_no_midasi = new System.Windows.Forms.TextBox();
-            this.tb_urikake_no = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -98,7 +98,9 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -126,6 +128,8 @@
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -151,16 +155,6 @@
             this.splitContainer3.SplitterDistance = 79;
             this.splitContainer3.TabIndex = 0;
             // 
-            // btn_preview
-            // 
-            this.btn_preview.Location = new System.Drawing.Point(795, 49);
-            this.btn_preview.Name = "btn_preview";
-            this.btn_preview.Size = new System.Drawing.Size(75, 23);
-            this.btn_preview.TabIndex = 11;
-            this.btn_preview.Text = "プレビュー";
-            this.btn_preview.UseVisualStyleBackColor = true;
-            this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -170,6 +164,19 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "～";
             // 
+            // rb_seikyu_no
+            // 
+            this.rb_seikyu_no.AutoSize = true;
+            this.rb_seikyu_no.Checked = true;
+            this.rb_seikyu_no.Location = new System.Drawing.Point(10, 4);
+            this.rb_seikyu_no.Name = "rb_seikyu_no";
+            this.rb_seikyu_no.Size = new System.Drawing.Size(83, 16);
+            this.rb_seikyu_no.TabIndex = 2;
+            this.rb_seikyu_no.TabStop = true;
+            this.rb_seikyu_no.Text = "請求書番号";
+            this.rb_seikyu_no.UseVisualStyleBackColor = true;
+            this.rb_seikyu_no.CheckedChanged += new System.EventHandler(this.rb_seikyu_no_CheckedChanged);
+            // 
             // rb_torihikisaki_cd
             // 
             this.rb_torihikisaki_cd.AutoSize = true;
@@ -177,9 +184,18 @@
             this.rb_torihikisaki_cd.Name = "rb_torihikisaki_cd";
             this.rb_torihikisaki_cd.Size = new System.Drawing.Size(95, 16);
             this.rb_torihikisaki_cd.TabIndex = 3;
-            this.rb_torihikisaki_cd.TabStop = true;
             this.rb_torihikisaki_cd.Text = "取引先＋締日";
             this.rb_torihikisaki_cd.UseVisualStyleBackColor = true;
+            // 
+            // btn_preview
+            // 
+            this.btn_preview.Location = new System.Drawing.Point(795, 49);
+            this.btn_preview.Name = "btn_preview";
+            this.btn_preview.Size = new System.Drawing.Size(75, 23);
+            this.btn_preview.TabIndex = 4;
+            this.btn_preview.Text = "プレビュー";
+            this.btn_preview.UseVisualStyleBackColor = true;
+            this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
             // 
             // tb_torihikisaki_midasi
             // 
@@ -200,9 +216,20 @@
             this.tb_simebi.MaxLength = 10;
             this.tb_simebi.Name = "tb_simebi";
             this.tb_simebi.Size = new System.Drawing.Size(70, 19);
-            this.tb_simebi.TabIndex = 8;
+            this.tb_simebi.TabIndex = 3;
             this.tb_simebi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_simebi_Validating);
             this.tb_simebi.Validated += new System.EventHandler(this.tb_simebi_Validated);
+            // 
+            // tb_urikake_no_midasi
+            // 
+            this.tb_urikake_no_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_urikake_no_midasi.Location = new System.Drawing.Point(111, 3);
+            this.tb_urikake_no_midasi.Name = "tb_urikake_no_midasi";
+            this.tb_urikake_no_midasi.ReadOnly = true;
+            this.tb_urikake_no_midasi.Size = new System.Drawing.Size(75, 19);
+            this.tb_urikake_no_midasi.TabIndex = 0;
+            this.tb_urikake_no_midasi.TabStop = false;
+            this.tb_urikake_no_midasi.Text = "請求書番号";
             // 
             // tb_torihikisaki_cd1
             // 
@@ -211,8 +238,17 @@
             this.tb_torihikisaki_cd1.MaxLength = 6;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(45, 19);
-            this.tb_torihikisaki_cd1.TabIndex = 5;
+            this.tb_torihikisaki_cd1.TabIndex = 1;
             this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
+            // 
+            // tb_urikake_no
+            // 
+            this.tb_urikake_no.Location = new System.Drawing.Point(186, 3);
+            this.tb_urikake_no.MaxLength = 10;
+            this.tb_urikake_no.Name = "tb_urikake_no";
+            this.tb_urikake_no.Size = new System.Drawing.Size(70, 19);
+            this.tb_urikake_no.TabIndex = 0;
+            this.tb_urikake_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_urikake_no_Validating);
             // 
             // tb_simebi_midasi
             // 
@@ -233,41 +269,8 @@
             this.tb_torihikisaki_cd2.MaxLength = 6;
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(45, 19);
-            this.tb_torihikisaki_cd2.TabIndex = 6;
+            this.tb_torihikisaki_cd2.TabIndex = 2;
             this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
-            // 
-            // rb_seikyu_no
-            // 
-            this.rb_seikyu_no.AutoSize = true;
-            this.rb_seikyu_no.Checked = true;
-            this.rb_seikyu_no.Location = new System.Drawing.Point(10, 4);
-            this.rb_seikyu_no.Name = "rb_seikyu_no";
-            this.rb_seikyu_no.Size = new System.Drawing.Size(83, 16);
-            this.rb_seikyu_no.TabIndex = 2;
-            this.rb_seikyu_no.TabStop = true;
-            this.rb_seikyu_no.Text = "請求書番号";
-            this.rb_seikyu_no.UseVisualStyleBackColor = true;
-            this.rb_seikyu_no.CheckedChanged += new System.EventHandler(this.rb_seikyu_no_CheckedChanged);
-            // 
-            // tb_urikake_no_midasi
-            // 
-            this.tb_urikake_no_midasi.BackColor = System.Drawing.Color.NavajoWhite;
-            this.tb_urikake_no_midasi.Location = new System.Drawing.Point(111, 3);
-            this.tb_urikake_no_midasi.Name = "tb_urikake_no_midasi";
-            this.tb_urikake_no_midasi.ReadOnly = true;
-            this.tb_urikake_no_midasi.Size = new System.Drawing.Size(75, 19);
-            this.tb_urikake_no_midasi.TabIndex = 0;
-            this.tb_urikake_no_midasi.TabStop = false;
-            this.tb_urikake_no_midasi.Text = "請求書番号";
-            // 
-            // tb_urikake_no
-            // 
-            this.tb_urikake_no.Location = new System.Drawing.Point(186, 3);
-            this.tb_urikake_no.MaxLength = 10;
-            this.tb_urikake_no.Name = "tb_urikake_no";
-            this.tb_urikake_no.Size = new System.Drawing.Size(70, 19);
-            this.tb_urikake_no.TabIndex = 1;
-            this.tb_urikake_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_urikake_no_Validating);
             // 
             // viewer1
             // 

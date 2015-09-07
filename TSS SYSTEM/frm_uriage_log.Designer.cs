@@ -45,6 +45,7 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -98,6 +99,7 @@
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -135,6 +137,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.label1);
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seihin_name);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seihin_cd);
@@ -164,7 +167,7 @@
             // tb_seihin_name
             // 
             this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(225, 28);
+            this.tb_seihin_name.Location = new System.Drawing.Point(219, 28);
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.ReadOnly = true;
             this.tb_seihin_name.Size = new System.Drawing.Size(354, 19);
@@ -174,7 +177,7 @@
             // tb_seihin_cd
             // 
             this.tb_seihin_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_seihin_cd.Location = new System.Drawing.Point(116, 28);
+            this.tb_seihin_cd.Location = new System.Drawing.Point(110, 28);
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(109, 19);
@@ -195,7 +198,7 @@
             // 
             // tb_uriage_datetime2
             // 
-            this.tb_uriage_datetime2.Location = new System.Drawing.Point(222, 3);
+            this.tb_uriage_datetime2.Location = new System.Drawing.Point(227, 3);
             this.tb_uriage_datetime2.MaxLength = 20;
             this.tb_uriage_datetime2.Name = "tb_uriage_datetime2";
             this.tb_uriage_datetime2.Size = new System.Drawing.Size(100, 19);
@@ -204,7 +207,7 @@
             // 
             // tb_uriage_datetime1
             // 
-            this.tb_uriage_datetime1.Location = new System.Drawing.Point(116, 3);
+            this.tb_uriage_datetime1.Location = new System.Drawing.Point(110, 3);
             this.tb_uriage_datetime1.MaxLength = 20;
             this.tb_uriage_datetime1.Name = "tb_uriage_datetime1";
             this.tb_uriage_datetime1.Size = new System.Drawing.Size(100, 19);
@@ -240,6 +243,7 @@
             this.btn_csv.TabIndex = 2;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
             // 
             // btn_insatu
             // 
@@ -259,6 +263,15 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(210, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "～";
             // 
             // frm_uriage_log
             // 
@@ -307,5 +320,6 @@
         private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.DataGridView dgv_m;
+        private System.Windows.Forms.Label label1;
     }
 }
