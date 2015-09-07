@@ -432,73 +432,73 @@ namespace TSS_SYSTEM
             dt_work = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and nyukin_kanryou_flg = '0'  ORDER BY uriage_simebi");
             if (dt_work.Rows.Count == 0)
             {
-
-
+                MessageBox.Show("売掛マスタにデータがありません");
             }
 
             else
             {
-
-                
                 
                 int rc = dt_work.Rows.Count;
+                double nyukingaku = double.Parse(tb_nyukin_goukei.Text.ToString());
 
+                
 
-                                
                  for (int i = 0; i < rc; i++)
                  {
-                     double nyukingaku = double.Parse(dt_work.Rows[i][5].ToString()) + double.Parse(tb_nyukin_goukei.Text.ToString());
-                     double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());
-                     //double amarigaku = nyukingaku - kounyukingaku;
+                    
+                     
+                     double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());  //購入金額 = 売掛マスタの「売上金額」 + 「消費税額」
+                     double keisan = nyukingaku - kounyukingaku;
 
-                     //購入金額＞入金額
-                     if (kounyukingaku > nyukingaku)
+                     if (nyukingaku < 0)
                      {
-                         tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
-                         + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
-
+                         keisan =  kounyukingaku - nyukingaku;
                      }
-
-                     //購入金額＝入金額
-                     if (kounyukingaku == nyukingaku)
+                     
+                     if(keisan >= 0)
                      {
-                         tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
-                         + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+                         dt_work.Rows[i][5] = kounyukingaku;
+                         dt_work.Rows[i][6] = "1";
+                         nyukingaku = nyukingaku - kounyukingaku;
 
-                     }
-
-                     //購入金額<入金額
-                     if (kounyukingaku < nyukingaku)
-                     {
-                         double nyuukin_amari = nyukingaku - kounyukingaku;
+                         dt_work.Rows[i][12] = tss.user_cd;
+                         dt_work.Rows[i][13] = DateTime.Now;
 
                          tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + kounyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
-                         + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+                          + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");　
 
-
-                         dt_work = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and nyukin_kanryou_flg = '0'  ORDER BY uriage_simebi");
-                         if (dt_work.Rows.Count == 0)
-                         {
-
-                         }
-
-                         MessageBox.Show(nyuukin_amari.ToString());
                      }
+
+                     if (keisan < 0)
+                     {
+                         dt_work.Rows[i][5] = nyukingaku;
+                         dt_work.Rows[i][12] = tss.user_cd;
+                         dt_work.Rows[i][13] = DateTime.Now;
+
+                         tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                        　+ "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");　
+
+                         break;
+                     }
+
+                 }  
+              
+                 if (nyukingaku > 0 )
+                 {
+                     double nyukin = new double();
+                     nyukin = nyukingaku * -1 ;
+
+
+                     tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukin + "',nyukin_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                    + "to_date('" + dt_work.Rows[rc - 1][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");　
+
+                     MessageBox.Show("売掛残よりも多く入金処理されたため、売掛残がマイナスとなりました。");
+            
                  }
 
-
-
-               
-                
-                               
-                
-                
-                
                 MessageBox.Show("売掛マスタを更新しました");
 
             }
-
-
                 
         }
 
@@ -528,6 +528,11 @@ namespace TSS_SYSTEM
                 string goukei = dt_w2.Compute("SUM(nyukingoukei)", null).ToString();
                 tb_nyukin_goukei.Text = goukei;
             }
+        }
+
+        private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
        }
