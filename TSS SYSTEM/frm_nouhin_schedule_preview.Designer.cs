@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_nouhin_schedule_preview));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.vwr = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
             // splitContainer1.Panel2
             // 
@@ -65,14 +65,15 @@
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button1
+            // btn_hardcopy
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(10, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
+            this.btn_hardcopy.Location = new System.Drawing.Point(10, 10);
+            this.btn_hardcopy.Name = "btn_hardcopy";
+            this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
+            this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -99,7 +100,6 @@
             // 
             this.vwr.CurrentPage = 0;
             this.vwr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vwr.GalleyMode = false;
             this.vwr.Location = new System.Drawing.Point(0, 0);
             this.vwr.Name = "vwr";
             this.vwr.PreviewPages = 0;
@@ -165,7 +165,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_hardcopy;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer vwr;
         private System.Windows.Forms.Button btn_syuuryou;

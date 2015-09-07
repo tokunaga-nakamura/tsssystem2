@@ -100,6 +100,7 @@
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -171,6 +172,7 @@
             this.rb_seikyu_no.Name = "rb_seikyu_no";
             this.rb_seikyu_no.Size = new System.Drawing.Size(83, 16);
             this.rb_seikyu_no.TabIndex = 2;
+            this.rb_seikyu_no.TabStop = true;
             this.rb_seikyu_no.Text = "請求書番号";
             this.rb_seikyu_no.UseVisualStyleBackColor = true;
             this.rb_seikyu_no.CheckedChanged += new System.EventHandler(this.rb_seikyu_no_CheckedChanged);

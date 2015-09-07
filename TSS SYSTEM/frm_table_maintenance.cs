@@ -100,7 +100,7 @@ namespace TSS_SYSTEM
                 return;
             }
             string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
-            string w_str_filename = "管理者用マスタメンテからのデータ出力" + w_str_now + ".csv";
+            string w_str_filename = cb_table_name.Text.ToString() + " 管理者用マスタメンテからのデータ出力" + w_str_now + ".csv";
             if (tss.DataTableCSV(dt,true, w_str_filename, "\"", true))
             {
                 MessageBox.Show("保存しました。");
@@ -119,7 +119,7 @@ namespace TSS_SYSTEM
 
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
-
+            tss.HardCopy();
         }
 
         private void tb_sql_Validating(object sender, CancelEventArgs e)

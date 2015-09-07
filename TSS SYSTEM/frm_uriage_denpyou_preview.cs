@@ -183,5 +183,10 @@ namespace TSS_SYSTEM
             }
         }
 
+        private void btn_hsrdcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
+
     }
 }

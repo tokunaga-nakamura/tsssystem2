@@ -77,5 +77,10 @@ namespace TSS_SYSTEM
             this.vwr.Document = rpt.Document;
             
         }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
     }
 }

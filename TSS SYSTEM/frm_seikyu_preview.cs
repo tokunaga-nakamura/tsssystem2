@@ -207,5 +207,10 @@ namespace TSS_SYSTEM
             return out_bl;
         }
 
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
+
     }
 }

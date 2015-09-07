@@ -92,6 +92,7 @@
             this.btn_hsrdcopy.TabIndex = 0;
             this.btn_hsrdcopy.TabStop = false;
             this.btn_hsrdcopy.UseVisualStyleBackColor = true;
+            this.btn_hsrdcopy.Click += new System.EventHandler(this.btn_hsrdcopy_Click);
             // 
             // splitContainer2
             // 

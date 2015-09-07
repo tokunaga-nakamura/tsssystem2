@@ -126,7 +126,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 0;
@@ -149,7 +149,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 61;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -186,8 +186,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.tb_kousin_riyuu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 474);
+            this.splitContainer2.SplitterDistance = 438;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -207,7 +207,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 438);
             this.splitContainer3.SplitterDistance = 446;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
@@ -248,7 +248,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer6.Size = new System.Drawing.Size(446, 439);
+            this.splitContainer6.Size = new System.Drawing.Size(446, 438);
             this.splitContainer6.SplitterDistance = 289;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
@@ -608,8 +608,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer7);
-            this.splitContainer4.Size = new System.Drawing.Size(434, 439);
-            this.splitContainer4.SplitterDistance = 327;
+            this.splitContainer4.Size = new System.Drawing.Size(434, 438);
+            this.splitContainer4.SplitterDistance = 326;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -629,7 +629,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer5.Size = new System.Drawing.Size(430, 323);
+            this.splitContainer5.Size = new System.Drawing.Size(430, 322);
             this.splitContainer5.SplitterDistance = 25;
             this.splitContainer5.TabIndex = 0;
             this.splitContainer5.TabStop = false;
@@ -658,8 +658,8 @@
             // splitContainer8.Panel2
             // 
             this.splitContainer8.Panel2.Controls.Add(this.splitContainer9);
-            this.splitContainer8.Size = new System.Drawing.Size(430, 294);
-            this.splitContainer8.SplitterDistance = 138;
+            this.splitContainer8.Size = new System.Drawing.Size(430, 293);
+            this.splitContainer8.SplitterDistance = 137;
             this.splitContainer8.TabIndex = 1;
             // 
             // dgv_nounyuu_schedule
@@ -669,7 +669,7 @@
             this.dgv_nounyuu_schedule.Location = new System.Drawing.Point(0, 0);
             this.dgv_nounyuu_schedule.Name = "dgv_nounyuu_schedule";
             this.dgv_nounyuu_schedule.RowTemplate.Height = 21;
-            this.dgv_nounyuu_schedule.Size = new System.Drawing.Size(426, 134);
+            this.dgv_nounyuu_schedule.Size = new System.Drawing.Size(426, 133);
             this.dgv_nounyuu_schedule.TabIndex = 0;
             this.dgv_nounyuu_schedule.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgv_nounyuu_schedule_CellParsing);
             this.dgv_nounyuu_schedule.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nounyuu_schedule_CellValidating);
@@ -808,7 +808,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
