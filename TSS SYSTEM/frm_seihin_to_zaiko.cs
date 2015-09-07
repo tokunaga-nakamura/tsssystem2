@@ -46,7 +46,13 @@ namespace TSS_SYSTEM
                     MessageBox.Show("入力された製品コードは存在しません。");
                     e.Cancel = true;
                 }
+                if (chk_seihin_kousei() == false)
+                {
+                    MessageBox.Show("入力された製品コードは製品構成が登録されていません。");
+                    e.Cancel = true;
+                }
             }
+
         }
 
         private void tb_seihin_cd_Validated(object sender, EventArgs e)
@@ -80,6 +86,7 @@ namespace TSS_SYSTEM
             w_dt_m.Columns.Add("buhin_name");
             w_dt_m.Columns.Add("siyou_su");
             w_dt_m.Columns.Add("free_zaiko_su");
+            w_dt_m.Columns.Add("sitei_lot_zaiko_su");
             w_dt_m.Columns.Add("lot_zaiko_su");
             w_dt_m.Columns.Add("sonota_zaiko_su");
             w_dt_m.Columns.Add("ttl_zaiko_su");
@@ -92,6 +99,7 @@ namespace TSS_SYSTEM
             string w_dt_buhin_name;     //部品名
             string w_dt_siyou_su;       //使用数
             string w_dt_free_zaiko_su;  //フリー在庫数
+            string w_dt_sitei_lot_zaiko_su; //指定ロット在庫数
             string w_dt_lot_zaiko_su;   //ロット在庫数
             string w_dt_sonota_zaiko_su;//その他在庫数
             string w_dt_ttl_zaiko_su;   //合計在庫数
@@ -116,6 +124,8 @@ namespace TSS_SYSTEM
                 w_dt_siyou_su = dr[1].ToString();
                 //フリー在庫数
                 w_dt_free_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "01");
+                //指定ロット在庫数
+                w_dt_sitei_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02",tb_torihikisaki_cd.Text.ToString(),tb_juchu_cd1.Text.ToString(),tb_juchu_cd2.Text.ToString());
                 //ロット在庫数
                 w_dt_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02");
                 //その他在庫数
@@ -146,6 +156,7 @@ namespace TSS_SYSTEM
                 w_dt_row["buhin_name"] = w_dt_buhin_name;
                 w_dt_row["siyou_su"] = w_dt_siyou_su;
                 w_dt_row["free_zaiko_su"] = w_dt_free_zaiko_su;
+                w_dt_row["sitei_lot_zaiko_su"] = w_dt_sitei_lot_zaiko_su;
                 w_dt_row["lot_zaiko_su"] = w_dt_lot_zaiko_su;
                 w_dt_row["sonota_zaiko_su"] = w_dt_sonota_zaiko_su;
                 w_dt_row["ttl_zaiko_su"] = w_dt_ttl_zaiko_su;
@@ -201,11 +212,12 @@ namespace TSS_SYSTEM
             dgv_m.Columns[1].HeaderText = "部品名";
             dgv_m.Columns[2].HeaderText = "使用数";
             dgv_m.Columns[3].HeaderText = "フリー在庫数";
-            dgv_m.Columns[4].HeaderText = "ロット在庫数";
-            dgv_m.Columns[5].HeaderText = "その他在庫数";
-            dgv_m.Columns[6].HeaderText = "合計在庫数";
-            dgv_m.Columns[7].HeaderText = "必要数";
-            dgv_m.Columns[8].HeaderText = "差";
+            dgv_m.Columns[4].HeaderText = "指定ロット在庫数";
+            dgv_m.Columns[5].HeaderText = "ロット在庫数";
+            dgv_m.Columns[6].HeaderText = "その他在庫数";
+            dgv_m.Columns[7].HeaderText = "合計在庫数";
+            dgv_m.Columns[8].HeaderText = "必要数";
+            dgv_m.Columns[9].HeaderText = "差";
             //右詰表示
             dgv_m.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -214,6 +226,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void btn_list_hanei_Click(object sender, EventArgs e)
@@ -286,21 +299,71 @@ namespace TSS_SYSTEM
             return bl;
         }
 
+        private bool chk_seihin_kousei()
+        {
+            bool bl = true; //戻り値用
+            DataTable w_dt_seihin = new DataTable();
+            w_dt_seihin = tss.OracleSelect("select * from tss_seihin_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+            if (w_dt_seihin.Rows.Count == 0)
+            {
+                bl = false;
+            }
+            if(w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == null || w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == "")
+            {
+                bl = false;
+            }
+            return bl;
+        }
         private void seihin_disp()
         {
             tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
             tb_seihin_kousei_no.Text = tss.get_seihin_kousei_no(tb_seihin_cd.Text);
             tb_seihin_kousei_name.Text = tss.get_seihin_kousei_name(tb_seihin_cd.Text);
-            if (tb_seihin_kousei_no.Text == null)
+            if (tb_seihin_kousei_no.Text == null || tb_seihin_kousei_no.Text =="")
             {
                 MessageBox.Show("入力した製品コードの製品は、製品構成が登録されていません。");
                 dgv_m.DataSource = null;
                 dgv_m = null;
+                tb_seihin_cd.Focus();
             }
             else
             {
                 list_make();
                 list_disp();
+            }
+        }
+
+        private void cb_lot_zaiko_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cb_lot_zaiko.Checked == true)
+            {
+                tb_torihikisaki_cd_midasi.Enabled = true;
+                tb_torihikisaki_cd.Enabled = true;
+                tb_juchu_cd1_midasi.Enabled = true;
+                tb_juchu_cd1.Enabled = true;
+                tb_juchu_cd2_midasi.Enabled = true;
+                tb_juchu_cd2.Enabled = true;
+            }
+            else
+            {
+                tb_torihikisaki_cd_midasi.Enabled = false;
+                tb_torihikisaki_cd.Enabled = false;
+                tb_juchu_cd1_midasi.Enabled = false;
+                tb_juchu_cd1.Enabled = false;
+                tb_juchu_cd2_midasi.Enabled = false;
+                tb_juchu_cd2.Enabled = false;
+            }
+        }
+
+        private void dgv_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //セルがダブルクリックされたら部品マスタを表示する
+            if (dgv_m.SelectedRows.Count >= 1)
+            {
+                frm_buhin_m frm_bm = new frm_buhin_m();
+                frm_bm.pub_buhin_cd = dgv_m.CurrentRow.Cells[0].Value.ToString();   //部品コードを受け渡す
+                frm_bm.ShowDialog(this);
+                frm_bm.Dispose();
             }
         }
 

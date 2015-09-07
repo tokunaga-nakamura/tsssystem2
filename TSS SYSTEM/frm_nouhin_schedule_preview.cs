@@ -43,9 +43,6 @@ namespace TSS_SYSTEM
             }
         }
 
-
-
-
         public frm_nouhin_schedule_preview()
         {
             InitializeComponent();
@@ -75,7 +72,6 @@ namespace TSS_SYSTEM
 
             rpt.Run();
             this.vwr.Document = rpt.Document;
-            
         }
 
         private void btn_hardcopy_Click(object sender, EventArgs e)

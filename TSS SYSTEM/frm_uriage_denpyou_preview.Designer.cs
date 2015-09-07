@@ -39,6 +39,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hsrdcopy);
             // 
             // splitContainer1.Panel2
@@ -219,6 +221,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(107, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(314, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "専用紙をプリンターにセットし、給紙方法を確認・設定してください。";
+            // 
             // frm_uriage_denpyou_preview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -231,6 +242,7 @@
             this.Text = "売上伝票印刷";
             this.Load += new System.EventHandler(this.frm_uriage_denpyou_preview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -260,5 +272,6 @@
         private System.Windows.Forms.TextBox tb_uriage_no;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lbl_comment;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -193,7 +193,7 @@
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 4;
-            this.btn_preview.Text = "プレビュー";
+            this.btn_preview.Text = "印刷";
             this.btn_preview.UseVisualStyleBackColor = true;
             this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
             // 

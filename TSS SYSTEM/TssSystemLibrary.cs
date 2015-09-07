@@ -1236,6 +1236,39 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region get_zaiko メソッド
+        /// <summary>
+        /// 部品コードと在庫区分"02"と受注Noを受け取り在庫数を返す</summary>
+        /// <param name="string in_cd">
+        /// 部品コード</param>
+        /// <param name="string in_kbn">
+        /// 在庫区分 "02":ロット</param>
+        /// <param name="string in_torihikisaki_cd">
+        /// 取引先コード</param>
+        /// <param name="string in_juchu_cd1">
+        /// 受注コード1</param>
+        /// <param name="string in_juchu_cd2">
+        /// 受注コード2</param>
+        /// <returns>
+        /// string 在庫数（各区分の合計値を返す）
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_zaiko(string in_cd, string in_kbn,string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "' and zaiko_kbn = '" + in_kbn + "' and torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0][0].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
         #region get_seihin_tanka メソッド
         /// <summary>
         /// 製品コードを受け取り販売単価を返す</summary>
