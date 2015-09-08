@@ -27,10 +27,18 @@ namespace TSS_SYSTEM
         public double w_seikyu;
         public string w_mm;
 
+        public string in_torihikisaki_cd1;
+        public string in_torihikisaki_cd2;
+        public string in_simebi;
+
 
         public frm_seikyu_preview()
         {
             InitializeComponent();
+
+            in_torihikisaki_cd1 = "";
+            in_torihikisaki_cd2 = "";
+            in_simebi = "";
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -40,6 +48,13 @@ namespace TSS_SYSTEM
 
         private void frm_seikyu_preview_Load(object sender, EventArgs e)
         {
+            if(in_torihikisaki_cd1 != "")
+            {
+                rb_torihikisaki_cd.Checked = true;
+                tb_torihikisaki_cd1.Text = in_torihikisaki_cd1;
+                tb_torihikisaki_cd2.Text = in_torihikisaki_cd2;
+                tb_simebi.Text = in_simebi;
+            }
         }
 
         private void btn_preview_Click(object sender, EventArgs e)
@@ -50,7 +65,7 @@ namespace TSS_SYSTEM
             }
             else
             {
-                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_simebi.Text.ToString() + "'");
+                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and uriage_simebi = '" + tb_simebi.Text.ToString() + "'");
             }
             if (w_dt_urikake.Rows.Count == 0)
             {
@@ -120,12 +135,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            if (tb_urikake_no.Text == null || tb_urikake_no.Text == "")
-            {
-                //MessageBox.Show("売上番号を入力してください。");
-                e.Cancel = true;
-            }
-            else
+            if (tb_urikake_no.Text != null && tb_urikake_no.Text != "")
             {
                 //入力された売上番号を"0000000000"形式の文字列に変換
                 double w_double;
@@ -148,8 +158,6 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
-
-
         }
 
         private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)
