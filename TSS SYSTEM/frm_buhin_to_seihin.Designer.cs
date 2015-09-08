@@ -105,6 +105,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -167,7 +168,7 @@
             // tb_buhin_name
             // 
             this.tb_buhin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_buhin_name.Location = new System.Drawing.Point(110, 28);
+            this.tb_buhin_name.Location = new System.Drawing.Point(60, 28);
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.ReadOnly = true;
             this.tb_buhin_name.Size = new System.Drawing.Size(399, 19);
@@ -180,7 +181,7 @@
             this.textBox3.Location = new System.Drawing.Point(10, 28);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 19);
+            this.textBox3.Size = new System.Drawing.Size(50, 19);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
             this.textBox3.Text = "部品名";
@@ -188,10 +189,12 @@
             // tb_buhin_cd
             // 
             this.tb_buhin_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_buhin_cd.Location = new System.Drawing.Point(110, 3);
+            this.tb_buhin_cd.Location = new System.Drawing.Point(75, 3);
+            this.tb_buhin_cd.MaxLength = 16;
             this.tb_buhin_cd.Name = "tb_buhin_cd";
             this.tb_buhin_cd.Size = new System.Drawing.Size(110, 19);
             this.tb_buhin_cd.TabIndex = 1;
+            this.tb_buhin_cd.DoubleClick += new System.EventHandler(this.tb_buhin_cd_DoubleClick);
             this.tb_buhin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd_Validating);
             // 
             // textBox1
@@ -200,7 +203,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
+            this.textBox1.Size = new System.Drawing.Size(65, 19);
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "部品コード";

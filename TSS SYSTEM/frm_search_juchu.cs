@@ -171,7 +171,7 @@ namespace TSS_SYSTEM
             if (in_seihin_cd.Length != 0)
             {
                 tb_seihin_cd.Text = in_seihin_cd;
-                tb_juchu_cd2_2.Text = in_juchu_cd2;
+                tb_seihin_name.Text = tss.get_seihin_name(in_seihin_cd);
             }
             
             switch (str_mode)

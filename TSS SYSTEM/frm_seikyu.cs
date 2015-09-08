@@ -155,7 +155,34 @@ namespace TSS_SYSTEM
                 if(w_urikake_no != "")
                 {
                     //既存のレコードを更新
-                    tss.OracleUpdate("update tss_urikake_m set kurikosigaku = '" + w_kurikosi.ToString() + "',uriage_kingaku = '" + w_uriage.ToString() + "',syouhizeigaku = '" + w_syouhizei.ToString() + "',nyukingaku = '" + w_nyukin + "',urikake_zandaka = '" + w_zandaka.ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where urikake_no = '" + w_urikake_no + "'");
+                    //既存データの更新の場合、過去売上が訂正され売上額＋消費税＜＞入金額になっている場合があるので、再度入金完了フラグを立て直す
+                    double w_chk_nyukingaku;        //入金額
+                    double w_chk_nyukingaku_sa;     //入金額－売上－消費税
+                    string w_nyukin_kanryou_flg;
+                    w_chk_nyukingaku = tss.try_string_to_double(w_dt_urikake.Rows[0]["nyukingaku"].ToString());
+                    w_chk_nyukingaku_sa = w_chk_nyukingaku - w_uriage - w_syouhizei;
+                    if(w_chk_nyukingaku_sa == 0 )
+                    {
+                        //入金完了
+                        w_nyukin_kanryou_flg = "1"; 
+                    }
+                    else
+                    {
+                        if(w_chk_nyukingaku_sa < 0)
+                        {
+                            //売上＋消費税　＞　入金額
+                            w_nyukin_kanryou_flg = "0";
+                        }
+                        else
+                        {
+                            //売上＋消費税　＜　入金額
+                            //入金額を売上＋消費税と同額にし、入金済みにして、残った入金額は取引先マスタへスプール
+                            w_nyukin_kanryou_flg = "1";
+                            w_chk_nyukingaku = w_uriage + w_syouhizei;
+                            tss.OracleUpdate("update tss_torihikisaki_m set MISYORI_NYUKINGAKU = MISYORI_NYUKINGAKU + " + w_chk_nyukingaku.ToString() + " ,update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
+                        }
+                    }
+                    tss.OracleUpdate("update tss_urikake_m set kurikosigaku = '" + w_kurikosi.ToString() + "',uriage_kingaku = '" + w_uriage.ToString() + "',syouhizeigaku = '" + w_syouhizei.ToString() + "' nyukingaku = '" + w_chk_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_nyukin_kanryou_flg + "',nyukingaku2 = '" + w_nyukin + "',urikake_zandaka = '" + w_zandaka.ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where urikake_no = '" + w_urikake_no + "'");
                 }
                 else
                 {
@@ -169,25 +196,59 @@ namespace TSS_SYSTEM
                 }
             }
             MessageBox.Show("請求締め処理が完了しました。");
+            DialogResult result = MessageBox.Show("続けて請求書を発行しますか？", "確認", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //請求書印刷
+                frm_seikyu_preview frm_skm = new frm_seikyu_preview();
+                frm_skm.in_torihikisaki_cd1 = tb_torihikisaki_cd1.Text;
+                frm_skm.in_torihikisaki_cd2 = tb_torihikisaki_cd2.Text;
+                frm_skm.in_simebi = tb_seikyu_simebi.Text;
+                frm_skm.ShowDialog(this);
+                frm_skm.Dispose();
+            }
+            gamen_clear();
         }
 
         private double get_kurikosi(string in_cd)
         {
             double out_double;  //戻り値用
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
-            if(w_dt.Rows.Count == 0)
+            //画面の請求締日から1か月前の締日を求め、1カ月前の締めレコードがあったらその残高を繰越額に、なかったら画面の請求日以前の未入金（未完了）分を繰越額にする
+            DateTime w_datetime;
+            DataTable w_dt_simebi = new DataTable();
+            tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+            w_datetime = tss.out_datetime.AddMonths(-1);    //1か月前
+            w_dt_simebi = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_cd + "'");
+            if(w_dt_simebi.Rows[0]["seikyu_sime_date"].ToString() == "99")
             {
-                out_double = 0;
+                w_datetime = new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));   //末日を求める
             }
-            else
+
+            w_dt = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + w_datetime.ToShortDateString() + "' and nyukin_kanryou_flg <> '1'");
+            if (w_dt.Rows.Count == 0)
             {
-                out_double = tss.try_string_to_double(w_dt.Rows[0][0].ToString());
-                //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
-                if(out_double == -999999999)
+                //1カ月前のレコードが無かった場合
+                //画面の締日以前のレコードの入金未完了の金額を求めて繰越額にする
+                w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
+                if (w_dt.Rows.Count == 0)
                 {
                     out_double = 0;
                 }
+                else
+                {
+                    out_double = tss.try_string_to_double(w_dt.Rows[0][0].ToString());
+                    //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
+                    if (out_double == -999999999)
+                    {
+                        out_double = 0;
+                    }
+                }
+            }
+            else
+            {
+                //1か月前のレコードがあった場合
+                out_double = tss.try_string_to_double(w_dt.Rows[0]["urikake_zandaka"].ToString());
             }
             return out_double;
         }
@@ -317,7 +378,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_torihikisaki_cd2_Validating(object sender, CancelEventArgs e)
@@ -327,7 +387,18 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
+
+        public void gamen_clear()
+        {
+            //画面クリア
+            tb_torihikisaki_cd1.Text = "";
+            tb_torihikisaki_cd2.Text = "";
+            tb_seikyu_simebi.Text = "";
+            tb_torihikisaki_cd1.Focus();
+        }
+
+
+
     }
 }

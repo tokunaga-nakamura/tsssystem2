@@ -32,7 +32,7 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            if (e.ToString() != null && e.ToString() != "")
+            if (tb_buhin_cd.Text.ToString() != null && tb_buhin_cd.Text.ToString() != "")
             {
                 w_dt_m = tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + tb_buhin_cd.Text.ToString() + "'");
                 if(w_dt_m.Rows.Count != 0)
@@ -49,14 +49,19 @@ namespace TSS_SYSTEM
 
         private void btn_kensaku_Click(object sender, EventArgs e)
         {
-            if(tb_buhin_cd.Text.ToString() == null || tb_buhin_cd.Text.ToString() == "")
+            if (tb_buhin_cd.Text.ToString() == null || tb_buhin_cd.Text.ToString() == "")
             {
                 MessageBox.Show("部品コードを入力してください。");
                 tb_buhin_cd.Focus();
             }
+            kensaku();
+        }
+
+        private void kensaku()
+        {
             DataTable w_dt_seihin_kousei = new DataTable();
             w_dt_seihin_kousei = tss.OracleSelect("SELECT seihin_cd,  seihin_kousei_no,  buhin_cd FROM tss_seihin_kousei_m GROUP BY seihin_cd,  seihin_kousei_no,  buhin_cd HAVING buhin_cd = '" + tb_buhin_cd.Text.ToString() + "' ");
-            if(w_dt_seihin_kousei.Rows.Count == 0)
+            if (w_dt_seihin_kousei.Rows.Count == 0)
             {
                 MessageBox.Show("入力された部品コードは製品構成情報にありません。");
                 tb_buhin_cd.Focus();
@@ -75,7 +80,7 @@ namespace TSS_SYSTEM
             DataTable w_dt_seihin = new DataTable();
             DataTable w_dt_seihin_kousei_name = new DataTable();
             DataRow w_dt_row;
-            
+
             foreach (DataRow dr in w_dt_seihin_kousei.Rows)
             {
                 //製品構成マスタから製品マスタをリンク
@@ -166,14 +171,22 @@ namespace TSS_SYSTEM
         {
             tss.HardCopy();
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+        private void tb_buhin_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_buhin_cd;
+            w_buhin_cd = tss.search_buhin("2", "");
+            if(w_buhin_cd == "")
+            {
+                return;
+            }
+            else
+            {
+                tb_buhin_cd.Text = w_buhin_cd;
+                tb_buhin_name.Text = tss.get_buhin_name(w_buhin_cd);
+                kensaku();
+            }
+        }
     }
 }
