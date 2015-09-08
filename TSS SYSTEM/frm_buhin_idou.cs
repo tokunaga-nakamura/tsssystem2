@@ -702,10 +702,6 @@ namespace TSS_SYSTEM
                                 //string str2 = dgv_idou.Rows[j].Cells[3].Value.ToString();
                                 string str3 = dgv_idou.Rows[j].Cells[7].Value.ToString();
 
-                                //if (str == str2)
-                                //{
-
-                                //}
 
                                 if (str == str3)
                                 {
