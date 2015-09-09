@@ -1832,7 +1832,7 @@ namespace TSS_SYSTEM
                     {
                         w_int_sign = 1;
                         //プラスの場合は売掛マスタの古い方から消していく
-                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "'and nyukin_kanryou_flg = '0' ORDER BY uriage_simebi asc");
+                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "'and nyukin_kanryou_flg <> '1' ORDER BY uriage_simebi asc");
                     }
                     else
                     {
@@ -1873,22 +1873,34 @@ namespace TSS_SYSTEM
                             w_dou_nyukin_kanou_gaku = w_dou_nyukingaku;
                         }
                         //入金額の計算
-                        if (w_dou_nyukin_kanou_gaku <= w_dou_misyori_nyukingaku * w_int_sign)
+                        //処理可能金額が０の場合は、っこのレコードを飛ばす
+                        if(w_dou_nyukin_kanou_gaku != 0)
                         {
-                            //未処理入金額に余裕がある場合
-                            w_dou_nyukingaku = w_dou_nyukingaku + w_dou_nyukin_kanou_gaku * w_int_sign;                 //入金額を売上額までにして
-                            w_dou_misyori_nyukingaku = w_dou_misyori_nyukingaku - w_dou_nyukin_kanou_gaku * w_int_sign; //入金した金額を未処理額から減らす
-                            w_str_nyukin_kanryou_flg = "1";                                                             //入金完了フラグを立てる
+                            if (w_dou_nyukin_kanou_gaku <= w_dou_misyori_nyukingaku * w_int_sign)
+                            {
+                                //未処理入金額に余裕がある場合
+                                w_dou_nyukingaku = w_dou_nyukingaku + w_dou_nyukin_kanou_gaku * w_int_sign;                 //入金額を売上額までにして
+                                w_dou_misyori_nyukingaku = w_dou_misyori_nyukingaku - w_dou_nyukin_kanou_gaku * w_int_sign; //入金した金額を未処理額から減らす
+                                if(w_int_sign == 1)
+                                {
+                                    w_str_nyukin_kanryou_flg = "1"; //入金完了フラグを立てる
+                                }
+                                else
+                                {
+                                    w_str_nyukin_kanryou_flg = "0"; //入金完了フラグを立てる
+                                }
+                            }
+                            else
+                            {
+                                //未処理額を使い切る場合
+                                w_dou_nyukingaku = w_dou_nyukingaku + w_dou_misyori_nyukingaku;                 //入金額に残りの未処理額を加えて
+                                w_dou_misyori_nyukingaku = 0;                                                   //未処理入金額を０にする
+                                w_str_nyukin_kanryou_flg = "0";                                                 //入金完了フラグは０
+                            }
+                            //処理したレコードの書き込み
+                            OracleUpdate("UPDATE tss_urikake_m SET nyukingaku ='" + w_dou_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_str_nyukin_kanryou_flg + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'and uriage_simebi = to_date('" + dr["uriage_simebi"].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+
                         }
-                        else
-                        {
-                            //未処理額を使い切る場合
-                            w_dou_nyukingaku = w_dou_nyukingaku + w_dou_misyori_nyukingaku;                 //入金額に残りの未処理額を加えて
-                            w_dou_misyori_nyukingaku = 0;                                                   //未処理入金額を０にする
-                            w_str_nyukin_kanryou_flg = "0";                                                 //入金完了フラグは０
-                        }
-                        //処理したレコードの書き込み
-                        OracleUpdate("UPDATE tss_urikake_m SET nyukingaku ='" + w_dou_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_str_nyukin_kanryou_flg + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'and uriage_simebi = to_date('" + dr["uriage_simebi"].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
                         //未処理入金額が０になったら、ループを抜ける
                         if (w_dou_misyori_nyukingaku == 0)
                         {
