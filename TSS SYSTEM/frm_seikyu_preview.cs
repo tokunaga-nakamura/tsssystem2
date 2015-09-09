@@ -89,13 +89,6 @@ namespace TSS_SYSTEM
                 //this.viewer1.Print(true,true,true);
             }
 
-
-
-
-
-
-
-
         }
 
         private void rb_seikyu_no_CheckedChanged(object sender, EventArgs e)
@@ -189,7 +182,6 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
-
         }
 
         private void tb_simebi_Validated(object sender, EventArgs e)
@@ -216,6 +208,5 @@ namespace TSS_SYSTEM
         {
             tss.HardCopy();
         }
-
     }
 }

@@ -194,7 +194,14 @@ namespace TSS_SYSTEM
                     //売上マスタの請求番号（urikake_no）を更新
                     tss.OracleUpdate("update tss_uriage_m set urikake_no = '" + w_urikake_no + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
                 }
+                //最後に取引先ますたにスプールされた未処理入金額の消し込みを行う
+                //入金処理の他に、なぜここでもやるのか？
+                //この締め処理で、売上額の増減、新規レコードなどが作成される可能性があるので、全ての処理後に未処理入金額を処理する。
+                //そうしないと、未処理入金額を自動で処理するタイミングが他にない
+                // ↓予想されるメソッド
+                //tss.misyori_nyukingaku(dr["torihikisaki_cd"].ToString());
             }
+
             MessageBox.Show("請求締め処理が完了しました。");
             DialogResult result = MessageBox.Show("続けて請求書を発行しますか？", "確認", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -397,8 +404,5 @@ namespace TSS_SYSTEM
             tb_seikyu_simebi.Text = "";
             tb_torihikisaki_cd1.Focus();
         }
-
-
-
     }
 }

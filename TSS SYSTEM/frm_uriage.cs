@@ -538,7 +538,6 @@ namespace TSS_SYSTEM
                 return;
             }
 
-
             //製品コード
             if (e.ColumnIndex == 7)
             {
@@ -821,7 +820,6 @@ namespace TSS_SYSTEM
                                 denpyou_insatu();
                             }
                         }
-
                         MessageBox.Show("更新しました。");
                         gamen_clear();
                         //退避していた連番を表示
@@ -1016,7 +1014,6 @@ namespace TSS_SYSTEM
                     dgv_m.Rows[e.RowIndex].Cells[10].Value = w_hanbai_tanka.ToString("0.00");
                 }
             }
-
             //売上金額                
             if (e.ColumnIndex == 9 || e.ColumnIndex == 10)
             {
@@ -1064,7 +1061,6 @@ namespace TSS_SYSTEM
                     w_syouhizeigaku = 0;
                     dgv_m.Rows[e.RowIndex].Cells[11].Value = "";
                 }
-
 
                 //売上合計の再計算
                 uriage_goukei_disp();
