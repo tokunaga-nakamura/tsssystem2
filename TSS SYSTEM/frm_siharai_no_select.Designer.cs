@@ -58,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.OliveDrab;
             this.splitContainer1.Panel1.Controls.Add(this.tb_torihikisaki_name);
             this.splitContainer1.Panel1.Controls.Add(this.tb_torihikisaki_cd);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
@@ -120,6 +121,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.OliveDrab;
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Size = new System.Drawing.Size(284, 216);

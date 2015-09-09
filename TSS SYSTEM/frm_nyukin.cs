@@ -55,7 +55,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    MessageBox.Show("売上計上日に異常があります。");
+                    MessageBox.Show("入金日に異常があります。");
                     tb_nyukin_date.Focus();
                 }
             }
@@ -147,30 +147,7 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Validating_1(object sender, CancelEventArgs e)
         {
-            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
-            {
-                e.Cancel = true;
-                return;
-            }
-            //終了ボタンを考慮して、空白は許容する
-            if (tb_torihikisaki_cd.Text != "")
-            {
-                //既存データの場合は、取引先コードの変更、再読み込みは不可
-                if (tb_nyukin_no.Text.ToString() == w_nyukin_no.ToString("0000000000"))
-                {
-                    if (chk_torihikisaki_cd() != true)
-                    {
-                        MessageBox.Show("取引先コードに異常があります。");
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        //取引先名を取得・表示
-                        tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
-                        //chk_torihikisaki_simebi();
-                    }
-                }
-            }
+
         }
 
         private void tb_nyukin_no_Validating(object sender, CancelEventArgs e)
@@ -206,6 +183,8 @@ namespace TSS_SYSTEM
                 dt_work.Columns.Add("bikou");
              
                 dgv_m.DataSource = dt_work;
+
+                dgv_m_disp();
                 //nyukin_sinki(dt_work);
             }
             else
@@ -223,6 +202,17 @@ namespace TSS_SYSTEM
                     dgv_m.DataSource = dt_work;
                     tb_nyukin_no.Text = w_nyukin_no.ToString("0000000000");
                     tb_nyukin_no.Focus();
+
+                    //画面の項目をクリア
+                    tb_torihikisaki_cd.Text = "";
+                    tb_torihikisaki_name.Text = "";
+                    tb_nyukin_date.Text = "";
+                    tb_create_user_cd.Text = "";
+                    tb_create_datetime.Text = "";
+                    tb_update_user_cd.Text = "";
+                    tb_update_datetime.Text = "";
+                    tb_nyukin_goukei.Text = "";
+
                     return;
                 }
 
@@ -279,9 +269,9 @@ namespace TSS_SYSTEM
 
 
                     dgv_m.DataSource = dt_work;
-                    tb_nyukin_goukei.Text = dt_work.Compute("SUM(nyukingaku)", null).ToString();
+                    double goukei = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString());
+                    tb_nyukin_goukei.Text = goukei.ToString("#,0##");
                     
-
                     if (tb_nyukin_goukei.Text =="")
                     {
                         nyukin_goukei_w = 0;
@@ -431,7 +421,7 @@ namespace TSS_SYSTEM
             }
 
             //入金番号の重複チェック
-            dt_work = tss.OracleSelect("select * from tss_nyukin_m where nyukin_no  =  '" + tb_nyukin_no.ToString() + "'");
+            dt_work = tss.OracleSelect("select * from tss_nyukin_m where nyukin_no  =  '" + tb_nyukin_no.Text.ToString() + "'");
             
             //重複がない（新規）の場合
             if (dt_work.Rows.Count == 0)
@@ -527,8 +517,8 @@ namespace TSS_SYSTEM
                               + tb_nyukin_no.Text.ToString() + "','"
                               + (i + 1) + "','"
                               + tb_torihikisaki_cd.Text.ToString() + "','"
-                              + dgv_m.Rows[i].Cells[0].Value.ToString() + "','"
-                              + tb_nyukin_date.ToString() + "','"
+                              + dgv_m.Rows[i].Cells[0].Value.ToString() + "',"
+                              + "to_date('" + tb_nyukin_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                               + dgv_m.Rows[i].Cells[2].Value.ToString() + "','"
                               + dgv_m.Rows[i].Cells[3].Value.ToString() + "','"
                               + tb_create_user_cd.Text.ToString() + "',"//←カンマがあると、日付をインサートする際にエラーになるので注意する
@@ -608,6 +598,7 @@ namespace TSS_SYSTEM
 
                     dgv_m.Rows[e.RowIndex].Cells[j + 1].Value = tss.kubun_name_select("12", e.FormattedValue.ToString());
                     dgv_m.EndEdit();
+                    
                 }
             }
         }
@@ -628,20 +619,22 @@ namespace TSS_SYSTEM
                     dt_w2.Rows[i][0] = double.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
                 }
 
-                string goukei = dt_w2.Compute("SUM(nyukingoukei)", null).ToString();
-                tb_nyukin_goukei.Text = goukei;
+                double goukei = double.Parse(dt_w2.Compute("SUM(nyukingoukei)", null).ToString());
+                tb_nyukin_goukei.Text = goukei.ToString("#,0##");
+                
             }
         }
 
         private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+          　string str = dgv_m.CurrentCell.Value.ToString();
+
             ////選択画面へ
             this.dgv_m.CurrentCell.Value = tss.kubun_cd_select("12", "");
             {
                 if(tss.kubun_name_select("12", dgv_m.CurrentCell.Value.ToString()) == "")
                 {
-                    
+                    dgv_m.CurrentCell.Value = str;
                     return;
                 }
                 
@@ -664,7 +657,7 @@ namespace TSS_SYSTEM
             {
                 if (dgv_m.Rows[e.RowIndex].Cells[2].Value != null && dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
                 {
-                    dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_double(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0.00");
+                    dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_double(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0");
                 }
 
             }
@@ -681,7 +674,7 @@ namespace TSS_SYSTEM
 
             //金額右寄せ、カンマ区切り
             dgv_m.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_m.Columns[2].DefaultCellStyle.Format = "#,0.00";
+            dgv_m.Columns[2].DefaultCellStyle.Format = "#,0";
 
             //入金区分名称は入力不可
             dgv_m.Columns[1].ReadOnly = true;
@@ -698,6 +691,11 @@ namespace TSS_SYSTEM
             //並べ替え不可
             foreach (DataGridViewColumn c in dgv_m.Columns)
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
+
+        private void dgv_m_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
 
         }
 
