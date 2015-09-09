@@ -1792,126 +1792,15 @@ namespace TSS_SYSTEM
         #endregion
 
 
-        //#region 売掛マスタ更新
-        ////取引先コードと入金額を取得
-        //public string urikake_kousin(string in_torihikisaki_cd, string in_nyukingaku)
-        //{
-        //    //bool out_bl = true; //戻り値用
-            
-        //    ////string out_kubun_name = "";   //戻り値用
-            
-        //    //////区分名を取得する
-        //    ////DataTable dt_work = OracleSelect("select kubun_name from tss_kubun_m where kubun_meisyou_cd = '" + in_kubun_meisyou_cd + "' and kubun_cd = '" + in_kubun_cd + "'");
-        //    ////if (dt_work.Rows.Count <= 0)
-        //    ////{
-        //    ////    out_kubun_name = "";
-        //    ////}
-        //    ////else
-        //    ////{
-        //    ////    out_kubun_name = dt_work.Rows[0]["kubun_name"].ToString();
-        //    ////}
-        //    //return out_bl;
+        #region 売掛マスタ更新
+        //取引先コードと入金額を取得
+        public bool urikake_kesikomi(string in_torihikisaki_cd, double in_nyukingaku)
+        {
+            bool out_bl = true; //戻り値用
+            return out_bl;
 
-        //    //売掛マスタの更新
-        //    //取引先マスタの更新
-            
-        //    double misyori_nyukingaku;
-        //    DataTable dt_work = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'and nyukin_kanryou_flg = '0'  ORDER BY uriage_simebi");
-        //    if (dt_work.Rows.Count == 0)
-        //    {
-        //        MessageBox.Show("売掛マスタにデータがありません");
-
-        //        dt_work = OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'");
-
-        //        if (dt_work.Rows[0][0] == null || dt_work.Rows[0][0].ToString() == "")
-        //        {
-        //            misyori_nyukingaku = 0;
-        //        }
-
-        //        else
-        //        {
-        //            misyori_nyukingaku = double.Parse(dt_work.Rows[0][0].ToString()) + double.Parse(in_nyukingaku.ToString());
-        //        }
-
-        //        bool bl = OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'");
-
-        //        if (bl != true)
-        //        {
-        //            ErrorLogWrite(user_cd, "入金／登録", "登録ボタン押下時のOracleInsert");
-        //            MessageBox.Show("売掛マスタ更新処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
-        //            //this.Close();
-        //        }
-
-        //        MessageBox.Show("売掛データが無いため、今回の入金額を取引先マスタの未処理入金額に登録しました。");
-        //    }
-
-        //    else
-        //    {
-        //        int rc = dt_work.Rows.Count;
-        //        double nyukingaku = double.Parse(in_nyukingaku.ToString());
-
-        //        for (int i = 0; i < rc; i++)
-        //        {
-        //            double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());  //購入金額 = 売掛マスタの「売上金額」 + 「消費税額」
-        //            double keisan = nyukingaku - kounyukingaku;
-
-        //            if (nyukingaku < 0)
-        //            {
-        //                keisan = kounyukingaku - nyukingaku;
-        //            }
-
-        //            if (keisan >= 0)
-        //            {
-        //                dt_work.Rows[i][5] = kounyukingaku;
-        //                dt_work.Rows[i][6] = "1";
-        //                nyukingaku = nyukingaku - kounyukingaku;
-
-        //                dt_work.Rows[i][12] = user_cd;
-        //                dt_work.Rows[i][13] = DateTime.Now;
-
-        //                OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + kounyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'and uriage_simebi = "
-        //                 + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
-
-        //            }
-
-        //            if (keisan < 0)
-        //            {
-        //                dt_work.Rows[i][5] = nyukingaku;
-        //                dt_work.Rows[i][12] = user_cd;
-        //                dt_work.Rows[i][13] = DateTime.Now;
-
-        //                OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'and uriage_simebi = "
-        //                + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
-
-        //                break;
-        //            }
-
-        //            keisan = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString()) - double.Parse(in_nyukingaku.ToString());
-
-        //        }
-
-        //        double keisan2 = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString()) - double.Parse(in_nyukingaku.ToString());
-
-        //        if (keisan2 < 0)
-        //        {
-        //            double nyukin = new double();
-        //            nyukin = nyukingaku;
-        //            dt_work = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'and nyukin_kanryou_flg = '0'  ORDER BY uriage_simebi");
-
-
-        //            nyukin = double.Parse(dt_work.Rows[0][0].ToString()) + nyukin;
-
-        //            OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='" + nyukin + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + in_torihikisaki_cd.ToString() + "'");
-
-        //            MessageBox.Show("売掛残よりも多く入金処理されたため、取引先マスタの未処理入金額に登録しました。");
-        //        }
-
-        //        MessageBox.Show("売掛マスタを更新しました");
-        //    }
-
-
-        //}
-        //#endregion
+        }
+        #endregion
 
 
 

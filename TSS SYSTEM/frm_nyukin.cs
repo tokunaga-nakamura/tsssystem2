@@ -306,8 +306,6 @@ namespace TSS_SYSTEM
 
             //合計を表示
             nyukin_goukei_disp();
-
-
         }
 
         private void nyukin_init()
@@ -432,6 +430,8 @@ namespace TSS_SYSTEM
                 tb_create_user_cd.Text = tss.user_cd;
                 tb_create_datetime.Text = DateTime.Now.ToString();
                 MessageBox.Show("入金処理が完了しました");
+
+                tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString(),double.Parse(tb_nyukin_goukei.Text.ToString());
             }
         
 
@@ -450,7 +450,7 @@ namespace TSS_SYSTEM
               {
                  misyori_nyukingaku = 0;
               }
-           　else
+            else
               {
                  misyori_nyukingaku = double.Parse(dt_work2.Rows[0][0].ToString());
 
@@ -480,7 +480,6 @@ namespace TSS_SYSTEM
 
                          tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + kounyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
                           + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
-
                      }
 
                      if (keisan < 0)
@@ -516,87 +515,208 @@ namespace TSS_SYSTEM
             
             ////////////////////////////////////////////ここまで
 
-           ///////////フォームに入力した入金額を使用した売掛マスタの更新
+           ////////////フォームに入力した入金額を使用した売掛マスタの更新///////////////////////////////////////////////////////////////
            
         
                 int rc2 = dt_work.Rows.Count;
-                double nyukingaku = double.Parse(tb_nyukin_goukei.Text.ToString());
-
-                DataTable dt2 = tss.OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
-                if (dt2.Rows[0][0] == null || dt2.Rows[0][0].ToString() == "")
-                {
-                    misyori_nyukingaku = 0;
-                }
-
-                else
-                {
-                    nyukingaku = double.Parse(dt2.Rows[0][0].ToString()) + double.Parse(tb_nyukin_goukei.Text.ToString());
-                    misyori_nyukingaku = double.Parse(dt2.Rows[0][0].ToString());
-
-                //入金処理のために、取引先マスタの未処理入金額をいったん0にする
-                 tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
                 
+                double nyukingaku = double.Parse(tb_nyukin_goukei.Text.ToString()); //入金額＝フォームに入力した入金額の合計
 
-                 for (int i = 0; i < rc2; i++)
-                 {
-                     double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());// - double.Parse(dt_work.Rows[i][5].ToString());  //購入金額 = 売掛マスタの「売上金額」 + 「消費税額」
-                     double keisan = nyukingaku  - kounyukingaku;
 
-                     if (nyukingaku  < 0)
-                     {
-                         keisan = kounyukingaku - nyukingaku;
-                     }
-                     
-                     if(keisan >= 0)
-                     {
-                         dt_work.Rows[i][5] = kounyukingaku;
-                         dt_work.Rows[i][6] = "1";
-                         nyukingaku = nyukingaku - kounyukingaku;
+               if(nyukingaku >= 0)
+               {
+                   //取引先マスタに未処理入金額があるか確認
+                   DataTable dt2 = tss.OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
 
-                         dt_work.Rows[i][12] = tss.user_cd;
-                         dt_work.Rows[i][13] = DateTime.Now;
+                   //未処理入金額が無ければ、0とする
+                   if (dt2.Rows[0][0] == null || dt2.Rows[0][0].ToString() == "")
+                   {
+                       misyori_nyukingaku = 0;
+                   }
 
-                         tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + kounyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
-                          + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");　
+                   //未処理入金額があった場合
+                   else
+                   {
+                       //入金額 = フォームに入力した入金額の合計 + 取引先マスタの未処理入金額
+                       nyukingaku = double.Parse(dt2.Rows[0][0].ToString()) + double.Parse(tb_nyukin_goukei.Text.ToString());
+                       //misyori_nyukingaku = double.Parse(dt2.Rows[0][0].ToString());
 
-                     }
+                       //入金処理のために、取引先マスタの未処理入金額をいったん0にする
+                       tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
 
-                     if (keisan < 0)
-                     {
-                         dt_work.Rows[i][5] = nyukingaku;
-                         dt_work.Rows[i][12] = tss.user_cd;
-                         dt_work.Rows[i][13] = DateTime.Now;
+                       for (int i = 0; i < rc2; i++)
+                       {
+                           //購入金額 = 売上+消費税
+                           double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());// - double.Parse(dt_work.Rows[i][5].ToString());  //購入金額 = 売掛マスタの「売上金額」 + 「消費税額」
 
-                         tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
-                        　+ "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");　
+                           //入金額と購入金額（+すでに入金されている金額）の差額計算
+                           double keisan = nyukingaku - kounyukingaku + double.Parse(dt_work.Rows[i][5].ToString());
 
-                         break;
-                     }
 
-                     //keisan = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString()) - double.Parse(tb_nyukin_goukei.Text.ToString());
+                           //入金額が、購入金額を上回っていたら
+                           if (keisan >= 0)
+                           {
+                               //入金額 = 購入金額
 
+                               nyukingaku = kounyukingaku;
+
+                               dt_work.Rows[i][5] = kounyukingaku;
+                               dt_work.Rows[i][6] = "1";
+
+                               dt_work.Rows[i][12] = tss.user_cd;
+                               dt_work.Rows[i][13] = DateTime.Now;
+
+                               tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                                + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+
+                               //次の行で用いる入金額 =　計算した差額金額
+                               nyukingaku = keisan;
+
+                           }
+
+                           //入金額が、購入金額を下回っていたら
+                           if (keisan < 0)
+                           {
+
+                               //入金額 = 差額金額 + 既に入力済みの入金額
+                               nyukingaku = nyukingaku + double.Parse(dt_work.Rows[i][5].ToString());
+
+                               dt_work.Rows[i][5] = nyukingaku;
+                               dt_work.Rows[i][12] = tss.user_cd;
+                               dt_work.Rows[i][13] = DateTime.Now;
+
+                               tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                               + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+
+                               break;
+                           }
+
+                       }
+
+                       //入金額が、未入金額を上回った場合、取引先マスタの未処理入金額に登録
+                       if (nyukingaku > 0)
+                       {
+                           tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+
+                           MessageBox.Show("売掛残よりも多く入金処理されたため、取引先マスタの未処理入金額に登録しました。");
+                       }
+
+                       MessageBox.Show("売掛マスタを更新しました");
                  }
-
-                 double keisan2 = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString()) - nyukingaku;//double.Parse(tb_nyukin_goukei.Text.ToString()) - misyori_nyukingaku;
-
-                 if (keisan2 < 0)
+               }
+                 if(nyukingaku < 0)
                  {
-                     double nyukin = new double();
-                     nyukin = nyukingaku;
-                     //dt_work = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and nyukin_kanryou_flg = '0'  ORDER BY uriage_simebi");
+                   //取引先マスタに未処理入金額があるか確認
+                  
+                    DataTable dt2 = tss.OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
 
-                    
-                     //nyukin =  double.Parse(dt_work.Rows[0][0].ToString()) + nyukin;
+                   //未処理入金額が無ければ、0とする
+                   if (dt2.Rows[0][0] == null || dt2.Rows[0][0].ToString() == "")
+                   {
+                       misyori_nyukingaku = 0;
+                   }
 
-                     tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='" + nyukin + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+                   //未処理入金額があった場合
+                   else
+                   {
+                       //未処理入金額 > マイナス入金額 
+                       if (misyori_nyukingaku >= nyukingaku * -1)
+                       {
+                           misyori_nyukingaku = misyori_nyukingaku + nyukingaku;
+                           //取引先マスタの未処理入金額からマイナスして終了
+                           tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
 
-                     MessageBox.Show("売掛残よりも多く入金処理されたため、取引先マスタの未処理入金額に登録しました。");
+                       }
+
+                       //未処理入金額 < マイナス入金額 
+                       if (misyori_nyukingaku < nyukingaku * -1)
+                       {
+                           //マイナス入金額と未処理入金額の差額を求めて、プラスの値にする
+                           Double mainasu_nyukingaku = (misyori_nyukingaku + nyukingaku) * -1;
+
+                           //取引先マスタの未処理入金額を0にする
+                           tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+
+                           dt_work = dt_work = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' ORDER BY uriage_simebi desc");
+
+
+
+
+                       }
+
+                       //入金額 = フォームに入力した入金額の合計 + 取引先マスタの未処理入金額
+                       nyukingaku = double.Parse(dt2.Rows[0][0].ToString()) + double.Parse(tb_nyukin_goukei.Text.ToString());
+                       //misyori_nyukingaku = double.Parse(dt2.Rows[0][0].ToString());
+
+
+
+
+
+                       //入金処理のために、取引先マスタの未処理入金額をいったん0にする
+                       tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+                   }
+                       for (int i = 0; i < rc2; i++)
+                       {
+                           //購入金額 = 売上+消費税
+                           double kounyukingaku = double.Parse(dt_work.Rows[i][3].ToString()) + double.Parse(dt_work.Rows[i][4].ToString());// - double.Parse(dt_work.Rows[i][5].ToString());  //購入金額 = 売掛マスタの「売上金額」 + 「消費税額」
+
+                           //入金額と購入金額（+すでに入金されている金額）の差額計算
+                           double keisan = nyukingaku - kounyukingaku + double.Parse(dt_work.Rows[i][5].ToString());
+
+
+                           //入金額が、購入金額を上回っていたら
+                           if (keisan >= 0)
+                           {
+                               //入金額 = 購入金額
+
+                               nyukingaku = kounyukingaku;
+
+                               dt_work.Rows[i][5] = kounyukingaku;
+                               dt_work.Rows[i][6] = "1";
+
+                               dt_work.Rows[i][12] = tss.user_cd;
+                               dt_work.Rows[i][13] = DateTime.Now;
+
+                               tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',nyukin_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                                + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+
+                               //次の行で用いる入金額 =　計算した差額金額
+                               nyukingaku = keisan;
+
+                           }
+
+                           //入金額が、購入金額を下回っていたら
+                           if (keisan < 0)
+                           {
+
+                               //入金額 = 差額金額 + 既に入力済みの入金額
+                               nyukingaku = nyukingaku + double.Parse(dt_work.Rows[i][5].ToString());
+
+                               dt_work.Rows[i][5] = nyukingaku;
+                               dt_work.Rows[i][12] = tss.user_cd;
+                               dt_work.Rows[i][13] = DateTime.Now;
+
+                               tss.OracleUpdate("UPDATE TSS_urikake_m SET nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and uriage_simebi = "
+                               + "to_date('" + dt_work.Rows[i][1].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+
+                               break;
+                           }
+
+                       }
+
+                       //入金額が、未入金額を上回った場合、取引先マスタの未処理入金額に登録
+                       if (nyukingaku > 0)
+                       {
+                           tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku ='" + nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+
+                           MessageBox.Show("売掛残よりも多く入金処理されたため、取引先マスタの未処理入金額に登録しました。");
+                       }
+
+                       MessageBox.Show("売掛マスタを更新しました");
                  }
-
-                MessageBox.Show("売掛マスタを更新しました");
-            }
-           
+               
             
+           
             form_disp();
                 
         }
