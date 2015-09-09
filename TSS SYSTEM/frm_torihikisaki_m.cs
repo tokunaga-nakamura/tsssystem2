@@ -381,35 +381,36 @@ namespace TSS_SYSTEM
             dt_work = tss.OracleSelect("select * from TSS_TORIHIKISAKI_M where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
             if (dt_work.Rows.Count != 0)
             {
-                tb_torihikisaki_name.Text = dt_work.Rows[0][1].ToString();
-                tb_torihikisaki_seisiki_name.Text = dt_work.Rows[0][2].ToString();
-                tb_torihikisaki_ryakusiki_moji.Text = dt_work.Rows[0][3].ToString();
-                tb_yubin_no.Text = dt_work.Rows[0][4].ToString();
-                tb_jusyo1.Text = dt_work.Rows[0][5].ToString();
-                tb_jusyo2.Text = dt_work.Rows[0][6].ToString();
-                tb_tel_no.Text = dt_work.Rows[0][7].ToString();
-                tb_fax_no.Text = dt_work.Rows[0][8].ToString();
-                tb_daihyousya_name.Text = dt_work.Rows[0][9].ToString();
-                tb_url.Text = dt_work.Rows[0][10].ToString();
-                tb_eigyou_start_time.Text = dt_work.Rows[0][11].ToString();
-                tb_eigyou_end_time.Text = dt_work.Rows[0][12].ToString();
-                tb_seikyu_sime_date.Text = dt_work.Rows[0][13].ToString();
-                tb_kaisyu_tuki.Text = dt_work.Rows[0][14].ToString();
-                tb_kaisyu_hi.Text = dt_work.Rows[0][15].ToString();
-                tb_siharai_sime_date.Text = dt_work.Rows[0][16].ToString();
-                tb_siharai_tuki.Text = dt_work.Rows[0][17].ToString();
-                tb_siharai_hi.Text = dt_work.Rows[0][18].ToString();
-                tb_kessan_start_mmdd.Text = dt_work.Rows[0][19].ToString();
-                tb_kessan_end_mmdd.Text = dt_work.Rows[0][20].ToString();
-                tb_syouhizei_sansyutu_kbn.Text = dt_work.Rows[0][21].ToString();
-                tb_hasu_kbn.Text = dt_work.Rows[0][22].ToString();
-                tb_hasu_syori_tani.Text = dt_work.Rows[0][23].ToString();
-                tb_jisyaden_kbn.Text = dt_work.Rows[0][24].ToString();
+                tb_torihikisaki_name.Text = dt_work.Rows[0]["torihikisaki_name"].ToString();
+                tb_torihikisaki_seisiki_name.Text = dt_work.Rows[0]["torihikisaki_seisiki_name"].ToString();
+                tb_torihikisaki_ryakusiki_moji.Text = dt_work.Rows[0]["torihikisaki_ryakusiki_moji"].ToString();
+                tb_yubin_no.Text = dt_work.Rows[0]["yubin_no"].ToString();
+                tb_jusyo1.Text = dt_work.Rows[0]["jusyo1"].ToString();
+                tb_jusyo2.Text = dt_work.Rows[0]["jusyo2"].ToString();
+                tb_tel_no.Text = dt_work.Rows[0]["tel_no"].ToString();
+                tb_fax_no.Text = dt_work.Rows[0]["fax_no"].ToString();
+                tb_daihyousya_name.Text = dt_work.Rows[0]["daihyousya_name"].ToString();
+                tb_url.Text = dt_work.Rows[0]["url"].ToString();
+                tb_eigyou_start_time.Text = dt_work.Rows[0]["eigyou_start_time"].ToString();
+                tb_eigyou_end_time.Text = dt_work.Rows[0]["eigyou_end_time"].ToString();
+                tb_seikyu_sime_date.Text = dt_work.Rows[0]["seikyu_sime_date"].ToString();
+                tb_kaisyu_tuki.Text = dt_work.Rows[0]["kaisyu_tuki"].ToString();
+                tb_kaisyu_hi.Text = dt_work.Rows[0]["kaisyu_hi"].ToString();
+                tb_siharai_sime_date.Text = dt_work.Rows[0]["siharai_sime_date"].ToString();
+                tb_siharai_tuki.Text = dt_work.Rows[0]["siharai_tuki"].ToString();
+                tb_siharai_hi.Text = dt_work.Rows[0]["siharai_hi"].ToString();
+                tb_kessan_start_mmdd.Text = dt_work.Rows[0]["kessan_start_mmdd"].ToString();
+                tb_kessan_end_mmdd.Text = dt_work.Rows[0]["kessan_end_mmdd"].ToString();
+                tb_syouhizei_sansyutu_kbn.Text = dt_work.Rows[0]["syouhizei_sansyutu_kbn"].ToString();
+                tb_hasu_kbn.Text = dt_work.Rows[0]["hasu_kbn"].ToString();
+                tb_hasu_syori_tani.Text = dt_work.Rows[0]["hasu_syori_tani"].ToString();
+                tb_jisyaden_kbn.Text = dt_work.Rows[0]["jisyaden_kbn"].ToString();
+                tb_misyori_nyukingaku.Text = tss.try_string_to_double(dt_work.Rows[0]["misyori_nyukingaku"].ToString()).ToString("#,##0");
 
-                tb_create_user_cd.Text = dt_work.Rows[0][25].ToString();
-                tb_create_datetime.Text = dt_work.Rows[0][26].ToString();
-                tb_update_user_cd.Text = dt_work.Rows[0][27].ToString();
-                tb_update_datetime.Text = dt_work.Rows[0][28].ToString();
+                tb_create_user_cd.Text = dt_work.Rows[0]["create_user_cd"].ToString();
+                tb_create_datetime.Text = dt_work.Rows[0]["create_datetime"].ToString();
+                tb_update_user_cd.Text = dt_work.Rows[0]["update_user_cd"].ToString();
+                tb_update_datetime.Text = dt_work.Rows[0]["update_datetime"].ToString();
             }
 
             //マスターに既存レコードがなければnullをテキストボックスに入れる。
@@ -439,6 +440,7 @@ namespace TSS_SYSTEM
                 tb_hasu_kbn.Text = null;
                 tb_hasu_syori_tani.Text = null;
                 tb_jisyaden_kbn.Text = null;
+                tb_misyori_nyukingaku.Text = null;
 
                 tb_create_user_cd.Text = null;
                 tb_create_datetime.Text = null;
