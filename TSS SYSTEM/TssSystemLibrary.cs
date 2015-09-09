@@ -1832,7 +1832,7 @@ namespace TSS_SYSTEM
                     {
                         w_int_sign = 1;
                         //プラスの場合は売掛マスタの古い方から消していく
-                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "'and nyukin_kanryou_flg = '0' ORDER BY uriage_simebi asc");
+                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "'and nyukin_kanryou_flg <> '1' ORDER BY uriage_simebi asc");
                     }
                     else
                     {
