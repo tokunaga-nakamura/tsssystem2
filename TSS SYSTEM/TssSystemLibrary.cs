@@ -1890,7 +1890,7 @@ namespace TSS_SYSTEM
                         //処理したレコードの書き込み
                         OracleUpdate("UPDATE tss_urikake_m SET nyukingaku ='" + w_dou_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_str_nyukin_kanryou_flg + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'and uriage_simebi = to_date('" + dr["uriage_simebi"].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
                         //未処理入金額が０になったら、ループを抜ける
-                        if (w_dou_nyukingaku == 0)
+                        if (w_dou_misyori_nyukingaku == 0)
                         {
                             break;
                         }
