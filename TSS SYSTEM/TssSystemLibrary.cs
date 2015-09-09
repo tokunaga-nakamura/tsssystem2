@@ -1792,13 +1792,114 @@ namespace TSS_SYSTEM
         #endregion
 
 
-        #region 売掛マスタ更新
-        //取引先コードと入金額を取得
-        public bool urikake_kesikomi(string in_torihikisaki_cd, double in_nyukingaku)
+        #region urikake_kesikomi
+        /// <summary>取引先マスタの未処理入金額を売掛マスタに消し込みます</summary>
+        /// <param name="string in_cd">取引先コード</param>
+        public bool urikake_kesikomi(string in_cd)
         {
             bool out_bl = true; //戻り値用
-            return out_bl;
 
+            DataTable w_dt = new DataTable();           //取引先マスタの読み込み用
+            DataTable w_dt_urikake = new DataTable();   //売掛マスタ用
+
+            double w_dou_misyori_nyukingaku;    //処理する未処理金額
+            double w_dou_uriage_kingaku;        //計算用売上金額
+            double w_dou_syouhizeigaku;         //計算用消費税額
+            double w_dou_nyukingaku;            //計算用入金額
+            double w_dou_nyukin_kanou_gaku;     //入金可能額（売上金額＋消費税－入金額）
+            string w_str_nyukin_kanryou_flg;    //入金完了フラグ
+            int w_int_sign;                     //未処理入金額のプラスマイナスサイン 1:プラス値 -1:マイナス値
+
+            //取引先マスタの未処理金額を取得
+            w_dt = OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                ErrorLogWrite(user_cd, "tss.urikake_kesikomi", "in_cd=" + in_cd + "のレコードが無い");
+                out_bl = false;
+            }
+            else
+            {
+                w_dou_misyori_nyukingaku = try_string_to_double(w_dt.Rows[0]["misyori_nyukingaku"].ToString());
+                if (w_dou_misyori_nyukingaku == 0 || w_dou_misyori_nyukingaku == -999999999)
+                {
+                    //未処理入金額が０（処理する金額が無い）
+                    out_bl = true;
+                }
+                else
+                {
+                    //未処理入金額のプラス値・マイナス値の判定と消し込む売掛マスタの抽出
+                    if (w_dou_misyori_nyukingaku > 0)
+                    {
+                        w_int_sign = 1;
+                        //プラスの場合は売掛マスタの古い方から消していく
+                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "'and nyukin_kanryou_flg = '0' ORDER BY uriage_simebi asc");
+                    }
+                    else
+                    {
+                        w_int_sign = -1;
+                        //マイナスの場合は売掛マスタの新しい方から消していく
+                        w_dt_urikake = OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' ORDER BY uriage_simebi desc");
+                    }
+                    //消込処理（未処理金額が0以下（0以上）になる、または消し込む売掛マスタが無くなるまで繰り返す
+                    foreach (DataRow dr in w_dt_urikake.Rows)
+                    {
+                        //売上額の取得
+                        w_dou_uriage_kingaku = try_string_to_double(dr["uriage_kingaku"].ToString());
+                        if (w_dou_uriage_kingaku == -999999999)
+                        {
+                            w_dou_uriage_kingaku = 0;
+                        }
+                        //消費税の取得
+                        w_dou_syouhizeigaku = try_string_to_double(dr["syouhizeigaku"].ToString());
+                        if (w_dou_syouhizeigaku == -999999999)
+                        {
+                            w_dou_syouhizeigaku = 0;
+                        }
+                        //入金額の取得
+                        w_dou_nyukingaku = try_string_to_double(dr["nyukingaku"].ToString());
+                        if (w_dou_nyukingaku == -999999999)
+                        {
+                            w_dou_nyukingaku = 0;
+                        }
+                        //処理可能金額の算出
+                        if(w_int_sign == 1)
+                        {
+                            //未処理入金額がプラス値の場合は、売上と入金額の差まで処理可能
+                            w_dou_nyukin_kanou_gaku = w_dou_uriage_kingaku + w_dou_syouhizeigaku - w_dou_nyukingaku;
+                        }
+                        else
+                        {
+                            //未処理入金額がマイナス値の場合は入金額の値まで処理可能
+                            w_dou_nyukin_kanou_gaku = w_dou_nyukingaku;
+                        }
+                        //入金額の計算
+                        if (w_dou_nyukin_kanou_gaku <= w_dou_misyori_nyukingaku * w_int_sign)
+                        {
+                            //未処理入金額に余裕がある場合
+                            w_dou_nyukingaku = w_dou_nyukingaku + w_dou_nyukin_kanou_gaku * w_int_sign;                 //入金額を売上額までにして
+                            w_dou_misyori_nyukingaku = w_dou_misyori_nyukingaku - w_dou_nyukin_kanou_gaku * w_int_sign; //入金した金額を未処理額から減らす
+                            w_str_nyukin_kanryou_flg = "1";                                                             //入金完了フラグを立てる
+                        }
+                        else
+                        {
+                            //未処理額を使い切る場合
+                            w_dou_nyukingaku = w_dou_nyukingaku + w_dou_misyori_nyukingaku;                 //入金額に残りの未処理額を加えて
+                            w_dou_misyori_nyukingaku = 0;                                                   //未処理入金額を０にする
+                            w_str_nyukin_kanryou_flg = "0";                                                 //入金完了フラグは０
+                        }
+                        //処理したレコードの書き込み
+                        OracleUpdate("UPDATE tss_urikake_m SET nyukingaku ='" + w_dou_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_str_nyukin_kanryou_flg + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'and uriage_simebi = to_date('" + dr["uriage_simebi"].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+                        //未処理入金額が０になったら、ループを抜ける
+                        if (w_dou_nyukingaku == 0)
+                        {
+                            break;
+                        }
+                    }
+                    //取引先マスタに未処理入金額を書き込む
+                    OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + w_dou_misyori_nyukingaku.ToString() + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + in_cd + "'");
+                }
+            }
+            return out_bl;
         }
         #endregion
 

@@ -198,8 +198,7 @@ namespace TSS_SYSTEM
                 //入金処理の他に、なぜここでもやるのか？
                 //この締め処理で、売上額の増減、新規レコードなどが作成される可能性があるので、全ての処理後に未処理入金額を処理する。
                 //そうしないと、未処理入金額を自動で処理するタイミングが他にない
-                // ↓予想されるメソッド
-                //tss.misyori_nyukingaku(dr["torihikisaki_cd"].ToString());
+                tss.urikake_kesikomi(dr["torihikisaki_cd"].ToString());
             }
 
             MessageBox.Show("請求締め処理が完了しました。");

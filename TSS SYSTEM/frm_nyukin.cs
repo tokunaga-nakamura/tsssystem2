@@ -431,7 +431,7 @@ namespace TSS_SYSTEM
                 tb_create_datetime.Text = DateTime.Now.ToString();
                 MessageBox.Show("入金処理が完了しました");
 
-                tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString(),double.Parse(tb_nyukin_goukei.Text.ToString());
+                tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString());
             }
         
 

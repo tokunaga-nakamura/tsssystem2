@@ -414,12 +414,6 @@ namespace TSS_SYSTEM
             dgv_m.Columns.Add("ttl_uriage_su", "現在までの売上数");
             dgv_m.Columns.Add("juchu_su2", "受注数");
 
-            //セルの値表示位置の設定
-            dgv_m.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //seq
-            dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //売上数
-            dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //販売単価
-            dgv_m.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //売上金額
-
             //指定列を非表示にする
             dgv_m.Columns[0].Visible = false;   //売上No
             dgv_m.Columns[1].Visible = false;   //seq
@@ -463,6 +457,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.PowderBlue; //製品コード
 
             //列を右詰にする
+            dgv_m.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //seq
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //売上数
             dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //販売単価
             dgv_m.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;    //売上金額
@@ -473,8 +468,8 @@ namespace TSS_SYSTEM
             //書式を設定する
             dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0.00";  //売上数
             dgv_m.Columns[10].DefaultCellStyle.Format = "#,###,###,##0.00"; //販売単価
-            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,##0"; //売上金額
-            dgv_m.Columns[12].DefaultCellStyle.Format = "#,###,###,##0"; //消費税額
+            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,###"; //売上金額
+            dgv_m.Columns[12].DefaultCellStyle.Format = "#,###,###,###"; //消費税額
             dgv_m.Columns[24].DefaultCellStyle.Format = "#,###,###,##0.00"; //現在までの売上数
             dgv_m.Columns[25].DefaultCellStyle.Format = "#,###,###,##0.00"; //受注数
         }
@@ -1059,7 +1054,7 @@ namespace TSS_SYSTEM
                 else
                 {
                     w_syouhizeigaku = 0;
-                    dgv_m.Rows[e.RowIndex].Cells[11].Value = "";
+                    dgv_m.Rows[e.RowIndex].Cells[12].Value = 0;
                 }
 
                 //売上合計の再計算
