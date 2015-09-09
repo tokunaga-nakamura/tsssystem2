@@ -480,7 +480,7 @@ namespace TSS_SYSTEM
                 tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
 
                 //tssシステムライブラリの売掛消込処理実行
-                //tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString());
+                tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString());
             }
         
             //重複がある（入金の修正処理）
@@ -507,7 +507,7 @@ namespace TSS_SYSTEM
                 
                       tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
                       
-                      //tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString());
+                      tss.urikake_kesikomi(tb_torihikisaki_cd.Text.ToString());
                 }
 
                 tss.OracleDelete("delete from tss_nyukin_m WHERE nyukin_no = '" + tb_nyukin_no.Text.ToString() + "'");
