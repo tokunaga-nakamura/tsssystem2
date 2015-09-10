@@ -308,7 +308,7 @@ namespace TSS_SYSTEM
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
                     {
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
-                                        + "01" + "','"
+                                        + "02" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
                                         + dtp_buhin_syori_date.Value.ToShortDateString() + "','"
@@ -469,7 +469,7 @@ namespace TSS_SYSTEM
                     {
 
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
-                                        + "02" + "','"
+                                        + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
                                         + dtp_buhin_syori_date.Value.ToShortDateString() + "','"
