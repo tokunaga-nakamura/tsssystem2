@@ -89,8 +89,6 @@
             this.textBox9 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.line14 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.tb_footer_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_footer_syouhizei = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.label13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_kaisya_tel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
@@ -127,8 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_name)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_syouhizei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -386,7 +382,7 @@
             // 
             // crossSectionLine1
             // 
-            this.crossSectionLine1.Bottom = 0.3436351F;
+            this.crossSectionLine1.Bottom = 0F;
             this.crossSectionLine1.Left = 0F;
             this.crossSectionLine1.LineWeight = 1F;
             this.crossSectionLine1.Name = "crossSectionLine1";
@@ -405,7 +401,7 @@
             // 
             // crossSectionLine2
             // 
-            this.crossSectionLine2.Bottom = 0.3436351F;
+            this.crossSectionLine2.Bottom = 0F;
             this.crossSectionLine2.Left = 5.83504F;
             this.crossSectionLine2.LineWeight = 1F;
             this.crossSectionLine2.Name = "crossSectionLine2";
@@ -413,7 +409,7 @@
             // 
             // crossSectionLine3
             // 
-            this.crossSectionLine3.Bottom = 0.3436351F;
+            this.crossSectionLine3.Bottom = 0F;
             this.crossSectionLine3.Left = 4.841339F;
             this.crossSectionLine3.LineWeight = 1F;
             this.crossSectionLine3.Name = "crossSectionLine3";
@@ -421,15 +417,15 @@
             // 
             // crossSectionLine4
             // 
-            this.crossSectionLine4.Bottom = 0.3436351F;
-            this.crossSectionLine4.Left = 6.834646F;
+            this.crossSectionLine4.Bottom = 0F;
+            this.crossSectionLine4.Left = 6.83504F;
             this.crossSectionLine4.LineWeight = 1F;
             this.crossSectionLine4.Name = "crossSectionLine4";
             this.crossSectionLine4.Top = 3.198032F;
             // 
             // crossSectionLine5
             // 
-            this.crossSectionLine5.Bottom = 0.3436351F;
+            this.crossSectionLine5.Bottom = 0F;
             this.crossSectionLine5.Left = 3.80315F;
             this.crossSectionLine5.LineWeight = 1F;
             this.crossSectionLine5.Name = "crossSectionLine5";
@@ -679,7 +675,7 @@
             this.tb_mm.Height = 0.1665353F;
             this.tb_mm.Left = 5.373622F;
             this.tb_mm.Name = "tb_mm";
-            this.tb_mm.Style = "text-align: right";
+            this.tb_mm.Style = "font-size: 9pt; text-align: right";
             this.tb_mm.Text = null;
             this.tb_mm.Top = 2.177166F;
             this.tb_mm.Width = 0.2633858F;
@@ -768,13 +764,13 @@
             this.textBox7,
             this.textBox8,
             this.textBox9});
-            this.detail.Height = 0.2916667F;
+            this.detail.Height = 0.2291667F;
             this.detail.Name = "detail";
             // 
             // textBox6
             // 
             this.textBox6.DataField = "seihin_name";
-            this.textBox6.Height = 0.25F;
+            this.textBox6.Height = 0.1566929F;
             this.textBox6.Left = 0.07283465F;
             this.textBox6.Name = "textBox6";
             this.textBox6.Style = "font-size: 9pt; vertical-align: middle";
@@ -791,7 +787,7 @@
             this.textBox7.OutputFormat = resources.GetString("textBox7.OutputFormat");
             this.textBox7.Style = "font-size: 9pt; text-align: right";
             this.textBox7.Text = null;
-            this.textBox7.Top = 0.07244095F;
+            this.textBox7.Top = 0.02086614F;
             this.textBox7.Width = 0.9271653F;
             // 
             // textBox8
@@ -803,7 +799,7 @@
             this.textBox8.OutputFormat = resources.GetString("textBox8.OutputFormat");
             this.textBox8.Style = "font-size: 9pt; text-align: right";
             this.textBox8.Text = null;
-            this.textBox8.Top = 0.07244095F;
+            this.textBox8.Top = 0.02086614F;
             this.textBox8.Width = 0.8854331F;
             // 
             // textBox9
@@ -815,55 +811,34 @@
             this.textBox9.OutputFormat = resources.GetString("textBox9.OutputFormat");
             this.textBox9.Style = "font-size: 9pt; text-align: right";
             this.textBox9.Text = null;
-            this.textBox9.Top = 0.07244095F;
+            this.textBox9.Top = 0.02086614F;
             this.textBox9.Width = 0.8854327F;
             // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.line14,
-            this.tb_footer_name,
-            this.tb_footer_syouhizei});
-            this.pageFooter.Height = 0.34375F;
+            this.line14});
+            this.pageFooter.Height = 0.04166666F;
             this.pageFooter.Name = "pageFooter";
             // 
             // line14
             // 
-            this.line14.Height = 0.0001798272F;
-            this.line14.Left = 0F;
+            this.line14.Height = 0.0001799911F;
+            this.line14.Left = 0.0003929139F;
             this.line14.LineWeight = 1F;
             this.line14.Name = "line14";
-            this.line14.Top = 0.3437008F;
-            this.line14.Width = 6.834646F;
-            this.line14.X1 = 6.834646F;
-            this.line14.X2 = 0F;
-            this.line14.Y1 = 0.3437008F;
-            this.line14.Y2 = 0.3438807F;
-            // 
-            // tb_footer_name
-            // 
-            this.tb_footer_name.Height = 0.3019685F;
-            this.tb_footer_name.Left = 0.07283465F;
-            this.tb_footer_name.Name = "tb_footer_name";
-            this.tb_footer_name.Style = "font-size: 9pt; vertical-align: middle";
-            this.tb_footer_name.Top = 0.02086614F;
-            this.tb_footer_name.Width = 3.68819F;
-            // 
-            // tb_footer_syouhizei
-            // 
-            this.tb_footer_syouhizei.Height = 0.1566929F;
-            this.tb_footer_syouhizei.Left = 5.907481F;
-            this.tb_footer_syouhizei.Name = "tb_footer_syouhizei";
-            this.tb_footer_syouhizei.Style = "font-size: 9pt; text-align: right";
-            this.tb_footer_syouhizei.Text = null;
-            this.tb_footer_syouhizei.Top = 0.08346457F;
-            this.tb_footer_syouhizei.Width = 0.8854326F;
+            this.line14.Top = 0F;
+            this.line14.Width = 6.834647F;
+            this.line14.X1 = 6.83504F;
+            this.line14.X2 = 0.0003929139F;
+            this.line14.Y1 = 0F;
+            this.line14.Y2 = 0.0001799911F;
             // 
             // rpt_seikyu
             // 
             this.MasterReport = false;
             this.PageSettings.DefaultPaperSize = false;
-            this.PageSettings.Margins.Bottom = 0.5905512F;
+            this.PageSettings.Margins.Bottom = 0.7480315F;
             this.PageSettings.Margins.Left = 0.7874016F;
             this.PageSettings.Margins.Right = 0.5905512F;
             this.PageSettings.Margins.Top = 0.5905512F;
@@ -919,8 +894,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_name)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_footer_syouhizei)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -984,7 +957,5 @@
         private GrapeCity.ActiveReports.SectionReportModel.Line line12;
         private GrapeCity.ActiveReports.SectionReportModel.Line line13;
         private GrapeCity.ActiveReports.SectionReportModel.Line line14;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_footer_name;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_footer_syouhizei;
     }
 }
