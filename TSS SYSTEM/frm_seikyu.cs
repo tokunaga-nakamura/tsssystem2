@@ -200,20 +200,30 @@ namespace TSS_SYSTEM
                 //この締め処理で、売上額の増減、新規レコードなどが作成される可能性があるので、全ての処理後に未処理入金額を処理する。
                 //そうしないと、未処理入金額を自動で処理するタイミングが他にない
                 tss.urikake_kesikomi(dr["torihikisaki_cd"].ToString());
+
+                
+                
+                DialogResult result = MessageBox.Show("取引先:" + dr["torihikisaki_cd"].ToString() + " 請求番号:" + w_urikake_no.ToString() + " の請求書を発行しますか？", "確認", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    //請求書印刷
+                    frm_seikyu_preview frm_skm = new frm_seikyu_preview();
+                    frm_skm.in_urikake_no = w_urikake_no.ToString();
+                    //frm_skm.in_torihikisaki_cd1 = tb_torihikisaki_cd1.Text;
+                    //frm_skm.in_torihikisaki_cd2 = tb_torihikisaki_cd2.Text;
+                    //frm_skm.in_simebi = tb_seikyu_simebi.Text;
+                    frm_skm.ShowDialog(this);
+                    frm_skm.Dispose();
+                }
             }
 
             MessageBox.Show("請求締め処理が完了しました。");
-            DialogResult result = MessageBox.Show("続けて請求書を発行しますか？", "確認", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                //請求書印刷
-                frm_seikyu_preview frm_skm = new frm_seikyu_preview();
-                frm_skm.in_torihikisaki_cd1 = tb_torihikisaki_cd1.Text;
-                frm_skm.in_torihikisaki_cd2 = tb_torihikisaki_cd2.Text;
-                frm_skm.in_simebi = tb_seikyu_simebi.Text;
-                frm_skm.ShowDialog(this);
-                frm_skm.Dispose();
-            }
+
+            
+            
+            
+            
+            
             gamen_clear();
         }
 

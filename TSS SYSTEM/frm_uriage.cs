@@ -297,6 +297,7 @@ namespace TSS_SYSTEM
             tb_uriage_date.Text = "";
             //dgv_m.Rows.Clear();
             //dgv_m.Columns.Clear();
+            
             dgv_m.Columns.Remove("ttl_uriage_su");
             dgv_m.Columns.Remove("juchu_su2");
             dgv_m.DataSource = null;
@@ -1012,6 +1013,13 @@ namespace TSS_SYSTEM
             //売上金額                
             if (e.ColumnIndex == 9 || e.ColumnIndex == 10)
             {
+                //登録完了後の画面クリア時にdgvをクリアしようとすると、登録ボタン押下時のカラム位置の状態でなぜかイベントが発生していまう。
+                //その対策でtb_torihikisaki_cd.textが未入力の場合はイベントを抜けるようにする
+                if(tb_torihikisaki_cd.Text == null || tb_torihikisaki_cd.Text == "")
+                {
+                    return;
+                }
+
                 double w_uriage_su;
                 double w_hanbai_tanka;
                 double w_uriage_kingaku;

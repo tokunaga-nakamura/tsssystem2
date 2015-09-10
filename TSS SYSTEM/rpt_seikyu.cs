@@ -47,25 +47,25 @@ namespace TSS_SYSTEM
             tb_torihikisaki_name.Text = tss.get_torihikisaki_name(w_dr["torihikisaki_cd"].ToString()) + "  様";
             tb_urikake_no.Text = w_dr["urikake_no"].ToString();
             //フッター情報（消費税）を割り当て
-            w_dt_syouhizei = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + w_dr["torihikisaki_cd"].ToString() + "'");
-            if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "0")
-            {
-                //請求合計
-                tb_footer_name.Text = "消費税";
-                tb_footer_syouhizei.Text = tss.try_string_to_double(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
-            }
-            if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "1")
-            {
-                //明細毎
-                tb_footer_name.Text = "";
-                tb_footer_syouhizei.Text = "";
-            }
-            if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "2")
-            {
-                //伝票毎
-                tb_footer_name.Text = "消費税は伝票毎に算出させていただいている為、合計金額のみ記載させていただきます。";
-                tb_footer_syouhizei.Text = "";
-            }
+            //w_dt_syouhizei = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + w_dr["torihikisaki_cd"].ToString() + "'");
+            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "0")
+            //{
+            //    //請求合計
+            //    tb_footer_name.Text = "消費税";
+            //    tb_footer_syouhizei.Text = tss.try_string_to_double(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
+            //}
+            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "1")
+            //{
+            //    //明細毎
+            //    tb_footer_name.Text = "";
+            //    tb_footer_syouhizei.Text = "";
+            //}
+            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "2")
+            //{
+            //    //伝票毎
+            //    tb_footer_name.Text = "消費税は伝票毎に算出させていただいている為、合計金額のみ記載させていただきます。";
+            //    tb_footer_syouhizei.Text = "";
+            //}
 
             
         }

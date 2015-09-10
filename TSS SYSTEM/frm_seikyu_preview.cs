@@ -30,6 +30,7 @@ namespace TSS_SYSTEM
         public string in_torihikisaki_cd1;
         public string in_torihikisaki_cd2;
         public string in_simebi;
+        public string in_urikake_no;
 
 
         public frm_seikyu_preview()
@@ -39,6 +40,7 @@ namespace TSS_SYSTEM
             in_torihikisaki_cd1 = "";
             in_torihikisaki_cd2 = "";
             in_simebi = "";
+            in_urikake_no = "";
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -48,16 +50,27 @@ namespace TSS_SYSTEM
 
         private void frm_seikyu_preview_Load(object sender, EventArgs e)
         {
-            if(in_torihikisaki_cd1 != "")
+            if(in_urikake_no != "")
             {
-                rb_torihikisaki_cd.Checked = true;
-                tb_torihikisaki_cd1.Text = in_torihikisaki_cd1;
-                tb_torihikisaki_cd2.Text = in_torihikisaki_cd2;
-                tb_simebi.Text = in_simebi;
+                rb_seikyu_no.Checked = true;
+                tb_urikake_no.Text = in_urikake_no;
+                insatu_preview();
             }
+            //if(in_torihikisaki_cd1 != "")
+            //{
+            //    rb_torihikisaki_cd.Checked = true;
+            //    tb_torihikisaki_cd1.Text = in_torihikisaki_cd1;
+            //    tb_torihikisaki_cd2.Text = in_torihikisaki_cd2;
+            //    tb_simebi.Text = in_simebi;
+            //}
         }
 
         private void btn_preview_Click(object sender, EventArgs e)
+        {
+            insatu_preview();
+        }
+
+        private void insatu_preview()
         {
             if(rb_seikyu_no.Checked == true)
             {
@@ -89,7 +102,6 @@ namespace TSS_SYSTEM
                 this.viewer1.Document = rpt.Document;
                 //this.viewer1.Print(true,true,true);
             }
-
         }
 
         private void rb_seikyu_no_CheckedChanged(object sender, EventArgs e)
