@@ -59,7 +59,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Location = new System.Drawing.Point(33, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(68, 19);
@@ -70,7 +70,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(10, 28);
+            this.textBox2.Location = new System.Drawing.Point(33, 30);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(68, 19);
@@ -80,20 +80,20 @@
             // 
             // tb_user_cd
             // 
-            this.tb_user_cd.Location = new System.Drawing.Point(78, 3);
+            this.tb_user_cd.Location = new System.Drawing.Point(101, 5);
             this.tb_user_cd.MaxLength = 6;
             this.tb_user_cd.Name = "tb_user_cd";
-            this.tb_user_cd.Size = new System.Drawing.Size(172, 19);
+            this.tb_user_cd.Size = new System.Drawing.Size(49, 19);
             this.tb_user_cd.TabIndex = 0;
             this.tb_user_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_user_cd_Validating);
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(78, 28);
+            this.tb_password.Location = new System.Drawing.Point(101, 30);
             this.tb_password.MaxLength = 20;
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
-            this.tb_password.Size = new System.Drawing.Size(172, 19);
+            this.tb_password.Size = new System.Drawing.Size(136, 19);
             this.tb_password.TabIndex = 1;
             this.tb_password.Validating += new System.ComponentModel.CancelEventHandler(this.tb_password_Validating);
             // 
@@ -114,7 +114,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(263, 128);
-            this.splitContainer1.SplitterDistance = 32;
+            this.splitContainer1.SplitterDistance = 29;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
@@ -138,8 +138,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Panel2.Controls.Add(this.btn_login);
-            this.splitContainer2.Size = new System.Drawing.Size(263, 92);
-            this.splitContainer2.SplitterDistance = 55;
+            this.splitContainer2.Size = new System.Drawing.Size(263, 95);
+            this.splitContainer2.SplitterDistance = 59;
             this.splitContainer2.TabIndex = 6;
             this.splitContainer2.TabStop = false;
             // 
