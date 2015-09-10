@@ -182,7 +182,7 @@ namespace TSS_SYSTEM
                             tss.OracleUpdate("update tss_torihikisaki_m set MISYORI_NYUKINGAKU = MISYORI_NYUKINGAKU + " + w_chk_nyukingaku.ToString() + " ,update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
                         }
                     }
-                    tss.OracleUpdate("update tss_urikake_m set kurikosigaku = '" + w_kurikosi.ToString() + "',uriage_kingaku = '" + w_uriage.ToString() + "',syouhizeigaku = '" + w_syouhizei.ToString() + "' nyukingaku = '" + w_chk_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_nyukin_kanryou_flg + "',nyukingaku2 = '" + w_nyukin + "',urikake_zandaka = '" + w_zandaka.ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where urikake_no = '" + w_urikake_no + "'");
+                    tss.OracleUpdate("update tss_urikake_m set kurikosigaku = '" + w_kurikosi.ToString() + "',uriage_kingaku = '" + w_uriage.ToString() + "',syouhizeigaku = '" + w_syouhizei.ToString() + "',nyukingaku = '" + w_chk_nyukingaku.ToString() + "',nyukin_kanryou_flg = '" + w_nyukin_kanryou_flg + "',nyukingaku2 = '" + w_nyukin + "',urikake_zandaka = '" + w_zandaka.ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where urikake_no = '" + w_urikake_no + "'");
                 }
                 else
                 {
@@ -191,9 +191,10 @@ namespace TSS_SYSTEM
                     w_no = tss.GetSeq("08");
                     w_urikake_no = w_no.ToString("0000000000");
                     tss.OracleInsert("insert into tss_urikake_m (torihikisaki_cd,uriage_simebi,kurikosigaku,uriage_kingaku,syouhizeigaku,nyukingaku,nyukin_kanryou_flg,nyukingaku2,urikake_zandaka,urikake_no,create_user_cd,create_datetime) values ('" + dr["torihikisaki_cd"].ToString() + "','" + tb_seikyu_simebi.Text + "','" + w_kurikosi.ToString() + "','" + w_uriage.ToString() + "','" + w_syouhizei.ToString() + "','0','0','" + w_nyukin.ToString() + "','" + w_zandaka.ToString() + "','" + w_urikake_no + "','" + tss.user_cd + "',sysdate)");
-                    //売上マスタの請求番号（urikake_no）を更新
-                    tss.OracleUpdate("update tss_uriage_m set urikake_no = '" + w_urikake_no + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
                 }
+                //売上マスタの請求番号（urikake_no）を更新
+                tss.OracleUpdate("update tss_uriage_m set urikake_no = '" + w_urikake_no + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
+
                 //最後に取引先ますたにスプールされた未処理入金額の消し込みを行う
                 //入金処理の他に、なぜここでもやるのか？
                 //この締め処理で、売上額の増減、新規レコードなどが作成される可能性があるので、全ての処理後に未処理入金額を処理する。
@@ -230,8 +231,8 @@ namespace TSS_SYSTEM
             {
                 w_datetime = new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));   //末日を求める
             }
-
-            w_dt = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + w_datetime.ToShortDateString() + "' and nyukin_kanryou_flg <> '1'");
+            //w_dt = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + w_datetime.ToShortDateString() + "' and nyukin_kanryou_flg <> '1'");
+            w_dt = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + w_datetime.ToShortDateString() + "'");
             if (w_dt.Rows.Count == 0)
             {
                 //1カ月前のレコードが無かった場合

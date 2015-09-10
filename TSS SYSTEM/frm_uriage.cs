@@ -1238,7 +1238,7 @@ namespace TSS_SYSTEM
             //印刷用のトランファイルを作成
             tss.OracleSelect("CREATE table tss_uriage_denpyou_trn AS SELECT * FROM tss_uriage_m where uriage_no = '" + tb_uriage_no.Text.ToString() + "'");
             frm_uriage_denpyou_preview frm_rpt = new frm_uriage_denpyou_preview();
-            frm_rpt.w_uriage_no = tb_torihikisaki_cd.Text;
+            frm_rpt.w_uriage_no = tb_uriage_no.Text;
             frm_rpt.ShowDialog(this);
             frm_rpt.Dispose();
         }
