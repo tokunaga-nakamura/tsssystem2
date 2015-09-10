@@ -46,10 +46,13 @@ namespace TSS_SYSTEM
                     MessageBox.Show("入力された製品コードは存在しません。");
                     e.Cancel = true;
                 }
-                if (chk_seihin_kousei() == false)
+                else
                 {
-                    MessageBox.Show("入力された製品コードは製品構成が登録されていません。");
-                    e.Cancel = true;
+                    if (chk_seihin_kousei() == false)
+                    {
+                        MessageBox.Show("入力された製品コードは製品構成が登録されていません。");
+                        e.Cancel = true;
+                    }
                 }
             }
 
@@ -308,9 +311,12 @@ namespace TSS_SYSTEM
             {
                 bl = false;
             }
-            if(w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == null || w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == "")
+            else
             {
-                bl = false;
+                if (w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == null || w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == "")
+                {
+                    bl = false;
+                }
             }
             return bl;
         }
