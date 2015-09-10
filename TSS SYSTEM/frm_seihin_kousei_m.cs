@@ -794,7 +794,13 @@ namespace TSS_SYSTEM
             dgv_seihin_kousei_disp();
 
             tb_seihin_kousei_no.Text = str_w3;
+
+            if(str_w3 =="")
+            {
+                tb_seihin_kousei_name.Text = "";
+            }
             tb_seihin_kousei_name.Focus();
+            tb_seihin_kousei_no.Focus();
 
         }
 

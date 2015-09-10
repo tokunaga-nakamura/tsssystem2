@@ -32,7 +32,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btn_tuika = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.dgv_seihin_kousei = new System.Windows.Forms.DataGridView();
@@ -54,6 +53,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_tsuika = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -105,19 +105,9 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "製品構成番号";
             // 
-            // btn_tuika
-            // 
-            this.btn_tuika.Location = new System.Drawing.Point(10, 3);
-            this.btn_tuika.Name = "btn_tuika";
-            this.btn_tuika.Size = new System.Drawing.Size(108, 23);
-            this.btn_tuika.TabIndex = 4;
-            this.btn_tuika.Text = "1行追加";
-            this.btn_tuika.UseVisualStyleBackColor = true;
-            this.btn_tuika.Click += new System.EventHandler(this.btn_tsuika_Click);
-            // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(714, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(704, 4);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 3;
@@ -354,7 +344,7 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_tuika);
+            this.splitContainer2.Panel2.Controls.Add(this.btn_tsuika);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
@@ -394,6 +384,16 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_tsuika
+            // 
+            this.btn_tsuika.Location = new System.Drawing.Point(10, 4);
+            this.btn_tsuika.Name = "btn_tsuika";
+            this.btn_tsuika.Size = new System.Drawing.Size(75, 23);
+            this.btn_tsuika.TabIndex = 4;
+            this.btn_tsuika.Text = "1行挿入";
+            this.btn_tsuika.UseVisualStyleBackColor = true;
+            this.btn_tsuika.Click += new System.EventHandler(this.btn_tsuika_Click);
             // 
             // frm_seihin_kousei_m
             // 
@@ -436,7 +436,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btn_tuika;
         private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.StatusStrip ss_status;
         private System.Windows.Forms.DataGridView dgv_seihin_kousei;
@@ -458,5 +457,6 @@
         private System.Windows.Forms.DataGridView dgv_seihin_kousei_name;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_tsuika;
     }
 }
