@@ -305,10 +305,10 @@ namespace TSS_SYSTEM
                 for (int i = 0; i < dgvrc - 1; i++)
                 {
 
-                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
-                                        + "02" + "','"
+                                        + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
                                         + dtp_buhin_syori_date.Value.ToShortDateString() + "','"
@@ -365,7 +365,7 @@ namespace TSS_SYSTEM
                 tss.GetUser();
                 for (int i = 0; i < j - 1; i++)
                 {
-                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
                         dt_work5 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "'and zaiko_kbn = '" + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "'and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
 
@@ -381,45 +381,70 @@ namespace TSS_SYSTEM
                                                  + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                  + tss.user_cd + "',SYSDATE)");
                         }
+
+                        if (dt_work5.Rows.Count != 0)
+                        {
+
+                            double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                            double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+
+                            double zaikosu3 = zaikosu1 + zaikosu2;
+
+
+                            if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
+                            {
+                                bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                            }
+
+
+                            if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
+                            {
+                                bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + 999999 + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                            }
+                        }
+
+
                     }
 
 
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
-
+                    { 
                         dt_work5 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + 999999 + "'and buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "'and zaiko_kbn = '" + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "'and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
 
-                    if (dt_work5.Rows.Count == 0)
-                    {
-                        bool bl3 = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
-                                          + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "','"
-                                          + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "','"
-                                          + 999999 + "','"
-                                          + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
-                                          + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                          + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
-                                          + tss.user_cd + "',SYSDATE)");
-                    }
-
-
-
-                    if (dt_work5.Rows.Count != 0)
-                    {
-
-                        double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                        double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
-
-                        double zaikosu3 = zaikosu1 + zaikosu2;
-
-                        if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                        if (dt_work5.Rows.Count == 0)
                         {
-                            bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                            bool bl3 = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
+                                                 + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "','"
+                                                 + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "','"
+                                                 + 999999 + "','"
+                                                 + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
+                                                 + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
+                                                 + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                                 + tss.user_cd + "',SYSDATE)");
                         }
 
-                        if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
-                        {
-                            bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + 999999 + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
-                        }
 
+
+                        if (dt_work5.Rows.Count != 0)
+                        {
+
+                            double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                            double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+
+                            double zaikosu3 = zaikosu1 + zaikosu2;
+
+
+                            if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
+                            {
+                                bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                            }
+
+
+                            if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
+                            {
+                                bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + 999999 + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                            }
+                        }
 
                     }
                 }
@@ -441,7 +466,7 @@ namespace TSS_SYSTEM
                 for (int i = 0; i < dgvrc - 1; i++)
                 {
 
-                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                    if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "02" + "','"
@@ -499,7 +524,7 @@ namespace TSS_SYSTEM
                     tss.GetUser();
                     for (int i = 0; i < j - 1; i++)
                     {
-                        if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                        if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                         {
                             dt_work5 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "'and zaiko_kbn = '" + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "'and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
 
@@ -515,6 +540,25 @@ namespace TSS_SYSTEM
                                                  + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                  + tss.user_cd + "',SYSDATE)");
                             }
+
+                            if (dt_work5.Rows.Count != 0)
+                            {
+                                double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
+                                double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+
+                                double zaikosu3 = zaikosu1 - zaikosu2;
+
+                                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
+                                {
+                                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                                }
+
+                                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
+                                {
+                                    bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + 999999 + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
+                                }
+                            }
+
                         }
 
 
@@ -542,7 +586,7 @@ namespace TSS_SYSTEM
 
                                 double zaikosu3 = zaikosu1 - zaikosu2;
 
-                                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02")
+                                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                                 {
                                     bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
                                 }
