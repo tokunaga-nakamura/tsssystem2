@@ -192,9 +192,10 @@ namespace TSS_SYSTEM
                 string hasu_kbn = dt_work2.Rows[j2-1][22].ToString();//端数区分　0:切捨て　1:四捨五入　2:切上げ
                 string hasu_syori_tani = dt_work2.Rows[j2-1][23].ToString();//端数処理単位　0:円未満 1:十円未満 2:百円未満
 
-                if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value.ToString() == null && dgv.CurrentCell.Value.ToString() == "")
+                if (dgv.Columns[e.ColumnIndex].Index == 0 && dgv.CurrentCell.Value == null || dgv.CurrentCell.Value.ToString() == "")
                 {
-                    return;
+                    
+                    //return;
                 }
 
                 //仕入数量が入力されたならば、仕入単価と数量を掛け算して仕入金額に表示（取引先マスタの端数処理も組み込む）
@@ -610,7 +611,7 @@ namespace TSS_SYSTEM
             dgv_siire.Columns[3].DefaultCellStyle.Format = "#,0.00";
 
             dgv_siire.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siire.Columns[4].DefaultCellStyle.Format = "#,0.00";
+            dgv_siire.Columns[4].DefaultCellStyle.Format = "#,0";
 
             //部品名、仕入金額、仕入締日、支払計上日は入力不可
             dgv_siire.Columns[1].ReadOnly = true;
@@ -693,7 +694,7 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Clear();
                     tb_update_datetime.Clear();
                     tb_siire_no.Text = w_siire_no.ToString("0000000000");
-                    //tb_siire_no.Focus();
+                    tb_siire_no.Focus();
                     return;
                 }
 
@@ -842,9 +843,10 @@ namespace TSS_SYSTEM
                 return;
             }
 
+            //部品コードが入力されたときの処理
             if (e.ColumnIndex == 0)
             {
-
+                //部品コードがnullや空白の場合
                 if ((dgv.Rows[e.RowIndex].Cells[0] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     dgv.Rows[i].Cells[0].Value = "";
@@ -856,11 +858,13 @@ namespace TSS_SYSTEM
                     dgv.Rows[i].Cells[6].Value = "";
                     dgv.Rows[i].Cells[7].Value = "";
                 }
-
-               
+                
+                //部品コードに何か値が入力された
                 else
                 {
                     DataTable dtTmp = (DataTable)dgv_siire.DataSource;
+                    
+                    //取引先マスタの
                     DataTable dt_work2 = new DataTable();
 
                     dt_work2 = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
@@ -899,15 +903,16 @@ namespace TSS_SYSTEM
 
                         e.Cancel = true;
                     }
-                    else //データグリッドビューに一行ずつ値を入れていく
+                    else //データグリッドビューに部品マスタから取得した一行ずつ値を入れていく   ここで入力した値と、セルにある値を比較する
                     {
-                        dgv.Rows[i].Cells[0].Value = dt_work.Rows[j][0].ToString();
-                        dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
-                        dgv.Rows[i].Cells[3].Value = dt_work.Rows[j][8].ToString();
+                           //dgv.Rows[i].Cells[0].Value = dt_work.Rows[j][0].ToString(); ここで部品コードを入れると、後の入力値比較ができないので入れない
+                            dgv.Rows[i].Cells[1].Value = dt_work.Rows[j][1].ToString();
+                            dgv.Rows[i].Cells[3].Value = dt_work.Rows[j][8].ToString();
 
-                        //仕入締日計算メソッドの値をstring型に変換してデータグリッドビューに表示
-                        string str_siire_simebi = (get_siire_simebi(dtp_siire_date.Value)).ToShortDateString();
-                        dgv.Rows[i].Cells[5].Value = str_siire_simebi;
+                            //仕入締日計算メソッドの値をstring型に変換してデータグリッドビューに表示
+                            string str_siire_simebi = (get_siire_simebi(dtp_siire_date.Value)).ToShortDateString();
+                            dgv.Rows[i].Cells[5].Value = str_siire_simebi;
+                        
                     }
                     //return;
                 }
@@ -932,10 +937,10 @@ namespace TSS_SYSTEM
                             //MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
                             e.Cancel = true;
                         }
+                        
                         else
                         {
                             str1 = dt_w.Rows[0][0].ToString();
-
                             str2 = tb_torihikisaki_cd.Text.ToString();
 
                             if (dt_w.Rows.Count == 0)
@@ -943,34 +948,42 @@ namespace TSS_SYSTEM
                                 return;
                             }
 
-                            else
+                            if (e.FormattedValue.ToString() == dgv_siire.Rows[i].Cells[0].Value.ToString())
                             {
 
-                                if (str1 != str2)
-                                {
-                                    DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
-                                    "部品入出庫登録",
-                                    MessageBoxButtons.OKCancel,
-                                    MessageBoxIcon.Exclamation,
-                                    MessageBoxDefaultButton.Button2);
-
-                                    if (result == DialogResult.OK)
-                                    {
-                                        dgv_siire.EndEdit();
-                                        //dgv_seihin_kousei.EndEdit();
-                                        dgv_siire.Focus();
-
-                                    }
-                                    if (result == DialogResult.Cancel)
-                                    {
-                                        e.Cancel = true;
-                                        dgv_siire.Rows[e.RowIndex].Cells[i + 1].Value = "";
-                                        return;
-                                    }
-                                }
                             }
 
-                            dgv_siire.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
+                            else
+                            {
+                                
+                                if (str1 != str2)
+                                {
+                                        DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                                        "部品入出庫登録",
+                                        MessageBoxButtons.OKCancel,
+                                        MessageBoxIcon.Exclamation,
+                                        MessageBoxDefaultButton.Button2);
+
+                                        if (result == DialogResult.OK)
+                                        {
+                                            dgv_siire.EndEdit();
+                                            //dgv_seihin_kousei.EndEdit();
+                                            dgv_siire.Focus();
+
+                                        }
+                                        
+                                          if (result == DialogResult.Cancel)
+                                        {
+                                            e.Cancel = true;
+                                            dgv_siire.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                            return;
+                                        }
+
+                                }
+                               
+                            }
+
+                            dgv_siire.Rows[e.RowIndex].Cells[1].Value = tss.get_buhin_name(w_buhin_cd);
                             dgv_siire.EndEdit();
                         }
 

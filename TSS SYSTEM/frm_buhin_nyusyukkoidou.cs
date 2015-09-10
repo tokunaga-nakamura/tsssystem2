@@ -132,10 +132,6 @@ namespace TSS_SYSTEM
             w_str = "02";
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
@@ -244,7 +240,7 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                //DataTable dt_work = new DataTable();
+                //在庫区分チェック
                 dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '01' and kubun_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "'");
                 if (dt_work.Rows.Count <= 0)
                 {
@@ -276,19 +272,20 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < dgvrc - 1; i++)
             {
-                //受注コードが空白の場合、9999999999999999を代入
+                //ロット在庫で、受注コード2が空白の場合、9999999999999999を代入
                 if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value != null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value == null)
                 {
                     dgv_nyusyukkoidou.Rows[i].Cells[4].Value = 9999999999999999;
                 }
 
-                //受注コードが空白の場合、9999999999999999を代入
+
+                //フリー在庫の場合、受注コード1、受注コード2に9999999999999999を代入
                 if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value == null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value == null)
                 {
                     dgv_nyusyukkoidou.Rows[i].Cells[3].Value = 9999999999999999;
                     dgv_nyusyukkoidou.Rows[i].Cells[4].Value = 9999999999999999;
                 }
-                //備考が空白の場合、""を代入
+                //備考が空白の場合、""を代入（オラクルインサート時のnullエラー回避）
                 if (dgv_nyusyukkoidou.Rows[i].Cells[6].Value == null)
                 {
                     dgv_nyusyukkoidou.Rows[i].Cells[6].Value = "";
@@ -296,17 +293,19 @@ namespace TSS_SYSTEM
 
             }
 
-            if (str_mode == "1")　//入庫モード
+            //入庫モード/////////////////////////////////////////////////////////////////////////////////
+            if (str_mode == "1")　
             {
 
-                //レコードの行数分ループしてインサート
+                //データグリッドビューのレコードの行数分ループしてインサート
                 int dgvrc2 = dgv_nyusyukkoidou.Rows.Count;
-
                 for (int i = 0; i < dgvrc - 1; i++)
                 {
-
+                    
+                    //在庫区分が01以外（ロット在庫等）のとき
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
+
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
@@ -325,13 +324,14 @@ namespace TSS_SYSTEM
                         if (bl6 != true)
                         {
                             tss.ErrorLogWrite(tss.user_cd, "入出庫移動／登録", "登録ボタン押下時のOracleInsert");
-                            MessageBox.Show("入庫処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
+                            MessageBox.Show("入出庫処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
                             this.Close();
                         }
                     }
+
+                    //在庫区分が01（フリー在庫等）のとき　取引先コードは999999にする。
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
                     {
-
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
@@ -350,11 +350,10 @@ namespace TSS_SYSTEM
                         if (bl6 != true)
                         {
                             tss.ErrorLogWrite(tss.user_cd, "入出庫移動／登録", "登録ボタン押下時のOracleInsert");
-                            MessageBox.Show("入庫処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
+                            MessageBox.Show("入出庫処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
                             this.Close();
                         }
                     }
-
 
                 }
 
@@ -457,7 +456,7 @@ namespace TSS_SYSTEM
                 dgv_nyusyukkoidou.Rows.Clear();
             }
 
-            //出庫処理///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //出庫モード///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if (str_mode == "2")
             {
                 //レコードの行数分ループしてインサート
@@ -699,7 +698,9 @@ namespace TSS_SYSTEM
             }
         }
 
-       private void SEQ()
+      
+        //入出庫番号
+        private void SEQ()
         {
             DataTable dt_work = new DataTable();
             double w_seq;
@@ -713,7 +714,8 @@ namespace TSS_SYSTEM
         }
 
 
-       private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+       //取引先コードダブルクリックイベント
+        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
        {
            //選択画面へ
            string w_cd;
@@ -725,12 +727,14 @@ namespace TSS_SYSTEM
            }
        }
 
-       private void btn_hardcopy_Click(object sender, EventArgs e)
+        //ハードコピーボタンクリックイベント
+        private void btn_hardcopy_Click(object sender, EventArgs e)
        {
            tss.HardCopy();
        }
 
-       private void dgv_nyusyukkoidou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+       //データグリッドビューのセルダブルクリックイベント
+        private void dgv_nyusyukkoidou_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
        {
            
                int i = e.ColumnIndex;
@@ -834,7 +838,8 @@ namespace TSS_SYSTEM
 
        }
 
-       private void dgv_nyusyukkoidou_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+       //データグリッドビューのセル検証中イベント
+        private void dgv_nyusyukkoidou_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
        {
            int i = e.ColumnIndex;
            int j = e.RowIndex;
@@ -846,7 +851,8 @@ namespace TSS_SYSTEM
                return;
            }
 
-           if (i == 0)
+           //部品コード検証イベント
+            if (i == 0)
            {
                if (tb_torihikisaki_cd.Text != "")
                {
@@ -921,7 +927,8 @@ namespace TSS_SYSTEM
            
            }
 
-           if (i == 2)
+            //在庫区分検証イベント
+            if (i == 2)
            {
                string zaiko_kbn = e.FormattedValue.ToString();
 
@@ -935,6 +942,7 @@ namespace TSS_SYSTEM
 
                    dgv_nyusyukkoidou.EndEdit();
                }
+               //在庫区分が01（フリー）以外なら、受注コード1、2のリードオンリーを解除する。
                else
                {
                    dgv_nyusyukkoidou[3, j].Style.BackColor = Color.PowderBlue;
@@ -957,10 +965,12 @@ namespace TSS_SYSTEM
            }
        }
 
-       private void dgv_nyusyukkoidou_CellValidated(object sender, DataGridViewCellEventArgs e)
+      
+    　 //データグリッドビューのセル検証後のイベント
+        private void dgv_nyusyukkoidou_CellValidated(object sender, DataGridViewCellEventArgs e)
        {
 
-           
+           //数量セルの書式設定
            if(e.ColumnIndex == 5)
            {
                if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value != null && dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString() != "")

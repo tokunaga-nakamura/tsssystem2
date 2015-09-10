@@ -523,33 +523,35 @@
             // 
             // tb_kurikosi_zandaka
             // 
-            this.tb_kurikosi_zandaka.Location = new System.Drawing.Point(709, 15);
+            this.tb_kurikosi_zandaka.Location = new System.Drawing.Point(486, 15);
             this.tb_kurikosi_zandaka.MaxLength = 40;
             this.tb_kurikosi_zandaka.Name = "tb_kurikosi_zandaka";
             this.tb_kurikosi_zandaka.ReadOnly = true;
-            this.tb_kurikosi_zandaka.Size = new System.Drawing.Size(160, 19);
+            this.tb_kurikosi_zandaka.Size = new System.Drawing.Size(87, 19);
             this.tb_kurikosi_zandaka.TabIndex = 11;
             this.tb_kurikosi_zandaka.TabStop = false;
             this.tb_kurikosi_zandaka.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_kurikosi_zandaka.Visible = false;
             // 
             // textBox11
             // 
             this.textBox11.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox11.Location = new System.Drawing.Point(601, 15);
+            this.textBox11.Location = new System.Drawing.Point(383, 15);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(108, 19);
             this.textBox11.TabIndex = 30;
             this.textBox11.TabStop = false;
             this.textBox11.Text = "繰越残高";
+            this.textBox11.Visible = false;
             // 
             // tb_siharai_goukei
             // 
-            this.tb_siharai_goukei.Location = new System.Drawing.Point(447, 15);
+            this.tb_siharai_goukei.Location = new System.Drawing.Point(710, 15);
             this.tb_siharai_goukei.MaxLength = 40;
             this.tb_siharai_goukei.Name = "tb_siharai_goukei";
             this.tb_siharai_goukei.ReadOnly = true;
-            this.tb_siharai_goukei.Size = new System.Drawing.Size(120, 19);
+            this.tb_siharai_goukei.Size = new System.Drawing.Size(163, 19);
             this.tb_siharai_goukei.TabIndex = 27;
             this.tb_siharai_goukei.TabStop = false;
             this.tb_siharai_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -567,7 +569,7 @@
             // textBox8
             // 
             this.textBox8.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox8.Location = new System.Drawing.Point(338, 15);
+            this.textBox8.Location = new System.Drawing.Point(601, 15);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(108, 19);

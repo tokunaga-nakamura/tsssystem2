@@ -361,14 +361,28 @@ namespace TSS_SYSTEM
             double siharai_soukei = new double();
             int rc2 = dgv_siharai.Rows.Count;
 
-
-            for (int j = 0; j < rc2; j++)
+            if(rc2 != 0 )
             {
-                siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
-                tb_siharai_goukei.Text = siharai_soukei.ToString("#,0.##");
+                for (int j = 0; j < rc2; j++)
+                {
+                    siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
+                    tb_siharai_goukei.Text = siharai_soukei.ToString("#,0");
 
-                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0.##");
+
+                    if (tb_mibarai_goukei.Text == "")
+                    {
+                        tb_mibarai_goukei.Text = "0";
+                        tb_kurikosi_zandaka.Text = "0"; //( 0 - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
+                        tb_kurikosi_zandaka.Text = double.Parse(tb_siharai_goukei.Text.ToString()).ToString("#,0");
+                    }
+                    else
+                    {
+                        tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
+                    }
+                }
             }
+
+            
         }
 
         private void dgv_siharai_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -436,23 +450,23 @@ namespace TSS_SYSTEM
                     dgv_mibarai.Columns[4].HeaderText = "支払金額";
                     dgv_mibarai.Columns[5].HeaderText = "未払金額";
 
-                    //使用数量右寄せ、カンマ区切り
+                    //金額右寄せ、カンマ区切り
                     dgv_mibarai.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[1].DefaultCellStyle.Format = "#,0.00";
+                    dgv_mibarai.Columns[1].DefaultCellStyle.Format = "#,0";
 
                     //dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.##";
 
                     dgv_mibarai.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[2].DefaultCellStyle.Format = "#,0.00";
+                    dgv_mibarai.Columns[2].DefaultCellStyle.Format = "#,0";
 
                     dgv_mibarai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[3].DefaultCellStyle.Format = "#,0.00";
+                    dgv_mibarai.Columns[3].DefaultCellStyle.Format = "#,0";
 
                     dgv_mibarai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0.00";
+                    dgv_mibarai.Columns[4].DefaultCellStyle.Format = "#,0";
 
                     dgv_mibarai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0.00";
+                    dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0";
 
 
                     //１行のみ選択可能（複数行の選択不可）
@@ -470,7 +484,7 @@ namespace TSS_SYSTEM
             //未払合計テキストボックスへ値を入れる
             object obj = dt_work.Compute("SUM(mibaraigaku)", null);
             double goukeikingku = double.Parse(obj.ToString());
-            tb_mibarai_goukei.Text = goukeikingku.ToString("#,0.00");
+            tb_mibarai_goukei.Text = goukeikingku.ToString("#,0");
 
         }
 
@@ -854,16 +868,16 @@ namespace TSS_SYSTEM
         private void dgv_siharai_disp()
         {
             dgv_siharai.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[3].DefaultCellStyle.Format = "#,0.##";
+            dgv_siharai.Columns[3].DefaultCellStyle.Format = "#,0";
 
             dgv_siharai.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[4].DefaultCellStyle.Format = "#,0.##";
+            dgv_siharai.Columns[4].DefaultCellStyle.Format = "#,0";
 
             dgv_siharai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[5].DefaultCellStyle.Format = "#,0.##";
+            dgv_siharai.Columns[5].DefaultCellStyle.Format = "#,0";
 
             dgv_siharai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0.##";
+            dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0";
 
 
             dgv_siharai.Columns[0].HeaderText = "仕入締日";
