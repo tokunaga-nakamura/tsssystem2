@@ -374,6 +374,7 @@
             // 
             // tb_mibarai_goukei
             // 
+            this.tb_mibarai_goukei.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_mibarai_goukei.Location = new System.Drawing.Point(715, 11);
             this.tb_mibarai_goukei.MaxLength = 40;
             this.tb_mibarai_goukei.Name = "tb_mibarai_goukei";
@@ -409,7 +410,7 @@
             this.tb_siharai_date.Location = new System.Drawing.Point(331, 21);
             this.tb_siharai_date.MaxLength = 40;
             this.tb_siharai_date.Name = "tb_siharai_date";
-            this.tb_siharai_date.Size = new System.Drawing.Size(107, 19);
+            this.tb_siharai_date.Size = new System.Drawing.Size(88, 19);
             this.tb_siharai_date.TabIndex = 7;
             this.tb_siharai_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_date_Validating);
             // 
@@ -437,11 +438,12 @@
             // 
             // tb_siharai_no
             // 
-            this.tb_siharai_no.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_siharai_no.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_siharai_no.Location = new System.Drawing.Point(118, 21);
             this.tb_siharai_no.MaxLength = 10;
             this.tb_siharai_no.Name = "tb_siharai_no";
-            this.tb_siharai_no.Size = new System.Drawing.Size(85, 19);
+            this.tb_siharai_no.ReadOnly = true;
+            this.tb_siharai_no.Size = new System.Drawing.Size(77, 19);
             this.tb_siharai_no.TabIndex = 6;
             this.tb_siharai_no.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_siharai_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_no_Validating);
@@ -547,7 +549,8 @@
             // 
             // tb_siharai_goukei
             // 
-            this.tb_siharai_goukei.Location = new System.Drawing.Point(710, 15);
+            this.tb_siharai_goukei.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_siharai_goukei.Location = new System.Drawing.Point(709, 15);
             this.tb_siharai_goukei.MaxLength = 40;
             this.tb_siharai_goukei.Name = "tb_siharai_goukei";
             this.tb_siharai_goukei.ReadOnly = true;

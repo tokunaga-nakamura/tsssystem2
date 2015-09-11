@@ -778,7 +778,7 @@ namespace TSS_SYSTEM
                     dgv_siharai.DataSource = w_dt2;
 
                     dgv_siharai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0.##";
+                    dgv_siharai.Columns[6].DefaultCellStyle.Format = "#,0";
 
                     dgv_siharai.Columns[6].HeaderText = "支払合計";
                     dgv_siharai.Columns[7].HeaderText = "備考";
@@ -809,8 +809,9 @@ namespace TSS_SYSTEM
             //選択用のdatatableの作成
             DataTable dt_work = new DataTable();
 
-            dt_work = tss.OracleSelect("select siharai_no,siharai_date from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
+            dt_work = tss.OracleSelect("select siharai_no,siire_simebi,siharai_date from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
             dt_work.Columns["siharai_no"].ColumnName = "支払番号";
+            dt_work.Columns["siire_simebi"].ColumnName = "仕入締日";
             dt_work.Columns["siharai_date"].ColumnName = "支払計上日";
 
             string str_w = tss.siharai_no_select_dt(tb_torihikisaki_cd.Text, dt_work);

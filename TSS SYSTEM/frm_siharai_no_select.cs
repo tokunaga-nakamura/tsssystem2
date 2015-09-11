@@ -155,12 +155,13 @@ namespace TSS_SYSTEM
             btn_sentaku.Enabled = false;
 
             DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select siharai_no,siharai_date from tss_siharai_m where torihikisaki_cd  = '" + tb_torihikisaki_cd.Text.ToString() + "' ORDER BY siharai_no");
+            dt_work = tss.OracleSelect("select siharai_no,siire_simebi,siharai_date from tss_siharai_m where torihikisaki_cd  = '" + tb_torihikisaki_cd.Text.ToString() + "' ORDER BY siharai_no");
 
             dgv_kubun_m.DataSource = dt_work;
 
             dgv_kubun_m.Columns[0].HeaderText = "支払番号";
-            dgv_kubun_m.Columns[1].HeaderText = "支払計上日";
+            dgv_kubun_m.Columns[1].HeaderText = "支払締日";
+            dgv_kubun_m.Columns[2].HeaderText = "支払計上日";
         }
 
         private void tb_torihikisaki_cd_TextChanged(object sender, EventArgs e)
