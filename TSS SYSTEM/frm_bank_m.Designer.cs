@@ -256,7 +256,7 @@
             // tb_bank_cd
             // 
             this.tb_bank_cd.Location = new System.Drawing.Point(93, 28);
-            this.tb_bank_cd.MaxLength = 3;
+            this.tb_bank_cd.MaxLength = 4;
             this.tb_bank_cd.Name = "tb_bank_cd";
             this.tb_bank_cd.Size = new System.Drawing.Size(53, 19);
             this.tb_bank_cd.TabIndex = 1;

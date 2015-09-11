@@ -261,8 +261,36 @@ namespace TSS_SYSTEM
                     }
                 }
 
-                torihikisaki_disp(tb_torihikisaki_cd.Text);
-                tantousya_disp(tb_torihikisaki_cd.Text);
+                tb_torihikisaki_name.Text = null;
+                tb_torihikisaki_seisiki_name.Text = null;
+                tb_torihikisaki_ryakusiki_moji.Text = null;
+                tb_yubin_no.Text = null;
+                tb_jusyo1.Text = null;
+                tb_jusyo2.Text = null;
+                tb_tel_no.Text = null;
+                tb_fax_no.Text = null;
+                tb_daihyousya_name.Text = null;
+                tb_url.Text = null;
+                tb_eigyou_start_time.Text = null;
+                tb_eigyou_end_time.Text = null;
+                tb_seikyu_sime_date.Text = null;
+                tb_kaisyu_tuki.Text = null;
+                tb_kaisyu_hi.Text = null;
+                tb_siharai_sime_date.Text = null;
+                tb_siharai_tuki.Text = null;
+                tb_siharai_hi.Text = null;
+                tb_kessan_start_mmdd.Text = null;
+                tb_kessan_end_mmdd.Text = null;
+                tb_syouhizei_sansyutu_kbn.Text = null;
+                tb_hasu_kbn.Text = null;
+                tb_hasu_syori_tani.Text = null;
+                tb_jisyaden_kbn.Text = null;
+                tb_misyori_nyukingaku.Text = null;
+
+                tb_create_user_cd.Text = null;
+                tb_create_datetime.Text = null;
+                tb_update_user_cd.Text = null;
+                tb_update_datetime.Text = null;
             }
         }
 
