@@ -1041,6 +1041,7 @@ namespace TSS_SYSTEM
                             //「キャンセル」が選択された時
                             //Console.WriteLine("「キャンセル」が選択されました");
                             tb_seihin_kousei_no.Clear();
+                            tb_seihin_kousei_no.Focus();
                             return;
                         }
                     }
@@ -1049,6 +1050,7 @@ namespace TSS_SYSTEM
                     {
                         tb_seihin_kousei_no.Clear();
                         tb_seihin_kousei_name.Clear();
+                        tb_seihin_kousei_no.Focus();
                         return;
                     }
                 }

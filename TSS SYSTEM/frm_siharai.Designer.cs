@@ -409,7 +409,7 @@
             this.tb_siharai_date.Location = new System.Drawing.Point(331, 21);
             this.tb_siharai_date.MaxLength = 40;
             this.tb_siharai_date.Name = "tb_siharai_date";
-            this.tb_siharai_date.Size = new System.Drawing.Size(160, 19);
+            this.tb_siharai_date.Size = new System.Drawing.Size(107, 19);
             this.tb_siharai_date.TabIndex = 7;
             this.tb_siharai_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_date_Validating);
             // 

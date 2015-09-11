@@ -247,11 +247,11 @@ namespace TSS_SYSTEM
                     MessageBox.Show("入力された在庫区分が存在しません");
                     return;
                 }
-                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01" && dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "03")
-                {
-                    MessageBox.Show("在庫区分は01～03で入力してください");
-                    return;
-                }
+                //if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01" && dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "03")
+                //{
+                //    MessageBox.Show("在庫区分は01～03で入力してください");
+                //    return;
+                //}
                 if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value == null)
                 {
                     MessageBox.Show("受注コード1を入力してください");
@@ -262,7 +262,7 @@ namespace TSS_SYSTEM
                     MessageBox.Show("数量を入力してください");
                     return;
                 }
-                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value != null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value != null)
+                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value != null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value != null)
                 {
                     MessageBox.Show("在庫区分01の時は、受注コード1、2に入力できません。");
                     return;
@@ -279,8 +279,8 @@ namespace TSS_SYSTEM
                 }
 
 
-                //フリー在庫の場合、受注コード1、受注コード2に9999999999999999を代入
-                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value == null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value == null)
+                //ロット在庫以外の場合、受注コード1、受注コード2に9999999999999999を代入
+                if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_nyusyukkoidou.Rows[i].Cells[3].Value == null && dgv_nyusyukkoidou.Rows[i].Cells[4].Value == null)
                 {
                     dgv_nyusyukkoidou.Rows[i].Cells[3].Value = 9999999999999999;
                     dgv_nyusyukkoidou.Rows[i].Cells[4].Value = 9999999999999999;
@@ -932,8 +932,8 @@ namespace TSS_SYSTEM
            {
                string zaiko_kbn = e.FormattedValue.ToString();
 
-               //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
-               if (zaiko_kbn == "01")
+               //在庫区分が02（ロット在庫）以外なら、受注コード1、2はリードオンリーで色をグレーにする。
+               if (zaiko_kbn != "02")
                {
                    dgv_nyusyukkoidou[3,j].Style.BackColor = Color.LightGray;
                    dgv_nyusyukkoidou[4,j].Style.BackColor = Color.LightGray;

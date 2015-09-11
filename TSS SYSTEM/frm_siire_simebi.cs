@@ -221,15 +221,15 @@ namespace TSS_SYSTEM
                     dgv_siire_simebi.Rows[0].Cells[2].Value = syouhizei_goukei;
                     dgv_siire_simebi.Rows[0].Cells[3].Value = siire_goukei + syouhizei_goukei;
 
-                    //使用数量右寄せ、カンマ区切り
+                    //金額右寄せ、カンマ区切り
                     dgv_siire_simebi.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0";
 
                 }
 
@@ -314,15 +314,15 @@ namespace TSS_SYSTEM
                     dgv_siire_simebi.Rows[0].Cells[2].Value = syouhizei_goukei;
                     dgv_siire_simebi.Rows[0].Cells[3].Value = siire_goukei + syouhizei_goukei;
 
-                    //使用数量右寄せ、カンマ区切り
+                    //金額右寄せ、カンマ区切り
                     dgv_siire_simebi.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0";
                 }
 
                 if (syouhizei_kbn == "0") // 請求合計
@@ -409,15 +409,15 @@ namespace TSS_SYSTEM
                     dgv_siire_simebi.Rows[0].Cells[2].Value = syouhizei_goukei;
                     dgv_siire_simebi.Rows[0].Cells[3].Value = siire_goukei + syouhizei_goukei;
 
-                    //使用数量右寄せ、カンマ区切り
+                    //金額右寄せ、カンマ区切り
                     dgv_siire_simebi.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[1].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[2].DefaultCellStyle.Format = "#,0";
 
                     dgv_siire_simebi.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0.00";
+                    dgv_siire_simebi.Columns[3].DefaultCellStyle.Format = "#,0";
 
                 }
             }
@@ -527,6 +527,17 @@ namespace TSS_SYSTEM
                         tb_create_user_cd.Text = tss.user_cd;
                         tb_create_datetime.Text = DateTime.Now.ToString();
                         MessageBox.Show("仕入締日処理登録しました。");
+
+
+                        tb_torihikisaki_cd.Clear();
+                        tb_torihikisaki_name.Clear();
+                        tb_siire_simebi.Clear();
+                        dgv_siire_simebi.Rows.Clear();
+                        tb_create_user_cd.Clear();
+                        tb_create_datetime.Clear();
+                        tb_update_user_cd.Clear();
+                        tb_update_datetime.Clear();
+
                     }               
      
             }
@@ -543,9 +554,6 @@ namespace TSS_SYSTEM
                 //直近の仕入締日の買掛残高を繰越額に入れる
                 double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
                 double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
-                
-
-
 
                 if (result == DialogResult.OK)
                 {
@@ -564,6 +572,7 @@ namespace TSS_SYSTEM
                         tb_update_user_cd.Text = tss.user_cd;
                         tb_update_datetime.Text = DateTime.Now.ToString();
                         MessageBox.Show("仕入締日処理登録しました。");
+
                     }
 
 
@@ -604,6 +613,15 @@ namespace TSS_SYSTEM
                     }
 
                     //MessageBox.Show("買掛マスタの支払完了フラグ処理しました。");
+
+                    tb_torihikisaki_cd.Clear();
+                    tb_torihikisaki_name.Clear();
+                    tb_siire_simebi.Clear();
+                    dgv_siire_simebi.Rows.Clear();
+                    tb_create_user_cd.Clear();
+                    tb_create_datetime.Clear();
+                    tb_update_user_cd.Clear();
+                    tb_update_datetime.Clear();
 
                 }
                 //「いいえ」が選択された時

@@ -593,6 +593,8 @@ namespace TSS_SYSTEM
             dgv_mibarai_disp();
 
             //テキストボックスを空にする
+            //tb_torihikisaki_cd.Text = "";
+            //tb_torihikisaki_name.Text = "";
             tb_siharai_date.Text = "";
             tb_create_user_cd.Text = "";
             tb_create_datetime.Text = "";

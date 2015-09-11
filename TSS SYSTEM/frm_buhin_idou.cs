@@ -120,7 +120,7 @@ namespace TSS_SYSTEM
                     return;
                 }
                 
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "01" && dgv_idou.Rows[i].Cells[3].Value == null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[3].Value == null)
                 {
                     MessageBox.Show("取引先コードを入力してください");
                     return;
@@ -131,14 +131,14 @@ namespace TSS_SYSTEM
                 //    MessageBox.Show("入力された移動元の取引先コードが存在しません");
                 //    return;
                 //}
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_idou.Rows[0].Cells[4].Value == null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[4].Value == null)
                 {
                     MessageBox.Show("受注コード1を入力してください");
                     return;
                 }
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[4].Value != null && dgv_idou.Rows[i].Cells[5].Value != null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[4].Value != null && dgv_idou.Rows[i].Cells[5].Value != null)
                 {
-                    MessageBox.Show("在庫区分01の時は、受注コード1、2に入力しないでください。");
+                    MessageBox.Show("在庫区分02以外の時は、受注コード1、2に入力しないでください。");
                     return;
                 }
 
@@ -155,7 +155,7 @@ namespace TSS_SYSTEM
                 //    return;
                 //}
                 //dt_work = new DataTable();
-                if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "01" && dgv_idou.Rows[i].Cells[7].Value == null)
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[7].Value == null)
                 {
                     MessageBox.Show("移動先取引先コードを入力してください");
                     return;
@@ -171,9 +171,9 @@ namespace TSS_SYSTEM
                     MessageBox.Show("移動先受注コード1を入力してください");
                     return;
                 }
-                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[8].Value != null && dgv_idou.Rows[i].Cells[9].Value != null)
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[8].Value != null && dgv_idou.Rows[i].Cells[9].Value != null)
                 {
-                    MessageBox.Show("移動先在庫区分が01の時は、移動先受注コード1、2に入力しないでください。");
+                    MessageBox.Show("移動先在庫区分が02以外の時は、移動先受注コード1、2に入力しないでください。");
                     return;
                 }
 
@@ -200,14 +200,14 @@ namespace TSS_SYSTEM
                     dgv_idou.Rows[i].Cells[4].Value = 9999999999999999;
                 }
 
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[3].Value == null && dgv_idou.Rows[i].Cells[4].Value == null && dgv_idou.Rows[i].Cells[5].Value == null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[3].Value == null && dgv_idou.Rows[i].Cells[4].Value == null && dgv_idou.Rows[i].Cells[5].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[3].Value = 999999;
                     dgv_idou.Rows[i].Cells[4].Value = 9999999999999999;
                     dgv_idou.Rows[i].Cells[5].Value = 9999999999999999;
                 }
 
-                if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[3].Value == null)
+                if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[3].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[3].Value = 999999;
                 }
@@ -217,7 +217,7 @@ namespace TSS_SYSTEM
                     dgv_idou.Rows[i].Cells[9].Value = 9999999999999999;
                 }
 
-                if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "01" && dgv_idou.Rows[i].Cells[7].Value == null && dgv_idou.Rows[i].Cells[8].Value == null && dgv_idou.Rows[i].Cells[9].Value == null)
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[7].Value == null && dgv_idou.Rows[i].Cells[8].Value == null && dgv_idou.Rows[i].Cells[9].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[7].Value = 999999;
                     dgv_idou.Rows[i].Cells[8].Value = 9999999999999999;
@@ -742,7 +742,7 @@ namespace TSS_SYSTEM
 
 
                 //在庫区分が01（フリー）なら、取引先コードと受注コード1、2はリードオンリーで色をグレーにする。
-                if (zaiko_kbn == "01")
+                if (zaiko_kbn != "02")
                 {
                     dgv_idou[3, j].Value = null;
                     dgv_idou[4, j].Value = null;
@@ -775,7 +775,7 @@ namespace TSS_SYSTEM
 
 
                 //在庫区分が01（フリー）なら、受注コード1、2はリードオンリーで色をグレーにする。
-                if (zaiko_kbn == "01")
+                if (zaiko_kbn != "02")
                 {
                     dgv_idou[7, j].Value = null;
                     dgv_idou[8, j].Value = null;
