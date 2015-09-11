@@ -573,7 +573,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_torihikisaki_cd.Text == null || tb_torihikisaki_cd.Text.Length > 6 || tb_torihikisaki_cd.Text.Length < 6)
+            if (tb_torihikisaki_cd.Text == null || tb_torihikisaki_cd.Text.Length > 6)
             {
                 bl = false;
             }
