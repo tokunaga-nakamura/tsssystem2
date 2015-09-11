@@ -260,6 +260,9 @@ namespace TSS_SYSTEM
                         MessageBox.Show("取引先マスタへ登録しました。");
                     }
                 }
+
+                torihikisaki_disp(tb_torihikisaki_cd.Text);
+                tantousya_disp(tb_torihikisaki_cd.Text);
             }
         }
 
