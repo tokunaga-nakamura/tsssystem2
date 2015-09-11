@@ -632,7 +632,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_seikyu_sime_date.Text == null || tb_seikyu_sime_date.Text.Length == 0 || int.Parse(tb_seikyu_sime_date.Text) > 31 && int.Parse(tb_seikyu_sime_date.Text) < 99 || int.Parse(tb_seikyu_sime_date.Text) < 1)
+            if (int.Parse(tb_seikyu_sime_date.Text) > 31 && int.Parse(tb_seikyu_sime_date.Text) < 99 || int.Parse(tb_seikyu_sime_date.Text) < 1)
             {
                 bl = false;
             }
@@ -643,7 +643,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_kaisyu_tuki.Text == null || tb_kaisyu_tuki.Text.Length == 0 || int.Parse(tb_kaisyu_tuki.Text) > 12)
+            if (int.Parse(tb_kaisyu_tuki.Text) > 12)
             {
                 bl = false;
             }
@@ -654,7 +654,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_kaisyu_hi.Text == null || tb_kaisyu_hi.Text.Length == 0 || int.Parse(tb_kaisyu_hi.Text) > 31)
+            if (int.Parse(tb_kaisyu_hi.Text) > 31)
             {
                 bl = false;
             }
@@ -665,7 +665,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_siharai_sime_date.Text == null || tb_siharai_sime_date.Text.Length == 0 || int.Parse(tb_siharai_sime_date.Text) > 31 && int.Parse(tb_siharai_sime_date.Text) < 99 || int.Parse(tb_siharai_sime_date.Text) < 1)
+            if (int.Parse(tb_siharai_sime_date.Text) > 31 && int.Parse(tb_siharai_sime_date.Text) < 99 || int.Parse(tb_siharai_sime_date.Text) < 1)
             {
                 bl = false;
             }
@@ -676,7 +676,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_siharai_tuki.Text == null || tb_siharai_tuki.Text.Length == 0 || int.Parse(tb_siharai_tuki.Text) > 12)
+            if (int.Parse(tb_siharai_tuki.Text) > 12)
             {
                 bl = false;
             }
@@ -687,7 +687,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_siharai_hi.Text == null || tb_siharai_hi.Text.Length == 0 || int.Parse(tb_siharai_hi.Text) > 31 && int.Parse(tb_siharai_hi.Text) < 99 || int.Parse(tb_siharai_hi.Text) < 1)
+            if (int.Parse(tb_siharai_hi.Text) > 31 && int.Parse(tb_siharai_hi.Text) < 99 || int.Parse(tb_siharai_hi.Text) < 1)
             {
                 bl = false;
             }
