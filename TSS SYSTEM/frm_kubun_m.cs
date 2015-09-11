@@ -89,8 +89,6 @@ namespace TSS_SYSTEM
             //keyColumn[1] = dt_kubun_m.Columns["KUBUN_CD"];
             //dt_kubun_m.PrimaryKey = keyColumn;
 
-
-
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)

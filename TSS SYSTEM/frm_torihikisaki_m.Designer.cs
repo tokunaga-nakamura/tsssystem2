@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_torihikisaki_m));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.tb_misyori_nyukingaku = new System.Windows.Forms.TextBox();
+            this.tb_kessan_start_mmdd = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_ryakusiki_moji = new System.Windows.Forms.TextBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.tb_update_user_cd = new System.Windows.Forms.TextBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
@@ -44,6 +49,7 @@
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tb_seikyu_sime_date = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.tb_kaisyu_tuki = new System.Windows.Forms.TextBox();
@@ -55,7 +61,6 @@
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.tb_kaisyu_hi = new System.Windows.Forms.TextBox();
             this.tb_siharai_sime_date = new System.Windows.Forms.TextBox();
-            this.tb_seikyu_sime_date = new System.Windows.Forms.TextBox();
             this.tb_siharai_tuki = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -76,7 +81,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox24 = new System.Windows.Forms.TextBox();
@@ -94,11 +98,9 @@
             this.tb_eigyou_end_time = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_seisiki_name = new System.Windows.Forms.TextBox();
             this.tb_eigyou_start_time = new System.Windows.Forms.TextBox();
-            this.tb_kessan_start_mmdd = new System.Windows.Forms.TextBox();
             this.tb_daihyousya_name = new System.Windows.Forms.TextBox();
             this.tb_kessan_end_mmdd = new System.Windows.Forms.TextBox();
             this.tb_yubin_no = new System.Windows.Forms.TextBox();
-            this.tb_torihikisaki_ryakusiki_moji = new System.Windows.Forms.TextBox();
             this.tb_url = new System.Windows.Forms.TextBox();
             this.tb_jusyo1 = new System.Windows.Forms.TextBox();
             this.tb_tel_no = new System.Windows.Forms.TextBox();
@@ -112,8 +114,6 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.tb_misyori_nyukingaku = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -251,6 +251,59 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
+            // tb_misyori_nyukingaku
+            // 
+            this.tb_misyori_nyukingaku.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_misyori_nyukingaku.Location = new System.Drawing.Point(146, 253);
+            this.tb_misyori_nyukingaku.Name = "tb_misyori_nyukingaku";
+            this.tb_misyori_nyukingaku.ReadOnly = true;
+            this.tb_misyori_nyukingaku.Size = new System.Drawing.Size(100, 19);
+            this.tb_misyori_nyukingaku.TabIndex = 154;
+            this.tb_misyori_nyukingaku.TabStop = false;
+            this.tb_misyori_nyukingaku.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tb_kessan_start_mmdd
+            // 
+            this.tb_kessan_start_mmdd.Location = new System.Drawing.Point(177, 107);
+            this.tb_kessan_start_mmdd.MaxLength = 4;
+            this.tb_kessan_start_mmdd.Name = "tb_kessan_start_mmdd";
+            this.tb_kessan_start_mmdd.Size = new System.Drawing.Size(33, 19);
+            this.tb_kessan_start_mmdd.TabIndex = 11;
+            this.tb_kessan_start_mmdd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kessan_start_mmdd_Validating);
+            // 
+            // tb_torihikisaki_cd
+            // 
+            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(86, 7);
+            this.tb_torihikisaki_cd.MaxLength = 6;
+            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
+            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(51, 19);
+            this.tb_torihikisaki_cd.TabIndex = 0;
+            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
+            this.tb_torihikisaki_cd.Leave += new System.EventHandler(this.tb_torihikisaki_cd_Leave);
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
+            // 
+            // tb_torihikisaki_ryakusiki_moji
+            // 
+            this.tb_torihikisaki_ryakusiki_moji.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_torihikisaki_ryakusiki_moji.Location = new System.Drawing.Point(86, 32);
+            this.tb_torihikisaki_ryakusiki_moji.MaxLength = 5;
+            this.tb_torihikisaki_ryakusiki_moji.Name = "tb_torihikisaki_ryakusiki_moji";
+            this.tb_torihikisaki_ryakusiki_moji.Size = new System.Drawing.Size(51, 19);
+            this.tb_torihikisaki_ryakusiki_moji.TabIndex = 3;
+            this.tb_torihikisaki_ryakusiki_moji.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_ryakusiki_moji_Validating);
+            // 
+            // textBox26
+            // 
+            this.textBox26.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox26.Location = new System.Drawing.Point(10, 253);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.ReadOnly = true;
+            this.textBox26.Size = new System.Drawing.Size(136, 19);
+            this.textBox26.TabIndex = 153;
+            this.textBox26.TabStop = false;
+            this.textBox26.Text = "未処理入金額（スプール）";
+            // 
             // tb_update_datetime
             // 
             this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
@@ -349,6 +402,17 @@
             this.label2.TabIndex = 146;
             this.label2.Text = "※末日は「99」を入力";
             // 
+            // tb_seikyu_sime_date
+            // 
+            this.tb_seikyu_sime_date.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_seikyu_sime_date.Location = new System.Drawing.Point(61, 18);
+            this.tb_seikyu_sime_date.MaxLength = 2;
+            this.tb_seikyu_sime_date.Name = "tb_seikyu_sime_date";
+            this.tb_seikyu_sime_date.Size = new System.Drawing.Size(21, 19);
+            this.tb_seikyu_sime_date.TabIndex = 15;
+            this.tb_seikyu_sime_date.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_seikyu_sime_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seikyu_sime_date_Validating);
+            // 
             // textBox15
             // 
             this.textBox15.BackColor = System.Drawing.Color.NavajoWhite;
@@ -378,7 +442,7 @@
             this.tb_kaisyu_tuki.MaxLength = 2;
             this.tb_kaisyu_tuki.Name = "tb_kaisyu_tuki";
             this.tb_kaisyu_tuki.Size = new System.Drawing.Size(21, 19);
-            this.tb_kaisyu_tuki.TabIndex = 17;
+            this.tb_kaisyu_tuki.TabIndex = 16;
             this.tb_kaisyu_tuki.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_kaisyu_tuki.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kaisyu_tuki_Validating);
             // 
@@ -449,7 +513,7 @@
             this.tb_kaisyu_hi.MaxLength = 2;
             this.tb_kaisyu_hi.Name = "tb_kaisyu_hi";
             this.tb_kaisyu_hi.Size = new System.Drawing.Size(21, 19);
-            this.tb_kaisyu_hi.TabIndex = 19;
+            this.tb_kaisyu_hi.TabIndex = 17;
             this.tb_kaisyu_hi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_kaisyu_hi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kaisyu_hi_Validating);
             // 
@@ -460,20 +524,9 @@
             this.tb_siharai_sime_date.MaxLength = 2;
             this.tb_siharai_sime_date.Name = "tb_siharai_sime_date";
             this.tb_siharai_sime_date.Size = new System.Drawing.Size(21, 19);
-            this.tb_siharai_sime_date.TabIndex = 16;
+            this.tb_siharai_sime_date.TabIndex = 18;
             this.tb_siharai_sime_date.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_siharai_sime_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_sime_date_Validating);
-            // 
-            // tb_seikyu_sime_date
-            // 
-            this.tb_seikyu_sime_date.BackColor = System.Drawing.SystemColors.Window;
-            this.tb_seikyu_sime_date.Location = new System.Drawing.Point(61, 18);
-            this.tb_seikyu_sime_date.MaxLength = 2;
-            this.tb_seikyu_sime_date.Name = "tb_seikyu_sime_date";
-            this.tb_seikyu_sime_date.Size = new System.Drawing.Size(21, 19);
-            this.tb_seikyu_sime_date.TabIndex = 15;
-            this.tb_seikyu_sime_date.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tb_seikyu_sime_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seikyu_sime_date_Validating);
             // 
             // tb_siharai_tuki
             // 
@@ -482,7 +535,7 @@
             this.tb_siharai_tuki.MaxLength = 2;
             this.tb_siharai_tuki.Name = "tb_siharai_tuki";
             this.tb_siharai_tuki.Size = new System.Drawing.Size(21, 19);
-            this.tb_siharai_tuki.TabIndex = 18;
+            this.tb_siharai_tuki.TabIndex = 19;
             this.tb_siharai_tuki.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_siharai_tuki.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siharai_tuki_Validating);
             // 
@@ -689,18 +742,6 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "取引先コード";
             // 
-            // tb_torihikisaki_cd
-            // 
-            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(86, 7);
-            this.tb_torihikisaki_cd.MaxLength = 6;
-            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
-            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(51, 19);
-            this.tb_torihikisaki_cd.TabIndex = 0;
-            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
-            this.tb_torihikisaki_cd.Leave += new System.EventHandler(this.tb_torihikisaki_cd_Leave);
-            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
-            // 
             // tb_torihikisaki_name
             // 
             this.tb_torihikisaki_name.BackColor = System.Drawing.SystemColors.Window;
@@ -883,15 +924,6 @@
             this.tb_eigyou_start_time.TabIndex = 13;
             this.tb_eigyou_start_time.Validating += new System.ComponentModel.CancelEventHandler(this.tb_eigyou_start_time_Validating);
             // 
-            // tb_kessan_start_mmdd
-            // 
-            this.tb_kessan_start_mmdd.Location = new System.Drawing.Point(177, 107);
-            this.tb_kessan_start_mmdd.MaxLength = 4;
-            this.tb_kessan_start_mmdd.Name = "tb_kessan_start_mmdd";
-            this.tb_kessan_start_mmdd.Size = new System.Drawing.Size(33, 19);
-            this.tb_kessan_start_mmdd.TabIndex = 11;
-            this.tb_kessan_start_mmdd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kessan_start_mmdd_Validating);
-            // 
             // tb_daihyousya_name
             // 
             this.tb_daihyousya_name.Location = new System.Drawing.Point(210, 32);
@@ -918,16 +950,6 @@
             this.tb_yubin_no.Size = new System.Drawing.Size(60, 19);
             this.tb_yubin_no.TabIndex = 5;
             this.tb_yubin_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_yubin_no_Validating);
-            // 
-            // tb_torihikisaki_ryakusiki_moji
-            // 
-            this.tb_torihikisaki_ryakusiki_moji.BackColor = System.Drawing.SystemColors.Window;
-            this.tb_torihikisaki_ryakusiki_moji.Location = new System.Drawing.Point(86, 32);
-            this.tb_torihikisaki_ryakusiki_moji.MaxLength = 5;
-            this.tb_torihikisaki_ryakusiki_moji.Name = "tb_torihikisaki_ryakusiki_moji";
-            this.tb_torihikisaki_ryakusiki_moji.Size = new System.Drawing.Size(51, 19);
-            this.tb_torihikisaki_ryakusiki_moji.TabIndex = 3;
-            this.tb_torihikisaki_ryakusiki_moji.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_ryakusiki_moji_Validating);
             // 
             // tb_url
             // 
@@ -1029,34 +1051,34 @@
             // dgv_tantousya
             // 
             this.dgv_tantousya.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_tantousya.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_tantousya.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_tantousya.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_tantousya.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_tantousya.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_tantousya.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_tantousya.Location = new System.Drawing.Point(0, 0);
             this.dgv_tantousya.Name = "dgv_tantousya";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_tantousya.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_tantousya.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_tantousya.RowTemplate.Height = 21;
             this.dgv_tantousya.Size = new System.Drawing.Size(880, 113);
             this.dgv_tantousya.TabIndex = 133;
@@ -1089,28 +1111,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // textBox26
-            // 
-            this.textBox26.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox26.Location = new System.Drawing.Point(10, 253);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.ReadOnly = true;
-            this.textBox26.Size = new System.Drawing.Size(136, 19);
-            this.textBox26.TabIndex = 153;
-            this.textBox26.TabStop = false;
-            this.textBox26.Text = "未処理入金額（スプール）";
-            // 
-            // tb_misyori_nyukingaku
-            // 
-            this.tb_misyori_nyukingaku.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_misyori_nyukingaku.Location = new System.Drawing.Point(146, 253);
-            this.tb_misyori_nyukingaku.Name = "tb_misyori_nyukingaku";
-            this.tb_misyori_nyukingaku.ReadOnly = true;
-            this.tb_misyori_nyukingaku.Size = new System.Drawing.Size(100, 19);
-            this.tb_misyori_nyukingaku.TabIndex = 154;
-            this.tb_misyori_nyukingaku.TabStop = false;
-            this.tb_misyori_nyukingaku.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frm_torihikisaki_m
             // 

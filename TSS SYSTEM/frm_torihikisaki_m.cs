@@ -632,10 +632,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_seikyu_sime_date.Text) > 31 && int.Parse(tb_seikyu_sime_date.Text) < 99 || int.Parse(tb_seikyu_sime_date.Text) < 1)
+            int w_int;
+
+            if (tb_seikyu_sime_date.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_seikyu_sime_date.Text, out w_int))
+                {
+                    if ((w_int > 31 && w_int < 99) || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+
             return bl;
         }
        
@@ -643,10 +657,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_kaisyu_tuki.Text) > 12)
+            int w_int;
+
+            if (tb_kaisyu_tuki.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_kaisyu_tuki.Text, out w_int))
+                {
+                    if ( w_int > 12 || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+
             return bl;
         }
 
@@ -654,10 +682,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_kaisyu_hi.Text) > 31)
+            int w_int;
+
+            if (tb_kaisyu_hi.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_kaisyu_hi.Text, out w_int))
+                {
+                    if ((w_int > 31 && w_int < 99) || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+
             return bl;
         }
 
@@ -665,10 +707,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_siharai_sime_date.Text) > 31 && int.Parse(tb_siharai_sime_date.Text) < 99 || int.Parse(tb_siharai_sime_date.Text) < 1)
+            int w_int;
+
+            if (tb_siharai_sime_date.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_siharai_sime_date.Text, out w_int))
+                {
+                    if ((w_int > 31 && w_int < 99) || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+           
             return bl;
         }
 
@@ -676,10 +732,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_siharai_tuki.Text) > 12)
+            int w_int;
+
+            if (tb_siharai_tuki.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_siharai_tuki.Text, out w_int))
+                {
+                    if (w_int > 12 || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+
             return bl;
         }
 
@@ -687,10 +757,24 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (int.Parse(tb_siharai_hi.Text) > 31 && int.Parse(tb_siharai_hi.Text) < 99 || int.Parse(tb_siharai_hi.Text) < 1)
+            int w_int;
+
+            if (tb_siharai_hi.Text != "")
             {
-                bl = false;
+                if (int.TryParse(tb_siharai_hi.Text, out w_int))
+                {
+                    if ((w_int > 31 && w_int < 99) || w_int < 1)
+                    {
+                        bl = false;
+                    }
+                }
+
+                else
+                {
+                    bl = false;
+                }
             }
+
             return bl;
         }
 
