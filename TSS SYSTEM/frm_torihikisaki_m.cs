@@ -240,6 +240,8 @@ namespace TSS_SYSTEM
                     else
                     {
                         MessageBox.Show("取引先マスタを更新しました。");
+                        tb_torihikisaki_cd.Text = null;
+                        tb_torihikisaki_cd.Focus();
                     }
                 }
                 
@@ -258,9 +260,12 @@ namespace TSS_SYSTEM
                     else
                     {
                         MessageBox.Show("取引先マスタへ登録しました。");
+                        tb_torihikisaki_cd.Text = null;
+                        tb_torihikisaki_cd.Focus();
                     }
                 }
 
+                //tb_torihikisaki_cd.Text = null;
                 tb_torihikisaki_name.Text = null;
                 tb_torihikisaki_seisiki_name.Text = null;
                 tb_torihikisaki_ryakusiki_moji.Text = null;
@@ -447,6 +452,7 @@ namespace TSS_SYSTEM
             //マスターに既存レコードがなければnullをテキストボックスに入れる。
             else
             {
+                //tb_torihikisaki_cd.Text = null;
                 tb_torihikisaki_name.Text = null;
                 tb_torihikisaki_seisiki_name.Text = null;
                 tb_torihikisaki_ryakusiki_moji.Text = null;
