@@ -321,7 +321,7 @@ namespace TSS_SYSTEM
 
             if (chk_buhin_hosoku() == false)
             {
-                MessageBox.Show("部品補足は40バイト以内で入力してください。");
+                MessageBox.Show("部品補足は128バイト以内で入力してください。");
                 tb_buhin_hosoku.Focus();
                 return;
             }
@@ -438,7 +438,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tss.StringByte(tb_buhin_hosoku.Text) > 40)
+            if (tss.StringByte(tb_buhin_hosoku.Text) > 128)
             {
                 bl = false;
             }

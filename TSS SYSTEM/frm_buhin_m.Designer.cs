@@ -379,7 +379,7 @@
             // tb_buhin_hosoku
             // 
             this.tb_buhin_hosoku.Location = new System.Drawing.Point(103, 53);
-            this.tb_buhin_hosoku.MaxLength = 40;
+            this.tb_buhin_hosoku.MaxLength = 128;
             this.tb_buhin_hosoku.Name = "tb_buhin_hosoku";
             this.tb_buhin_hosoku.Size = new System.Drawing.Size(301, 19);
             this.tb_buhin_hosoku.TabIndex = 3;
