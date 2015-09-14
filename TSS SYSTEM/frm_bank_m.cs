@@ -168,7 +168,7 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値用
 
-            if (tb_bank_cd.Text == null || tb_bank_cd.Text.Length > 3 || tb_bank_cd.Text.Length < 3)
+            if (tb_bank_cd.Text == null || tb_bank_cd.Text.Length > 4 || tb_bank_cd.Text.Length < 4)
             {
                 bl = false;
             }
