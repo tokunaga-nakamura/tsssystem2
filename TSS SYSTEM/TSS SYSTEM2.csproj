@@ -85,6 +85,12 @@
     <Compile Include="frm_buhin_to_seihin.Designer.cs">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_juchu_zan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_juchu_zan.Designer.cs">
+      <DependentUpon>frm_juchu_zan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_nyukin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     <Compile Include="TssSystemLibrary.cs" />
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_juchu_zan.resx">
+      <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>

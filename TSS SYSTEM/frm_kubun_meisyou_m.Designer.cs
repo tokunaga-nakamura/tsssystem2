@@ -216,7 +216,7 @@
             this.tb_kubun_meisyou_cd.Location = new System.Drawing.Point(118, 3);
             this.tb_kubun_meisyou_cd.MaxLength = 2;
             this.tb_kubun_meisyou_cd.Name = "tb_kubun_meisyou_cd";
-            this.tb_kubun_meisyou_cd.Size = new System.Drawing.Size(51, 19);
+            this.tb_kubun_meisyou_cd.Size = new System.Drawing.Size(22, 19);
             this.tb_kubun_meisyou_cd.TabIndex = 0;
             this.tb_kubun_meisyou_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kubun_meisyou_cd_Validating);
             this.tb_kubun_meisyou_cd.Validated += new System.EventHandler(this.tb_kubun_meisyou_cd_Validated);

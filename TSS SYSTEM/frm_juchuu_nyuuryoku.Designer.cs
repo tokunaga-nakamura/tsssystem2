@@ -82,6 +82,13 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -217,7 +224,6 @@
             this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
             this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -249,7 +255,7 @@
             // 
             this.splitContainer6.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer6.Size = new System.Drawing.Size(446, 438);
-            this.splitContainer6.SplitterDistance = 289;
+            this.splitContainer6.SplitterDistance = 255;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
             // 
@@ -299,7 +305,7 @@
             // 
             // tb_bikou
             // 
-            this.tb_bikou.Location = new System.Drawing.Point(48, 249);
+            this.tb_bikou.Location = new System.Drawing.Point(48, 221);
             this.tb_bikou.MaxLength = 128;
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(385, 19);
@@ -321,7 +327,7 @@
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox7.Location = new System.Drawing.Point(10, 249);
+            this.textBox7.Location = new System.Drawing.Point(10, 221);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(38, 19);
@@ -468,6 +474,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tb_update_datetime);
+            this.groupBox3.Controls.Add(this.tb_update_user_cd);
+            this.groupBox3.Controls.Add(this.textBox17);
+            this.groupBox3.Controls.Add(this.tb_create_datetime);
+            this.groupBox3.Controls.Add(this.textBox15);
+            this.groupBox3.Controls.Add(this.tb_create_user_cd);
+            this.groupBox3.Controls.Add(this.textBox12);
             this.groupBox3.Controls.Add(this.tb_delete_flg);
             this.groupBox3.Controls.Add(this.textBox11);
             this.groupBox3.Controls.Add(this.tb_uriage_kanryou_flg);
@@ -480,7 +493,7 @@
             this.groupBox3.Controls.Add(this.textBox8);
             this.groupBox3.Location = new System.Drawing.Point(10, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(423, 135);
+            this.groupBox3.Size = new System.Drawing.Size(423, 169);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "関連情報";
@@ -804,6 +817,75 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox12.Location = new System.Drawing.Point(223, 125);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(34, 19);
+            this.textBox12.TabIndex = 10;
+            this.textBox12.TabStop = false;
+            this.textBox12.Text = "作成";
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(257, 125);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(46, 19);
+            this.tb_create_user_cd.TabIndex = 11;
+            this.tb_create_user_cd.TabStop = false;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(263, 29);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 19);
+            this.textBox15.TabIndex = 12;
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(303, 125);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(114, 19);
+            this.tb_create_datetime.TabIndex = 13;
+            this.tb_create_datetime.TabStop = false;
+            // 
+            // textBox17
+            // 
+            this.textBox17.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox17.Location = new System.Drawing.Point(223, 144);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ReadOnly = true;
+            this.textBox17.Size = new System.Drawing.Size(34, 19);
+            this.textBox17.TabIndex = 14;
+            this.textBox17.TabStop = false;
+            this.textBox17.Text = "更新";
+            // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(257, 144);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(46, 19);
+            this.tb_update_user_cd.TabIndex = 15;
+            this.tb_update_user_cd.TabStop = false;
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(303, 144);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(114, 19);
+            this.tb_update_datetime.TabIndex = 16;
+            this.tb_update_datetime.TabStop = false;
+            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -920,6 +1002,13 @@
         private System.Windows.Forms.SplitContainer splitContainer9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_uriage;
+        private System.Windows.Forms.TextBox tb_update_datetime;
+        private System.Windows.Forms.TextBox tb_update_user_cd;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox tb_create_datetime;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox tb_create_user_cd;
+        private System.Windows.Forms.TextBox textBox12;
 
     }
 }
