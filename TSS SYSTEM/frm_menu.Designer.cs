@@ -68,6 +68,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_3_seihin_tanka_m = new System.Windows.Forms.Button();
             this.btn_seihim_to_zaiko = new System.Windows.Forms.Button();
             this.btn_buhin_seihin = new System.Windows.Forms.Button();
             this.btn_3_seihin_kousei_m = new System.Windows.Forms.Button();
@@ -100,7 +101,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_3_seihin_tanka_m = new System.Windows.Forms.Button();
+            this.btn_juchu_zan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -527,6 +528,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_juchu_zan);
             this.tabPage2.Controls.Add(this.btn_nyukin);
             this.tabPage2.Controls.Add(this.btn_seikyu_preview);
             this.tabPage2.Controls.Add(this.btn_seikyu);
@@ -627,7 +629,7 @@
             // 
             // btn_nouhin_schedule
             // 
-            this.btn_nouhin_schedule.Location = new System.Drawing.Point(372, 35);
+            this.btn_nouhin_schedule.Location = new System.Drawing.Point(372, 6);
             this.btn_nouhin_schedule.Name = "btn_nouhin_schedule";
             this.btn_nouhin_schedule.Size = new System.Drawing.Size(177, 23);
             this.btn_nouhin_schedule.TabIndex = 4;
@@ -665,6 +667,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btn_3_seihin_tanka_m
+            // 
+            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(380, 227);
+            this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
+            this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(180, 23);
+            this.btn_3_seihin_tanka_m.TabIndex = 14;
+            this.btn_3_seihin_tanka_m.Text = "製品単価マスタ";
+            this.btn_3_seihin_tanka_m.UseVisualStyleBackColor = true;
+            this.btn_3_seihin_tanka_m.Click += new System.EventHandler(this.btn_3_seihin_tanka_m_Click);
             // 
             // btn_seihim_to_zaiko
             // 
@@ -1000,15 +1012,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_3_seihin_tanka_m
+            // btn_juchu_zan
             // 
-            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(380, 227);
-            this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
-            this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(180, 23);
-            this.btn_3_seihin_tanka_m.TabIndex = 14;
-            this.btn_3_seihin_tanka_m.Text = "製品単価マスタ";
-            this.btn_3_seihin_tanka_m.UseVisualStyleBackColor = true;
-            this.btn_3_seihin_tanka_m.Click += new System.EventHandler(this.btn_3_seihin_tanka_m_Click);
+            this.btn_juchu_zan.Location = new System.Drawing.Point(189, 35);
+            this.btn_juchu_zan.Name = "btn_juchu_zan";
+            this.btn_juchu_zan.Size = new System.Drawing.Size(177, 23);
+            this.btn_juchu_zan.TabIndex = 14;
+            this.btn_juchu_zan.Text = "受注残照会";
+            this.btn_juchu_zan.UseVisualStyleBackColor = true;
+            this.btn_juchu_zan.Click += new System.EventHandler(this.btn_juchu_zan_Click);
             // 
             // frm_menu
             // 
@@ -1157,6 +1169,7 @@
         private System.Windows.Forms.Button btn_seikyu_preview;
         private System.Windows.Forms.Button btn_seikyu;
         private System.Windows.Forms.Button btn_3_seihin_tanka_m;
+        private System.Windows.Forms.Button btn_juchu_zan;
     }
 }
 

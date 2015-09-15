@@ -56,6 +56,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.tb_delete_flg = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.tb_uriage_kanryou_flg = new System.Windows.Forms.TextBox();
@@ -82,13 +88,6 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.tb_create_datetime = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
-            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -478,7 +477,6 @@
             this.groupBox3.Controls.Add(this.tb_update_user_cd);
             this.groupBox3.Controls.Add(this.textBox17);
             this.groupBox3.Controls.Add(this.tb_create_datetime);
-            this.groupBox3.Controls.Add(this.textBox15);
             this.groupBox3.Controls.Add(this.tb_create_user_cd);
             this.groupBox3.Controls.Add(this.textBox12);
             this.groupBox3.Controls.Add(this.tb_delete_flg);
@@ -497,6 +495,68 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "関連情報";
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(303, 144);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(114, 19);
+            this.tb_update_datetime.TabIndex = 16;
+            this.tb_update_datetime.TabStop = false;
+            // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(257, 144);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(46, 19);
+            this.tb_update_user_cd.TabIndex = 15;
+            this.tb_update_user_cd.TabStop = false;
+            // 
+            // textBox17
+            // 
+            this.textBox17.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox17.Location = new System.Drawing.Point(223, 144);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ReadOnly = true;
+            this.textBox17.Size = new System.Drawing.Size(34, 19);
+            this.textBox17.TabIndex = 14;
+            this.textBox17.TabStop = false;
+            this.textBox17.Text = "更新";
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(303, 125);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(114, 19);
+            this.tb_create_datetime.TabIndex = 13;
+            this.tb_create_datetime.TabStop = false;
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(257, 125);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(46, 19);
+            this.tb_create_user_cd.TabIndex = 11;
+            this.tb_create_user_cd.TabStop = false;
+            // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox12.Location = new System.Drawing.Point(223, 125);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(34, 19);
+            this.textBox12.TabIndex = 10;
+            this.textBox12.TabStop = false;
+            this.textBox12.Text = "作成";
             // 
             // tb_delete_flg
             // 
@@ -817,75 +877,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox12.Location = new System.Drawing.Point(223, 125);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(34, 19);
-            this.textBox12.TabIndex = 10;
-            this.textBox12.TabStop = false;
-            this.textBox12.Text = "作成";
-            // 
-            // tb_create_user_cd
-            // 
-            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(257, 125);
-            this.tb_create_user_cd.Name = "tb_create_user_cd";
-            this.tb_create_user_cd.ReadOnly = true;
-            this.tb_create_user_cd.Size = new System.Drawing.Size(46, 19);
-            this.tb_create_user_cd.TabIndex = 11;
-            this.tb_create_user_cd.TabStop = false;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(263, 29);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 19);
-            this.textBox15.TabIndex = 12;
-            // 
-            // tb_create_datetime
-            // 
-            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(303, 125);
-            this.tb_create_datetime.Name = "tb_create_datetime";
-            this.tb_create_datetime.ReadOnly = true;
-            this.tb_create_datetime.Size = new System.Drawing.Size(114, 19);
-            this.tb_create_datetime.TabIndex = 13;
-            this.tb_create_datetime.TabStop = false;
-            // 
-            // textBox17
-            // 
-            this.textBox17.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox17.Location = new System.Drawing.Point(223, 144);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(34, 19);
-            this.textBox17.TabIndex = 14;
-            this.textBox17.TabStop = false;
-            this.textBox17.Text = "更新";
-            // 
-            // tb_update_user_cd
-            // 
-            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(257, 144);
-            this.tb_update_user_cd.Name = "tb_update_user_cd";
-            this.tb_update_user_cd.ReadOnly = true;
-            this.tb_update_user_cd.Size = new System.Drawing.Size(46, 19);
-            this.tb_update_user_cd.TabIndex = 15;
-            this.tb_update_user_cd.TabStop = false;
-            // 
-            // tb_update_datetime
-            // 
-            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(303, 144);
-            this.tb_update_datetime.Name = "tb_update_datetime";
-            this.tb_update_datetime.ReadOnly = true;
-            this.tb_update_datetime.Size = new System.Drawing.Size(114, 19);
-            this.tb_update_datetime.TabIndex = 16;
-            this.tb_update_datetime.TabStop = false;
-            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1006,7 +997,6 @@
         private System.Windows.Forms.TextBox tb_update_user_cd;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox tb_create_datetime;
-        private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox tb_create_user_cd;
         private System.Windows.Forms.TextBox textBox12;
 

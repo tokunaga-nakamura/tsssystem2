@@ -294,24 +294,25 @@ namespace TSS_SYSTEM
             }
 
             //検索条件が全て空白
-            if (sql_cnt == 0)
-            {
-                MessageBox.Show("抽出条件を指定してください。");
-                tb_torihikisaki_cd1.Focus();
-                return;
-            }
+            //if (sql_cnt == 0)
+            //{
+            //    MessageBox.Show("抽出条件を指定してください。");
+            //    tb_torihikisaki_cd1.Focus();
+            //    return;
+            //}
 
-            string sql = "select * from tss_tss_juchu_m where ";
+            string sql = "select * from tss_juchu_m where uriage_kanryou_flg <> '1'";
             for (int i = 1; i <= sql_cnt; i++)
             {
-                if (i >= 2)
-                {
-                    sql = sql + " and ";
-                }
+                sql = sql + " and ";
                 sql = sql + sql_where[i - 1];
             }
-            sql = sql + " order by torihikisaki_cd,juchu_cd1,juchu_cd2 asc";
+            sql = sql + " order by torihikisaki_cd,juchu_cd1,juchu_cd2";
             w_dt_m = tss.OracleSelect(sql);
+            if(w_dt_m.Rows.Count == 0)
+            {
+                MessageBox.Show("該当するデータはありません。");
+            }
             list_disp(w_dt_m);
         }
 
