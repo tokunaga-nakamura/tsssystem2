@@ -100,6 +100,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_3_seihin_tanka_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -646,6 +647,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_3_seihin_tanka_m);
             this.tabPage3.Controls.Add(this.btn_seihim_to_zaiko);
             this.tabPage3.Controls.Add(this.btn_buhin_seihin);
             this.tabPage3.Controls.Add(this.btn_3_seihin_kousei_m);
@@ -998,6 +1000,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_3_seihin_tanka_m
+            // 
+            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(380, 227);
+            this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
+            this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(180, 23);
+            this.btn_3_seihin_tanka_m.TabIndex = 14;
+            this.btn_3_seihin_tanka_m.Text = "製品単価マスタ";
+            this.btn_3_seihin_tanka_m.UseVisualStyleBackColor = true;
+            this.btn_3_seihin_tanka_m.Click += new System.EventHandler(this.btn_3_seihin_tanka_m_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1144,6 +1156,7 @@
         private System.Windows.Forms.Button btn_nyukin;
         private System.Windows.Forms.Button btn_seikyu_preview;
         private System.Windows.Forms.Button btn_seikyu;
+        private System.Windows.Forms.Button btn_3_seihin_tanka_m;
     }
 }
 
