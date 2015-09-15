@@ -438,5 +438,13 @@ namespace TSS_SYSTEM
             frm_nk.ShowDialog(this);
             frm_nk.Dispose();
         }
+
+        private void btn_3_seihin_tanka_m_Click(object sender, EventArgs e)
+        {
+            //製品単価マスタ
+            frm_seihin_tanka_m frm_stk = new frm_seihin_tanka_m();
+            frm_stk.ShowDialog(this);
+            frm_stk.Dispose();
+        }
     }
 }
