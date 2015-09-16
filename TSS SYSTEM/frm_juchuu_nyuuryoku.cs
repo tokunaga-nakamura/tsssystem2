@@ -1175,6 +1175,8 @@ namespace TSS_SYSTEM
                         else
                         {
                             //「いいえ」が選択された時
+                            tb_seihin_cd.Text = "";
+                            tb_seihin_name.Text = "";
                             e.Cancel = true;
                             return;
                         }
@@ -1373,7 +1375,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_seihin("2", "");
+            w_cd = tss.search_seihin("2", tb_seihin_cd.Text);
             if (w_cd != "")
             {
                 tb_seihin_cd.Text = w_cd;

@@ -1199,7 +1199,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_torihikisaki("2", "");
+            w_cd = tss.search_torihikisaki("2", tb_torihikisaki_cd.Text);
             if (w_cd != "")
             {
                 tb_torihikisaki_cd.Text = w_cd;
@@ -1308,11 +1308,11 @@ namespace TSS_SYSTEM
                 }
             }
             if (e.ColumnIndex == 7)
-            {
+            {                
                 //製品コード
                 //選択画面へ
                 string w_cd;
-                w_cd = tss.search_seihin("2", dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
+                w_cd = tss.search_seihin("2",dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString());
                 if (w_cd != "")
                 {
                     dgv_m.Rows[e.RowIndex].Cells[7].Value = w_cd;

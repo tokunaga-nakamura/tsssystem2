@@ -167,7 +167,7 @@ namespace TSS_SYSTEM
 
             seihin_kousei_disp(tb_seihin_cd.Text);
             dgv_seihin_koutei.DataSource = null;
-            dgv_tanka.DataSource = null;
+            seihin_tanka_disp(tb_seihin_cd.Text);   //dgv_tanka.DataSource = null;
         }
         private void seihin_kousei_disp(string in_cd)
         {
@@ -196,6 +196,52 @@ namespace TSS_SYSTEM
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_seihin_kousei.Columns[0].HeaderText = "構成番号";
             dgv_seihin_kousei.Columns[1].HeaderText = "構成名称";
+        }
+
+        private void seihin_tanka_disp(string in_cd)
+        {
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select tanka_kbn,bumon_cd,tanka,bikou from tss_seihin_tanka_m where seihin_cd = '" + in_cd + "' order by tanka_kbn");
+            dgv_tanka.DataSource = null;
+            dgv_tanka.DataSource = w_dt;
+            //リードオンリーにする（編集できなくなる）
+            dgv_tanka.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_tanka.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_tanka.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_tanka.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_tanka.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_tanka.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_tanka.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_tanka.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_tanka.AllowUserToAddRows = false;
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_tanka.Columns["tanka_kbn"].HeaderText = "単価区分";
+            dgv_tanka.Columns["bumon_cd"].HeaderText = "部門コード";
+            dgv_tanka.Columns["tanka"].HeaderText = "単価";
+            dgv_tanka.Columns["bikou"].HeaderText = "備考";
+            tanka_goukei_disp();        
+        }
+
+        private void tanka_goukei_disp()
+        {
+            double w_dou;
+            double w_goukei = 0;
+            for (int i = 0; i < dgv_tanka.Rows.Count - 1; i++)
+            {
+                if (double.TryParse(dgv_tanka.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
+                {
+                    w_goukei = w_goukei + w_dou;
+                }
+            }
+            tb_tanka_goukei.Text = w_goukei.ToString("#,###,###,##0");
         }
 
         private string get_torihikisaki_name(string in_torihikisaki_cd)
@@ -779,7 +825,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_seihin("2", "");
+            w_cd = tss.search_seihin("2", tb_seihin_cd.Text);
             if (w_cd != "")
             {
                 tb_seihin_cd.Text = w_cd;
