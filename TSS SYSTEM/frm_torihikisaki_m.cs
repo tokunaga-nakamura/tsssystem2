@@ -977,7 +977,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_torihikisaki("2", "");
+            w_cd = tss.search_torihikisaki("2", tb_torihikisaki_cd.Text);
             if (w_cd != "")
             {
                 tb_torihikisaki_cd.Text = w_cd;

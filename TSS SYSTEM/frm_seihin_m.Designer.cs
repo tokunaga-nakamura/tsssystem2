@@ -85,6 +85,8 @@
             this.dgv_tanka = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_tanka_goukei = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -768,6 +770,8 @@
             // 
             // splitContainer6.Panel1
             // 
+            this.splitContainer6.Panel1.Controls.Add(this.tb_tanka_goukei);
+            this.splitContainer6.Panel1.Controls.Add(this.textBox6);
             this.splitContainer6.Panel1.Controls.Add(this.label2);
             // 
             // splitContainer6.Panel2
@@ -817,6 +821,29 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(249, 5);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(56, 19);
+            this.textBox6.TabIndex = 1;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "単価合計";
+            // 
+            // tb_tanka_goukei
+            // 
+            this.tb_tanka_goukei.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_tanka_goukei.Location = new System.Drawing.Point(305, 5);
+            this.tb_tanka_goukei.Name = "tb_tanka_goukei";
+            this.tb_tanka_goukei.ReadOnly = true;
+            this.tb_tanka_goukei.Size = new System.Drawing.Size(100, 19);
+            this.tb_tanka_goukei.TabIndex = 2;
+            this.tb_tanka_goukei.TabStop = false;
+            this.tb_tanka_goukei.Text = "9,999,999,999.99";
+            this.tb_tanka_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frm_seihin_m
             // 
@@ -931,5 +958,7 @@
         private System.Windows.Forms.TextBox tb_create_datetime;
         private System.Windows.Forms.TextBox tb_create_user_cd;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_tanka_goukei;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

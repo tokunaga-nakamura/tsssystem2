@@ -170,6 +170,10 @@ namespace TSS_SYSTEM
             tb_uriage_kanryou_flg.Text = in_dt.Rows[0]["uriage_kanryou_flg"].ToString();
             tb_delete_flg.Text = in_dt.Rows[0]["delete_flg"].ToString();
             tb_kousin_riyuu.Text = "";
+            tb_create_user_cd.Text = in_dt.Rows[0]["create_user_cd"].ToString();
+            tb_create_datetime.Text = in_dt.Rows[0]["create_datetime"].ToString();
+            tb_update_user_cd.Text = in_dt.Rows[0]["update_user_cd"].ToString();
+            tb_update_datetime.Text = in_dt.Rows[0]["update_datetime"].ToString();
 
             nounyuu_schedule_disp();
             uriage_disp();
@@ -199,6 +203,10 @@ namespace TSS_SYSTEM
             tb_uriage_su.Text = "";
             tb_uriage_kanryou_flg.Text = "";
             tb_delete_flg.Text = "";
+            tb_create_user_cd.Text = "";
+            tb_create_datetime.Text = "";
+            tb_update_user_cd.Text = "";
+            tb_update_datetime.Text = "";
 
             tb_kousin_riyuu.Text = "";
 
@@ -1167,6 +1175,8 @@ namespace TSS_SYSTEM
                         else
                         {
                             //「いいえ」が選択された時
+                            tb_seihin_cd.Text = "";
+                            tb_seihin_name.Text = "";
                             e.Cancel = true;
                             return;
                         }
@@ -1365,7 +1375,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_seihin("2", "");
+            w_cd = tss.search_seihin("2", tb_seihin_cd.Text);
             if (w_cd != "")
             {
                 tb_seihin_cd.Text = w_cd;

@@ -446,5 +446,13 @@ namespace TSS_SYSTEM
             frm_stk.ShowDialog(this);
             frm_stk.Dispose();
         }
+
+        private void btn_juchu_zan_Click(object sender, EventArgs e)
+        {
+            //受注残
+            frm_juchu_zan frm_stk = new frm_juchu_zan();
+            frm_stk.ShowDialog(this);
+            frm_stk.Dispose();
+        }
     }
 }

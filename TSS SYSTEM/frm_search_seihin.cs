@@ -24,10 +24,10 @@ namespace TSS_SYSTEM
         DataTable dt_m = new DataTable();
 
         //親画面から参照できるプロパティを作成
-        public string fld_mode;         //画面モード
+        public string fld_mode;   //画面モード
         public string fld_name;   //検索する部品名
         public string fld_cd;     //選択された部品コード
-        public bool fld_sentaku;        //区分選択フラグ 選択:true エラーまたはキャンセル:false
+        public bool fld_sentaku;  //区分選択フラグ 選択:true エラーまたはキャンセル:false
 
         public string str_mode
         {
