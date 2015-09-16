@@ -570,7 +570,7 @@ namespace TSS_SYSTEM
         private void dgv_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
 
-            if (tss.Check_String_Escape(tb_torihikisaki_cd.Text) == false)
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
             {
                 e.Cancel = true;
                 return;
