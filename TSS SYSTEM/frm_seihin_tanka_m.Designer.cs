@@ -113,6 +113,7 @@
             this.dgv_m.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellDoubleClick);
             this.dgv_m.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellEndEdit);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
+            this.dgv_m.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgv_m_RowsRemoved);
             // 
             // splitContainer4
             // 

@@ -834,9 +834,11 @@ namespace TSS_SYSTEM
         {
             //製品単価マスタ
             frm_seihin_tanka_m frm_stk = new frm_seihin_tanka_m();
-            //frm_stk.ppt_cd = tb_seihin_cd.Text;
+            frm_stk.ppt_cd = tb_seihin_cd.Text;
             frm_stk.ShowDialog(this);
             frm_stk.Dispose();
+            chk_seihin_cd();
+
         }
 
     }
