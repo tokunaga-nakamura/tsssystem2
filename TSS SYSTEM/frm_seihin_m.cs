@@ -227,6 +227,10 @@ namespace TSS_SYSTEM
             dgv_tanka.Columns["bumon_cd"].HeaderText = "部門コード";
             dgv_tanka.Columns["tanka"].HeaderText = "単価";
             dgv_tanka.Columns["bikou"].HeaderText = "備考";
+            //右詰とか
+            dgv_tanka.Columns["tanka"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //書式を設定する
+            dgv_tanka.Columns["tanka"].DefaultCellStyle.Format = "#,###,###,##0.00";
             tanka_goukei_disp();        
         }
 
@@ -234,14 +238,14 @@ namespace TSS_SYSTEM
         {
             double w_dou;
             double w_goukei = 0;
-            for (int i = 0; i < dgv_tanka.Rows.Count - 1; i++)
+            for (int i = 0; i < dgv_tanka.Rows.Count; i++)
             {
                 if (double.TryParse(dgv_tanka.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
                 {
                     w_goukei = w_goukei + w_dou;
                 }
             }
-            tb_tanka_goukei.Text = w_goukei.ToString("#,###,###,##0");
+            tb_tanka_goukei.Text = w_goukei.ToString("#,###,###,##0.00");
         }
 
         private string get_torihikisaki_name(string in_torihikisaki_cd)
@@ -328,8 +332,6 @@ namespace TSS_SYSTEM
             }
         }
 
-
-
         private void tb_seihin_syubetu_kbn_Validating(object sender, CancelEventArgs e)
         {
             //製品種別が空白の場合はOKとする
@@ -366,8 +368,6 @@ namespace TSS_SYSTEM
             }
         }
 
-
-
         private void tb_sijou_kbn_Validating(object sender, CancelEventArgs e)
         {
             //市場区分が空白の場合はOKとする
@@ -403,8 +403,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
-
 
         private void tb_seihin_kousei_no_Validating(object sender, CancelEventArgs e)
         {
@@ -456,10 +454,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
-
-
-
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
@@ -570,7 +564,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
 
         //ここから下、各項目のチェックメソッド
         //チェックメソッドでは、あらゆるチェックを行い、
@@ -835,7 +828,15 @@ namespace TSS_SYSTEM
                     tb_seihin_cd.Focus();
                 }
             }
+        }
 
+        private void btn_tanka_hensyuu_Click(object sender, EventArgs e)
+        {
+            //製品単価マスタ
+            frm_seihin_tanka_m frm_stk = new frm_seihin_tanka_m();
+            //frm_stk.ppt_cd = tb_seihin_cd.Text;
+            frm_stk.ShowDialog(this);
+            frm_stk.Dispose();
         }
 
     }
