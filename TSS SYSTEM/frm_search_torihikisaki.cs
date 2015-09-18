@@ -97,7 +97,7 @@ namespace TSS_SYSTEM
                     if (str_name != "")
                     {
                         DataTable w_dt = new DataTable();
-                        w_dt = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd like '" + str_name + "%' or torihikisaki_name like '%" + str_name + "%'");
+                        w_dt = tss.OracleSelect("select torihikisaki_cd,torihikisaki_name,jusyo1,jusyo2,tel_no from tss_torihikisaki_m where torihikisaki_cd like '" + str_name + "%' or torihikisaki_name like '%" + str_name + "%'");
                         list_disp(w_dt);
 
                         //tb_torihikisaki_name.Text = str_name;
