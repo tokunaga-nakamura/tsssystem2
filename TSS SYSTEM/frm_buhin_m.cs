@@ -222,7 +222,7 @@ namespace TSS_SYSTEM
         private void rireki_disp(string in_cd)
         {
             dgv_buhin_nyusyukko_m.DataSource = null;
-            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by buhin_syori_date desc");
+            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by buhin_syori_date desc");
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_nyusyukko_m.ReadOnly = true;
             //行ヘッダーを非表示にする
@@ -252,7 +252,8 @@ namespace TSS_SYSTEM
             dgv_buhin_nyusyukko_m.Columns[8].HeaderText = "移動先取引先コード";
             dgv_buhin_nyusyukko_m.Columns[9].HeaderText = "移動先受注No1";
             dgv_buhin_nyusyukko_m.Columns[10].HeaderText = "移動先受注No2";
-            dgv_buhin_nyusyukko_m.Columns[11].HeaderText = "備考";
+            dgv_buhin_nyusyukko_m.Columns[11].HeaderText = "処理区分";
+            dgv_buhin_nyusyukko_m.Columns[12].HeaderText = "備考";
             //右詰
             dgv_buhin_nyusyukko_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //書式を設定する
@@ -811,7 +812,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_buhin_cd;
-            w_buhin_cd = tss.search_buhin("2", "");
+            w_buhin_cd = tss.search_buhin("2", tb_buhin_cd.Text);
             if (w_buhin_cd != "")
             {
                 tb_buhin_cd.Text = w_buhin_cd;

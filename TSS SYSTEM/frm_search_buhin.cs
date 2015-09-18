@@ -121,7 +121,8 @@ namespace TSS_SYSTEM
                     if(str_name != "")
                     {
                         DataTable w_dt = new DataTable();
-                        w_dt = tss.OracleSelect("select * from tss_buhin_m where buhin_cd like '" + str_name + "%' or buhin_name like '%" + str_name + "%'");
+                        w_dt = tss.OracleSelect("select buhin_cd,buhin_name,buhin_hosoku,maker_name,siiresaki_cd,siire_kbn,torihikisaki_cd,siire_tanka from tss_buhin_m where buhin_cd like '" + str_name + "%' or buhin_name like '%" + str_name + "%'");
+
                         list_disp(w_dt);
 
                         //tb_buhin_name.Text = str_name;
@@ -253,7 +254,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select buhin_cd,buhin_name,buhin_hosoku,maker_name,siiresaki_cd,siire_kbn,torihikisaki_cd from tss_buhin_m where ";
+            string sql = "select buhin_cd,buhin_name,buhin_hosoku,maker_name,siiresaki_cd,siire_kbn,torihikisaki_cd,siire_tanka from tss_buhin_m where ";
             for(int i=1;i<=sql_cnt;i++)
             {
                 if(i >= 2)
@@ -334,6 +335,12 @@ namespace TSS_SYSTEM
             dgv_m.Columns[4].HeaderText = "仕入先コード";
             dgv_m.Columns[5].HeaderText = "仕入れ区分";
             dgv_m.Columns[6].HeaderText = "取引先コード";
+            dgv_m.Columns[7].HeaderText = "仕入単価";
+
+            //右詰
+            dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //書式を設定する
+            dgv_m.Columns[7].DefaultCellStyle.Format = "#,###,###,##0.00";
         }
         
         private void btn_sentaku_Click_1(object sender, EventArgs e)

@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_buhin_nyuuko_bcr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_nyuuko_bcr.Designer.cs">
+      <DependentUpon>frm_buhin_nyuuko_bcr.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_buhin_to_seihin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
     </Compile>
     <Compile Include="TssSystemLibrary.cs" />
+    <EmbeddedResource Include="frm_buhin_nyuuko_bcr.resx">
+      <DependentUpon>frm_buhin_nyuuko_bcr.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </EmbeddedResource>

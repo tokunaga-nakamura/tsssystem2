@@ -118,7 +118,6 @@ namespace TSS_SYSTEM
             //DataGridView1にユーザーが新しい行を追加できないようにする
             dgv_kubun.AllowUserToAddRows = false;
 
-
             //画面に引数の区分名を表示
             this.lbl_kubun_name.Text = ppt_str_kubun_name;
             //引数のデータテーブルを表示
@@ -141,6 +140,7 @@ namespace TSS_SYSTEM
                     if(dgv_kubun.Rows[i].Cells[0].Value.ToString() == ppt_str_initial_cd)
                     {
                         dgv_kubun.Rows[i].Selected = true;
+                        dgv_kubun.CurrentCell = dgv_kubun[0,i];
                         break;
                     }
                 }

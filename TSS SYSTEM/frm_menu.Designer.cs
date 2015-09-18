@@ -57,6 +57,7 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_juchu_zan = new System.Windows.Forms.Button();
             this.btn_nyukin = new System.Windows.Forms.Button();
             this.btn_seikyu_preview = new System.Windows.Forms.Button();
             this.btn_seikyu = new System.Windows.Forms.Button();
@@ -101,7 +102,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_juchu_zan = new System.Windows.Forms.Button();
+            this.btn_nyuko_bcr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -547,6 +548,16 @@
             this.tabPage2.Text = "受注・売上・請求";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_juchu_zan
+            // 
+            this.btn_juchu_zan.Location = new System.Drawing.Point(189, 35);
+            this.btn_juchu_zan.Name = "btn_juchu_zan";
+            this.btn_juchu_zan.Size = new System.Drawing.Size(177, 23);
+            this.btn_juchu_zan.TabIndex = 14;
+            this.btn_juchu_zan.Text = "受注残照会";
+            this.btn_juchu_zan.UseVisualStyleBackColor = true;
+            this.btn_juchu_zan.Click += new System.EventHandler(this.btn_juchu_zan_Click);
+            // 
             // btn_nyukin
             // 
             this.btn_nyukin.Location = new System.Drawing.Point(6, 270);
@@ -649,6 +660,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_nyuko_bcr);
             this.tabPage3.Controls.Add(this.btn_3_seihin_tanka_m);
             this.tabPage3.Controls.Add(this.btn_seihim_to_zaiko);
             this.tabPage3.Controls.Add(this.btn_buhin_seihin);
@@ -1012,15 +1024,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_juchu_zan
+            // btn_nyuko_bcr
             // 
-            this.btn_juchu_zan.Location = new System.Drawing.Point(189, 35);
-            this.btn_juchu_zan.Name = "btn_juchu_zan";
-            this.btn_juchu_zan.Size = new System.Drawing.Size(177, 23);
-            this.btn_juchu_zan.TabIndex = 14;
-            this.btn_juchu_zan.Text = "受注残照会";
-            this.btn_juchu_zan.UseVisualStyleBackColor = true;
-            this.btn_juchu_zan.Click += new System.EventHandler(this.btn_juchu_zan_Click);
+            this.btn_nyuko_bcr.Location = new System.Drawing.Point(194, 6);
+            this.btn_nyuko_bcr.Name = "btn_nyuko_bcr";
+            this.btn_nyuko_bcr.Size = new System.Drawing.Size(180, 23);
+            this.btn_nyuko_bcr.TabIndex = 15;
+            this.btn_nyuko_bcr.Text = "入庫処理（ダイニチ専用BCR）";
+            this.btn_nyuko_bcr.UseVisualStyleBackColor = true;
             // 
             // frm_menu
             // 
@@ -1170,6 +1181,7 @@
         private System.Windows.Forms.Button btn_seikyu;
         private System.Windows.Forms.Button btn_3_seihin_tanka_m;
         private System.Windows.Forms.Button btn_juchu_zan;
+        private System.Windows.Forms.Button btn_nyuko_bcr;
     }
 }
 
