@@ -306,7 +306,7 @@ namespace TSS_SYSTEM
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
 
-                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
+                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
@@ -319,6 +319,7 @@ namespace TSS_SYSTEM
                                         + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
+                                        + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
@@ -332,7 +333,7 @@ namespace TSS_SYSTEM
                     //在庫区分が01（フリー在庫等）のとき　取引先コードは999999にする。
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
                     {
-                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
+                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
@@ -345,6 +346,7 @@ namespace TSS_SYSTEM
                                         + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
+                                        + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
@@ -467,7 +469,7 @@ namespace TSS_SYSTEM
 
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                     {
-                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
+                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "02" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
@@ -480,6 +482,7 @@ namespace TSS_SYSTEM
                                         + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
+                                        + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
@@ -492,7 +495,7 @@ namespace TSS_SYSTEM
                     if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() == "01")
                     {
 
-                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,bikou,create_user_cd,create_datetime) VALUES ('"
+                        bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
@@ -505,6 +508,7 @@ namespace TSS_SYSTEM
                                         + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
+                                        + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)

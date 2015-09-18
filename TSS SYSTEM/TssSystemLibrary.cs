@@ -1751,9 +1751,9 @@ namespace TSS_SYSTEM
         {
             bool out_bl = true; //戻り値用
 
-            if (in_str.IndexOf("'") >= 0 || in_str.IndexOf("%") >= 0 || in_str.IndexOf("\\") >= 0 || in_str.IndexOf("\"") >= 0 || in_str.IndexOf("*") >= 0)
+            if (in_str.IndexOf("'") >= 0 || in_str.IndexOf("%") >= 0 || in_str.IndexOf("\\") >= 0 || in_str.IndexOf("\"") >= 0)
             {
-                MessageBox.Show("文字列に「 ' % \\ \" * 」は使用できません。");
+                MessageBox.Show("文字列に「 ' % \\ \" 」は使用できません。");
                 out_bl = false;
             }
             else

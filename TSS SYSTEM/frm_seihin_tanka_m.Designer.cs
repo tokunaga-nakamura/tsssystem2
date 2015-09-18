@@ -254,17 +254,17 @@
             this.tb_seihin_cd.Location = new System.Drawing.Point(123, 23);
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
-            this.tb_seihin_cd.Size = new System.Drawing.Size(59, 19);
+            this.tb_seihin_cd.Size = new System.Drawing.Size(117, 19);
             this.tb_seihin_cd.TabIndex = 35;
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
             // tb_seihin_name
             // 
             this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(181, 23);
+            this.tb_seihin_name.Location = new System.Drawing.Point(240, 23);
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.ReadOnly = true;
-            this.tb_seihin_name.Size = new System.Drawing.Size(249, 19);
+            this.tb_seihin_name.Size = new System.Drawing.Size(336, 19);
             this.tb_seihin_name.TabIndex = 37;
             this.tb_seihin_name.TabStop = false;
             // 
