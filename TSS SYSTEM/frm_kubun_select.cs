@@ -138,6 +138,7 @@ namespace TSS_SYSTEM
                     if (dgv_kubun_m.Rows[i].Cells[0].Value.ToString() == str_initial_cd)
                     {
                         dgv_kubun_m.Rows[i].Selected = true;
+                        dgv_kubun_m.CurrentCell = dgv_kubun_m[0, i];
                         break;
                     }
                 }

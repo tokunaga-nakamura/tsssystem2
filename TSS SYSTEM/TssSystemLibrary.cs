@@ -1420,7 +1420,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + "0.00" + "','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + "0.00" + "','02','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
                
                 //次に残りの在庫数をフリー在庫で処理する
@@ -1443,7 +1443,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + in_su.ToString() + "','売上番号" + in_bikou + "分のロット在庫不足分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + in_su.ToString() + "','02','売上番号" + in_bikou + "分のロット在庫不足分の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
             }
             else
@@ -1459,7 +1459,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + in_su.ToString("0.00") + "','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + in_su.ToString("0.00") + "','02','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
             }
             return bl;
