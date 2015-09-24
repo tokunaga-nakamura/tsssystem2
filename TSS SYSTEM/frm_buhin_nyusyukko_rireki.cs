@@ -33,7 +33,7 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "buhin_syori_date = '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date = '" + tb_buhin_syori_date1.Text.ToString() + "'";
                     //sql_where[sql_cnt] = "TO_CHAR(buhin_syori_date, 'YYYY/MM/DD') = '" + tb_buhin_syori_date1.Text.ToString() + "'";
                     sql_cnt++;
                 }
@@ -41,7 +41,7 @@ namespace TSS_SYSTEM
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "buhin_syori_date >= '" + tb_buhin_syori_date1.Text.ToString() + "' and buhin_syori_date <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date1.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
                         //sql_where[sql_cnt] = "to_char(buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date1.Text.ToString() + "' and to_char(buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
                         sql_cnt++;
                     }
@@ -49,7 +49,7 @@ namespace TSS_SYSTEM
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "buhin_syori_date >= '" + tb_buhin_syori_date2.Text.ToString() + "' and buhin_syori_date <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date2.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
                             //sql_where[sql_cnt] = "to_char(buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date2.Text.ToString() + "' and to_date(buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
                             sql_cnt++;
                         }
@@ -62,21 +62,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -88,21 +88,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "buhin_cd = '" + tb_buhin_cd1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_cd = '" + tb_buhin_cd1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "buhin_cd  >= '" + tb_buhin_cd1.Text.ToString() + "' and buhin_cd <= '" + tb_buhin_cd2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_cd  >= '" + tb_buhin_cd1.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_cd <= '" + tb_buhin_cd2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "buhin_cd >= '" + tb_buhin_cd2.Text.ToString() + "' and buhin_cd <= '" + tb_buhin_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_cd >= '" + tb_buhin_cd2.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_cd <= '" + tb_buhin_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -110,33 +110,33 @@ namespace TSS_SYSTEM
             //入出庫移動区分
             if (rb_nyuko.Checked == true)
             {
-                sql_where[sql_cnt] = "buhin_syori_kbn = '01'";
+                sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_kbn = '01'";
                 sql_cnt++;
             }
             else
                 if (rb_syukko.Checked == true)
                 {
-                    sql_where[sql_cnt] = "buhin_syori_kbn = '02'";
+                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_kbn = '02'";
                     sql_cnt++;
 
                 }
                 else
                     if (rb_idou.Checked == true)
                     {
-                        sql_where[sql_cnt] = "buhin_syori_kbn = '03'";
+                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_kbn = '03'";
                         sql_cnt++;
                     }
 
             //処理区分
             if (rb_gamen_syori.Checked == true)
             {
-                sql_where[sql_cnt] = "syori_kbn = '01'";
+                sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.syori_kbn = '01'";
                 sql_cnt++;
             }
             else
                 if (rb_uriage_syori.Checked == true)
                 {
-                    sql_where[sql_cnt] = "syori_kbn = '02'";
+                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.syori_kbn = '02'";
                     sql_cnt++;
 
                 }
@@ -150,7 +150,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select * from tss_buhin_nyusyukko_m where ";
+            string sql = "select tss_buhin_nyusyukko_m.buhin_syori_kbn, tss_buhin_nyusyukko_m.buhin_syori_no,tss_buhin_nyusyukko_m.seq,tss_buhin_nyusyukko_m.buhin_syori_date,  tss_buhin_nyusyukko_m.buhin_cd, tss_buhin_m.buhin_name, tss_buhin_nyusyukko_m.zaiko_kbn, tss_buhin_nyusyukko_m.torihikisaki_cd, tss_buhin_nyusyukko_m.juchu_cd1,tss_buhin_nyusyukko_m.juchu_cd2,tss_buhin_nyusyukko_m.suryou,tss_buhin_nyusyukko_m.idousaki_zaiko_kbn,tss_buhin_nyusyukko_m.idousaki_torihikisaki_cd,tss_buhin_nyusyukko_m.idousaki_juchu_cd1,tss_buhin_nyusyukko_m.idousaki_juchu_cd2,tss_buhin_nyusyukko_m.denpyou_no,tss_buhin_nyusyukko_m.barcode,tss_buhin_nyusyukko_m.syori_kbn,tss_buhin_nyusyukko_m.bikou,tss_buhin_nyusyukko_m.create_user_cd,tss_buhin_nyusyukko_m.create_datetime,tss_buhin_nyusyukko_m.update_user_cd,tss_buhin_nyusyukko_m.update_datetime from tss_buhin_nyusyukko_m inner join tss_buhin_m on tss_buhin_nyusyukko_m.buhin_cd = tss_buhin_m.buhin_cd where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -193,10 +193,15 @@ namespace TSS_SYSTEM
                 dgv_m.DataSource = in_dt;
                 dt_m = in_dt;
 
-                dt_m.Columns.Remove("idousaki_zaiko_kbn");
-                dt_m.Columns.Remove("idousaki_torihikisaki_cd");
-                dt_m.Columns.Remove("idousaki_juchu_cd1");
-                dt_m.Columns.Remove("idousaki_juchu_cd2");
+                dgv_m.Columns["idousaki_zaiko_kbn"].Visible = false;
+                dgv_m.Columns["idousaki_torihikisaki_cd"].Visible = false;
+                dgv_m.Columns["idousaki_juchu_cd1"].Visible = false;
+                dgv_m.Columns["idousaki_juchu_cd2"].Visible = false;
+                dgv_m.Columns["barcode"].Visible = false;
+                dgv_m.Columns["create_user_cd"].Visible = false;
+                dgv_m.Columns["create_datetime"].Visible = false;
+                dgv_m.Columns["update_user_cd"].Visible = false;
+                dgv_m.Columns["update_datetime"].Visible = false;
 
 
                 //DataGridViewのカラムヘッダーテキストを変更する
@@ -205,19 +210,20 @@ namespace TSS_SYSTEM
                 dgv_m.Columns[2].HeaderText = "行番号";
                 dgv_m.Columns[3].HeaderText = "処理日";
                 dgv_m.Columns[4].HeaderText = "部品コード";
-                dgv_m.Columns[5].HeaderText = "在庫区分";
-                dgv_m.Columns[6].HeaderText = "取引先コード";
-                dgv_m.Columns[7].HeaderText = "受注コード1";
-                dgv_m.Columns[8].HeaderText = "受注コード2";
-                dgv_m.Columns[9].HeaderText = "数量";
-                dgv_m.Columns[10].HeaderText = "伝票番号";
-                dgv_m.Columns[11].HeaderText = "バーコード";
-                dgv_m.Columns[12].HeaderText = "処理区分";
-                dgv_m.Columns[13].HeaderText = "備考";
-                dgv_m.Columns[14].HeaderText = "作成者コード";
-                dgv_m.Columns[15].HeaderText = "作成日時";
-                dgv_m.Columns[16].HeaderText = "更新者コード";
-                dgv_m.Columns[17].HeaderText = "更新日時";
+                dgv_m.Columns[5].HeaderText = "部品名";
+                dgv_m.Columns[6].HeaderText = "在庫区分";
+                dgv_m.Columns[7].HeaderText = "取引先コード";
+                dgv_m.Columns[8].HeaderText = "受注コード1";
+                dgv_m.Columns[9].HeaderText = "受注コード2";
+                dgv_m.Columns[10].HeaderText = "数量";
+                dgv_m.Columns[15].HeaderText = "伝票番号";
+                //dgv_m.Columns[12].HeaderText = "バーコード";
+                dgv_m.Columns[17].HeaderText = "処理区分";
+                dgv_m.Columns[18].HeaderText = "備考";
+                //dgv_m.Columns[14].HeaderText = "作成者コード";
+                //dgv_m.Columns[15].HeaderText = "作成日時";
+                //dgv_m.Columns[16].HeaderText = "更新者コード";
+                //dgv_m.Columns[17].HeaderText = "更新日時";
 
             }
 
@@ -228,29 +234,37 @@ namespace TSS_SYSTEM
                 dgv_m.DataSource = in_dt;
                 dt_m = in_dt;
 
+                dgv_m.Columns["barcode"].Visible = false;
+                dgv_m.Columns["create_user_cd"].Visible = false;
+                dgv_m.Columns["create_datetime"].Visible = false;
+                dgv_m.Columns["update_user_cd"].Visible = false;
+                dgv_m.Columns["update_datetime"].Visible = false;
+
+
                 //DataGridViewのカラムヘッダーテキストを変更する
                 dgv_m.Columns[0].HeaderText = "入出庫移動区分";
                 dgv_m.Columns[1].HeaderText = "入出庫移動番号";
                 dgv_m.Columns[2].HeaderText = "行番号";
                 dgv_m.Columns[3].HeaderText = "処理日";
                 dgv_m.Columns[4].HeaderText = "部品コード";
-                dgv_m.Columns[5].HeaderText = "在庫区分";
-                dgv_m.Columns[6].HeaderText = "取引先コード";
-                dgv_m.Columns[7].HeaderText = "受注コード1";
-                dgv_m.Columns[8].HeaderText = "受注コード2";
-                dgv_m.Columns[9].HeaderText = "数量";
-                dgv_m.Columns[10].HeaderText = "移動先在庫区分";
-                dgv_m.Columns[11].HeaderText = "移動先取引先コード";
-                dgv_m.Columns[12].HeaderText = "移動先受注コード1";
-                dgv_m.Columns[13].HeaderText = "移動先受注コード2";
-                dgv_m.Columns[14].HeaderText = "伝票番号";
-                dgv_m.Columns[15].HeaderText = "バーコード";
-                dgv_m.Columns[16].HeaderText = "処理区分";
-                dgv_m.Columns[17].HeaderText = "備考";
-                dgv_m.Columns[18].HeaderText = "作成者コード";
-                dgv_m.Columns[19].HeaderText = "作成日時";
-                dgv_m.Columns[20].HeaderText = "更新者コード";
-                dgv_m.Columns[21].HeaderText = "更新日時";
+                dgv_m.Columns[5].HeaderText = "部品名";
+                dgv_m.Columns[6].HeaderText = "在庫区分";
+                dgv_m.Columns[7].HeaderText = "取引先コード";
+                dgv_m.Columns[8].HeaderText = "受注コード1";
+                dgv_m.Columns[9].HeaderText = "受注コード2";
+                dgv_m.Columns[10].HeaderText = "数量";
+                dgv_m.Columns[11].HeaderText = "移動先在庫区分";
+                dgv_m.Columns[12].HeaderText = "移動先取引先コード";
+                dgv_m.Columns[13].HeaderText = "移動先受注コード1";
+                dgv_m.Columns[14].HeaderText = "移動先受注コード2";
+                dgv_m.Columns[15].HeaderText = "伝票番号";
+                dgv_m.Columns[16].HeaderText = "バーコード";
+                dgv_m.Columns[17].HeaderText = "処理区分";
+                dgv_m.Columns[18].HeaderText = "備考";
+                dgv_m.Columns[19].HeaderText = "作成者コード";
+                dgv_m.Columns[20].HeaderText = "作成日時";
+                dgv_m.Columns[21].HeaderText = "更新者コード";
+                dgv_m.Columns[22].HeaderText = "更新日時";
             }
             
 
