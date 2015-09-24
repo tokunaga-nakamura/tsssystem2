@@ -30,31 +30,30 @@
         {
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_syuryou = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_create_date2 = new System.Windows.Forms.TextBox();
-            this.tb_create_date1 = new System.Windows.Forms.TextBox();
+            this.tb_buhin_syori_date2 = new System.Windows.Forms.TextBox();
+            this.tb_buhin_syori_date1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_kensaku = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rb_uriage_all = new System.Windows.Forms.RadioButton();
-            this.rb_uriage_tochuu = new System.Windows.Forms.RadioButton();
-            this.rb_miuriage = new System.Windows.Forms.RadioButton();
+            this.rb_uriage_syori = new System.Windows.Forms.RadioButton();
+            this.rb_gamen_syori = new System.Windows.Forms.RadioButton();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btn_sentaku = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tb_juchu_cd1_2 = new System.Windows.Forms.TextBox();
-            this.tb_juchu_cd1_1 = new System.Windows.Forms.TextBox();
+            this.tb_buhin_cd2 = new System.Windows.Forms.TextBox();
+            this.tb_buhin_cd1 = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.rb_idou = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rb_syukko = new System.Windows.Forms.RadioButton();
+            this.rb_nyuko = new System.Windows.Forms.RadioButton();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd2 = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_cd1 = new System.Windows.Forms.TextBox();
@@ -75,30 +74,32 @@
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(172, 3);
+            this.btn_csv.Location = new System.Drawing.Point(91, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 3;
+            this.btn_csv.TabIndex = 16;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
             // 
             // btn_insatu
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(91, 3);
+            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 2;
+            this.btn_insatu.TabIndex = 15;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
             // 
-            // btn_cancel
+            // btn_syuryou
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(795, 3);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 0;
-            this.btn_cancel.Text = "キャンセル";
-            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_syuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuryou.Name = "btn_syuryou";
+            this.btn_syuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuryou.TabIndex = 17;
+            this.btn_syuryou.Text = "終了";
+            this.btn_syuryou.UseVisualStyleBackColor = true;
+            this.btn_syuryou.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // label4
             // 
@@ -127,19 +128,21 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "～";
             // 
-            // tb_create_date2
+            // tb_buhin_syori_date2
             // 
-            this.tb_create_date2.Location = new System.Drawing.Point(202, 32);
-            this.tb_create_date2.Name = "tb_create_date2";
-            this.tb_create_date2.Size = new System.Drawing.Size(100, 19);
-            this.tb_create_date2.TabIndex = 16;
+            this.tb_buhin_syori_date2.Location = new System.Drawing.Point(202, 32);
+            this.tb_buhin_syori_date2.Name = "tb_buhin_syori_date2";
+            this.tb_buhin_syori_date2.Size = new System.Drawing.Size(100, 19);
+            this.tb_buhin_syori_date2.TabIndex = 2;
+            this.tb_buhin_syori_date2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_syori_date2_Validating);
             // 
-            // tb_create_date1
+            // tb_buhin_syori_date1
             // 
-            this.tb_create_date1.Location = new System.Drawing.Point(85, 32);
-            this.tb_create_date1.Name = "tb_create_date1";
-            this.tb_create_date1.Size = new System.Drawing.Size(100, 19);
-            this.tb_create_date1.TabIndex = 15;
+            this.tb_buhin_syori_date1.Location = new System.Drawing.Point(85, 32);
+            this.tb_buhin_syori_date1.Name = "tb_buhin_syori_date1";
+            this.tb_buhin_syori_date1.Size = new System.Drawing.Size(100, 19);
+            this.tb_buhin_syori_date1.TabIndex = 1;
+            this.tb_buhin_syori_date1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_syori_date1_Validating);
             // 
             // textBox2
             // 
@@ -157,18 +160,19 @@
             this.btn_kensaku.Location = new System.Drawing.Point(795, 117);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_kensaku.TabIndex = 13;
+            this.btn_kensaku.TabIndex = 14;
             this.btn_kensaku.Text = "検索";
             this.btn_kensaku.UseVisualStyleBackColor = true;
+            this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rb_uriage_all);
-            this.groupBox2.Controls.Add(this.rb_uriage_tochuu);
-            this.groupBox2.Controls.Add(this.rb_miuriage);
+            this.groupBox2.Controls.Add(this.rb_uriage_syori);
+            this.groupBox2.Controls.Add(this.rb_gamen_syori);
             this.groupBox2.Location = new System.Drawing.Point(564, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(202, 87);
+            this.groupBox2.Size = new System.Drawing.Size(229, 87);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "処理区分";
@@ -180,30 +184,30 @@
             this.rb_uriage_all.Location = new System.Drawing.Point(6, 62);
             this.rb_uriage_all.Name = "rb_uriage_all";
             this.rb_uriage_all.Size = new System.Drawing.Size(44, 16);
-            this.rb_uriage_all.TabIndex = 3;
+            this.rb_uriage_all.TabIndex = 13;
             this.rb_uriage_all.TabStop = true;
             this.rb_uriage_all.Text = "全て";
             this.rb_uriage_all.UseVisualStyleBackColor = true;
             // 
-            // rb_uriage_tochuu
+            // rb_uriage_syori
             // 
-            this.rb_uriage_tochuu.AutoSize = true;
-            this.rb_uriage_tochuu.Location = new System.Drawing.Point(6, 40);
-            this.rb_uriage_tochuu.Name = "rb_uriage_tochuu";
-            this.rb_uriage_tochuu.Size = new System.Drawing.Size(118, 16);
-            this.rb_uriage_tochuu.TabIndex = 1;
-            this.rb_uriage_tochuu.Text = "売上で処理したもの";
-            this.rb_uriage_tochuu.UseVisualStyleBackColor = true;
+            this.rb_uriage_syori.AutoSize = true;
+            this.rb_uriage_syori.Location = new System.Drawing.Point(6, 40);
+            this.rb_uriage_syori.Name = "rb_uriage_syori";
+            this.rb_uriage_syori.Size = new System.Drawing.Size(138, 16);
+            this.rb_uriage_syori.TabIndex = 12;
+            this.rb_uriage_syori.Text = "売上で処理したもの(02)";
+            this.rb_uriage_syori.UseVisualStyleBackColor = true;
             // 
-            // rb_miuriage
+            // rb_gamen_syori
             // 
-            this.rb_miuriage.AutoSize = true;
-            this.rb_miuriage.Location = new System.Drawing.Point(6, 18);
-            this.rb_miuriage.Name = "rb_miuriage";
-            this.rb_miuriage.Size = new System.Drawing.Size(178, 16);
-            this.rb_miuriage.TabIndex = 0;
-            this.rb_miuriage.Text = "入出庫移動画面で処理したもの";
-            this.rb_miuriage.UseVisualStyleBackColor = true;
+            this.rb_gamen_syori.AutoSize = true;
+            this.rb_gamen_syori.Location = new System.Drawing.Point(6, 18);
+            this.rb_gamen_syori.Name = "rb_gamen_syori";
+            this.rb_gamen_syori.Size = new System.Drawing.Size(198, 16);
+            this.rb_gamen_syori.TabIndex = 11;
+            this.rb_gamen_syori.Text = "入出庫移動画面で処理したもの(01)";
+            this.rb_gamen_syori.UseVisualStyleBackColor = true;
             // 
             // dgv_m
             // 
@@ -233,21 +237,11 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
+            this.splitContainer2.Panel2.Controls.Add(this.btn_syuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 408);
             this.splitContainer2.SplitterDistance = 346;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
-            // 
-            // btn_sentaku
-            // 
-            this.btn_sentaku.Location = new System.Drawing.Point(10, 3);
-            this.btn_sentaku.Name = "btn_sentaku";
-            this.btn_sentaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_sentaku.TabIndex = 1;
-            this.btn_sentaku.Text = "選択";
-            this.btn_sentaku.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -257,21 +251,23 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tb_juchu_cd1_2
+            // tb_buhin_cd2
             // 
-            this.tb_juchu_cd1_2.Location = new System.Drawing.Point(210, 82);
-            this.tb_juchu_cd1_2.MaxLength = 16;
-            this.tb_juchu_cd1_2.Name = "tb_juchu_cd1_2";
-            this.tb_juchu_cd1_2.Size = new System.Drawing.Size(108, 19);
-            this.tb_juchu_cd1_2.TabIndex = 5;
+            this.tb_buhin_cd2.Location = new System.Drawing.Point(210, 82);
+            this.tb_buhin_cd2.MaxLength = 16;
+            this.tb_buhin_cd2.Name = "tb_buhin_cd2";
+            this.tb_buhin_cd2.Size = new System.Drawing.Size(108, 19);
+            this.tb_buhin_cd2.TabIndex = 6;
+            this.tb_buhin_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd2_Validating);
             // 
-            // tb_juchu_cd1_1
+            // tb_buhin_cd1
             // 
-            this.tb_juchu_cd1_1.Location = new System.Drawing.Point(85, 82);
-            this.tb_juchu_cd1_1.MaxLength = 16;
-            this.tb_juchu_cd1_1.Name = "tb_juchu_cd1_1";
-            this.tb_juchu_cd1_1.Size = new System.Drawing.Size(108, 19);
-            this.tb_juchu_cd1_1.TabIndex = 4;
+            this.tb_buhin_cd1.Location = new System.Drawing.Point(85, 82);
+            this.tb_buhin_cd1.MaxLength = 16;
+            this.tb_buhin_cd1.Name = "tb_buhin_cd1";
+            this.tb_buhin_cd1.Size = new System.Drawing.Size(108, 19);
+            this.tb_buhin_cd1.TabIndex = 5;
+            this.tb_buhin_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd1_Validating);
             // 
             // splitContainer1
             // 
@@ -301,13 +297,13 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tb_create_date2);
-            this.groupBox1.Controls.Add(this.tb_create_date1);
+            this.groupBox1.Controls.Add(this.tb_buhin_syori_date2);
+            this.groupBox1.Controls.Add(this.tb_buhin_syori_date1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.btn_kensaku);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.tb_juchu_cd1_2);
-            this.groupBox1.Controls.Add(this.tb_juchu_cd1_1);
+            this.groupBox1.Controls.Add(this.tb_buhin_cd2);
+            this.groupBox1.Controls.Add(this.tb_buhin_cd1);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.tb_torihikisaki_cd2);
             this.groupBox1.Controls.Add(this.tb_torihikisaki_cd1);
@@ -322,10 +318,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.radioButton4);
+            this.groupBox3.Controls.Add(this.rb_idou);
             this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton3);
+            this.groupBox3.Controls.Add(this.rb_syukko);
+            this.groupBox3.Controls.Add(this.rb_nyuko);
             this.groupBox3.Location = new System.Drawing.Point(356, 25);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(202, 105);
@@ -333,15 +329,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "入出庫移動区分";
             // 
-            // radioButton4
+            // rb_idou
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 60);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(47, 16);
-            this.radioButton4.TabIndex = 4;
-            this.radioButton4.Text = "移動";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rb_idou.AutoSize = true;
+            this.rb_idou.Location = new System.Drawing.Point(6, 60);
+            this.rb_idou.Name = "rb_idou";
+            this.rb_idou.Size = new System.Drawing.Size(67, 16);
+            this.rb_idou.TabIndex = 9;
+            this.rb_idou.Text = "移動(03)";
+            this.rb_idou.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -350,30 +346,30 @@
             this.radioButton1.Location = new System.Drawing.Point(6, 80);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(44, 16);
-            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabIndex = 10;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "全て";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rb_syukko
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 38);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "出庫";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rb_syukko.AutoSize = true;
+            this.rb_syukko.Location = new System.Drawing.Point(6, 38);
+            this.rb_syukko.Name = "rb_syukko";
+            this.rb_syukko.Size = new System.Drawing.Size(67, 16);
+            this.rb_syukko.TabIndex = 8;
+            this.rb_syukko.Text = "出庫(02)";
+            this.rb_syukko.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rb_nyuko
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 18);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(47, 16);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.Text = "入庫";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rb_nyuko.AutoSize = true;
+            this.rb_nyuko.Location = new System.Drawing.Point(6, 18);
+            this.rb_nyuko.Name = "rb_nyuko";
+            this.rb_nyuko.Size = new System.Drawing.Size(67, 16);
+            this.rb_nyuko.TabIndex = 7;
+            this.rb_nyuko.Text = "入庫(01)";
+            this.rb_nyuko.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
@@ -392,7 +388,8 @@
             this.tb_torihikisaki_cd2.MaxLength = 6;
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(51, 19);
-            this.tb_torihikisaki_cd2.TabIndex = 2;
+            this.tb_torihikisaki_cd2.TabIndex = 4;
+            this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // tb_torihikisaki_cd1
             // 
@@ -400,7 +397,8 @@
             this.tb_torihikisaki_cd1.MaxLength = 6;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(51, 19);
-            this.tb_torihikisaki_cd1.TabIndex = 1;
+            this.tb_torihikisaki_cd1.TabIndex = 3;
+            this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
             // textBox1
             // 
@@ -447,24 +445,23 @@
 
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;
-        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_syuryou;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_create_date2;
-        private System.Windows.Forms.TextBox tb_create_date1;
+        private System.Windows.Forms.TextBox tb_buhin_syori_date2;
+        private System.Windows.Forms.TextBox tb_buhin_syori_date1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_kensaku;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rb_uriage_all;
-        private System.Windows.Forms.RadioButton rb_uriage_tochuu;
-        private System.Windows.Forms.RadioButton rb_miuriage;
+        private System.Windows.Forms.RadioButton rb_uriage_syori;
+        private System.Windows.Forms.RadioButton rb_gamen_syori;
         private System.Windows.Forms.DataGridView dgv_m;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button btn_sentaku;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.TextBox tb_juchu_cd1_2;
-        private System.Windows.Forms.TextBox tb_juchu_cd1_1;
+        private System.Windows.Forms.TextBox tb_buhin_cd2;
+        private System.Windows.Forms.TextBox tb_buhin_cd1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox4;
@@ -472,9 +469,9 @@
         private System.Windows.Forms.TextBox tb_torihikisaki_cd1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton rb_idou;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rb_syukko;
+        private System.Windows.Forms.RadioButton rb_nyuko;
     }
 }

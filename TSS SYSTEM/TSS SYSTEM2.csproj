@@ -370,6 +370,9 @@
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
     </Compile>
     <Compile Include="TssSystemLibrary.cs" />
+    <EmbeddedResource Include="frm_buhin_nyusyukko_rireki.resx">
+      <DependentUpon>frm_buhin_nyusyukko_rireki.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </EmbeddedResource>

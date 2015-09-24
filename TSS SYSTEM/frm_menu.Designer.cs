@@ -69,6 +69,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_nyuko_bcr = new System.Windows.Forms.Button();
             this.btn_3_seihin_tanka_m = new System.Windows.Forms.Button();
             this.btn_seihim_to_zaiko = new System.Windows.Forms.Button();
             this.btn_buhin_seihin = new System.Windows.Forms.Button();
@@ -102,7 +103,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_nyuko_bcr = new System.Windows.Forms.Button();
+            this.btn_buhin_nyusyukko_rireki = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -660,6 +661,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_rireki);
             this.tabPage3.Controls.Add(this.btn_nyuko_bcr);
             this.tabPage3.Controls.Add(this.btn_3_seihin_tanka_m);
             this.tabPage3.Controls.Add(this.btn_seihim_to_zaiko);
@@ -679,6 +681,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btn_nyuko_bcr
+            // 
+            this.btn_nyuko_bcr.Location = new System.Drawing.Point(194, 6);
+            this.btn_nyuko_bcr.Name = "btn_nyuko_bcr";
+            this.btn_nyuko_bcr.Size = new System.Drawing.Size(180, 23);
+            this.btn_nyuko_bcr.TabIndex = 15;
+            this.btn_nyuko_bcr.Text = "入庫処理（ダイニチ専用BCR）";
+            this.btn_nyuko_bcr.UseVisualStyleBackColor = true;
             // 
             // btn_3_seihin_tanka_m
             // 
@@ -1024,14 +1035,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_nyuko_bcr
+            // btn_buhin_nyusyukko_rireki
             // 
-            this.btn_nyuko_bcr.Location = new System.Drawing.Point(194, 6);
-            this.btn_nyuko_bcr.Name = "btn_nyuko_bcr";
-            this.btn_nyuko_bcr.Size = new System.Drawing.Size(180, 23);
-            this.btn_nyuko_bcr.TabIndex = 15;
-            this.btn_nyuko_bcr.Text = "入庫処理（ダイニチ専用BCR）";
-            this.btn_nyuko_bcr.UseVisualStyleBackColor = true;
+            this.btn_buhin_nyusyukko_rireki.Location = new System.Drawing.Point(380, 64);
+            this.btn_buhin_nyusyukko_rireki.Name = "btn_buhin_nyusyukko_rireki";
+            this.btn_buhin_nyusyukko_rireki.Size = new System.Drawing.Size(180, 23);
+            this.btn_buhin_nyusyukko_rireki.TabIndex = 16;
+            this.btn_buhin_nyusyukko_rireki.Text = "部品入出庫履歴照会";
+            this.btn_buhin_nyusyukko_rireki.UseVisualStyleBackColor = true;
+            this.btn_buhin_nyusyukko_rireki.Click += new System.EventHandler(this.btn_buhin_nyusyukko_rireki_Click);
             // 
             // frm_menu
             // 
@@ -1182,6 +1194,7 @@
         private System.Windows.Forms.Button btn_3_seihin_tanka_m;
         private System.Windows.Forms.Button btn_juchu_zan;
         private System.Windows.Forms.Button btn_nyuko_bcr;
+        private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
     }
 }
 

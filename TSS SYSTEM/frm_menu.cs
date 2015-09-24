@@ -454,5 +454,13 @@ namespace TSS_SYSTEM
             frm_stk.ShowDialog(this);
             frm_stk.Dispose();
         }
+
+        private void btn_buhin_nyusyukko_rireki_Click(object sender, EventArgs e)
+        {
+            //部品入出庫履歴
+            frm_buhin_nyusyukko_rireki frm_bnsr = new frm_buhin_nyusyukko_rireki();
+            frm_bnsr.ShowDialog(this);
+            frm_bnsr.Dispose();
+        }
     }
 }
