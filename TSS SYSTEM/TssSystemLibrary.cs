@@ -26,6 +26,7 @@ namespace TSS_SYSTEM
         string fld_Password;
         string fld_ConnectionString;
         string fld_CsvPath;
+        string fld_dainichi_cd;
 
         string fld_system_cd;
         string fld_system_name;
@@ -53,6 +54,7 @@ namespace TSS_SYSTEM
             fld_Password = null;
             fld_ConnectionString = null;
             fld_CsvPath = null;
+            fld_dainichi_cd = null;
 
             fld_system_cd = null;
             fld_system_name = null;
@@ -77,6 +79,7 @@ namespace TSS_SYSTEM
         public string Password { get { return fld_Password; } }
         public string ConnectionString { get { return fld_ConnectionString; } }
         public string CsvPath { get { return fld_CsvPath; } }
+        public string Dainichi_cd { get { return fld_dainichi_cd; } }
 
         public string system_cd { get { return fld_system_cd; } }
         public string system_name { get { return fld_system_name; } }
@@ -366,7 +369,7 @@ namespace TSS_SYSTEM
                 {
                     dt = null;
                     GetUser();
-                    ErrorLogWrite(user_cd, "OracleSelect",sql.Replace("'","#"));
+                    ErrorLogWrite(user_cd, "OracleSelect", sql.Replace("'", "#"));
                     MessageBox.Show("データベースの処理中にエラーが発生しました。");
                 }
             }
@@ -379,7 +382,7 @@ namespace TSS_SYSTEM
         /// 受け取った文字列をテーブル TSS_MESSAGE_LOG_F に書き込む
         /// 引数：送信先ユーザーコード、発生処理名、メッセージ内容、送信元ユーザーコード　戻り値：bool型
         /// </summary>
-        public bool MessageLogWrite(string user_cd_from, string user_cd_to,string syori_name, string naiyou)
+        public bool MessageLogWrite(string user_cd_from, string user_cd_to, string syori_name, string naiyou)
         {
             bool bl = new bool();
             bl = OracleInsert("insert into tss_message_log_f(message_datetime,user_cd_from,user_cd_to,message_syori_name,message_log_naiyou,create_user_cd,create_datetime) values (to_char(sysdate,'yyyy/mm/dd hh24:mi:ss'),'" + user_cd_from + "','" + user_cd_to + "','" + syori_name + "','" + naiyou + "','" + user_cd_to + "',sysdate)");
@@ -410,11 +413,11 @@ namespace TSS_SYSTEM
         /// <param name="writeHeader">ヘッダを書き込む時はtrue</param>
         /// <returns>正常:true 失敗:false</returns>
         /// </summary>
-        public Boolean DataTableCSV(DataTable in_dt,bool in_SaveFileDialog, string in_csvPath, string in_interstring, Boolean in_writeHeader)
+        public Boolean DataTableCSV(DataTable in_dt, bool in_SaveFileDialog, string in_csvPath, string in_interstring, Boolean in_writeHeader)
         {
             //保存するファイルパスとファイル名を決める
             string w_str_filename;
-            if(in_SaveFileDialog)
+            if (in_SaveFileDialog)
             {
                 //SaveFileDialogクラスのインスタンスを作成
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -568,7 +571,7 @@ namespace TSS_SYSTEM
 
         #region 区分コード選択画面（初期選択機能付き）
         //区分コード選択画面の呼び出し 初期値あり版
-        public string kubun_cd_select(string in_kubun_cd,string in_initial_cd)
+        public string kubun_cd_select(string in_kubun_cd, string in_initial_cd)
         {
             //マウスのX座標を取得する
             int x = System.Windows.Forms.Cursor.Position.X;
@@ -615,7 +618,7 @@ namespace TSS_SYSTEM
 
         #region 区分選択画面（DataTable版）
         //区分コード選択画面（DataTable版）の呼び出し
-        public string kubun_cd_select_dt(string in_kubun_name,DataTable in_dt_kubun)
+        public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun)
         {
             //マウスのX座標を取得する
             int x = System.Windows.Forms.Cursor.Position.X;
@@ -643,7 +646,7 @@ namespace TSS_SYSTEM
 
         #region 区分選択画面（DataTable版＋初期選択機能付き）
         //区分コード選択画面（DataTable版）の呼び出し　初期値あり版
-        public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun,string in_initial_cd)
+        public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun, string in_initial_cd)
         {
             //マウスのX座標を取得する
             int x = System.Windows.Forms.Cursor.Position.X;
@@ -792,7 +795,7 @@ namespace TSS_SYSTEM
 
         #region 受注検索画面
         //受注検索画面の呼び出し
-        public string search_juchu(string in_mode, string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_seihin_cd)
+        public string search_juchu(string in_mode, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, string in_seihin_cd)
         {
             //マウスのX座標を取得する
             //int x = System.Windows.Forms.Cursor.Position.X;
@@ -819,7 +822,7 @@ namespace TSS_SYSTEM
             frm_sb.ShowDialog();
             //子画面から値を取得する
             //※受注検索画面の戻り値は、受注Noの３つの項目を１つの文字列にして返す
-            out_cd = frm_sb.str_torihikisaki_cd + frm_sb.str_juchu_cd1 + frm_sb.str_juchu_cd2 ;
+            out_cd = frm_sb.str_torihikisaki_cd + frm_sb.str_juchu_cd1 + frm_sb.str_juchu_cd2;
             frm_sb.Dispose();
             return out_cd;
         }
@@ -899,8 +902,31 @@ namespace TSS_SYSTEM
                 fld_CsvPath = CsvPath;
             }
             //戻り値
-            fld_ConnectionString = "Data Source=" + DataSource + ";User Id=" + UserID + ";Password=" + Password;
             return CsvPath;
+        }
+        #endregion
+
+        #region GetDainichi_cd
+        /// <summary>
+        /// TSSシステムのデフォルトのダイニチ工業の取引先コードを取得する。</summary>
+        /// <returns>
+        /// string ダイニチ工業の取引先コードを返します。</returns>
+        public string GetDainichi_cd()
+        {
+            //app.configから必要な情報を取得
+            string dainichi_cd = ConfigurationManager.AppSettings["Dainichi_cd"];   //データソース名文字列の取得
+
+            if (dainichi_cd.Length == 0)
+            {
+                MessageBox.Show("設定ファイル:Dainichi_cdを処理できません。");
+                return null;
+            }
+            else
+            {
+                fld_dainichi_cd = dainichi_cd;
+            }
+            //戻り値
+            return dainichi_cd;
         }
         #endregion
 
@@ -917,7 +943,7 @@ namespace TSS_SYSTEM
             double out_seq = 0;
             DataTable w_dt = new DataTable();
             w_dt = OracleSelect("select * from tss_seq_m where seq_m_cd = '" + in_cd + "'");
-            if(w_dt.Rows.Count == 0)
+            if (w_dt.Rows.Count == 0)
             {
                 out_seq = 0;
             }
@@ -925,15 +951,15 @@ namespace TSS_SYSTEM
             {
                 //seqは保存されている値が使用される値
                 out_seq = Convert.ToDouble(w_dt.Rows[0]["seq"]);
-                string sql = "update tss_seq_m set seq = '" + (out_seq+1).ToString() + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE seq_m_cd = '" + in_cd + "'";
+                string sql = "update tss_seq_m set seq = '" + (out_seq + 1).ToString() + "',UPDATE_USER_CD = '" + user_cd + "',UPDATE_DATETIME = SYSDATE WHERE seq_m_cd = '" + in_cd + "'";
                 //取得後、＋１して書き込む
-                if(OracleUpdate(sql))
+                if (OracleUpdate(sql))
                 {
                     //書込み成功
                 }
                 else
                 {
-                    ErrorLogWrite(user_cd, "GetSeq内のOracleUpdate",sql.Replace("'","#"));
+                    ErrorLogWrite(user_cd, "GetSeq内のOracleUpdate", sql.Replace("'", "#"));
                     MessageBox.Show("データベースの処理中にエラーが発生しました。");
                     out_seq = 0;
                 }
@@ -977,13 +1003,13 @@ namespace TSS_SYSTEM
             bl = true;
             string w_str = in_str;
             //7文字以下はNG
-            if(StringByte(in_str) < 8)
+            if (StringByte(in_str) < 8)
             {
                 bl = false;
                 return bl;
             }
             //スラッシュがある場合はそのまま使用し、なければスラッシュを加える
-            if(in_str.IndexOf("/") == -1)
+            if (in_str.IndexOf("/") == -1)
             {
                 w_str = in_str.Substring(0, 4) + "/" + in_str.Substring(4, 2) + "/" + in_str.Substring(6);
             }
@@ -1028,7 +1054,7 @@ namespace TSS_SYSTEM
                 w_mm = in_str.Substring(5, 2);
             }
             //try_string_to_dateメソッドで日付として使えるかチェック
-            if(try_string_to_date(w_yyyy + "/" + w_mm + "/01") == false)
+            if (try_string_to_date(w_yyyy + "/" + w_mm + "/01") == false)
             {
                 out_str = null;
             }
@@ -1050,7 +1076,7 @@ namespace TSS_SYSTEM
         {
             double out_dou;    //戻り値用
 
-            if(double.TryParse(in_str, out out_dou) == false)
+            if (double.TryParse(in_str, out out_dou) == false)
             {
                 out_dou = -999999999;
             }
@@ -1202,23 +1228,23 @@ namespace TSS_SYSTEM
         /// <returns>
         /// string 在庫数（各区分の合計値を返す）
         /// エラー等、取得できない場合はnull</returns>
-        public string get_zaiko(string in_cd,string in_kbn)
+        public string get_zaiko(string in_cd, string in_kbn)
         {
             string out_str = null;  //戻り値用
             DataTable w_dt = new DataTable();
-            if(in_kbn == "01" || in_kbn == "02")
+            if (in_kbn == "01" || in_kbn == "02")
             {
                 w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "' and zaiko_kbn = '" + in_kbn + "'");
             }
             else
             {
-                if(in_kbn == "03")
+                if (in_kbn == "03")
                 {
                     w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "' and zaiko_kbn <> '01' and zaiko_kbn <> '02'");
                 }
                 else
                 {
-                    if(in_kbn == "**")
+                    if (in_kbn == "**")
                     {
                         w_dt = OracleSelect("select sum(zaiko_su) from tss_buhin_zaiko_m where buhin_cd = '" + in_cd + "'");
                     }
@@ -1252,7 +1278,7 @@ namespace TSS_SYSTEM
         /// <returns>
         /// string 在庫数（各区分の合計値を返す）
         /// エラー等、取得できない場合はnull</returns>
-        public string get_zaiko(string in_cd, string in_kbn,string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2)
+        public string get_zaiko(string in_cd, string in_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
         {
             string out_str = null;  //戻り値用
             DataTable w_dt = new DataTable();
@@ -1314,7 +1340,7 @@ namespace TSS_SYSTEM
         /// <returns>
         /// string 製品コード
         /// エラー等、取得できない場合はnull</returns>
-        public string get_juchu_to_seihin_cd(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2)
+        public string get_juchu_to_seihin_cd(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
         {
             string out_str = null;  //戻り値用
             DataTable w_dt = new DataTable();
@@ -1357,7 +1383,7 @@ namespace TSS_SYSTEM
         /// bool true:正常終了 false:異常終了
         /// エラー等、取得できない場合はnull</returns>
         public int ppt_gyou;   //履歴に書き込んだ行番号
-        public bool zaiko_proc(string in_buhin_cd,string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2,double in_su,double in_rireki_no,int in_gyou,string in_bikou)
+        public bool zaiko_proc(string in_buhin_cd, string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, double in_su, double in_rireki_no, int in_gyou, string in_bikou)
         {
             bool bl = true;  //戻り値用
             string w_sql;
@@ -1367,7 +1393,7 @@ namespace TSS_SYSTEM
             double w_zaiko_su;
             bool w_rireki_bl;   //履歴書込み用
             string w_rireki_kbn;
-            if(in_su >= 0)
+            if (in_su >= 0)
             {
                 w_rireki_kbn = "02";    //入庫（売上の取消）
             }
@@ -1384,10 +1410,10 @@ namespace TSS_SYSTEM
 
                 //在庫レコードが無い場合
                 //フリー在庫でなかった場合は、フリー在庫を使用する
-                if(in_zaiko_kbn != "01")
+                if (in_zaiko_kbn != "01")
                 {
                     w_dt = OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '" + "01" + "' and torihikisaki_cd = '999999' and juchu_cd1 = '9999999999999999' and juchu_cd2 = '9999999999999999'");
-                    if(w_dt.Rows.Count == 0)
+                    if (w_dt.Rows.Count == 0)
                     {
                         GetUser();
                         ErrorLogWrite(user_cd, "tss.zeiko_procでフリー在庫レコードが無い(CODE:01)", "zaiko_proc(部品コード" + in_buhin_cd + ",在庫区分" + in_zaiko_kbn + ",取引先コード" + in_torihikisaki_cd + ",受注コード1" + in_juchu_cd1 + ",受注コード2" + in_juchu_cd2 + ",数" + in_su + ")");
@@ -1412,7 +1438,7 @@ namespace TSS_SYSTEM
                 //まず、フリー在庫でない在庫の書き込み（０にする）
                 GetUser();
                 w_sql = "UPDATE tss_buhin_zaiko_m SET zaiko_su = '0',update_user_cd = '" + user_cd + "',update_datetime = sysdate where buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "' and torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + w_dt.Rows[0]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt.Rows[0]["juchu_cd2"].ToString() + "'";
-                if(OracleUpdate(w_sql) == false)
+                if (OracleUpdate(w_sql) == false)
                 {
                     GetUser();
                     ErrorLogWrite(user_cd, "OracleUpdate", w_sql.Replace("'", "#"));
@@ -1422,7 +1448,7 @@ namespace TSS_SYSTEM
                 //在庫履歴へ書き込み
                 w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + "0.00" + "','02','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
-               
+
                 //次に残りの在庫数をフリー在庫で処理する
                 w_dt2 = OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '" + "01" + "' and torihikisaki_cd = '999999' and juchu_cd1 = '9999999999999999' and juchu_cd2 = '9999999999999999'");
                 if (w_dt2.Rows.Count == 0)
@@ -1435,7 +1461,7 @@ namespace TSS_SYSTEM
 
                 //フリー在庫に残りの在庫数を更新
                 w_sql = "UPDATE tss_buhin_zaiko_m SET zaiko_su = '" + w_zaiko_su.ToString("0.00") + "',update_user_cd = '" + user_cd + "',update_datetime = sysdate WHERE buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '01' and torihikisaki_cd = '999999' and juchu_cd1 = '9999999999999999' and juchu_cd2 = '9999999999999999'";
-                if(OracleUpdate(w_sql) == false)
+                if (OracleUpdate(w_sql) == false)
                 {
                     GetUser();
                     ErrorLogWrite(user_cd, "OracleUpdate", w_sql.Replace("'", "#"));
@@ -1451,7 +1477,7 @@ namespace TSS_SYSTEM
                 //通常に在庫の更新
                 GetUser();
                 w_sql = "UPDATE tss_buhin_zaiko_m SET zaiko_su = '" + w_zaiko_su.ToString("0.00") + "',update_user_cd = '" + user_cd + "',update_datetime = sysdate where buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "' and torihikisaki_cd = '" + w_dt.Rows[0]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt.Rows[0]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt.Rows[0]["juchu_cd2"].ToString() + "'";
-                if(OracleUpdate(w_sql) == false)
+                if (OracleUpdate(w_sql) == false)
                 {
                     GetUser();
                     ErrorLogWrite(user_cd, "OracleUpdate", w_sql.Replace("'", "#"));
@@ -1476,7 +1502,7 @@ namespace TSS_SYSTEM
         /// <returns>
         /// double 端数処理後の数値
         /// エラー等は-9999999999</returns>
-        public double hasu_keisan(string in_cd,double in_double)
+        public double hasu_keisan(string in_cd, double in_double)
         {
             double out_double = -9999999999;  //戻り値用
             DataTable w_dt = new DataTable();
@@ -1509,7 +1535,7 @@ namespace TSS_SYSTEM
                         break;
                 }
                 //端数処理単位に異常があったら抜ける
-                if(w_hasu_syori_tani == -1)
+                if (w_hasu_syori_tani == -1)
                 {
                     out_double = -9999999999;
                     return out_double;
@@ -1578,7 +1604,7 @@ namespace TSS_SYSTEM
         /// <returns>
         /// DataTable 末端部品（buhin_cd,siyou_su）
         /// エラー等、取得できない場合はnull</returns>
-        public DataTable get_seihin_kousei_mattan(string in_cd,string in_no)
+        public DataTable get_seihin_kousei_mattan(string in_cd, string in_no)
         {
 
             DataTable out_dt = new DataTable();  //戻り値用
@@ -1651,11 +1677,11 @@ namespace TSS_SYSTEM
                         }
                     }
                     //レコード新規・追加判断
-                    if(double.TryParse(dr3["siyou_su"].ToString(), out w_dou_siyou_su2) == false)
+                    if (double.TryParse(dr3["siyou_su"].ToString(), out w_dou_siyou_su2) == false)
                     {
-                        w_dou_siyou_su2 = 0;                    
+                        w_dou_siyou_su2 = 0;
                     }
-                    if(w_juufuku_flg == 0)
+                    if (w_juufuku_flg == 0)
                     {
                         //重複無しの場合、新規に作成
                         out_dr = out_dt.NewRow();
@@ -1687,7 +1713,7 @@ namespace TSS_SYSTEM
         /// <returns>
         /// string 売上数
         /// エラー等、取得できない場合は""</returns>
-        public string get_juchu_uriage_su(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_uriage_su)
+        public string get_juchu_uriage_su(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, string in_uriage_su)
         {
             string out_str = null; //戻り値用
             double w_dou1;
@@ -1696,7 +1722,7 @@ namespace TSS_SYSTEM
 
             DataTable w_dt_m = new DataTable();
             w_dt_m = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
-            if(w_dt_m.Rows.Count == 0)
+            if (w_dt_m.Rows.Count == 0)
             {
                 out_str = "";
             }
@@ -1775,14 +1801,14 @@ namespace TSS_SYSTEM
 
             DataTable w_dt = new DataTable();
             w_dt = OracleSelect("select * from tss_syouhizei_m where TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') >= kaitei_date and TO_DATE('" + in_datetime.ToShortDateString() + "','YYYY/MM/DD') <= syuryou_date");
-            if(w_dt.Rows.Count == 0)
+            if (w_dt.Rows.Count == 0)
             {
                 out_double = -1;
             }
             else
             {
                 out_double = try_string_to_double(w_dt.Rows[0]["zeiritu"].ToString());
-                if(out_double == -999999999)
+                if (out_double == -999999999)
                 {
                     out_double = -1;
                 }
@@ -1862,7 +1888,7 @@ namespace TSS_SYSTEM
                             w_dou_nyukingaku = 0;
                         }
                         //処理可能金額の算出
-                        if(w_int_sign == 1)
+                        if (w_int_sign == 1)
                         {
                             //未処理入金額がプラス値の場合は、売上と入金額の差まで処理可能
                             w_dou_nyukin_kanou_gaku = w_dou_uriage_kingaku + w_dou_syouhizeigaku - w_dou_nyukingaku;
@@ -1874,14 +1900,14 @@ namespace TSS_SYSTEM
                         }
                         //入金額の計算
                         //処理可能金額が０の場合は、っこのレコードを飛ばす
-                        if(w_dou_nyukin_kanou_gaku != 0)
+                        if (w_dou_nyukin_kanou_gaku != 0)
                         {
                             if (w_dou_nyukin_kanou_gaku <= w_dou_misyori_nyukingaku * w_int_sign)
                             {
                                 //未処理入金額に余裕がある場合
                                 w_dou_nyukingaku = w_dou_nyukingaku + w_dou_nyukin_kanou_gaku * w_int_sign;                 //入金額を売上額までにして
                                 w_dou_misyori_nyukingaku = w_dou_misyori_nyukingaku - w_dou_nyukin_kanou_gaku * w_int_sign; //入金した金額を未処理額から減らす
-                                if(w_int_sign == 1)
+                                if (w_int_sign == 1)
                                 {
                                     w_str_nyukin_kanryou_flg = "1"; //入金完了フラグを立てる
                                 }
@@ -1915,8 +1941,35 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
-
+        #region StringMidByte
+        /// -----------------------------------------------------------------------------------------
+        /// <summary>
+        ///     文字列の指定されたバイト位置から、指定されたバイト数分の文字列を返します。</summary>
+        /// <param name="in_str">
+        ///     取り出す元になる文字列</param>
+        /// <param name="in_start">
+        ///     取り出しを開始する位置（スタートは０）</param>
+        /// <param name="in_size">
+        ///     取り出すバイト数</param>
+        /// <returns>
+        ///     指定されたバイト位置から指定されたバイト数分の文字列。エラー時はnull</returns>
+        /// -----------------------------------------------------------------------------------------
+        public string StringMidByte(string in_str, int in_start, int in_size)
+        {
+            string out_str = "";
+            try
+            {
+                System.Text.Encoding enc_str = System.Text.Encoding.GetEncoding("Shift_JIS");
+                byte[] btBytes = enc_str.GetBytes(in_str);
+                out_str = enc_str.GetString(btBytes, in_start, in_size);
+            }
+            catch
+            {
+                out_str = null;
+            }
+            return out_str;
+        }
+        #endregion
 
     }
     #endregion

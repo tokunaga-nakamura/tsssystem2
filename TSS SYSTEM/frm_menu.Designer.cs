@@ -682,15 +682,6 @@
             this.tabPage3.Text = "部品・製品";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btn_nyuko_bcr
-            // 
-            this.btn_nyuko_bcr.Location = new System.Drawing.Point(194, 6);
-            this.btn_nyuko_bcr.Name = "btn_nyuko_bcr";
-            this.btn_nyuko_bcr.Size = new System.Drawing.Size(180, 23);
-            this.btn_nyuko_bcr.TabIndex = 15;
-            this.btn_nyuko_bcr.Text = "入庫処理（ダイニチ専用BCR）";
-            this.btn_nyuko_bcr.UseVisualStyleBackColor = true;
-            // 
             // btn_3_seihin_tanka_m
             // 
             this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(380, 227);
@@ -1035,15 +1026,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_buhin_nyusyukko_rireki
+            // btn_nyuko_bcr
             // 
-            this.btn_buhin_nyusyukko_rireki.Location = new System.Drawing.Point(380, 64);
-            this.btn_buhin_nyusyukko_rireki.Name = "btn_buhin_nyusyukko_rireki";
-            this.btn_buhin_nyusyukko_rireki.Size = new System.Drawing.Size(180, 23);
-            this.btn_buhin_nyusyukko_rireki.TabIndex = 16;
-            this.btn_buhin_nyusyukko_rireki.Text = "部品入出庫履歴照会";
-            this.btn_buhin_nyusyukko_rireki.UseVisualStyleBackColor = true;
-            this.btn_buhin_nyusyukko_rireki.Click += new System.EventHandler(this.btn_buhin_nyusyukko_rireki_Click);
+            this.btn_nyuko_bcr.Location = new System.Drawing.Point(194, 6);
+            this.btn_nyuko_bcr.Name = "btn_nyuko_bcr";
+            this.btn_nyuko_bcr.Size = new System.Drawing.Size(180, 23);
+            this.btn_nyuko_bcr.TabIndex = 15;
+            this.btn_nyuko_bcr.Text = "入庫処理（ダイニチ専用BCR）";
+            this.btn_nyuko_bcr.UseVisualStyleBackColor = true;
             // 
             // frm_menu
             // 
