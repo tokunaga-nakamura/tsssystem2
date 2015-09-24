@@ -1171,7 +1171,8 @@ namespace TSS_SYSTEM
             {
                 //選択画面へ
                 string w_buhin_cd;
-                w_buhin_cd = tss.search_buhin("2", "");
+                dgv_seihin_kousei.EndEdit();
+                w_buhin_cd = tss.search_buhin("2", dgv_seihin_kousei.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
                 
                 if (w_buhin_cd != "")
                 {
