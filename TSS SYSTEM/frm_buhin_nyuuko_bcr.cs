@@ -32,12 +32,17 @@ namespace TSS_SYSTEM
 
         private void frm_buhin_nyuuko_bcr_Load(object sender, EventArgs e)
         {
-
+            string str_com = tss.GetCOM();
+            if(str_com == null)
+            {
+                MessageBox.Show("COMポートの設定ファイルに異常があります。");
+                this.Close();
+            }
             try
             {
                 //SerialPort bcr_port = new SerialPort("COM3", 38400, Parity.None, 8, StopBits.One);
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
-                serialPort1.PortName = "COM3";
+                serialPort1.PortName = str_com;
                 serialPort1.BaudRate = 38400;
                 serialPort1.Parity = Parity.None;
                 serialPort1.DataBits = 8;
@@ -47,7 +52,7 @@ namespace TSS_SYSTEM
             }
             catch
             {
-                MessageBox.Show("バーコードリーダがOPENができません。接続、ポート番号等を確認してください。");
+                MessageBox.Show("バーコードリーダがOPENができません。設定ファイル、接続、ポート番号等を確認してください。");
                 this.Close();
             }
         }
@@ -77,14 +82,7 @@ namespace TSS_SYSTEM
                 str_buff = "";
                 return;
             }
-            //頭の3文字が「PD2」でない
-            if(str_buff.Substring(0,3) != "PD2")
-            {
-                //メッセージ表示
 
-                str_buff = "";
-                return;
-            }
             //読み込んだ文字列を分解しdgvに表示
             BeginInvoke(new dgv_add_Delegate(dgv_add), new object[] { str_buff });
 
@@ -103,8 +101,8 @@ namespace TSS_SYSTEM
             dgv_m.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             //１行のみ選択可能（複数行の選択不可）
             dgv_m.MultiSelect = false;
-            //編集不可
-            dgv_m.ReadOnly = true;
+            //編集不可しない（入庫数の変更可）
+            dgv_m.ReadOnly = false;
             //DataGridView1にユーザーが新しい行を追加できないようにする（最下行を非表示にする）
             dgv_m.AllowUserToAddRows = false;
 
@@ -160,6 +158,12 @@ namespace TSS_SYSTEM
             DataGridViewTextBoxColumn txtColumn17 = new DataGridViewTextBoxColumn();
             txtColumn17.Name = "Column17";
             dgv_m.Columns.Add(txtColumn17);
+            DataGridViewTextBoxColumn txtColumn18 = new DataGridViewTextBoxColumn();
+            txtColumn17.Name = "Column18";
+            dgv_m.Columns.Add(txtColumn18);
+            DataGridViewTextBoxColumn txtColumn19 = new DataGridViewTextBoxColumn();
+            txtColumn17.Name = "Column19";
+            dgv_m.Columns.Add(txtColumn19);
 
             //カラムヘッダーの定義
             dgv_m.Columns[0].HeaderText = "識別";
@@ -170,18 +174,20 @@ namespace TSS_SYSTEM
             dgv_m.Columns[5].HeaderText = "ロット番号";
             dgv_m.Columns[6].HeaderText = "仕入先NO";
             dgv_m.Columns[7].HeaderText = "仕入先ファックスNO";
-            dgv_m.Columns[8].HeaderText = "部品番号（旧）";
+            dgv_m.Columns[8].HeaderText = "空白（旧部品番号）";
             dgv_m.Columns[9].HeaderText = "発注総数";
             dgv_m.Columns[10].HeaderText = "指示日";
             dgv_m.Columns[11].HeaderText = "指示数";
             dgv_m.Columns[12].HeaderText = "単価区分";
             dgv_m.Columns[13].HeaderText = "入荷区分";
             dgv_m.Columns[14].HeaderText = "部品番号（新）";
-            dgv_m.Columns[15].HeaderText = "空白";
-            dgv_m.Columns[16].HeaderText = "CR+LF";
+            dgv_m.Columns[15].HeaderText = "部品名";
+            dgv_m.Columns[16].HeaderText = "空白";
+            dgv_m.Columns[17].HeaderText = "CR+LF";
+            dgv_m.Columns[18].HeaderText = "バーコード";
 
             //指定列を非表示にする
-            //dgv_m.Columns[0].Visible = false;   //
+            //dgv_m.Columns[0].Visible = false;
 
             //列を右詰にする
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;     //発注総数
@@ -189,7 +195,52 @@ namespace TSS_SYSTEM
 
             //書式を設定する
             dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0.00";  //発注総数
-            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,###";    //指示数
+            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,##0.00"; //指示数
+
+            //列を編集不可にする
+            dgv_m.Columns[0].ReadOnly = true;
+            dgv_m.Columns[1].ReadOnly = true;
+            dgv_m.Columns[2].ReadOnly = true;
+            dgv_m.Columns[3].ReadOnly = true;
+            dgv_m.Columns[4].ReadOnly = true;
+            dgv_m.Columns[5].ReadOnly = true;
+            dgv_m.Columns[6].ReadOnly = true;
+            dgv_m.Columns[7].ReadOnly = true;
+            dgv_m.Columns[8].ReadOnly = true;
+            dgv_m.Columns[9].ReadOnly = true;
+            dgv_m.Columns[10].ReadOnly = false; //指示日は編集可能
+            dgv_m.Columns[11].ReadOnly = false; //指示数は編集可能
+            dgv_m.Columns[12].ReadOnly = true;
+            dgv_m.Columns[13].ReadOnly = true;
+            dgv_m.Columns[14].ReadOnly = true;
+            dgv_m.Columns[15].ReadOnly = true;
+            dgv_m.Columns[16].ReadOnly = true;
+            dgv_m.Columns[17].ReadOnly = true;
+            dgv_m.Columns[18].ReadOnly = true;
+
+            //編集不可の項目をグレーにする
+            dgv_m.Columns[0].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[1].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[2].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[3].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[4].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[5].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[6].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[8].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[9].DefaultCellStyle.BackColor = Color.Gainsboro;
+            //dgv_m.Columns[10].DefaultCellStyle.BackColor = Color.Gainsboro;
+            //dgv_m.Columns[11].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[12].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[13].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[14].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[15].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[16].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[17].DefaultCellStyle.BackColor = Color.Gainsboro;
+            dgv_m.Columns[18].DefaultCellStyle.BackColor = Color.Gainsboro;
+
+            //列の文字数制限（TextBoxのMaxLengthと同じ動作になる）
+            ((DataGridViewTextBoxColumn)dgv_m.Columns[0]).MaxInputLength = 13;
 
             dgv_m.Rows.Clear();
         }
@@ -210,56 +261,97 @@ namespace TSS_SYSTEM
             string out_06 = tss.StringMidByte(in_str, 31, 7);    //ロット番号
             string out_07 = tss.StringMidByte(in_str, 38, 5);    //仕入先NO
             string out_08 = tss.StringMidByte(in_str, 43, 12);   //仕入先ファックスNO
-            string out_09 = tss.StringMidByte(in_str, 55, 10);   //部品番号（旧）
+            string out_09 = tss.StringMidByte(in_str, 55, 10);   //空白（旧部品番号）
             string out_10 = tss.StringMidByte(in_str, 65, 8);    //発注総数
             string out_11 = tss.StringMidByte(in_str, 73, 8);    //指示日
             string out_12 = tss.StringMidByte(in_str, 81, 8);    //指示数
             string out_13 = tss.StringMidByte(in_str, 89, 2);    //単価区分
             string out_14 = tss.StringMidByte(in_str, 91, 1);    //入荷区分
-            string out_15 = tss.StringMidByte(in_str, 92, 14);   //部品番号（新）
-            string out_16 = tss.StringMidByte(in_str, 106, 148); //空白（部品名）
-            string out_17 = tss.StringMidByte(in_str, 254, 2);   //CR+LF
+            string out_15 = tss.StringMidByte(in_str, 92, 15);   //部品番号（新）
+            string out_16 = tss.StringMidByte(in_str, 107, 100); //部品名
+            string out_17 = tss.StringMidByte(in_str, 207, 47);  //空白
+            string out_18 = tss.StringMidByte(in_str, 254, 2);   //CR+LF
+            string out_19 = in_str;                              //バーコード（生）
 
-            //部品マスタのチェック
-            if (tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + out_15.TrimEnd() + "'").Rows.Count == 0)
+            //頭の3文字が「PD2」でない
+            if (out_01 != "PD2")
             {
-                lbl_message.Text = "部品マスタに存在しない部品コードです。（" + out_15 + "）";
+                lbl_message.Text = "不明なデータです。（ != PD2 ）";
                 lbl_message.ForeColor = Color.Red;
             }
             else
             {
-                //入出庫履歴からの重複読み込みチェック
-                if (tss.OracleSelect("select * from tss_buhin_nyusyukko_m where denpyou_no = '" + out_04.TrimEnd() + "'").Rows.Count > 0)
+                if (out_02 != "10" && out_02 != "20" && out_02 != "21" && out_02 != "40" && out_02 != "50" && out_02 != "60")
                 {
-                    lbl_message.Text = "既に読み込みし登録されている伝票です。（" + out_14 + "）";
+                    lbl_message.Text = "発注分類区分が適用外の伝票です。（" + out_02 + " ）";
                     lbl_message.ForeColor = Color.Red;
                 }
                 else
                 {
-                    //画面内の重複読み込みチェック
-                    for (int i = 0; i < dgv_m.Rows.Count; i++)
+                    if(out_14 != "0" && out_14 != "1")
                     {
-                        if (dgv_m.Rows[i].Cells[3].Value.ToString() == out_04)
-                        {
-                            w_daburi_flg = 1;
-                            break;
-                        }
-                    }
-                    if (w_daburi_flg == 1)
-                    {
-                        lbl_message.Text = "既に読み込み済の伝票番号です。（" + out_04 + "）";
+                        lbl_message.Text = "入荷区分が適用外の伝票です。（" + out_14 + " ）";
                         lbl_message.ForeColor = Color.Red;
                     }
                     else
                     {
-                        //dgvに表示
-                        dgv_m.Rows.Add(out_01, out_02, out_03, out_04, out_05, out_06, out_07, out_08, out_09, out_10, out_11, out_12, out_13, out_14, out_15, out_16, out_17);
-                        lbl_message.Text = "伝票番号 " + out_04 + " OK!";
-                        lbl_message.ForeColor = Color.Black;
+                        //部品マスタのチェック
+                        if (tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + out_15.TrimEnd() + "'").Rows.Count == 0)
+                        {
+                            lbl_message.Text = "部品マスタに存在しない部品コードです。（" + out_15 + "）";
+                            lbl_message.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            //入出庫履歴からの伝票番号重複読み込みチェック
+                            if (tss.OracleSelect("select * from tss_buhin_nyusyukko_m where denpyou_no = '" + out_04.TrimEnd() + "'").Rows.Count > 0)
+                            {
+                                lbl_message.Text = "既に処理済みの伝票です。（" + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + "）";
+                                lbl_message.ForeColor = Color.Red;
+                            }
+                            else
+                            {
+                                //入出庫履歴からの発注番号重複チェック（伝票差替え等の可能性あり）確認のみで処理は続行する
+                                if (tss.OracleSelect("select * from tss_buhin_nyusyukko_m where substr(barcode,5,10) = '" + out_03 + "'").Rows.Count > 0)
+                                {
+                                    lbl_message.Text = "同一の「発注番号」の伝票が登録済みです。差替など確認してください。（" + out_03 + "）";
+                                    lbl_message.ForeColor = Color.Orange;
+                                }
+                                //画面内の重複読み込みチェック
+                                for (int i = 0; i < dgv_m.Rows.Count; i++)
+                                {
+                                    if (dgv_m.Rows[i].Cells[3].Value.ToString() == out_04)
+                                    {
+                                        w_daburi_flg = 1;
+                                        break;
+                                    }
+                                    if (tss.StringMidByte(dgv_m.Rows[i].Cells[18].Value.ToString(),5,10) == out_03)
+                                    {
+                                        w_daburi_flg = 2;
+                                        break;
+                                    }
+                                }
+                                if (w_daburi_flg == 1)
+                                {
+                                    lbl_message.Text = "既に読み込み済の伝票番号です。（" + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + "）";
+                                    lbl_message.ForeColor = Color.Red;
+                                }
+                                else
+                                {
+                                    if (w_daburi_flg == 2)
+                                    {
+                                        lbl_message.Text = "同一の「発注番号」の伝票が読み込まれています。差替など確認してください。（" + out_03 + "）";
+                                        lbl_message.ForeColor = Color.Orange;
+                                    }
+                                    //dgvに表示
+                                    dgv_m.Rows.Add(out_01, out_02, out_03, out_04, out_05, out_06, out_07, out_08, out_09, out_10, out_11, out_12, out_13, out_14, out_15, out_16, out_17, out_18, out_19);
+                                    lbl_message.Text = "伝票番号 " + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + " OK!";
+                                    lbl_message.ForeColor = Color.Black;
+                                }
+                            }
+                        }
                     }
-
                 }
-
             }
         }
 
@@ -280,12 +372,13 @@ namespace TSS_SYSTEM
 
         private void zaiko_kousin()
         {
+            string w_seq = tss.GetSeq("01").ToString("0000000000");
             int w_gyou = 0; //部品入出庫マスタのseq用
             string w_kbn = "";
             string w_torihikisaki_cd = "";
             string w_juchu_cd1 = "";
             string w_juchu_cd2 = "";
-            foreach(DataRow dr in dgv_m.Rows)
+            for(int i=0;i < dgv_m.Rows.Count;i++)
             {
                 w_gyou++;
                 w_kbn = "";
@@ -293,7 +386,7 @@ namespace TSS_SYSTEM
                 w_juchu_cd1 = "";
                 w_juchu_cd2 = "";
                 //部品在庫マスタの更新
-                if(dr[5].ToString().TrimEnd() == "")
+                if (dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd() == "" || dgv_m.Rows[i].Cells[5].Value.ToString() == "0000000")
                 {
                     //フリー在庫
                     w_kbn = "01";
@@ -302,17 +395,17 @@ namespace TSS_SYSTEM
                     w_juchu_cd2 = "9999999999999999";
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
-                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01'");
+                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                     if(w_dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("フリー在庫のレコードがありません。処理を中止します。（" + dr[15].ToString().TrimEnd() + "）");
+                        MessageBox.Show("フリー在庫のレコードがありません。処理を中止します。（" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "）");
                         return;
                     }
                     //フリー在庫に読み込んだ入庫数を加えて書き込む
                     double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
-                    double w_dou2 = tss.try_string_to_double(dr[11].ToString().TrimEnd());
+                    double w_dou2 = tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
                     double w_dou3 = w_dou1 + w_dou2;
-                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01'");
+                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[15].Value.ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                 }
                 else
                 {
@@ -320,52 +413,139 @@ namespace TSS_SYSTEM
                     //※ロット在庫の受注番号はロット番号＋注文番号の下4桁
                     w_kbn = "02";
                     w_torihikisaki_cd = tss.GetDainichi_cd();
-                    w_juchu_cd1 = dr[5].ToString().TrimEnd();
-                    w_juchu_cd2 = tss.StringMidByte(dr[2].ToString(), 3, 4);
+                    w_juchu_cd1 = tss.try_string_to_double(dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd()).ToString("0");
+                    w_juchu_cd2 = tss.StringMidByte(dgv_m.Rows[i].Cells[2].Value.ToString(), 3, 4);
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
-                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + tss.GetDainichi_cd() + "' and juchu_cd1 = '" + dr[5].ToString().TrimEnd() + "' and juchu_cd2 = '" + tss.StringMidByte(dr[2].ToString(),3,4) + "'");
+                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
                     if (w_dt.Rows.Count == 0)
                     {
                         //新規
                         tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
-                                                 + dr[15].ToString().TrimEnd() + "','02','"
+                                                 + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','02','"
                                                  + w_torihikisaki_cd + "','"
                                                  + w_juchu_cd1 + "','"
                                                  + w_juchu_cd2 + "','"
-                                                 + tss.try_string_to_double(dr[11].ToString().TrimEnd()).ToString() + "','"
+                                                 + tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
                                                  + tss.user_cd + "',SYSDATE)");                    
                     }
                     else
                     {
                         //既存
                         double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
-                        double w_dou2 = tss.try_string_to_double(dr[11].ToString().TrimEnd());
+                        double w_dou2 = tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
                         double w_dou3 = w_dou1 + w_dou2;
-                        tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
+                        tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
                     }
                 }
                 //部品入出庫マスタの更新
                 tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
-                                        + tss.GetSeq("01") + "','"
-                                        + w_gyou.ToString() + "','sysdate,'"
-                                        + dr[15].ToString().TrimEnd() + "','"
+                                        + w_seq + "','"
+                                        + w_gyou.ToString() + "',sysdate,'"
+                                        + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','"
                                         + w_kbn + "','"
                                         + w_torihikisaki_cd + "','"
                                         + w_juchu_cd1 + "','"
                                         + w_juchu_cd2 + "','"
-                                        + tss.try_string_to_double(dr[11].ToString().TrimEnd()).ToString() + "','"
-                                        + dr[3].ToString().TrimEnd() + "','"
-                                        + dr[0].ToString() + dr[1].ToString() + dr[2].ToString() + dr[3].ToString() + dr[4].ToString() + dr[5].ToString() + dr[6].ToString() + dr[7].ToString() + dr[8].ToString() + dr[9].ToString() + dr[10].ToString() + dr[11].ToString() + dr[12].ToString() + dr[13].ToString() + dr[14].ToString() + dr[15].ToString() + dr[16].ToString() + "','"
+                                        + tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
+                                        + dgv_m.Rows[i].Cells[3].Value.ToString().TrimEnd() + "','"
+                                        + tss.StringMidByte(dgv_m.Rows[i].Cells[18].Value.ToString(),0,254) + "','"
                                         + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
             }
             MessageBox.Show("登録しました。");
+            dgv_m.Rows.Clear();
+            lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
+            lbl_message.ForeColor = Color.Black;
         }
 
+        private void dgv_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
 
+            //新しい行のセルでなく、セルの内容が変更されている時だけ検証する
+            DataGridView dgv = (DataGridView)sender;
+            if (e.RowIndex == dgv.NewRowIndex || !dgv.IsCurrentCellDirty)
+            {
+                return;
+            }
+
+            //指示日（入庫日）
+            if (e.ColumnIndex == 10)
+            {
+                if (chk_sijibi(e.FormattedValue.ToString()) == false)
+                {
+                    MessageBox.Show("指示日は YYYYMMDD 形式で入力してください。");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            //指示数（入庫数）
+            if (e.ColumnIndex == 11)
+            {
+                if (chk_suryou(e.FormattedValue.ToString()) == false)
+                {
+                    MessageBox.Show("数量は-999999999.99～9999999999.99の範囲で入力してください。");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private bool chk_sijibi(string in_str)
+        {
+            bool bl = true; //戻り値
+            //空白は許容する
+            if (in_str != "" && in_str != null)
+            {
+                if (tss.try_string_to_date(in_str) == false)
+                {
+                    bl = false;
+                }
+            }
+            return bl;
+        }
+
+        private bool chk_suryou(string in_str)
+        {
+            bool bl = true; //戻り値
+            //空白は許容する
+            if (in_str != "" && in_str != null)
+            {
+                double w_uriage_su;
+                if (double.TryParse(in_str, out w_uriage_su))
+                {
+                    if (w_uriage_su > 9999999999.99 || w_uriage_su < -999999999.99)
+                    {
+                        bl = false;
+                    }
+                }
+                else
+                {
+                    bl = false;
+                }
+            }
+            return bl;
+        }
+
+        private void dgv_m_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            //指示数（入庫数）
+            if (e.ColumnIndex == 11)
+            {
+                double w_suryou;
+                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[11].Value.ToString(), out w_suryou))
+                {
+                    dgv_m.Rows[e.RowIndex].Cells[11].Value = w_suryou.ToString("0.00");
+                }
+            }
+        }
 
 
 
