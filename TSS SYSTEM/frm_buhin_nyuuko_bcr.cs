@@ -280,7 +280,7 @@ namespace TSS_SYSTEM
 
         private void zaiko_kousin()
         {
-            int w_gyou = 0; //部品入出庫ますたのseq用
+            int w_gyou = 0; //部品入出庫マスタのseq用
             string w_kbn = "";
             string w_torihikisaki_cd = "";
             string w_juchu_cd1 = "";
@@ -302,20 +302,22 @@ namespace TSS_SYSTEM
                     w_juchu_cd2 = "9999999999999999";
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
-                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01' and torihikisaki_cd = '" + tss.GetDainichi_cd() + "'");
+                    w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                     if(w_dt.Rows.Count == 0)
                     {
                         MessageBox.Show("フリー在庫のレコードがありません。処理を中止します。（" + dr[15].ToString().TrimEnd() + "）");
                         return;
                     }
+                    //フリー在庫に読み込んだ入庫数を加えて書き込む
                     double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
                     double w_dou2 = tss.try_string_to_double(dr[11].ToString().TrimEnd());
                     double w_dou3 = w_dou1 + w_dou2;
-                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01' and torihikisaki_cd = '" + tss.GetDainichi_cd() + "'");
+                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                 }
                 else
                 {
                     //ロット在庫
+                    //※ロット在庫の受注番号はロット番号＋注文番号の下4桁
                     w_kbn = "02";
                     w_torihikisaki_cd = tss.GetDainichi_cd();
                     w_juchu_cd1 = dr[5].ToString().TrimEnd();
@@ -328,10 +330,10 @@ namespace TSS_SYSTEM
                         //新規
                         tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
                                                  + dr[15].ToString().TrimEnd() + "','02','"
-                                                 + tss.GetDainichi_cd() + "','"
-                                                 + dr[5].ToString().TrimEnd() + "','"
-                                                 + tss.StringMidByte(dr[2].ToString(),3,4) + "','"
-                                                 + tss.try_string_to_double(dr[11].ToString().TrimEnd()) + "','"
+                                                 + w_torihikisaki_cd + "','"
+                                                 + w_juchu_cd1 + "','"
+                                                 + w_juchu_cd2 + "','"
+                                                 + tss.try_string_to_double(dr[11].ToString().TrimEnd()).ToString() + "','"
                                                  + tss.user_cd + "',SYSDATE)");                    
                     }
                     else
@@ -340,7 +342,7 @@ namespace TSS_SYSTEM
                         double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
                         double w_dou2 = tss.try_string_to_double(dr[11].ToString().TrimEnd());
                         double w_dou3 = w_dou1 + w_dou2;
-                        tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '01' and torihikisaki_cd = '" + tss.GetDainichi_cd() + "' and juchu_cd1 = '" + dr[5].ToString().TrimEnd() + "' and juchu_cd2 = '" + tss.StringMidByte(dr[2].ToString(),3,4) + "'");
+                        tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dr[15].ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
                     }
                 }
                 //部品入出庫マスタの更新
@@ -353,7 +355,7 @@ namespace TSS_SYSTEM
                                         + w_torihikisaki_cd + "','"
                                         + w_juchu_cd1 + "','"
                                         + w_juchu_cd2 + "','"
-                                        + tss.try_string_to_double(dr[11].ToString().TrimEnd()) + "','"
+                                        + tss.try_string_to_double(dr[11].ToString().TrimEnd()).ToString() + "','"
                                         + dr[3].ToString().TrimEnd() + "','"
                                         + dr[0].ToString() + dr[1].ToString() + dr[2].ToString() + dr[3].ToString() + dr[4].ToString() + dr[5].ToString() + dr[6].ToString() + dr[7].ToString() + dr[8].ToString() + dr[9].ToString() + dr[10].ToString() + dr[11].ToString() + dr[12].ToString() + dr[13].ToString() + dr[14].ToString() + dr[15].ToString() + dr[16].ToString() + "','"
                                         + "01" + "','"

@@ -36,11 +36,11 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbl_message = new System.Windows.Forms.Label();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.lbl_message = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -147,6 +147,17 @@
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
             this.splitContainer3.SplitterDistance = 61;
             this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.TabStop = false;
+            // 
+            // lbl_message
+            // 
+            this.lbl_message.AutoSize = true;
+            this.lbl_message.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_message.Location = new System.Drawing.Point(96, 13);
+            this.lbl_message.Name = "lbl_message";
+            this.lbl_message.Size = new System.Drawing.Size(571, 33);
+            this.lbl_message.TabIndex = 0;
+            this.lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
             // 
             // dgv_m
             // 
@@ -163,7 +174,7 @@
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 1;
+            this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
             this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
@@ -173,7 +184,7 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 1;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
@@ -181,16 +192,6 @@
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // lbl_message
-            // 
-            this.lbl_message.AutoSize = true;
-            this.lbl_message.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_message.Location = new System.Drawing.Point(96, 13);
-            this.lbl_message.Name = "lbl_message";
-            this.lbl_message.Size = new System.Drawing.Size(571, 33);
-            this.lbl_message.TabIndex = 0;
-            this.lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
             // 
             // frm_buhin_nyuuko_bcr
             // 

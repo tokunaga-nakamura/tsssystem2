@@ -462,5 +462,14 @@ namespace TSS_SYSTEM
             frm_bnsr.ShowDialog(this);
             frm_bnsr.Dispose();
         }
+
+        private void btn_nyuko_bcr_Click(object sender, EventArgs e)
+        {
+            //部品入出（ダイニチ専用BCR対応）
+            frm_buhin_nyuuko_bcr frm_bnsr = new frm_buhin_nyuuko_bcr();
+            frm_bnsr.ShowDialog(this);
+            frm_bnsr.Dispose();
+
+        }
     }
 }
