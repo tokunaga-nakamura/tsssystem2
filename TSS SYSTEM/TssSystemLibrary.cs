@@ -205,6 +205,24 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region GetCOM メソッド
+        /// <summary>
+        /// BCRのCOMポートを取得する
+        /// 引数：無し　戻り値：string out_com
+        /// </summary>
+        public string GetCOM()
+        {
+            string out_com = null;  //戻り値
+            string SystemPath = ConfigurationManager.AppSettings["SystemPath"];   //システムフォルダのパスの取得
+            using (StreamReader sr = new StreamReader(SystemPath + "COM.txt"))
+            {
+                out_com = sr.ReadToEnd();
+            }
+            return out_com;
+        }
+        #endregion
+
+
         #region OracleUpdate メソッド
         /// <summary>
         /// OracleへUPDATE文を実行します。
@@ -1065,7 +1083,6 @@ namespace TSS_SYSTEM
             return out_str;
         }
         #endregion
-
 
         #region try_string_to_double メソッド
         /// <summary>
