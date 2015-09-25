@@ -689,6 +689,7 @@
             this.btn_buhin_nyusyukko_rireki.Size = new System.Drawing.Size(180, 23);
             this.btn_buhin_nyusyukko_rireki.TabIndex = 0;
             this.btn_buhin_nyusyukko_rireki.Text = "部品入出庫移動履歴";
+            this.btn_buhin_nyusyukko_rireki.Click += new System.EventHandler(this.btn_buhin_nyusyukko_rireki_Click);
             // 
             // btn_nyuko_bcr
             // 
