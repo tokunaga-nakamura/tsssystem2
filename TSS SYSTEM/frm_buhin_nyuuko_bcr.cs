@@ -442,7 +442,7 @@ namespace TSS_SYSTEM
                 tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + w_seq + "','"
-                                        + w_gyou.ToString() + "',sysdate,'"
+                                        + w_gyou.ToString() + "','" + DateTime.Now.ToShortDateString() + "','"
                                         + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','"
                                         + w_kbn + "','"
                                         + w_torihikisaki_cd + "','"
