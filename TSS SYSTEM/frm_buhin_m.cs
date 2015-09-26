@@ -216,7 +216,7 @@ namespace TSS_SYSTEM
 
                 }
             }
-            tb_goukei_zaiko_su.Text = w_zaiko_su.ToString("0.00");
+            tb_goukei_zaiko_su.Text = w_zaiko_su.ToString("#,##0.00");
         }
 
         private void rireki_disp(string in_cd)
