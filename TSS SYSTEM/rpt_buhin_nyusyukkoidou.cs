@@ -7,9 +7,9 @@ using System.ComponentModel;
 namespace TSS_SYSTEM
 {
     /// <summary>
-    /// rpt_buhin_nyusyukko の概要の説明です。
+    /// rpt_buhin_nyusyukkoidou の概要の説明です。
     /// </summary>
-    public partial class rpt_buhin_nyusyukko : GrapeCity.ActiveReports.SectionReport
+    public partial class rpt_buhin_nyusyukkoidou : GrapeCity.ActiveReports.SectionReport
     {
         TssSystemLibrary tss = new TssSystemLibrary();
 
@@ -23,7 +23,7 @@ namespace TSS_SYSTEM
         public string w_hd31;
 
 
-        public rpt_buhin_nyusyukko()
+        public rpt_buhin_nyusyukkoidou()
         {
             //
             // デザイナー サポートに必要なメソッドです。
@@ -31,7 +31,7 @@ namespace TSS_SYSTEM
             InitializeComponent();
         }
 
-        private void rpt_buhin_nyusyukko_ReportStart(object sender, EventArgs e)
+        private void rpt_buhin_nyusyukkoidou_ReportStart(object sender, EventArgs e)
         {
             this.PageSettings.Orientation = GrapeCity.ActiveReports.Document.Section.PageOrientation.Landscape; //横
             this.PageSettings.Margins.Top = GrapeCity.ActiveReports.SectionReport.CmToInch(1.0f);   //上マージン
@@ -46,10 +46,6 @@ namespace TSS_SYSTEM
             tb_torihikisaki2.Text = w_hd21;
             tb_buhin_cd1.Text = w_hd30;
             tb_buhin_cd2.Text = w_hd31;
-
-            
-
-         
         }
     }
 }

@@ -10,19 +10,23 @@ using System.Windows.Forms;
 
 namespace TSS_SYSTEM
 {
-    public partial class frm_buhin_nyusyukko_preview : Form
+    public partial class frm_uriage_preview : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_buhin_nyusyukko = new DataTable();
 
         //ヘッダーの受け渡し変数の定義
         public string w_yyyymmdd;
-        public string w_hd10;//処理日1
-        public string w_hd11;//処理日2
-        public string w_hd20;//取引先CD1
-        public string w_hd21;//取引先CD2
-        public string w_hd30;//部品CD1
-        public string w_hd31;//部品CD2
+        public string w_hd10;//売上番号1
+        public string w_hd11;//売上番号2
+        public string w_hd20;//取引先CD
+        public string w_hd21;//取引先名
+        public string w_hd30;//売上計上日1
+        public string w_hd31;//売上計上日2
+        public string w_hd40;//受注CD1
+        public string w_hd41;//受注CD2
+        public string w_hd50;//製品CD
+        public string w_hd51;//製品名
 
         //親画面から参照できるプロパティを作成
         public DataTable fld_dt = new DataTable();   //印刷する明細データ
@@ -39,9 +43,14 @@ namespace TSS_SYSTEM
             }
         }
         
-        public frm_buhin_nyusyukko_preview()
+        public frm_uriage_preview()
         {
             InitializeComponent();
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -49,9 +58,9 @@ namespace TSS_SYSTEM
             this.Close();
         }
 
-        private void frm_buhin_nyusyukko_preview_Load(object sender, EventArgs e)
+        private void frm_uriage_preview_Load(object sender, EventArgs e)
         {
-            rpt_buhin_nyusyukko rpt = new rpt_buhin_nyusyukko();
+            rpt_uriage rpt = new rpt_uriage();
             //レポートへデータを受け渡す
             rpt.DataSource = ppt_dt;
             rpt.w_yyyymmdd = w_yyyymmdd;
@@ -61,30 +70,14 @@ namespace TSS_SYSTEM
             rpt.w_hd21 = w_hd21;
             rpt.w_hd30 = w_hd30;
             rpt.w_hd31 = w_hd31;
+            rpt.w_hd40 = w_hd40;
+            rpt.w_hd41 = w_hd41;
+            rpt.w_hd50 = w_hd50;
+            rpt.w_hd51 = w_hd51;
 
 
             rpt.Run();
             this.vwr.Document = rpt.Document;
-        }
-
-        private void btn_hardcopy_Click(object sender, EventArgs e)
-        {
-            tss.HardCopy();
-        }
-
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
-
-        private void vwr_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
         }
     }
 }
