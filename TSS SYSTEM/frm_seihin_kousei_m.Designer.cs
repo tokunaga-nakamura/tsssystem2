@@ -51,9 +51,9 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.dgv_seihin_kousei_name = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btn_tsuika = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btn_tsuika = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -247,7 +247,7 @@
             this.tb_seihin_cd.Location = new System.Drawing.Point(118, 10);
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
-            this.tb_seihin_cd.Size = new System.Drawing.Size(59, 19);
+            this.tb_seihin_cd.Size = new System.Drawing.Size(104, 19);
             this.tb_seihin_cd.TabIndex = 0;
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
@@ -277,7 +277,7 @@
             // tb_seihin_name
             // 
             this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(176, 10);
+            this.tb_seihin_name.Location = new System.Drawing.Point(222, 10);
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.ReadOnly = true;
             this.tb_seihin_name.Size = new System.Drawing.Size(249, 19);
@@ -352,6 +352,16 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
+            // btn_tsuika
+            // 
+            this.btn_tsuika.Location = new System.Drawing.Point(10, 4);
+            this.btn_tsuika.Name = "btn_tsuika";
+            this.btn_tsuika.Size = new System.Drawing.Size(75, 23);
+            this.btn_tsuika.TabIndex = 4;
+            this.btn_tsuika.Text = "1行挿入";
+            this.btn_tsuika.UseVisualStyleBackColor = true;
+            this.btn_tsuika.Click += new System.EventHandler(this.btn_tsuika_Click);
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -384,16 +394,6 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
-            // 
-            // btn_tsuika
-            // 
-            this.btn_tsuika.Location = new System.Drawing.Point(10, 4);
-            this.btn_tsuika.Name = "btn_tsuika";
-            this.btn_tsuika.Size = new System.Drawing.Size(75, 23);
-            this.btn_tsuika.TabIndex = 4;
-            this.btn_tsuika.Text = "1行挿入";
-            this.btn_tsuika.UseVisualStyleBackColor = true;
-            this.btn_tsuika.Click += new System.EventHandler(this.btn_tsuika_Click);
             // 
             // frm_seihin_kousei_m
             // 
