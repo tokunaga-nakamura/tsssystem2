@@ -750,7 +750,29 @@ namespace TSS_SYSTEM
                
 
             }
-            
+
+            //製品マスタの製品構成番号が入っていない場合は、自動で入れるか尋ねる
+            DataTable w_dt_seihin = new DataTable();
+            w_dt_seihin = tss.OracleSelect("select * from tss_seihin_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+            if(w_dt_seihin.Rows.Count > 0)
+            {
+                if(w_dt_seihin.Rows[0]["seihin_kousei_no"].ToString() == "")
+                {
+                    DialogResult result = MessageBox.Show("製品マスタに製品構成番号が登録されていません。製品構成番号を登録しますか？", "確認", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        bool bl = tss.OracleUpdate("update tss_seihin_m set seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+                        if (bl)
+                        {
+                            MessageBox.Show("製品マスタの製品構成番号を更新しました。");
+                        }
+                        else
+                        {
+                            MessageBox.Show("製品マスタの製品構成番号の更新でエラーが発生しました。データを確認してください。");
+                        }
+                    }
+                }
+            }
         }
 
 
