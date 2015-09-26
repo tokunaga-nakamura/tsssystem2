@@ -105,6 +105,7 @@
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 

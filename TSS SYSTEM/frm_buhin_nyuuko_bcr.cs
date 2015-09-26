@@ -455,7 +455,7 @@ namespace TSS_SYSTEM
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
             }
-            MessageBox.Show("登録しました。");
+            MessageBox.Show("登録しました。（入出庫移動番号:" + w_seq + "）");
             dgv_m.Rows.Clear();
             lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
             lbl_message.ForeColor = Color.Black;
@@ -545,6 +545,11 @@ namespace TSS_SYSTEM
                     dgv_m.Rows[e.RowIndex].Cells[11].Value = w_suryou.ToString("0.00");
                 }
             }
+        }
+
+        private void btn_hardcopy_Click(object sender, EventArgs e)
+        {
+            tss.HardCopy();
         }
 
 

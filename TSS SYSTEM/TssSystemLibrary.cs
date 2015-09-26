@@ -222,7 +222,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
         #region OracleUpdate メソッド
         /// <summary>
         /// OracleへUPDATE文を実行します。
@@ -1833,7 +1832,6 @@ namespace TSS_SYSTEM
             return out_double;
         }
         #endregion
-
 
         #region urikake_kesikomi
         /// <summary>取引先マスタの未処理入金額を売掛マスタに消し込みます</summary>
