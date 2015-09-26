@@ -160,7 +160,7 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
-            sql = sql + " order by tss_buhin_nyusyukko_m.buhin_syori_no ";
+            sql = sql + " order by tss_buhin_nyusyukko_m.buhin_syori_date,tss_buhin_nyusyukko_m.buhin_syori_no, tss_buhin_nyusyukko_m.seq ";
 
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);
@@ -396,21 +396,120 @@ namespace TSS_SYSTEM
 
         private void btn_insatu_Click(object sender, EventArgs e)
         {
-            frm_buhin_nyusyukko_preview frm_rpt = new frm_buhin_nyusyukko_preview();
-            //子画面のプロパティに値をセットする
-            frm_rpt.ppt_dt = w_dt_insatu;
-          
-            frm_rpt.w_hd10 = tb_buhin_syori_date1.Text;
-            frm_rpt.w_hd11 = tb_buhin_syori_date2.Text;
-            frm_rpt.w_hd20 = tb_torihikisaki_cd1.Text;
-            frm_rpt.w_hd21 = tb_torihikisaki_cd2.Text;
-            frm_rpt.w_hd30 = tb_buhin_cd1.Text;
-            frm_rpt.w_hd31 = tb_buhin_cd2.Text;
-            
+            if (rb_nyuko.Checked == true || rb_syukko.Checked == true)
+            {
+                frm_buhin_nyusyukko_preview frm_rpt = new frm_buhin_nyusyukko_preview();
+                
+                int rc = w_dt_insatu.Rows.Count;
 
-            frm_rpt.ShowDialog();
-            //子画面から値を取得する
-            frm_rpt.Dispose();
+                for (int i = 0; i <= rc - 1; i++)
+                {
+                    if (w_dt_insatu.Rows[i][7].ToString() == "999999")
+                    {
+                        w_dt_insatu.Rows[i][7] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][8].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][8] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][9].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][9] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][12].ToString() == "999999")
+                    {
+                        w_dt_insatu.Rows[i][12] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][13].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][13] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][14].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][14] = "";
+                    }
+                }
+
+                //子画面のプロパティに値をセットする
+                frm_rpt.ppt_dt = w_dt_insatu;
+
+                frm_rpt.w_hd10 = tb_buhin_syori_date1.Text;
+                frm_rpt.w_hd11 = tb_buhin_syori_date2.Text;
+                frm_rpt.w_hd20 = tb_torihikisaki_cd1.Text;
+                frm_rpt.w_hd21 = tb_torihikisaki_cd2.Text;
+                frm_rpt.w_hd30 = tb_buhin_cd1.Text;
+                frm_rpt.w_hd31 = tb_buhin_cd2.Text;
+
+
+                frm_rpt.ShowDialog();
+                //子画面から値を取得する
+                frm_rpt.Dispose();
+            }
+            
+            
+            
+            
+            
+            else
+            {
+                frm_buhin_nyusyukkoidou_preview frm_rpt = new frm_buhin_nyusyukkoidou_preview();
+
+                int rc = w_dt_insatu.Rows.Count;
+
+                for (int i = 0; i <= rc - 1; i++)
+                {
+                    if (w_dt_insatu.Rows[i][7].ToString() == "999999")
+                    {
+                        w_dt_insatu.Rows[i][7] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][8].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][8] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][9].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][9] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][12].ToString() == "999999")
+                    {
+                        w_dt_insatu.Rows[i][12] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][13].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][13] = "";
+                    }
+
+                    if (w_dt_insatu.Rows[i][14].ToString() == "9999999999999999")
+                    {
+                        w_dt_insatu.Rows[i][14] = "";
+                    }
+                }
+
+                //子画面のプロパティに値をセットする
+                frm_rpt.ppt_dt = w_dt_insatu;
+
+                frm_rpt.w_hd10 = tb_buhin_syori_date1.Text;
+                frm_rpt.w_hd11 = tb_buhin_syori_date2.Text;
+                frm_rpt.w_hd20 = tb_torihikisaki_cd1.Text;
+                frm_rpt.w_hd21 = tb_torihikisaki_cd2.Text;
+                frm_rpt.w_hd30 = tb_buhin_cd1.Text;
+                frm_rpt.w_hd31 = tb_buhin_cd2.Text;
+
+
+                frm_rpt.ShowDialog();
+                //子画面から値を取得する
+                frm_rpt.Dispose();
+            }
+            
         }
 
 

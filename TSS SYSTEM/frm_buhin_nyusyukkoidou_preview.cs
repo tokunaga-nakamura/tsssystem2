@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TSS_SYSTEM
 {
-    public partial class frm_buhin_nyusyukko_preview : Form
+    public partial class frm_buhin_nyusyukkoidou_preview : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_buhin_nyusyukko = new DataTable();
@@ -39,7 +39,8 @@ namespace TSS_SYSTEM
             }
         }
         
-        public frm_buhin_nyusyukko_preview()
+        
+        public frm_buhin_nyusyukkoidou_preview()
         {
             InitializeComponent();
         }
@@ -49,9 +50,14 @@ namespace TSS_SYSTEM
             this.Close();
         }
 
-        private void frm_buhin_nyusyukko_preview_Load(object sender, EventArgs e)
+        private void btn_hardcopy_Click(object sender, EventArgs e)
         {
-            rpt_buhin_nyusyukko rpt = new rpt_buhin_nyusyukko();
+            tss.HardCopy();
+        }
+
+        private void frm_buhin_nyusyukkoidou_preview_Load(object sender, EventArgs e)
+        {
+            rpt_buhin_nyusyukkoidou rpt = new rpt_buhin_nyusyukkoidou();
             //レポートへデータを受け渡す
             rpt.DataSource = ppt_dt;
             rpt.w_yyyymmdd = w_yyyymmdd;
@@ -65,26 +71,6 @@ namespace TSS_SYSTEM
 
             rpt.Run();
             this.vwr.Document = rpt.Document;
-        }
-
-        private void btn_hardcopy_Click(object sender, EventArgs e)
-        {
-            tss.HardCopy();
-        }
-
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
-
-        private void vwr_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
         }
     }
 }

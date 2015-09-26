@@ -14,6 +14,7 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
+        DataTable w_dt_insatu = new DataTable();
 
         public string str_mode; //画面モード
         public string str_cd;   //選択されたコード
@@ -53,21 +54,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "uriage_no = '" + tb_uriage_no1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_uriage_m.uriage_no = '" + tb_uriage_no1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "uriage_no >= '" + tb_uriage_no1.Text.ToString() + "' and uriage_no <= '" + tb_uriage_no2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "tss_uriage_m.uriage_no >= '" + tb_uriage_no1.Text.ToString() + "' and tss_uriage_m.uriage_no <= '" + tb_uriage_no2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_no >= '" + tb_uriage_no2.Text.ToString() + "' and uriage_no <= '" + tb_uriage_no1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "tss_uriage_m.uriage_no >= '" + tb_uriage_no2.Text.ToString() + "' and tss_uriage_m.uriage_no <= '" + tb_uriage_no1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -76,7 +77,7 @@ namespace TSS_SYSTEM
             {
                 if (chk_torihikisaki_cd(tb_torihikisaki_cd.Text))
                 {
-                    sql_where[sql_cnt] = "torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_uriage_m.torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
@@ -118,21 +119,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "uriage_date = TO_DATE('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD')";
+                    sql_where[sql_cnt] = "tss_uriage_m.uriage_date = TO_DATE('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD')";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "uriage_date >= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD') and uriage_date <= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/DD')";
+                        sql_where[sql_cnt] = "tss_uriage_m.uriage_date >= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD') and tss_uriage_m.uriage_date <= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/DD')";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "uriage_date >= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/dd') and uriage_date <= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/dd')";
+                            sql_where[sql_cnt] = "tss_uriage_m.uriage_date >= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/dd') and tss_uriage_m.uriage_date <= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/dd')";
                             sql_cnt++;
                         }
             }
@@ -140,13 +141,13 @@ namespace TSS_SYSTEM
             //受注コード1
             if (tb_juchu_cd1.Text != "")
             {
-                sql_where[sql_cnt] = "juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "'";
+                sql_where[sql_cnt] = "tss_uriage_m.juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "'";
                 sql_cnt++;
             }
             //受注コード2
             if (tb_juchu_cd2.Text != "")
             {
-                sql_where[sql_cnt] = "juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'";
+                sql_where[sql_cnt] = "tss_uriage_m.juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'";
                 sql_cnt++;
             }
             //取引先コード
@@ -154,7 +155,7 @@ namespace TSS_SYSTEM
             {
                 if (chk_seihin_cd(tb_seihin_cd.Text))
                 {
-                    sql_where[sql_cnt] = "seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_uriage_m.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
@@ -174,7 +175,10 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select uriage_no,torihikisaki_cd,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,bikou from tss_uriage_m where ";
+            string sql = "select tss_uriage_m.uriage_no,tss_uriage_m.torihikisaki_cd,tss_uriage_m.torihikisaki_name,tss_uriage_m.uriage_date,tss_uriage_m.juchu_cd1,tss_uriage_m.juchu_cd2,tss_uriage_m.seihin_cd,tss_seihin_m.seihin_name,tss_uriage_m.uriage_su,tss_uriage_m.hanbai_tanka,tss_uriage_m.uriage_kingaku,tss_uriage_m.urikake_no,tss_uriage_m.uriage_simebi,tss_uriage_m.bikou from tss_uriage_m inner join tss_seihin_m on tss_uriage_m.seihin_cd = tss_seihin_m.seihin_cd where ";
+            //string sql = "select uriage_no,torihikisaki_cd,uriage_date,juchu_cd1,juchu_cd2,seihin_cd,uriage_su,hanbai_tanka,uriage_kingaku,urikake_no,uriage_simebi,bikou from tss_uriage_m where ";
+            
+            
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -183,6 +187,9 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
+
+            sql = sql + " order by tss_uriage_m.uriage_date,tss_uriage_m.uriage_no ";
+            
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);
         }
@@ -258,16 +265,20 @@ namespace TSS_SYSTEM
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_m.Columns[0].HeaderText = "売上番号";
             dgv_m.Columns[1].HeaderText = "取引先コード";
-            dgv_m.Columns[2].HeaderText = "売上計上日";
-            dgv_m.Columns[3].HeaderText = "受注コード1";
-            dgv_m.Columns[4].HeaderText = "受注コード2";
-            dgv_m.Columns[5].HeaderText = "製品コード";
-            dgv_m.Columns[6].HeaderText = "売上数";
-            dgv_m.Columns[7].HeaderText = "販売単価";
-            dgv_m.Columns[8].HeaderText = "売上金額";
-            dgv_m.Columns[9].HeaderText = "請求番号";
-            dgv_m.Columns[10].HeaderText = "売上締日";
-            dgv_m.Columns[11].HeaderText = "備考";
+            dgv_m.Columns[2].HeaderText = "取引先名";
+            dgv_m.Columns[3].HeaderText = "売上計上日";
+            dgv_m.Columns[4].HeaderText = "受注コード1";
+            dgv_m.Columns[5].HeaderText = "受注コード2";
+            dgv_m.Columns[6].HeaderText = "製品コード";
+            dgv_m.Columns[7].HeaderText = "製品名";
+            dgv_m.Columns[8].HeaderText = "売上数";
+            dgv_m.Columns[9].HeaderText = "販売単価";
+            dgv_m.Columns[10].HeaderText = "売上金額";
+            dgv_m.Columns[11].HeaderText = "請求番号";
+            dgv_m.Columns[12].HeaderText = "売上締日";
+            dgv_m.Columns[13].HeaderText = "備考";
+
+            w_dt_insatu = dt_m;
         }
 
         private void btn_sentaku_Click(object sender, EventArgs e)
@@ -514,6 +525,30 @@ namespace TSS_SYSTEM
                 return;
             }
 
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_uriage_preview frm_rpt = new frm_uriage_preview();
+            
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_insatu;
+
+            frm_rpt.w_hd10 = tb_uriage_no1.Text;
+            frm_rpt.w_hd11 = tb_uriage_no2.Text;
+            frm_rpt.w_hd20 = tb_torihikisaki_cd.Text;
+            frm_rpt.w_hd21 = tb_torihikisaki_name.Text;
+            frm_rpt.w_hd30 = tb_uriage_date1.Text;
+            frm_rpt.w_hd31 = tb_uriage_date2.Text;
+            frm_rpt.w_hd40 = tb_juchu_cd1.Text;
+            frm_rpt.w_hd41 = tb_juchu_cd2.Text;
+            frm_rpt.w_hd50 = tb_seihin_cd.Text;
+            frm_rpt.w_hd51 = tb_seihin_name.Text;
+
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
         }
 
 

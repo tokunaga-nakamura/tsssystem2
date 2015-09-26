@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_buhin_nyusyukkoidou_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_nyusyukkoidou_preview.Designer.cs">
+      <DependentUpon>frm_buhin_nyusyukkoidou_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_buhin_nyusyukko_preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +361,12 @@
     <Compile Include="frm_uriage_log.Designer.cs">
       <DependentUpon>frm_uriage_log.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_uriage_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage_preview.Designer.cs">
+      <DependentUpon>frm_uriage_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_user_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +381,12 @@
     <Compile Include="rpt_buhin_nyusyukko.Designer.cs">
       <DependentUpon>rpt_buhin_nyusyukko.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_buhin_nyusyukkoidou.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_buhin_nyusyukkoidou.Designer.cs">
+      <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_nouhin_schedule.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -381,7 +399,16 @@
     <Compile Include="rpt_seikyu.Designer.cs">
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_uriage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_uriage.Designer.cs">
+      <DependentUpon>rpt_uriage.cs</DependentUpon>
+    </Compile>
     <Compile Include="TssSystemLibrary.cs" />
+    <EmbeddedResource Include="frm_buhin_nyusyukkoidou_preview.resx">
+      <DependentUpon>frm_buhin_nyusyukkoidou_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_nyusyukko_preview.resx">
       <DependentUpon>frm_buhin_nyusyukko_preview.cs</DependentUpon>
     </EmbeddedResource>
@@ -520,6 +547,9 @@
     <EmbeddedResource Include="frm_uriage_log.resx">
       <DependentUpon>frm_uriage_log.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage_preview.resx">
+      <DependentUpon>frm_uriage_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_user_m.resx">
       <DependentUpon>frm_user_m.cs</DependentUpon>
     </EmbeddedResource>
@@ -536,11 +566,17 @@
     <EmbeddedResource Include="rpt_buhin_nyusyukko.resx">
       <DependentUpon>rpt_buhin_nyusyukko.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_buhin_nyusyukkoidou.resx">
+      <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_nouhin_schedule.resx">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seikyu.resx">
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_uriage.resx">
+      <DependentUpon>rpt_uriage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

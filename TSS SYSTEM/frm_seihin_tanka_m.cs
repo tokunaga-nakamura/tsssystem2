@@ -508,7 +508,7 @@ namespace TSS_SYSTEM
 
                                 if (c == ch_c)
                                 {
-                                    MessageBox.Show("コードが重複しています");
+                                    MessageBox.Show("単価と部門コードの組み合わせが重複しています");
                                     dgv_m.Rows[e.RowIndex].Cells[j + 1].Value = "";
                                     e.Cancel = true;
                                 }
@@ -575,12 +575,6 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void dgv_m_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-          
-        }
-
         private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string str = dgv_m.CurrentCell.Value.ToString();
@@ -601,6 +595,8 @@ namespace TSS_SYSTEM
                         dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = tss.kubun_name_select("13", dgv_m.CurrentCell.Value.ToString());
                     }
                 }
+
+                dgv_m.EndEdit();
             }
 
             if (e.ColumnIndex == 2)
@@ -618,6 +614,8 @@ namespace TSS_SYSTEM
                         dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = tss.kubun_name_select("08", dgv_m.CurrentCell.Value.ToString());
                     }
                 }
+
+                dgv_m.EndEdit();
             }
         }
 
