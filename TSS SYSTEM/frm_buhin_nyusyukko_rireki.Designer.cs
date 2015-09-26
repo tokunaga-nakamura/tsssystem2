@@ -90,6 +90,7 @@
             this.btn_insatu.TabIndex = 15;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
             // 
             // btn_syuryou
             // 

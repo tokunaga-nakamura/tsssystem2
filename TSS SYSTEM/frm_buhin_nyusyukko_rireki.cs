@@ -14,6 +14,7 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
+        DataTable w_dt_insatu = new DataTable();
 
         public frm_buhin_nyusyukko_rireki()
         {
@@ -33,24 +34,24 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date = '" + tb_buhin_syori_date1.Text.ToString() + "'";
-                    //sql_where[sql_cnt] = "TO_CHAR(buhin_syori_date, 'YYYY/MM/DD') = '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                    //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date = '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "TO_CHAR(tss_buhin_nyusyukko_m.buhin_syori_date, 'YYYY/MM/DD') = '" + tb_buhin_syori_date1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date1.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
-                        //sql_where[sql_cnt] = "to_char(buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date1.Text.ToString() + "' and to_char(buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
+                        //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date1.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "to_char(tss_buhin_nyusyukko_m.buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date1.Text.ToString() + "' and to_char(tss_buhin_nyusyukko_m.buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date2.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
-                            //sql_where[sql_cnt] = "to_char(buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date2.Text.ToString() + "' and to_date(buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                            //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.buhin_syori_date >= '" + tb_buhin_syori_date2.Text.ToString() + "' and tss_buhin_nyusyukko_m.buhin_syori_date <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "to_char(tss_buhin_nyusyukko_m.buhin_syori_date,'yyyy/mm/dd') >= '" + tb_buhin_syori_date2.Text.ToString() + "' and to_char(tss_buhin_nyusyukko_m.buhin_syori_date,'yyyy/mm/dd') <= '" + tb_buhin_syori_date1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -150,7 +151,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select tss_buhin_nyusyukko_m.buhin_syori_kbn, tss_buhin_nyusyukko_m.buhin_syori_no,tss_buhin_nyusyukko_m.seq,tss_buhin_nyusyukko_m.buhin_syori_date,  tss_buhin_nyusyukko_m.buhin_cd, tss_buhin_m.buhin_name, tss_buhin_nyusyukko_m.zaiko_kbn, tss_buhin_nyusyukko_m.torihikisaki_cd, tss_buhin_nyusyukko_m.juchu_cd1,tss_buhin_nyusyukko_m.juchu_cd2,tss_buhin_nyusyukko_m.suryou,tss_buhin_nyusyukko_m.idousaki_zaiko_kbn,tss_buhin_nyusyukko_m.idousaki_torihikisaki_cd,tss_buhin_nyusyukko_m.idousaki_juchu_cd1,tss_buhin_nyusyukko_m.idousaki_juchu_cd2,tss_buhin_nyusyukko_m.denpyou_no,tss_buhin_nyusyukko_m.barcode,tss_buhin_nyusyukko_m.syori_kbn,tss_buhin_nyusyukko_m.bikou,tss_buhin_nyusyukko_m.create_user_cd,tss_buhin_nyusyukko_m.create_datetime,tss_buhin_nyusyukko_m.update_user_cd,tss_buhin_nyusyukko_m.update_datetime from tss_buhin_nyusyukko_m inner join tss_buhin_m on tss_buhin_nyusyukko_m.buhin_cd = tss_buhin_m.buhin_cd where ";
+            string sql = "select tss_buhin_nyusyukko_m.buhin_syori_kbn, tss_buhin_nyusyukko_m.buhin_syori_no,tss_buhin_nyusyukko_m.seq,tss_buhin_nyusyukko_m.buhin_syori_date,tss_buhin_nyusyukko_m.buhin_cd, tss_buhin_m.buhin_name, tss_buhin_nyusyukko_m.zaiko_kbn, tss_buhin_nyusyukko_m.torihikisaki_cd, tss_buhin_nyusyukko_m.juchu_cd1,tss_buhin_nyusyukko_m.juchu_cd2,tss_buhin_nyusyukko_m.suryou,tss_buhin_nyusyukko_m.idousaki_zaiko_kbn,tss_buhin_nyusyukko_m.idousaki_torihikisaki_cd,tss_buhin_nyusyukko_m.idousaki_juchu_cd1,tss_buhin_nyusyukko_m.idousaki_juchu_cd2,tss_buhin_nyusyukko_m.denpyou_no,tss_buhin_nyusyukko_m.barcode,tss_buhin_nyusyukko_m.syori_kbn,tss_buhin_nyusyukko_m.bikou,tss_buhin_nyusyukko_m.create_user_cd,tss_buhin_nyusyukko_m.create_datetime,tss_buhin_nyusyukko_m.update_user_cd,tss_buhin_nyusyukko_m.update_datetime from tss_buhin_nyusyukko_m inner join tss_buhin_m on tss_buhin_nyusyukko_m.buhin_cd = tss_buhin_m.buhin_cd where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -159,6 +160,8 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
+            sql = sql + " order by tss_buhin_nyusyukko_m.buhin_syori_no ";
+
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);
         }
@@ -266,8 +269,8 @@ namespace TSS_SYSTEM
                 dgv_m.Columns[21].HeaderText = "更新者コード";
                 dgv_m.Columns[22].HeaderText = "更新日時";
             }
-            
 
+            w_dt_insatu = dt_m;
 
         }
 
@@ -389,6 +392,25 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_buhin_nyusyukko_preview frm_rpt = new frm_buhin_nyusyukko_preview();
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_insatu;
+          
+            frm_rpt.w_hd10 = tb_buhin_syori_date1.Text;
+            frm_rpt.w_hd11 = tb_buhin_syori_date2.Text;
+            frm_rpt.w_hd20 = tb_torihikisaki_cd1.Text;
+            frm_rpt.w_hd21 = tb_torihikisaki_cd2.Text;
+            frm_rpt.w_hd30 = tb_buhin_cd1.Text;
+            frm_rpt.w_hd31 = tb_buhin_cd2.Text;
+            
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
         }
 
 

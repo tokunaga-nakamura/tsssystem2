@@ -496,7 +496,7 @@ namespace TSS_SYSTEM
                     {
 
                         bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
-                                        + "01" + "','"
+                                        + "02" + "','"
                                         + tb_seq.Text.ToString() + "','"
                                         + (i + 1) + "','"
                                         + dtp_buhin_syori_date.Value.ToShortDateString() + "','"
@@ -520,13 +520,13 @@ namespace TSS_SYSTEM
                     }
                 }
 
-                    //部品在庫マスタの更新
-                    //既存の区分があるかチェック
-                    int j = dgv_nyusyukkoidou.Rows.Count;
-                    DataTable dt_work5 = new DataTable();
-                    tss.GetUser();
-                    for (int i = 0; i < j - 1; i++)
-                    {
+                //部品在庫マスタの更新
+                //既存の区分があるかチェック
+                int j = dgv_nyusyukkoidou.Rows.Count;
+                DataTable dt_work5 = new DataTable();
+                tss.GetUser();
+                for (int i = 0; i < j - 1; i++)
+                {
                         if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                         {
                             dt_work5 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and buhin_cd = '" + dgv_nyusyukkoidou.Rows[i].Cells[0].Value.ToString() + "'and zaiko_kbn = '" + dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() + "' and juchu_cd1 = '" + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "'and juchu_cd2 = '" + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "'");
@@ -600,7 +600,7 @@ namespace TSS_SYSTEM
                                 }
                             }
                         }
-
+                    }
                         MessageBox.Show("出庫処理されました。");
 
                         SEQ();
@@ -608,7 +608,7 @@ namespace TSS_SYSTEM
                         tb_torihikisaki_cd.Clear();
                         tb_torihikisaki_name.Clear();
                         dgv_nyusyukkoidou.Rows.Clear();
-                    }
+                    
                     if (str_mode == "3")
                     {
                         MessageBox.Show("3です");
