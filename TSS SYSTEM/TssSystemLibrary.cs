@@ -845,7 +845,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 製品検索画面
+        #region search_seihin
         public string search_seihin(string in_mode, string in_cd)
         {
             //マウスのX座標を取得する
@@ -1379,27 +1379,20 @@ namespace TSS_SYSTEM
         /// ロット在庫の消し込みの場合、ロット在庫が足りない場合、不足分はフリー在庫で処理する
         /// ロット在庫の消し込みの場合、受注マスタの売上完了フラグが立っている場合、ロット在庫の残りはフリー在庫に移動する
         /// レコードがない場合は作成する</summary>
-        /// <param name="string in_buhin_cd">
-        /// 在庫の加減算を行う部品コード</param>
-        /// <param name="string in_zaiko_kbn">
-        /// 加減算を行う在庫区分</param>
-        /// <param name="string in_torihikisaki_cd">
-        /// ロット在庫の取引先コード</param>
-        /// <param name="string in_juchu_cd1">
-        /// ロット在庫の受注コード1</param>
-        /// <param name="string in_juchu_cd2">
-        /// ロット在庫の受注コード2</param>
-        /// <param name="double in_su">
-        /// 加減算数</param>
-        /// <param name="double in_gyou">
-        /// 履歴行</param>
-        /// <param name="string in_bikou">
-        /// 備考に書き込む伝票番号等</param>
+        /// <param name="string in_buhin_cd">在庫の加減算を行う部品コード</param>
+        /// <param name="string in_zaiko_kbn">加減算を行う在庫区分</param>
+        /// <param name="string in_torihikisaki_cd">ロット在庫の取引先コード</param>
+        /// <param name="string in_juchu_cd1">ロット在庫の受注コード1</param>
+        /// <param name="string in_juchu_cd2">ロット在庫の受注コード2</param>
+        /// <param name="double in_su">加減算数</param>
+        /// <param name="double in_gyou">履歴行</param>
+        /// <param name="string in_bikou">備考（伝票番号等）</param>
+        /// <param name="string in_syori_kbn">処理した画面（01:入出庫 02:売上 03:製品構成一括</param>
         /// <returns>
         /// bool true:正常終了 false:異常終了
         /// エラー等、取得できない場合はnull</returns>
         public int ppt_gyou;   //履歴に書き込んだ行番号
-        public bool zaiko_proc(string in_buhin_cd, string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, double in_su, double in_rireki_no, int in_gyou, string in_bikou)
+        public bool zaiko_proc(string in_buhin_cd, string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, double in_su, double in_rireki_no, int in_gyou, string in_bikou,string in_syori_kbn)
         {
             bool bl = true;  //戻り値用
             string w_sql;
@@ -1418,6 +1411,13 @@ namespace TSS_SYSTEM
                 w_rireki_kbn = "01";    //出庫（通常消込）
             }
             ppt_gyou = in_gyou;
+            double w_dou_su = in_su;    //履歴書込み用の数量
+            //在庫履歴に書き込む数量は、
+            //マイナス売上時はマイナス数量でいいが、それ以外は正数で書き込む
+            if(in_syori_kbn == "03" && in_su < 0)
+            {
+                w_dou_su = w_dou_su * -1;
+            }
 
             //消し込む在庫レコードをw_dtに入れる
             w_dt = OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + in_buhin_cd + "' and zaiko_kbn = '" + in_zaiko_kbn + "' and torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
@@ -1462,7 +1462,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + "0.00" + "','02','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + "0.00" + "','" + in_syori_kbn + "','" + in_bikou + "の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
 
                 //次に残りの在庫数をフリー在庫で処理する
@@ -1485,7 +1485,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + in_su.ToString() + "','02','売上番号" + in_bikou + "分のロット在庫不足分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + w_dou_su.ToString() + "','" + in_syori_kbn + "','" + in_bikou + "分のロット在庫不足分の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
             }
             else
@@ -1501,7 +1501,7 @@ namespace TSS_SYSTEM
                     bl = false;
                 }
                 //在庫履歴へ書き込み
-                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + in_su.ToString("0.00") + "','02','売上番号" + in_bikou + "分の消し込み','" + user_cd + "',sysdate)");
+                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('" + w_rireki_kbn + "','" + in_rireki_no.ToString("0") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + in_torihikisaki_cd + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + w_dou_su.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "の消し込み','" + user_cd + "',sysdate)");
                 ppt_gyou++;
             }
             return bl;

@@ -134,7 +134,7 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 1;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
@@ -144,9 +144,10 @@
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 1;
+            this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // splitContainer3
             // 
@@ -195,7 +196,8 @@
             this.tb_seihin_cd.Location = new System.Drawing.Point(96, 3);
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(106, 19);
-            this.tb_seihin_cd.TabIndex = 1;
+            this.tb_seihin_cd.TabIndex = 0;
+            this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
             // 
@@ -216,7 +218,7 @@
             this.tb_seihin_kousei_no.Location = new System.Drawing.Point(571, 3);
             this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
             this.tb_seihin_kousei_no.Size = new System.Drawing.Size(20, 19);
-            this.tb_seihin_kousei_no.TabIndex = 3;
+            this.tb_seihin_kousei_no.TabIndex = 1;
             this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
             this.tb_seihin_kousei_no.Validated += new System.EventHandler(this.tb_seihin_kousei_no_Validated);
             // 
@@ -236,8 +238,10 @@
             this.tb_suuryo.Location = new System.Drawing.Point(202, 27);
             this.tb_suuryo.Name = "tb_suuryo";
             this.tb_suuryo.Size = new System.Drawing.Size(100, 19);
-            this.tb_suuryo.TabIndex = 5;
+            this.tb_suuryo.TabIndex = 4;
+            this.tb_suuryo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_suuryo.Validating += new System.ComponentModel.CancelEventHandler(this.tb_suuryo_Validating);
+            this.tb_suuryo.Validated += new System.EventHandler(this.tb_suuryo_Validated);
             // 
             // rb_nyuuko
             // 
@@ -246,7 +250,7 @@
             this.rb_nyuuko.Location = new System.Drawing.Point(10, 28);
             this.rb_nyuuko.Name = "rb_nyuuko";
             this.rb_nyuuko.Size = new System.Drawing.Size(47, 16);
-            this.rb_nyuuko.TabIndex = 6;
+            this.rb_nyuuko.TabIndex = 2;
             this.rb_nyuuko.TabStop = true;
             this.rb_nyuuko.Text = "入庫";
             this.rb_nyuuko.UseVisualStyleBackColor = true;
@@ -257,7 +261,7 @@
             this.rb_syukko.Location = new System.Drawing.Point(63, 28);
             this.rb_syukko.Name = "rb_syukko";
             this.rb_syukko.Size = new System.Drawing.Size(47, 16);
-            this.rb_syukko.TabIndex = 7;
+            this.rb_syukko.TabIndex = 3;
             this.rb_syukko.Text = "出庫";
             this.rb_syukko.UseVisualStyleBackColor = true;
             // 

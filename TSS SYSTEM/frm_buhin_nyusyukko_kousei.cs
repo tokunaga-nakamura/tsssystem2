@@ -61,8 +61,7 @@ namespace TSS_SYSTEM
             if (dt_work.Rows.Count <= 0)
             {
                 //無い
-                MessageBox.Show("入力した製品コードは存在しません。");
-                tb_seihin_cd.Focus();
+                bl = false;
             }
             else
             {
@@ -74,12 +73,28 @@ namespace TSS_SYSTEM
             return bl;
         }
 
-        private bool get_seihin_kousei_name()
+        private bool chk_seihin_kousei_no()
         {
             bool bl = true; //戻り値用
             DataTable w_dt_seihin_kousei_name = new DataTable();
             w_dt_seihin_kousei_name = tss.OracleSelect("select * from tss_seihin_kousei_name_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "'");
             if(w_dt_seihin_kousei_name.Rows.Count <= 0)
+            {
+                bl = false;
+            }
+            else
+            {
+                bl = true;
+            }
+            return bl;
+        }
+
+        private bool get_seihin_kousei_name()
+        {
+            bool bl = true; //戻り値用
+            DataTable w_dt_seihin_kousei_name = new DataTable();
+            w_dt_seihin_kousei_name = tss.OracleSelect("select * from tss_seihin_kousei_name_m where seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "'");
+            if (w_dt_seihin_kousei_name.Rows.Count <= 0)
             {
                 MessageBox.Show("製品構成が登録されていないか、製品構成番号に異常があります。");
                 tb_seihin_kousei_name.Text = "";
@@ -93,7 +108,6 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
-
 
         private void list_make()
         {
@@ -170,12 +184,12 @@ namespace TSS_SYSTEM
                     if(rb_nyuuko.Checked == true)
                     {
                         //入庫
-                        w_dt_final_zaiko_su = (w_dou_ttl_zaiko_su - w_dou_hituyou_su).ToString("0.00");
+                        w_dt_final_zaiko_su = (w_dou_ttl_zaiko_su + w_dou_hituyou_su).ToString("0.00");
                     }
                     else
                     {
                         //出庫
-                        w_dt_final_zaiko_su = (w_dou_ttl_zaiko_su - w_dou_hituyou_su * -1).ToString("0.00");
+                        w_dt_final_zaiko_su = (w_dou_ttl_zaiko_su + w_dou_hituyou_su * -1).ToString("0.00");
                     }
                 }
                 else
@@ -191,7 +205,7 @@ namespace TSS_SYSTEM
                 w_dt_row["lot_zaiko_su"] = w_dt_lot_zaiko_su;
                 w_dt_row["sonota_zaiko_su"] = w_dt_sonota_zaiko_su;
                 w_dt_row["ttl_zaiko_su"] = w_dt_ttl_zaiko_su;
-                w_dt_row["hituyou_su"] = w_dt_syori_su;
+                w_dt_row["syori_su"] = w_dt_syori_su;
                 w_dt_row["final_zaiko_su"] = w_dt_final_zaiko_su;
                 w_dt_m.Rows.Add(w_dt_row);
             }
@@ -253,20 +267,33 @@ namespace TSS_SYSTEM
             //dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.Gainsboro;
             dgv_m.Columns[8].DefaultCellStyle.BackColor = Color.Gainsboro;
 
+            //書式を設定する
+            dgv_m.Columns[2].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[3].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[4].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[5].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[6].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[7].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[8].DefaultCellStyle.Format = "#,###,###,##0.00";
+
             //列の文字数制限（TextBoxのMaxLengthと同じ動作になる）
             ((DataGridViewTextBoxColumn)dgv_m.Columns[7]).MaxInputLength = 13;
         }
 
         private void tb_seihin_kousei_no_Validating(object sender, CancelEventArgs e)
         {
-
+            if(chk_seihin_kousei_no() == false)
+            {
+                MessageBox.Show("入力された製品構成番号は登録されていません。");
+                e.Cancel = true;
+            }
         }
 
         private void tb_seihin_kousei_no_Validated(object sender, EventArgs e)
         {
             if(get_seihin_kousei_name() == false)
             {
-
+                MessageBox.Show("製品構成名称の取得ができません。確認してください。");
             }
             else
             {
@@ -318,6 +345,26 @@ namespace TSS_SYSTEM
                 if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString(), out w_su))
                 {
                     dgv_m.Rows[e.RowIndex].Cells[7].Value = w_su.ToString("0.00");
+                    //最終在庫を計算・表示
+                    double w_dou_ttl_zaiko_su;
+                    double w_dou_suryou;
+                    double w_dou_final_zaiko_su;
+                    if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString(), out w_dou_ttl_zaiko_su) && double.TryParse(dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out w_dou_suryou))
+                    {
+                        if (rb_nyuuko.Checked == true)
+                        {
+                            //入庫
+                            w_dou_final_zaiko_su = w_dou_ttl_zaiko_su + w_dou_suryou;
+                        }
+                        else
+                        {
+                            //出庫
+                            w_dou_final_zaiko_su = w_dou_ttl_zaiko_su + w_dou_suryou * -1;
+                        }
+                        dgv_m.Rows[e.RowIndex].Cells[8].Value = w_dou_final_zaiko_su.ToString("0.00");
+                    }
+
+
                 }
             }
         }
@@ -332,6 +379,106 @@ namespace TSS_SYSTEM
             }
         }
 
+        private void tb_seihin_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_seihin("2", tb_seihin_cd.Text);
+            if (w_cd != "")
+            {
+                tb_seihin_cd.Text = w_cd;
+                if (chk_seihin_cd() != true)
+                {
+                    MessageBox.Show("製品コードに異常があります。");
+                    tb_seihin_cd.Focus();
+                }
+            }
+        }
+
+        private void tb_suuryo_Validated(object sender, EventArgs e)
+        {
+            list_make();
+        }
+
+        private void btn_touroku_Click(object sender, EventArgs e)
+        {
+            if(chk_seihin_cd() == false)
+            {
+                MessageBox.Show("製品コードに異常があります。");
+                tb_seihin_cd.Focus();
+                return;
+            }
+
+            if(chk_seihin_kousei_no() == false)
+            {
+                MessageBox.Show("製品構成番号に異常があります。");
+                tb_seihin_kousei_no.Focus();
+                return;
+            }
+
+            if(chk_syori_su(tb_suuryo.Text) == false)
+            {
+                MessageBox.Show("入出庫数に異常があります。");
+                tb_suuryo.Focus();
+                return;
+            }
+            DialogResult result = MessageBox.Show("登録します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //登録
+                touroku();
+            }
+        }
+
+        private void touroku()
+        {
+            bool w_bl;
+            double w_suryo;
+            //在庫履歴書込み用の番号取得
+            double w_rireki_no;
+            int w_sign;
+            string w_bikou;
+            string w_nyusyukko;
+            if (rb_nyuuko.Checked == true)
+            {
+                w_rireki_no = tss.GetSeq("01");
+                w_sign = -1;
+                w_nyusyukko = "入庫";
+            }
+            else
+            {
+                w_rireki_no = tss.GetSeq("02");
+                w_sign = 1;
+                w_nyusyukko = "出庫";
+            }
+            int w_rireki_gyou;  //在庫履歴書込み用の行番号
+            for(int i= 0;i < dgv_m.Rows.Count;i++)
+            {
+                w_rireki_gyou = i + 1;
+                w_suryo = tss.try_string_to_double(dgv_m.Rows[i].Cells[7].Value.ToString()) * w_sign;
+                w_bikou = "製品構成を使用した一括" + w_nyusyukko + " 製品CD:" + tb_seihin_cd.Text.ToString() + " 製品構成NO:" + tb_seihin_kousei_no.Text.ToString() + " 処理数:" + tb_suuryo.Text.ToString() + " 使用数:" + dgv_m.Rows[i].Cells[2].Value.ToString();
+                w_bl = tss.zaiko_proc(dgv_m.Rows[i].Cells[0].Value.ToString(),"01","999999","9999999999999999","9999999999999999",w_suryo,w_rireki_no,w_rireki_gyou,w_bikou,"03");
+                if(w_bl == false)
+                {
+                    MessageBox.Show("在庫の更新中にエラーが発生しました。データの整合性が崩れた可能性があります。確認してください。");
+                }
+            }
+            MessageBox.Show("登録しました。");
+            gamen_clear();
+            tb_seihin_cd.Focus();
+        }
+
+        private void gamen_clear()
+        {
+            tb_seihin_cd.Text = "";
+            tb_seihin_name.Text = "";
+            tb_seihin_kousei_no.Text = "";
+            tb_seihin_kousei_name.Text = "";
+            rb_nyuuko.Checked = true;
+            tb_suuryo.Text = "";
+
+            dgv_m.DataSource = null;
+        }
 
 
 
