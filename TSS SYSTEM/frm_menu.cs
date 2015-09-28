@@ -469,7 +469,14 @@ namespace TSS_SYSTEM
             frm_buhin_nyuuko_bcr frm_bnsr = new frm_buhin_nyuuko_bcr();
             frm_bnsr.ShowDialog(this);
             frm_bnsr.Dispose();
+        }
 
+        private void btn_buhin_nyusyukko_kousei_Click(object sender, EventArgs e)
+        {
+            //製品構成を使用した一括入出庫
+            frm_buhin_nyusyukko_kousei frm_bnsr = new frm_buhin_nyusyukko_kousei();
+            frm_bnsr.ShowDialog(this);
+            frm_bnsr.Dispose();
         }
     }
 }
