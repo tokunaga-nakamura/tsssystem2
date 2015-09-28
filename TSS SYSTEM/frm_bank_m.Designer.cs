@@ -149,8 +149,8 @@
             this.tb_kouza_syubetu.Name = "tb_kouza_syubetu";
             this.tb_kouza_syubetu.Size = new System.Drawing.Size(21, 19);
             this.tb_kouza_syubetu.TabIndex = 7;
-            this.tb_kouza_syubetu.TextChanged += new System.EventHandler(this.tb_kouza_syubetu_TextChanged);
             this.tb_kouza_syubetu.DoubleClick += new System.EventHandler(this.tb_kouza_syubetu_DoubleClick);
+            this.tb_kouza_syubetu.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kouza_syubetu_Validating);
             // 
             // textBox13
             // 

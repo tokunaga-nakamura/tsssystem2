@@ -237,12 +237,7 @@ namespace TSS_SYSTEM
 
         private void tb_torihikisaki_cd_Leave(object sender, EventArgs e)
         {
-            
-        }
 
-        private void tb_kouza_syubetu_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void tb_kouza_syubetu_DoubleClick(object sender, EventArgs e)
@@ -502,6 +497,15 @@ namespace TSS_SYSTEM
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
             tss.HardCopy();
+        }
+
+        private void tb_kouza_syubetu_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_kouza_meigi.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
     }
 }

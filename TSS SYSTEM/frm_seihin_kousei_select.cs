@@ -195,10 +195,14 @@ namespace TSS_SYSTEM
         {
             ppt_str_seihin_cd = tb_seihin_cd.Text;
 
-            if (dgv_kubun_m.Rows.Count == 1)
+            if (dgv_kubun_m.Rows.Count == 0)
             {
-                ppt_str_seihin_kousei_no = "01";
+                ppt_str_seihin_kousei_no = "";
             }
+            //if (dgv_kubun_m.Rows.Count == 1)
+            //{
+            //    ppt_str_seihin_kousei_no = "01";
+            //}
             else
             {
                 ppt_str_seihin_kousei_no = dgv_kubun_m.CurrentRow.Cells[0].Value.ToString();

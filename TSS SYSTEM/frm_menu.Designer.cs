@@ -104,6 +104,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -530,6 +531,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.btn_juchu_zan);
             this.tabPage2.Controls.Add(this.btn_nyukin);
             this.tabPage2.Controls.Add(this.btn_seikyu_preview);
@@ -1045,6 +1047,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(234, 125);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(222, 23);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "単価別売上明細";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1195,6 +1206,7 @@
         private System.Windows.Forms.Button btn_juchu_zan;
         private System.Windows.Forms.Button btn_nyuko_bcr;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
+        private System.Windows.Forms.Button button4;
     }
 }
 

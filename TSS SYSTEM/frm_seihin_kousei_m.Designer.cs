@@ -218,7 +218,6 @@
             this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
             this.tb_seihin_kousei_no.Size = new System.Drawing.Size(26, 19);
             this.tb_seihin_kousei_no.TabIndex = 1;
-            this.tb_seihin_kousei_no.TextChanged += new System.EventHandler(this.tb_seihin_kousei_no_TextChanged);
             this.tb_seihin_kousei_no.DoubleClick += new System.EventHandler(this.tb_seihin_kousei_no_DoubleClick);
             this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
             // 

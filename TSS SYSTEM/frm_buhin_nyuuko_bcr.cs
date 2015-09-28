@@ -40,7 +40,7 @@ namespace TSS_SYSTEM
             }
             try
             {
-                //SerialPort bcr_port = new SerialPort("COM3", 38400, Parity.None, 8, StopBits.One);
+                //SerialPort bcr_port = new SerialPort("COM4", 38400, Parity.None, 8, StopBits.One);
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialPort1_DataReceived);
                 serialPort1.PortName = str_com;
                 serialPort1.BaudRate = 38400;
