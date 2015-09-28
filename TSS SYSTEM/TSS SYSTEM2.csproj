@@ -337,6 +337,12 @@
     <Compile Include="frm_table_maintenance.Designer.cs">
       <DependentUpon>frm_table_maintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_tankabetu_uriage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_tankabetu_uriage.Designer.cs">
+      <DependentUpon>frm_tankabetu_uriage.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_torihikisaki_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_table_maintenance.resx">
       <DependentUpon>frm_table_maintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_tankabetu_uriage.resx">
+      <DependentUpon>frm_tankabetu_uriage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_torihikisaki_m.resx">
       <DependentUpon>frm_torihikisaki_m.cs</DependentUpon>

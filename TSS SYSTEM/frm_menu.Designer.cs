@@ -70,6 +70,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_buhin_nyusyukko_kousei = new System.Windows.Forms.Button();
             this.btn_buhin_nyusyukko_rireki = new System.Windows.Forms.Button();
             this.btn_nyuko_bcr = new System.Windows.Forms.Button();
             this.btn_3_seihin_tanka_m = new System.Windows.Forms.Button();
@@ -105,7 +106,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_buhin_nyusyukko_kousei = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -560,6 +560,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "単価別売上明細";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_juchu_zan
             // 
@@ -694,6 +695,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btn_buhin_nyusyukko_kousei
+            // 
+            this.btn_buhin_nyusyukko_kousei.Location = new System.Drawing.Point(464, 6);
+            this.btn_buhin_nyusyukko_kousei.Name = "btn_buhin_nyusyukko_kousei";
+            this.btn_buhin_nyusyukko_kousei.Size = new System.Drawing.Size(220, 23);
+            this.btn_buhin_nyusyukko_kousei.TabIndex = 16;
+            this.btn_buhin_nyusyukko_kousei.Text = "製品構成を使用した一括入出庫";
+            this.btn_buhin_nyusyukko_kousei.UseVisualStyleBackColor = true;
+            this.btn_buhin_nyusyukko_kousei.Click += new System.EventHandler(this.btn_buhin_nyusyukko_kousei_Click);
             // 
             // btn_buhin_nyusyukko_rireki
             // 
@@ -1057,16 +1068,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_buhin_nyusyukko_kousei
-            // 
-            this.btn_buhin_nyusyukko_kousei.Location = new System.Drawing.Point(464, 6);
-            this.btn_buhin_nyusyukko_kousei.Name = "btn_buhin_nyusyukko_kousei";
-            this.btn_buhin_nyusyukko_kousei.Size = new System.Drawing.Size(220, 23);
-            this.btn_buhin_nyusyukko_kousei.TabIndex = 16;
-            this.btn_buhin_nyusyukko_kousei.Text = "製品構成を使用した一括入出庫";
-            this.btn_buhin_nyusyukko_kousei.UseVisualStyleBackColor = true;
-            this.btn_buhin_nyusyukko_kousei.Click += new System.EventHandler(this.btn_buhin_nyusyukko_kousei_Click);
             // 
             // frm_menu
             // 

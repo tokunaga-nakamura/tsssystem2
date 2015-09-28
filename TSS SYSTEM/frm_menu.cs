@@ -478,5 +478,13 @@ namespace TSS_SYSTEM
             frm_bnsr.ShowDialog(this);
             frm_bnsr.Dispose();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frm_tankabetu_uriage frm_tbu = new frm_tankabetu_uriage();
+            frm_tbu.ShowDialog(this);
+            frm_tbu.Dispose();
+        }
+
     }
 }
