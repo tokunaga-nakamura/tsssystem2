@@ -81,13 +81,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_seihin_koutei = new System.Windows.Forms.DataGridView();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.btn_tanka_hensyuu = new System.Windows.Forms.Button();
+            this.tb_tanka_goukei = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv_tanka = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.tb_tanka_goukei = new System.Windows.Forms.TextBox();
-            this.btn_tanka_hensyuu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -418,6 +418,7 @@
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(361, 19);
             this.tb_bikou.TabIndex = 2;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // textBox2
             // 
@@ -637,6 +638,7 @@
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.Size = new System.Drawing.Size(361, 19);
             this.tb_seihin_name.TabIndex = 1;
+            this.tb_seihin_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_name_Validating);
             // 
             // tb_seihin_cd
             // 
@@ -784,6 +786,38 @@
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
             // 
+            // btn_tanka_hensyuu
+            // 
+            this.btn_tanka_hensyuu.Location = new System.Drawing.Point(131, 4);
+            this.btn_tanka_hensyuu.Name = "btn_tanka_hensyuu";
+            this.btn_tanka_hensyuu.Size = new System.Drawing.Size(75, 23);
+            this.btn_tanka_hensyuu.TabIndex = 3;
+            this.btn_tanka_hensyuu.Text = "編集";
+            this.btn_tanka_hensyuu.UseVisualStyleBackColor = true;
+            this.btn_tanka_hensyuu.Click += new System.EventHandler(this.btn_tanka_hensyuu_Click);
+            // 
+            // tb_tanka_goukei
+            // 
+            this.tb_tanka_goukei.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_tanka_goukei.Location = new System.Drawing.Point(305, 5);
+            this.tb_tanka_goukei.Name = "tb_tanka_goukei";
+            this.tb_tanka_goukei.ReadOnly = true;
+            this.tb_tanka_goukei.Size = new System.Drawing.Size(100, 19);
+            this.tb_tanka_goukei.TabIndex = 2;
+            this.tb_tanka_goukei.TabStop = false;
+            this.tb_tanka_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(249, 5);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(56, 19);
+            this.textBox6.TabIndex = 1;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "単価合計";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -823,38 +857,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox6.Location = new System.Drawing.Point(249, 5);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(56, 19);
-            this.textBox6.TabIndex = 1;
-            this.textBox6.TabStop = false;
-            this.textBox6.Text = "単価合計";
-            // 
-            // tb_tanka_goukei
-            // 
-            this.tb_tanka_goukei.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_tanka_goukei.Location = new System.Drawing.Point(305, 5);
-            this.tb_tanka_goukei.Name = "tb_tanka_goukei";
-            this.tb_tanka_goukei.ReadOnly = true;
-            this.tb_tanka_goukei.Size = new System.Drawing.Size(100, 19);
-            this.tb_tanka_goukei.TabIndex = 2;
-            this.tb_tanka_goukei.TabStop = false;
-            this.tb_tanka_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btn_tanka_hensyuu
-            // 
-            this.btn_tanka_hensyuu.Location = new System.Drawing.Point(131, 4);
-            this.btn_tanka_hensyuu.Name = "btn_tanka_hensyuu";
-            this.btn_tanka_hensyuu.Size = new System.Drawing.Size(75, 23);
-            this.btn_tanka_hensyuu.TabIndex = 3;
-            this.btn_tanka_hensyuu.Text = "編集";
-            this.btn_tanka_hensyuu.UseVisualStyleBackColor = true;
-            this.btn_tanka_hensyuu.Click += new System.EventHandler(this.btn_tanka_hensyuu_Click);
             // 
             // frm_seihin_m
             // 

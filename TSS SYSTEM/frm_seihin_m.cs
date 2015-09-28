@@ -66,6 +66,12 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
         {
+            if (tss.Check_String_Escape(tb_seihin_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             //空白の場合はOKとする
             if (tb_seihin_cd.Text != "")
             {
@@ -839,6 +845,24 @@ namespace TSS_SYSTEM
             frm_stk.Dispose();
             chk_seihin_cd();
 
+        }
+
+        private void tb_seihin_name_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_seihin_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
 
     }
