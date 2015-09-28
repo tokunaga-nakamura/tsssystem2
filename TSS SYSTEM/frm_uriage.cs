@@ -972,6 +972,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
+                        //製品構成の登録が無いため在庫消込ができなかったことをログに書き込む
                         uriage_log_write(dr);
                     }
                 }

@@ -85,6 +85,12 @@
     <Compile Include="frm_buhin_nyusyukkoidou_preview.Designer.cs">
       <DependentUpon>frm_buhin_nyusyukkoidou_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_buhin_nyusyukko_kousei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_nyusyukko_kousei.Designer.cs">
+      <DependentUpon>frm_buhin_nyusyukko_kousei.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_buhin_nyusyukko_preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,6 +414,9 @@
     <Compile Include="TssSystemLibrary.cs" />
     <EmbeddedResource Include="frm_buhin_nyusyukkoidou_preview.resx">
       <DependentUpon>frm_buhin_nyusyukkoidou_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_nyusyukko_kousei.resx">
+      <DependentUpon>frm_buhin_nyusyukko_kousei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_nyusyukko_preview.resx">
       <DependentUpon>frm_buhin_nyusyukko_preview.cs</DependentUpon>
