@@ -42,6 +42,7 @@
             this.tb_uriage_date = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -59,7 +60,7 @@
             this.btn_csv.Location = new System.Drawing.Point(91, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 2;
+            this.btn_csv.TabIndex = 5;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
             // 
@@ -68,17 +69,18 @@
             this.btn_insatu.Location = new System.Drawing.Point(10, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 1;
+            this.btn_insatu.TabIndex = 4;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
             // 
             // btn_cancel
             // 
             this.btn_cancel.Location = new System.Drawing.Point(795, 3);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 3;
-            this.btn_cancel.Text = "キャンセル";
+            this.btn_cancel.TabIndex = 6;
+            this.btn_cancel.Text = "終了";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
@@ -87,7 +89,7 @@
             this.btn_kensaku.Location = new System.Drawing.Point(795, 41);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_kensaku.TabIndex = 8;
+            this.btn_kensaku.TabIndex = 3;
             this.btn_kensaku.Text = "検索";
             this.btn_kensaku.UseVisualStyleBackColor = true;
             this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
@@ -170,6 +172,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_kensaku);
             this.groupBox1.Controls.Add(this.tb_torihikisaki_name);
             this.groupBox1.Controls.Add(this.tb_uriage_date);
@@ -183,6 +186,7 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索条件";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // tb_uriage_date
             // 
@@ -190,7 +194,7 @@
             this.tb_uriage_date.MaxLength = 10;
             this.tb_uriage_date.Name = "tb_uriage_date";
             this.tb_uriage_date.Size = new System.Drawing.Size(74, 19);
-            this.tb_uriage_date.TabIndex = 3;
+            this.tb_uriage_date.TabIndex = 1;
             this.tb_uriage_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_date_Validating);
             // 
             // splitContainer1
@@ -221,6 +225,14 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(396, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.TabIndex = 9;
             // 
             // frm_tankabetu_uriage
             // 
@@ -264,6 +276,7 @@
         private System.Windows.Forms.TextBox tb_uriage_date;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label label1;
 
     }
 }

@@ -54,6 +54,7 @@
             this.btn_tsuika = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_insatsu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -343,6 +344,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btn_insatsu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_tsuika);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
@@ -393,6 +395,16 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_insatsu
+            // 
+            this.btn_insatsu.Location = new System.Drawing.Point(108, 4);
+            this.btn_insatsu.Name = "btn_insatsu";
+            this.btn_insatsu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatsu.TabIndex = 5;
+            this.btn_insatsu.Text = "印刷";
+            this.btn_insatsu.UseVisualStyleBackColor = true;
+            this.btn_insatsu.Click += new System.EventHandler(this.btn_insatsu_Click);
             // 
             // frm_seihin_kousei_m
             // 
@@ -457,5 +469,6 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_tsuika;
+        private System.Windows.Forms.Button btn_insatsu;
     }
 }

@@ -209,70 +209,98 @@ namespace TSS_SYSTEM
 
             else
             {
-                dt_kensaku.Columns.Add("zairyou_tanka", Type.GetType("System.Double")).SetOrdinal(8);
-                dt_kensaku.Columns.Add("zairyou_kingaku", Type.GetType("System.Double")).SetOrdinal(9);
-                dt_kensaku.Columns.Add("kouchin_tanka", Type.GetType("System.Double")).SetOrdinal(10);
-                dt_kensaku.Columns.Add("kouchin_kingaku", Type.GetType("System.Double")).SetOrdinal(11);
-                dt_kensaku.Columns.Add("hukusizai_tanka", Type.GetType("System.Double")).SetOrdinal(12);
-                dt_kensaku.Columns.Add("hukusizai_kingaku", Type.GetType("System.Double")).SetOrdinal(13);
-                dt_kensaku.Columns.Add("buhin_tanka", Type.GetType("System.Double")).SetOrdinal(14);
-                dt_kensaku.Columns.Add("buhin_kingaku", Type.GetType("System.Double")).SetOrdinal(15);
-                dt_kensaku.Columns.Add("kouchin_buhin_tanka", Type.GetType("System.Double")).SetOrdinal(14);
-                dt_kensaku.Columns.Add("kouchin_buhin_kingaku", Type.GetType("System.Double")).SetOrdinal(15);
+                
+                dt_kensaku.Columns.Add("kouchin_tanka", Type.GetType("System.Double")).SetOrdinal(8);
+                dt_kensaku.Columns.Add("kouchin_kingaku", Type.GetType("System.Double")).SetOrdinal(9);
+                dt_kensaku.Columns.Add("hukusizai_tanka", Type.GetType("System.Double")).SetOrdinal(10);
+                dt_kensaku.Columns.Add("hukusizai_kingaku", Type.GetType("System.Double")).SetOrdinal(11);
+                dt_kensaku.Columns.Add("buhin_tanka", Type.GetType("System.Double")).SetOrdinal(12);
+                dt_kensaku.Columns.Add("buhin_kingaku", Type.GetType("System.Double")).SetOrdinal(13);
+                dt_kensaku.Columns.Add("kouchin_hukusizai_tanka", Type.GetType("System.Double")).SetOrdinal(14);
+                dt_kensaku.Columns.Add("kouchin_hukusizai_kingaku", Type.GetType("System.Double")).SetOrdinal(15);
+                //dt_kensaku.Columns.Add("zairyou_tanka", Type.GetType("System.Double")).SetOrdinal(16);
+                //dt_kensaku.Columns.Add("zairyou_kingaku", Type.GetType("System.Double")).SetOrdinal(17);
 
                 for (int i = 0; i <= rc - 1; i++)
                 {
-                   DataTable dt_zairyou =  new DataTable();
-                   dt_zairyou = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
-                   if(dt_zairyou.Rows.Count == 0)
-                   {
-                       dt_kensaku.Rows[i][8] = "0";
-                   }
-                   else
-                   {
-                       dt_kensaku.Rows[i][8] = dt_zairyou.Rows[0][0];
-                       dt_kensaku.Rows[i][9] = double.Parse(dt_zairyou.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
-                   }
+                  
 
                    DataTable dt_kouchin = new DataTable();
-                   dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '02'");
-                   if (dt_zairyou.Rows.Count == 0)
+                   dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
+                   if (dt_kouchin.Rows.Count == 0)
                    {
-                       dt_kensaku.Rows[i][10] = "0";
+                       dt_kensaku.Rows[i][8] = "0";
+                       dt_kensaku.Rows[i][9] = "0";
                    }
                    else
                    {
-                       dt_kensaku.Rows[i][10] = dt_kouchin.Rows[0][0];
-                       dt_kensaku.Rows[i][11] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       dt_kensaku.Rows[i][8] = dt_kouchin.Rows[0][0];
+                       if (dt_kensaku.Rows[i][8].ToString() == "0")
+                       {
+                           dt_kensaku.Rows[i][9] = "0";
+                       }
+                       else
+                       {
+                           dt_kensaku.Rows[i][9] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       }
+                       
                    }
 
                    DataTable dt_hukusizai = new DataTable();
-                   dt_hukusizai = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '03'");
+                   dt_hukusizai = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '02'");
                    if (dt_hukusizai.Rows.Count == 0)
                    {
-                       dt_kensaku.Rows[i][12] = "0";
+                       dt_kensaku.Rows[i][10] = "0";
+                       dt_kensaku.Rows[i][11] = "0";
                    }
                    else
                    {
-                       dt_kensaku.Rows[i][12] = dt_hukusizai.Rows[0][0];
-                       dt_kensaku.Rows[i][13] = double.Parse(dt_hukusizai.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       dt_kensaku.Rows[i][10] = dt_hukusizai.Rows[0][0];
+                       if (dt_kensaku.Rows[i][10].ToString() == "0")
+                       {
+                           dt_kensaku.Rows[i][11] = "0";
+                       }
+                       else
+                       {
+                           dt_kensaku.Rows[i][11] = double.Parse(dt_hukusizai.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       }
+                       
                    }
 
                    DataTable dt_buhin = new DataTable();
-                   dt_buhin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '04'");
+                   dt_buhin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '03'");
                    if (dt_buhin.Rows.Count == 0)
                    {
-                       dt_kensaku.Rows[i][14] = "0";
+                       dt_kensaku.Rows[i][12] = "0";
+                       dt_kensaku.Rows[i][13] = "0";
                    }
                    else
                    {
-                       dt_kensaku.Rows[i][14] = dt_buhin.Rows[0][0];
-                       dt_kensaku.Rows[i][15] = double.Parse(dt_buhin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       dt_kensaku.Rows[i][12] = dt_buhin.Rows[0][0];
+                       if (dt_kensaku.Rows[i][12].ToString() == "0")
+                       {
+                           dt_kensaku.Rows[i][13] = "0";
+                       }
+                       else
+                       {
+                           dt_kensaku.Rows[i][13] = double.Parse(dt_buhin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                       }
                    }
                    
-                 
-                   dt_kensaku.Rows[i][16] = double.Parse(dt_kensaku.Rows[i][10].ToString()) + double.Parse(dt_kensaku.Rows[i][14].ToString());
-                   dt_kensaku.Rows[i][17] = double.Parse(dt_kensaku.Rows[i][16].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                   dt_kensaku.Rows[i][14] = double.Parse(dt_kensaku.Rows[i][8].ToString()) + double.Parse(dt_kensaku.Rows[i][10].ToString());
+                   dt_kensaku.Rows[i][15] = double.Parse(dt_kensaku.Rows[i][14].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+
+                   //DataTable dt_genka = new DataTable();
+                   //dt_genka = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '04'");
+                   //if (dt_genka.Rows.Count == 0)
+                   //{
+                   //    dt_kensaku.Rows[i][16] = "0";
+                   //}
+                   //else
+                   //{
+                   //    dt_kensaku.Rows[i][16] = dt_genka.Rows[0][0];
+                   //    dt_kensaku.Rows[i][17] = double.Parse(dt_genka.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                   //}
                    
                 }
 
@@ -317,16 +345,14 @@ namespace TSS_SYSTEM
             dgv_m.Columns[5].HeaderText = "売上数量";
             dgv_m.Columns[6].HeaderText = "販売単価";
             dgv_m.Columns[7].HeaderText = "売上金額";
-            dgv_m.Columns[8].HeaderText = "材料単価";
-            dgv_m.Columns[9].HeaderText = "材料金額";
-            dgv_m.Columns[10].HeaderText = "工賃単価";
-            dgv_m.Columns[11].HeaderText = "工賃金額";
-            dgv_m.Columns[12].HeaderText = "副資材単価";
-            dgv_m.Columns[13].HeaderText = "副資材金額";
-            dgv_m.Columns[14].HeaderText = "部品単価";
-            dgv_m.Columns[15].HeaderText = "部品金額";
-            dgv_m.Columns[16].HeaderText = "工賃+部品単価";
-            dgv_m.Columns[17].HeaderText = "工賃+部品金額";
+            dgv_m.Columns[8].HeaderText = "工賃単価";
+            dgv_m.Columns[9].HeaderText = "工賃金額";
+            dgv_m.Columns[10].HeaderText = "副資材単価";
+            dgv_m.Columns[11].HeaderText = "副資材金額";
+            dgv_m.Columns[12].HeaderText = "部品単価";
+            dgv_m.Columns[13].HeaderText = "部品金額";
+            dgv_m.Columns[14].HeaderText = "工賃+副資材単価";
+            dgv_m.Columns[15].HeaderText = "工賃+副資材金額";
 
             dgv_m.Columns[5].DefaultCellStyle.Format = "#,0";
             dgv_m.Columns[6].DefaultCellStyle.Format = "#,0.00";
@@ -339,10 +365,40 @@ namespace TSS_SYSTEM
             dgv_m.Columns[13].DefaultCellStyle.Format = "#,0";
             dgv_m.Columns[14].DefaultCellStyle.Format = "#,0.00";
             dgv_m.Columns[15].DefaultCellStyle.Format = "#,0";
-            dgv_m.Columns[16].DefaultCellStyle.Format = "#,0.00";
-            dgv_m.Columns[17].DefaultCellStyle.Format = "#,0";
+
 
             w_dt_insatu = dt_m;
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_tankabetu_uriage_preview frm_rpt = new frm_tankabetu_uriage_preview();
+
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_insatu;
+
+            frm_rpt.w_hd10 = tb_uriage_date.Text;
+            
+            if(tb_torihikisaki_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd11 = "指定なし";
+                frm_rpt.w_hd20 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd11 = tb_torihikisaki_cd.Text;
+                frm_rpt.w_hd20 = tb_torihikisaki_name.Text;
+            }
+           
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

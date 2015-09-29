@@ -141,6 +141,8 @@ namespace TSS_SYSTEM
 
         private void frm_seihin_kousei_select_Load(object sender, EventArgs e)
         {
+            tb_seihin_cd.Focus();
+            
             tb_seihin_cd.Text = ppt_str_seihin_cd;
             tb_seihin_cd.Focus();
 

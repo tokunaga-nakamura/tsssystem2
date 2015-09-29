@@ -78,7 +78,7 @@
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.ReadOnly = true;
             this.tb_seihin_name.Size = new System.Drawing.Size(132, 19);
-            this.tb_seihin_name.TabIndex = 3;
+            this.tb_seihin_name.TabIndex = 1;
             this.tb_seihin_name.TabStop = false;
             // 
             // tb_seihin_cd
@@ -87,8 +87,7 @@
             this.tb_seihin_cd.Location = new System.Drawing.Point(74, 12);
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(66, 19);
-            this.tb_seihin_cd.TabIndex = 2;
-            this.tb_seihin_cd.TabStop = false;
+            this.tb_seihin_cd.TabIndex = 0;
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
@@ -136,7 +135,7 @@
             this.dgv_kubun_m.ReadOnly = true;
             this.dgv_kubun_m.RowTemplate.Height = 21;
             this.dgv_kubun_m.Size = new System.Drawing.Size(284, 181);
-            this.dgv_kubun_m.TabIndex = 0;
+            this.dgv_kubun_m.TabIndex = 2;
             this.dgv_kubun_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kubun_m_CellMouseDoubleClick);
             // 
             // btn_cancel
@@ -144,7 +143,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(197, 3);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 1;
+            this.btn_cancel.TabIndex = 4;
             this.btn_cancel.Text = "キャンセル";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -154,7 +153,7 @@
             this.btn_sentaku.Location = new System.Drawing.Point(12, 2);
             this.btn_sentaku.Name = "btn_sentaku";
             this.btn_sentaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_sentaku.TabIndex = 0;
+            this.btn_sentaku.TabIndex = 3;
             this.btn_sentaku.Text = "選択";
             this.btn_sentaku.UseVisualStyleBackColor = true;
             this.btn_sentaku.Click += new System.EventHandler(this.btn_sentaku_Click);
