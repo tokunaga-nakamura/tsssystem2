@@ -89,6 +89,7 @@
             this.dgv_buhin_nyusyukko_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.cb_zaiko0 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -691,6 +692,7 @@
             // 
             // splitContainer5.Panel1
             // 
+            this.splitContainer5.Panel1.Controls.Add(this.cb_zaiko0);
             this.splitContainer5.Panel1.Controls.Add(this.btn_syukko);
             this.splitContainer5.Panel1.Controls.Add(this.btn_idou);
             this.splitContainer5.Panel1.Controls.Add(this.btn_nyuuko);
@@ -858,6 +860,17 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // cb_zaiko0
+            // 
+            this.cb_zaiko0.AutoSize = true;
+            this.cb_zaiko0.Location = new System.Drawing.Point(100, 7);
+            this.cb_zaiko0.Name = "cb_zaiko0";
+            this.cb_zaiko0.Size = new System.Drawing.Size(108, 16);
+            this.cb_zaiko0.TabIndex = 3;
+            this.cb_zaiko0.Text = "在庫０も表示する";
+            this.cb_zaiko0.UseVisualStyleBackColor = true;
+            this.cb_zaiko0.CheckedChanged += new System.EventHandler(this.cb_zaiko0_CheckedChanged);
+            // 
             // frm_buhin_m
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -971,5 +984,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cb_zaiko0;
     }
 }

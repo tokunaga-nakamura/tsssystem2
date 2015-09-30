@@ -171,7 +171,16 @@ namespace TSS_SYSTEM
         private void zaiko_disp(string in_cd)
         {
             dgv_buhin_zaiko_m.DataSource = null;
-            dgv_buhin_zaiko_m.DataSource = tss.OracleSelect("select zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su from tss_buhin_zaiko_m where buhin_cd = '" + in_cd.ToString() + "' order by zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2");
+            if(cb_zaiko0.Checked)
+            {
+                //在庫０も表示する
+                dgv_buhin_zaiko_m.DataSource = tss.OracleSelect("select zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su from tss_buhin_zaiko_m where buhin_cd = '" + in_cd.ToString() + "' order by zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2");
+            }
+            else
+            {
+                //在庫０は表示しない
+                dgv_buhin_zaiko_m.DataSource = tss.OracleSelect("select zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su from tss_buhin_zaiko_m where buhin_cd = '" + in_cd.ToString() + "' and zaiko_su <> 0 order by zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2");
+            }
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_zaiko_m.ReadOnly = true;
             //行ヘッダーを非表示にする
@@ -938,6 +947,11 @@ namespace TSS_SYSTEM
                 tb_buhin_cd.Text = pub_buhin_cd;
                 chk_buhin_cd();
             }
+        }
+
+        private void cb_zaiko0_CheckedChanged(object sender, EventArgs e)
+        {
+            zaiko_disp(tb_buhin_cd.Text);
         }
     }
 }
