@@ -40,8 +40,9 @@ namespace TSS_SYSTEM
             if( ppt_cd != "")
             {
                 tb_seihin_cd.Text = ppt_cd;
-                dgv_disp2();
-                dgv_disp();
+                tb_seihin_cd.Focus();
+                //dgv_disp2();
+                //dgv_disp();
             }
         
         }
