@@ -106,6 +106,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.lbl_build = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -176,6 +177,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_build);
             this.splitContainer1.Panel1.Controls.Add(this.btn_message_log);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -1069,6 +1071,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // lbl_build
+            // 
+            this.lbl_build.AutoSize = true;
+            this.lbl_build.Location = new System.Drawing.Point(825, 36);
+            this.lbl_build.Name = "lbl_build";
+            this.lbl_build.Size = new System.Drawing.Size(55, 12);
+            this.lbl_build.TabIndex = 1;
+            this.lbl_build.Text = "Build 1.01";
+            this.lbl_build.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1086,6 +1098,7 @@
             this.Activated += new System.EventHandler(this.frm_menu_Activated);
             this.Load += new System.EventHandler(this.menu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -1221,6 +1234,7 @@
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
+        private System.Windows.Forms.Label lbl_build;
     }
 }
 
