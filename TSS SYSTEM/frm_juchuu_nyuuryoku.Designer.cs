@@ -88,6 +88,8 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.tb_ttl_nouhin_su = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -697,6 +699,8 @@
             // 
             // splitContainer5.Panel1
             // 
+            this.splitContainer5.Panel1.Controls.Add(this.textBox13);
+            this.splitContainer5.Panel1.Controls.Add(this.tb_ttl_nouhin_su);
             this.splitContainer5.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer5.Panel2
@@ -745,6 +749,7 @@
             this.dgv_nounyuu_schedule.Size = new System.Drawing.Size(426, 133);
             this.dgv_nounyuu_schedule.TabIndex = 0;
             this.dgv_nounyuu_schedule.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgv_nounyuu_schedule_CellParsing);
+            this.dgv_nounyuu_schedule.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nounyuu_schedule_CellValidated);
             this.dgv_nounyuu_schedule.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_nounyuu_schedule_CellValidating);
             this.dgv_nounyuu_schedule.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_nounyuu_schedule_DataError);
             // 
@@ -877,6 +882,26 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // tb_ttl_nouhin_su
+            // 
+            this.tb_ttl_nouhin_su.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_ttl_nouhin_su.Location = new System.Drawing.Point(320, 3);
+            this.tb_ttl_nouhin_su.Name = "tb_ttl_nouhin_su";
+            this.tb_ttl_nouhin_su.ReadOnly = true;
+            this.tb_ttl_nouhin_su.Size = new System.Drawing.Size(100, 19);
+            this.tb_ttl_nouhin_su.TabIndex = 1;
+            this.tb_ttl_nouhin_su.TabStop = false;
+            this.tb_ttl_nouhin_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox13
+            // 
+            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox13.Location = new System.Drawing.Point(246, 3);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(74, 19);
+            this.textBox13.TabIndex = 2;
+            this.textBox13.Text = "納品数合計";
+            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -999,6 +1024,8 @@
         private System.Windows.Forms.TextBox tb_create_datetime;
         private System.Windows.Forms.TextBox tb_create_user_cd;
         private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox tb_ttl_nouhin_su;
 
     }
 }

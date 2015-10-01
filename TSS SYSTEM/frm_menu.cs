@@ -486,5 +486,26 @@ namespace TSS_SYSTEM
             frm_tbu.Dispose();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DataTable dtdt = new DataTable();
+            dtdt = tss.OracleSelect("select * from tss_buhin_m");
+
+            DataTable dddd = new DataTable();
+            bool bl;
+            foreach(DataRow dr in dtdt.Rows)
+            {
+                dddd = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dr["buhin_cd"].ToString() + "' and zaiko_kbn = '01'");
+                if(dddd.Rows.Count == 0)
+                {
+                    bl = tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+                        + " VALUES ('" + dr["buhin_cd"].ToString() + "','01','999999','9999999999999999','9999999999999999','0','" + "000000" + "',SYSDATE)");
+                }
+            }
+            MessageBox.Show("完了");
+
+
+        }
+
     }
 }

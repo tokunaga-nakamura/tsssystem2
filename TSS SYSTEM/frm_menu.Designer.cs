@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_menu));
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbl_build = new System.Windows.Forms.Label();
             this.btn_message_log = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -106,6 +107,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -176,6 +178,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_build);
             this.splitContainer1.Panel1.Controls.Add(this.btn_message_log);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -185,6 +188,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(894, 572);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // lbl_build
+            // 
+            this.lbl_build.AutoSize = true;
+            this.lbl_build.Location = new System.Drawing.Point(825, 36);
+            this.lbl_build.Name = "lbl_build";
+            this.lbl_build.Size = new System.Drawing.Size(55, 12);
+            this.lbl_build.TabIndex = 1;
+            this.lbl_build.Text = "Build 1.01";
+            this.lbl_build.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btn_message_log
             // 
@@ -899,6 +912,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.button5);
             this.tabPage6.Controls.Add(this.btn_user_m);
             this.tabPage6.Controls.Add(this.btn_eigyou_calender);
             this.tabPage6.Controls.Add(this.btn_seihin_kousei_m);
@@ -941,7 +955,7 @@
             // 
             // btn_seihin_kousei_m
             // 
-            this.btn_seihin_kousei_m.Location = new System.Drawing.Point(236, 90);
+            this.btn_seihin_kousei_m.Location = new System.Drawing.Point(234, 90);
             this.btn_seihin_kousei_m.Name = "btn_seihin_kousei_m";
             this.btn_seihin_kousei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_seihin_kousei_m.TabIndex = 10;
@@ -1069,6 +1083,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(234, 385);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(220, 23);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "フリー在庫レコード作成";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1086,6 +1110,7 @@
             this.Activated += new System.EventHandler(this.frm_menu_Activated);
             this.Load += new System.EventHandler(this.menu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -1221,6 +1246,8 @@
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
+        private System.Windows.Forms.Label lbl_build;
+        private System.Windows.Forms.Button button5;
     }
 }
 
