@@ -213,6 +213,8 @@ namespace TSS_SYSTEM
             dgv_nounyuu_schedule.DataSource = null;
             dgv_uriage.DataSource = null;
             dgv_kousin_rireki.DataSource = null;
+
+            tb_nouhin_su.Text = "";
         }
 
         private void nounyuu_schedule_disp()
@@ -272,6 +274,8 @@ namespace TSS_SYSTEM
             //インデックス0の列のセルの背景色を水色にする
             //pp//dgv_nounyuu_schedule.Columns[5].DefaultCellStyle.BackColor = Color.Gainsboro;
             //pp//dgv_nounyuu_schedule.Columns[6].DefaultCellStyle.BackColor = Color.Gainsboro;
+
+            nouhin_goukei();
         }
 
         private void uriage_disp()
@@ -1362,7 +1366,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_cd;
-            w_cd = tss.search_torihikisaki("2", "");
+            w_cd = tss.search_torihikisaki("2", tb_torihikisaki_cd.Text);
             if (w_cd != "")
             {
                 tb_torihikisaki_cd.Text = w_cd;
@@ -1430,6 +1434,25 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
+        }
+
+        private void dgv_nounyuu_schedule_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            nouhin_goukei();
+        }
+
+        private void nouhin_goukei()
+        {
+            double w_dou_ttl = 0;
+            double w_dou_gyou;
+            for(int i=0;i< dgv_nounyuu_schedule.Rows.Count -1;i++)
+            {
+                if (double.TryParse(dgv_nounyuu_schedule.Rows[i].Cells["nouhin_yotei_su"].Value.ToString(), out w_dou_gyou))
+                {
+                    w_dou_ttl = w_dou_ttl + w_dou_gyou;
+                }
+            }
+            tb_ttl_nouhin_su.Text = w_dou_ttl.ToString("#,###,###,##0.00");
         }
     }
 }
