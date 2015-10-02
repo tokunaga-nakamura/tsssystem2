@@ -105,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(185, 21);
+            this.label4.Location = new System.Drawing.Point(159, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 12);
             this.label4.TabIndex = 20;
@@ -131,9 +131,9 @@
             // 
             // tb_buhin_syori_date2
             // 
-            this.tb_buhin_syori_date2.Location = new System.Drawing.Point(202, 18);
+            this.tb_buhin_syori_date2.Location = new System.Drawing.Point(182, 18);
             this.tb_buhin_syori_date2.Name = "tb_buhin_syori_date2";
-            this.tb_buhin_syori_date2.Size = new System.Drawing.Size(100, 19);
+            this.tb_buhin_syori_date2.Size = new System.Drawing.Size(68, 19);
             this.tb_buhin_syori_date2.TabIndex = 2;
             this.tb_buhin_syori_date2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_syori_date2_Validating);
             // 
@@ -141,7 +141,7 @@
             // 
             this.tb_buhin_syori_date1.Location = new System.Drawing.Point(85, 18);
             this.tb_buhin_syori_date1.Name = "tb_buhin_syori_date1";
-            this.tb_buhin_syori_date1.Size = new System.Drawing.Size(100, 19);
+            this.tb_buhin_syori_date1.Size = new System.Drawing.Size(68, 19);
             this.tb_buhin_syori_date1.TabIndex = 1;
             this.tb_buhin_syori_date1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_syori_date1_Validating);
             // 
