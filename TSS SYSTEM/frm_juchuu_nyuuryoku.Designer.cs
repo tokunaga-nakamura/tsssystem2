@@ -74,6 +74,8 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.tb_ttl_nouhin_su = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.dgv_nounyuu_schedule = new System.Windows.Forms.DataGridView();
@@ -88,8 +90,6 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.tb_ttl_nouhin_su = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -711,6 +711,28 @@
             this.splitContainer5.TabIndex = 0;
             this.splitContainer5.TabStop = false;
             // 
+            // textBox13
+            // 
+            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox13.Location = new System.Drawing.Point(246, 3);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(74, 19);
+            this.textBox13.TabIndex = 2;
+            this.textBox13.TabStop = false;
+            this.textBox13.Text = "納品数合計";
+            // 
+            // tb_ttl_nouhin_su
+            // 
+            this.tb_ttl_nouhin_su.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_ttl_nouhin_su.Location = new System.Drawing.Point(320, 3);
+            this.tb_ttl_nouhin_su.Name = "tb_ttl_nouhin_su";
+            this.tb_ttl_nouhin_su.ReadOnly = true;
+            this.tb_ttl_nouhin_su.Size = new System.Drawing.Size(100, 19);
+            this.tb_ttl_nouhin_su.TabIndex = 1;
+            this.tb_ttl_nouhin_su.TabStop = false;
+            this.tb_ttl_nouhin_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -881,26 +903,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // tb_ttl_nouhin_su
-            // 
-            this.tb_ttl_nouhin_su.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_ttl_nouhin_su.Location = new System.Drawing.Point(320, 3);
-            this.tb_ttl_nouhin_su.Name = "tb_ttl_nouhin_su";
-            this.tb_ttl_nouhin_su.ReadOnly = true;
-            this.tb_ttl_nouhin_su.Size = new System.Drawing.Size(100, 19);
-            this.tb_ttl_nouhin_su.TabIndex = 1;
-            this.tb_ttl_nouhin_su.TabStop = false;
-            this.tb_ttl_nouhin_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox13
-            // 
-            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox13.Location = new System.Drawing.Point(246, 3);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(74, 19);
-            this.textBox13.TabIndex = 2;
-            this.textBox13.Text = "納品数合計";
             // 
             // frm_juchuu_nyuuryoku
             // 
