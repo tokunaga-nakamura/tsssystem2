@@ -56,6 +56,8 @@
             this.label20 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.tb_buhin_syori_kbn = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.label21 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label24 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.tb_buhin_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_buhin_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -72,13 +74,8 @@
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.groupHeader1 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
             this.line1 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.groupFooter1 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
-            this.label21 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.label24 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.textBox5 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.groupHeader2 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
-            this.groupFooter2 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
-            this.line3 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.groupFooter1 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
             ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_syoribi1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
@@ -106,6 +103,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_kbn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_cd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_name)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_zaiko_kbn)).BeginInit();
@@ -118,8 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_no)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -270,6 +267,7 @@
             this.tb_today.Left = 9.625197F;
             this.tb_today.Name = "tb_today";
             this.tb_today.Style = "font-size: 8.25pt; text-align: right";
+            this.tb_today.Text = null;
             this.tb_today.Top = 0F;
             this.tb_today.Width = 1.104331F;
             // 
@@ -321,18 +319,18 @@
             // 
             this.label9.Height = 0.09370078F;
             this.label9.HyperLink = null;
-            this.label9.Left = 0.6094489F;
+            this.label9.Left = 0.3696851F;
             this.label9.Name = "label9";
             this.label9.Style = "font-size: 6pt";
-            this.label9.Text = "入出庫移動番号";
+            this.label9.Text = "伝票番号";
             this.label9.Top = 0.7814961F;
-            this.label9.Width = 0.7346457F;
+            this.label9.Width = 1.182677F;
             // 
             // label11
             // 
             this.label11.Height = 0.09370076F;
             this.label11.HyperLink = null;
-            this.label11.Left = 1.344095F;
+            this.label11.Left = 1.552362F;
             this.label11.Name = "label11";
             this.label11.Style = "font-size: 6pt";
             this.label11.Text = "部品コード";
@@ -343,18 +341,18 @@
             // 
             this.label12.Height = 0.09370076F;
             this.label12.HyperLink = null;
-            this.label12.Left = 2.360236F;
+            this.label12.Left = 2.568504F;
             this.label12.Name = "label12";
             this.label12.Style = "font-size: 6pt";
             this.label12.Text = "部品名";
             this.label12.Top = 0.7814961F;
-            this.label12.Width = 2.081495F;
+            this.label12.Width = 1.873227F;
             // 
             // label13
             // 
             this.label13.Height = 0.09370076F;
             this.label13.HyperLink = null;
-            this.label13.Left = 4.441732F;
+            this.label13.Left = 5.099213F;
             this.label13.Name = "label13";
             this.label13.Style = "font-size: 6pt";
             this.label13.Text = "在庫区分";
@@ -365,7 +363,7 @@
             // 
             this.label14.Height = 0.09370076F;
             this.label14.HyperLink = null;
-            this.label14.Left = 4.843307F;
+            this.label14.Left = 5.500788F;
             this.label14.Name = "label14";
             this.label14.Style = "font-size: 6pt";
             this.label14.Text = "取引先コード";
@@ -376,7 +374,7 @@
             // 
             this.label15.Height = 0.09370076F;
             this.label15.HyperLink = null;
-            this.label15.Left = 5.577953F;
+            this.label15.Left = 6.235434F;
             this.label15.Name = "label15";
             this.label15.Style = "font-size: 6pt";
             this.label15.Text = "受注コード1";
@@ -387,7 +385,7 @@
             // 
             this.label17.Height = 0.09370076F;
             this.label17.HyperLink = null;
-            this.label17.Left = 7.651182F;
+            this.label17.Left = 4.441732F;
             this.label17.Name = "label17";
             this.label17.Style = "font-size: 6pt; text-align: right";
             this.label17.Text = "数量";
@@ -401,7 +399,7 @@
             this.label18.Left = 8.308662F;
             this.label18.Name = "label18";
             this.label18.Style = "font-size: 6pt";
-            this.label18.Text = "伝票番号";
+            this.label18.Text = "入出庫移動番号";
             this.label18.Top = 0.7814961F;
             this.label18.Width = 0.8779527F;
             // 
@@ -431,7 +429,7 @@
             // 
             this.label16.Height = 0.09370076F;
             this.label16.HyperLink = null;
-            this.label16.Left = 6.614567F;
+            this.label16.Left = 7.272048F;
             this.label16.Name = "label16";
             this.label16.Style = "font-size: 6pt";
             this.label16.Text = "受注コード2";
@@ -451,6 +449,28 @@
             this.tb_buhin_syori_kbn.Top = 0.3543307F;
             this.tb_buhin_syori_kbn.Width = 0.4062992F;
             // 
+            // label21
+            // 
+            this.label21.Height = 0.1354331F;
+            this.label21.HyperLink = null;
+            this.label21.Left = 0.07322835F;
+            this.label21.Name = "label21";
+            this.label21.Style = "font-size: 8.25pt";
+            this.label21.Text = "（01:入庫　02:出庫）";
+            this.label21.Top = 0.5417323F;
+            this.label21.Width = 1.051969F;
+            // 
+            // label24
+            // 
+            this.label24.Height = 0.09370076F;
+            this.label24.HyperLink = null;
+            this.label24.Left = 0F;
+            this.label24.Name = "label24";
+            this.label24.Style = "font-size: 6pt; text-align: center";
+            this.label24.Text = "処理日";
+            this.label24.Top = 0.6877953F;
+            this.label24.Width = 0.6094489F;
+            // 
             // detail
             // 
             this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -460,10 +480,11 @@
             this.tb_torihikisaki_cd,
             this.tb_juchu_cd1,
             this.tb_juchu_cd2,
-            this.tb_suryou,
             this.tb_denpyou_no,
             this.tb_syori_kbn,
-            this.tb_bikou});
+            this.tb_bikou,
+            this.tb_buhin_syori_no,
+            this.tb_suryou});
             this.detail.Height = 0.146063F;
             this.detail.Name = "detail";
             // 
@@ -471,7 +492,7 @@
             // 
             this.tb_buhin_cd.DataField = "buhin_cd";
             this.tb_buhin_cd.Height = 0.146063F;
-            this.tb_buhin_cd.Left = 1.344095F;
+            this.tb_buhin_cd.Left = 1.552362F;
             this.tb_buhin_cd.Name = "tb_buhin_cd";
             this.tb_buhin_cd.Style = "font-size: 8.25pt; text-align: left";
             this.tb_buhin_cd.Text = null;
@@ -482,18 +503,18 @@
             // 
             this.tb_buhin_name.DataField = "buhin_name";
             this.tb_buhin_name.Height = 0.146063F;
-            this.tb_buhin_name.Left = 2.360236F;
+            this.tb_buhin_name.Left = 2.568504F;
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.Style = "font-size: 8.25pt; text-align: left";
             this.tb_buhin_name.Text = null;
             this.tb_buhin_name.Top = 0F;
-            this.tb_buhin_name.Width = 2.081495F;
+            this.tb_buhin_name.Width = 1.873227F;
             // 
             // tb_zaiko_kbn
             // 
             this.tb_zaiko_kbn.DataField = "zaiko_kbn";
             this.tb_zaiko_kbn.Height = 0.146063F;
-            this.tb_zaiko_kbn.Left = 4.441732F;
+            this.tb_zaiko_kbn.Left = 5.099213F;
             this.tb_zaiko_kbn.Name = "tb_zaiko_kbn";
             this.tb_zaiko_kbn.Style = "font-size: 8.25pt; text-align: center";
             this.tb_zaiko_kbn.Text = null;
@@ -504,7 +525,7 @@
             // 
             this.tb_torihikisaki_cd.DataField = "torihikisaki_cd";
             this.tb_torihikisaki_cd.Height = 0.146063F;
-            this.tb_torihikisaki_cd.Left = 4.843307F;
+            this.tb_torihikisaki_cd.Left = 5.500788F;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Style = "font-size: 8.25pt; text-align: left";
             this.tb_torihikisaki_cd.Text = null;
@@ -515,7 +536,7 @@
             // 
             this.tb_juchu_cd1.DataField = "juchu_cd1";
             this.tb_juchu_cd1.Height = 0.146063F;
-            this.tb_juchu_cd1.Left = 5.577953F;
+            this.tb_juchu_cd1.Left = 6.235434F;
             this.tb_juchu_cd1.Name = "tb_juchu_cd1";
             this.tb_juchu_cd1.Style = "font-size: 8.25pt; text-align: left";
             this.tb_juchu_cd1.Text = null;
@@ -526,7 +547,7 @@
             // 
             this.tb_juchu_cd2.DataField = "juchu_cd2";
             this.tb_juchu_cd2.Height = 0.146063F;
-            this.tb_juchu_cd2.Left = 6.614567F;
+            this.tb_juchu_cd2.Left = 7.272048F;
             this.tb_juchu_cd2.Name = "tb_juchu_cd2";
             this.tb_juchu_cd2.Style = "font-size: 8.25pt; text-align: left";
             this.tb_juchu_cd2.Text = null;
@@ -537,7 +558,7 @@
             // 
             this.tb_suryou.DataField = "suryou";
             this.tb_suryou.Height = 0.146063F;
-            this.tb_suryou.Left = 7.651182F;
+            this.tb_suryou.Left = 4.441732F;
             this.tb_suryou.Name = "tb_suryou";
             this.tb_suryou.OutputFormat = resources.GetString("tb_suryou.OutputFormat");
             this.tb_suryou.Style = "font-size: 8.25pt; text-align: right";
@@ -547,7 +568,7 @@
             // 
             // tb_denpyou_no
             // 
-            this.tb_denpyou_no.DataField = "denpyou_no";
+            this.tb_denpyou_no.DataField = "BUHIN_SYORI_NO";
             this.tb_denpyou_no.Height = 0.146063F;
             this.tb_denpyou_no.Left = 8.308662F;
             this.tb_denpyou_no.Name = "tb_denpyou_no";
@@ -580,15 +601,15 @@
             // 
             // tb_buhin_syori_no
             // 
-            this.tb_buhin_syori_no.DataField = "buhin_syori_no";
+            this.tb_buhin_syori_no.DataField = "DENPYOU_NO";
             this.tb_buhin_syori_no.Height = 0.146063F;
-            this.tb_buhin_syori_no.Left = 0.6094489F;
+            this.tb_buhin_syori_no.Left = 0.3696851F;
             this.tb_buhin_syori_no.Name = "tb_buhin_syori_no";
             this.tb_buhin_syori_no.Style = "font-size: 8.25pt; text-align: left; vertical-align: bottom";
             this.tb_buhin_syori_no.SummaryGroup = "groupHeader1";
             this.tb_buhin_syori_no.Text = null;
             this.tb_buhin_syori_no.Top = 0F;
-            this.tb_buhin_syori_no.Width = 0.7346457F;
+            this.tb_buhin_syori_no.Width = 1.182677F;
             // 
             // pageFooter
             // 
@@ -628,33 +649,6 @@
             this.line1.Y1 = 0F;
             this.line1.Y2 = 0F;
             // 
-            // groupFooter1
-            // 
-            this.groupFooter1.Height = 0.0625F;
-            this.groupFooter1.Name = "groupFooter1";
-            // 
-            // label21
-            // 
-            this.label21.Height = 0.1354331F;
-            this.label21.HyperLink = null;
-            this.label21.Left = 0.07322835F;
-            this.label21.Name = "label21";
-            this.label21.Style = "font-size: 8.25pt";
-            this.label21.Text = "（01:入庫　02:出庫）";
-            this.label21.Top = 0.5417323F;
-            this.label21.Width = 1.051969F;
-            // 
-            // label24
-            // 
-            this.label24.Height = 0.09370076F;
-            this.label24.HyperLink = null;
-            this.label24.Left = 0F;
-            this.label24.Name = "label24";
-            this.label24.Style = "font-size: 6pt; text-align: center";
-            this.label24.Text = "処理日";
-            this.label24.Top = 0.7814961F;
-            this.label24.Width = 0.6094489F;
-            // 
             // textBox5
             // 
             this.textBox5.DataField = "buhin_syori_date";
@@ -669,32 +663,10 @@
             this.textBox5.Top = 0.02086614F;
             this.textBox5.Width = 0.609449F;
             // 
-            // groupHeader2
+            // groupFooter1
             // 
-            this.groupHeader2.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.tb_buhin_syori_no,
-            this.line3});
-            this.groupHeader2.DataField = "buhin_syori_no";
-            this.groupHeader2.Height = 0.1564796F;
-            this.groupHeader2.Name = "groupHeader2";
-            // 
-            // groupFooter2
-            // 
-            this.groupFooter2.Height = 0.05208334F;
-            this.groupFooter2.Name = "groupFooter2";
-            // 
-            // line3
-            // 
-            this.line3.Height = 0F;
-            this.line3.Left = 0.6094489F;
-            this.line3.LineWeight = 1F;
-            this.line3.Name = "line3";
-            this.line3.Top = 0F;
-            this.line3.Width = 10.24489F;
-            this.line3.X1 = 0.6094489F;
-            this.line3.X2 = 10.85433F;
-            this.line3.Y1 = 0F;
-            this.line3.Y2 = 0F;
+            this.groupFooter1.Height = 0.0625F;
+            this.groupFooter1.Name = "groupFooter1";
             // 
             // rpt_buhin_nyusyukko
             // 
@@ -704,9 +676,7 @@
             this.PrintWidth = 10.85433F;
             this.Sections.Add(this.pageHeader);
             this.Sections.Add(this.groupHeader1);
-            this.Sections.Add(this.groupHeader2);
             this.Sections.Add(this.detail);
-            this.Sections.Add(this.groupFooter2);
             this.Sections.Add(this.groupFooter1);
             this.Sections.Add(this.pageFooter);
             this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-style: normal; text-decoration: none; font-weight: normal; font-size: 10pt; " +
@@ -744,6 +714,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_kbn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_cd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_name)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_zaiko_kbn)).EndInit();
@@ -756,8 +728,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_no)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
@@ -809,8 +779,5 @@
         private GrapeCity.ActiveReports.SectionReportModel.Label label21;
         private GrapeCity.ActiveReports.SectionReportModel.Label label24;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox5;
-        private GrapeCity.ActiveReports.SectionReportModel.GroupHeader groupHeader2;
-        private GrapeCity.ActiveReports.SectionReportModel.GroupFooter groupFooter2;
-        private GrapeCity.ActiveReports.SectionReportModel.Line line3;
     }
 }
