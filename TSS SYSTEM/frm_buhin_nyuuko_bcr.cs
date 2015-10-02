@@ -347,6 +347,7 @@ namespace TSS_SYSTEM
                                     dgv_m.Rows.Add(out_01, out_02, out_03, out_04, out_05, out_06, out_07, out_08, out_09, out_10, out_11, out_12, out_13, out_14, out_15, out_16, out_17, out_18, out_19);
                                     lbl_message.Text = "伝票番号 " + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + " OK!";
                                     lbl_message.ForeColor = Color.Black;
+                                    dgv_m.FirstDisplayedScrollingRowIndex = dgv_m.Rows.Count - 1;
                                 }
                             }
                         }
@@ -357,6 +358,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if(dgv_m.Rows.Count == 0)
+            {
+                MessageBox.Show("データがありません。");
+                return;
+            }
+
             DialogResult result = MessageBox.Show("登録します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -550,6 +557,16 @@ namespace TSS_SYSTEM
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
             tss.HardCopy();
+        }
+
+        private void dgv_m_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            tb_maisuu.Text = dgv_m.Rows.Count.ToString(); 
+        }
+
+        private void dgv_m_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            tb_maisuu.Text = dgv_m.Rows.Count.ToString(); 
         }
 
 

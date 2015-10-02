@@ -41,6 +41,8 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.tb_maisuu = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -142,6 +144,8 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_maisuu);
             this.splitContainer3.Panel1.Controls.Add(this.lbl_message);
             // 
             // splitContainer3.Panel2
@@ -173,6 +177,8 @@
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
+            this.dgv_m.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_m_RowsAdded);
+            this.dgv_m.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgv_m_RowsRemoved);
             // 
             // btn_touroku
             // 
@@ -197,6 +203,28 @@
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // tb_maisuu
+            // 
+            this.tb_maisuu.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_maisuu.Location = new System.Drawing.Point(770, 35);
+            this.tb_maisuu.Name = "tb_maisuu";
+            this.tb_maisuu.ReadOnly = true;
+            this.tb_maisuu.Size = new System.Drawing.Size(100, 19);
+            this.tb_maisuu.TabIndex = 1;
+            this.tb_maisuu.TabStop = false;
+            this.tb_maisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(711, 35);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(59, 19);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "読込枚数";
             // 
             // frm_buhin_nyuuko_bcr
             // 
@@ -242,5 +270,7 @@
         public System.IO.Ports.SerialPort bcr_port;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Label lbl_message;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_maisuu;
     }
 }
