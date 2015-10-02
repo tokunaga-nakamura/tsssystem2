@@ -120,9 +120,6 @@
   <data name="tb_suryou.OutputFormat" xml:space="preserve">
     <value>#,##0.00</value>
   </data>
-  <data name="tb_suryou.OutputFormat" xml:space="preserve">
-    <value>#,##0.00</value>
-  </data>
   <data name="textBox5.OutputFormat" xml:space="preserve">
     <value>yyyy/M/d</value>
   </data>

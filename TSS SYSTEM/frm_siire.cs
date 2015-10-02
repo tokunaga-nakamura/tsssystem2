@@ -55,7 +55,7 @@ namespace TSS_SYSTEM
             }
             if (dt_work.Rows.Count != 0)
             {
-               str_day = dt_work.Rows[0][13].ToString(); //締日の日付
+               str_day = dt_work.Rows[0][16].ToString(); //締日の日付
               
                 //仕入締日が月末「99」のとき
                if (str_day == "99")
@@ -204,6 +204,101 @@ namespace TSS_SYSTEM
                     int i = e.RowIndex;
                     dgv_siire.Rows[i].Cells[4].Value = 0;
                     return;
+                }
+
+                //仕入単価
+                if (e.ColumnIndex == 3)
+                {
+                    double w_siire_tanka;
+                    int i = e.RowIndex;
+                    if (double.TryParse(dgv.Rows[i].Cells[3].Value.ToString(), out w_siire_tanka))
+                    {
+                        dgv.Rows[i].Cells[3].Value = w_siire_tanka.ToString("0.00");
+                    }
+
+                    DataTable dtTmp = (DataTable)dgv_siire.DataSource;
+
+                    //仕入金額計算
+
+                    //仕入数量の小数点第三位を切捨て
+                    double db = double.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
+                    double dValue = ToRoundDown(db, 2);
+                    dgv_siire.Rows[i].Cells[2].Value = dValue;
+
+
+                    if (dgv_siire.Rows[i].Cells[3].Value == null || dgv_siire.Rows[i].Cells[3].Value.ToString() == "")
+                    {
+                        return;
+                    }
+
+
+                    //仕入単価の小数点第三位を切捨て
+                    double db2 = double.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
+                    double dValue2 = ToRoundDown(db2, 2);
+                    dgv_siire.Rows[i].Cells[3].Value = dValue2;
+
+
+                    double suryou;
+                    double tanka;
+                    double siire_kingaku;
+
+                    suryou = dValue;
+                    tanka = dValue2;
+
+                    siire_kingaku = suryou * tanka;
+
+                    //端数処理 円未満の処理
+                    if (hasu_syori_tani == "0" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku);
+                    }
+
+                    if (hasu_syori_tani == "0" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku, MidpointRounding.AwayFromZero);
+                    }
+
+                    if (hasu_syori_tani == "0" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku);
+                    }
+
+                    //端数処理 10円未満の処理
+                    //切捨て
+                    if (hasu_syori_tani == "1" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku / 10) * 10;
+                    }
+                    //四捨五入
+                    if (hasu_syori_tani == "1" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku / 10) * 10;
+                    }
+                    //切上げ
+                    if (hasu_syori_tani == "1" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku / 10) * 10;
+                    }
+
+                    //端数処理 100円未満の処理
+                    //切捨て
+                    if (hasu_syori_tani == "2" && hasu_kbn == "0")
+                    {
+                        siire_kingaku = Math.Floor(siire_kingaku / 100) * 100;
+                    }
+                    //四捨五入
+                    if (hasu_syori_tani == "2" && hasu_kbn == "1")
+                    {
+                        siire_kingaku = Math.Round(siire_kingaku / 100) * 100;
+                    }
+                    //切上げ
+                    if (hasu_syori_tani == "2" && hasu_kbn == "2")
+                    {
+                        siire_kingaku = Math.Ceiling(siire_kingaku / 100) * 100;
+                    }
+
+                    dgv.Rows[i].Cells[4].Value = siire_kingaku;
+
                 }
 
                 if (dgv.Columns[e.ColumnIndex].Index == 2 && dgv.CurrentCell.Value.ToString() != null && dgv.CurrentCell.Value.ToString() != "")
@@ -1027,6 +1122,12 @@ namespace TSS_SYSTEM
                         return;
                     }
                 }
+            }
+
+            //部品コードが入力されたときの処理
+            if (e.ColumnIndex == 4)
+            {
+
             }
         }
 
