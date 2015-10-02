@@ -36,13 +36,14 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_maisuu = new System.Windows.Forms.TextBox();
             this.lbl_message = new System.Windows.Forms.Label();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.tb_maisuu = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,6 +79,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -92,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 22);
+            this.label1.Location = new System.Drawing.Point(100, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(269, 12);
             this.label1.TabIndex = 1;
@@ -156,6 +158,28 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(711, 35);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(59, 19);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "読込枚数";
+            // 
+            // tb_maisuu
+            // 
+            this.tb_maisuu.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_maisuu.Location = new System.Drawing.Point(770, 35);
+            this.tb_maisuu.Name = "tb_maisuu";
+            this.tb_maisuu.ReadOnly = true;
+            this.tb_maisuu.Size = new System.Drawing.Size(100, 19);
+            this.tb_maisuu.TabIndex = 1;
+            this.tb_maisuu.TabStop = false;
+            this.tb_maisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // lbl_message
             // 
             this.lbl_message.AutoSize = true;
@@ -204,27 +228,14 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // tb_maisuu
+            // label2
             // 
-            this.tb_maisuu.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_maisuu.Location = new System.Drawing.Point(770, 35);
-            this.tb_maisuu.Name = "tb_maisuu";
-            this.tb_maisuu.ReadOnly = true;
-            this.tb_maisuu.Size = new System.Drawing.Size(100, 19);
-            this.tb_maisuu.TabIndex = 1;
-            this.tb_maisuu.TabStop = false;
-            this.tb_maisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(711, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(59, 19);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "読込枚数";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(100, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(546, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "※バーコード読込で入力した場合、入出庫移動処理日は、システムデートになります。検索時等に注意してください。";
             // 
             // frm_buhin_nyuuko_bcr
             // 
@@ -272,5 +283,6 @@
         private System.Windows.Forms.Label lbl_message;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox tb_maisuu;
+        private System.Windows.Forms.Label label2;
     }
 }
