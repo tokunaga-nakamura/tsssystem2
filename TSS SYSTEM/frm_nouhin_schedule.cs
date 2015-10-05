@@ -639,20 +639,31 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns[42].HeaderText = "備考";
 
             //休日をグレーにする
+            horiday_color();
+
+            //並び替えができないようにする（エラー対策）
+            //foreach (DataGridViewColumn c in dgv_nouhin_schedule.Columns)
+            //    c.SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        private void horiday_color()
+        {
+            //休日をグレーにする
             DataTable w_dt_youbi = new DataTable();
             w_dt_youbi = tss.OracleSelect("select * from tss_calendar_f where calendar_year = '" + nud_year.Value.ToString("0000") + "' and calendar_month = '" + nud_month.Value.ToString("00") + "'");
             foreach (DataRow dr in w_dt_youbi.Rows)
             {
                 if (dr["eigyou_kbn"].ToString() == "1")
                 {
-                    dgv_nouhin_schedule.Columns[dr["calendar_day"].ToString()].DefaultCellStyle.BackColor = Color.Pink;
+                    //dgv_nouhin_schedule.Columns[dr["calendar_day"].ToString()].DefaultCellStyle.BackColor = Color.Pink;
                     dgv_nouhin_schedule.Columns[dr["calendar_day"].ToString()].HeaderCell.Style.BackColor = Color.Pink;
+                    for (int i = 0; i < dgv_nouhin_schedule.Rows.Count;i++)
+                    {
+                        dgv_nouhin_schedule[dr["calendar_day"].ToString(), i].Style.BackColor = Color.Pink;
+                    }
                 }
             }
-
-            //並び替えができないようにする（エラー対策）
-            //foreach (DataGridViewColumn c in dgv_nouhin_schedule.Columns)
-            //    c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgv_nouhin_schedule.Refresh();
         }
 
         private void rireki_disp(DataTable in_dt)
@@ -857,7 +868,6 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
-
         }
 
         private void dgv_nouhin_rireki_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -907,7 +917,6 @@ namespace TSS_SYSTEM
                     dgv_nouhin_rireki.Rows[i].DefaultCellStyle.BackColor = Color.White;
                 }
             }
-
         }
 
     }
