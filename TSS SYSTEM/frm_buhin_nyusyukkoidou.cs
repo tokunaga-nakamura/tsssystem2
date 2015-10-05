@@ -320,7 +320,7 @@ namespace TSS_SYSTEM
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
-                                        + dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString() + "','"
+                                        + dgv_nyusyukkoidou.Rows[i].Cells[6].Value.ToString() + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
                         {
@@ -347,7 +347,7 @@ namespace TSS_SYSTEM
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
-                                        + dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString() + "','"
+                                        + dgv_nyusyukkoidou.Rows[i].Cells[6].Value.ToString() + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
                         {
