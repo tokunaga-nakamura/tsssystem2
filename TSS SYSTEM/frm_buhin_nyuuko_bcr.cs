@@ -348,7 +348,9 @@ namespace TSS_SYSTEM
                                     lbl_message.Text = "伝票番号 " + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + " OK!";
                                     lbl_message.ForeColor = Color.Black;
                                     dgv_m.FirstDisplayedScrollingRowIndex = dgv_m.Rows.Count - 1;
-                                }
+                                    //追加した行の指示日をカレントセルにする
+                                    dgv_m.Focus();
+                                    dgv_m.CurrentCell = dgv_m[10,dgv_m.Rows.Count-1];                                }
                             }
                         }
                     }
