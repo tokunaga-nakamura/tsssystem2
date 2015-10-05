@@ -350,7 +350,8 @@ namespace TSS_SYSTEM
                                     dgv_m.FirstDisplayedScrollingRowIndex = dgv_m.Rows.Count - 1;
                                     //追加した行の指示日をカレントセルにする
                                     dgv_m.Focus();
-                                    dgv_m.CurrentCell = dgv_m[10,dgv_m.Rows.Count-1];                                }
+                                    dgv_m.CurrentCell = dgv_m[10,dgv_m.Rows.Count-1];
+                                }
                             }
                         }
                     }
