@@ -179,7 +179,7 @@ namespace TSS_SYSTEM
             else
             {
                 //在庫０は表示しない
-                dgv_buhin_zaiko_m.DataSource = tss.OracleSelect("select zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su from tss_buhin_zaiko_m where buhin_cd = '" + in_cd.ToString() + "' and zaiko_su <> 0 order by zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2");
+                dgv_buhin_zaiko_m.DataSource = tss.OracleSelect("select zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su from tss_buhin_zaiko_m where buhin_cd = '" + in_cd.ToString() + "' and (zaiko_kbn <> '02' or zaiko_su <> 0) order by zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2");
             }
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_zaiko_m.ReadOnly = true;
