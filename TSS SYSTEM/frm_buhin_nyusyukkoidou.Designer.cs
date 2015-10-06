@@ -58,6 +58,8 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -141,6 +143,8 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.label2);
+            this.splitContainer3.Panel1.Controls.Add(this.label1);
             this.splitContainer3.Panel1.Controls.Add(this.dtp_buhin_syori_date);
             this.splitContainer3.Panel1.Controls.Add(this.textBox2);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_name);
@@ -362,6 +366,24 @@
             this.ss_status.TabIndex = 2;
             this.ss_status.Text = "statusStrip1";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(372, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(375, 12);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "支給品、購入品にかかわらず、どの取引先用の在庫か？で判断し、登録する。";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(372, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(387, 12);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "例：田上さんからの操作盤本体の場合、取引先コードはダイニチ（000051）となる。";
+            // 
             // frm_buhin_nyusyukkoidou
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -419,5 +441,7 @@
         private System.Windows.Forms.TextBox tb_seq;
         private System.Windows.Forms.TextBox tb_denpyou_no;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
