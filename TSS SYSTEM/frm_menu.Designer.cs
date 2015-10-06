@@ -58,7 +58,7 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_tankabetu_uriage_meisai = new System.Windows.Forms.Button();
             this.btn_juchu_zan = new System.Windows.Forms.Button();
             this.btn_nyukin = new System.Windows.Forms.Button();
             this.btn_seikyu_preview = new System.Windows.Forms.Button();
@@ -92,6 +92,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
             this.btn_user_m = new System.Windows.Forms.Button();
             this.btn_eigyou_calender = new System.Windows.Forms.Button();
             this.btn_seihin_kousei_m = new System.Windows.Forms.Button();
@@ -107,7 +108,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -545,7 +545,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.btn_tankabetu_uriage_meisai);
             this.tabPage2.Controls.Add(this.btn_juchu_zan);
             this.tabPage2.Controls.Add(this.btn_nyukin);
             this.tabPage2.Controls.Add(this.btn_seikyu_preview);
@@ -565,15 +565,15 @@
             this.tabPage2.Text = "受注・売上・請求";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_tankabetu_uriage_meisai
             // 
-            this.button4.Location = new System.Drawing.Point(234, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(222, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "単価別売上明細";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_tankabetu_uriage_meisai.Location = new System.Drawing.Point(234, 125);
+            this.btn_tankabetu_uriage_meisai.Name = "btn_tankabetu_uriage_meisai";
+            this.btn_tankabetu_uriage_meisai.Size = new System.Drawing.Size(222, 23);
+            this.btn_tankabetu_uriage_meisai.TabIndex = 15;
+            this.btn_tankabetu_uriage_meisai.Text = "単価別売上明細";
+            this.btn_tankabetu_uriage_meisai.UseVisualStyleBackColor = true;
+            this.btn_tankabetu_uriage_meisai.Click += new System.EventHandler(this.btn_tankabetu_uriage_meisai_Click);
             // 
             // btn_juchu_zan
             // 
@@ -912,7 +912,7 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.button5);
+            this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
             this.tabPage6.Controls.Add(this.btn_user_m);
             this.tabPage6.Controls.Add(this.btn_eigyou_calender);
             this.tabPage6.Controls.Add(this.btn_seihin_kousei_m);
@@ -932,6 +932,16 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // btn_free_zaiko_record_make
+            // 
+            this.btn_free_zaiko_record_make.Location = new System.Drawing.Point(234, 385);
+            this.btn_free_zaiko_record_make.Name = "btn_free_zaiko_record_make";
+            this.btn_free_zaiko_record_make.Size = new System.Drawing.Size(220, 23);
+            this.btn_free_zaiko_record_make.TabIndex = 13;
+            this.btn_free_zaiko_record_make.Text = "フリー在庫レコード作成";
+            this.btn_free_zaiko_record_make.UseVisualStyleBackColor = true;
+            this.btn_free_zaiko_record_make.Click += new System.EventHandler(this.btn_free_zaiko_record_make_Click);
             // 
             // btn_user_m
             // 
@@ -1082,16 +1092,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(234, 385);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(220, 23);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "フリー在庫レコード作成";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // frm_menu
             // 
@@ -1244,10 +1244,10 @@
         private System.Windows.Forms.Button btn_juchu_zan;
         private System.Windows.Forms.Button btn_nyuko_bcr;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_tankabetu_uriage_meisai;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
         private System.Windows.Forms.Label lbl_build;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_free_zaiko_record_make;
     }
 }
 

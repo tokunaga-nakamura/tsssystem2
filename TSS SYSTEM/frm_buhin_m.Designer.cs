@@ -76,6 +76,7 @@
             this.tb_siire_kbn = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.cb_zaiko0 = new System.Windows.Forms.CheckBox();
             this.btn_syukko = new System.Windows.Forms.Button();
             this.btn_idou = new System.Windows.Forms.Button();
             this.btn_nyuuko = new System.Windows.Forms.Button();
@@ -89,7 +90,6 @@
             this.dgv_buhin_nyusyukko_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.cb_zaiko0 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -706,11 +706,22 @@
             this.splitContainer5.TabIndex = 0;
             this.splitContainer5.TabStop = false;
             // 
+            // cb_zaiko0
+            // 
+            this.cb_zaiko0.AutoSize = true;
+            this.cb_zaiko0.Location = new System.Drawing.Point(108, 7);
+            this.cb_zaiko0.Name = "cb_zaiko0";
+            this.cb_zaiko0.Size = new System.Drawing.Size(166, 16);
+            this.cb_zaiko0.TabIndex = 3;
+            this.cb_zaiko0.Text = "在庫０のロット在庫も表示する";
+            this.cb_zaiko0.UseVisualStyleBackColor = true;
+            this.cb_zaiko0.CheckedChanged += new System.EventHandler(this.cb_zaiko0_CheckedChanged);
+            // 
             // btn_syukko
             // 
-            this.btn_syukko.Location = new System.Drawing.Point(295, 3);
+            this.btn_syukko.Location = new System.Drawing.Point(339, 3);
             this.btn_syukko.Name = "btn_syukko";
-            this.btn_syukko.Size = new System.Drawing.Size(75, 23);
+            this.btn_syukko.Size = new System.Drawing.Size(53, 23);
             this.btn_syukko.TabIndex = 1;
             this.btn_syukko.Text = "出庫";
             this.btn_syukko.UseVisualStyleBackColor = true;
@@ -718,9 +729,9 @@
             // 
             // btn_idou
             // 
-            this.btn_idou.Location = new System.Drawing.Point(376, 3);
+            this.btn_idou.Location = new System.Drawing.Point(398, 3);
             this.btn_idou.Name = "btn_idou";
-            this.btn_idou.Size = new System.Drawing.Size(75, 23);
+            this.btn_idou.Size = new System.Drawing.Size(53, 23);
             this.btn_idou.TabIndex = 2;
             this.btn_idou.Text = "移動";
             this.btn_idou.UseVisualStyleBackColor = true;
@@ -728,9 +739,9 @@
             // 
             // btn_nyuuko
             // 
-            this.btn_nyuuko.Location = new System.Drawing.Point(214, 3);
+            this.btn_nyuuko.Location = new System.Drawing.Point(280, 3);
             this.btn_nyuuko.Name = "btn_nyuuko";
-            this.btn_nyuuko.Size = new System.Drawing.Size(75, 23);
+            this.btn_nyuuko.Size = new System.Drawing.Size(53, 23);
             this.btn_nyuuko.TabIndex = 0;
             this.btn_nyuuko.Text = "入庫";
             this.btn_nyuuko.UseVisualStyleBackColor = true;
@@ -780,7 +791,7 @@
             // tb_goukei_zaiko_su
             // 
             this.tb_goukei_zaiko_su.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_goukei_zaiko_su.Location = new System.Drawing.Point(81, 3);
+            this.tb_goukei_zaiko_su.Location = new System.Drawing.Point(351, 3);
             this.tb_goukei_zaiko_su.Name = "tb_goukei_zaiko_su";
             this.tb_goukei_zaiko_su.ReadOnly = true;
             this.tb_goukei_zaiko_su.Size = new System.Drawing.Size(100, 19);
@@ -791,7 +802,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(5, 3);
+            this.textBox2.Location = new System.Drawing.Point(275, 3);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(76, 19);
@@ -859,17 +870,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // cb_zaiko0
-            // 
-            this.cb_zaiko0.AutoSize = true;
-            this.cb_zaiko0.Location = new System.Drawing.Point(100, 7);
-            this.cb_zaiko0.Name = "cb_zaiko0";
-            this.cb_zaiko0.Size = new System.Drawing.Size(108, 16);
-            this.cb_zaiko0.TabIndex = 3;
-            this.cb_zaiko0.Text = "在庫０も表示する";
-            this.cb_zaiko0.UseVisualStyleBackColor = true;
-            this.cb_zaiko0.CheckedChanged += new System.EventHandler(this.cb_zaiko0_CheckedChanged);
             // 
             // frm_buhin_m
             // 

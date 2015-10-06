@@ -303,6 +303,8 @@ namespace TSS_SYSTEM
             dgv_m.DataSource = null;
             tb_uriage_goukei.Text = "";
             lbl_seikyuu.Text = "";
+
+            uriage_init();
         }
 
         private void uriage_disp(DataTable in_dt)

@@ -276,6 +276,7 @@ namespace TSS_SYSTEM
             //頭の3文字が「PD2」でない
             if (out_01 != "PD2")
             {
+                Console.Beep(1500, 500);
                 lbl_message.Text = "不明なデータです。（ != PD2 ）";
                 lbl_message.ForeColor = Color.Red;
             }
@@ -283,6 +284,7 @@ namespace TSS_SYSTEM
             {
                 if (out_02 != "10" && out_02 != "20" && out_02 != "21" && out_02 != "40" && out_02 != "50" && out_02 != "60")
                 {
+                    Console.Beep(1500, 500);
                     lbl_message.Text = "発注分類区分が適用外の伝票です。（" + out_02 + " ）";
                     lbl_message.ForeColor = Color.Red;
                 }
@@ -290,6 +292,7 @@ namespace TSS_SYSTEM
                 {
                     if(out_14 != "0" && out_14 != "1")
                     {
+                        Console.Beep(1500, 500);
                         lbl_message.Text = "入荷区分が適用外の伝票です。（" + out_14 + " ）";
                         lbl_message.ForeColor = Color.Red;
                     }
@@ -298,6 +301,7 @@ namespace TSS_SYSTEM
                         //部品マスタのチェック
                         if (tss.OracleSelect("select * from tss_buhin_m where buhin_cd = '" + out_15.TrimEnd() + "'").Rows.Count == 0)
                         {
+                            Console.Beep(1500, 500);
                             lbl_message.Text = "部品マスタに存在しない部品コードです。（" + out_15 + "）";
                             lbl_message.ForeColor = Color.Red;
                         }
@@ -306,6 +310,7 @@ namespace TSS_SYSTEM
                             //入出庫履歴からの伝票番号重複読み込みチェック
                             if (tss.OracleSelect("select * from tss_buhin_nyusyukko_m where denpyou_no = '" + out_04.TrimEnd() + "'").Rows.Count > 0)
                             {
+                                Console.Beep(1500, 500);
                                 lbl_message.Text = "既に処理済みの伝票です。（" + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + "）";
                                 lbl_message.ForeColor = Color.Red;
                             }
@@ -314,6 +319,7 @@ namespace TSS_SYSTEM
                                 //入出庫履歴からの発注番号重複チェック（伝票差替え等の可能性あり）確認のみで処理は続行する
                                 if (tss.OracleSelect("select * from tss_buhin_nyusyukko_m where substr(barcode,5,10) = '" + out_03 + "'").Rows.Count > 0)
                                 {
+                                    Console.Beep(1500, 500);
                                     lbl_message.Text = "同一の「発注番号」の伝票が登録済みです。差替など確認してください。（" + out_03 + "）";
                                     lbl_message.ForeColor = Color.Orange;
                                 }
@@ -333,6 +339,7 @@ namespace TSS_SYSTEM
                                 }
                                 if (w_daburi_flg == 1)
                                 {
+                                    Console.Beep(1500, 500);
                                     lbl_message.Text = "既に読み込み済の伝票番号です。（" + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + "）";
                                     lbl_message.ForeColor = Color.Red;
                                 }
@@ -340,6 +347,7 @@ namespace TSS_SYSTEM
                                 {
                                     if (w_daburi_flg == 2)
                                     {
+                                        Console.Beep(1000, 500);
                                         lbl_message.Text = "同一の「発注番号」の伝票が読み込まれています。差替など確認してください。（" + out_03 + "）";
                                         lbl_message.ForeColor = Color.Orange;
                                     }
@@ -348,6 +356,9 @@ namespace TSS_SYSTEM
                                     lbl_message.Text = "伝票番号 " + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + " OK!";
                                     lbl_message.ForeColor = Color.Black;
                                     dgv_m.FirstDisplayedScrollingRowIndex = dgv_m.Rows.Count - 1;
+                                    //追加した行の指示日をカレントセルにする
+                                    dgv_m.Focus();
+                                    dgv_m.CurrentCell = dgv_m[10,dgv_m.Rows.Count-1];
                                 }
                             }
                         }
