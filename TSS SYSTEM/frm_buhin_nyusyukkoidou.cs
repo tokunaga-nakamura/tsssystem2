@@ -856,12 +856,8 @@ namespace TSS_SYSTEM
            //部品コード検証イベント
             if (i == 0)
            {
-               if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value == null)
-               {
-
-               }
-               else
-               {
+               
+             
                    if (tb_torihikisaki_cd.Text != "")
                    {
                        //選択画面へ
@@ -893,39 +889,52 @@ namespace TSS_SYSTEM
                                    return;
                                }
 
-
-                               if (e.FormattedValue.ToString() == dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value.ToString())
-                               {
-
-                               }
-
                                else
                                {
 
-                                   if (str1 != str2)
+                                   if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value == null)
                                    {
-                                       DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
-                                      "部品入出庫登録",
-                                       MessageBoxButtons.OKCancel,
-                                       MessageBoxIcon.Exclamation,
-                                       MessageBoxDefaultButton.Button2);
 
-                                       if (result == DialogResult.OK)
+                                       if (str1 != str2 && str1 != "000000")
                                        {
-                                           dgv_nyusyukkoidou.EndEdit();
-                                           //dgv_seihin_kousei.EndEdit();
-                                           dgv_nyusyukkoidou.Focus();
-
-                                       }
-
-                                       if (result == DialogResult.Cancel)
-                                       {
+                                           MessageBox.Show("この部品は、この取引先コードで入庫できません");
                                            e.Cancel = true;
                                            dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
                                            return;
                                        }
+
+                                       if (str1 != str2 && str1 == "000000")
+                                       {
+                                           DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                                          "部品入出庫登録",
+                                           MessageBoxButtons.OKCancel,
+                                           MessageBoxIcon.Exclamation,
+                                           MessageBoxDefaultButton.Button2);
+
+                                           if (result == DialogResult.OK)
+                                           {
+                                               dgv_nyusyukkoidou.EndEdit();
+                                               //dgv_seihin_kousei.EndEdit();
+                                               dgv_nyusyukkoidou.Focus();
+
+                                           }
+
+                                           if (result == DialogResult.Cancel)
+                                           {
+                                               e.Cancel = true;
+                                               dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                               return;
+                                           }
+                                       }
                                    }
 
+                                   else
+                                   {
+                                       if (e.FormattedValue.ToString() == dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value.ToString())
+                                       {
+
+                                       }
+                                   }
 
                                }
 
@@ -936,7 +945,7 @@ namespace TSS_SYSTEM
                        }
                    }
 
-               }
+               
 
                     
            }
