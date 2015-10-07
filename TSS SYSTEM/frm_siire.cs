@@ -709,8 +709,8 @@ namespace TSS_SYSTEM
             dgv_siire.Columns[4].DefaultCellStyle.Format = "#,0";
 
             //部品名、仕入金額、仕入締日、支払計上日は入力不可
-            dgv_siire.Columns[1].ReadOnly = true;
-            dgv_siire.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
+            //dgv_siire.Columns[1].ReadOnly = true;
+            //dgv_siire.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
 
             dgv_siire.Columns[4].ReadOnly = true;
             dgv_siire.Columns[4].DefaultCellStyle.BackColor = Color.LightGray;
@@ -782,7 +782,7 @@ namespace TSS_SYSTEM
                     //dgv_siire.Rows.Clear();
                     tb_torihikisaki_cd.Clear();
                     tb_torihikisaki_name.Clear();
-                    dtp_siire_date.Value = DateTime.Today;
+                    //dtp_siire_date.Value = DateTime.Today;
                     tb_siire_denpyou_no.Clear();
                     tb_create_user_cd.Clear();
                     tb_create_datetime.Clear();
@@ -876,7 +876,7 @@ namespace TSS_SYSTEM
 
                     tb_torihikisaki_cd.Clear();
                     tb_torihikisaki_name.Clear();
-                    dtp_siire_date.Value = DateTime.Today;
+                    //dtp_siire_date.Value = DateTime.Today;
 
                     tb_create_user_cd.Clear();
                     tb_create_datetime.Clear();
@@ -1093,6 +1093,27 @@ namespace TSS_SYSTEM
 
             }
 
+            if (e.ColumnIndex == 1)
+            {
+                 if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                //未入力は許容する
+                if (e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
+                {
+                    if(tss.StringByte(e.FormattedValue.ToString()) > 40)
+                    {
+                        MessageBox.Show("部品名は４０バイト以内で入力してください。");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            
+
+            }
 
             if(e.ColumnIndex == 2)
             {

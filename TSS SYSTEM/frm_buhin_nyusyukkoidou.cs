@@ -320,7 +320,7 @@ namespace TSS_SYSTEM
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
-                                        + dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString() + "','"
+                                        + dgv_nyusyukkoidou.Rows[i].Cells[6].Value.ToString() + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
                         {
@@ -347,7 +347,7 @@ namespace TSS_SYSTEM
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
-                                        + dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString() + "','"
+                                        + dgv_nyusyukkoidou.Rows[i].Cells[6].Value.ToString() + "','"
                                         + tss.user_cd + "',SYSDATE)");
                         if (bl6 != true)
                         {
@@ -798,12 +798,10 @@ namespace TSS_SYSTEM
                                }
                            }
 
-
-
                            dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
                            dgv_nyusyukkoidou.EndEdit();
                        }
-                      
+
                    }
                    else
                    {
@@ -811,7 +809,7 @@ namespace TSS_SYSTEM
                        dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
                        return;
                    }
-                
+
                }
 
                if (i == 3)
@@ -858,77 +856,89 @@ namespace TSS_SYSTEM
            //部品コード検証イベント
             if (i == 0)
            {
-               if (tb_torihikisaki_cd.Text != "")
+               if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value == null)
                {
-                   //選択画面へ
-                   string w_buhin_cd = e.FormattedValue.ToString();
-
-                   if (w_buhin_cd != "")
-                   {
-
-                       string str1;
-                       string str2;
-
-                       DataTable dt_w = new DataTable();
-
-                       dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
-                       
-                       if(dt_w.Rows.Count == 0)
-                       {
-                           MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
-                           e.Cancel = true;
-                       }
-                       else
-                       {
-                           str1 = dt_w.Rows[0][0].ToString();
-
-                       str2 = tb_torihikisaki_cd.Text.ToString();
-
-                       if (dt_w.Rows.Count == 0)
-                       {
-                           return;
-                       }
-
-                       else
-                       {
-
-                           if (str1 != str2)
-                           {
-                               DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
-                               "部品入出庫登録",
-                               MessageBoxButtons.OKCancel,
-                               MessageBoxIcon.Exclamation,
-                               MessageBoxDefaultButton.Button2);
-
-                               if (result == DialogResult.OK)
-                               {
-                                   dgv_nyusyukkoidou.EndEdit();
-                                   //dgv_seihin_kousei.EndEdit();
-                                   dgv_nyusyukkoidou.Focus();
-
-                               }
-                               if (result == DialogResult.Cancel)
-                               {
-                                   e.Cancel = true;
-                                   dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
-                                   return;
-                               }
-                           }
-                       }
-
-                       dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
-                       dgv_nyusyukkoidou.EndEdit();
-                       }
-                  
-                   }
 
                }
                else
                {
+                   if (tb_torihikisaki_cd.Text != "")
+                   {
+                       //選択画面へ
+                       string w_buhin_cd = e.FormattedValue.ToString();
 
-                  
+                       if (w_buhin_cd != "")
+                       {
+
+                           string str1;
+                           string str2;
+
+                           DataTable dt_w = new DataTable();
+
+                           dt_w = tss.OracleSelect("select torihikisaki_cd from TSS_BUHIN_M WHERE buhin_cd = '" + w_buhin_cd.ToString() + "'");
+
+                           if (dt_w.Rows.Count == 0)
+                           {
+                               MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
+                               e.Cancel = true;
+                           }
+
+                           else
+                           {
+                               str1 = dt_w.Rows[0][0].ToString();
+                               str2 = tb_torihikisaki_cd.Text.ToString();
+
+                               if (dt_w.Rows.Count == 0)
+                               {
+                                   return;
+                               }
+
+
+                               if (e.FormattedValue.ToString() == dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[0].Value.ToString())
+                               {
+
+                               }
+
+                               else
+                               {
+
+                                   if (str1 != str2)
+                                   {
+                                       DialogResult result = MessageBox.Show("入出庫する部品コードの取引先コードと部品マスタの取引先コードが異なりますが登録しますか？",
+                                      "部品入出庫登録",
+                                       MessageBoxButtons.OKCancel,
+                                       MessageBoxIcon.Exclamation,
+                                       MessageBoxDefaultButton.Button2);
+
+                                       if (result == DialogResult.OK)
+                                       {
+                                           dgv_nyusyukkoidou.EndEdit();
+                                           //dgv_seihin_kousei.EndEdit();
+                                           dgv_nyusyukkoidou.Focus();
+
+                                       }
+
+                                       if (result == DialogResult.Cancel)
+                                       {
+                                           e.Cancel = true;
+                                           dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = "";
+                                           return;
+                                       }
+                                   }
+
+
+                               }
+
+                               dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[i + 1].Value = tss.get_buhin_name(w_buhin_cd);
+                               dgv_nyusyukkoidou.EndEdit();
+                           }
+
+                       }
+                   }
+
                }
-           
+
+                    
            }
 
             //在庫区分検証イベント
