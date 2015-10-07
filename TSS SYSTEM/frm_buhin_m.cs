@@ -106,6 +106,8 @@ namespace TSS_SYSTEM
             gamen_clear();
             tb_buhin_cd.Text = in_buhin_cd;
             lbl_buhin_cd.Text = "新規の部品です。";
+            zaiko_disp(tb_buhin_cd.Text);   //新規の部品なのに在庫レコードあった？・・・の為に表示させる
+            rireki_disp(tb_buhin_cd.Text);
         }
 
         private void gamen_clear()
@@ -641,18 +643,29 @@ namespace TSS_SYSTEM
         {
             tss.GetUser();
             //新規部品の場合は、フリー在庫のレコードを作成
-            bool bl_tss = true;
-            bl_tss = tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-                                    + " VALUES ('" + tb_buhin_cd.Text.ToString() + "','01','999999','9999999999999999','9999999999999999','0','" + tss.user_cd + "',SYSDATE)");
-            if (bl_tss != true)
+
+            //フリー在庫レコードが無いことをチェック
+            DataTable w_dt_free = new DataTable();
+            w_dt_free = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + tb_buhin_cd.Text.ToString() + "' and zaiko_kbn = '01'");
+            if(w_dt_free.Rows.Count != 0)
             {
-                tss.ErrorLogWrite(tss.user_cd, "部品マスタ／登録", "登録ボタン押下時の部品在庫マスタ作成OracleInsert");
-                MessageBox.Show("書込みでエラーが発生しました。処理を中止します。");
-                this.Close();
+                MessageBox.Show("新規の部品ですが、フリー在庫レコードが存在します。\nフリー在庫レコードは作成しないで終了します。");
             }
             else
             {
-                MessageBox.Show("新規登録しました。");
+                bool bl_tss = true;
+                bl_tss = tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+                                        + " VALUES ('" + tb_buhin_cd.Text.ToString() + "','01','999999','9999999999999999','9999999999999999','0','" + tss.user_cd + "',SYSDATE)");
+                if (bl_tss != true)
+                {
+                    tss.ErrorLogWrite(tss.user_cd, "部品マスタ／登録", "登録ボタン押下時の部品在庫マスタ作成OracleInsert");
+                    MessageBox.Show("書込みでエラーが発生しました。処理を中止します。");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("新規登録しました。");
+                }
             }
         }
 
