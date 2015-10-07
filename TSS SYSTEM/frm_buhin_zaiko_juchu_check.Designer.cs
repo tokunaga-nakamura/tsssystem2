@@ -41,6 +41,7 @@
             this.btn_start = new System.Windows.Forms.Button();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_csv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 474);
             this.splitContainer2.SplitterDistance = 435;
@@ -161,9 +163,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(153, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 12);
+            this.label1.Size = new System.Drawing.Size(138, 12);
             this.label1.TabIndex = 3;
-            this.label1.Text = "以前に登録された在庫";
+            this.label1.Text = "以前に登録されたロット在庫";
             // 
             // tb_date
             // 
@@ -215,6 +217,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_csv
+            // 
+            this.btn_csv.Location = new System.Drawing.Point(10, 3);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 1;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
+            // 
             // frm_buhin_zaiko_juchu_check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -224,7 +236,7 @@
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_buhin_zaiko_juchu_check";
-            this.Text = "受注在庫レコード滞りチェック";
+            this.Text = "ロット在庫滞りチェック";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -258,5 +270,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_date;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_csv;
     }
 }

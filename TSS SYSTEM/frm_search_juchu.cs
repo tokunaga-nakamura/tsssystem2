@@ -228,21 +228,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "A.torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and A.torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "A.torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and A.torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -253,21 +253,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "juchu_cd1 = '" + tb_juchu_cd1_1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.juchu_cd1 = '" + tb_juchu_cd1_1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "juchu_cd1 >= '" + tb_juchu_cd1_1.Text.ToString() + "' and juchu_cd1 <= '" + tb_juchu_cd1_2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "A.juchu_cd1 >= '" + tb_juchu_cd1_1.Text.ToString() + "' and A.juchu_cd1 <= '" + tb_juchu_cd1_2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "juchu_cd1 >= '" + tb_juchu_cd1_2.Text.ToString() + "' and juchu_cd1_cd <= '" + tb_juchu_cd1_1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "A.juchu_cd1 >= '" + tb_juchu_cd1_2.Text.ToString() + "' and A.juchu_cd1_cd <= '" + tb_juchu_cd1_1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -278,21 +278,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "juchu_cd2 = '" + tb_juchu_cd2_1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.juchu_cd2 = '" + tb_juchu_cd2_1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "juchu_cd2 >= '" + tb_juchu_cd2_1.Text.ToString() + "' and juchu_cd2 <= '" + tb_juchu_cd2_2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "A.juchu_cd2 >= '" + tb_juchu_cd2_1.Text.ToString() + "' and A.juchu_cd2 <= '" + tb_juchu_cd2_2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "juchu_cd2 >= '" + tb_juchu_cd2_2.Text.ToString() + "' and juchu_cd2_cd <= '" + tb_juchu_cd2_1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "A.juchu_cd2 >= '" + tb_juchu_cd2_2.Text.ToString() + "' and A.juchu_cd2_cd <= '" + tb_juchu_cd2_1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -302,7 +302,7 @@ namespace TSS_SYSTEM
             {
                 if (chk_seihin_cd(tb_seihin_cd.Text))
                 {
-                    sql_where[sql_cnt] = "seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
@@ -320,21 +320,21 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "TO_CHAR(create_datetime, 'YYYY/MM/DD') = '" + tb_create_date1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "TO_CHAR(A.create_datetime, 'YYYY/MM/DD') = '" + tb_create_date1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "to_char(create_datetime,'yyyy/mm/dd') >= '" + tb_create_date1.Text.ToString() + "' and to_char(create_datetime,'yyyy/mm/dd') <= '" + tb_create_date2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "to_char(A.create_datetime,'yyyy/mm/dd') >= '" + tb_create_date1.Text.ToString() + "' and to_char(A.create_datetime,'yyyy/mm/dd') <= '" + tb_create_date2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "to_char(create_datetime,'yyyy/mm/dd') >= '" + tb_create_date2.Text.ToString() + "' and to_date(create_datetime,'yyyy/mm/dd') <= '" + tb_create_date1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "to_char(A.create_datetime,'yyyy/mm/dd') >= '" + tb_create_date2.Text.ToString() + "' and to_date(A.create_datetime,'yyyy/mm/dd') <= '" + tb_create_date1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
@@ -342,20 +342,20 @@ namespace TSS_SYSTEM
             //売上状況
             if (rb_miuriage.Checked == true)
             {
-                sql_where[sql_cnt] = "uriage_su = '0'";
+                sql_where[sql_cnt] = "A.uriage_su = '0'";
                 sql_cnt++;
             }
             else
                 if(rb_uriage_tochuu.Checked == true)
                 {
-                    sql_where[sql_cnt] = "juchu_su <> uriage_su and uriage_su > '0'";
+                    sql_where[sql_cnt] = "A.juchu_su <> A.uriage_su and A.uriage_su > '0'";
                     sql_cnt++;
 
                 }
                 else
                     if(rb_uriage_knryou.Checked == true)
                     {
-                        sql_where[sql_cnt] = "uriage_kanryou_flg = '1'";
+                        sql_where[sql_cnt] = "A.uriage_kanryou_flg = '1'";
                         sql_cnt++;
                     }
             //検索条件が全て空白
@@ -366,7 +366,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select * from tss_juchu_m where ";
+            string sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -408,20 +408,21 @@ namespace TSS_SYSTEM
             dgv_m.Columns[1].HeaderText = "受注コード1";
             dgv_m.Columns[2].HeaderText = "受注コード2";
             dgv_m.Columns[3].HeaderText = "製品コード";
-            dgv_m.Columns[4].HeaderText = "生産区分";
-            dgv_m.Columns[5].HeaderText = "納品区分";
-            dgv_m.Columns[6].HeaderText = "実績区分";
-            dgv_m.Columns[7].HeaderText = "受注数";
-            dgv_m.Columns[8].HeaderText = "生産数";
-            dgv_m.Columns[9].HeaderText = "納品数";
-            dgv_m.Columns[10].HeaderText = "売上数";
-            dgv_m.Columns[11].HeaderText = "売上完了フラグ";
-            dgv_m.Columns[12].HeaderText = "備考";
-            dgv_m.Columns[13].HeaderText = "削除フラグ";
-            dgv_m.Columns[14].HeaderText = "作成者";
-            dgv_m.Columns[15].HeaderText = "作成日時";
-            dgv_m.Columns[16].HeaderText = "更新者";
-            dgv_m.Columns[17].HeaderText = "更新日時";
+            dgv_m.Columns[4].HeaderText = "製品名";
+            dgv_m.Columns[5].HeaderText = "生産区分";
+            dgv_m.Columns[6].HeaderText = "納品区分";
+            dgv_m.Columns[7].HeaderText = "実績区分";
+            dgv_m.Columns[8].HeaderText = "受注数";
+            dgv_m.Columns[9].HeaderText = "生産数";
+            dgv_m.Columns[10].HeaderText = "納品数";
+            dgv_m.Columns[11].HeaderText = "売上数";
+            dgv_m.Columns[12].HeaderText = "売上完了フラグ";
+            dgv_m.Columns[13].HeaderText = "備考";
+            dgv_m.Columns[14].HeaderText = "削除フラグ";
+            dgv_m.Columns[15].HeaderText = "作成者";
+            dgv_m.Columns[16].HeaderText = "作成日時";
+            dgv_m.Columns[17].HeaderText = "更新者";
+            dgv_m.Columns[18].HeaderText = "更新日時";
         }
 
         private bool chk_seihin_cd(string in_cd)

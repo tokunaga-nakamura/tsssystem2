@@ -43,7 +43,8 @@ namespace TSS_SYSTEM
             }
 
             w_dt = null;
-            w_dt = tss.OracleSelect("SELECT A.* FROM tss_buhin_zaiko_m A LEFT OUTER JOIN tss_juchu_m B ON (A.torihikisaki_cd  = B.torihikisaki_cd AND A.juchu_cd1 = B.juchu_cd1 AND A.juchu_cd2 = B.juchu_cd2) WHERE A.zaiko_kbn = '02' AND B.torihikisaki_cd IS NULL" + w_sql1 + w_sql2);
+            //w_dt = tss.OracleSelect("SELECT A.* FROM tss_buhin_zaiko_m A LEFT OUTER JOIN tss_juchu_m B ON (A.torihikisaki_cd  = B.torihikisaki_cd AND A.juchu_cd1 = B.juchu_cd1 AND A.juchu_cd2 = B.juchu_cd2) WHERE A.zaiko_kbn = '02' AND B.torihikisaki_cd IS NULL" + w_sql1 + w_sql2);
+            w_dt = tss.OracleSelect("SELECT A.buhin_cd,C.buhin_name,A.zaiko_kbn,A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.zaiko_su,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime FROM tss_buhin_zaiko_m A LEFT OUTER JOIN tss_juchu_m B ON (A.torihikisaki_cd  = B.torihikisaki_cd AND A.juchu_cd1 = B.juchu_cd1 AND A.juchu_cd2 = B.juchu_cd2) LEFT OUTER JOIN tss_buhin_m C ON (A.buhin_cd = C.buhin_cd) WHERE A.zaiko_kbn = '02' AND B.torihikisaki_cd IS NULL" + w_sql1 + w_sql2);
             dgv_m.DataSource = null;
             dgv_m.DataSource = w_dt;
 
@@ -68,15 +69,16 @@ namespace TSS_SYSTEM
 
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_m.Columns[0].HeaderText = "部品コード";
-            dgv_m.Columns[1].HeaderText = "在庫区分";
-            dgv_m.Columns[2].HeaderText = "取引先コード";
-            dgv_m.Columns[3].HeaderText = "受注コード1";
-            dgv_m.Columns[4].HeaderText = "受注コード2";
-            dgv_m.Columns[5].HeaderText = "在庫数";
-            dgv_m.Columns[6].HeaderText = "作成者";
-            dgv_m.Columns[7].HeaderText = "作成日時";
-            dgv_m.Columns[8].HeaderText = "更新者";
-            dgv_m.Columns[9].HeaderText = "更新日時";
+            dgv_m.Columns[1].HeaderText = "部品名";
+            dgv_m.Columns[2].HeaderText = "在庫区分";
+            dgv_m.Columns[3].HeaderText = "取引先コード";
+            dgv_m.Columns[4].HeaderText = "受注コード1";
+            dgv_m.Columns[5].HeaderText = "受注コード2";
+            dgv_m.Columns[6].HeaderText = "在庫数";
+            dgv_m.Columns[7].HeaderText = "作成者";
+            dgv_m.Columns[8].HeaderText = "作成日時";
+            dgv_m.Columns[9].HeaderText = "更新者";
+            dgv_m.Columns[10].HeaderText = "更新日時";
 
             //右詰
             dgv_m.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -107,6 +109,28 @@ namespace TSS_SYSTEM
                 bl = false;
             }
             return bl;
+        }
+
+        private void btn_csv_Click(object sender, EventArgs e)
+        {
+            if (w_dt.Rows.Count != 0)
+            {
+                string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
+                string w_str_filename = "ロット在庫滞りチェック検索結果" + w_str_now + ".csv";
+                if (tss.DataTableCSV(w_dt, true, w_str_filename, "\"", true))
+                {
+                    MessageBox.Show("保存されました。");
+                }
+                else
+                {
+                    MessageBox.Show("キャンセルまたはエラー");
+                }
+            }
+            else
+            {
+                MessageBox.Show("出力するデータがありません。");
+            }
+
         }
 
 
