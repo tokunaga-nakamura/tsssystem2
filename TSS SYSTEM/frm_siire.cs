@@ -403,6 +403,7 @@ namespace TSS_SYSTEM
             }
             
              dgv_siire_disp();
+             siire_goukei_disp();
         }
         //データグリッドビューに入力された数値の小数点以下第三桁を切り捨てる
         public static double ToRoundDown(double dValue, int iDigits)
@@ -412,6 +413,22 @@ namespace TSS_SYSTEM
             return dValue > 0 ? System.Math.Floor(dValue * dCoef) / dCoef :
                                 System.Math.Ceiling(dValue * dCoef) / dCoef;
         }
+
+
+        private void siire_goukei_disp()
+        {
+            double w_dou;
+            double w_siire_goukei = 0;
+            for (int i = 0; i < dgv_siire.Rows.Count - 1; i++)
+            {
+                if (double.TryParse(dgv_siire.Rows[i].Cells["siire_kingaku"].Value.ToString(), out w_dou))
+                {
+                    w_siire_goukei = w_siire_goukei + w_dou;
+                }
+            }
+            tb_siire_goukei.Text = w_siire_goukei.ToString("#,###,###,##0");
+        }
+
 
 
         private void btn_touroku_Click(object sender, EventArgs e)
