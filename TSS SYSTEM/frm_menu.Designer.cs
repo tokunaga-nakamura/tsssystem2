@@ -108,6 +108,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -912,6 +913,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
             this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
             this.tabPage6.Controls.Add(this.btn_user_m);
             this.tabPage6.Controls.Add(this.btn_eigyou_calender);
@@ -1093,6 +1095,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_buhin_zaiko_juchu_check
+            // 
+            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(234, 414);
+            this.btn_buhin_zaiko_juchu_check.Name = "btn_buhin_zaiko_juchu_check";
+            this.btn_buhin_zaiko_juchu_check.Size = new System.Drawing.Size(220, 23);
+            this.btn_buhin_zaiko_juchu_check.TabIndex = 14;
+            this.btn_buhin_zaiko_juchu_check.Text = "在庫レコード滞りチェック";
+            this.btn_buhin_zaiko_juchu_check.UseVisualStyleBackColor = true;
+            this.btn_buhin_zaiko_juchu_check.Click += new System.EventHandler(this.btn_buhin_zaiko_juchu_check_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1248,6 +1260,7 @@
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
         private System.Windows.Forms.Label lbl_build;
         private System.Windows.Forms.Button btn_free_zaiko_record_make;
+        private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
     }
 }
 

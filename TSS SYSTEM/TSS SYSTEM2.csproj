@@ -115,6 +115,12 @@
     <Compile Include="frm_buhin_to_seihin.Designer.cs">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_buhin_zaiko_juchu_check.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_zaiko_juchu_check.Designer.cs">
+      <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_juchu_zan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_zaiko_juchu_check.resx">
+      <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>

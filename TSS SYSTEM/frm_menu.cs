@@ -511,5 +511,13 @@ namespace TSS_SYSTEM
             frm_tbu.Dispose();
         }
 
+        private void btn_buhin_zaiko_juchu_check_Click(object sender, EventArgs e)
+        {
+            //単価別売上明細
+            frm_buhin_zaiko_juchu_check frm_tbu = new frm_buhin_zaiko_juchu_check();
+            frm_tbu.ShowDialog(this);
+            frm_tbu.Dispose();
+        }
+
     }
 }
