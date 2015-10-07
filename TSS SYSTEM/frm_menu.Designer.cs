@@ -92,6 +92,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
             this.btn_user_m = new System.Windows.Forms.Button();
             this.btn_eigyou_calender = new System.Windows.Forms.Button();
@@ -108,7 +109,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -344,36 +344,36 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 28);
+            this.button1.Location = new System.Drawing.Point(5, 28);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(57, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "-1日";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 3);
+            this.dateTimePicker1.Location = new System.Drawing.Point(68, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(237, 19);
+            this.dateTimePicker1.Size = new System.Drawing.Size(104, 19);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(165, 28);
+            this.button3.Location = new System.Drawing.Point(178, 29);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(63, 22);
             this.button3.TabIndex = 3;
             this.button3.Text = "+1日";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(84, 28);
+            this.button2.Location = new System.Drawing.Point(68, 28);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(104, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "今日";
+            this.button2.Text = "今日を表示";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // splitContainer6
@@ -935,6 +935,16 @@
             this.tabPage6.Text = "システム保守";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // btn_buhin_zaiko_juchu_check
+            // 
+            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(234, 414);
+            this.btn_buhin_zaiko_juchu_check.Name = "btn_buhin_zaiko_juchu_check";
+            this.btn_buhin_zaiko_juchu_check.Size = new System.Drawing.Size(220, 23);
+            this.btn_buhin_zaiko_juchu_check.TabIndex = 14;
+            this.btn_buhin_zaiko_juchu_check.Text = "在庫レコード滞りチェック";
+            this.btn_buhin_zaiko_juchu_check.UseVisualStyleBackColor = true;
+            this.btn_buhin_zaiko_juchu_check.Click += new System.EventHandler(this.btn_buhin_zaiko_juchu_check_Click);
+            // 
             // btn_free_zaiko_record_make
             // 
             this.btn_free_zaiko_record_make.Location = new System.Drawing.Point(234, 385);
@@ -1094,16 +1104,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_buhin_zaiko_juchu_check
-            // 
-            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(234, 414);
-            this.btn_buhin_zaiko_juchu_check.Name = "btn_buhin_zaiko_juchu_check";
-            this.btn_buhin_zaiko_juchu_check.Size = new System.Drawing.Size(220, 23);
-            this.btn_buhin_zaiko_juchu_check.TabIndex = 14;
-            this.btn_buhin_zaiko_juchu_check.Text = "在庫レコード滞りチェック";
-            this.btn_buhin_zaiko_juchu_check.UseVisualStyleBackColor = true;
-            this.btn_buhin_zaiko_juchu_check.Click += new System.EventHandler(this.btn_buhin_zaiko_juchu_check_Click);
             // 
             // frm_menu
             // 
