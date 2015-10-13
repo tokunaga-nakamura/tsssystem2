@@ -816,7 +816,7 @@ namespace TSS_SYSTEM
                       "新規製品構成登録",
                       MessageBoxButtons.OKCancel,
                       MessageBoxIcon.Exclamation,
-                      MessageBoxDefaultButton.Button2);
+                      MessageBoxDefaultButton.Button1);
 
                     tb_create_user_cd.Text = "";
                     tb_create_datetime.Text = "";
@@ -839,7 +839,7 @@ namespace TSS_SYSTEM
                         "新規製品構成登録",
                         MessageBoxButtons.YesNoCancel,
                         MessageBoxIcon.Exclamation,
-                        MessageBoxDefaultButton.Button2);
+                        MessageBoxDefaultButton.Button1);
 
 
                         //登録済みの製品構成をコピーする
@@ -1003,7 +1003,7 @@ namespace TSS_SYSTEM
                         "製品構成登録",
                         MessageBoxButtons.OKCancel,
                         MessageBoxIcon.Exclamation,
-                        MessageBoxDefaultButton.Button2);
+                        MessageBoxDefaultButton.Button1);
 
                         if (result == DialogResult.OK)
                         {
@@ -1079,7 +1079,7 @@ namespace TSS_SYSTEM
                             "製品構成登録",
                             MessageBoxButtons.OKCancel,
                             MessageBoxIcon.Exclamation,
-                            MessageBoxDefaultButton.Button2);
+                            MessageBoxDefaultButton.Button1);
 
                             if (result == DialogResult.OK)
                             {

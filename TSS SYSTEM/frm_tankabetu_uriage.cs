@@ -195,6 +195,7 @@ namespace TSS_SYSTEM
                 sql = sql + sql_where[i - 1];
             }
 
+            //sql = sql + " group by (torihikisaki_cd,torihikisaki_name,uriage_date,seihin_cd,seihin_name,uriage_su,hanbai_tanka,uriage_kingaku)";
             sql = sql + " order by tss_uriage_m.uriage_date";
 
             dt_kensaku = tss.OracleSelect(sql);

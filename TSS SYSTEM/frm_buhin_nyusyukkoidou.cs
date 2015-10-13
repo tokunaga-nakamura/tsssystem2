@@ -780,7 +780,7 @@ namespace TSS_SYSTEM
                                    "部品入出庫登録",
                                    MessageBoxButtons.OKCancel,
                                    MessageBoxIcon.Exclamation,
-                                   MessageBoxDefaultButton.Button2);
+                                   MessageBoxDefaultButton.Button1);
 
                                    if (result == DialogResult.OK)
                                    {
@@ -909,7 +909,7 @@ namespace TSS_SYSTEM
                                           "部品入出庫登録",
                                            MessageBoxButtons.OKCancel,
                                            MessageBoxIcon.Exclamation,
-                                           MessageBoxDefaultButton.Button2);
+                                           MessageBoxDefaultButton.Button1);
 
                                            if (result == DialogResult.OK)
                                            {

@@ -118,6 +118,7 @@ namespace TSS_SYSTEM
                 {
                     lbl_juchu_no.Text = "売上完了しているデータです。修正・登録は行えません。";
                     lbl_touroku.Text = "登録は行えません。";
+                    btn_kaijyo.Enabled = true;
                 }
                 else
                 {
@@ -1453,6 +1454,73 @@ namespace TSS_SYSTEM
                 }
             }
             tb_ttl_nouhin_su.Text = w_dou_ttl.ToString("#,###,###,##0.00");
+        }
+
+        private void btn_kaijyo_Click(object sender, EventArgs e)
+        {
+            //メッセージボックスを表示する
+            DialogResult result = MessageBox.Show("売上完了を解除しますか？",
+                "質問",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button2);
+
+            //何が選択されたか調べる
+            if (result == DialogResult.OK)
+            {
+                //「はい」が選択された時
+                //Console.WriteLine("「はい」が選択されました");
+                
+                
+                bool bl = true; //戻り値用
+                tss.GetUser();
+                //更新
+                bool bl_tss = true;
+
+
+                bl_tss = tss.OracleUpdate("UPDATE tss_juchu_m SET uriage_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'");
+                if (bl_tss != true)
+                {
+                    tss.ErrorLogWrite(tss.user_cd, "受注入力", "登録ボタン押下時のOracleUpdate");
+                    MessageBox.Show("書込みでエラーが発生しました。処理を中止します。");
+                    this.Close();
+                }
+                else
+                {
+                    //更新履歴の書込み
+                    if (rireki_insert("売上完了フラグ解除"))
+                    {
+                        bl = true;
+                        tb_uriage_kanryou_flg.Text = "0";
+                        lbl_juchu_no.Text = "既存データ";
+                        lbl_touroku.Text = "既存データは「更新理由」を入力しないと登録できません。";
+
+                    }
+                    else
+                    {
+                        bl = false;
+                        MessageBox.Show("受注完了フラグ解除でエラーが発生しました。処理を中止します。");
+                        this.Close();
+                    }
+                }
+                //return bl;
+
+　　　　　　　
+
+
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                //「キャンセル」が選択された時
+                Console.WriteLine("「キャンセル」が選択されました");
+            }
+
+        }
+
+        private void frm_juchuu_nyuuryoku_Load(object sender, EventArgs e)
+        {
+            btn_kaijyo.Enabled = false;
         }
     }
 }

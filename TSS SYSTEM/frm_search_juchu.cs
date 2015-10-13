@@ -153,20 +153,25 @@ namespace TSS_SYSTEM
             {
                 tb_torihikisaki_cd1.Text = in_torihikisaki_cd;
                 tb_torihikisaki_cd2.Text = in_torihikisaki_cd;
-                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'";
+                //w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'";
+                w_sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where A.torihikisaki_cd = '" + in_torihikisaki_cd + "'";
                 w_flg = 1;
             }
             if (in_juchu_cd1.Length != 0)
             {
                 tb_juchu_cd1_1.Text = in_juchu_cd1;
                 tb_juchu_cd1_2.Text = in_juchu_cd1;
-                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%'";
+                //w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%'";
+                w_sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where A.torihikisaki_cd = '" + in_torihikisaki_cd + "' and A.juchu_cd1 like '" + in_juchu_cd1 + "%'";
+
             }
             if (in_juchu_cd2.Length != 0)
             {
                 tb_juchu_cd2_1.Text = in_juchu_cd2;
                 tb_juchu_cd2_2.Text = in_juchu_cd2;
-                w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%' and juchu_cd2 like '" + in_juchu_cd2 + "%'";
+                //w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 like '" + in_juchu_cd1 + "%' and juchu_cd2 like '" + in_juchu_cd2 + "%'";
+                w_sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where A.torihikisaki_cd = '" + in_torihikisaki_cd + "' and A.juchu_cd1 like '" + in_juchu_cd1 + "%' and A.juchu_cd2 like '" + in_juchu_cd2 + "%'";
+            
             }
             if (in_seihin_cd.Length != 0)
             {
