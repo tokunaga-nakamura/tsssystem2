@@ -304,7 +304,7 @@ namespace TSS_SYSTEM
             tb_uriage_goukei.Text = "";
             lbl_seikyuu.Text = "";
 
-            uriage_init();
+            //uriage_init();
         }
 
         private void uriage_disp(DataTable in_dt)
@@ -471,8 +471,8 @@ namespace TSS_SYSTEM
             //書式を設定する
             dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0.00";  //売上数
             dgv_m.Columns[10].DefaultCellStyle.Format = "#,###,###,##0.00"; //販売単価
-            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,###"; //売上金額
-            dgv_m.Columns[12].DefaultCellStyle.Format = "#,###,###,###"; //消費税額
+            dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,###";    //売上金額
+            dgv_m.Columns[12].DefaultCellStyle.Format = "#,###,###,###";    //消費税額
             dgv_m.Columns[24].DefaultCellStyle.Format = "#,###,###,##0.00"; //現在までの売上数
             dgv_m.Columns[25].DefaultCellStyle.Format = "#,###,###,##0.00"; //受注数
         }

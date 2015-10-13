@@ -81,7 +81,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns[10].HeaderText = "更新日時";
 
             //右詰
-            dgv_m.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void tb_date_Validating(object sender, CancelEventArgs e)
