@@ -34,6 +34,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_hyouji = new System.Windows.Forms.Button();
             this.tb_seihin_name = new System.Windows.Forms.TextBox();
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -154,12 +154,21 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(178, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "～";
+            // 
             // btn_hyouji
             // 
             this.btn_hyouji.Location = new System.Drawing.Point(795, 24);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
-            this.btn_hyouji.TabIndex = 6;
+            this.btn_hyouji.TabIndex = 3;
             this.btn_hyouji.Text = "表示";
             this.btn_hyouji.UseVisualStyleBackColor = true;
             this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
@@ -181,7 +190,7 @@
             this.tb_seihin_cd.MaxLength = 16;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(109, 19);
-            this.tb_seihin_cd.TabIndex = 4;
+            this.tb_seihin_cd.TabIndex = 2;
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
@@ -198,11 +207,11 @@
             // 
             // tb_uriage_datetime2
             // 
-            this.tb_uriage_datetime2.Location = new System.Drawing.Point(227, 3);
+            this.tb_uriage_datetime2.Location = new System.Drawing.Point(195, 3);
             this.tb_uriage_datetime2.MaxLength = 20;
             this.tb_uriage_datetime2.Name = "tb_uriage_datetime2";
-            this.tb_uriage_datetime2.Size = new System.Drawing.Size(100, 19);
-            this.tb_uriage_datetime2.TabIndex = 2;
+            this.tb_uriage_datetime2.Size = new System.Drawing.Size(68, 19);
+            this.tb_uriage_datetime2.TabIndex = 1;
             this.tb_uriage_datetime2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime2_Validating);
             // 
             // tb_uriage_datetime1
@@ -210,8 +219,8 @@
             this.tb_uriage_datetime1.Location = new System.Drawing.Point(110, 3);
             this.tb_uriage_datetime1.MaxLength = 20;
             this.tb_uriage_datetime1.Name = "tb_uriage_datetime1";
-            this.tb_uriage_datetime1.Size = new System.Drawing.Size(100, 19);
-            this.tb_uriage_datetime1.TabIndex = 1;
+            this.tb_uriage_datetime1.Size = new System.Drawing.Size(68, 19);
+            this.tb_uriage_datetime1.TabIndex = 0;
             this.tb_uriage_datetime1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_uriage_datetime1_Validating);
             // 
             // textBox1
@@ -240,7 +249,7 @@
             this.btn_csv.Location = new System.Drawing.Point(91, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 2;
+            this.btn_csv.TabIndex = 1;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
             this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
@@ -250,7 +259,7 @@
             this.btn_insatu.Location = new System.Drawing.Point(10, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 1;
+            this.btn_insatu.TabIndex = 0;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
             // 
@@ -259,19 +268,10 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 2;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "～";
             // 
             // frm_uriage_log
             // 
