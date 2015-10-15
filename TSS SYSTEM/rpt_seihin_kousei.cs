@@ -39,8 +39,10 @@ namespace TSS_SYSTEM
             tb_today.Text = DateTime.Now.ToString("yyyy年MM月dd日");
             tb_seihin_cd.Text = w_hd10;
             tb_seihin_name.Text = w_hd11;
+            tb_seihin_cd2.Text = w_hd10;
+            tb_seihin_name2.Text = w_hd11;
             tb_seihin_kousei_no.Text = w_hd20;
-            tb_seihin_kousei_name.Text = w_hd20;
+            tb_seihin_kousei_name.Text = w_hd21;
         }
     }
 }
