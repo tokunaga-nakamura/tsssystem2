@@ -51,10 +51,11 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.dgv_seihin_kousei_name = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btn_insatsu = new System.Windows.Forms.Button();
             this.btn_tsuika = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btn_insatsu = new System.Windows.Forms.Button();
+            this.cb_1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -344,6 +345,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.cb_1);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatsu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_tsuika);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
@@ -352,6 +354,16 @@
             this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
+            // 
+            // btn_insatsu
+            // 
+            this.btn_insatsu.Location = new System.Drawing.Point(108, 4);
+            this.btn_insatsu.Name = "btn_insatsu";
+            this.btn_insatsu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatsu.TabIndex = 5;
+            this.btn_insatsu.Text = "印刷";
+            this.btn_insatsu.UseVisualStyleBackColor = true;
+            this.btn_insatsu.Click += new System.EventHandler(this.btn_insatsu_Click);
             // 
             // btn_tsuika
             // 
@@ -396,15 +408,15 @@
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
-            // btn_insatsu
+            // cb_1
             // 
-            this.btn_insatsu.Location = new System.Drawing.Point(108, 4);
-            this.btn_insatsu.Name = "btn_insatsu";
-            this.btn_insatsu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatsu.TabIndex = 5;
-            this.btn_insatsu.Text = "印刷";
-            this.btn_insatsu.UseVisualStyleBackColor = true;
-            this.btn_insatsu.Click += new System.EventHandler(this.btn_insatsu_Click);
+            this.cb_1.AutoSize = true;
+            this.cb_1.Location = new System.Drawing.Point(191, 8);
+            this.cb_1.Name = "cb_1";
+            this.cb_1.Size = new System.Drawing.Size(170, 16);
+            this.cb_1.TabIndex = 6;
+            this.cb_1.Text = "他の製品構成番号も印刷する";
+            this.cb_1.UseVisualStyleBackColor = true;
             // 
             // frm_seihin_kousei_m
             // 
@@ -431,6 +443,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei_name)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -470,5 +483,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_tsuika;
         private System.Windows.Forms.Button btn_insatsu;
+        private System.Windows.Forms.CheckBox cb_1;
     }
 }

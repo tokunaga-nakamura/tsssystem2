@@ -1106,7 +1106,16 @@ namespace TSS_SYSTEM
         private void btn_insatsu_Click(object sender, EventArgs e)
         {
            
-            dt_insatsu = tss.OracleSelect("select buhin_level,t.BUHIN_CD,s1.BUHIN_NAME,SIYOU_SU,t.GOKAN_BUHIN_CD,s2.BUHIN_NAME 互換部品名,t.bikou from TSS_SEIHIN_KOUSEI_M t LEFT OUTER JOIN TSS_BUHIN_M s1 ON t.BUHIN_CD = s1.BUHIN_CD LEFT OUTER JOIN TSS_BUHIN_M s2 ON t.GOKAN_BUHIN_CD = s2.BUHIN_CD WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "' ORDER BY t.SEQ");
+            if(cb_1.Checked == true)
+            {
+                dt_insatsu = tss.OracleSelect("select t.seihin_kousei_no,v1.seihin_kousei_name,buhin_level,t.BUHIN_CD,s1.BUHIN_NAME,SIYOU_SU,t.GOKAN_BUHIN_CD,s2.BUHIN_NAME 互換部品名,t.bikou from TSS_SEIHIN_KOUSEI_M t LEFT OUTER JOIN TSS_SEIHIN_KOUSEI_NAME_M v1 ON t.seihin_cd = v1.seihin_cd LEFT OUTER JOIN TSS_BUHIN_M s1 ON t.BUHIN_CD = s1.BUHIN_CD LEFT OUTER JOIN TSS_BUHIN_M s2 ON t.GOKAN_BUHIN_CD = s2.BUHIN_CD WHERE t.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' ORDER BY t.SEQ");
+
+            }
+            else
+            {
+                dt_insatsu = tss.OracleSelect("select t.seihin_kousei_no,v1.seihin_kousei_name,buhin_level,t.BUHIN_CD,s1.BUHIN_NAME,SIYOU_SU,t.GOKAN_BUHIN_CD,s2.BUHIN_NAME 互換部品名,t.bikou from TSS_SEIHIN_KOUSEI_M t LEFT OUTER JOIN TSS_SEIHIN_KOUSEI_NAME_M v1 ON t.seihin_cd = v1.seihin_cd LEFT OUTER JOIN TSS_BUHIN_M s1 ON t.BUHIN_CD = s1.BUHIN_CD LEFT OUTER JOIN TSS_BUHIN_M s2 ON t.GOKAN_BUHIN_CD = s2.BUHIN_CD WHERE t.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and t.seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "' and v1.seihin_kousei_no = '" + tb_seihin_kousei_no.Text.ToString() + "' ORDER BY t.SEQ");
+            }
+           
 
             int rc = dt_insatsu.Rows.Count;
 
@@ -1119,33 +1128,30 @@ namespace TSS_SYSTEM
             else
             {
 
-                //frm_tankabetu_uriage_preview frm_rpt = new frm_tankabetu_uriage_preview();
+                frm_seihin_kousei_preview frm_rpt = new frm_seihin_kousei_preview();
 
-                ////子画面のプロパティに値をセットする
-                //frm_rpt.ppt_dt = dt_insatsu;
+                //子画面のプロパティに値をセットする
+                frm_rpt.ppt_dt = dt_insatsu;
 
-                //frm_rpt.w_hd10 = tb_seihin_cd.Text;
-                //frm_rpt.w_hd11 = tb_seihin_name.Text;
-                //frm_rpt.w_hd20 = tb_seihin_kousei_no.Text;
-                //frm_rpt.w_hd21 = tb_seihin_kousei_name.Text;
+                frm_rpt.w_hd10 = tb_seihin_cd.Text;
+                frm_rpt.w_hd11 = tb_seihin_name.Text;
+
+                if (cb_1.Checked == true)
+                {
+                    frm_rpt.w_hd20 = "全て";
+                    frm_rpt.w_hd21 = "";
+                }
+                else
+                {
+                    frm_rpt.w_hd20 = tb_seihin_kousei_no.Text;
+                    frm_rpt.w_hd21 = tb_seihin_kousei_name.Text;
+
+                }
                 
-                //frm_rpt.ShowDialog();
-                ////子画面から値を取得する
-                //frm_rpt.Dispose();
+                frm_rpt.ShowDialog();
+                //子画面から値を取得する
+                frm_rpt.Dispose();
 
-
-
-                //rpt_seihin_kousei rpt = new rpt_seihin_kousei();
-                ////レポートへデータを受け渡す
-                //rpt.DataSource = ppt_dt;
-                //rpt.w_yyyymmdd = w_yyyymmdd;
-                //rpt.w_hd10 = w_hd10;
-                //rpt.w_hd11 = w_hd11;
-                //rpt.w_hd20 = w_hd20;
-
-
-                //rpt.Run();
-                //this.vwr.Document = rpt.Document;
             }
 
         }
