@@ -546,6 +546,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.tabPage2.Controls.Add(this.btn_tankabetu_uriage_meisai);
             this.tabPage2.Controls.Add(this.btn_juchu_zan);
             this.tabPage2.Controls.Add(this.btn_nyukin);
@@ -564,7 +565,6 @@
             this.tabPage2.Size = new System.Drawing.Size(690, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btn_tankabetu_uriage_meisai
             // 
@@ -688,6 +688,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_kousei);
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_rireki);
             this.tabPage3.Controls.Add(this.btn_nyuko_bcr);
@@ -708,7 +709,6 @@
             this.tabPage3.Size = new System.Drawing.Size(690, 442);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btn_buhin_nyusyukko_kousei
             // 
@@ -727,6 +727,7 @@
             this.btn_buhin_nyusyukko_rireki.Size = new System.Drawing.Size(222, 23);
             this.btn_buhin_nyusyukko_rireki.TabIndex = 0;
             this.btn_buhin_nyusyukko_rireki.Text = "部品入出庫移動履歴";
+            this.btn_buhin_nyusyukko_rireki.UseVisualStyleBackColor = true;
             this.btn_buhin_nyusyukko_rireki.Click += new System.EventHandler(this.btn_buhin_nyusyukko_rireki_Click);
             // 
             // btn_nyuko_bcr
@@ -851,6 +852,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage4.Controls.Add(this.btn_siire_kensaku);
             this.tabPage4.Controls.Add(this.btn_siharai);
             this.tabPage4.Controls.Add(this.btn_siire_sime);
@@ -860,7 +862,6 @@
             this.tabPage4.Size = new System.Drawing.Size(690, 442);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // btn_siire_kensaku
             // 
@@ -904,15 +905,16 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(690, 442);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "集計・その他";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
             this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
             this.tabPage6.Controls.Add(this.btn_user_m);
@@ -933,7 +935,6 @@
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // btn_buhin_zaiko_juchu_check
             // 
