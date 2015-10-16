@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyuuko_bcr));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -43,7 +44,8 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_syori_date = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +92,15 @@
             this.splitContainer1.SplitterDistance = 58;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(100, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(546, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "※バーコード読込で入力した場合、入出庫移動処理日は、システムデートになります。検索時等に注意してください。";
             // 
             // label1
             // 
@@ -139,13 +150,14 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.tb_syori_date);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
             this.splitContainer3.Panel1.Controls.Add(this.textBox2);
             this.splitContainer3.Panel1.Controls.Add(this.tb_maisuu);
             this.splitContainer3.Panel1.Controls.Add(this.lbl_message);
@@ -154,14 +166,14 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
-            this.splitContainer3.SplitterDistance = 61;
+            this.splitContainer3.SplitterDistance = 66;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(711, 35);
+            this.textBox2.Location = new System.Drawing.Point(711, 39);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(59, 19);
@@ -172,7 +184,7 @@
             // tb_maisuu
             // 
             this.tb_maisuu.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_maisuu.Location = new System.Drawing.Point(770, 35);
+            this.tb_maisuu.Location = new System.Drawing.Point(770, 39);
             this.tb_maisuu.Name = "tb_maisuu";
             this.tb_maisuu.ReadOnly = true;
             this.tb_maisuu.Size = new System.Drawing.Size(100, 19);
@@ -184,11 +196,11 @@
             // 
             this.lbl_message.AutoSize = true;
             this.lbl_message.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_message.Location = new System.Drawing.Point(96, 13);
+            this.lbl_message.Location = new System.Drawing.Point(10, 25);
             this.lbl_message.Name = "lbl_message";
-            this.lbl_message.Size = new System.Drawing.Size(571, 33);
+            this.lbl_message.Size = new System.Drawing.Size(357, 33);
             this.lbl_message.TabIndex = 0;
-            this.lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
+            this.lbl_message.Text = "処理日を入力してください。";
             // 
             // dgv_m
             // 
@@ -197,7 +209,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 371);
+            this.dgv_m.Size = new System.Drawing.Size(880, 366);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
@@ -228,14 +240,24 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // label2
+            // textBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(546, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "※バーコード読込で入力した場合、入出庫移動処理日は、システムデートになります。検索時等に注意してください。";
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(45, 19);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "処理日";
+            // 
+            // tb_syori_date
+            // 
+            this.tb_syori_date.Location = new System.Drawing.Point(55, 3);
+            this.tb_syori_date.Name = "tb_syori_date";
+            this.tb_syori_date.Size = new System.Drawing.Size(74, 19);
+            this.tb_syori_date.TabIndex = 4;
+            this.tb_syori_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_syori_date_Validating);
             // 
             // frm_buhin_nyuuko_bcr
             // 
@@ -284,5 +306,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox tb_maisuu;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_syori_date;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -55,6 +55,7 @@ namespace TSS_SYSTEM
                 MessageBox.Show("バーコードリーダがOPENができません。設定ファイル、接続、ポート番号等を確認してください。");
                 this.Close();
             }
+            tb_syori_date.Text = DateTime.Now.ToShortDateString();
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -460,7 +461,9 @@ namespace TSS_SYSTEM
                 tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + w_seq + "','"
-                                        + w_gyou.ToString() + "','" + DateTime.Now.ToShortDateString() + "','"
+                                        + w_gyou.ToString() + "',"
+                                        //+ DateTime.Now.ToShortDateString() + "','"
+                                        + "to_date('" + tb_syori_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                                         + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','"
                                         + w_kbn + "','"
                                         + w_torihikisaki_cd + "','"
@@ -580,8 +583,32 @@ namespace TSS_SYSTEM
             tb_maisuu.Text = dgv_m.Rows.Count.ToString(); 
         }
 
+        private void tb_syori_date_Validating(object sender, CancelEventArgs e)
+        {
+            if (tb_syori_date.Text != "")
+            {
+                if (chk_syori_date())
+                {
+                    tb_syori_date.Text = tss.out_datetime.ToShortDateString();
+                    lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
+                    lbl_message.ForeColor = Color.Black;
+                }
+                else
+                {
+                    MessageBox.Show("処理日に異常があります。");
+                    tb_syori_date.Focus();
+                }
+            }
+        }
 
-
-
+        private bool chk_syori_date()
+        {
+            bool bl = true; //戻り値
+            if (tss.try_string_to_date(tb_syori_date.Text.ToString()) == false)
+            {
+                bl = false;
+            }
+            return bl;
+        }
     }
 }

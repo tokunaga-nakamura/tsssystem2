@@ -461,7 +461,7 @@ namespace TSS_SYSTEM
                     tss.GetUser();
                     MessageBox.Show("納品マスタと受注マスタの整合性に異常があります。処理を中止します。");
                     tss.ErrorLogWrite(tss.user_cd, "納品スケジュール参照", "表示ボタン押下後のOracleSelect");
-                    tss.MessageLogWrite(tss.user_cd,"000000","納品スケジュールの表示でエラーが発生しました。","納品マスタと受注マスタの整合性が取れていない可能性があります。受注コード " + dr["torihikisaki_cd"].ToString() + "-" + dr["juchu_cd2"].ToString() + "-" + dr["juchu_cd2"].ToString() + " を確認してください。");
+                    tss.MessageLogWrite(tss.user_cd,"000000","納品スケジュールの表示でエラーが発生しました。","納品マスタと受注マスタの整合性が取れていない可能性があります。受注コード " + dr["torihikisaki_cd"].ToString() + "-" + dr["juchu_cd1"].ToString() + "-" + dr["juchu_cd2"].ToString() + " を確認してください。");
                     this.Close();
                 }
                 //受注マスタから製品マスタをリンク
@@ -471,7 +471,7 @@ namespace TSS_SYSTEM
                     tss.GetUser();
                     MessageBox.Show("受注マスタと製品マスタの整合性に異常があります。処理を中止します。");
                     tss.ErrorLogWrite(tss.user_cd, "納品スケジュール参照", "表示ボタン押下後のOracleSelect");
-                    tss.MessageLogWrite(tss.user_cd, "000000", "納品スケジュールの表示でエラーが発生しました。", "受注マスタと製品マスタの整合性が取れていない可能性があります。受注コード " + w_dt_juchu_m.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + " 製品コード " + w_dt_juchu_m.Rows[0]["seihin_cd"] + " を確認してください。");
+                    tss.MessageLogWrite(tss.user_cd, "000000", "納品スケジュールの表示でエラーが発生しました。", "受注マスタと製品マスタの整合性が取れていない可能性があります。受注コード " + w_dt_juchu_m.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd1"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + " 製品コード " + w_dt_juchu_m.Rows[0]["seihin_cd"] + " を確認してください。");
                     this.Close();
                 }
                 //受注マスタから取引先マスタをリンク
@@ -481,7 +481,7 @@ namespace TSS_SYSTEM
                     tss.GetUser();
                     MessageBox.Show("受注マスタと取引先マスタの整合性に異常があります。処理を中止します。");
                     tss.ErrorLogWrite(tss.user_cd, "納品スケジュール参照", "表示ボタン押下後のOracleSelect");
-                    tss.MessageLogWrite(tss.user_cd, "000000", "納品スケジュールの表示でエラーが発生しました。", "受注マスタと取引先マスタの整合性が取れていない可能性があります。受注コード " + w_dt_juchu_m.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + " を確認してください。");
+                    tss.MessageLogWrite(tss.user_cd, "000000", "納品スケジュールの表示でエラーが発生しました。", "受注マスタと取引先マスタの整合性が取れていない可能性があります。受注コード " + w_dt_juchu_m.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd1"].ToString() + "-" + w_dt_juchu_m.Rows[0]["juchu_cd2"].ToString() + " を確認してください。");
                     this.Close();
                 }
                 //集計区分の判定
