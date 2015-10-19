@@ -478,7 +478,9 @@ namespace TSS_SYSTEM
             }
             MessageBox.Show("登録しました。（入出庫移動番号:" + w_seq + "）");
             dgv_m.Rows.Clear();
-            lbl_message.Text = "入庫伝票のバーコードを読み込んでください。";
+            tb_syori_date.Text = "";
+            lbl_message.Text = "処理日を入力してください。";
+            tb_syori_date.Focus();
             lbl_message.ForeColor = Color.Black;
         }
 
