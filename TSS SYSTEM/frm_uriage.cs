@@ -902,6 +902,8 @@ namespace TSS_SYSTEM
                 double w_syouhizeigaku;
                 double w_zeiritu;
                 double w_syouhizei_once;
+                //浮動小数点対策
+                decimal w_deci_urikin;
                 
                 if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[9].Value.ToString(), out w_uriage_su))
                 {
@@ -919,7 +921,10 @@ namespace TSS_SYSTEM
                 {
                     w_hanbai_tanka = 0;
                 }
-                w_uriage_kingaku = w_uriage_su * w_hanbai_tanka;
+                //浮動小数点対策
+                //w_uriage_kingaku = w_uriage_su * w_hanbai_tanka;
+                w_deci_urikin = (decimal)w_uriage_su * (decimal)w_hanbai_tanka;
+                w_uriage_kingaku = (double)w_deci_urikin;
                 //端数処理
                 w_uriage_kingaku = tss.hasu_keisan(tb_torihikisaki_cd.Text.ToString(),w_uriage_kingaku);
                 dgv_m.Rows[e.RowIndex].Cells[11].Value = w_uriage_kingaku.ToString("0");
