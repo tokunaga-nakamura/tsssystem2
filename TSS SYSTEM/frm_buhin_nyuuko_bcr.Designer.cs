@@ -37,6 +37,8 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.tb_syori_date = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_maisuu = new System.Windows.Forms.TextBox();
             this.lbl_message = new System.Windows.Forms.Label();
@@ -44,8 +46,7 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_syori_date = new System.Windows.Forms.TextBox();
+            this.lbl_test_mode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.lbl_test_mode);
             this.splitContainer3.Panel1.Controls.Add(this.tb_syori_date);
             this.splitContainer3.Panel1.Controls.Add(this.textBox1);
             this.splitContainer3.Panel1.Controls.Add(this.textBox2);
@@ -169,6 +171,25 @@
             this.splitContainer3.SplitterDistance = 66;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
+            // 
+            // tb_syori_date
+            // 
+            this.tb_syori_date.Location = new System.Drawing.Point(55, 3);
+            this.tb_syori_date.Name = "tb_syori_date";
+            this.tb_syori_date.Size = new System.Drawing.Size(74, 19);
+            this.tb_syori_date.TabIndex = 4;
+            this.tb_syori_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_syori_date_Validating);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(45, 19);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "処理日";
             // 
             // textBox2
             // 
@@ -240,24 +261,16 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // textBox1
+            // lbl_test_mode
             // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(45, 19);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "処理日";
-            // 
-            // tb_syori_date
-            // 
-            this.tb_syori_date.Location = new System.Drawing.Point(55, 3);
-            this.tb_syori_date.Name = "tb_syori_date";
-            this.tb_syori_date.Size = new System.Drawing.Size(74, 19);
-            this.tb_syori_date.TabIndex = 4;
-            this.tb_syori_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_syori_date_Validating);
+            this.lbl_test_mode.AutoSize = true;
+            this.lbl_test_mode.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_test_mode.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_test_mode.Location = new System.Drawing.Point(537, 3);
+            this.lbl_test_mode.Name = "lbl_test_mode";
+            this.lbl_test_mode.Size = new System.Drawing.Size(0, 21);
+            this.lbl_test_mode.TabIndex = 5;
+            this.lbl_test_mode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frm_buhin_nyuuko_bcr
             // 
@@ -308,5 +321,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_syori_date;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbl_test_mode;
     }
 }

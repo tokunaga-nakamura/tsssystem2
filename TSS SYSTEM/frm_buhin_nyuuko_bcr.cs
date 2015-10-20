@@ -370,6 +370,14 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            //テストモード
+            if (tb_syori_date.Text == "2000/01/01")
+            {
+                MessageBox.Show("テストモードでは登録できません。");
+            }
+
+
+
             if(dgv_m.Rows.Count == 0)
             {
                 MessageBox.Show("データがありません。");
@@ -600,6 +608,15 @@ namespace TSS_SYSTEM
                     MessageBox.Show("処理日に異常があります。");
                     tb_syori_date.Focus();
                 }
+            }
+            //テストモード
+            if(tb_syori_date.Text == "2000/01/01")
+            {
+                lbl_test_mode.Text = "テストモードで動作中（登録できません）";
+            }
+            else
+            {
+                lbl_test_mode.Text = "";
             }
         }
 
