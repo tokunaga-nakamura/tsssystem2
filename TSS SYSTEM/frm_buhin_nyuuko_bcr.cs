@@ -249,10 +249,6 @@ namespace TSS_SYSTEM
         private void dgv_add(string in_str)
         {
             int w_daburi_flg = 0;
-            if (dgv_m.Rows.Count == 0)
-            {
-                dgv_init(); //dgvの初期設定
-            }
 
             string out_01 = tss.StringMidByte(in_str,0, 3);     //識別
             string out_02 = tss.StringMidByte(in_str,3, 2);     //発注分類区分
@@ -352,6 +348,11 @@ namespace TSS_SYSTEM
                                         lbl_message.Text = "同一の「発注番号」の伝票が読み込まれています。差替など確認してください。（" + out_03 + "）";
                                         lbl_message.ForeColor = Color.Orange;
                                     }
+                                    //dgvの初期化
+                                    if (dgv_m.Rows.Count == 0)
+                                    {
+                                        dgv_init(); //dgvの初期設定
+                                    }
                                     //dgvに表示
                                     dgv_m.Rows.Add(out_01, out_02, out_03, out_04, out_05, out_06, out_07, out_08, out_09, out_10, out_11, out_12, out_13, out_14, out_15, out_16, out_17, out_18, out_19);
                                     lbl_message.Text = "伝票番号 " + tss.StringMidByte(out_04, 0, 7) + "-" + tss.StringMidByte(out_04, 7, 3) + "-" + tss.StringMidByte(out_04, 10, 2) + " OK!";
@@ -370,6 +371,14 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            //テストモード
+            if (tb_syori_date.Text == "2000/01/01")
+            {
+                MessageBox.Show("テストモードでは登録できません。");
+            }
+
+
+
             if(dgv_m.Rows.Count == 0)
             {
                 MessageBox.Show("データがありません。");
@@ -600,6 +609,15 @@ namespace TSS_SYSTEM
                     MessageBox.Show("処理日に異常があります。");
                     tb_syori_date.Focus();
                 }
+            }
+            //テストモード
+            if(tb_syori_date.Text == "2000/01/01")
+            {
+                lbl_test_mode.Text = "テストモードで動作中（登録できません）";
+            }
+            else
+            {
+                lbl_test_mode.Text = "";
             }
         }
 
