@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="tb_suryou.OutputFormat" xml:space="preserve">
-    <value>#,##0.00</value>
+    <value>#,##0</value>
   </data>
   <data name="textBox5.OutputFormat" xml:space="preserve">
     <value>yyyy/M/d</value>

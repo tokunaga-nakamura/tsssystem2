@@ -242,7 +242,8 @@ namespace TSS_SYSTEM
                        }
                        else
                        {
-                           dt_kensaku.Rows[i][9] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           //dt_kensaku.Rows[i][9] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           dt_kensaku.Rows[i][9] = decimal.Parse(dt_kouchin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
                        }
                        
                    }
@@ -263,7 +264,8 @@ namespace TSS_SYSTEM
                        }
                        else
                        {
-                           dt_kensaku.Rows[i][11] = double.Parse(dt_hukusizai.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           //dt_kensaku.Rows[i][11] = double.Parse(dt_hukusizai.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           dt_kensaku.Rows[i][11] = decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
                        }
                        
                    }
@@ -284,12 +286,17 @@ namespace TSS_SYSTEM
                        }
                        else
                        {
-                           dt_kensaku.Rows[i][13] = double.Parse(dt_buhin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           //dt_kensaku.Rows[i][13] = double.Parse(dt_buhin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                           dt_kensaku.Rows[i][13] = decimal.Parse(dt_buhin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
                        }
                    }
                    
-                   dt_kensaku.Rows[i][14] = double.Parse(dt_kensaku.Rows[i][8].ToString()) + double.Parse(dt_kensaku.Rows[i][10].ToString());
-                   dt_kensaku.Rows[i][15] = double.Parse(dt_kensaku.Rows[i][14].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+                   //dt_kensaku.Rows[i][14] = double.Parse(dt_kensaku.Rows[i][8].ToString()) + double.Parse(dt_kensaku.Rows[i][10].ToString());
+                   //dt_kensaku.Rows[i][15] = double.Parse(dt_kensaku.Rows[i][14].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
+
+                   dt_kensaku.Rows[i][14] = decimal.Parse(dt_kensaku.Rows[i][8].ToString()) + decimal.Parse(dt_kensaku.Rows[i][10].ToString());
+                   dt_kensaku.Rows[i][15] = decimal.Parse(dt_kensaku.Rows[i][14].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
+
 
                    //DataTable dt_genka = new DataTable();
                    //dt_genka = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '04'");

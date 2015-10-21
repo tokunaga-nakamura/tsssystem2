@@ -65,11 +65,11 @@
             this.tb_torihikisaki_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_juchu_cd1 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_juchu_cd2 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_suryou = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_denpyou_no = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_syori_kbn = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_bikou = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_buhin_syori_no = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_suryou = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.groupHeader1 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
@@ -111,11 +111,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_torihikisaki_cd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_cd1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_cd2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_suryou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_denpyou_no)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_syori_kbn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_no)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_suryou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -324,13 +324,13 @@
             this.label9.Style = "font-size: 6pt";
             this.label9.Text = "伝票番号";
             this.label9.Top = 0.7814961F;
-            this.label9.Width = 1.182677F;
+            this.label9.Width = 0.9846456F;
             // 
             // label11
             // 
             this.label11.Height = 0.09370076F;
             this.label11.HyperLink = null;
-            this.label11.Left = 1.552362F;
+            this.label11.Left = 1.354331F;
             this.label11.Name = "label11";
             this.label11.Style = "font-size: 6pt";
             this.label11.Text = "部品コード";
@@ -341,18 +341,18 @@
             // 
             this.label12.Height = 0.09370076F;
             this.label12.HyperLink = null;
-            this.label12.Left = 2.568504F;
+            this.label12.Left = 2.370473F;
             this.label12.Name = "label12";
             this.label12.Style = "font-size: 6pt";
             this.label12.Text = "部品名";
             this.label12.Top = 0.7814961F;
-            this.label12.Width = 1.873227F;
+            this.label12.Width = 2.508661F;
             // 
             // label13
             // 
             this.label13.Height = 0.09370076F;
             this.label13.HyperLink = null;
-            this.label13.Left = 5.099213F;
+            this.label13.Left = 5.478347F;
             this.label13.Name = "label13";
             this.label13.Style = "font-size: 6pt";
             this.label13.Text = "在庫区分";
@@ -363,7 +363,7 @@
             // 
             this.label14.Height = 0.09370076F;
             this.label14.HyperLink = null;
-            this.label14.Left = 5.500788F;
+            this.label14.Left = 5.879922F;
             this.label14.Name = "label14";
             this.label14.Style = "font-size: 6pt";
             this.label14.Text = "取引先コード";
@@ -374,23 +374,23 @@
             // 
             this.label15.Height = 0.09370076F;
             this.label15.HyperLink = null;
-            this.label15.Left = 6.235434F;
+            this.label15.Left = 6.614568F;
             this.label15.Name = "label15";
             this.label15.Style = "font-size: 6pt";
             this.label15.Text = "受注コード1";
             this.label15.Top = 0.7814961F;
-            this.label15.Width = 1.036614F;
+            this.label15.Width = 0.7866135F;
             // 
             // label17
             // 
             this.label17.Height = 0.09370076F;
             this.label17.HyperLink = null;
-            this.label17.Left = 4.441732F;
+            this.label17.Left = 4.879134F;
             this.label17.Name = "label17";
             this.label17.Style = "font-size: 6pt; text-align: right";
             this.label17.Text = "数量";
             this.label17.Top = 0.7814961F;
-            this.label17.Width = 0.484645F;
+            this.label17.Width = 0.5472451F;
             // 
             // label18
             // 
@@ -429,12 +429,12 @@
             // 
             this.label16.Height = 0.09370076F;
             this.label16.HyperLink = null;
-            this.label16.Left = 7.272048F;
+            this.label16.Left = 7.401181F;
             this.label16.Name = "label16";
             this.label16.Style = "font-size: 6pt";
             this.label16.Text = "受注コード2";
             this.label16.Top = 0.7814961F;
-            this.label16.Width = 1.036614F;
+            this.label16.Width = 0.7866139F;
             // 
             // tb_buhin_syori_kbn
             // 
@@ -492,7 +492,7 @@
             // 
             this.tb_buhin_cd.DataField = "buhin_cd";
             this.tb_buhin_cd.Height = 0.146063F;
-            this.tb_buhin_cd.Left = 1.552362F;
+            this.tb_buhin_cd.Left = 1.354331F;
             this.tb_buhin_cd.Name = "tb_buhin_cd";
             this.tb_buhin_cd.Style = "font-size: 8.25pt; text-align: left";
             this.tb_buhin_cd.Text = null;
@@ -503,18 +503,18 @@
             // 
             this.tb_buhin_name.DataField = "buhin_name";
             this.tb_buhin_name.Height = 0.146063F;
-            this.tb_buhin_name.Left = 2.568504F;
+            this.tb_buhin_name.Left = 2.370473F;
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.Style = "font-size: 8.25pt; text-align: left";
             this.tb_buhin_name.Text = null;
             this.tb_buhin_name.Top = 0F;
-            this.tb_buhin_name.Width = 1.873227F;
+            this.tb_buhin_name.Width = 2.508661F;
             // 
             // tb_zaiko_kbn
             // 
             this.tb_zaiko_kbn.DataField = "zaiko_kbn";
             this.tb_zaiko_kbn.Height = 0.146063F;
-            this.tb_zaiko_kbn.Left = 5.099213F;
+            this.tb_zaiko_kbn.Left = 5.478347F;
             this.tb_zaiko_kbn.Name = "tb_zaiko_kbn";
             this.tb_zaiko_kbn.Style = "font-size: 8.25pt; text-align: center";
             this.tb_zaiko_kbn.Text = null;
@@ -525,7 +525,7 @@
             // 
             this.tb_torihikisaki_cd.DataField = "torihikisaki_cd";
             this.tb_torihikisaki_cd.Height = 0.146063F;
-            this.tb_torihikisaki_cd.Left = 5.500788F;
+            this.tb_torihikisaki_cd.Left = 5.879922F;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.Style = "font-size: 8.25pt; text-align: left";
             this.tb_torihikisaki_cd.Text = null;
@@ -536,35 +536,23 @@
             // 
             this.tb_juchu_cd1.DataField = "juchu_cd1";
             this.tb_juchu_cd1.Height = 0.146063F;
-            this.tb_juchu_cd1.Left = 6.235434F;
+            this.tb_juchu_cd1.Left = 6.614568F;
             this.tb_juchu_cd1.Name = "tb_juchu_cd1";
             this.tb_juchu_cd1.Style = "font-size: 8.25pt; text-align: left";
             this.tb_juchu_cd1.Text = null;
             this.tb_juchu_cd1.Top = 0F;
-            this.tb_juchu_cd1.Width = 1.036614F;
+            this.tb_juchu_cd1.Width = 0.7866135F;
             // 
             // tb_juchu_cd2
             // 
             this.tb_juchu_cd2.DataField = "juchu_cd2";
             this.tb_juchu_cd2.Height = 0.146063F;
-            this.tb_juchu_cd2.Left = 7.272048F;
+            this.tb_juchu_cd2.Left = 7.401181F;
             this.tb_juchu_cd2.Name = "tb_juchu_cd2";
             this.tb_juchu_cd2.Style = "font-size: 8.25pt; text-align: left";
             this.tb_juchu_cd2.Text = null;
             this.tb_juchu_cd2.Top = 0F;
-            this.tb_juchu_cd2.Width = 1.036614F;
-            // 
-            // tb_suryou
-            // 
-            this.tb_suryou.DataField = "suryou";
-            this.tb_suryou.Height = 0.146063F;
-            this.tb_suryou.Left = 4.441732F;
-            this.tb_suryou.Name = "tb_suryou";
-            this.tb_suryou.OutputFormat = resources.GetString("tb_suryou.OutputFormat");
-            this.tb_suryou.Style = "font-size: 8.25pt; text-align: right";
-            this.tb_suryou.Text = null;
-            this.tb_suryou.Top = 0F;
-            this.tb_suryou.Width = 0.4846457F;
+            this.tb_juchu_cd2.Width = 0.7866144F;
             // 
             // tb_denpyou_no
             // 
@@ -609,7 +597,19 @@
             this.tb_buhin_syori_no.SummaryGroup = "groupHeader1";
             this.tb_buhin_syori_no.Text = null;
             this.tb_buhin_syori_no.Top = 0F;
-            this.tb_buhin_syori_no.Width = 1.182677F;
+            this.tb_buhin_syori_no.Width = 0.9846456F;
+            // 
+            // tb_suryou
+            // 
+            this.tb_suryou.DataField = "suryou";
+            this.tb_suryou.Height = 0.146063F;
+            this.tb_suryou.Left = 4.879134F;
+            this.tb_suryou.Name = "tb_suryou";
+            this.tb_suryou.OutputFormat = resources.GetString("tb_suryou.OutputFormat");
+            this.tb_suryou.Style = "font-size: 8.25pt; text-align: right";
+            this.tb_suryou.Text = null;
+            this.tb_suryou.Top = 0F;
+            this.tb_suryou.Width = 0.5472449F;
             // 
             // pageFooter
             // 
@@ -722,11 +722,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_torihikisaki_cd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_cd1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_cd2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_suryou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_denpyou_no)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_syori_kbn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_buhin_syori_no)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_suryou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
