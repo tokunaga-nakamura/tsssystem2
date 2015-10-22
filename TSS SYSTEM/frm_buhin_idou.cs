@@ -194,12 +194,13 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < dgvrc - 1; i++)
             {
-                //受注コードが空白の場合、9999999999999999を代入
+                //ロット在庫で受注コード2が空白の場合、受注コード2に9999999999999999を代入
                 if (dgv_idou.Rows[i].Cells[2].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[4].Value != null && dgv_idou.Rows[i].Cells[5].Value == null)
                 {
-                    dgv_idou.Rows[i].Cells[4].Value = 9999999999999999;
+                    dgv_idou.Rows[i].Cells[5].Value = 9999999999999999;
                 }
 
+                //在庫区分が02以外で、受注コード1,2が空白の場合、9999999999999999を代入
                 if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[3].Value == null && dgv_idou.Rows[i].Cells[4].Value == null && dgv_idou.Rows[i].Cells[5].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[3].Value = 999999;
@@ -207,21 +208,30 @@ namespace TSS_SYSTEM
                     dgv_idou.Rows[i].Cells[5].Value = 9999999999999999;
                 }
 
+                //在庫区分が02以外で、取引先コードが空白の場合、999999を代入
                 if (dgv_idou.Rows[i].Cells[2].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[3].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[3].Value = 999999;
                 }
 
+                //ロット在庫で移動先受注コード2が空白の場合、移動先受注コード2に9999999999999999を代入
                 if (dgv_idou.Rows[i].Cells[6].Value.ToString() == "02" && dgv_idou.Rows[i].Cells[8].Value != null && dgv_idou.Rows[i].Cells[9].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[9].Value = 9999999999999999;
                 }
 
+                //移動先在庫区分が02以外で、受注コード1,2が空白の場合、9999999999999999を代入
                 if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[7].Value == null && dgv_idou.Rows[i].Cells[8].Value == null && dgv_idou.Rows[i].Cells[9].Value == null)
                 {
                     dgv_idou.Rows[i].Cells[7].Value = 999999;
                     dgv_idou.Rows[i].Cells[8].Value = 9999999999999999;
                     dgv_idou.Rows[i].Cells[9].Value = 9999999999999999;
+                }
+                
+                //移動先在庫区分が02以外で、移動先取引先コードが空白の場合、999999を代入
+                if (dgv_idou.Rows[i].Cells[6].Value.ToString() != "02" && dgv_idou.Rows[i].Cells[7].Value == null)
+                {
+                    dgv_idou.Rows[i].Cells[7].Value = 999999;
                 }
 
             }

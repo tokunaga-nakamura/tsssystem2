@@ -123,6 +123,12 @@
   <data name="tb_today.OutputFormat" xml:space="preserve">
     <value>yyyy年M月d日</value>
   </data>
+  <data name="tb_uriage_date.OutputFormat" xml:space="preserve">
+    <value>yyyy年M月d日</value>
+  </data>
+  <data name="tb_today.OutputFormat" xml:space="preserve">
+    <value>yyyy年M月d日</value>
+  </data>
   <data name="tb_seihin_cd.OutputFormat" xml:space="preserve">
     <value />
   </data>
@@ -130,7 +136,7 @@
     <value />
   </data>
   <data name="tb_uriage_su.OutputFormat" xml:space="preserve">
-    <value>#,##0.00</value>
+    <value>#,##0</value>
   </data>
   <data name="tb_hanbai_tanka.OutputFormat" xml:space="preserve">
     <value>#,##0.00</value>
@@ -161,6 +167,63 @@
   </data>
   <data name="tb_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
+  </data>
+  <data name="tb_seihin_cd.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_seihin_name.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_uriage_su.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_hanbai_tanka.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="tb_uriage_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_kouchin_tanka.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="tb_kouchin_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_hukusizai_tanka.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="tb_hukusizai_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_buhin_tanka.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="tb_buhin_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_kouchin_hukusizai_tanka.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="tb_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_sum_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox10.OutputFormat" xml:space="preserve">
+    <value>yyyy年M月d日</value>
   </data>
   <data name="tb_sum_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
     <value>#,##0</value>

@@ -164,7 +164,8 @@
             this.label10,
             this.label13,
             this.label15,
-            this.label16});
+            this.label16,
+            this.line5});
             this.pageHeader.Height = 0.885416F;
             this.pageHeader.Name = "pageHeader";
             // 
@@ -292,12 +293,12 @@
             // 
             this.label18.Height = 0.09370076F;
             this.label18.HyperLink = null;
-            this.label18.Left = 3.905512F;
+            this.label18.Left = 3.759449F;
             this.label18.Name = "label18";
             this.label18.Style = "font-size: 6pt; text-align: right";
             this.label18.Text = "販売単価";
             this.label18.Top = 0.6980315F;
-            this.label18.Width = 0.3783462F;
+            this.label18.Width = 0.5244093F;
             // 
             // label1
             // 
@@ -469,14 +470,14 @@
             // 
             this.tb_hanbai_tanka.DataField = "hanbai_tanka";
             this.tb_hanbai_tanka.Height = 0.146063F;
-            this.tb_hanbai_tanka.Left = 3.905512F;
+            this.tb_hanbai_tanka.Left = 3.759449F;
             this.tb_hanbai_tanka.Name = "tb_hanbai_tanka";
             this.tb_hanbai_tanka.OutputFormat = resources.GetString("tb_hanbai_tanka.OutputFormat");
             this.tb_hanbai_tanka.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
             this.tb_hanbai_tanka.SummaryGroup = "groupHeader3";
             this.tb_hanbai_tanka.Text = null;
             this.tb_hanbai_tanka.Top = 3.72529E-09F;
-            this.tb_hanbai_tanka.Width = 0.3783464F;
+            this.tb_hanbai_tanka.Width = 0.5244093F;
             // 
             // tb_uriage_kingaku
             // 
@@ -770,8 +771,7 @@
             // 
             this.groupHeader2.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.tb_torihikisaki_cd,
-            this.tb_torihikisaki_cd1,
-            this.line5});
+            this.tb_torihikisaki_cd1});
             this.groupHeader2.DataField = "torihikisaki_cd";
             this.groupHeader2.Height = 0.2708333F;
             this.groupHeader2.Name = "groupHeader2";
@@ -782,12 +782,12 @@
             this.line5.Left = 0F;
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
-            this.line5.Top = 0F;
+            this.line5.Top = 0.8334646F;
             this.line5.Width = 10.88544F;
             this.line5.X1 = 0F;
             this.line5.X2 = 10.88544F;
-            this.line5.Y1 = 0F;
-            this.line5.Y2 = 0F;
+            this.line5.Y1 = 0.8334646F;
+            this.line5.Y2 = 0.8334646F;
             // 
             // groupFooter2
             // 
@@ -798,7 +798,7 @@
             this.textBox8,
             this.textBox9,
             this.line3});
-            this.groupFooter2.Height = 0.3854167F;
+            this.groupFooter2.Height = 0.2708333F;
             this.groupFooter2.Name = "groupFooter2";
             // 
             // textBox5
@@ -879,12 +879,12 @@
             // line3
             // 
             this.line3.Height = 0F;
-            this.line3.Left = 0.1354331F;
+            this.line3.Left = 0F;
             this.line3.LineWeight = 1F;
             this.line3.Name = "line3";
             this.line3.Top = 0F;
-            this.line3.Width = 10.7189F;
-            this.line3.X1 = 0.1354331F;
+            this.line3.Width = 10.85433F;
+            this.line3.X1 = 0F;
             this.line3.X2 = 10.85433F;
             this.line3.Y1 = 0F;
             this.line3.Y2 = 0F;

@@ -958,6 +958,8 @@ namespace TSS_SYSTEM
                //在庫区分が02（ロット在庫）以外なら、受注コード1、2はリードオンリーで色をグレーにする。
                if (zaiko_kbn != "02")
                {
+                   dgv_nyusyukkoidou[3,j].Value = null;
+                   dgv_nyusyukkoidou[4,j].Value = null;
                    dgv_nyusyukkoidou[3,j].Style.BackColor = Color.LightGray;
                    dgv_nyusyukkoidou[4,j].Style.BackColor = Color.LightGray;
                    dgv_nyusyukkoidou[3,j].ReadOnly = true;
