@@ -438,11 +438,11 @@ namespace TSS_SYSTEM
                 else
                 {
                     //ロット在庫
-                    //※ロット在庫の受注番号はロット番号＋注文番号の下4桁
+                    //※ロット在庫の受注番号はロット番号＋"9999999999999999"
                     w_kbn = "02";
                     w_torihikisaki_cd = tss.GetDainichi_cd();
                     w_juchu_cd1 = tss.try_string_to_double(dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd()).ToString("0");
-                    w_juchu_cd2 = tss.StringMidByte(dgv_m.Rows[i].Cells[2].Value.ToString(), 3, 4);
+                    w_juchu_cd2 = "9999999999999999";   //tss.StringMidByte(dgv_m.Rows[i].Cells[2].Value.ToString(), 3, 4);
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
                     w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
@@ -487,7 +487,7 @@ namespace TSS_SYSTEM
             }
             MessageBox.Show("登録しました。（入出庫移動番号:" + w_seq + "）");
             dgv_m.Rows.Clear();
-            tb_syori_date.Text = "";
+            tb_syori_date.Text = DateTime.Now.ToShortDateString();
             lbl_message.Text = "処理日を入力してください。";
             tb_syori_date.Focus();
             lbl_message.ForeColor = Color.Black;
