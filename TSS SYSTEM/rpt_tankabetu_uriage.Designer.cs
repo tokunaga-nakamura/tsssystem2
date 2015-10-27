@@ -51,6 +51,7 @@
             this.label13 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label15 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.line5 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.tb_seihin_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_seihin_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -80,7 +81,6 @@
             this.tb_torihikisaki_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_torihikisaki_cd1 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.groupHeader2 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
-            this.line5 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.groupFooter2 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
             this.textBox5 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox6 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -410,6 +410,19 @@
             this.label16.Top = 0.6980315F;
             this.label16.Width = 0.765748F;
             // 
+            // line5
+            // 
+            this.line5.Height = 0F;
+            this.line5.Left = 0F;
+            this.line5.LineWeight = 1F;
+            this.line5.Name = "line5";
+            this.line5.Top = 0.8334646F;
+            this.line5.Width = 10.88544F;
+            this.line5.X1 = 0F;
+            this.line5.X2 = 10.88544F;
+            this.line5.Y1 = 0.8334646F;
+            this.line5.Y2 = 0.8334646F;
+            // 
             // detail
             // 
             this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -431,7 +444,7 @@
             // 
             // tb_seihin_cd
             // 
-            this.tb_seihin_cd.DataField = "seihin_cd";
+            this.tb_seihin_cd.DataField = "max(seihin_cd)";
             this.tb_seihin_cd.Height = 0.146063F;
             this.tb_seihin_cd.Left = 0F;
             this.tb_seihin_cd.Name = "tb_seihin_cd";
@@ -443,7 +456,7 @@
             // 
             // tb_seihin_name
             // 
-            this.tb_seihin_name.DataField = "seihin_name";
+            this.tb_seihin_name.DataField = "max(seihin_name)";
             this.tb_seihin_name.Height = 0.146063F;
             this.tb_seihin_name.Left = 1.016142F;
             this.tb_seihin_name.Name = "tb_seihin_name";
@@ -455,7 +468,7 @@
             // 
             // tb_uriage_su
             // 
-            this.tb_uriage_su.DataField = "uriage_su";
+            this.tb_uriage_su.DataField = "sum(uriage_su)";
             this.tb_uriage_su.Height = 0.146063F;
             this.tb_uriage_su.Left = 3.13937F;
             this.tb_uriage_su.Name = "tb_uriage_su";
@@ -468,7 +481,7 @@
             // 
             // tb_hanbai_tanka
             // 
-            this.tb_hanbai_tanka.DataField = "hanbai_tanka";
+            this.tb_hanbai_tanka.DataField = "max(hanbai_tanka)";
             this.tb_hanbai_tanka.Height = 0.146063F;
             this.tb_hanbai_tanka.Left = 3.759449F;
             this.tb_hanbai_tanka.Name = "tb_hanbai_tanka";
@@ -481,7 +494,7 @@
             // 
             // tb_uriage_kingaku
             // 
-            this.tb_uriage_kingaku.DataField = "uriage_kingaku";
+            this.tb_uriage_kingaku.DataField = "sum(uriage_kingaku)";
             this.tb_uriage_kingaku.Height = 0.146063F;
             this.tb_uriage_kingaku.Left = 4.283859F;
             this.tb_uriage_kingaku.Name = "tb_uriage_kingaku";
@@ -649,7 +662,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.DataField = "uriage_kingaku";
+            this.textBox1.DataField = "sum(uriage_kingaku)";
             this.textBox1.Height = 0.146063F;
             this.textBox1.Left = 4.283859F;
             this.textBox1.Name = "textBox1";
@@ -745,26 +758,28 @@
             // 
             // tb_torihikisaki_cd
             // 
-            this.tb_torihikisaki_cd.DataField = "torihikisaki_cd";
+            this.tb_torihikisaki_cd.DataField = "max(torihikisaki_cd)";
             this.tb_torihikisaki_cd.Height = 0.146063F;
             this.tb_torihikisaki_cd.Left = 0F;
             this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
             this.tb_torihikisaki_cd.OutputFormat = resources.GetString("tb_torihikisaki_cd.OutputFormat");
             this.tb_torihikisaki_cd.Style = "font-size: 8.25pt; text-align: left; ddo-char-set: 1";
+            this.tb_torihikisaki_cd.SummaryGroup = "groupHeader2";
             this.tb_torihikisaki_cd.Text = null;
-            this.tb_torihikisaki_cd.Top = 0.08307087F;
+            this.tb_torihikisaki_cd.Top = 0F;
             this.tb_torihikisaki_cd.Width = 0.609449F;
             // 
             // tb_torihikisaki_cd1
             // 
-            this.tb_torihikisaki_cd1.DataField = "torihikisaki_name";
+            this.tb_torihikisaki_cd1.DataField = "max(torihikisaki_name)";
             this.tb_torihikisaki_cd1.Height = 0.146063F;
             this.tb_torihikisaki_cd1.Left = 0.6094489F;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.OutputFormat = resources.GetString("tb_torihikisaki_cd1.OutputFormat");
             this.tb_torihikisaki_cd1.Style = "font-size: 8.25pt; text-align: left; ddo-char-set: 1";
+            this.tb_torihikisaki_cd1.SummaryGroup = "groupHeader2";
             this.tb_torihikisaki_cd1.Text = null;
-            this.tb_torihikisaki_cd1.Top = 0.08307087F;
+            this.tb_torihikisaki_cd1.Top = 0F;
             this.tb_torihikisaki_cd1.Width = 1.161417F;
             // 
             // groupHeader2
@@ -772,22 +787,10 @@
             this.groupHeader2.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.tb_torihikisaki_cd,
             this.tb_torihikisaki_cd1});
-            this.groupHeader2.DataField = "torihikisaki_cd";
-            this.groupHeader2.Height = 0.2708333F;
+            this.groupHeader2.DataField = "max(torihikisaki_cd)";
+            this.groupHeader2.GroupKeepTogether = GrapeCity.ActiveReports.SectionReportModel.GroupKeepTogether.FirstDetail;
+            this.groupHeader2.Height = 0.1875F;
             this.groupHeader2.Name = "groupHeader2";
-            // 
-            // line5
-            // 
-            this.line5.Height = 0F;
-            this.line5.Left = 0F;
-            this.line5.LineWeight = 1F;
-            this.line5.Name = "line5";
-            this.line5.Top = 0.8334646F;
-            this.line5.Width = 10.88544F;
-            this.line5.X1 = 0F;
-            this.line5.X2 = 10.88544F;
-            this.line5.Y1 = 0.8334646F;
-            this.line5.Y2 = 0.8334646F;
             // 
             // groupFooter2
             // 
@@ -798,7 +801,7 @@
             this.textBox8,
             this.textBox9,
             this.line3});
-            this.groupFooter2.Height = 0.2708333F;
+            this.groupFooter2.Height = 0.34375F;
             this.groupFooter2.Name = "groupFooter2";
             // 
             // textBox5
@@ -818,7 +821,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.DataField = "uriage_kingaku";
+            this.textBox6.DataField = "sum(uriage_kingaku)";
             this.textBox6.Height = 0.146063F;
             this.textBox6.Left = 4.28386F;
             this.textBox6.Name = "textBox6";
