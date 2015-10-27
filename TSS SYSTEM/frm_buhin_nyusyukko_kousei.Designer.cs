@@ -31,24 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_buhin_nyusyukko_kousei));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_touroku = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tb_seihin_kousei_no = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.tb_suuryo = new System.Windows.Forms.TextBox();
-            this.rb_nyuuko = new System.Windows.Forms.RadioButton();
-            this.rb_syukko = new System.Windows.Forms.RadioButton();
-            this.tb_seihin_kousei_name = new System.Windows.Forms.TextBox();
-            this.dgv_m = new System.Windows.Forms.DataGridView();
-            this.tb_seihin_name = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tb_seihin_name = new System.Windows.Forms.TextBox();
+            this.tb_seihin_kousei_name = new System.Windows.Forms.TextBox();
+            this.rb_syukko = new System.Windows.Forms.RadioButton();
+            this.rb_nyuuko = new System.Windows.Forms.RadioButton();
+            this.tb_suuryo = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_seihin_kousei_no = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_seihin_cd = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -95,6 +95,15 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(85, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(412, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "フリー在庫での入出庫を行います。　※（この画面でロット在庫の入出庫はできません。）";
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -129,30 +138,12 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // btn_syuuryou
-            // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 1;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_touroku
-            // 
-            this.btn_touroku.Location = new System.Drawing.Point(10, 3);
-            this.btn_touroku.Name = "btn_touroku";
-            this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 0;
-            this.btn_touroku.Text = "登録";
-            this.btn_touroku.UseVisualStyleBackColor = true;
-            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
-            // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -175,73 +166,44 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
-            this.splitContainer3.SplitterDistance = 54;
+            this.splitContainer3.SplitterDistance = 53;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(86, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "製品コード";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(308, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(387, 12);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "←入出庫数は正数を入力してください。（出庫の場合も正数で入力してください。）";
             // 
-            // tb_seihin_cd
+            // tb_seihin_name
             // 
-            this.tb_seihin_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_seihin_cd.Location = new System.Drawing.Point(96, 3);
-            this.tb_seihin_cd.Name = "tb_seihin_cd";
-            this.tb_seihin_cd.Size = new System.Drawing.Size(106, 19);
-            this.tb_seihin_cd.TabIndex = 0;
-            this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
-            this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
-            this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
+            this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_seihin_name.Location = new System.Drawing.Point(202, 3);
+            this.tb_seihin_name.Name = "tb_seihin_name";
+            this.tb_seihin_name.Size = new System.Drawing.Size(277, 19);
+            this.tb_seihin_name.TabIndex = 9;
             // 
-            // textBox3
+            // tb_seihin_kousei_name
             // 
-            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(485, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(86, 19);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "製品構成番号";
+            this.tb_seihin_kousei_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(591, 3);
+            this.tb_seihin_kousei_name.Name = "tb_seihin_kousei_name";
+            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(279, 19);
+            this.tb_seihin_kousei_name.TabIndex = 8;
             // 
-            // tb_seihin_kousei_no
+            // rb_syukko
             // 
-            this.tb_seihin_kousei_no.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_seihin_kousei_no.Location = new System.Drawing.Point(571, 3);
-            this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
-            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(20, 19);
-            this.tb_seihin_kousei_no.TabIndex = 1;
-            this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
-            this.tb_seihin_kousei_no.Validated += new System.EventHandler(this.tb_seihin_kousei_no_Validated);
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox5.Location = new System.Drawing.Point(116, 27);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(86, 19);
-            this.textBox5.TabIndex = 4;
-            this.textBox5.TabStop = false;
-            this.textBox5.Text = "入出庫数";
-            // 
-            // tb_suuryo
-            // 
-            this.tb_suuryo.Location = new System.Drawing.Point(202, 27);
-            this.tb_suuryo.Name = "tb_suuryo";
-            this.tb_suuryo.Size = new System.Drawing.Size(100, 19);
-            this.tb_suuryo.TabIndex = 4;
-            this.tb_suuryo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tb_suuryo.Validating += new System.ComponentModel.CancelEventHandler(this.tb_suuryo_Validating);
-            this.tb_suuryo.Validated += new System.EventHandler(this.tb_suuryo_Validated);
+            this.rb_syukko.AutoSize = true;
+            this.rb_syukko.Location = new System.Drawing.Point(63, 28);
+            this.rb_syukko.Name = "rb_syukko";
+            this.rb_syukko.Size = new System.Drawing.Size(47, 16);
+            this.rb_syukko.TabIndex = 3;
+            this.rb_syukko.Text = "出庫";
+            this.rb_syukko.UseVisualStyleBackColor = true;
             // 
             // rb_nyuuko
             // 
@@ -255,23 +217,69 @@
             this.rb_nyuuko.Text = "入庫";
             this.rb_nyuuko.UseVisualStyleBackColor = true;
             // 
-            // rb_syukko
+            // tb_suuryo
             // 
-            this.rb_syukko.AutoSize = true;
-            this.rb_syukko.Location = new System.Drawing.Point(63, 28);
-            this.rb_syukko.Name = "rb_syukko";
-            this.rb_syukko.Size = new System.Drawing.Size(47, 16);
-            this.rb_syukko.TabIndex = 3;
-            this.rb_syukko.Text = "出庫";
-            this.rb_syukko.UseVisualStyleBackColor = true;
+            this.tb_suuryo.Location = new System.Drawing.Point(202, 27);
+            this.tb_suuryo.Name = "tb_suuryo";
+            this.tb_suuryo.Size = new System.Drawing.Size(100, 19);
+            this.tb_suuryo.TabIndex = 4;
+            this.tb_suuryo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_suuryo.Validating += new System.ComponentModel.CancelEventHandler(this.tb_suuryo_Validating);
+            this.tb_suuryo.Validated += new System.EventHandler(this.tb_suuryo_Validated);
             // 
-            // tb_seihin_kousei_name
+            // textBox5
             // 
-            this.tb_seihin_kousei_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_kousei_name.Location = new System.Drawing.Point(591, 3);
-            this.tb_seihin_kousei_name.Name = "tb_seihin_kousei_name";
-            this.tb_seihin_kousei_name.Size = new System.Drawing.Size(279, 19);
-            this.tb_seihin_kousei_name.TabIndex = 8;
+            this.textBox5.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox5.Location = new System.Drawing.Point(116, 27);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(86, 19);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.TabStop = false;
+            this.textBox5.Text = "入出庫数";
+            // 
+            // tb_seihin_kousei_no
+            // 
+            this.tb_seihin_kousei_no.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_seihin_kousei_no.Location = new System.Drawing.Point(571, 3);
+            this.tb_seihin_kousei_no.Name = "tb_seihin_kousei_no";
+            this.tb_seihin_kousei_no.Size = new System.Drawing.Size(20, 19);
+            this.tb_seihin_kousei_no.TabIndex = 1;
+            this.tb_seihin_kousei_no.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_kousei_no_Validating);
+            this.tb_seihin_kousei_no.Validated += new System.EventHandler(this.tb_seihin_kousei_no_Validated);
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox3.Location = new System.Drawing.Point(485, 3);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(86, 19);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "製品構成番号";
+            // 
+            // tb_seihin_cd
+            // 
+            this.tb_seihin_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_seihin_cd.Location = new System.Drawing.Point(96, 3);
+            this.tb_seihin_cd.Name = "tb_seihin_cd";
+            this.tb_seihin_cd.Size = new System.Drawing.Size(106, 19);
+            this.tb_seihin_cd.TabIndex = 0;
+            this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
+            this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
+            this.tb_seihin_cd.Validated += new System.EventHandler(this.tb_seihin_cd_Validated);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(86, 19);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "製品コード";
             // 
             // dgv_m
             // 
@@ -280,36 +288,30 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 378);
+            this.dgv_m.Size = new System.Drawing.Size(880, 379);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
             // 
-            // tb_seihin_name
+            // btn_touroku
             // 
-            this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seihin_name.Location = new System.Drawing.Point(202, 3);
-            this.tb_seihin_name.Name = "tb_seihin_name";
-            this.tb_seihin_name.Size = new System.Drawing.Size(277, 19);
-            this.tb_seihin_name.TabIndex = 9;
+            this.btn_touroku.Location = new System.Drawing.Point(10, 3);
+            this.btn_touroku.Name = "btn_touroku";
+            this.btn_touroku.Size = new System.Drawing.Size(75, 23);
+            this.btn_touroku.TabIndex = 0;
+            this.btn_touroku.Text = "登録";
+            this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
-            // label1
+            // btn_syuuryou
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(412, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "フリー在庫での入出庫を行います。　※（この画面でロット在庫の入出庫はできません。）";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(387, 12);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "←入出庫数は正数を入力してください。（出庫の場合も正数で入力してください。）";
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 1;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
             // frm_buhin_nyusyukko_kousei
             // 
