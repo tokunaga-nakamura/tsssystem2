@@ -19,12 +19,12 @@ namespace TSS_SYSTEM
         public string w_torihikisaki_cd;
         public string w_torihikisaki_name;
         public string w_hiduke;
-        public double w_kurikosi;
-        public double w_uriage;
-        public double w_syouhizei;
-        public double w_nyukin;
-        public double w_zandaka;
-        public double w_seikyu;
+        public decimal w_kurikosi;
+        public decimal w_uriage;
+        public decimal w_syouhizei;
+        public decimal w_nyukin;
+        public decimal w_zandaka;
+        public decimal w_seikyu;
         public string w_mm;
 
         public string in_torihikisaki_cd1;
@@ -144,10 +144,10 @@ namespace TSS_SYSTEM
             if (tb_urikake_no.Text != null && tb_urikake_no.Text != "")
             {
                 //入力された売上番号を"0000000000"形式の文字列に変換
-                double w_double;
-                if (double.TryParse(tb_urikake_no.Text.ToString(), out w_double))
+                decimal w_decimal;
+                if (decimal.TryParse(tb_urikake_no.Text.ToString(), out w_decimal))
                 {
-                    tb_urikake_no.Text = w_double.ToString("0000000000");
+                    tb_urikake_no.Text = w_decimal.ToString("0000000000");
                 }
                 else
                 {

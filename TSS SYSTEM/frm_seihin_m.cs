@@ -242,11 +242,11 @@ namespace TSS_SYSTEM
 
         private void tanka_goukei_disp()
         {
-            double w_dou;
-            double w_goukei = 0;
+            decimal w_dou;
+            decimal w_goukei = 0;
             for (int i = 0; i < dgv_tanka.Rows.Count; i++)
             {
-                if (double.TryParse(dgv_tanka.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
+                if (decimal.TryParse(dgv_tanka.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
                 {
                     w_goukei = w_goukei + w_dou;
                 }
@@ -702,11 +702,11 @@ namespace TSS_SYSTEM
         private bool chk_genka()
         {
             bool bl = true; //戻り値
-            double db;
-            if (double.TryParse(tb_genka.Text.ToString(), out db))
+            decimal db;
+            if (decimal.TryParse(tb_genka.Text.ToString(), out db))
             {
                 //変換出来たら、lgにその数値が入る
-                if(db > 9999999999.99 || db < -999999999.99)
+                if(db > decimal.Parse("9999999999.99") || db < decimal.Parse("-999999999.99"))
                 {
                     bl = false;
                 }
@@ -725,11 +725,11 @@ namespace TSS_SYSTEM
         private bool chk_hanbai_tanka()
         {
             bool bl = true; //戻り値
-            double db;
-            if (double.TryParse(tb_hanbai_tanka.Text.ToString(), out db))
+            decimal db;
+            if (decimal.TryParse(tb_hanbai_tanka.Text.ToString(), out db))
             {
                 //変換出来たら、lgにその数値が入る
-                if (db > 9999999999.99 || db < -999999999.99)
+                if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-999999999.99"))
                 {
                     bl = false;
                 }

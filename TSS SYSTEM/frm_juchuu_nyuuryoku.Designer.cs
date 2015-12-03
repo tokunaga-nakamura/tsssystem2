@@ -56,6 +56,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_kaijyo = new System.Windows.Forms.Button();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.tb_update_user_cd = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -90,7 +91,6 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_kaijyo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -345,6 +345,7 @@
             this.tb_juchu_su.Size = new System.Drawing.Size(89, 19);
             this.tb_juchu_su.TabIndex = 4;
             this.tb_juchu_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_juchu_su.Validated += new System.EventHandler(this.tb_juchu_su_Validated);
             // 
             // tb_seihin_name
             // 
@@ -499,6 +500,16 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "関連情報";
+            // 
+            // btn_kaijyo
+            // 
+            this.btn_kaijyo.Location = new System.Drawing.Point(5, 140);
+            this.btn_kaijyo.Name = "btn_kaijyo";
+            this.btn_kaijyo.Size = new System.Drawing.Size(86, 23);
+            this.btn_kaijyo.TabIndex = 17;
+            this.btn_kaijyo.Text = "売上完了解除";
+            this.btn_kaijyo.UseVisualStyleBackColor = true;
+            this.btn_kaijyo.Click += new System.EventHandler(this.btn_kaijyo_Click);
             // 
             // tb_update_datetime
             // 
@@ -905,16 +916,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_kaijyo
-            // 
-            this.btn_kaijyo.Location = new System.Drawing.Point(5, 140);
-            this.btn_kaijyo.Name = "btn_kaijyo";
-            this.btn_kaijyo.Size = new System.Drawing.Size(86, 23);
-            this.btn_kaijyo.TabIndex = 17;
-            this.btn_kaijyo.Text = "売上完了解除";
-            this.btn_kaijyo.UseVisualStyleBackColor = true;
-            this.btn_kaijyo.Click += new System.EventHandler(this.btn_kaijyo_Click);
             // 
             // frm_juchuu_nyuuryoku
             // 

@@ -68,6 +68,15 @@ namespace TSS_SYSTEM
 
         private void list_make()
         {
+            //if (tb_juchu_cd1.Text != "" && tb_juchu_cd1.Text != "")
+            //{
+            //    DataTable dt_juchu_su = new DataTable();
+
+
+
+            //}
+            
+            
             DataTable w_dt_seihin_kousei = new DataTable();
 
             //製品構成情報を部品コードでグループ化し部品毎の合計使用数のdtを作成する
@@ -108,14 +117,14 @@ namespace TSS_SYSTEM
             string w_dt_ttl_zaiko_su;   //合計在庫数
             string w_dt_hituyou_su;     //必要数
             string w_dt_sa;             //差
-            double w_dou_siyou_su;      //必要数計算用
-            double w_dou_seisan_su;     //必要数計算用
-            double w_dou_ttl_zaiko_su;  //差計算用
-            double w_dou_hituyou_su;    //差計算用
-            double w_seisan_kanou_su;   //生産可能数計算用
-            double w_seisan_kanou_su2;  //生産可能数計算用
+            decimal w_dou_siyou_su;      //必要数計算用
+            decimal w_dou_seisan_su;     //必要数計算用
+            decimal w_dou_ttl_zaiko_su;  //差計算用
+            decimal w_dou_hituyou_su;    //差計算用
+            decimal w_seisan_kanou_su;   //生産可能数計算用
+            decimal w_seisan_kanou_su2;  //生産可能数計算用
 
-            w_seisan_kanou_su = 9999999999.99;
+            w_seisan_kanou_su = decimal.Parse("9999999999.99");
             foreach(DataRow dr in w_dt_seihin_kousei.Rows)
             {
                 //dgv作成にあたり、必要な情報を集める
@@ -128,7 +137,14 @@ namespace TSS_SYSTEM
                 //フリー在庫数
                 w_dt_free_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "01");
                 //指定ロット在庫数
-                w_dt_sitei_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02",tb_torihikisaki_cd.Text.ToString(),tb_juchu_cd1.Text.ToString(),tb_juchu_cd2.Text.ToString());
+                if (tb_juchu_cd2.Text == "")
+                {
+                    w_dt_sitei_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02", tb_torihikisaki_cd.Text.ToString(), tb_juchu_cd1.Text.ToString(), "9999999999999999");
+                }
+                else
+                {
+                    w_dt_sitei_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02", tb_torihikisaki_cd.Text.ToString(), tb_juchu_cd1.Text.ToString(), tb_juchu_cd2.Text.ToString());
+                }
                 //ロット在庫数
                 w_dt_lot_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "02");
                 //その他在庫数
@@ -136,7 +152,7 @@ namespace TSS_SYSTEM
                 //合計在庫数
                 w_dt_ttl_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "**");
                 //必要数
-                if(double.TryParse(w_dt_siyou_su, out w_dou_siyou_su) && double.TryParse(tb_seisan_sitai_daisuu.Text, out w_dou_seisan_su))
+                if (decimal.TryParse(w_dt_siyou_su, out w_dou_siyou_su) && decimal.TryParse(tb_seisan_sitai_daisuu.Text, out w_dou_seisan_su))
                 {
                     w_dt_hituyou_su = (w_dou_siyou_su * w_dou_seisan_su).ToString("0.00");
                 }
@@ -145,7 +161,7 @@ namespace TSS_SYSTEM
                     w_dt_hituyou_su = "0.00";
                 }
                 //差
-                if(double.TryParse(w_dt_ttl_zaiko_su, out w_dou_ttl_zaiko_su) && double.TryParse(w_dt_hituyou_su, out w_dou_hituyou_su))
+                if (decimal.TryParse(w_dt_ttl_zaiko_su, out w_dou_ttl_zaiko_su) && decimal.TryParse(w_dt_hituyou_su, out w_dou_hituyou_su))
                 {
                     w_dt_sa = (w_dou_ttl_zaiko_su - w_dou_hituyou_su).ToString("0.00");
                 }
@@ -161,6 +177,17 @@ namespace TSS_SYSTEM
                 w_dt_row["free_zaiko_su"] = w_dt_free_zaiko_su;
                 w_dt_row["sitei_lot_zaiko_su"] = w_dt_sitei_lot_zaiko_su;
                 w_dt_row["lot_zaiko_su"] = w_dt_lot_zaiko_su;
+                
+                if (w_dt_sitei_lot_zaiko_su != "" && w_dt_lot_zaiko_su != "")
+                {
+                    w_dt_row["lot_zaiko_su"] = (decimal.Parse(w_dt_lot_zaiko_su) - decimal.Parse(w_dt_sitei_lot_zaiko_su)).ToString();
+                }
+                else
+                {
+                    //w_dt_row["lot_zaiko_su"] = (decimal.Parse(w_dt_lot_zaiko_su) - decimal.Parse(w_dt_sitei_lot_zaiko_su)).ToString();
+                }
+                //w_dt_row["lot_zaiko_su"] = w_dt_lot_zaiko_su;
+                
                 w_dt_row["sonota_zaiko_su"] = w_dt_sonota_zaiko_su;
                 w_dt_row["ttl_zaiko_su"] = w_dt_ttl_zaiko_su;
                 w_dt_row["hituyou_su"] = w_dt_hituyou_su;
@@ -173,8 +200,15 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    w_seisan_kanou_su2 = Math.Truncate(w_dou_ttl_zaiko_su / w_dou_siyou_su);
-
+                    if (w_dou_siyou_su == 0)
+                    {
+                        w_seisan_kanou_su2 = w_dou_ttl_zaiko_su;
+                    }
+                    else
+                    {
+                        w_seisan_kanou_su2 = Math.Truncate(w_dou_ttl_zaiko_su / w_dou_siyou_su);
+                    }
+ 
                 }
                 if(w_seisan_kanou_su > w_seisan_kanou_su2)
                 {
@@ -216,7 +250,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns[2].HeaderText = "使用数";
             dgv_m.Columns[3].HeaderText = "フリー在庫数";
             dgv_m.Columns[4].HeaderText = "指定ロット在庫数";
-            dgv_m.Columns[5].HeaderText = "ロット在庫数";
+            dgv_m.Columns[5].HeaderText = "他ロット在庫数";
             dgv_m.Columns[6].HeaderText = "その他在庫数";
             dgv_m.Columns[7].HeaderText = "合計在庫数";
             dgv_m.Columns[8].HeaderText = "必要数";
@@ -230,6 +264,12 @@ namespace TSS_SYSTEM
             dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
+
+
+
+
         }
 
         private void btn_list_hanei_Click(object sender, EventArgs e)
@@ -349,6 +389,7 @@ namespace TSS_SYSTEM
                 tb_juchu_cd1.Enabled = true;
                 tb_juchu_cd2_midasi.Enabled = true;
                 tb_juchu_cd2.Enabled = true;
+                tb_juchu_su.Enabled = true;
             }
             else
             {
@@ -358,6 +399,7 @@ namespace TSS_SYSTEM
                 tb_juchu_cd1.Enabled = false;
                 tb_juchu_cd2_midasi.Enabled = false;
                 tb_juchu_cd2.Enabled = false;
+                tb_juchu_su.Enabled = false;
             }
         }
 
@@ -371,6 +413,62 @@ namespace TSS_SYSTEM
                 frm_bm.ShowDialog(this);
                 frm_bm.Dispose();
             }
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+
+                frm_seihin_buhin_zaiko frm_rpt = new frm_seihin_buhin_zaiko();
+
+                //子画面のプロパティに値をセットする
+                frm_rpt.ppt_dt = w_dt_m;
+
+                if (tb_torihikisaki_cd.Text == "")
+                {
+                    frm_rpt.w_hd00 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd00 = tb_torihikisaki_cd.Text;
+                }
+
+
+                if (tb_juchu_cd1.Text == "")
+                {
+                    frm_rpt.w_hd20 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd20 = tb_juchu_cd1.Text;
+                }
+
+                if (tb_juchu_cd2.Text == "")
+                {
+                    frm_rpt.w_hd21 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd21 = tb_juchu_cd2.Text;
+                }
+
+                if (tb_seisan_sitai_daisuu.Text == "")
+                {
+                    frm_rpt.w_hd30 = "指定なし";
+                }  
+                else
+                {
+                    frm_rpt.w_hd30 = tb_seisan_sitai_daisuu.Text;
+                }
+
+                frm_rpt.w_hd10 = tb_seihin_cd.Text;
+                frm_rpt.w_hd11 = tb_seihin_name.Text;
+
+
+                frm_rpt.ShowDialog();
+                //子画面から値を取得する
+                frm_rpt.Dispose();
+
+            
         }
 
 

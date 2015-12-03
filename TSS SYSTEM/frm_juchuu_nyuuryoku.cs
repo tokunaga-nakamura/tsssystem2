@@ -165,9 +165,9 @@ namespace TSS_SYSTEM
                 cb_seisan_jisseki.Checked = false;
             }
             tb_bikou.Text = in_dt.Rows[0]["bikou"].ToString();
-            tb_seisan_su.Text = tss.try_string_to_double(in_dt.Rows[0]["seisan_su"].ToString()).ToString("#,###,###,###.##");
-            tb_nouhin_su.Text = tss.try_string_to_double(in_dt.Rows[0]["nouhin_su"].ToString()).ToString("#,###,###,###.##");
-            tb_uriage_su.Text = tss.try_string_to_double(in_dt.Rows[0]["uriage_su"].ToString()).ToString("#,###,###,##0.00");
+            tb_seisan_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["seisan_su"].ToString()).ToString("#,###,###,###.##");
+            tb_nouhin_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["nouhin_su"].ToString()).ToString("#,###,###,###.##");
+            tb_uriage_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["uriage_su"].ToString()).ToString("#,###,###,##0.00");
             tb_uriage_kanryou_flg.Text = in_dt.Rows[0]["uriage_kanryou_flg"].ToString();
             tb_delete_flg.Text = in_dt.Rows[0]["delete_flg"].ToString();
             tb_kousin_riyuu.Text = "";
@@ -216,6 +216,7 @@ namespace TSS_SYSTEM
             dgv_kousin_rireki.DataSource = null;
 
             tb_nouhin_su.Text = "";
+            tb_ttl_nouhin_su.Text = "";
         }
 
         private void nounyuu_schedule_disp()
@@ -671,11 +672,11 @@ namespace TSS_SYSTEM
         private bool chk_juchu_su()
         {
             bool bl = true; //戻り値
-            double db;
-            if (double.TryParse(tb_juchu_su.Text.ToString(), out db))
+            decimal db;
+            if (decimal.TryParse(tb_juchu_su.Text.ToString(), out db))
             {
                 //変換出来たら、lgにその数値が入る
-                if (db > 9999999999.99 || db < -999999999.99)
+                if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-999999999.99"))
                 {
                     bl = false;
                 }
@@ -738,11 +739,11 @@ namespace TSS_SYSTEM
                 }
 
                 //納品数
-                double db;
-                if (double.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[2].Value.ToString(), out db))
+                decimal db;
+                if (decimal.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[2].Value.ToString(), out db))
                 {
                     //変換出来たら、lgにその数値が入る
-                    if (db > 9999999999.99 || db < -999999999.99)
+                    if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-999999999.99"))
                     {
                         MessageBox.Show("納品数は0から9999999999.99の範囲で入力してください。");
                         dgv_nounyuu_schedule.CurrentCell = dgv_nounyuu_schedule[2,i];
@@ -814,19 +815,19 @@ namespace TSS_SYSTEM
         {
             //受注数と納品数のアンマッチチェック
             bool bl = true; //戻り値用
-            double w_dou_nouhin_su_ttl = 0;
-            double w_double_dgv;
-            double w_double_tb;
+            decimal w_dou_nouhin_su_ttl = 0;
+            decimal w_decimal_dgv;
+            decimal w_decimal_tb;
             for (int i = 0; i < dgv_nounyuu_schedule.Rows.Count - 1; i++)
             {
-                if (double.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[2].Value.ToString(), out w_double_dgv))
+                if (decimal.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[2].Value.ToString(), out w_decimal_dgv))
                 {
-                    w_dou_nouhin_su_ttl = w_dou_nouhin_su_ttl + w_double_dgv;
+                    w_dou_nouhin_su_ttl = w_dou_nouhin_su_ttl + w_decimal_dgv;
                 }
             }
-            if (double.TryParse(tb_juchu_su.Text.ToString(), out w_double_tb))
+            if (decimal.TryParse(tb_juchu_su.Text.ToString(), out w_decimal_tb))
             {
-                if(w_double_tb != w_dou_nouhin_su_ttl)
+                if (w_decimal_tb != w_dou_nouhin_su_ttl)
                 {
                     bl = false;
                 }
@@ -849,14 +850,14 @@ namespace TSS_SYSTEM
             //反対に、現在の売上完了フラグが立っている時、
             //受注数と売上数が不一致の場合、ユーザーに確認を求める
             bool bl = true; //戻り値用
-            double w_double_juchu_su;
-            double w_double_uriage_su;
-            double.TryParse(tb_juchu_su.Text.ToString(), out w_double_juchu_su);
-            double.TryParse(tb_uriage_su.Text.ToString(), out w_double_uriage_su);
+            decimal w_decimal_juchu_su;
+            decimal w_decimal_uriage_su;
+            decimal.TryParse(tb_juchu_su.Text.ToString(), out w_decimal_juchu_su);
+            decimal.TryParse(tb_uriage_su.Text.ToString(), out w_decimal_uriage_su);
 
             if(tb_uriage_kanryou_flg.Text.ToString() != "1")
             {
-                if(w_double_juchu_su == w_double_uriage_su)
+                if (w_decimal_juchu_su == w_decimal_uriage_su)
                 {
                     DialogResult result = MessageBox.Show("受注数と売上済数が同じになります。売上完了にしてもよろしいですか？", "確認", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
@@ -878,7 +879,7 @@ namespace TSS_SYSTEM
             }
             else
             {
-                if(w_double_juchu_su != w_double_uriage_su)
+                if (w_decimal_juchu_su != w_decimal_uriage_su)
                 {
                     DialogResult result = MessageBox.Show("受注数と売上済数が不一致になります。売上完了を解除してもよろしいですか？", "確認", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
@@ -1193,7 +1194,7 @@ namespace TSS_SYSTEM
         private bool rireki_insert(string in_kousin_riyuu)
         {
             bool out_bl = true;
-            double w_dou_seq;
+            decimal w_dou_seq;
             w_dou_seq = tss.GetSeq("04");
             if(w_dou_seq != 0)
             {
@@ -1444,11 +1445,11 @@ namespace TSS_SYSTEM
 
         private void nouhin_goukei()
         {
-            double w_dou_ttl = 0;
-            double w_dou_gyou;
+            decimal w_dou_ttl = 0;
+            decimal w_dou_gyou;
             for(int i=0;i< dgv_nounyuu_schedule.Rows.Count -1;i++)
             {
-                if (double.TryParse(dgv_nounyuu_schedule.Rows[i].Cells["nouhin_yotei_su"].Value.ToString(), out w_dou_gyou))
+                if (decimal.TryParse(dgv_nounyuu_schedule.Rows[i].Cells["nouhin_yotei_su"].Value.ToString(), out w_dou_gyou))
                 {
                     w_dou_ttl = w_dou_ttl + w_dou_gyou;
                 }
@@ -1521,6 +1522,16 @@ namespace TSS_SYSTEM
         private void frm_juchuu_nyuuryoku_Load(object sender, EventArgs e)
         {
             btn_kaijyo.Enabled = false;
+            
+
+        }
+
+        private void tb_juchu_su_Validated(object sender, EventArgs e)
+        {
+            ////受注数量入力後、カンマ区切り数にする
+            //decimal number = decimal.Parse(tb_juchu_su.Text.ToString()); // 変換前の数値
+            //string str = String.Format("{0:#,0}", number); // 変換後
+            //tb_juchu_su.Text = str;
         }
     }
 }

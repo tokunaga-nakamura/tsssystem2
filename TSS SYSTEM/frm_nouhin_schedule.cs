@@ -537,9 +537,9 @@ namespace TSS_SYSTEM
                         //見つけたら日に足す
                         if (DateTime.TryParse(dr["nouhin_yotei_date"].ToString(), out w_date))
                         {
-                            //w_dt_scheduleの日の値をdoubleに変換
-                            double w_dou1 = new double();
-                            if (double.TryParse(w_dt_schedule.Rows[w_int_gyou][w_date.Day.ToString("00")].ToString(), out w_dou1))
+                            //w_dt_scheduleの日の値をdecimalに変換
+                            decimal w_dou1 = new decimal();
+                            if (decimal.TryParse(w_dt_schedule.Rows[w_int_gyou][w_date.Day.ToString("00")].ToString(), out w_dou1))
                             {
                                 //変換された場合は何もしない
                             }
@@ -548,9 +548,9 @@ namespace TSS_SYSTEM
                                 //変換されなかったという事はnullだったんじゃないかな？
                                 w_dou1 = 0;
                             }
-                            //納品マスタの納品数をdoubleに変換
-                            double w_dou2 = new double();
-                            if (double.TryParse(dr["nouhin_yotei_su"].ToString(), out w_dou2))
+                            //納品マスタの納品数をdecimalに変換
+                            decimal w_dou2 = new decimal();
+                            if (decimal.TryParse(dr["nouhin_yotei_su"].ToString(), out w_dou2))
                             {
                                 w_dt_schedule.Rows[w_int_gyou][w_date.Day.ToString("00")] = w_dou1 + w_dou2; 
                             }
@@ -694,7 +694,7 @@ namespace TSS_SYSTEM
             w_dt_history.Columns.Add("torihikisaki_cd");
             w_dt_history.Columns.Add("juchu_cd1");
             w_dt_history.Columns.Add("juchu_cd2");
-            w_dt_history.Columns.Add("kousin_no", Type.GetType("System.Double"));
+            w_dt_history.Columns.Add("kousin_no", Type.GetType("System.Decimal"));
             w_dt_history.Columns.Add("kousin_naiyou");
             w_dt_history.Columns.Add("create_datetime");
 

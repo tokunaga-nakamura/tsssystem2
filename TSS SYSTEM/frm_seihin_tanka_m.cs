@@ -350,7 +350,7 @@ namespace TSS_SYSTEM
                                        + dgv_m.Rows[i].Cells[0].Value.ToString() + "','"
                                        + dgv_m.Rows[i].Cells[2].Value.ToString() + "','"
                                        //+ dgv_m.Rows[i].Cells[4].Value.ToString() + "','"
-                                       + double.Parse(dgv_m.Rows[i].Cells[4].Value.ToString()) + "','"
+                                       + decimal.Parse(dgv_m.Rows[i].Cells[4].Value.ToString()) + "','"
                                        + dgv_m.Rows[i].Cells[5].Value.ToString() + "','"
                                        + tss.user_cd + "',SYSDATE)");
 
@@ -384,7 +384,7 @@ namespace TSS_SYSTEM
                                        + dgv_m.Rows[i].Cells[0].Value.ToString() + "','"
                                        + dgv_m.Rows[i].Cells[2].Value.ToString() + "','"
                                        //+ dgv_m.Rows[i].Cells[4].Value.ToString() + "','"
-                                       + double.Parse(dgv_m.Rows[i].Cells[4].Value.ToString()) + "','"
+                                       + decimal.Parse(dgv_m.Rows[i].Cells[4].Value.ToString()) + "','"
                                        + dgv_m.Rows[i].Cells[5].Value.ToString() + "','"
                                        + tb_create_user_cd.Text.ToString() + "',"
                                        + "to_date('" + tb_create_datetime.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
@@ -528,10 +528,10 @@ namespace TSS_SYSTEM
             //空白は許容する
             if (in_str != "" && in_str != null)
             {
-                double w_tanka;
-                if (double.TryParse(in_str, out w_tanka))
+                decimal w_tanka;
+                if (decimal.TryParse(in_str, out w_tanka))
                 {
-                    if (w_tanka > 9999999999.99 || w_tanka < -999999999.99)
+                    if (w_tanka > decimal.Parse("9999999999.99") || w_tanka < decimal.Parse("-9999999999.99"))
                     {
                         bl = false;
                     }
@@ -563,11 +563,11 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        double w_dou;
+                        decimal w_dou;
                     
-                        if (double.TryParse(dgv_m.Rows[i].Cells[4].Value.ToString(), out w_dou))
+                        if (decimal.TryParse(dgv_m.Rows[i].Cells[4].Value.ToString(), out w_dou))
                             {
-                                dt_w2.Rows[i][0] = double.Parse(dgv_m.Rows[i].Cells[4].Value.ToString());
+                                dt_w2.Rows[i][0] = decimal.Parse(dgv_m.Rows[i].Cells[4].Value.ToString());
                             } 
                     }
                 }
@@ -627,11 +627,11 @@ namespace TSS_SYSTEM
 
         private void tanka_goukei_disp()
         {
-            double w_dou;
-            double w_tanka_goukei = 0;
+            decimal w_dou;
+            decimal w_tanka_goukei = 0;
             for (int i = 0; i < dgv_m.Rows.Count - 1; i++)
             {
-                if (double.TryParse(dgv_m.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
+                if (decimal.TryParse(dgv_m.Rows[i].Cells["tanka"].Value.ToString(), out w_dou))
                 {
                     w_tanka_goukei = w_tanka_goukei + w_dou;
                 }

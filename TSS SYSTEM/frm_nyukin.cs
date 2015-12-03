@@ -13,8 +13,8 @@ namespace TSS_SYSTEM
     public partial class frm_nyukin : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
-        double w_nyukin_no;         //連番退避用
-        double nyukin_goukei_w;     //入金合計額退避用
+        decimal w_nyukin_no;         //連番退避用
+        decimal nyukin_goukei_w;     //入金合計額退避用
         //int w_seikyu_sime_dd;       //請求締日
         //int w_seikyuu_flg = 0;      //請求済レコードがあったら1
         
@@ -159,12 +159,12 @@ namespace TSS_SYSTEM
             }
 
             //入力された売上番号を"0000000000"形式の文字列に変換
-            double w_double;
+            decimal w_decimal;
 
-            if (double.TryParse(tb_nyukin_no.Text.ToString(), out w_double))
+            if (decimal.TryParse(tb_nyukin_no.Text.ToString(), out w_decimal))
             {
                 //nyukin_no_disp();
-                tb_nyukin_no.Text = w_double.ToString("0000000000");
+                tb_nyukin_no.Text = w_decimal.ToString("0000000000");
             }
             else
             {
@@ -269,7 +269,7 @@ namespace TSS_SYSTEM
 
 
                     dgv_m.DataSource = dt_work;
-                    double goukei = double.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString());
+                    decimal goukei = decimal.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString());
                     tb_nyukin_goukei.Text = goukei.ToString("#,0##");
                     
                     if (tb_nyukin_goukei.Text =="")
@@ -278,7 +278,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        nyukin_goukei_w = double.Parse(tb_nyukin_goukei.Text.ToString());
+                        nyukin_goukei_w = decimal.Parse(tb_nyukin_goukei.Text.ToString());
                     }
                 }
             }
@@ -336,11 +336,11 @@ namespace TSS_SYSTEM
 
         private void nyukin_goukei_disp()
         {
-            double w_dou;
-            double w_uriage_goukei = 0;
+            decimal w_dou;
+            decimal w_uriage_goukei = 0;
             for (int i = 0; i < dgv_m.Rows.Count - 1; i++)
             {
-                if (double.TryParse(dgv_m.Rows[i].Cells["uriage_kingaku"].Value.ToString(), out w_dou))
+                if (decimal.TryParse(dgv_m.Rows[i].Cells["uriage_kingaku"].Value.ToString(), out w_dou))
                 {
                     w_uriage_goukei = w_uriage_goukei + w_dou;
                 }
@@ -438,7 +438,7 @@ namespace TSS_SYSTEM
                                        + tb_torihikisaki_cd.Text.ToString() + "','"
                                        + dgv_m.Rows[i].Cells[0].Value.ToString() + "','"
                                        + tb_nyukin_date.Text.ToString() + "','"
-                                       + double.Parse(dgv_m.Rows[i].Cells[2].Value.ToString()) + "','"
+                                       + decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString()) + "','"
                                        + dgv_m.Rows[i].Cells[3].Value.ToString() + "','"
                                        + tss.user_cd + "',SYSDATE)");
 
@@ -456,7 +456,7 @@ namespace TSS_SYSTEM
 
                 
                 //取引先マスタの未処理入金額の更新
-                double misyori_nyukingaku;
+                decimal misyori_nyukingaku;
                 DataTable dt_work_2 = tss.OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");//取引先マスタの未処理金額
                 if (dt_work_2.Rows[0][0] == null || dt_work_2.Rows[0][0].ToString() == "")
                 {
@@ -464,7 +464,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    misyori_nyukingaku = double.Parse(dt_work_2.Rows[0][0].ToString()) + double.Parse(tb_nyukin_goukei.Text.ToString());
+                    misyori_nyukingaku = decimal.Parse(dt_work_2.Rows[0][0].ToString()) + decimal.Parse(tb_nyukin_goukei.Text.ToString());
                 }
                 
                 tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
@@ -476,14 +476,14 @@ namespace TSS_SYSTEM
             //重複がある（入金の修正処理）
             if (dt_work.Rows.Count != 0)
             {
-                double nyukin_goukei_w2 = double.Parse(tb_nyukin_goukei.Text.ToString());
+                decimal nyukin_goukei_w2 = decimal.Parse(tb_nyukin_goukei.Text.ToString());
 
                 //入金合計額が変わった場合、取引先マスタの未処理入金額更新メソッドを動かす。
                 if(nyukin_goukei_w2 != nyukin_goukei_w)
                 {
-                     double sagaku = nyukin_goukei_w2 - nyukin_goukei_w;
-                    
-                     double misyori_nyukingaku;
+                    decimal sagaku = nyukin_goukei_w2 - nyukin_goukei_w;
+
+                    decimal misyori_nyukingaku;
                　　  DataTable  dt_work_3 = tss.OracleSelect("select misyori_nyukingaku from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");//取引先マスタの未処理金額
                   
                      if (dt_work_3.Rows[0][0] == null || dt_work_3.Rows[0][0].ToString() == "")
@@ -492,7 +492,7 @@ namespace TSS_SYSTEM
                       }
                      else
                       {
-                        misyori_nyukingaku = double.Parse(dt_work_3.Rows[0][0].ToString()) + sagaku ;
+                          misyori_nyukingaku = decimal.Parse(dt_work_3.Rows[0][0].ToString()) + sagaku;
                       }
                 
                       tss.OracleUpdate("UPDATE TSS_torihikisaki_m SET misyori_nyukingaku = '" + misyori_nyukingaku + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'");
@@ -616,10 +616,10 @@ namespace TSS_SYSTEM
                 for (int i = 0; i < dgvrc - 1; i++)
                 {
                     dt_w2.Rows.Add();
-                    dt_w2.Rows[i][0] = double.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
+                    dt_w2.Rows[i][0] = decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
                 }
 
-                double goukei = double.Parse(dt_w2.Compute("SUM(nyukingoukei)", null).ToString());
+                decimal goukei = decimal.Parse(dt_w2.Compute("SUM(nyukingoukei)", null).ToString());
                 tb_nyukin_goukei.Text = goukei.ToString("#,0##");
                 
             }
@@ -657,7 +657,7 @@ namespace TSS_SYSTEM
             {
                 if (dgv_m.Rows[e.RowIndex].Cells[2].Value != null && dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
                 {
-                    dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_double(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0");
+                    dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_decimal(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0");
                 }
 
             }

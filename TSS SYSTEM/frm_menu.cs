@@ -519,5 +519,21 @@ namespace TSS_SYSTEM
             frm_tbu.Dispose();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //在庫けしこみごみプロ
+            ZAIKO_KESI frm_zai = new ZAIKO_KESI();
+            frm_zai.ShowDialog(this);
+            frm_zai.Dispose();
+        }
+
+        private void tb_zaiko_chousei_Click(object sender, EventArgs e)
+        {
+            //在庫調整
+            ZAIKO_CHOUSEI frm_zai_cho = new ZAIKO_CHOUSEI();
+            frm_zai_cho.ShowDialog(this);
+            frm_zai_cho.Dispose();
+        }
+
     }
 }

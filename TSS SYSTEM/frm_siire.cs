@@ -15,7 +15,7 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
         string w_str = "06";
-        double w_siire_no;
+        decimal w_siire_no;
        
 
         public frm_siire()
@@ -117,7 +117,7 @@ namespace TSS_SYSTEM
         private void SEQ()
         {
             DataTable dt_work = new DataTable();
-            double w_seq;
+            decimal w_seq;
             w_seq = tss.GetSeq(w_str);
             if (w_seq == 0)
             {
@@ -209,9 +209,9 @@ namespace TSS_SYSTEM
                 //仕入単価
                 if (e.ColumnIndex == 3)
                 {
-                    double w_siire_tanka;
+                    decimal w_siire_tanka;
                     int i = e.RowIndex;
-                    if (double.TryParse(dgv.Rows[i].Cells[3].Value.ToString(), out w_siire_tanka))
+                    if (decimal.TryParse(dgv.Rows[i].Cells[3].Value.ToString(), out w_siire_tanka))
                     {
                         dgv.Rows[i].Cells[3].Value = w_siire_tanka.ToString("0.00");
                     }
@@ -221,8 +221,8 @@ namespace TSS_SYSTEM
                     //仕入金額計算
 
                     //仕入数量の小数点第三位を切捨て
-                    double db = double.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
-                    double dValue = ToRoundDown(db, 2);
+                    decimal db = decimal.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
+                    decimal dValue = ToRoundDown(db, 2);
                     dgv_siire.Rows[i].Cells[2].Value = dValue;
 
 
@@ -233,14 +233,14 @@ namespace TSS_SYSTEM
 
 
                     //仕入単価の小数点第三位を切捨て
-                    double db2 = double.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
-                    double dValue2 = ToRoundDown(db2, 2);
+                    decimal db2 = decimal.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
+                    decimal dValue2 = ToRoundDown(db2, 2);
                     dgv_siire.Rows[i].Cells[3].Value = dValue2;
 
 
-                    double suryou;
-                    double tanka;
-                    double siire_kingaku;
+                    decimal suryou;
+                    decimal tanka;
+                    decimal siire_kingaku;
 
                     suryou = dValue;
                     tanka = dValue2;
@@ -310,8 +310,8 @@ namespace TSS_SYSTEM
                     //仕入金額計算
 
                     //仕入数量の小数点第三位を切捨て
-                    double db = double.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
-                    double dValue = ToRoundDown(db, 2);
+                    decimal db = decimal.Parse(dgv_siire.Rows[i].Cells[2].Value.ToString());
+                    decimal dValue = ToRoundDown(db, 2);
                     dgv_siire.Rows[i].Cells[2].Value = dValue;
 
                     
@@ -322,14 +322,14 @@ namespace TSS_SYSTEM
                     
                     
                     //仕入単価の小数点第三位を切捨て
-                    double db2 = double.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
-                    double dValue2 = ToRoundDown(db2, 2);
+                    decimal db2 = decimal.Parse(dgv_siire.Rows[i].Cells[3].Value.ToString());
+                    decimal dValue2 = ToRoundDown(db2, 2);
                     dgv_siire.Rows[i].Cells[3].Value = dValue2;
 
 
-                    double suryou;
-                    double tanka;
-                    double siire_kingaku;
+                    decimal suryou;
+                    decimal tanka;
+                    decimal siire_kingaku;
 
                     suryou = dValue;
                     tanka = dValue2;
@@ -406,22 +406,25 @@ namespace TSS_SYSTEM
              siire_goukei_disp();
         }
         //データグリッドビューに入力された数値の小数点以下第三桁を切り捨てる
-        public static double ToRoundDown(double dValue, int iDigits)
+        public static decimal ToRoundDown(decimal dValue, int iDigits)
         {
+            //decimal dCoef = System.Math.Pow(10, iDigits);
             double dCoef = System.Math.Pow(10, iDigits);
 
-            return dValue > 0 ? System.Math.Floor(dValue * dCoef) / dCoef :
-                                System.Math.Ceiling(dValue * dCoef) / dCoef;
+            decimal dCoef2 = decimal.Parse(dCoef.ToString());
+
+            return dValue > 0 ? System.Math.Floor(dValue * dCoef2) / dCoef2 :
+                                System.Math.Ceiling(dValue * dCoef2) / dCoef2;
         }
 
 
         private void siire_goukei_disp()
         {
-            double w_dou;
-            double w_siire_goukei = 0;
+            decimal w_dou;
+            decimal w_siire_goukei = 0;
             for (int i = 0; i < dgv_siire.Rows.Count - 1; i++)
             {
-                if (double.TryParse(dgv_siire.Rows[i].Cells["siire_kingaku"].Value.ToString(), out w_dou))
+                    if (decimal.TryParse(dgv_siire.Rows[i].Cells["siire_kingaku"].Value.ToString(), out w_dou))
                 {
                     w_siire_goukei = w_siire_goukei + w_dou;
                 }
@@ -576,6 +579,7 @@ namespace TSS_SYSTEM
                 tb_create_datetime.Clear();
                 tb_update_user_cd.Clear();
                 tb_update_datetime.Clear();
+                tb_siire_goukei.Clear();
                 tb_siire_no.Text = w_siire_no.ToString("0000000000");
 
                 return;
@@ -642,6 +646,7 @@ namespace TSS_SYSTEM
                     tb_create_datetime.Clear();
                     tb_update_user_cd.Clear();
                     tb_update_datetime.Clear();
+                    tb_siire_goukei.Clear();
                     tb_siire_no.Text = w_siire_no.ToString("0000000000");
                     
                     return;
@@ -762,11 +767,11 @@ namespace TSS_SYSTEM
 
 
             //入力された売上番号を"0000000000"形式の文字列に変換
-            double w_double;
+            decimal w_decimal;
 
-            if (double.TryParse(tb_siire_no.Text.ToString(), out w_double))
+            if (decimal.TryParse(tb_siire_no.Text.ToString(), out w_decimal))
             {
-                tb_siire_no.Text = w_double.ToString("0000000000");
+                tb_siire_no.Text = w_decimal.ToString("0000000000");
             }
             else
             {
@@ -1175,10 +1180,10 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値
 
-            double w_siire_su;
-            if (double.TryParse(in_str, out w_siire_su))
+            decimal w_siire_su;
+            if (decimal.TryParse(in_str, out w_siire_su))
             {
-                if (w_siire_su > 9999999999.99 || w_siire_su < -999999999.99)
+                if (w_siire_su > decimal.Parse("9999999999.99") || w_siire_su < decimal.Parse("-9999999999.99"))
                 {
                     bl = false;
                 }
@@ -1194,10 +1199,10 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値
 
-            double w_tanka;
-            if (double.TryParse(in_str, out w_tanka))
+            decimal w_tanka;
+            if (decimal.TryParse(in_str, out w_tanka))
             {
-                if (w_tanka > 9999999999.99 || w_tanka < -999999999.99)
+                if (w_tanka > decimal.Parse("9999999999.99") || w_tanka < decimal.Parse("-9999999999.99"))
                 {
                     bl = false;
                 }

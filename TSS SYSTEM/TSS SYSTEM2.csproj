@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -69,6 +84,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,6 +131,12 @@
     <Compile Include="frm_buhin_to_seihin.Designer.cs">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_buhin_to_seihin_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_to_seihin_preview.Designer.cs">
+      <DependentUpon>frm_buhin_to_seihin_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_buhin_zaiko_juchu_check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +160,12 @@
     </Compile>
     <Compile Include="frm_search_siire.Designer.cs">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seihin_buhin_zaiko.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_buhin_zaiko.Designer.cs">
+      <DependentUpon>frm_seihin_buhin_zaiko.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_seihin_kousei_preview.cs">
       <SubType>Form</SubType>
@@ -361,6 +389,12 @@
     <Compile Include="frm_tankabetu_uriage_preview.Designer.cs">
       <DependentUpon>frm_tankabetu_uriage_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_tankabetu_uriage_t_prev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_tankabetu_uriage_t_prev.Designer.cs">
+      <DependentUpon>frm_tankabetu_uriage_t_prev.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_torihikisaki_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,11 +451,23 @@
     <Compile Include="rpt_buhin_nyusyukkoidou.Designer.cs">
       <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_buhin_to_seihin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_buhin_to_seihin.Designer.cs">
+      <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_nouhin_schedule.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rpt_nouhin_schedule.Designer.cs">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_seihin_buhin_zaiko.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_seihin_buhin_zaiko.Designer.cs">
+      <DependentUpon>rpt_seihin_buhin_zaiko.cs</DependentUpon>
     </Compile>
     <Compile Include="rpt_seihin_kousei.cs">
       <SubType>Component</SubType>
@@ -441,6 +487,12 @@
     <Compile Include="rpt_tankabetu_uriage.Designer.cs">
       <DependentUpon>rpt_tankabetu_uriage.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_tankabetu_uriage_t.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_tankabetu_uriage_t.Designer.cs">
+      <DependentUpon>rpt_tankabetu_uriage_t.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_uriage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -448,6 +500,18 @@
       <DependentUpon>rpt_uriage.cs</DependentUpon>
     </Compile>
     <Compile Include="TssSystemLibrary.cs" />
+    <Compile Include="ZAIKO_CHOUSEI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZAIKO_CHOUSEI.Designer.cs">
+      <DependentUpon>ZAIKO_CHOUSEI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZAIKO_KESI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZAIKO_KESI.Designer.cs">
+      <DependentUpon>ZAIKO_KESI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frm_buhin_nyusyukkoidou_preview.resx">
       <DependentUpon>frm_buhin_nyusyukkoidou_preview.cs</DependentUpon>
     </EmbeddedResource>
@@ -466,6 +530,9 @@
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_to_seihin_preview.resx">
+      <DependentUpon>frm_buhin_to_seihin_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_zaiko_juchu_check.resx">
       <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_search_siire.resx">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_buhin_zaiko.resx">
+      <DependentUpon>frm_seihin_buhin_zaiko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seihin_kousei_preview.resx">
       <DependentUpon>frm_seihin_kousei_preview.cs</DependentUpon>
@@ -589,6 +659,9 @@
     <EmbeddedResource Include="frm_tankabetu_uriage_preview.resx">
       <DependentUpon>frm_tankabetu_uriage_preview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_tankabetu_uriage_t_prev.resx">
+      <DependentUpon>frm_tankabetu_uriage_t_prev.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_torihikisaki_m.resx">
       <DependentUpon>frm_torihikisaki_m.cs</DependentUpon>
     </EmbeddedResource>
@@ -626,8 +699,14 @@
     <EmbeddedResource Include="rpt_buhin_nyusyukkoidou.resx">
       <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_buhin_to_seihin.resx">
+      <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_nouhin_schedule.resx">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_seihin_buhin_zaiko.resx">
+      <DependentUpon>rpt_seihin_buhin_zaiko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seihin_kousei.resx">
       <DependentUpon>rpt_seihin_kousei.cs</DependentUpon>
@@ -638,9 +717,22 @@
     <EmbeddedResource Include="rpt_tankabetu_uriage.resx">
       <DependentUpon>rpt_tankabetu_uriage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_tankabetu_uriage_t.resx">
+      <DependentUpon>rpt_tankabetu_uriage_t.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_uriage.resx">
       <DependentUpon>rpt_uriage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ZAIKO_CHOUSEI.resx">
+      <DependentUpon>ZAIKO_CHOUSEI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZAIKO_KESI.resx">
+      <DependentUpon>ZAIKO_KESI.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="frm.Designer.tankabetu_uriage_goukei_preview" />
+    <None Include="frm.tankabetu_uriage_goukei_preview">
+      <SubType>Form</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -657,6 +749,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 および x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

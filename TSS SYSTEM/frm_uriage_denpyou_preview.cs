@@ -63,15 +63,15 @@ namespace TSS_SYSTEM
             if (tb_uriage_no.Text == null || tb_uriage_no.Text == "")
             {
                 //MessageBox.Show("売上番号を入力してください。");
-                e.Cancel = true;
+                //e.Cancel = true;
             }
             else
             {
                 //入力された売上番号を"0000000000"形式の文字列に変換
-                double w_double;
-                if (double.TryParse(tb_uriage_no.Text.ToString(), out w_double))
+                decimal w_decimal;
+                if (decimal.TryParse(tb_uriage_no.Text.ToString(), out w_decimal))
                 {
-                    tb_uriage_no.Text = w_double.ToString("0000000000");
+                    tb_uriage_no.Text = w_decimal.ToString("0000000000");
                 }
                 else
                 {
@@ -170,10 +170,10 @@ namespace TSS_SYSTEM
         private void chk_uriage_no()
         {
             //入力された売上番号を"0000000000"形式の文字列に変換
-            double w_double;
-            if (double.TryParse(tb_uriage_no.Text.ToString(), out w_double))
+            decimal w_decimal;
+            if (decimal.TryParse(tb_uriage_no.Text.ToString(), out w_decimal))
             {
-                tb_uriage_no.Text = w_double.ToString("0000000000");
+                tb_uriage_no.Text = w_decimal.ToString("0000000000");
                 viewer1.Focus();
             }
             else

@@ -37,7 +37,7 @@ namespace TSS_SYSTEM
         private void SEQ()
         {
             DataTable dt_work = new DataTable();
-            double w_seq;
+            decimal w_seq;
             w_seq = tss.GetSeq(w_str);
             if (w_seq == 0)
             {
@@ -246,14 +246,14 @@ namespace TSS_SYSTEM
                 bool bl6 = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                     + "03" + "','"
                                     + tb_seq.Text.ToString() + "','"
-                                    + (i + 1) + "','"
-                                    + dtp_buhin_syori_date.Value.ToShortDateString() + "','"
+                                    + (i + 1) + "',"
+                                    + "to_date('" + dtp_buhin_syori_date.Value.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                                     + dgv_idou.Rows[i].Cells[0].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[2].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[3].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[4].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[5].Value.ToString() + "','"
-                                    + double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) + "','"
+                                    + decimal.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) + "','"
                                     + dgv_idou.Rows[i].Cells[6].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[7].Value.ToString() + "','"
                                     + dgv_idou.Rows[i].Cells[8].Value.ToString() + "','"
@@ -287,7 +287,7 @@ namespace TSS_SYSTEM
                 {
 
                     //出庫処理の場合は、数量をマイナスにする
-                    double syukko = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) * -1;
+                    decimal syukko = decimal.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString()) * -1;
 
 
                     bool bl3 = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
@@ -302,10 +302,10 @@ namespace TSS_SYSTEM
 
                 if (dt_work5.Rows.Count != 0)
                 {
-                    double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                    double zaikosu2 = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
+                    decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                    decimal zaikosu2 = decimal.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
 
-                    double zaikosu3 = zaikosu1 - zaikosu2;
+                    decimal zaikosu3 = zaikosu1 - zaikosu2;
 
                     bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + dgv_idou.Rows[i].Cells[3].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[4].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[5].Value.ToString() + "'");
                 }
@@ -342,10 +342,10 @@ namespace TSS_SYSTEM
 
                 if (dt_work5.Rows.Count != 0)
                 {
-                    double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                    double zaikosu2 = double.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
+                    decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                    decimal zaikosu2 = decimal.Parse(dgv_idou.Rows[i].Cells[10].Value.ToString());
 
-                    double zaikosu3 = zaikosu1 + zaikosu2;
+                    decimal zaikosu3 = zaikosu1 + zaikosu2;
 
                     bool bl5 = tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + zaikosu3 + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_idou.Rows[i].Cells[0].Value.ToString() + "' and torihikisaki_cd = '" + dgv_idou.Rows[i].Cells[7].Value.ToString() + "' and juchu_cd1 = '" + dgv_idou.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd2 = '" + dgv_idou.Rows[i].Cells[9].Value.ToString() + "'");
 
@@ -903,7 +903,7 @@ namespace TSS_SYSTEM
             {
                 if (dgv_idou.Rows[e.RowIndex].Cells[10].Value != null && dgv_idou.Rows[e.RowIndex].Cells[10].Value.ToString() != "")
                 {
-                    dgv_idou.Rows[e.RowIndex].Cells[10].Value = tss.try_string_to_double(dgv_idou.Rows[e.RowIndex].Cells[10].Value.ToString()).ToString("#,0.00");
+                    dgv_idou.Rows[e.RowIndex].Cells[10].Value = tss.try_string_to_decimal(dgv_idou.Rows[e.RowIndex].Cells[10].Value.ToString()).ToString("#,0.00");
                 }
 
             }

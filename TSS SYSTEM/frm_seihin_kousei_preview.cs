@@ -70,6 +70,11 @@ namespace TSS_SYSTEM
             this.vwr.Document = rpt.Document;
         }
 
+        private void btn_syuuryou_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
       
     }
 }
