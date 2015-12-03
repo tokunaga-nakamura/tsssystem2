@@ -279,7 +279,7 @@ namespace TSS_SYSTEM
             }
             else
             {
-                if (out_02 != "10" && out_02 != "20" && out_02 != "21" && out_02 != "40" && out_02 != "50" && out_02 != "60")
+                if (out_02 != "10" && out_02 != "20" && out_02 != "21" && out_02 != "40" && out_02 != "50" && out_02 != "60" && out_02 != "30")
                 {
                     Console.Beep(1500, 500);
                     lbl_message.Text = "発注分類区分が適用外の伝票です。（" + out_02 + " ）";
@@ -430,9 +430,9 @@ namespace TSS_SYSTEM
                         return;
                     }
                     //フリー在庫に読み込んだ入庫数を加えて書き込む
-                    double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
-                    double w_dou2 = tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
-                    double w_dou3 = w_dou1 + w_dou2;
+                    decimal w_dou1 = tss.try_string_to_decimal(w_dt.Rows[0]["zaiko_su"].ToString());
+                    decimal w_dou2 = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
+                    decimal w_dou3 = w_dou1 + w_dou2;
                     tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[15].Value.ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                 }
                 else
@@ -441,7 +441,7 @@ namespace TSS_SYSTEM
                     //※ロット在庫の受注番号はロット番号＋"9999999999999999"
                     w_kbn = "02";
                     w_torihikisaki_cd = tss.GetDainichi_cd();
-                    w_juchu_cd1 = tss.try_string_to_double(dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd()).ToString("0");
+                    w_juchu_cd1 = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd()).ToString("0");
                     w_juchu_cd2 = "9999999999999999";   //tss.StringMidByte(dgv_m.Rows[i].Cells[2].Value.ToString(), 3, 4);
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
@@ -454,15 +454,15 @@ namespace TSS_SYSTEM
                                                  + w_torihikisaki_cd + "','"
                                                  + w_juchu_cd1 + "','"
                                                  + w_juchu_cd2 + "','"
-                                                 + tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
+                                                 + tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
                                                  + tss.user_cd + "',SYSDATE)");                    
                     }
                     else
                     {
                         //既存
-                        double w_dou1 = tss.try_string_to_double(w_dt.Rows[0]["zaiko_su"].ToString());
-                        double w_dou2 = tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
-                        double w_dou3 = w_dou1 + w_dou2;
+                        decimal w_dou1 = tss.try_string_to_decimal(w_dt.Rows[0]["zaiko_su"].ToString());
+                        decimal w_dou2 = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
+                        decimal w_dou3 = w_dou1 + w_dou2;
                         tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
                     }
                 }
@@ -478,7 +478,7 @@ namespace TSS_SYSTEM
                                         + w_torihikisaki_cd + "','"
                                         + w_juchu_cd1 + "','"
                                         + w_juchu_cd2 + "','"
-                                        + tss.try_string_to_double(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
+                                        + tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
                                         + dgv_m.Rows[i].Cells[3].Value.ToString().TrimEnd() + "','"
                                         + tss.StringMidByte(dgv_m.Rows[i].Cells[18].Value.ToString(),0,254) + "','"
                                         + "01" + "','"
@@ -550,10 +550,10 @@ namespace TSS_SYSTEM
             //空白は許容する
             if (in_str != "" && in_str != null)
             {
-                double w_uriage_su;
-                if (double.TryParse(in_str, out w_uriage_su))
+                decimal w_uriage_su;
+                if (decimal.TryParse(in_str, out w_uriage_su))
                 {
-                    if (w_uriage_su > 9999999999.99 || w_uriage_su < -999999999.99)
+                    if (w_uriage_su > decimal.Parse("9999999999.99") || w_uriage_su < decimal.Parse ("-999999999.99"))
                     {
                         bl = false;
                     }
@@ -571,8 +571,8 @@ namespace TSS_SYSTEM
             //指示数（入庫数）
             if (e.ColumnIndex == 11)
             {
-                double w_suryou;
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[11].Value.ToString(), out w_suryou))
+                decimal w_suryou;
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[11].Value.ToString(), out w_suryou))
                 {
                     dgv_m.Rows[e.RowIndex].Cells[11].Value = w_suryou.ToString("0.00");
                 }

@@ -147,10 +147,10 @@ namespace TSS_SYSTEM
             string w_dt_syori_su;       //処理数
             string w_dt_final_zaiko_su; //差
 
-            double w_dou_siyou_su;      //必要数計算用
-            double w_dou_syori_su;      //必要数計算用
-            double w_dou_ttl_zaiko_su;  //差計算用
-            double w_dou_hituyou_su;    //差計算用
+            decimal w_dou_siyou_su;      //必要数計算用
+            decimal w_dou_syori_su;      //必要数計算用
+            decimal w_dou_ttl_zaiko_su;  //差計算用
+            decimal w_dou_hituyou_su;    //差計算用
 
             foreach (DataRow dr in w_dt_seihin_kousei.Rows)
             {
@@ -170,7 +170,7 @@ namespace TSS_SYSTEM
                 //合計在庫数
                 w_dt_ttl_zaiko_su = tss.get_zaiko(dr["buhin_cd"].ToString(), "**");
                 //処理数
-                if (double.TryParse(w_dt_siyou_su, out w_dou_siyou_su) && double.TryParse(tb_suuryo.Text, out w_dou_syori_su))
+                if (decimal.TryParse(w_dt_siyou_su, out w_dou_siyou_su) && decimal.TryParse(tb_suuryo.Text, out w_dou_syori_su))
                 {
                     w_dt_syori_su = (w_dou_siyou_su * w_dou_syori_su).ToString("0.00");
                 }
@@ -179,7 +179,7 @@ namespace TSS_SYSTEM
                     w_dt_syori_su = "0.00";
                 }
                 //最終在庫数
-                if (double.TryParse(w_dt_ttl_zaiko_su, out w_dou_ttl_zaiko_su) && double.TryParse(w_dt_syori_su, out w_dou_hituyou_su))
+                if (decimal.TryParse(w_dt_ttl_zaiko_su, out w_dou_ttl_zaiko_su) && decimal.TryParse(w_dt_syori_su, out w_dou_hituyou_su))
                 {
                     if(rb_nyuuko.Checked == true)
                     {
@@ -321,10 +321,10 @@ namespace TSS_SYSTEM
             //空白は許容する
             if (in_str != "" && in_str != null)
             {
-                double w_su;
-                if (double.TryParse(in_str, out w_su))
+                decimal w_su;
+                if (decimal.TryParse(in_str, out w_su))
                 {
-                    if (w_su > 9999999999.99 || w_su < -999999999.99)
+                    if (w_su > decimal.Parse("9999999999.99") || w_su < decimal.Parse("-9999999999.99"))
                     {
                         bl = false;
                     }
@@ -341,15 +341,15 @@ namespace TSS_SYSTEM
         {
             if (e.ColumnIndex == 7)
             {
-                double w_su;
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString(), out w_su))
+                decimal w_su;
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[7].Value.ToString(), out w_su))
                 {
                     dgv_m.Rows[e.RowIndex].Cells[7].Value = w_su.ToString("0.00");
                     //最終在庫を計算・表示
-                    double w_dou_ttl_zaiko_su;
-                    double w_dou_suryou;
-                    double w_dou_final_zaiko_su;
-                    if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString(), out w_dou_ttl_zaiko_su) && double.TryParse(dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out w_dou_suryou))
+                    decimal w_dou_ttl_zaiko_su;
+                    decimal w_dou_suryou;
+                    decimal w_dou_final_zaiko_su;
+                    if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[6].Value.ToString(), out w_dou_ttl_zaiko_su) && decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out w_dou_suryou))
                     {
                         if (rb_nyuuko.Checked == true)
                         {
@@ -433,9 +433,9 @@ namespace TSS_SYSTEM
         private void touroku()
         {
             bool w_bl;
-            double w_suryo;
+            decimal w_suryo;
             //在庫履歴書込み用の番号取得
-            double w_rireki_no;
+            decimal w_rireki_no;
             int w_sign;
             string w_bikou;
             string w_nyusyukko;
@@ -455,7 +455,7 @@ namespace TSS_SYSTEM
             for(int i= 0;i < dgv_m.Rows.Count;i++)
             {
                 w_rireki_gyou = i + 1;
-                w_suryo = tss.try_string_to_double(dgv_m.Rows[i].Cells[7].Value.ToString()) * w_sign;
+                w_suryo = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[7].Value.ToString()) * w_sign;
                 w_bikou = "製品構成を使用した一括" + w_nyusyukko + " 製品CD:" + tb_seihin_cd.Text.ToString() + " 製品構成NO:" + tb_seihin_kousei_no.Text.ToString() + " 処理数:" + tb_suuryo.Text.ToString() + " 使用数:" + dgv_m.Rows[i].Cells[2].Value.ToString();
                 w_bl = tss.zaiko_proc(dgv_m.Rows[i].Cells[0].Value.ToString(),"01","999999","9999999999999999","9999999999999999",w_suryo,w_rireki_no,w_rireki_gyou,w_bikou,"03");
                 if(w_bl == false)

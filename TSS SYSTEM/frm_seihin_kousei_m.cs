@@ -305,7 +305,7 @@ namespace TSS_SYSTEM
                 }
 
 
-                if (dgv_seihin_kousei.Rows[i].Cells[3].Value == null || dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString() == "" || double.Parse(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) > 9999999999.99 || double.Parse(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) < -9999999999.99 || tss.StringByte(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) > 16)
+                if (dgv_seihin_kousei.Rows[i].Cells[3].Value == null || dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString() == "" || decimal.Parse(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) < decimal.Parse("-9999999999.99") || tss.StringByte(dgv_seihin_kousei.Rows[i].Cells[3].Value.ToString()) > 16)
                 {
                     MessageBox.Show("使用数量の値が異常です。（10桁以内。小数点以下2桁以内で入力）");
                     dgv_seihin_kousei.Focus();

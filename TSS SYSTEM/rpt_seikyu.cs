@@ -37,13 +37,13 @@ namespace TSS_SYSTEM
             //ヘッダー情報を割り当て
             tb_torihikisaki_cd.Text = w_dr["torihikisaki_cd"].ToString();
             tb_hiduke.Text = w_dr["uriage_simebi"].ToString();
-            tb_kurikosi.Text = tss.try_string_to_double(w_dr["kurikosigaku"].ToString()).ToString("#,##0");
-            tb_uriage.Text = tss.try_string_to_double(w_dr["uriage_kingaku"].ToString()).ToString("#,##0");
-            tb_syouhizei.Text = tss.try_string_to_double(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
-            tb_nyukin.Text = tss.try_string_to_double(w_dr["nyukingaku2"].ToString()).ToString("#,##0");
-            tb_zandaka.Text = tss.try_string_to_double(w_dr["urikake_zandaka"].ToString()).ToString("#,##0");
-            tb_seikyu.Text = (tss.try_string_to_double(w_dr["uriage_kingaku"].ToString()) + tss.try_string_to_double(w_dr["syouhizeigaku"].ToString())).ToString("#,##0");
-            tb_mm.Text = tss.try_string_to_double(w_dr["uriage_simebi"].ToString().Substring(5, 2)).ToString("##");
+            tb_kurikosi.Text = tss.try_string_to_decimal(w_dr["kurikosigaku"].ToString()).ToString("#,##0");
+            tb_uriage.Text = tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()).ToString("#,##0");
+            tb_syouhizei.Text = tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
+            tb_nyukin.Text = tss.try_string_to_decimal(w_dr["nyukingaku2"].ToString()).ToString("#,##0");
+            tb_zandaka.Text = tss.try_string_to_decimal(w_dr["urikake_zandaka"].ToString()).ToString("#,##0");
+            tb_seikyu.Text = (tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()) + tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString())).ToString("#,##0");
+            tb_mm.Text = tss.try_string_to_decimal(w_dr["uriage_simebi"].ToString().Substring(5, 2)).ToString("##");
             tb_torihikisaki_name.Text = tss.get_torihikisaki_name(w_dr["torihikisaki_cd"].ToString()) + "  様";
             tb_urikake_no.Text = w_dr["urikake_no"].ToString();
             //フッター情報（消費税）を割り当て

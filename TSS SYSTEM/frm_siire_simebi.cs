@@ -136,7 +136,7 @@ namespace TSS_SYSTEM
             string hasu_kbn = dt_work.Rows[0][1].ToString();
             string hasu_syori_tani = dt_work.Rows[0][2].ToString();
             //double zeiritu = double.Parse(dt_work2.Rows[0][0].ToString());
-            double zeiritu = tss.get_syouhizeiritu(dt);
+            decimal zeiritu = tss.get_syouhizeiritu(dt);
 
 
             if (dt_work4.Rows.Count != 0 )
@@ -145,15 +145,15 @@ namespace TSS_SYSTEM
                 {
                     dt_work3 = tss.OracleSelect("select siire_kingaku from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     //消費税計算カラム追加
-                    dt_work3.Columns.Add("syouhizei", typeof(double));
+                    dt_work3.Columns.Add("syouhizei", typeof(decimal));
                     int rc = dt_work3.Rows.Count;
-                    double siire_goukei;
-                    double syouhizei_goukei;
+                    decimal siire_goukei;
+                    decimal syouhizei_goukei;
 
 
                     for (int i = 0; i < rc; i++)
                     {
-                        double syouhizeigaku = double.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
+                        decimal syouhizeigaku = decimal.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
 
                         //端数処理 円未満の処理
                         if (hasu_syori_tani == "0" && hasu_kbn == "0")
@@ -213,8 +213,8 @@ namespace TSS_SYSTEM
                     object obj = dt_work3.Compute("SUM([siire_kingaku])", null);
                     object obj2 = dt_work3.Compute("SUM([syouhizei])", null);
 
-                    siire_goukei = double.Parse(obj.ToString());
-                    syouhizei_goukei = double.Parse(obj2.ToString());
+                    siire_goukei = decimal.Parse(obj.ToString());
+                    syouhizei_goukei = decimal.Parse(obj2.ToString());
 
                     dgv_siire_simebi.Rows[0].Cells[0].Value = tb_siire_simebi.Text;
                     dgv_siire_simebi.Rows[0].Cells[1].Value = siire_goukei;
@@ -237,15 +237,15 @@ namespace TSS_SYSTEM
                 {
                     dt_work3 = tss.OracleSelect("select siire_no,sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "' GROUP　BY　siire_no  ORDER BY siire_no");
                     //消費税計算カラム追加
-                    dt_work3.Columns.Add("syouhizei", typeof(double));
+                    dt_work3.Columns.Add("syouhizei", typeof(decimal));
                     int rc = dt_work3.Rows.Count;
-                    double siire_goukei;
-                    double syouhizei_goukei;
+                    decimal siire_goukei;
+                    decimal syouhizei_goukei;
 
 
                     for (int i = 0; i < rc; i++)
                     {
-                        double syouhizeigaku = double.Parse(dt_work3.Rows[i][1].ToString()) * zeiritu;
+                        decimal syouhizeigaku = decimal.Parse(dt_work3.Rows[i][1].ToString()) * zeiritu;
 
                         //端数処理 円未満の処理
                         if (hasu_syori_tani == "0" && hasu_kbn == "0")
@@ -306,8 +306,8 @@ namespace TSS_SYSTEM
                     object obj = dt_work3.Compute("SUM([SUM(siire_kingaku)])", null);
                     object obj2 = dt_work3.Compute("SUM([syouhizei])", null);
 
-                    siire_goukei = double.Parse(obj.ToString());
-                    syouhizei_goukei = double.Parse(obj2.ToString());
+                    siire_goukei = decimal.Parse(obj.ToString());
+                    syouhizei_goukei = decimal.Parse(obj2.ToString());
 
                     dgv_siire_simebi.Rows[0].Cells[0].Value = tb_siire_simebi.Text;
                     dgv_siire_simebi.Rows[0].Cells[1].Value = siire_goukei;
@@ -330,15 +330,15 @@ namespace TSS_SYSTEM
 
                     dt_work3 = tss.OracleSelect("select sum(siire_kingaku) from tss_siire_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     //消費税計算カラム追加
-                    dt_work3.Columns.Add("syouhizei", typeof(double));
+                    dt_work3.Columns.Add("syouhizei", typeof(decimal));
                     int rc = dt_work3.Rows.Count;
-                    double siire_goukei;
-                    double syouhizei_goukei;
+                    decimal siire_goukei;
+                    decimal syouhizei_goukei;
 
 
                     for (int i = 0; i < rc; i++)
                     {
-                        double syouhizeigaku = double.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
+                        decimal syouhizeigaku = decimal.Parse(dt_work3.Rows[i][0].ToString()) * zeiritu;
 
 
                         //端数処理 円未満の処理
@@ -401,8 +401,8 @@ namespace TSS_SYSTEM
                     object obj = dt_work3.Compute("SUM([SUM(siire_kingaku)])", null);
                     object obj2 = dt_work3.Compute("SUM([syouhizei])", null);
 
-                    siire_goukei = double.Parse(obj.ToString());
-                    syouhizei_goukei = double.Parse(obj2.ToString());
+                    siire_goukei = decimal.Parse(obj.ToString());
+                    syouhizei_goukei = decimal.Parse(obj2.ToString());
 
                     dgv_siire_simebi.Rows[0].Cells[0].Value = tb_siire_simebi.Text;
                     dgv_siire_simebi.Rows[0].Cells[1].Value = siire_goukei;
@@ -471,19 +471,19 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                if (dgv_siire_simebi.Rows[i].Cells[1].Value == null || double.Parse(dgv_siire_simebi.Rows[i].Cells[1].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siire_simebi.Rows[i].Cells[1].Value.ToString()) < -999999999.99)
+                if (dgv_siire_simebi.Rows[i].Cells[1].Value == null || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[1].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[1].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("仕入金額（税抜）の値が異常です");
                     return;
                 }
 
-                if (dgv_siire_simebi.Rows[i].Cells[2].Value == null || double.Parse(dgv_siire_simebi.Rows[i].Cells[2].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siire_simebi.Rows[i].Cells[2].Value.ToString()) < -999999999.99)
+                if (dgv_siire_simebi.Rows[i].Cells[2].Value == null || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[2].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[2].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("消費税額の値が異常です");
                     return;
                 }
 
-                if (dgv_siire_simebi.Rows[i].Cells[3].Value == null || double.Parse(dgv_siire_simebi.Rows[i].Cells[3].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siire_simebi.Rows[i].Cells[3].Value.ToString()) < -999999999.99)
+                if (dgv_siire_simebi.Rows[i].Cells[3].Value == null || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[3].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siire_simebi.Rows[i].Cells[3].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("仕入金額合計の値が異常です");
                     return;
@@ -500,9 +500,9 @@ namespace TSS_SYSTEM
             //買掛マスタにレコードがない場合
             if(rc == 0)
             {
-        
-                    double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
-                    double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
+
+                decimal siirekingaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
+                decimal syouhizeigaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
                     
 
 
@@ -552,8 +552,8 @@ namespace TSS_SYSTEM
 
 
                 //直近の仕入締日の買掛残高を繰越額に入れる
-                double siirekingaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
-                double syouhizeigaku = double.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
+                decimal siirekingaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
+                decimal syouhizeigaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
 
                 if (result == DialogResult.OK)
                 {
@@ -601,7 +601,7 @@ namespace TSS_SYSTEM
                         syouhizei_gaku = "0";
                     }
 
-                    double keisan = double.Parse(siiregaku) + double.Parse(syouhizei_gaku) - double.Parse(siharaigaku);
+                    decimal keisan = decimal.Parse(siiregaku) + decimal.Parse(syouhizei_gaku) - decimal.Parse(siharaigaku);
 
                     if (keisan == 0)
                     {

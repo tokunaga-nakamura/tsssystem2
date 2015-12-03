@@ -14,7 +14,7 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         //string w_str = "07";
-        double w_siharai_no;
+        decimal w_siharai_no;
         string w_mibarai;
 
         public frm_siharai()
@@ -86,11 +86,11 @@ namespace TSS_SYSTEM
             DataGridView dgv = (DataGridView)sender;
             int i = e.RowIndex;
 
-            double siharaigaku = new double();
-            double tesuryou = new double();
-            double sousai = new double();
-            double siharai_goukei = new double();
-            double siharai_soukei = new double();
+            decimal siharaigaku = new decimal();
+            decimal tesuryou = new decimal();
+            decimal sousai = new decimal();
+            decimal siharai_goukei = new decimal();
+            decimal siharai_soukei = new decimal();
 
 
             if (dgv.Rows[i].Cells[3].Value == DBNull.Value || dgv.Rows[i].Cells[4].Value == DBNull.Value || dgv.Rows[i].Cells[5].Value == DBNull.Value)
@@ -99,9 +99,9 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            siharaigaku = double.Parse(dgv.Rows[i].Cells[3].Value.ToString());
-            tesuryou = double.Parse(dgv.Rows[i].Cells[4].Value.ToString());
-            sousai = double.Parse(dgv.Rows[i].Cells[5].Value.ToString());
+            siharaigaku = decimal.Parse(dgv.Rows[i].Cells[3].Value.ToString());
+            tesuryou = decimal.Parse(dgv.Rows[i].Cells[4].Value.ToString());
+            sousai = decimal.Parse(dgv.Rows[i].Cells[5].Value.ToString());
             siharai_goukei = siharaigaku + tesuryou + sousai;
 
 
@@ -136,10 +136,10 @@ namespace TSS_SYSTEM
 
             for (int j = 0; j < rc2; j++)
             {
-                siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
+                siharai_soukei = siharai_soukei + decimal.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
                 tb_siharai_goukei.Text = siharai_soukei.ToString("#,0.##");
 
-                tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0.##");
+                tb_kurikosi_zandaka.Text = (decimal.Parse(tb_mibarai_goukei.Text.ToString()) - decimal.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0.##");
             }
         }
 
@@ -205,25 +205,25 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                if (dgv_siharai.Rows[i].Cells[3].Value == null || double.Parse(dgv_siharai.Rows[i].Cells[3].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siharai.Rows[i].Cells[3].Value.ToString()) < -999999999.99)
+                if (dgv_siharai.Rows[i].Cells[3].Value == null || decimal.Parse(dgv_siharai.Rows[i].Cells[3].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siharai.Rows[i].Cells[3].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("支払金額の値が異常です");
                     return;
                 }
 
-                if (dgv_siharai.Rows[i].Cells[4].Value == null || double.Parse(dgv_siharai.Rows[i].Cells[4].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siharai.Rows[i].Cells[4].Value.ToString()) < -999999999.99)
+                if (dgv_siharai.Rows[i].Cells[4].Value == null || decimal.Parse(dgv_siharai.Rows[i].Cells[4].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siharai.Rows[i].Cells[4].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("手数料の値が異常です");
                     return;
                 }
 
-                if (dgv_siharai.Rows[i].Cells[5].Value == null || double.Parse(dgv_siharai.Rows[i].Cells[5].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siharai.Rows[i].Cells[5].Value.ToString()) < -999999999.99)
+                if (dgv_siharai.Rows[i].Cells[5].Value == null || decimal.Parse(dgv_siharai.Rows[i].Cells[5].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siharai.Rows[i].Cells[5].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("相殺の値が異常です");
                     return;
                 }
 
-                if (dgv_siharai.Rows[i].Cells[6].Value == null || double.Parse(dgv_siharai.Rows[i].Cells[6].Value.ToString()) > 9999999999.99 || double.Parse(dgv_siharai.Rows[i].Cells[6].Value.ToString()) < -999999999.99)
+                if (dgv_siharai.Rows[i].Cells[6].Value == null || decimal.Parse(dgv_siharai.Rows[i].Cells[6].Value.ToString()) > decimal.Parse("9999999999.99") || decimal.Parse(dgv_siharai.Rows[i].Cells[6].Value.ToString()) < decimal.Parse("-9999999999.99"))
                 {
                     MessageBox.Show("支払額合計の値が異常です");
                     return;
@@ -358,26 +358,26 @@ namespace TSS_SYSTEM
         //支払のデータグリッドビューから1行削除した時のメソッド
         private void dgv_siharai_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            double siharai_soukei = new double();
+            decimal siharai_soukei = new decimal();
             int rc2 = dgv_siharai.Rows.Count;
 
             if(rc2 != 0 )
             {
                 for (int j = 0; j < rc2; j++)
                 {
-                    siharai_soukei = siharai_soukei + double.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
+                    siharai_soukei = siharai_soukei + decimal.Parse(dgv_siharai.Rows[j].Cells[6].Value.ToString());
                     tb_siharai_goukei.Text = siharai_soukei.ToString("#,0");
 
 
                     if (tb_mibarai_goukei.Text == "")
                     {
                         tb_mibarai_goukei.Text = "0";
-                        tb_kurikosi_zandaka.Text = "0"; //( 0 - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
-                        tb_kurikosi_zandaka.Text = double.Parse(tb_siharai_goukei.Text.ToString()).ToString("#,0");
+                        tb_kurikosi_zandaka.Text = "0"; //( 0 - decimal.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
+                        tb_kurikosi_zandaka.Text = decimal.Parse(tb_siharai_goukei.Text.ToString()).ToString("#,0");
                     }
                     else
                     {
-                        tb_kurikosi_zandaka.Text = (double.Parse(tb_mibarai_goukei.Text.ToString()) - double.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
+                        tb_kurikosi_zandaka.Text = (decimal.Parse(tb_mibarai_goukei.Text.ToString()) - decimal.Parse(tb_siharai_goukei.Text.ToString())).ToString("#,0");
                     }
                 }
             }
@@ -425,8 +425,8 @@ namespace TSS_SYSTEM
             {
                 for (int i = 0; i < rc; i++)
                 {
-                    double goukeikingaku = double.Parse(dt_work.Rows[i][1].ToString()) + double.Parse(dt_work.Rows[i][2].ToString());
-                    double mibaraigaku;
+                    decimal goukeikingaku = decimal.Parse(dt_work.Rows[i][1].ToString()) + decimal.Parse(dt_work.Rows[i][2].ToString());
+                    decimal mibaraigaku;
 
                     if (dt_work.Rows[i][4].ToString() == "")
                     {
@@ -435,7 +435,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        mibaraigaku = goukeikingaku - double.Parse(dt_work.Rows[i][4].ToString());
+                        mibaraigaku = goukeikingaku - decimal.Parse(dt_work.Rows[i][4].ToString());
                     }
 
                     dt_work.Rows[i][5] = mibaraigaku;
@@ -483,7 +483,7 @@ namespace TSS_SYSTEM
 
             //未払合計テキストボックスへ値を入れる
             object obj = dt_work.Compute("SUM(mibaraigaku)", null);
-            double goukeikingku = double.Parse(obj.ToString());
+            decimal goukeikingku = decimal.Parse(obj.ToString());
             tb_mibarai_goukei.Text = goukeikingku.ToString("#,0");
 
         }
@@ -496,8 +496,8 @@ namespace TSS_SYSTEM
             int rc = dt_work.Rows.Count;
             int rc2 = dgv_siharai.Rows.Count;
 
-            double siharai = double.Parse(tb_siharai_goukei.Text.ToString());
-            //double sisan = double.Parse(w_mibarai) - siharai;
+            decimal siharai = decimal.Parse(tb_siharai_goukei.Text.ToString());
+            //decimal sisan = decimal.Parse(w_mibarai) - siharai;
 
             //支払マスタにレコードがない場合
             if (rc == 0)
@@ -659,7 +659,7 @@ namespace TSS_SYSTEM
             object obj = dt_work.Compute("Sum(siharaigaku)", null);
             object obj2 = dt_work.Compute("Sum(tesuryou)", null);
             object obj3 = dt_work.Compute("Sum(sousai)", null);
-            double siharai_gaku = double.Parse(obj.ToString()) + double.Parse(obj2.ToString()) + double.Parse(obj3.ToString());
+            decimal siharai_gaku = decimal.Parse(obj.ToString()) + decimal.Parse(obj2.ToString()) + decimal.Parse(obj3.ToString());
 
             bool bl2 = new bool();
 
@@ -684,7 +684,7 @@ namespace TSS_SYSTEM
                 string siiregaku = dt_work.Rows[0]["siire_kingaku"].ToString();
                 string syouhizeigaku = dt_work.Rows[0]["syouhizeigaku"].ToString();
 
-                double keisan = double.Parse(siiregaku) + double.Parse(syouhizeigaku) - double.Parse(siharaigaku);
+                decimal keisan = decimal.Parse(siiregaku) + decimal.Parse(syouhizeigaku) - decimal.Parse(siharaigaku);
 
                 if (keisan == 0)
                 {
@@ -712,11 +712,11 @@ namespace TSS_SYSTEM
 
 
             //入力された売上番号を"0000000000"形式の文字列に変換
-            double w_double;
+            decimal w_decimal;
 
-            if (double.TryParse(tb_siharai_no.Text.ToString(), out w_double))
+            if (decimal.TryParse(tb_siharai_no.Text.ToString(), out w_decimal))
             {
-                tb_siharai_no.Text = w_double.ToString("0000000000");
+                tb_siharai_no.Text = w_decimal.ToString("0000000000");
             }
             else
             {
@@ -770,7 +770,7 @@ namespace TSS_SYSTEM
 
                     for (int i = 0; i < rc; i++)
                     {
-                        double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
+                        decimal goukei = decimal.Parse(w_dt2.Rows[i][3].ToString()) + decimal.Parse(w_dt2.Rows[i][4].ToString()) + decimal.Parse(w_dt2.Rows[i][5].ToString());
                         w_dt2.Rows[i][6] = goukei;
 
                     }
@@ -855,7 +855,7 @@ namespace TSS_SYSTEM
 
                 for (int i = 0; i < rc; i++)
                 {
-                    double goukei = double.Parse(w_dt2.Rows[i][3].ToString()) + double.Parse(w_dt2.Rows[i][4].ToString()) + double.Parse(w_dt2.Rows[i][5].ToString());
+                    decimal goukei = decimal.Parse(w_dt2.Rows[i][3].ToString()) + decimal.Parse(w_dt2.Rows[i][4].ToString()) + decimal.Parse(w_dt2.Rows[i][5].ToString());
                     w_dt2.Rows[i][6] = goukei;
                 }
 

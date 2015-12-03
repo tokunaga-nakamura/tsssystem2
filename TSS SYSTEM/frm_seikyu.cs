@@ -15,12 +15,12 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_m = new DataTable(); //dgvバインド用
 
-        double w_kurikosi = 0;
-        double w_uriage = 0;
-        double w_syouhizei = 0;
-        double w_nyukin = 0;
-        double w_zandaka = 0;
-        double w_seikyu = 0;
+        decimal w_kurikosi = 0;
+        decimal w_uriage = 0;
+        decimal w_syouhizei = 0;
+        decimal w_nyukin = 0;
+        decimal w_zandaka = 0;
+        decimal w_seikyu = 0;
 
         public frm_seikyu()
         {
@@ -156,10 +156,10 @@ namespace TSS_SYSTEM
                 {
                     //既存のレコードを更新
                     //既存データの更新の場合、過去売上が訂正され売上額＋消費税＜＞入金額になっている場合があるので、再度入金完了フラグを立て直す
-                    double w_chk_nyukingaku;        //入金額
-                    double w_chk_nyukingaku_sa;     //入金額－売上－消費税
+                    decimal w_chk_nyukingaku;        //入金額
+                    decimal w_chk_nyukingaku_sa;     //入金額－売上－消費税
                     string w_nyukin_kanryou_flg;
-                    w_chk_nyukingaku = tss.try_string_to_double(w_dt_urikake.Rows[0]["nyukingaku"].ToString());
+                    w_chk_nyukingaku = tss.try_string_to_decimal(w_dt_urikake.Rows[0]["nyukingaku"].ToString());
                     w_chk_nyukingaku_sa = w_chk_nyukingaku - w_uriage - w_syouhizei;
                     if(w_chk_nyukingaku_sa == 0 )
                     {
@@ -187,7 +187,7 @@ namespace TSS_SYSTEM
                 else
                 {
                     //新規
-                    double w_no;
+                    decimal w_no;
                     w_no = tss.GetSeq("08");
                     w_urikake_no = w_no.ToString("0000000000");
                     tss.OracleInsert("insert into tss_urikake_m (torihikisaki_cd,uriage_simebi,kurikosigaku,uriage_kingaku,syouhizeigaku,nyukingaku,nyukin_kanryou_flg,nyukingaku2,urikake_zandaka,urikake_no,create_user_cd,create_datetime) values ('" + dr["torihikisaki_cd"].ToString() + "','" + tb_seikyu_simebi.Text + "','" + w_kurikosi.ToString() + "','" + w_uriage.ToString() + "','" + w_syouhizei.ToString() + "','0','0','" + w_nyukin.ToString() + "','" + w_zandaka.ToString() + "','" + w_urikake_no + "','" + tss.user_cd + "',sysdate)");
@@ -227,9 +227,9 @@ namespace TSS_SYSTEM
             gamen_clear();
         }
 
-        private double get_kurikosi(string in_cd)
+        private decimal get_kurikosi(string in_cd)
         {
-            double out_double;  //戻り値用
+            decimal out_decimal;  //戻り値用
             DataTable w_dt = new DataTable();
             //画面の請求締日から1か月前の締日を求め、1カ月前の締めレコードがあったらその残高を繰越額に、なかったら画面の請求日以前の未入金（未完了）分を繰越額にする
             DateTime w_datetime;
@@ -250,33 +250,33 @@ namespace TSS_SYSTEM
                 w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
                 if (w_dt.Rows.Count == 0)
                 {
-                    out_double = 0;
+                    out_decimal = 0;
                 }
                 else
                 {
-                    out_double = tss.try_string_to_double(w_dt.Rows[0][0].ToString());
+                    out_decimal = tss.try_string_to_decimal(w_dt.Rows[0][0].ToString());
                     //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
-                    if (out_double == -999999999)
+                    if (out_decimal == -999999999)
                     {
-                        out_double = 0;
+                        out_decimal = 0;
                     }
                 }
             }
             else
             {
                 //1か月前のレコードがあった場合
-                out_double = tss.try_string_to_double(w_dt.Rows[0]["urikake_zandaka"].ToString());
+                out_decimal = tss.try_string_to_decimal(w_dt.Rows[0]["urikake_zandaka"].ToString());
             }
-            return out_double;
+            return out_decimal;
         }
 
-        private double get_uriage(string in_cd)
+        private decimal get_uriage(string in_cd)
         {
-            double out_double;  //戻り値用
+            decimal out_decimal;  //戻り値用
 
-            double w_zeiritu;   //消費税率
+            decimal w_zeiritu;   //消費税率
             string w_syouhizei_kbn; //消費税算出区分
-            double w_syouhizei_once;    //消費税計算用一時的変数
+            decimal w_syouhizei_once;    //消費税計算用一時的変数
 
             //消費税率の読み込み
             tss.try_string_to_date(tb_seikyu_simebi.Text);
@@ -288,7 +288,7 @@ namespace TSS_SYSTEM
             w_syouhizei_kbn = w_dt_torihikisaki.Rows[0]["syouhizei_sansyutu_kbn"].ToString();
 
             //消費税算出区分毎の処理
-            out_double = 0;
+            out_decimal = 0;
             if (w_syouhizei_kbn == "0")
             {
                 //消費税は請求書毎
@@ -297,19 +297,19 @@ namespace TSS_SYSTEM
                 w_dt = tss.OracleSelect("select sum(uriage_kingaku) from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "'");
                 if (w_dt.Rows.Count == 0)
                 {
-                    out_double = 0;
+                    out_decimal = 0;
                 }
                 else
                 {
-                    out_double = tss.try_string_to_double(w_dt.Rows[0][0].ToString());
+                    out_decimal = tss.try_string_to_decimal(w_dt.Rows[0][0].ToString());
                     //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
-                    if (out_double == -999999999)
+                    if (out_decimal == -999999999)
                     {
-                        out_double = 0;
+                        out_decimal = 0;
                     }
                 }
                 //消費税の算出
-                w_syouhizei = out_double * w_zeiritu;
+                w_syouhizei = out_decimal * w_zeiritu;
                 w_syouhizei = tss.hasu_keisan(in_cd, w_syouhizei);
             }
             if (w_syouhizei_kbn == "1")
@@ -319,20 +319,20 @@ namespace TSS_SYSTEM
                 w_dt = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + tb_seikyu_simebi.Text + "'");
                 if (w_dt.Rows.Count == 0)
                 {
-                    out_double = 0;
+                    out_decimal = 0;
                     w_syouhizei = 0;
                 }
                 else
                 {
                     //1明細ずつ、合計と消費税を足す
-                    out_double = 0;
+                    out_decimal = 0;
                     w_syouhizei = 0;
                     foreach(DataRow dr in w_dt.Rows)
                     {
-                        out_double = out_double + tss.try_string_to_double(dr["uriage_kingaku"].ToString());
+                        out_decimal = out_decimal + tss.try_string_to_decimal(dr["uriage_kingaku"].ToString());
                         //w_syouhizei_once = tss.try_string_to_double(dr["uriage_kingaku"].ToString()) * w_zeiritu;
                         //w_syouhizei = w_syouhizei + tss.hasu_keisan(in_cd, w_syouhizei_once);
-                        w_syouhizei = w_syouhizei + tss.try_string_to_double(dr["syouhizeigaku"].ToString());
+                        w_syouhizei = w_syouhizei + tss.try_string_to_decimal(dr["syouhizeigaku"].ToString());
                     }
                 }
             }
@@ -343,28 +343,28 @@ namespace TSS_SYSTEM
                 w_dt = tss.OracleSelect("select sum(uriage_kingaku) from tss_uriage_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi = '" + tb_seikyu_simebi.Text + "' group by uriage_no");
                 if (w_dt.Rows.Count == 0)
                 {
-                    out_double = 0;
+                    out_decimal = 0;
                     w_syouhizei = 0;
                 }
                 else
                 {
                     //1売上番号ずつ、合計と消費税を足す
-                    out_double = 0;
+                    out_decimal = 0;
                     w_syouhizei = 0;
                     foreach (DataRow dr in w_dt.Rows)
                     {
-                        out_double = out_double + tss.try_string_to_double(dr[0].ToString());
-                        w_syouhizei_once = tss.try_string_to_double(dr[0].ToString()) * w_zeiritu;
+                        out_decimal = out_decimal + tss.try_string_to_decimal(dr[0].ToString());
+                        w_syouhizei_once = tss.try_string_to_decimal(dr[0].ToString()) * w_zeiritu;
                         w_syouhizei = w_syouhizei + tss.hasu_keisan(in_cd, w_syouhizei_once);
                     }
                 }
             }
-            return out_double;
+            return out_decimal;
         }
 
-        private double get_nyukin(string in_cd)
+        private decimal get_nyukin(string in_cd)
         {
-            double out_double;  //戻り値用
+            decimal out_decimal;  //戻り値用
             DataTable w_dt = new DataTable();
             //画面の請求締日から、1か月前の締日の翌日を求める
             DateTime w_datetime;
@@ -374,18 +374,18 @@ namespace TSS_SYSTEM
             w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + tb_seikyu_simebi.Text + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + w_datetime.ToShortDateString() + "'");
             if (w_dt.Rows.Count == 0)
             {
-                out_double = 0;
+                out_decimal = 0;
             }
             else
             {
-                out_double = tss.try_string_to_double(w_dt.Rows[0][0].ToString());
+                out_decimal = tss.try_string_to_decimal(w_dt.Rows[0][0].ToString());
                 //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
-                if (out_double == -999999999)
+                if (out_decimal == -999999999)
                 {
-                    out_double = 0;
+                    out_decimal = 0;
                 }
             }
-            return out_double;
+            return out_decimal;
         }
 
         private void tb_torihikisaki_cd1_Validating(object sender, CancelEventArgs e)

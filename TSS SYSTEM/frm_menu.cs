@@ -115,6 +115,11 @@ namespace TSS_SYSTEM
 
         private void btn_mst_table_Click(object sender, EventArgs e)
         {
+            if(tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //マスタメンテナンス
             frm_table_maintenance frm_mm = new frm_table_maintenance();
             frm_mm.ShowDialog(this);
@@ -123,6 +128,11 @@ namespace TSS_SYSTEM
 
         private void btn_kubun_meisyou_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 2) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //区分名称マスタ
             frm_kubun_meisyou_m frm_kmm = new frm_kubun_meisyou_m();
             frm_kmm.ShowDialog(this);
@@ -131,6 +141,11 @@ namespace TSS_SYSTEM
 
         private void btn_kubun_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 2) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //区分マスタ
             frm_kubun_m frm_kmm = new frm_kubun_m();
             frm_kmm.ShowDialog(this);
@@ -139,6 +154,11 @@ namespace TSS_SYSTEM
 
         private void btn_juchuu_nyuuryoku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(1, 1) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //受注入力
             frm_juchuu_nyuuryoku frm_jn = new frm_juchuu_nyuuryoku();
             frm_jn.ShowDialog(this);
@@ -171,6 +191,11 @@ namespace TSS_SYSTEM
 
         private void btn_bank_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //銀行マスタ
             frm_bank_m frm_bam = new frm_bank_m();
             frm_bam.ShowDialog(this);
@@ -279,6 +304,11 @@ namespace TSS_SYSTEM
 
         private void btn_eigyou_calender_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 2) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //営業カレンダー
             frm_eigyou_calendar frm_skm = new frm_eigyou_calendar();
             frm_skm.ShowDialog(this);
@@ -287,6 +317,11 @@ namespace TSS_SYSTEM
 
         private void btn_user_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //ユーザーマスタ
             frm_user_m frm_skm = new frm_user_m();
             frm_skm.ShowDialog(this);
@@ -295,6 +330,11 @@ namespace TSS_SYSTEM
 
         private void btn_uriage_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //売上
             frm_uriage frm_uri = new frm_uriage();
             frm_uri.ShowDialog(this);
@@ -401,6 +441,11 @@ namespace TSS_SYSTEM
 
         private void btn_uriage_denpyou_insatu_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //伝票印刷
             frm_uriage_denpyou_preview frm_rpt = new frm_uriage_denpyou_preview();
             frm_rpt.ShowDialog(this);
@@ -417,6 +462,11 @@ namespace TSS_SYSTEM
 
         private void btn_seikyu_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //請求
             frm_seikyu frm_skm = new frm_seikyu();
             frm_skm.ShowDialog(this);
@@ -425,6 +475,11 @@ namespace TSS_SYSTEM
 
         private void btn_seikyu_preview_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //請求書印刷
             frm_seikyu_preview frm_skm = new frm_seikyu_preview();
             frm_skm.ShowDialog(this);
@@ -433,6 +488,11 @@ namespace TSS_SYSTEM
 
         private void btn_nyukin_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //入金
             frm_nyukin frm_nk = new frm_nyukin();
             frm_nk.ShowDialog(this);
@@ -481,6 +541,11 @@ namespace TSS_SYSTEM
 
         private void btn_free_zaiko_record_make_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //フリー在庫レコード作成
             DialogResult result = MessageBox.Show("フリー在庫レコードが無い部品を抽出し、フリー在庫レコードを作成します。\n（この処理は少し時間がかかります。）\nよろしいですか？", "確認", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -513,10 +578,41 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_zaiko_juchu_check_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
             //単価別売上明細
             frm_buhin_zaiko_juchu_check frm_tbu = new frm_buhin_zaiko_juchu_check();
             frm_tbu.ShowDialog(this);
             frm_tbu.Dispose();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
+            //在庫けしこみごみプロ
+            ZAIKO_KESI frm_zai = new ZAIKO_KESI();
+            frm_zai.ShowDialog(this);
+            frm_zai.Dispose();
+        }
+
+        private void tb_zaiko_chousei_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 9) == false)
+            {
+                MessageBox.Show("権限レベルが有りません");
+                return;
+            }
+            //在庫調整
+            ZAIKO_CHOUSEI frm_zai_cho = new ZAIKO_CHOUSEI();
+            frm_zai_cho.ShowDialog(this);
+            frm_zai_cho.Dispose();
         }
 
     }

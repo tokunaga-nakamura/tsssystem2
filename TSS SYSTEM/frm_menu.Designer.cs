@@ -71,6 +71,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tb_zaiko_chousei = new System.Windows.Forms.Button();
             this.btn_buhin_nyusyukko_kousei = new System.Windows.Forms.Button();
             this.btn_buhin_nyusyukko_rireki = new System.Windows.Forms.Button();
             this.btn_nyuko_bcr = new System.Windows.Forms.Button();
@@ -92,6 +93,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
             this.btn_user_m = new System.Windows.Forms.Button();
@@ -689,6 +691,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.tb_zaiko_chousei);
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_kousei);
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_rireki);
             this.tabPage3.Controls.Add(this.btn_nyuko_bcr);
@@ -709,6 +712,16 @@
             this.tabPage3.Size = new System.Drawing.Size(690, 442);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
+            // 
+            // tb_zaiko_chousei
+            // 
+            this.tb_zaiko_chousei.Location = new System.Drawing.Point(236, 390);
+            this.tb_zaiko_chousei.Name = "tb_zaiko_chousei";
+            this.tb_zaiko_chousei.Size = new System.Drawing.Size(220, 23);
+            this.tb_zaiko_chousei.TabIndex = 17;
+            this.tb_zaiko_chousei.Text = "フリー在庫直接入力";
+            this.tb_zaiko_chousei.UseVisualStyleBackColor = true;
+            this.tb_zaiko_chousei.Click += new System.EventHandler(this.tb_zaiko_chousei_Click);
             // 
             // btn_buhin_nyusyukko_kousei
             // 
@@ -915,6 +928,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.button4);
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
             this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
             this.tabPage6.Controls.Add(this.btn_user_m);
@@ -935,6 +949,16 @@
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(533, 238);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "ごみプロ";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_buhin_zaiko_juchu_check
             // 
@@ -1262,6 +1286,8 @@
         private System.Windows.Forms.Label lbl_build;
         private System.Windows.Forms.Button btn_free_zaiko_record_make;
         private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button tb_zaiko_chousei;
     }
 }
 

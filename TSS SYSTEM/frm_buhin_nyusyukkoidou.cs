@@ -316,7 +316,7 @@ namespace TSS_SYSTEM
                                         + tb_torihikisaki_cd.Text.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                        + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                        + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
@@ -343,7 +343,7 @@ namespace TSS_SYSTEM
                                         + 999999 + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                        + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                        + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
@@ -379,17 +379,17 @@ namespace TSS_SYSTEM
                                                  + tb_torihikisaki_cd.Text.ToString() + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                                 + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                                 + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                  + tss.user_cd + "',SYSDATE)");
                         }
 
                         if (dt_work5.Rows.Count != 0)
                         {
 
-                            double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                            double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                            decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                            decimal zaikosu2 = decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                            double zaikosu3 = zaikosu1 + zaikosu2;
+                            decimal zaikosu3 = zaikosu1 + zaikosu2;
 
 
                             if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
@@ -420,7 +420,7 @@ namespace TSS_SYSTEM
                                                  + 999999 + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                                 + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                                 + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                  + tss.user_cd + "',SYSDATE)");
                         }
 
@@ -429,10 +429,10 @@ namespace TSS_SYSTEM
                         if (dt_work5.Rows.Count != 0)
                         {
 
-                            double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                            double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                            decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                            decimal zaikosu2 = decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                            double zaikosu3 = zaikosu1 + zaikosu2;
+                            decimal zaikosu3 = zaikosu1 + zaikosu2;
 
 
                             if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
@@ -479,7 +479,7 @@ namespace TSS_SYSTEM
                                         + tb_torihikisaki_cd.Text.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                        + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                        + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
@@ -505,7 +505,7 @@ namespace TSS_SYSTEM
                                         + 999999 + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                         + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                        + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                        + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                         + tb_denpyou_no.Text.ToString() + "','"
                                         + "" + "','"
                                         + "01" + "','"
@@ -540,16 +540,16 @@ namespace TSS_SYSTEM
                                                  + tb_torihikisaki_cd.Text.ToString() + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                                  + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                                 + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                                 + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                  + tss.user_cd + "',SYSDATE)");
                             }
 
                             if (dt_work5.Rows.Count != 0)
                             {
-                                double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                                double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                                decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                                decimal zaikosu2 = decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                                double zaikosu3 = zaikosu1 - zaikosu2;
+                                decimal zaikosu3 = zaikosu1 - zaikosu2;
 
                                 if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                                 {
@@ -577,17 +577,17 @@ namespace TSS_SYSTEM
                                                   + 999999 + "','"
                                                   + dgv_nyusyukkoidou.Rows[i].Cells[3].Value.ToString() + "','"
                                                   + dgv_nyusyukkoidou.Rows[i].Cells[4].Value.ToString() + "','"
-                                                  + double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
+                                                  + decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString()) + "','"
                                                   + tss.user_cd + "',SYSDATE)");
                             }
 
 
                             if (dt_work5.Rows.Count != 0)
                             {
-                                double zaikosu1 = double.Parse(dt_work5.Rows[0][5].ToString());
-                                double zaikosu2 = double.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
+                                decimal zaikosu1 = decimal.Parse(dt_work5.Rows[0][5].ToString());
+                                decimal zaikosu2 = decimal.Parse(dgv_nyusyukkoidou.Rows[i].Cells[5].Value.ToString());
 
-                                double zaikosu3 = zaikosu1 - zaikosu2;
+                                decimal zaikosu3 = zaikosu1 - zaikosu2;
 
                                 if (dgv_nyusyukkoidou.Rows[i].Cells[2].Value.ToString() != "01")
                                 {
@@ -707,7 +707,7 @@ namespace TSS_SYSTEM
         private void SEQ()
         {
             DataTable dt_work = new DataTable();
-            double w_seq;
+            decimal w_seq;
             w_seq = tss.GetSeq(w_str);
             if (w_seq == 0)
             {
@@ -1000,7 +1000,7 @@ namespace TSS_SYSTEM
            {
                if (dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value != null && dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString() != "")
                {
-                   dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value = tss.try_string_to_double(dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString()).ToString("#,0.00");
+                   dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value = tss.try_string_to_decimal(dgv_nyusyukkoidou.Rows[e.RowIndex].Cells[5].Value.ToString()).ToString("#,0.00");
                }
                
            }

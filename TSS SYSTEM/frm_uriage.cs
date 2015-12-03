@@ -13,7 +13,7 @@ namespace TSS_SYSTEM
     public partial class frm_uriage : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
-        double w_uriage_no;         //連番退避用
+        decimal w_uriage_no;         //連番退避用
         int w_seikyu_sime_dd;       //請求締日
         int w_seikyuu_flg = 0;      //請求済レコードがあったら1
 
@@ -190,10 +190,10 @@ namespace TSS_SYSTEM
             //空白は許容する
             if(in_str != "" && in_str != null)
             {
-                double w_uriage_su;
-                if (double.TryParse(in_str, out w_uriage_su))
+                decimal w_uriage_su;
+                if (decimal.TryParse(in_str, out w_uriage_su))
                 {
-                    if (w_uriage_su > 9999999999.99 || w_uriage_su < -999999999.99)
+                    if (w_uriage_su > decimal.Parse("9999999999.99") || w_uriage_su < decimal.Parse("-9999999999.99"))
                     {
                         bl = false;
                     }
@@ -213,10 +213,10 @@ namespace TSS_SYSTEM
             //空白は許容する
             if(in_str != "" && in_str != null)
             {
-                double w_hanbai_tanka;
-                if (double.TryParse(in_str, out w_hanbai_tanka))
+                decimal w_hanbai_tanka;
+                if (decimal.TryParse(in_str, out w_hanbai_tanka))
                 {
-                    if (w_hanbai_tanka > 9999999999.99 || w_hanbai_tanka < -999999999.99)
+                    if (w_hanbai_tanka > decimal.Parse("9999999999.99") || w_hanbai_tanka < decimal.Parse("-9999999999.99"))
                     {
                         bl = false;
                     }
@@ -252,10 +252,10 @@ namespace TSS_SYSTEM
         private void chk_uriage_no()
         {
             //入力された売上番号を"0000000000"形式の文字列に変換
-            double w_double;
-            if (double.TryParse(tb_uriage_no.Text.ToString(), out w_double))
+            decimal w_decimal;
+            if (decimal.TryParse(tb_uriage_no.Text.ToString(), out w_decimal))
             {
-                tb_uriage_no.Text = w_double.ToString("0000000000");
+                tb_uriage_no.Text = w_decimal.ToString("0000000000");
             }
             else
             {
@@ -303,7 +303,7 @@ namespace TSS_SYSTEM
             dgv_m.DataSource = null;
             tb_uriage_goukei.Text = "";
             lbl_seikyuu.Text = "";
-
+            tb_bikou2.Text = "";
             //uriage_init();
         }
 
@@ -479,11 +479,11 @@ namespace TSS_SYSTEM
 
         private void uriage_goukei_disp()
         {
-            double w_dou;
-            double w_uriage_goukei = 0;
+            decimal w_dou;
+            decimal w_uriage_goukei = 0;
             for (int i = 0; i < dgv_m.Rows.Count - 1;i++)
             {
-                if (double.TryParse(dgv_m.Rows[i].Cells["uriage_kingaku"].Value.ToString(), out w_dou))
+                if (decimal.TryParse(dgv_m.Rows[i].Cells["uriage_kingaku"].Value.ToString(), out w_dou))
                 {
                     w_uriage_goukei = w_uriage_goukei + w_dou;
                 }
@@ -828,12 +828,12 @@ namespace TSS_SYSTEM
         {
             tss.GetUser();
             DataTable w_dt = new DataTable();   //更新対象の売上マスタ用
-            double w_uriage_su;
+            decimal w_uriage_su;
 
             w_dt = tss.OracleSelect("select * from tss_uriage_m where uriage_no = '" + in_cd + "'");
             foreach(DataRow dr in w_dt.Rows)
             {
-                double.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_uriage_su);
+                decimal.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_uriage_su);
                 juchu_write(dr["torihikisaki_cd"].ToString(), dr["juchu_cd1"].ToString(), dr["juchu_cd2"].ToString(), in_sign, w_uriage_su);
             }
         }
@@ -844,12 +844,12 @@ namespace TSS_SYSTEM
             //製品マスタの製品構成番号が入っていたら、製品構成マスタを読み込み、在庫マスタの加減を行い、部品入出庫履歴に書き込む
 
             DataTable w_dt = new DataTable();   //更新対象の売上マスタ用
-            double w_uriage_su; //売上数
+            decimal w_uriage_su; //売上数
 
             w_dt = tss.OracleSelect("select * from tss_uriage_m where uriage_no = '" + in_cd + "'");
             foreach (DataRow dr in w_dt.Rows)
             {
-                double.TryParse(dr["uriage_su"].ToString(), out w_uriage_su);
+                decimal.TryParse(dr["uriage_su"].ToString(), out w_uriage_su);
                 zaiko_write(in_cd,dr["seq"].ToString(), dr["torihikisaki_cd"].ToString(), dr["juchu_cd1"].ToString(), dr["juchu_cd2"].ToString(), dr["seihin_cd"].ToString(),in_sign, w_uriage_su);
             }
         }
@@ -871,8 +871,8 @@ namespace TSS_SYSTEM
             //売上数
             if (e.ColumnIndex == 9)
             {
-                double w_uriage_su;
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[9].Value.ToString(), out w_uriage_su))
+                decimal w_uriage_su;
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[9].Value.ToString(), out w_uriage_su))
                 {
                     dgv_m.Rows[e.RowIndex].Cells[9].Value = w_uriage_su.ToString("0.00");
                 }
@@ -880,8 +880,8 @@ namespace TSS_SYSTEM
             //販売単価
             if (e.ColumnIndex == 10)
             {
-                double w_hanbai_tanka;
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[10].Value.ToString(), out w_hanbai_tanka))
+                decimal w_hanbai_tanka;
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[10].Value.ToString(), out w_hanbai_tanka))
                 {
                     dgv_m.Rows[e.RowIndex].Cells[10].Value = w_hanbai_tanka.ToString("0.00");
                 }
@@ -896,16 +896,16 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                double w_uriage_su;
-                double w_hanbai_tanka;
-                double w_uriage_kingaku;
-                double w_syouhizeigaku;
-                double w_zeiritu;
-                double w_syouhizei_once;
+                decimal w_uriage_su;
+                decimal w_hanbai_tanka;
+                decimal w_uriage_kingaku;
+                decimal w_syouhizeigaku;
+                decimal w_zeiritu;
+                decimal w_syouhizei_once;
                 //浮動小数点対策
                 decimal w_deci_urikin;
-                
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[9].Value.ToString(), out w_uriage_su))
+
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[9].Value.ToString(), out w_uriage_su))
                 {
                     //入力値は正常
                 }
@@ -913,7 +913,7 @@ namespace TSS_SYSTEM
                 {
                     w_uriage_su = 0;
                 }
-                if (double.TryParse(dgv_m.Rows[e.RowIndex].Cells[10].Value.ToString(), out w_hanbai_tanka))
+                if (decimal.TryParse(dgv_m.Rows[e.RowIndex].Cells[10].Value.ToString(), out w_hanbai_tanka))
                 {
                     //入力値は正常
                 }
@@ -924,7 +924,7 @@ namespace TSS_SYSTEM
                 //浮動小数点対策
                 //w_uriage_kingaku = w_uriage_su * w_hanbai_tanka;
                 w_deci_urikin = (decimal)w_uriage_su * (decimal)w_hanbai_tanka;
-                w_uriage_kingaku = (double)w_deci_urikin;
+                w_uriage_kingaku = (decimal)w_deci_urikin;
                 //端数処理
                 w_uriage_kingaku = tss.hasu_keisan(tb_torihikisaki_cd.Text.ToString(),w_uriage_kingaku);
                 dgv_m.Rows[e.RowIndex].Cells[11].Value = w_uriage_kingaku.ToString("0");
@@ -971,11 +971,11 @@ namespace TSS_SYSTEM
 
         private void uriage_insert()
         {
-            double w_uriage_su;
+            decimal w_uriage_su;
             //画面のdgvのデータ行分繰り返し、1行ずつ処理する（同一受注を複数行売り上げた場合に、1行ずつ累計数を算出する必要があるため1行ずつ完了させる事）
             for(int w_gyou = 0;w_gyou < dgv_m.Rows.Count - 1;w_gyou++)
             {
-                double.TryParse(dgv_m.Rows[w_gyou].Cells[9].Value.ToString(), out w_uriage_su); //売上数
+                decimal.TryParse(dgv_m.Rows[w_gyou].Cells[9].Value.ToString(), out w_uriage_su); //売上数
                 //売上マスタの書き込み
                 uriage_write(w_gyou);
                 //受注マスタの売上数などの更新
@@ -1058,12 +1058,12 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void juchu_write(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,int in_sign,double in_uriage_su)
+        private void juchu_write(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, int in_sign, decimal in_uriage_su)
         {
             DataTable w_dt = new DataTable();  //更新する受注マスタ用
-            double w_juchu_uriage_su;   //受注マスタの売上数用
-            double w_write_uriage_su;   //書込み用の売上数
-            double w_juchu_juchu_su;    //受注マスタの受注数用
+            decimal w_juchu_uriage_su;   //受注マスタの売上数用
+            decimal w_write_uriage_su;   //書込み用の売上数
+            decimal w_juchu_juchu_su;    //受注マスタの受注数用
             string w_uriage_kanryou_flg;    //書込み用の売上完了フラグ
 
             w_dt = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
@@ -1071,8 +1071,8 @@ namespace TSS_SYSTEM
             {
                 //レコードがあった＝受注番号が入力された行
                 //売上数を加減算し、受注数と比較し、同じであれば売上完了フラグを立て、違っていればフラグを消す
-                double.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_juchu_uriage_su);
-                double.TryParse(w_dt.Rows[0]["juchu_su"].ToString(), out w_juchu_juchu_su);
+                decimal.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_juchu_uriage_su);
+                decimal.TryParse(w_dt.Rows[0]["juchu_su"].ToString(), out w_juchu_juchu_su);
                 w_write_uriage_su = w_juchu_uriage_su + in_uriage_su * in_sign;   //受注マスタの売上数量を求める
                 if (w_juchu_juchu_su == w_write_uriage_su)
                 {
@@ -1092,18 +1092,18 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void zaiko_write(string in_uriage_no,string in_seq,string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_seihin_cd, int in_sign,double in_uriage_su)
+        private void zaiko_write(string in_uriage_no, string in_seq, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, string in_seihin_cd, int in_sign, decimal in_uriage_su)
         {
             DataTable w_dt_juchu = new DataTable();     //受注マスタの確認用
             DataTable w_dt_seihin = new DataTable();    //製品マスタ用
             DataTable w_dt_kousei = new DataTable();    //製品構成マスタ用
             int w_uriage_flg;   //売上方法 0:受注の売上 1:製品を直接売上
-            double w_siyou_su;  //製品構成の使用数
-            double w_kagen_su;  //加減する数
+            decimal w_siyou_su;  //製品構成の使用数
+            decimal w_kagen_su;  //加減する数
             int w_rireki_gyou = 1;  //在庫履歴の行
 
             //在庫履歴書込み用の番号取得
-            double w_rireki_no;
+            decimal w_rireki_no;
             if (in_sign >= 0)
             {
                 w_rireki_no = tss.GetSeq("01");
@@ -1155,7 +1155,7 @@ namespace TSS_SYSTEM
                                 //通常売上の場合、受注売上の場合は、ロット在庫から加減し、足りない分はフリー在庫で処理する
                                 //製品の直接売上の場合はフリー在庫で処理する
                                 //全ての在庫処理において数量に変更が発生した場合は、部品入出庫履歴に書き込む
-                                double.TryParse(dr3["siyou_su"].ToString(), out w_siyou_su);
+                                decimal.TryParse(dr3["siyou_su"].ToString(), out w_siyou_su);
                                 w_kagen_su = in_uriage_su * w_siyou_su * in_sign;
 
                                 if (in_sign == -1 || w_uriage_flg == 1)

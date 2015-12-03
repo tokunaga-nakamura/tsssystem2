@@ -286,7 +286,7 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Value />
 										<Width>1.7cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox8">
@@ -762,7 +762,7 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Value />
 										<Width>1.7cm</Width>
 									</Textbox>
 									<Textbox Name="TextBox37">
@@ -882,7 +882,7 @@
 											<PaddingRight>1pt</PaddingRight>
 											<PaddingTop>1pt</PaddingTop>
 										</Style>
-										<Value>=Fields!SEIHIN_CD.Value</Value>
+										<Value />
 										<Width>1.7cm</Width>
 									</Textbox>
 								</ReportItems>

@@ -441,7 +441,7 @@ namespace TSS_SYSTEM
                 tb_hasu_kbn.Text = dt_work.Rows[0]["hasu_kbn"].ToString();
                 tb_hasu_syori_tani.Text = dt_work.Rows[0]["hasu_syori_tani"].ToString();
                 tb_jisyaden_kbn.Text = dt_work.Rows[0]["jisyaden_kbn"].ToString();
-                tb_misyori_nyukingaku.Text = tss.try_string_to_double(dt_work.Rows[0]["misyori_nyukingaku"].ToString()).ToString("#,##0");
+                tb_misyori_nyukingaku.Text = tss.try_string_to_decimal(dt_work.Rows[0]["misyori_nyukingaku"].ToString()).ToString("#,##0");
 
                 tb_create_user_cd.Text = dt_work.Rows[0]["create_user_cd"].ToString();
                 tb_create_datetime.Text = dt_work.Rows[0]["create_datetime"].ToString();

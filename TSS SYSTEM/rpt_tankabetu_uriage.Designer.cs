@@ -765,7 +765,6 @@
             this.tb_torihikisaki_cd.OutputFormat = resources.GetString("tb_torihikisaki_cd.OutputFormat");
             this.tb_torihikisaki_cd.Style = "font-size: 8.25pt; text-align: left; ddo-char-set: 1";
             this.tb_torihikisaki_cd.SummaryGroup = "groupHeader2";
-            this.tb_torihikisaki_cd.Text = null;
             this.tb_torihikisaki_cd.Top = 0F;
             this.tb_torihikisaki_cd.Width = 0.609449F;
             // 
@@ -778,7 +777,6 @@
             this.tb_torihikisaki_cd1.OutputFormat = resources.GetString("tb_torihikisaki_cd1.OutputFormat");
             this.tb_torihikisaki_cd1.Style = "font-size: 8.25pt; text-align: left; ddo-char-set: 1";
             this.tb_torihikisaki_cd1.SummaryGroup = "groupHeader2";
-            this.tb_torihikisaki_cd1.Text = null;
             this.tb_torihikisaki_cd1.Top = 0F;
             this.tb_torihikisaki_cd1.Width = 1.161417F;
             // 

@@ -214,11 +214,11 @@ namespace TSS_SYSTEM
             dgv_buhin_zaiko_m.Columns[4].DefaultCellStyle.Format = "#,###,###,##0.00";
 
             //合計在庫数を求めて表示
-            double w_zaiko_su = new double();
+            decimal w_zaiko_su = new decimal();
             for(int i = 0;i < dgv_buhin_zaiko_m.Rows.Count;i++)
             {
-                double w_dou;
-                if (double.TryParse(dgv_buhin_zaiko_m.Rows[i].Cells[4].Value.ToString(), out w_dou))
+                decimal w_dou;
+                if (decimal.TryParse(dgv_buhin_zaiko_m.Rows[i].Cells[4].Value.ToString(), out w_dou))
                 {
                     w_zaiko_su = w_zaiko_su + w_dou;
                 }
@@ -538,11 +538,12 @@ namespace TSS_SYSTEM
         private bool chk_siire_tanka()
         {
             bool bl = true; //戻り値
-            double db;
-            if (double.TryParse(tb_siire_tanka.Text.ToString(), out db))
+            decimal db;
+            if (decimal.TryParse(tb_siire_tanka.Text.ToString(), out db))
             {
                 //変換出来たら、lgにその数値が入る
-                if (db > 9999999999.99 || db < -999999999.99)
+                //if (db > 9999999999.99 || db < -999999999.99)
+                if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-9999999999.99"))
                 {
                     bl = false;
                 }
@@ -561,11 +562,12 @@ namespace TSS_SYSTEM
         private bool chk_hanbai_tanka()
         {
             bool bl = true; //戻り値
-            double db;
-            if (double.TryParse(tb_hanbai_tanka.Text.ToString(), out db))
+            decimal db;
+            if (decimal.TryParse(tb_hanbai_tanka.Text.ToString(), out db))
             {
                 //変換出来たら、lgにその数値が入る
-                if (db > 9999999999.99 || db < -999999999.99)
+                //if (db > 9999999999.99 || db < -999999999.99)
+                if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-9999999999.99"))
                 {
                     bl = false;
                 }
