@@ -371,7 +371,7 @@ namespace TSS_SYSTEM
             tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
             w_datetime = tss.out_datetime.AddMonths(-1).AddDays(+1);
 
-            w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + tb_seikyu_simebi.Text + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') < '" + w_datetime.ToShortDateString() + "'");
+            w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') <= '" + tb_seikyu_simebi.Text + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') >= '" + w_datetime.ToShortDateString() + "'");
             if (w_dt.Rows.Count == 0)
             {
                 out_decimal = 0;

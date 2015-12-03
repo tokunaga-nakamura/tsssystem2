@@ -10,18 +10,19 @@ using System.Windows.Forms;
 
 namespace TSS_SYSTEM
 {
-    public partial class frm_seihin_kousei_preview : Form
+    public partial class frm_seihin_buhin_zaiko : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
-        DataTable w_dt_seihin_kousei = new DataTable();
+        DataTable w_dt_seihin_buhin_zaiko = new DataTable();
 
         //ヘッダーの受け渡し変数の定義
         public string w_yyyymmdd;
+        public string w_hd00;//取引先CD
         public string w_hd10;//製品CD
         public string w_hd11;//製品名
-        public string w_hd20;//製品構成番号
-        public string w_hd21;//製品構成名称
-
+        public string w_hd20;//受注CD1
+        public string w_hd21;//受注CD2
+        public string w_hd30;//生産したい台数
 
         //親画面から参照できるプロパティを作成
         public DataTable fld_dt = new DataTable();   //印刷する明細データ
@@ -38,7 +39,8 @@ namespace TSS_SYSTEM
             }
         }
         
-        public frm_seihin_kousei_preview()
+        
+        public frm_seihin_buhin_zaiko()
         {
             InitializeComponent();
         }
@@ -51,30 +53,23 @@ namespace TSS_SYSTEM
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
-
-           
         }
 
-        private void frm_seihin_kousei_preview_Load(object sender, EventArgs e)
+        private void frm_seihin_buhin_zaiko_Load(object sender, EventArgs e)
         {
-            rpt_seihin_kousei rpt = new rpt_seihin_kousei();
+            rpt_seihin_buhin_zaiko rpt = new rpt_seihin_buhin_zaiko();
             //レポートへデータを受け渡す
             rpt.DataSource = ppt_dt;
             rpt.w_yyyymmdd = w_yyyymmdd;
+            rpt.w_hd00 = w_hd00;
             rpt.w_hd10 = w_hd10;
             rpt.w_hd11 = w_hd11;
             rpt.w_hd20 = w_hd20;
             rpt.w_hd21 = w_hd21;
+            rpt.w_hd30 = w_hd30;
 
             rpt.Run();
             this.vwr.Document = rpt.Document;
         }
-
-        private void btn_syuuryou_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-      
     }
 }

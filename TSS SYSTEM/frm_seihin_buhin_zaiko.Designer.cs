@@ -1,6 +1,6 @@
 ﻿namespace TSS_SYSTEM
 {
-    partial class frm_seihin_kousei_preview
+    partial class frm_seihin_buhin_zaiko
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seihin_kousei_preview));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seihin_buhin_zaiko));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -63,7 +63,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(884, 562);
             this.splitContainer1.SplitterDistance = 62;
-            this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.TabIndex = 2;
             // 
             // btn_hardcopy
             // 
@@ -73,6 +73,7 @@
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
             // splitContainer2
             // 
@@ -91,8 +92,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 496);
-            this.splitContainer2.SplitterDistance = 459;
+            this.splitContainer2.Size = new System.Drawing.Size(880, 492);
+            this.splitContainer2.SplitterDistance = 455;
             this.splitContainer2.TabIndex = 0;
             // 
             // vwr
@@ -126,7 +127,7 @@
             this.vwr.Sidebar.TocPanel.ContextMenu = null;
             this.vwr.Sidebar.TocPanel.Width = 200;
             this.vwr.Sidebar.Width = 200;
-            this.vwr.Size = new System.Drawing.Size(880, 455);
+            this.vwr.Size = new System.Drawing.Size(876, 451);
             this.vwr.TabIndex = 0;
             // 
             // btn_syuuryou
@@ -137,18 +138,17 @@
             this.btn_syuuryou.TabIndex = 0;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click_1);
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // frm_seihin_kousei_preview
+            // frm_seihin_buhin_zaiko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
-            this.MinimumSize = new System.Drawing.Size(900, 600);
-            this.Name = "frm_seihin_kousei_preview";
-            this.Text = "製品構成印刷プレビュー";
-            this.Load += new System.EventHandler(this.frm_seihin_kousei_preview_Load);
+            this.Name = "frm_seihin_buhin_zaiko";
+            this.Text = "製品別部品在庫印刷プレビュー";
+            this.Load += new System.EventHandler(this.frm_seihin_buhin_zaiko_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

@@ -131,6 +131,12 @@
     <Compile Include="frm_buhin_to_seihin.Designer.cs">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_buhin_to_seihin_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_to_seihin_preview.Designer.cs">
+      <DependentUpon>frm_buhin_to_seihin_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_buhin_zaiko_juchu_check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="frm_search_siire.Designer.cs">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seihin_buhin_zaiko.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seihin_buhin_zaiko.Designer.cs">
+      <DependentUpon>frm_seihin_buhin_zaiko.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_seihin_kousei_preview.cs">
       <SubType>Form</SubType>
@@ -439,11 +451,23 @@
     <Compile Include="rpt_buhin_nyusyukkoidou.Designer.cs">
       <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_buhin_to_seihin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_buhin_to_seihin.Designer.cs">
+      <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_nouhin_schedule.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rpt_nouhin_schedule.Designer.cs">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_seihin_buhin_zaiko.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_seihin_buhin_zaiko.Designer.cs">
+      <DependentUpon>rpt_seihin_buhin_zaiko.cs</DependentUpon>
     </Compile>
     <Compile Include="rpt_seihin_kousei.cs">
       <SubType>Component</SubType>
@@ -506,6 +530,9 @@
     <EmbeddedResource Include="frm_buhin_to_seihin.resx">
       <DependentUpon>frm_buhin_to_seihin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_to_seihin_preview.resx">
+      <DependentUpon>frm_buhin_to_seihin_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_zaiko_juchu_check.resx">
       <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
     </EmbeddedResource>
@@ -517,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_search_siire.resx">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seihin_buhin_zaiko.resx">
+      <DependentUpon>frm_seihin_buhin_zaiko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seihin_kousei_preview.resx">
       <DependentUpon>frm_seihin_kousei_preview.cs</DependentUpon>
@@ -669,8 +699,14 @@
     <EmbeddedResource Include="rpt_buhin_nyusyukkoidou.resx">
       <DependentUpon>rpt_buhin_nyusyukkoidou.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_buhin_to_seihin.resx">
+      <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_nouhin_schedule.resx">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_seihin_buhin_zaiko.resx">
+      <DependentUpon>rpt_seihin_buhin_zaiko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seihin_kousei.resx">
       <DependentUpon>rpt_seihin_kousei.cs</DependentUpon>

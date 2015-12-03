@@ -233,7 +233,7 @@ namespace TSS_SYSTEM
         private void rireki_disp(string in_cd)
         {
             dgv_buhin_nyusyukko_m.DataSource = null;
-            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by buhin_syori_date desc");
+            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc");
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_nyusyukko_m.ReadOnly = true;
             //行ヘッダーを非表示にする

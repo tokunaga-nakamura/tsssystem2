@@ -51,6 +51,7 @@
             this.tb_seihin_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_seihin_kousei_no = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_seihin_kousei_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.line2 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.textBox3 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox4 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -66,7 +67,6 @@
             this.textBox1 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.groupFooter1 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
             this.line1 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line2 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seihin_cd2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_today)).BeginInit();
@@ -368,6 +368,19 @@
             this.tb_seihin_kousei_name.Top = 0.6098425F;
             this.tb_seihin_kousei_name.Width = 1.447639F;
             // 
+            // line2
+            // 
+            this.line2.Height = 0F;
+            this.line2.Left = 0F;
+            this.line2.LineWeight = 1F;
+            this.line2.Name = "line2";
+            this.line2.Top = 0.9322835F;
+            this.line2.Width = 10.85433F;
+            this.line2.X1 = 0F;
+            this.line2.X2 = 10.85433F;
+            this.line2.Y1 = 0.9322835F;
+            this.line2.Y2 = 0.9322835F;
+            // 
             // detail
             // 
             this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -535,19 +548,6 @@
             this.line1.X2 = 10.8752F;
             this.line1.Y1 = 0F;
             this.line1.Y2 = 0F;
-            // 
-            // line2
-            // 
-            this.line2.Height = 0F;
-            this.line2.Left = 0F;
-            this.line2.LineWeight = 1F;
-            this.line2.Name = "line2";
-            this.line2.Top = 0.9322835F;
-            this.line2.Width = 10.85433F;
-            this.line2.X1 = 0F;
-            this.line2.X2 = 10.85433F;
-            this.line2.Y1 = 0.9322835F;
-            this.line2.Y2 = 0.9322835F;
             // 
             // rpt_seihin_kousei
             // 

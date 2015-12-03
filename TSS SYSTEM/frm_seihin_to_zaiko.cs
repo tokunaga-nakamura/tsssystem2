@@ -68,6 +68,15 @@ namespace TSS_SYSTEM
 
         private void list_make()
         {
+            //if (tb_juchu_cd1.Text != "" && tb_juchu_cd1.Text != "")
+            //{
+            //    DataTable dt_juchu_su = new DataTable();
+
+
+
+            //}
+            
+            
             DataTable w_dt_seihin_kousei = new DataTable();
 
             //製品構成情報を部品コードでグループ化し部品毎の合計使用数のdtを作成する
@@ -191,8 +200,15 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    w_seisan_kanou_su2 = Math.Truncate(w_dou_ttl_zaiko_su / w_dou_siyou_su);
-
+                    if (w_dou_siyou_su == 0)
+                    {
+                        w_seisan_kanou_su2 = w_dou_ttl_zaiko_su;
+                    }
+                    else
+                    {
+                        w_seisan_kanou_su2 = Math.Truncate(w_dou_ttl_zaiko_su / w_dou_siyou_su);
+                    }
+ 
                 }
                 if(w_seisan_kanou_su > w_seisan_kanou_su2)
                 {
@@ -248,6 +264,12 @@ namespace TSS_SYSTEM
             dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
+
+
+
+
         }
 
         private void btn_list_hanei_Click(object sender, EventArgs e)
@@ -367,6 +389,7 @@ namespace TSS_SYSTEM
                 tb_juchu_cd1.Enabled = true;
                 tb_juchu_cd2_midasi.Enabled = true;
                 tb_juchu_cd2.Enabled = true;
+                tb_juchu_su.Enabled = true;
             }
             else
             {
@@ -376,6 +399,7 @@ namespace TSS_SYSTEM
                 tb_juchu_cd1.Enabled = false;
                 tb_juchu_cd2_midasi.Enabled = false;
                 tb_juchu_cd2.Enabled = false;
+                tb_juchu_su.Enabled = false;
             }
         }
 
@@ -389,6 +413,62 @@ namespace TSS_SYSTEM
                 frm_bm.ShowDialog(this);
                 frm_bm.Dispose();
             }
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+
+                frm_seihin_buhin_zaiko frm_rpt = new frm_seihin_buhin_zaiko();
+
+                //子画面のプロパティに値をセットする
+                frm_rpt.ppt_dt = w_dt_m;
+
+                if (tb_torihikisaki_cd.Text == "")
+                {
+                    frm_rpt.w_hd00 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd00 = tb_torihikisaki_cd.Text;
+                }
+
+
+                if (tb_juchu_cd1.Text == "")
+                {
+                    frm_rpt.w_hd20 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd20 = tb_juchu_cd1.Text;
+                }
+
+                if (tb_juchu_cd2.Text == "")
+                {
+                    frm_rpt.w_hd21 = "指定なし";
+                }
+                else
+                {
+                    frm_rpt.w_hd21 = tb_juchu_cd2.Text;
+                }
+
+                if (tb_seisan_sitai_daisuu.Text == "")
+                {
+                    frm_rpt.w_hd30 = "指定なし";
+                }  
+                else
+                {
+                    frm_rpt.w_hd30 = tb_seisan_sitai_daisuu.Text;
+                }
+
+                frm_rpt.w_hd10 = tb_seihin_cd.Text;
+                frm_rpt.w_hd11 = tb_seihin_name.Text;
+
+
+                frm_rpt.ShowDialog();
+                //子画面から値を取得する
+                frm_rpt.Dispose();
+
+            
         }
 
 

@@ -10,17 +10,15 @@ using System.Windows.Forms;
 
 namespace TSS_SYSTEM
 {
-    public partial class frm_seihin_kousei_preview : Form
+    public partial class frm_buhin_to_seihin_preview : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_seihin_kousei = new DataTable();
 
         //ヘッダーの受け渡し変数の定義
         public string w_yyyymmdd;
-        public string w_hd10;//製品CD
-        public string w_hd11;//製品名
-        public string w_hd20;//製品構成番号
-        public string w_hd21;//製品構成名称
+        public string w_hd10;//部品CD
+        public string w_hd11;//部品名
 
 
         //親画面から参照できるプロパティを作成
@@ -37,8 +35,8 @@ namespace TSS_SYSTEM
                 fld_dt = value;
             }
         }
-        
-        public frm_seihin_kousei_preview()
+
+        public frm_buhin_to_seihin_preview()
         {
             InitializeComponent();
         }
@@ -51,30 +49,19 @@ namespace TSS_SYSTEM
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
-
-           
         }
 
-        private void frm_seihin_kousei_preview_Load(object sender, EventArgs e)
+        private void frm_buhin_to_seihin_preview_Load(object sender, EventArgs e)
         {
-            rpt_seihin_kousei rpt = new rpt_seihin_kousei();
+            rpt_buhin_to_seihin rpt = new rpt_buhin_to_seihin();
             //レポートへデータを受け渡す
             rpt.DataSource = ppt_dt;
             rpt.w_yyyymmdd = w_yyyymmdd;
             rpt.w_hd10 = w_hd10;
             rpt.w_hd11 = w_hd11;
-            rpt.w_hd20 = w_hd20;
-            rpt.w_hd21 = w_hd21;
 
             rpt.Run();
             this.vwr.Document = rpt.Document;
         }
-
-        private void btn_syuuryou_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-      
     }
 }

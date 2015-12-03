@@ -278,6 +278,21 @@ namespace TSS_SYSTEM
             dgv_m.Columns[12].HeaderText = "売上締日";
             dgv_m.Columns[13].HeaderText = "備考";
 
+
+            //"Column1"列のセルのテキストの配置を設定する（右詰とか）
+            dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
+            //書式を設定する
+            dgv_m.Columns[8].DefaultCellStyle.Format = "#,###,###,##0";
+            dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0.00";
+            dgv_m.Columns[10].DefaultCellStyle.Format = "#,###,###,##0";
+
+
+
+
             w_dt_insatu = dt_m;
         }
 

@@ -188,5 +188,21 @@ namespace TSS_SYSTEM
                 kensaku();
             }
         }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_buhin_to_seihin_preview frm_rpt = new frm_buhin_to_seihin_preview();
+
+            //子画面のプロパティに値をセットする
+            kensaku();
+            frm_rpt.ppt_dt = w_dt_m;
+
+            frm_rpt.w_hd10 = tb_buhin_cd.Text;
+            frm_rpt.w_hd11 = tb_buhin_name.Text;
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
+        }
     }
 }

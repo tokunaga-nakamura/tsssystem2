@@ -43,6 +43,7 @@
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_insatu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,7 +61,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 0;
@@ -84,7 +85,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -125,10 +126,11 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
+            this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -151,7 +153,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 435);
+            this.splitContainer3.Size = new System.Drawing.Size(880, 436);
             this.splitContainer3.SplitterDistance = 53;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -215,12 +217,12 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 378);
+            this.dgv_m.Size = new System.Drawing.Size(880, 379);
             this.dgv_m.TabIndex = 0;
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(10, 3);
+            this.btn_csv.Location = new System.Drawing.Point(98, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 1;
@@ -238,11 +240,21 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_insatu
+            // 
+            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
+            this.btn_insatu.Name = "btn_insatu";
+            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu.TabIndex = 2;
+            this.btn_insatu.Text = "印刷";
+            this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
+            // 
             // frm_buhin_to_seihin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
@@ -284,5 +296,6 @@
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.Button btn_kensaku;
         private System.Windows.Forms.Button btn_csv;
+        private System.Windows.Forms.Button btn_insatu;
     }
 }
