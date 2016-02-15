@@ -197,6 +197,15 @@ namespace TSS_SYSTEM
                 case "1":
                     out_name = "参照のみ";
                     break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
+                    break;
                 case "9":
                     out_name = "すべて可";
                     break;
@@ -216,6 +225,15 @@ namespace TSS_SYSTEM
                     break;
                 case "1":
                     out_name = "参照のみ";
+                    break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
                     break;
                 case "9":
                     out_name = "すべて可";
@@ -237,6 +255,15 @@ namespace TSS_SYSTEM
                 case "1":
                     out_name = "参照のみ";
                     break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
+                    break;
                 case "9":
                     out_name = "すべて可";
                     break;
@@ -256,6 +283,15 @@ namespace TSS_SYSTEM
                     break;
                 case "1":
                     out_name = "参照のみ";
+                    break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
                     break;
                 case "9":
                     out_name = "すべて可";
@@ -277,6 +313,15 @@ namespace TSS_SYSTEM
                 case "1":
                     out_name = "参照のみ";
                     break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
+                    break;
                 case "9":
                     out_name = "すべて可";
                     break;
@@ -296,6 +341,15 @@ namespace TSS_SYSTEM
                     break;
                 case "1":
                     out_name = "参照のみ";
+                    break;
+                case "3":
+                    out_name = "管理職";
+                    break;
+                case "5":
+                    out_name = "実務担当1";
+                    break;
+                case "6":
+                    out_name = "実務担当2";
                     break;
                 case "9":
                     out_name = "すべて可";
@@ -402,6 +456,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //登録前に全ての項目をチェック
             if (chk_user_name() == false)
             {
@@ -817,6 +877,22 @@ namespace TSS_SYSTEM
             dt_work.Rows.Add(dr_work);
 
             dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
+
+            dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";
             dr_work["区分名"] = "すべて可";
             dt_work.Rows.Add(dr_work);
@@ -843,6 +919,22 @@ namespace TSS_SYSTEM
             dr_work["区分"] = "1";
             dr_work["区分名"] = "参照のみ";
             dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
 
             dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";
@@ -873,6 +965,22 @@ namespace TSS_SYSTEM
             dt_work.Rows.Add(dr_work);
 
             dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
+
+            dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";
             dr_work["区分名"] = "すべて可";
             dt_work.Rows.Add(dr_work);
@@ -899,6 +1007,22 @@ namespace TSS_SYSTEM
             dr_work["区分"] = "1";
             dr_work["区分名"] = "参照のみ";
             dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
 
             dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";
@@ -929,6 +1053,22 @@ namespace TSS_SYSTEM
             dt_work.Rows.Add(dr_work);
 
             dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
+
+            dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";
             dr_work["区分名"] = "すべて可";
             dt_work.Rows.Add(dr_work);
@@ -955,6 +1095,22 @@ namespace TSS_SYSTEM
             dr_work["区分"] = "1";
             dr_work["区分名"] = "参照のみ";
             dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "3";
+            dr_work["区分名"] = "管理職";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "5";
+            dr_work["区分名"] = "実務担当1";
+            dt_work.Rows.Add(dr_work);
+
+            dr_work = dt_work.NewRow();
+            dr_work["区分"] = "6";
+            dr_work["区分名"] = "実務担当2";
+            dt_work.Rows.Add(dr_work);
+
 
             dr_work = dt_work.NewRow();
             dr_work["区分"] = "9";

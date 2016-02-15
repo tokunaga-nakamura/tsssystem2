@@ -93,7 +93,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 496);
-            this.splitContainer2.SplitterDistance = 459;
+            this.splitContainer2.SplitterDistance = 430;
             this.splitContainer2.TabIndex = 0;
             // 
             // vwr
@@ -127,7 +127,7 @@
             this.vwr.Sidebar.TocPanel.ContextMenu = null;
             this.vwr.Sidebar.TocPanel.Width = 200;
             this.vwr.Sidebar.Width = 200;
-            this.vwr.Size = new System.Drawing.Size(880, 455);
+            this.vwr.Size = new System.Drawing.Size(880, 426);
             this.vwr.TabIndex = 0;
             // 
             // btn_syuuryou

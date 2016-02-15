@@ -144,11 +144,26 @@
   <data name="tb_torihikisaki_cd1.OutputFormat" xml:space="preserve">
     <value />
   </data>
-  <data name="tb_uriage_date.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
+  <data name="tb_uriage_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
   </data>
-  <data name="tb_today.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
+  <data name="tb_kouchin_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_hukusizai_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_buhin_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_torihikisaki_cd.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_torihikisaki_cd1.OutputFormat" xml:space="preserve">
+    <value />
   </data>
   <data name="tb_sum_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
     <value>#,##0</value>

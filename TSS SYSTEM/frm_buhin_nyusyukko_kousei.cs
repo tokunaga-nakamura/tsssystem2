@@ -402,6 +402,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             if(chk_seihin_cd() == false)
             {
                 MessageBox.Show("製品コードに異常があります。");

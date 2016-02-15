@@ -28,6 +28,12 @@ namespace TSS_SYSTEM
         //登録ボタンクリック
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //登録前のチェック
             //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
@@ -320,6 +326,12 @@ namespace TSS_SYSTEM
 
         private void btn_hensyu_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             frm_torihikisaki_tantou frm_tt = new frm_torihikisaki_tantou();
 
             if (dgv_tantousya.RowCount > 1)
@@ -965,6 +977,11 @@ namespace TSS_SYSTEM
         //追加ボタンクリック時の動き
         private void btn_tsuika_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             frm_torihikisaki_tantou frm_tt = new frm_torihikisaki_tantou();
 
             frm_tt.str_torihikisaki_cd = tb_torihikisaki_cd.Text.ToString();

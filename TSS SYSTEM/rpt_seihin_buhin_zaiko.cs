@@ -21,7 +21,8 @@ namespace TSS_SYSTEM
         public string w_hd20;
         public string w_hd21;
         public string w_hd30;
-        
+        public string w_hd40;
+        public string w_bikou;
         
         public rpt_seihin_buhin_zaiko()
         {
@@ -46,6 +47,8 @@ namespace TSS_SYSTEM
             tb_juchu_cd1.Text = w_hd20;
             tb_juchu_cd2.Text = w_hd21;
             tb_seisansitai_daisu.Text = w_hd30;
+            tb_juchu_su.Text = w_hd40;
+            tb_bikou.Text = w_bikou;
         }
     }
 }

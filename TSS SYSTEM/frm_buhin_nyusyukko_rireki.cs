@@ -160,7 +160,7 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
-            sql = sql + " order by tss_buhin_nyusyukko_m.buhin_syori_date,tss_buhin_nyusyukko_m.DENPYOU_NO ";
+            sql = sql + " order by tss_buhin_nyusyukko_m.buhin_syori_date,tss_buhin_nyusyukko_m.DENPYOU_NO,tss_buhin_nyusyukko_m.seq ";
 
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);

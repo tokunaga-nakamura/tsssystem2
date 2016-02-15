@@ -188,7 +188,7 @@ namespace TSS_SYSTEM
                 sql = sql + sql_where[i - 1];
             }
 
-            sql = sql + " order by tss_uriage_m.uriage_date,tss_uriage_m.uriage_no ";
+            sql = sql + " order by tss_uriage_m.uriage_date,tss_uriage_m.uriage_no,tss_uriage_m.seq ";
             
             dt_kensaku = tss.OracleSelect(sql);
             list_disp(dt_kensaku);
@@ -543,9 +543,183 @@ namespace TSS_SYSTEM
         }
 
         private void btn_insatu_Click(object sender, EventArgs e)
-        {
+        { 
             frm_uriage_preview frm_rpt = new frm_uriage_preview();
             
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_insatu;
+
+            frm_rpt.w_hd10 = tb_uriage_no1.Text;
+            frm_rpt.w_hd11 = tb_uriage_no2.Text;
+            frm_rpt.w_hd20 = tb_torihikisaki_cd.Text;
+            frm_rpt.w_hd21 = tb_torihikisaki_name.Text;
+            frm_rpt.w_hd30 = tb_uriage_date1.Text;
+            frm_rpt.w_hd31 = tb_uriage_date2.Text;
+            frm_rpt.w_hd40 = tb_juchu_cd1.Text;
+            frm_rpt.w_hd41 = tb_juchu_cd2.Text;
+            frm_rpt.w_hd50 = tb_seihin_cd.Text;
+            frm_rpt.w_hd51 = tb_seihin_name.Text;
+
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
+        }
+
+        private void btn_uriage_meisai_Click(object sender, EventArgs e)
+        {
+            frm_uriage_meisai_preview frm_rpt = new frm_uriage_meisai_preview();
+
+            
+
+            DataTable dt_kensaku = new DataTable();
+            string[] sql_where = new string[7];
+            int sql_cnt = 0;
+            //売上番号
+            if (tb_uriage_no1.Text != "" && tb_uriage_no2.Text != "")
+            {
+                int w_int_hikaku = string.Compare(tb_uriage_no1.Text, tb_uriage_no2.Text);
+                if (w_int_hikaku == 0)
+                {
+                    //左右同じコード
+                    sql_where[sql_cnt] = "tss_uriage_m.uriage_no = '" + tb_uriage_no1.Text.ToString() + "'";
+                    sql_cnt++;
+                }
+                else
+                    if (w_int_hikaku < 0)
+                    {
+                        //左辺＜右辺
+                        sql_where[sql_cnt] = "tss_uriage_m.uriage_no >= '" + tb_uriage_no1.Text.ToString() + "' and tss_uriage_m.uriage_no <= '" + tb_uriage_no2.Text.ToString() + "'";
+                        sql_cnt++;
+                    }
+                    else
+                        if (w_int_hikaku > 0)
+                        {
+                            //左辺＞右辺
+                            sql_where[sql_cnt] = "tss_uriage_m.uriage_no >= '" + tb_uriage_no2.Text.ToString() + "' and tss_uriage_m.uriage_no <= '" + tb_uriage_no1.Text.ToString() + "'";
+                            sql_cnt++;
+                        }
+            }
+            //取引先コード
+            if (tb_torihikisaki_cd.Text != "")
+            {
+                if (chk_torihikisaki_cd(tb_torihikisaki_cd.Text))
+                {
+                    sql_where[sql_cnt] = "tss_uriage_m.torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
+                    sql_cnt++;
+                }
+                else
+                {
+                    //コード異常
+                    MessageBox.Show("取引先コードに異常があります。");
+                    tb_torihikisaki_cd.Focus();
+                    return;
+                }
+            }
+            //売上計上日
+            if (tb_uriage_date1.Text != "" && tb_uriage_date2.Text != "")
+            {
+                if (tb_uriage_date1.Text != "")
+                {
+                    if (chk_uriage_date(tb_uriage_date1.Text))
+                    {
+                        tb_uriage_date1.Text = tss.out_datetime.ToShortDateString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("売上計上日に異常があります。");
+                        tb_uriage_date1.Focus();
+                    }
+                }
+                if (tb_uriage_date2.Text != "")
+                {
+                    if (chk_uriage_date(tb_uriage_date2.Text))
+                    {
+                        tb_uriage_date2.Text = tss.out_datetime.ToShortDateString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("売上計上日に異常があります。");
+                        tb_uriage_date2.Focus();
+                    }
+                }
+                int w_int_hikaku = string.Compare(tb_uriage_date1.Text, tb_uriage_date2.Text);
+                if (w_int_hikaku == 0)
+                {
+                    //左右同じコード
+                    sql_where[sql_cnt] = "tss_uriage_m.uriage_date = TO_DATE('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD')";
+                    sql_cnt++;
+                }
+                else
+                    if (w_int_hikaku < 0)
+                    {
+                        //左辺＜右辺
+                        sql_where[sql_cnt] = "tss_uriage_m.uriage_date >= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/DD') and tss_uriage_m.uriage_date <= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/DD')";
+                        sql_cnt++;
+                    }
+                    else
+                        if (w_int_hikaku > 0)
+                        {
+                            //左辺＞右辺
+                            sql_where[sql_cnt] = "tss_uriage_m.uriage_date >= to_date('" + tb_uriage_date2.Text.ToString() + "','YYYY/MM/dd') and tss_uriage_m.uriage_date <= to_date('" + tb_uriage_date1.Text.ToString() + "','YYYY/MM/dd')";
+                            sql_cnt++;
+                        }
+            }
+
+            //受注コード1
+            if (tb_juchu_cd1.Text != "")
+            {
+                sql_where[sql_cnt] = "tss_uriage_m.juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "'";
+                sql_cnt++;
+            }
+            //受注コード2
+            if (tb_juchu_cd2.Text != "")
+            {
+                sql_where[sql_cnt] = "tss_uriage_m.juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'";
+                sql_cnt++;
+            }
+            //取引先コード
+            if (tb_seihin_cd.Text != "")
+            {
+                if (chk_seihin_cd(tb_seihin_cd.Text))
+                {
+                    sql_where[sql_cnt] = "tss_uriage_m.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'";
+                    sql_cnt++;
+                }
+                else
+                {
+                    //コード異常
+                    MessageBox.Show("製品コードに異常があります。");
+                    tb_seihin_cd.Focus();
+                    return;
+                }
+            }
+
+            //検索条件が全て空白
+            if (sql_cnt == 0)
+            {
+                MessageBox.Show("検索条件を指定してください。");
+                tb_uriage_no1.Focus();
+                return;
+            }
+            string sql = "select tss_uriage_m.uriage_no,tss_uriage_m.torihikisaki_cd,tss_uriage_m.torihikisaki_name,tss_uriage_m.uriage_date,tss_uriage_m.juchu_cd1,tss_uriage_m.juchu_cd2,tss_uriage_m.seihin_cd,tss_seihin_m.seihin_name,tss_uriage_m.uriage_su,tss_uriage_m.hanbai_tanka,tss_uriage_m.uriage_kingaku,tss_uriage_m.urikake_no,tss_uriage_m.uriage_simebi,tss_uriage_m.bikou from tss_uriage_m inner join tss_seihin_m on tss_uriage_m.seihin_cd = tss_seihin_m.seihin_cd where ";
+
+            for (int i = 1; i <= sql_cnt; i++)
+            {
+                if (i >= 2)
+                {
+                    sql = sql + " and ";
+                }
+                sql = sql + sql_where[i - 1];
+            }
+
+            sql = sql + " order by tss_uriage_m.seihin_cd,tss_uriage_m.uriage_date";
+
+
+            dt_kensaku = tss.OracleSelect(sql);
+
+            w_dt_insatu = dt_kensaku;
+
             //子画面のプロパティに値をセットする
             frm_rpt.ppt_dt = w_dt_insatu;
 

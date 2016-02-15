@@ -234,6 +234,7 @@ namespace TSS_SYSTEM
         {
             dgv_buhin_nyusyukko_m.DataSource = null;
             dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc");
+            //dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by  buhin_syori_date desc");
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_nyusyukko_m.ReadOnly = true;
             //行ヘッダーを非表示にする
@@ -321,6 +322,11 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             DataTable dt_work = new DataTable();
 
             //登録前に全ての項目をチェック
@@ -933,6 +939,12 @@ namespace TSS_SYSTEM
 
         private void btn_nyuuko_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //入庫画面へ
             tss.buhin_nyusyukkoidou("1");
             chk_buhin_cd();
@@ -940,6 +952,12 @@ namespace TSS_SYSTEM
 
         private void btn_syukko_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //出庫画面へ
             tss.buhin_nyusyukkoidou("2");
             chk_buhin_cd();
@@ -947,6 +965,12 @@ namespace TSS_SYSTEM
 
         private void btn_idou_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //移動画面へ
             frm_buhin_idou frm_bi = new frm_buhin_idou();
             frm_bi.ShowDialog(this);

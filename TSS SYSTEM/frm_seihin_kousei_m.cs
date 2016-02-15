@@ -257,6 +257,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //入力項目のチェック
 
             if (chk_seihin_kousei_name() == false)
@@ -621,6 +627,21 @@ namespace TSS_SYSTEM
                     }
                 }
             }
+
+            tb_seihin_cd.Clear();
+            tb_seihin_name.Clear();
+            tb_seihin_kousei_no.Clear();
+            tb_seihin_kousei_name.Clear();
+            tb_create_user_cd.Clear();
+            tb_create_datetime.Clear();
+            tb_update_user_cd.Clear();
+            tb_update_datetime.Clear();
+
+            dgv_seihin_kousei.DataSource = null;
+            dgv_seihin_kousei_name.DataSource = null;
+
+            tb_seihin_cd.Focus();
+
         }
 
 

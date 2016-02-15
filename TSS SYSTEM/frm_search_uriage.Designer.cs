@@ -56,6 +56,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_uriage_meisai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -333,12 +334,13 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btn_uriage_meisai);
             this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Size = new System.Drawing.Size(884, 382);
-            this.splitContainer2.SplitterDistance = 341;
+            this.splitContainer2.SplitterDistance = 328;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -349,13 +351,13 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 337);
+            this.dgv_m.Size = new System.Drawing.Size(880, 324);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(172, 3);
+            this.btn_csv.Location = new System.Drawing.Point(296, 11);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 2;
@@ -365,7 +367,7 @@
             // 
             // btn_insatu
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(91, 3);
+            this.btn_insatu.Location = new System.Drawing.Point(91, 11);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
             this.btn_insatu.TabIndex = 1;
@@ -375,7 +377,7 @@
             // 
             // btn_sentaku
             // 
-            this.btn_sentaku.Location = new System.Drawing.Point(10, 3);
+            this.btn_sentaku.Location = new System.Drawing.Point(10, 11);
             this.btn_sentaku.Name = "btn_sentaku";
             this.btn_sentaku.Size = new System.Drawing.Size(75, 23);
             this.btn_sentaku.TabIndex = 0;
@@ -385,13 +387,23 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(795, 3);
+            this.btn_cancel.Location = new System.Drawing.Point(795, 11);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 3;
             this.btn_cancel.Text = "キャンセル";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_uriage_meisai
+            // 
+            this.btn_uriage_meisai.Location = new System.Drawing.Point(176, 11);
+            this.btn_uriage_meisai.Name = "btn_uriage_meisai";
+            this.btn_uriage_meisai.Size = new System.Drawing.Size(114, 23);
+            this.btn_uriage_meisai.TabIndex = 4;
+            this.btn_uriage_meisai.Text = "売上明細リスト";
+            this.btn_uriage_meisai.UseVisualStyleBackColor = true;
+            this.btn_uriage_meisai.Click += new System.EventHandler(this.btn_uriage_meisai_Click);
             // 
             // frm_search_uriage
             // 
@@ -452,5 +464,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_uriage_meisai;
     }
 }

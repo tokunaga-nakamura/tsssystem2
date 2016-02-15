@@ -117,7 +117,7 @@ namespace TSS_SYSTEM
         {
             if(tss.User_Kengen_Check(6, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //マスタメンテナンス
@@ -130,7 +130,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 2) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //区分名称マスタ
@@ -143,7 +143,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 2) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //区分マスタ
@@ -156,7 +156,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(1, 1) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //受注入力
@@ -167,6 +167,11 @@ namespace TSS_SYSTEM
 
         private void btn_seihin_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品マスタ
             frm_seihin_m frm_sm = new frm_seihin_m();
             frm_sm.ShowDialog(this);
@@ -183,6 +188,12 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_m_Click(object sender, EventArgs e)
         {
+
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //部品マスタ
             frm_buhin_m frm_bm = new frm_buhin_m();
             frm_bm.ShowDialog(this);
@@ -193,7 +204,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //銀行マスタ
@@ -204,6 +215,11 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_kensaku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //検索画面へ
             tss.search_buhin("1", "");
         }
@@ -230,24 +246,45 @@ namespace TSS_SYSTEM
 
         private void btn_seihin_kensaku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品検索画面へ
             tss.search_seihin("1", "");
         }
 
         private void btn_nyuko_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //入庫画面へ
             tss.buhin_nyusyukkoidou("1");
         }
 
         private void btn_syukko_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //出庫画面へ
             tss.buhin_nyusyukkoidou("2");
         }
 
         private void btn_idou_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //移動画面へ
             frm_buhin_idou frm_bi = new frm_buhin_idou();
             frm_bi.ShowDialog(this);
@@ -306,7 +343,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 2) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //営業カレンダー
@@ -319,7 +356,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //ユーザーマスタ
@@ -330,9 +367,9 @@ namespace TSS_SYSTEM
 
         private void btn_uriage_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(2, 9) == false)
+            if (tss.User_Kengen_Check(2, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //売上
@@ -343,6 +380,12 @@ namespace TSS_SYSTEM
 
         private void btn_siire_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //仕入
             frm_siire frm_sir = new frm_siire();
             frm_sir.ShowDialog(this);
@@ -351,6 +394,12 @@ namespace TSS_SYSTEM
 
         private void btn_siire_sime_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //仕入締め
             frm_siire_simebi frm_ss = new frm_siire_simebi();
             frm_ss.ShowDialog(this);
@@ -359,6 +408,12 @@ namespace TSS_SYSTEM
 
         private void btn_siharai_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //支払
             frm_siharai frm_shri = new frm_siharai();
             frm_shri.ShowDialog(this);
@@ -378,6 +433,11 @@ namespace TSS_SYSTEM
 
         private void btn_3_buhin_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //部品マスタ
             frm_buhin_m frm_bm = new frm_buhin_m();
             frm_bm.ShowDialog(this);
@@ -386,12 +446,22 @@ namespace TSS_SYSTEM
 
         private void btn_3_buhin_kensaku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //検索画面へ
             tss.search_buhin("1", "");
         }
 
         private void btn_3_seihin_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品マスタ
             frm_seihin_m frm_sm = new frm_seihin_m();
             frm_sm.ShowDialog(this);
@@ -400,6 +470,11 @@ namespace TSS_SYSTEM
 
         private void btn_3_seihin_kensaku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品検索画面へ
             tss.search_seihin("1", "");
         }
@@ -441,9 +516,9 @@ namespace TSS_SYSTEM
 
         private void btn_uriage_denpyou_insatu_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(2, 9) == false)
+            if (tss.User_Kengen_Check(2, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //伝票印刷
@@ -462,9 +537,9 @@ namespace TSS_SYSTEM
 
         private void btn_seikyu_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(2, 9) == false)
+            if (tss.User_Kengen_Check(2, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //請求
@@ -477,7 +552,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(2, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //請求書印刷
@@ -488,9 +563,9 @@ namespace TSS_SYSTEM
 
         private void btn_nyukin_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(2, 9) == false)
+            if (tss.User_Kengen_Check(2, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //入金
@@ -501,6 +576,11 @@ namespace TSS_SYSTEM
 
         private void btn_3_seihin_tanka_m_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品単価マスタ
             frm_seihin_tanka_m frm_stk = new frm_seihin_tanka_m();
             frm_stk.ShowDialog(this);
@@ -525,6 +605,12 @@ namespace TSS_SYSTEM
 
         private void btn_nyuko_bcr_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //部品入出（ダイニチ専用BCR対応）
             frm_buhin_nyuuko_bcr frm_bnsr = new frm_buhin_nyuuko_bcr();
             frm_bnsr.ShowDialog(this);
@@ -533,6 +619,11 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_nyusyukko_kousei_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //製品構成を使用した一括入出庫
             frm_buhin_nyusyukko_kousei frm_bnsr = new frm_buhin_nyusyukko_kousei();
             frm_bnsr.ShowDialog(this);
@@ -543,7 +634,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //フリー在庫レコード作成
@@ -570,6 +661,12 @@ namespace TSS_SYSTEM
 
         private void btn_tankabetu_uriage_meisai_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2,3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //単価別売上明細
             frm_tankabetu_uriage frm_tbu = new frm_tankabetu_uriage();
             frm_tbu.ShowDialog(this);
@@ -578,9 +675,9 @@ namespace TSS_SYSTEM
 
         private void btn_buhin_zaiko_juchu_check_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(6, 9) == false)
+            if (tss.User_Kengen_Check(6, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //単価別売上明細
@@ -593,7 +690,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 9) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //在庫けしこみごみプロ
@@ -604,15 +701,113 @@ namespace TSS_SYSTEM
 
         private void tb_zaiko_chousei_Click(object sender, EventArgs e)
         {
-            if (tss.User_Kengen_Check(4, 9) == false)
+            if (tss.User_Kengen_Check(4, 5) == false)
             {
-                MessageBox.Show("権限レベルが有りません");
+                MessageBox.Show("権限がありません");
                 return;
             }
             //在庫調整
             ZAIKO_CHOUSEI frm_zai_cho = new ZAIKO_CHOUSEI();
             frm_zai_cho.ShowDialog(this);
             frm_zai_cho.Dispose();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            //請求一覧
+            frm_seikyu_ichiran frm_sei_ichi = new frm_seikyu_ichiran();
+            frm_sei_ichi.ShowDialog(this);
+            frm_sei_ichi.Dispose();
+        }
+
+        private void btn_siharai_ichiran_Click(object sender, EventArgs e)
+        {
+            //請求一覧
+            frm_siharai_ichiran frm_siha_ichi = new frm_siharai_ichiran();
+            frm_siha_ichi.ShowDialog(this);
+            frm_siha_ichi.Dispose();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //ごみプロ2　取引先コード000000の売上、入出庫、在庫情報などをクリアする
+
+            tss.OracleDelete("delete from tss_buhin_zaiko_m where torihikisaki_cd = '000000' and juchu_cd1 = '11'");
+            tss.OracleUpdate("UPDATE tss_juchu_m SET uriage_su = '0',uriage_kanryou_flg = '0' where torihikisaki_cd = '000000'");
+            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998101'");
+            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998102'");
+            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998103'");
+            tss.OracleDelete("delete from tss_uriage_m where torihikisaki_cd = '000000'");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //                + " VALUES ('998101','02','000000','11','11','100','" + "000000" + "',SYSDATE)");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //               + " VALUES ('998102','02','000000','11','11','200','" + "000000" + "',SYSDATE)");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //               + " VALUES ('998103','02','000000','11','11','100','" + "000000" + "',SYSDATE)");
+
+            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-15' where buhin_cd = '998101' and  zaiko_kbn = '01'");
+            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-350' where buhin_cd = '998102' and  zaiko_kbn = '01'");
+            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-28000' where buhin_cd = '998103' and  zaiko_kbn = '01'");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //               + " VALUES ('998101','02','000000','11','9999999999999999','-50','" + "000000" + "',SYSDATE)");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //               + " VALUES ('998102','02','000000','11','9999999999999999','-100','" + "000000" + "',SYSDATE)");
+
+            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
+            //               + " VALUES ('998103','02','000000','11','9999999999999999','-30','" + "000000" + "',SYSDATE)");
+
+
+            MessageBox.Show("初期化しました");
+        }
+
+        private void tb_getumatu_zaiko_Click(object sender, EventArgs e)
+        {
+            
+             if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            //月末在庫登録
+            frm_getumatu_zaiko frm_getumatu_zai = new frm_getumatu_zaiko();
+            frm_getumatu_zai.ShowDialog(this);
+            frm_getumatu_zai.Dispose();
+            
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //部品在庫照会
+            frm_buhin_zaiko_syoukai frm_bu_zai_syou = new frm_buhin_zaiko_syoukai();
+            frm_bu_zai_syou.ShowDialog(this);
+            frm_bu_zai_syou.Dispose();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //累計売上（月）
+            frm_tankabetu_uriage_ruikei frm_uriage_ruikei = new frm_tankabetu_uriage_ruikei();
+            frm_uriage_ruikei.ShowDialog(this);
+            frm_uriage_ruikei.Dispose();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            //売上予定登録
+            frm_uriage_yotei_touroku frm_uriage_yotei_touroku = new frm_uriage_yotei_touroku();
+            frm_uriage_yotei_touroku.ShowDialog(this);
+            frm_uriage_yotei_touroku.Dispose();
         }
 
     }

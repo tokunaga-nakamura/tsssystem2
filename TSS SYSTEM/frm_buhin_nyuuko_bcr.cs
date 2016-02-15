@@ -371,6 +371,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //テストモード
             if (tb_syori_date.Text == "2000/01/01")
             {
@@ -433,7 +439,7 @@ namespace TSS_SYSTEM
                     decimal w_dou1 = tss.try_string_to_decimal(w_dt.Rows[0]["zaiko_su"].ToString());
                     decimal w_dou2 = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd());
                     decimal w_dou3 = w_dou1 + w_dou2;
-                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[15].Value.ToString().TrimEnd() + "' and zaiko_kbn = '01'");
+                    tss.OracleUpdate("UPDATE TSS_BUHIN_ZAIKO_M SET ZAIKO_SU = '" + w_dou3.ToString() + "',UPDATE_DATETIME = SYSDATE,UPDATE_USER_CD = '" + tss.user_cd + "' WHERE buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '01'");
                 }
                 else
                 {

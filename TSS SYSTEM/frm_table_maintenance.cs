@@ -78,6 +78,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             if (dgv_table.DataSource != null)
             {
                 try

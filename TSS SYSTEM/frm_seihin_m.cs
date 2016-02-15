@@ -463,6 +463,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
 
             //登録前に全ての項目をチェック
@@ -838,6 +844,12 @@ namespace TSS_SYSTEM
 
         private void btn_tanka_hensyuu_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //製品単価マスタ
             frm_seihin_tanka_m frm_stk = new frm_seihin_tanka_m();
             frm_stk.ppt_cd = tb_seihin_cd.Text;

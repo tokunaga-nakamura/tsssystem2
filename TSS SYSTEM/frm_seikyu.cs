@@ -95,6 +95,13 @@ namespace TSS_SYSTEM
 
         private void btn_syuukei_Click(object sender, EventArgs e)
         {
+
+            if (tss.User_Kengen_Check(2, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             tss.GetUser();
             //集計
             if(chk_seikyu_simebi() == false)

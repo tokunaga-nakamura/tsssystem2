@@ -58,6 +58,8 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.btn_tankabetu_uriage_meisai = new System.Windows.Forms.Button();
             this.btn_juchu_zan = new System.Windows.Forms.Button();
             this.btn_nyukin = new System.Windows.Forms.Button();
@@ -71,6 +73,8 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.tb_getumatu_zaiko = new System.Windows.Forms.Button();
             this.tb_zaiko_chousei = new System.Windows.Forms.Button();
             this.btn_buhin_nyusyukko_kousei = new System.Windows.Forms.Button();
             this.btn_buhin_nyusyukko_rireki = new System.Windows.Forms.Button();
@@ -87,12 +91,14 @@
             this.btn_syukko = new System.Windows.Forms.Button();
             this.btn_nyuko = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_siharai_ichiran = new System.Windows.Forms.Button();
             this.btn_siire_kensaku = new System.Windows.Forms.Button();
             this.btn_siharai = new System.Windows.Forms.Button();
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
@@ -111,6 +117,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -549,6 +556,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tabPage2.Controls.Add(this.button9);
+            this.tabPage2.Controls.Add(this.button8);
+            this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.btn_tankabetu_uriage_meisai);
             this.tabPage2.Controls.Add(this.btn_juchu_zan);
             this.tabPage2.Controls.Add(this.btn_nyukin);
@@ -567,6 +577,26 @@
             this.tabPage2.Size = new System.Drawing.Size(690, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(462, 125);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(222, 23);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "単価別売上（月）";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(236, 245);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(222, 23);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "請求一覧";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btn_tankabetu_uriage_meisai
             // 
@@ -590,7 +620,7 @@
             // 
             // btn_nyukin
             // 
-            this.btn_nyukin.Location = new System.Drawing.Point(6, 270);
+            this.btn_nyukin.Location = new System.Drawing.Point(8, 303);
             this.btn_nyukin.Name = "btn_nyukin";
             this.btn_nyukin.Size = new System.Drawing.Size(222, 23);
             this.btn_nyukin.TabIndex = 13;
@@ -600,7 +630,7 @@
             // 
             // btn_seikyu_preview
             // 
-            this.btn_seikyu_preview.Location = new System.Drawing.Point(6, 212);
+            this.btn_seikyu_preview.Location = new System.Drawing.Point(8, 245);
             this.btn_seikyu_preview.Name = "btn_seikyu_preview";
             this.btn_seikyu_preview.Size = new System.Drawing.Size(222, 23);
             this.btn_seikyu_preview.TabIndex = 12;
@@ -610,7 +640,7 @@
             // 
             // btn_seikyu
             // 
-            this.btn_seikyu.Location = new System.Drawing.Point(6, 183);
+            this.btn_seikyu.Location = new System.Drawing.Point(8, 216);
             this.btn_seikyu.Name = "btn_seikyu";
             this.btn_seikyu.Size = new System.Drawing.Size(222, 23);
             this.btn_seikyu.TabIndex = 11;
@@ -691,6 +721,8 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.tb_getumatu_zaiko);
             this.tabPage3.Controls.Add(this.tb_zaiko_chousei);
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_kousei);
             this.tabPage3.Controls.Add(this.btn_buhin_nyusyukko_rireki);
@@ -713,6 +745,27 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(462, 103);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(222, 23);
+            this.button7.TabIndex = 19;
+            this.button7.Text = "部品在庫照会";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // tb_getumatu_zaiko
+            // 
+            this.tb_getumatu_zaiko.Location = new System.Drawing.Point(464, 390);
+            this.tb_getumatu_zaiko.Name = "tb_getumatu_zaiko";
+            this.tb_getumatu_zaiko.Size = new System.Drawing.Size(220, 23);
+            this.tb_getumatu_zaiko.TabIndex = 18;
+            this.tb_getumatu_zaiko.Text = "月末在庫登録処理";
+            this.tb_getumatu_zaiko.UseVisualStyleBackColor = true;
+            this.tb_getumatu_zaiko.Click += new System.EventHandler(this.tb_getumatu_zaiko_Click);
+            // 
             // tb_zaiko_chousei
             // 
             this.tb_zaiko_chousei.Location = new System.Drawing.Point(236, 390);
@@ -721,6 +774,7 @@
             this.tb_zaiko_chousei.TabIndex = 17;
             this.tb_zaiko_chousei.Text = "フリー在庫直接入力";
             this.tb_zaiko_chousei.UseVisualStyleBackColor = true;
+            this.tb_zaiko_chousei.Visible = false;
             this.tb_zaiko_chousei.Click += new System.EventHandler(this.tb_zaiko_chousei_Click);
             // 
             // btn_buhin_nyusyukko_kousei
@@ -866,6 +920,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage4.Controls.Add(this.btn_siharai_ichiran);
             this.tabPage4.Controls.Add(this.btn_siire_kensaku);
             this.tabPage4.Controls.Add(this.btn_siharai);
             this.tabPage4.Controls.Add(this.btn_siire_sime);
@@ -875,6 +930,16 @@
             this.tabPage4.Size = new System.Drawing.Size(690, 442);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
+            // 
+            // btn_siharai_ichiran
+            // 
+            this.btn_siharai_ichiran.Location = new System.Drawing.Point(465, 3);
+            this.btn_siharai_ichiran.Name = "btn_siharai_ichiran";
+            this.btn_siharai_ichiran.Size = new System.Drawing.Size(222, 23);
+            this.btn_siharai_ichiran.TabIndex = 11;
+            this.btn_siharai_ichiran.Text = "支払一覧";
+            this.btn_siharai_ichiran.UseVisualStyleBackColor = true;
+            this.btn_siharai_ichiran.Click += new System.EventHandler(this.btn_siharai_ichiran_Click);
             // 
             // btn_siire_kensaku
             // 
@@ -928,6 +993,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.button6);
             this.tabPage6.Controls.Add(this.button4);
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
             this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
@@ -950,14 +1016,26 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(533, 287);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "ごみプロ2";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(533, 238);
+            this.button4.Location = new System.Drawing.Point(462, 237);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(162, 23);
             this.button4.TabIndex = 15;
-            this.button4.Text = "ごみプロ";
+            this.button4.Text = "ロット在庫→フリー在庫";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_buhin_zaiko_juchu_check
@@ -1130,6 +1208,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(462, 154);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(222, 23);
+            this.button9.TabIndex = 18;
+            this.button9.Text = "売上予定登録";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1288,6 +1376,13 @@
         private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button tb_zaiko_chousei;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_siharai_ichiran;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button tb_getumatu_zaiko;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 

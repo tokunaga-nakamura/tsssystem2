@@ -46,6 +46,8 @@
             this.tb_seihin_name = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.tb_juchu_su = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_juchu_cd2 = new System.Windows.Forms.TextBox();
             this.tb_juchu_cd2_midasi = new System.Windows.Forms.TextBox();
@@ -61,8 +63,8 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.tb_juchu_su = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_bikou = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -177,6 +179,8 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.textBox5);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_bikou);
             this.splitContainer3.Panel1.Controls.Add(this.lbl_seihin_kousei_msg);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seisan_kanou_daisuu);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seihin_cd);
@@ -321,6 +325,29 @@
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
             // 
+            // tb_juchu_su
+            // 
+            this.tb_juchu_su.Enabled = false;
+            this.tb_juchu_su.Location = new System.Drawing.Point(730, 1);
+            this.tb_juchu_su.MaxLength = 16;
+            this.tb_juchu_su.Name = "tb_juchu_su";
+            this.tb_juchu_su.ReadOnly = true;
+            this.tb_juchu_su.Size = new System.Drawing.Size(106, 19);
+            this.tb_juchu_su.TabIndex = 16;
+            this.tb_juchu_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(658, 1);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(72, 19);
+            this.textBox3.TabIndex = 17;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "受注数量";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -399,6 +426,7 @@
             this.tb_seisan_sitai_daisuu.Name = "tb_seisan_sitai_daisuu";
             this.tb_seisan_sitai_daisuu.Size = new System.Drawing.Size(63, 19);
             this.tb_seisan_sitai_daisuu.TabIndex = 4;
+            this.tb_seisan_sitai_daisuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_seisan_sitai_daisuu.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_sitai_daisuu_Validating);
             // 
             // tb_torihikisaki_cd
@@ -474,27 +502,26 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // tb_juchu_su
+            // tb_bikou
             // 
-            this.tb_juchu_su.Enabled = false;
-            this.tb_juchu_su.Location = new System.Drawing.Point(730, 1);
-            this.tb_juchu_su.MaxLength = 16;
-            this.tb_juchu_su.Name = "tb_juchu_su";
-            this.tb_juchu_su.ReadOnly = true;
-            this.tb_juchu_su.Size = new System.Drawing.Size(106, 19);
-            this.tb_juchu_su.TabIndex = 16;
+            this.tb_bikou.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_bikou.Location = new System.Drawing.Point(650, 4);
+            this.tb_bikou.Name = "tb_bikou";
+            this.tb_bikou.ReadOnly = true;
+            this.tb_bikou.Size = new System.Drawing.Size(226, 19);
+            this.tb_bikou.TabIndex = 9;
+            this.tb_bikou.TabStop = false;
             // 
-            // textBox3
+            // textBox5
             // 
-            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(658, 1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(72, 19);
-            this.textBox3.TabIndex = 17;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "受注数量";
+            this.textBox5.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox5.Location = new System.Drawing.Point(550, 4);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 19);
+            this.textBox5.TabIndex = 10;
+            this.textBox5.TabStop = false;
+            this.textBox5.Text = "備考";
             // 
             // frm_seihin_to_zaiko
             // 
@@ -567,5 +594,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_juchu_su;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_bikou;
     }
 }

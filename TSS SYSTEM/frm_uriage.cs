@@ -649,6 +649,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(2, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //全ての入力内容のチェック
             int w_mode;
             //新規か既存かの判定

@@ -99,7 +99,7 @@ namespace TSS_SYSTEM
 
         private void btn_syukei_Click(object sender, EventArgs e)
         {
-            //取引先コードのチェック
+           //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
             {
                 MessageBox.Show("取引先コードを入力してください。");
@@ -137,6 +137,11 @@ namespace TSS_SYSTEM
             string hasu_syori_tani = dt_work.Rows[0][2].ToString();
             //double zeiritu = double.Parse(dt_work2.Rows[0][0].ToString());
             decimal zeiritu = tss.get_syouhizeiritu(dt);
+            
+            if(checkBox1.Checked == true)
+            {
+                zeiritu = 0;
+            }
 
 
             if (dt_work4.Rows.Count != 0 )
@@ -433,6 +438,12 @@ namespace TSS_SYSTEM
         //登録ボタン押下イベント
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
             
             //取引先コードのチェック
@@ -506,12 +517,15 @@ namespace TSS_SYSTEM
                     
 
 
-                    bool bl = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd,siire_simebi,siire_kingaku,syouhizeigaku,siharai_kanryou_flg,create_user_cd,create_datetime) values ('"
+                    bool bl = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd,siire_simebi,kurikosigaku,siharaigaku,siire_kingaku,syouhizeigaku,kaikake_zandaka,siharai_kanryou_flg,create_user_cd,create_datetime) values ('"
 
                               + tb_torihikisaki_cd.Text.ToString() + "','"
                               + tb_siire_simebi.Text.ToString() + "','"
+                              + 0 + "','"
+                              + 0 + "','"
                               + dgv_siire_simebi.Rows[0].Cells[1].Value.ToString() + "','"
                               + dgv_siire_simebi.Rows[0].Cells[2].Value.ToString() + "','"
+                              + 0 + "','"
                               + 0 + "','"
                               + tss.user_cd + "',SYSDATE)");
 
@@ -555,10 +569,15 @@ namespace TSS_SYSTEM
                 decimal siirekingaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
                 decimal syouhizeigaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
 
+                decimal kurikosigaku = get_kurikosi(tb_torihikisaki_cd.Text.ToString());
+                decimal siharai_gaku = decimal.Parse(dt_work.Rows[0][3].ToString());
+
+                decimal kaikake_zandaka = kurikosigaku - siharai_gaku + siirekingaku + syouhizeigaku;
+
                 if (result == DialogResult.OK)
                 {
-                    bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siire_kingaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku
-                                + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
+                    bool bl = tss.OracleUpdate("UPDATE TSS_kaikake_m SET kurikosigaku = '" + kurikosigaku + "',siire_kingaku = '" + siirekingaku + "',syouhizeigaku = '" + syouhizeigaku
+                                + "',kaikake_zandaka = '" + kaikake_zandaka + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + tb_siire_simebi.Text.ToString() + "'");
                     
 
                     if (bl != true)
@@ -631,6 +650,52 @@ namespace TSS_SYSTEM
                 }                
             }
         }
+
+        private decimal get_kurikosi(string in_cd)
+        {
+            decimal out_decimal;  //戻り値用
+            DataTable w_dt = new DataTable();
+            //画面の仕入締日から1か月前の締日を求め、1カ月前の締めレコードがあったらその残高を繰越額に、なかったら画面の請求日以前の未入金（未完了）分を繰越額にする
+            DateTime w_datetime;
+            DataTable w_dt_simebi = new DataTable();
+            tss.try_string_to_date(tb_siire_simebi.Text.ToString());
+            w_datetime = tss.out_datetime.AddMonths(-1);    //1か月前
+            w_dt_simebi = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_cd + "'");
+            if (w_dt_simebi.Rows[0]["siharai_sime_date"].ToString() == "99")
+            {
+                w_datetime = new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));   //末日を求める
+            }
+           
+            w_dt = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + in_cd + "' and siire_simebi = '" + w_datetime.ToShortDateString() + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                //1カ月前のレコードが無かった場合
+                //画面の締日以前のレコードの入金未完了の金額を求めて繰越額にする
+                w_dt = tss.OracleSelect("select sum(siire_kingaku) + sum(syouhizeigaku) - sum(siharaigaku) from tss_kaikake_m where torihikisaki_cd = '" + in_cd + "' and siire_simebi < '" + tb_siire_simebi.Text + "' and siharai_kanryou_flg <> '1'");
+                if (w_dt.Rows.Count == 0)
+                {
+                    out_decimal = 0;
+                }
+                else
+                {
+                    out_decimal = tss.try_string_to_decimal(w_dt.Rows[0][0].ToString());
+                    //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
+                    if (out_decimal == -999999999)
+                    {
+                        out_decimal = 0;
+                    }
+                }
+            }
+            else
+            {
+                //1か月前のレコードがあった場合
+                out_decimal = tss.try_string_to_decimal(w_dt.Rows[0]["kaikake_zandaka"].ToString());
+            }
+            return out_decimal;
+        }
+
+
+
 
 
         //取引先コードチェック用

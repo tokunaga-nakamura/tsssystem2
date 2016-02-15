@@ -56,6 +56,12 @@ namespace TSS_SYSTEM
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
             {
@@ -348,6 +354,12 @@ namespace TSS_SYSTEM
 
         private void btn_sakujyo_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             DialogResult result = MessageBox.Show("担当者情報を削除しますか？",
             "担当者削除",
             MessageBoxButtons.OKCancel,

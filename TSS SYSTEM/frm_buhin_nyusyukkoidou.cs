@@ -193,6 +193,11 @@ namespace TSS_SYSTEM
        //登録ボタンが押された時の処理//////////////////////////////////////////////////////////////////////////////////////
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
 
             DataTable dt_work = new DataTable();
 

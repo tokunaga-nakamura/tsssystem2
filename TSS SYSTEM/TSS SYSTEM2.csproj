@@ -143,6 +143,18 @@
     <Compile Include="frm_buhin_zaiko_juchu_check.Designer.cs">
       <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_buhin_zaiko_syoukai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_buhin_zaiko_syoukai.Designer.cs">
+      <DependentUpon>frm_buhin_zaiko_syoukai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_getumatu_zaiko.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_getumatu_zaiko.Designer.cs">
+      <DependentUpon>frm_getumatu_zaiko.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_juchu_zan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,18 @@
     <Compile Include="frm_seikyu.Designer.cs">
       <DependentUpon>frm_seikyu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_seikyu_ichiran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seikyu_ichiran.Designer.cs">
+      <DependentUpon>frm_seikyu_ichiran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seikyu_ichiran_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seikyu_ichiran_preview.Designer.cs">
+      <DependentUpon>frm_seikyu_ichiran_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_seikyu_preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +226,18 @@
     </Compile>
     <Compile Include="frm_seikyu_torikesi.Designer.cs">
       <DependentUpon>frm_seikyu_torikesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_siharai_ichiran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siharai_ichiran.Designer.cs">
+      <DependentUpon>frm_siharai_ichiran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_siharai_ichiran_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_siharai_ichiran_preview.Designer.cs">
+      <DependentUpon>frm_siharai_ichiran_preview.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_siharai_no_select.cs">
       <SubType>Form</SubType>
@@ -389,6 +425,12 @@
     <Compile Include="frm_tankabetu_uriage_preview.Designer.cs">
       <DependentUpon>frm_tankabetu_uriage_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_tankabetu_uriage_ruikei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_tankabetu_uriage_ruikei.Designer.cs">
+      <DependentUpon>frm_tankabetu_uriage_ruikei.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_tankabetu_uriage_t_prev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,17 +467,35 @@
     <Compile Include="frm_uriage_log.Designer.cs">
       <DependentUpon>frm_uriage_log.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_uriage_meisai_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage_meisai_preview.Designer.cs">
+      <DependentUpon>frm_uriage_meisai_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_uriage_preview.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_uriage_preview.Designer.cs">
       <DependentUpon>frm_uriage_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_uriage_yotei_touroku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage_yotei_touroku.Designer.cs">
+      <DependentUpon>frm_uriage_yotei_touroku.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_user_m.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_user_m.Designer.cs">
       <DependentUpon>frm_user_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_zaiko_syoukai_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_zaiko_syoukai_preview.Designer.cs">
+      <DependentUpon>frm_zaiko_syoukai_preview.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -481,6 +541,18 @@
     <Compile Include="rpt_seikyu.Designer.cs">
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_seikyu_ichiran.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_seikyu_ichiran.Designer.cs">
+      <DependentUpon>rpt_seikyu_ichiran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_siharai_ichiran.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_siharai_ichiran.Designer.cs">
+      <DependentUpon>rpt_siharai_ichiran.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_tankabetu_uriage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -498,6 +570,18 @@
     </Compile>
     <Compile Include="rpt_uriage.Designer.cs">
       <DependentUpon>rpt_uriage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_uriage_meisai.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_uriage_meisai.Designer.cs">
+      <DependentUpon>rpt_uriage_meisai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_zaiko_syoukai.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_zaiko_syoukai.Designer.cs">
+      <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
     </Compile>
     <Compile Include="TssSystemLibrary.cs" />
     <Compile Include="ZAIKO_CHOUSEI.cs">
@@ -536,6 +620,12 @@
     <EmbeddedResource Include="frm_buhin_zaiko_juchu_check.resx">
       <DependentUpon>frm_buhin_zaiko_juchu_check.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_buhin_zaiko_syoukai.resx">
+      <DependentUpon>frm_buhin_zaiko_syoukai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_getumatu_zaiko.resx">
+      <DependentUpon>frm_getumatu_zaiko.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </EmbeddedResource>
@@ -560,11 +650,23 @@
     <EmbeddedResource Include="frm_seikyu.resx">
       <DependentUpon>frm_seikyu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_seikyu_ichiran.resx">
+      <DependentUpon>frm_seikyu_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seikyu_ichiran_preview.resx">
+      <DependentUpon>frm_seikyu_ichiran_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_seikyu_preview.resx">
       <DependentUpon>frm_seikyu_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seikyu_torikesi.resx">
       <DependentUpon>frm_seikyu_torikesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_siharai_ichiran.resx">
+      <DependentUpon>frm_siharai_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_siharai_ichiran_preview.resx">
+      <DependentUpon>frm_siharai_ichiran_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siharai_no_select.resx">
       <DependentUpon>frm_siharai_no_select.cs</DependentUpon>
@@ -659,6 +761,9 @@
     <EmbeddedResource Include="frm_tankabetu_uriage_preview.resx">
       <DependentUpon>frm_tankabetu_uriage_preview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_tankabetu_uriage_ruikei.resx">
+      <DependentUpon>frm_tankabetu_uriage_ruikei.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_tankabetu_uriage_t_prev.resx">
       <DependentUpon>frm_tankabetu_uriage_t_prev.cs</DependentUpon>
     </EmbeddedResource>
@@ -677,11 +782,20 @@
     <EmbeddedResource Include="frm_uriage_log.resx">
       <DependentUpon>frm_uriage_log.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage_meisai_preview.resx">
+      <DependentUpon>frm_uriage_meisai_preview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_uriage_preview.resx">
       <DependentUpon>frm_uriage_preview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage_yotei_touroku.resx">
+      <DependentUpon>frm_uriage_yotei_touroku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_user_m.resx">
       <DependentUpon>frm_user_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_zaiko_syoukai_preview.resx">
+      <DependentUpon>frm_zaiko_syoukai_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -714,6 +828,12 @@
     <EmbeddedResource Include="rpt_seikyu.resx">
       <DependentUpon>rpt_seikyu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_seikyu_ichiran.resx">
+      <DependentUpon>rpt_seikyu_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_siharai_ichiran.resx">
+      <DependentUpon>rpt_siharai_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_tankabetu_uriage.resx">
       <DependentUpon>rpt_tankabetu_uriage.cs</DependentUpon>
     </EmbeddedResource>
@@ -722,6 +842,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_uriage.resx">
       <DependentUpon>rpt_uriage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_uriage_meisai.resx">
+      <DependentUpon>rpt_uriage_meisai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_zaiko_syoukai.resx">
+      <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZAIKO_CHOUSEI.resx">
       <DependentUpon>ZAIKO_CHOUSEI.cs</DependentUpon>

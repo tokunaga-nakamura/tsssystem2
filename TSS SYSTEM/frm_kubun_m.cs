@@ -98,6 +98,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             tss.GetUser();  //ユーザー情報の取得
             int int_insert = 0; //新規レコード数
             int int_update = 0; //更新レコード数

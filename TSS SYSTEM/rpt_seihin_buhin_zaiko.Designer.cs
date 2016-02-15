@@ -53,6 +53,8 @@
             this.label16 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label12 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.tb_seisansitai_daisu = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.label17 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.tb_juchu_su = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.textBox3 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox1 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -66,8 +68,8 @@
             this.textBox10 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
-            this.label17 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.textBox11 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_bikou = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label18 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seihin_cd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_today)).BeginInit();
@@ -91,6 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seisansitai_daisu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_su)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
@@ -102,8 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -134,8 +138,10 @@
             this.label12,
             this.tb_seisansitai_daisu,
             this.label17,
-            this.textBox11});
-            this.pageHeader.Height = 0.9583333F;
+            this.tb_juchu_su,
+            this.tb_bikou,
+            this.label18});
+            this.pageHeader.Height = 0.9652121F;
             this.pageHeader.Name = "pageHeader";
             // 
             // tb_seihin_cd
@@ -163,12 +169,12 @@
             // tb_today
             // 
             this.tb_today.Height = 0.1409449F;
-            this.tb_today.Left = 9.322834F;
+            this.tb_today.Left = 9.282678F;
             this.tb_today.Name = "tb_today";
             this.tb_today.OutputFormat = resources.GetString("tb_today.OutputFormat");
             this.tb_today.Style = "font-size: 8.25pt; text-align: right";
             this.tb_today.Text = null;
-            this.tb_today.Top = 0.02865002F;
+            this.tb_today.Top = 0F;
             this.tb_today.Width = 1.552357F;
             // 
             // label8
@@ -387,7 +393,7 @@
             this.label12.Name = "label12";
             this.label12.Style = "font-size: 6pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
             this.label12.Text = "生産したい台数";
-            this.label12.Top = 0.4094489F;
+            this.label12.Top = 0.3574803F;
             this.label12.Width = 0.8748032F;
             // 
             // tb_seisansitai_daisu
@@ -397,8 +403,29 @@
             this.tb_seisansitai_daisu.Name = "tb_seisansitai_daisu";
             this.tb_seisansitai_daisu.Style = "font-size: 8.25pt; text-align: left";
             this.tb_seisansitai_daisu.Text = null;
-            this.tb_seisansitai_daisu.Top = 0.4094489F;
+            this.tb_seisansitai_daisu.Top = 0.3574803F;
             this.tb_seisansitai_daisu.Width = 0.9996061F;
+            // 
+            // label17
+            // 
+            this.label17.Height = 0.09370076F;
+            this.label17.HyperLink = null;
+            this.label17.Left = 8.364962F;
+            this.label17.Name = "label17";
+            this.label17.Style = "font-size: 6pt";
+            this.label17.Text = "受注台数";
+            this.label17.Top = 0.5885827F;
+            this.label17.Width = 1.016142F;
+            // 
+            // tb_juchu_su
+            // 
+            this.tb_juchu_su.Height = 0.09370083F;
+            this.tb_juchu_su.Left = 9.387403F;
+            this.tb_juchu_su.Name = "tb_juchu_su";
+            this.tb_juchu_su.Style = "font-size: 8.25pt; text-align: left";
+            this.tb_juchu_su.Text = null;
+            this.tb_juchu_su.Top = 0.5885827F;
+            this.tb_juchu_su.Width = 1.447639F;
             // 
             // detail
             // 
@@ -552,33 +579,34 @@
             this.reportInfo1.Top = 0.02604163F;
             this.reportInfo1.Width = 2.489584F;
             // 
-            // label17
+            // tb_bikou
             // 
-            this.label17.Height = 0.09370076F;
-            this.label17.HyperLink = null;
-            this.label17.Left = 8.364962F;
-            this.label17.Name = "label17";
-            this.label17.Style = "font-size: 6pt";
-            this.label17.Text = "受注台数";
-            this.label17.Top = 0.5885827F;
-            this.label17.Width = 1.016142F;
+            this.tb_bikou.Height = 0.1232284F;
+            this.tb_bikou.HyperLink = null;
+            this.tb_bikou.Left = 0.8125985F;
+            this.tb_bikou.Name = "tb_bikou";
+            this.tb_bikou.Style = "font-size: 8.25pt; text-align: left; vertical-align: middle";
+            this.tb_bikou.Text = "";
+            this.tb_bikou.Top = 0.5590551F;
+            this.tb_bikou.Width = 3.164961F;
             // 
-            // textBox11
+            // label18
             // 
-            this.textBox11.Height = 0.09370083F;
-            this.textBox11.Left = 9.387403F;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Style = "font-size: 8.25pt; text-align: left";
-            this.textBox11.Text = null;
-            this.textBox11.Top = 0.5885827F;
-            this.textBox11.Width = 1.447639F;
+            this.label18.Height = 0.1232284F;
+            this.label18.HyperLink = null;
+            this.label18.Left = 0.08346462F;
+            this.label18.Name = "label18";
+            this.label18.Style = "font-size: 6pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
+            this.label18.Text = "備考";
+            this.label18.Top = 0.5590551F;
+            this.label18.Width = 0.7291338F;
             // 
             // rpt_seihin_buhin_zaiko
             // 
             this.MasterReport = false;
             this.PageSettings.PaperHeight = 11F;
             this.PageSettings.PaperWidth = 8.5F;
-            this.PrintWidth = 11.14331F;
+            this.PrintWidth = 10.86206F;
             this.Sections.Add(this.pageHeader);
             this.Sections.Add(this.detail);
             this.Sections.Add(this.pageFooter);
@@ -613,6 +641,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_seisansitai_daisu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_juchu_su)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
@@ -624,8 +654,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -667,6 +697,8 @@
         private GrapeCity.ActiveReports.SectionReportModel.Label label12;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_seisansitai_daisu;
         private GrapeCity.ActiveReports.SectionReportModel.Label label17;
-        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox11;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_juchu_su;
+        private GrapeCity.ActiveReports.SectionReportModel.Label tb_bikou;
+        private GrapeCity.ActiveReports.SectionReportModel.Label label18;
     }
 }

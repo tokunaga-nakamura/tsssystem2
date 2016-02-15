@@ -27,6 +27,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //取引先コードのチェック
             if (chk_torihikisaki_cd() == false)
             {

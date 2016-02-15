@@ -431,6 +431,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(1, 5) == false)
+            {
+                MessageBox.Show("権限が有りません");
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
 
             //登録前に全ての項目をチェック
@@ -1459,6 +1465,12 @@ namespace TSS_SYSTEM
 
         private void btn_kaijyo_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(1, 5) == false)
+            {
+                MessageBox.Show("権限が有りません");
+                return;
+            }
+            
             //メッセージボックスを表示する
             DialogResult result = MessageBox.Show("売上完了を解除しますか？",
                 "質問",

@@ -36,6 +36,11 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             //区分名称コードのチェック
             if(kubun_meisyou_cd_check() != true)
             {

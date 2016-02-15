@@ -187,6 +187,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             if(touroku_check() == false)
             {
                 return;

@@ -436,6 +436,12 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
 
 

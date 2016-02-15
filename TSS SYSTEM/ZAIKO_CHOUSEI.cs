@@ -209,6 +209,13 @@ namespace TSS_SYSTEM
 
         private void btn_touroku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
+            
             int rc = dgv_m.Rows.Count;
 
             if (rc > 0)

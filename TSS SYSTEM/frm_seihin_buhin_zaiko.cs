@@ -23,6 +23,8 @@ namespace TSS_SYSTEM
         public string w_hd20;//受注CD1
         public string w_hd21;//受注CD2
         public string w_hd30;//生産したい台数
+        public string w_hd40;//受注数
+        public string w_bikou;//備考
 
         //親画面から参照できるプロパティを作成
         public DataTable fld_dt = new DataTable();   //印刷する明細データ
@@ -67,6 +69,8 @@ namespace TSS_SYSTEM
             rpt.w_hd20 = w_hd20;
             rpt.w_hd21 = w_hd21;
             rpt.w_hd30 = w_hd30;
+            rpt.w_hd40 = w_hd40;
+            rpt.w_bikou = w_bikou;
 
             rpt.Run();
             this.vwr.Document = rpt.Document;

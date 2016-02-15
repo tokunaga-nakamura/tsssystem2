@@ -146,6 +146,12 @@ namespace TSS_SYSTEM
         //登録ボタンクリック
         private void btn_turoku_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             DataTable dt_work = new DataTable();
 
 
@@ -404,7 +410,7 @@ namespace TSS_SYSTEM
         {
             DataTable dt_work = new DataTable();
             tss.GetUser();
-            dt_work = tss.OracleSelect("select siire_simebi,siire_kingaku,syouhizeigaku,siire_kingaku + syouhizeigaku,siharaigaku  from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siharai_kanryou_flg = '0' ORDER BY SIIRE_SIMEBI");
+            dt_work = tss.OracleSelect("select siire_simebi,kurikosigaku,siharaigaku,siire_kingaku,syouhizeigaku,siire_kingaku + syouhizeigaku  from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and siharai_kanryou_flg = '0' ORDER BY SIIRE_SIMEBI");
             int rc = dt_work.Rows.Count;
             //dt_work.Columns.Add("siiregoukei", Type.GetType("System.Int32")).SetOrdinal(3);;
             dt_work.Columns.Add("mibaraigaku", Type.GetType("System.Int32"));
@@ -425,30 +431,23 @@ namespace TSS_SYSTEM
             {
                 for (int i = 0; i < rc; i++)
                 {
-                    decimal goukeikingaku = decimal.Parse(dt_work.Rows[i][1].ToString()) + decimal.Parse(dt_work.Rows[i][2].ToString());
+                    decimal goukeikingaku = decimal.Parse(dt_work.Rows[i][3].ToString()) + decimal.Parse(dt_work.Rows[i][4].ToString());
                     decimal mibaraigaku;
 
-                    if (dt_work.Rows[i][4].ToString() == "")
-                    {
-                        dt_work.Rows[i][4] = 0;
-                        mibaraigaku = goukeikingaku;
-                    }
-                    else
-                    {
-                        mibaraigaku = goukeikingaku - decimal.Parse(dt_work.Rows[i][4].ToString());
-                    }
-
-                    dt_work.Rows[i][5] = mibaraigaku;
+                    mibaraigaku = decimal.Parse(dt_work.Rows[i][1].ToString()) - decimal.Parse(dt_work.Rows[i][2].ToString()) + goukeikingaku;
+ 
+                    dt_work.Rows[i][6] = mibaraigaku;
 
                     dgv_mibarai.DataSource = dt_work;
 
 
                     dgv_mibarai.Columns[0].HeaderText = "仕入締日";
-                    dgv_mibarai.Columns[1].HeaderText = "仕入金額";
-                    dgv_mibarai.Columns[2].HeaderText = "消費税額";
-                    dgv_mibarai.Columns[3].HeaderText = "仕入合計金額";
-                    dgv_mibarai.Columns[4].HeaderText = "支払金額";
-                    dgv_mibarai.Columns[5].HeaderText = "未払金額";
+                    dgv_mibarai.Columns[1].HeaderText = "前月繰越額";
+                    dgv_mibarai.Columns[2].HeaderText = "支払額";
+                    dgv_mibarai.Columns[3].HeaderText = "当月仕入金額";
+                    dgv_mibarai.Columns[4].HeaderText = "当月消費税額";
+                    dgv_mibarai.Columns[5].HeaderText = "当月仕入金額合計";
+                    dgv_mibarai.Columns[6].HeaderText = "未払金額";
 
                     //金額右寄せ、カンマ区切り
                     dgv_mibarai.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -467,6 +466,9 @@ namespace TSS_SYSTEM
 
                     dgv_mibarai.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgv_mibarai.Columns[5].DefaultCellStyle.Format = "#,0";
+
+                    dgv_mibarai.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgv_mibarai.Columns[6].DefaultCellStyle.Format = "#,0";
 
 
                     //１行のみ選択可能（複数行の選択不可）
@@ -646,10 +648,63 @@ namespace TSS_SYSTEM
 
         private void kaikake_kousin() //買掛マスタの更新
         {
+            ////買掛マスタの更新
+            ////支払マスタの支払額を、支払番号でまとめた支払金額（tb_siharai_soukeiの値）でアップデートする。
+            ////買掛残高の再計算はしない
+            ////支払マスタの取引先コード+仕入締日でまとめた支払額が、買掛マスタの仕入金額+消費税の値とイコールなら、買掛マスタに支払完了フラグを立てる
+
+            //DataTable dt_work = new DataTable();
+            //string siire_simebi = dgv_siharai.CurrentRow.Cells[0].Value.ToString();
+            //string siire_simebi2 = siire_simebi.Substring(0, 10);
+
+            //dt_work = tss.OracleSelect("select siharaigaku,tesuryou,sousai from tss_siharai_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + siire_simebi2.ToString() + "'");
+            //object obj = dt_work.Compute("Sum(siharaigaku)", null);
+            //object obj2 = dt_work.Compute("Sum(tesuryou)", null);
+            //object obj3 = dt_work.Compute("Sum(sousai)", null);
+            //decimal siharai_gaku = decimal.Parse(obj.ToString()) + decimal.Parse(obj2.ToString()) + decimal.Parse(obj3.ToString());
+
+            //bool bl2 = new bool();
+
+            //string str = dgv_siharai.Rows[0].Cells[0].Value.ToString();
+            //string str2 = str.Substring(0, 10);
+
+            //bl2 = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharaigaku = '"
+            //            + siharai_gaku + "',siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+
+            //if (bl2 != true)
+            //{
+            //    tss.ErrorLogWrite(tss.user_cd, "買掛更新処理", "登録ボタン押下時のOracleInsert");
+            //    MessageBox.Show("買掛更新処理でエラーが発生しました。" + Environment.NewLine + "処理を中止します。");
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    //買掛マスタの支払完了フラグ更新
+            //    dt_work = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
+
+            //    string siharaigaku = dt_work.Rows[0]["siharaigaku"].ToString();
+            //    string siiregaku = dt_work.Rows[0]["siire_kingaku"].ToString();
+            //    string syouhizeigaku = dt_work.Rows[0]["syouhizeigaku"].ToString();
+
+            //    decimal keisan = decimal.Parse(siiregaku) + decimal.Parse(syouhizeigaku) - decimal.Parse(siharaigaku);
+
+            //    if (keisan == 0)
+            //    {
+            //        tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+            //    }
+            //    else
+            //    {
+            //        tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+            //    }
+
+            //    MessageBox.Show("買掛処理登録しました。");
+            //}
+
+
             //買掛マスタの更新
             //支払マスタの支払額を、支払番号でまとめた支払金額（tb_siharai_soukeiの値）でアップデートする。
-            //買掛残高の再計算はしない
-            //支払マスタの取引先コード+仕入締日でまとめた支払額が、買掛マスタの仕入金額+消費税の値とイコールなら、買掛マスタに支払完了フラグを立てる
+            //支払マスタの取引先コード+仕入締日でまとめた支払額が、買掛マスタの仕入金額+消費税の値とイコールなら、買掛マスタに支払完了フラグを立てる。
+            //買掛マスタはフラグ立てるだけ
 
             DataTable dt_work = new DataTable();
             string siire_simebi = dgv_siharai.CurrentRow.Cells[0].Value.ToString();
@@ -661,13 +716,51 @@ namespace TSS_SYSTEM
             object obj3 = dt_work.Compute("Sum(sousai)", null);
             decimal siharai_gaku = decimal.Parse(obj.ToString()) + decimal.Parse(obj2.ToString()) + decimal.Parse(obj3.ToString());
 
+
+
             bool bl2 = new bool();
 
             string str = dgv_siharai.Rows[0].Cells[0].Value.ToString();
             string str2 = str.Substring(0, 10);
 
-            bl2 = tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharaigaku = '"
-                        + siharai_gaku + "',siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
+
+            //前月の買掛マスタは更新しない。当月の買掛レコードを作成（支払額と繰越額のみ登録し、残りの項目はゼロで作成）
+            //当月の締日作成
+            
+
+            DataTable w_dt = new DataTable();
+            //画面の仕入締日から1か月後の締日のレコードを作成する
+            DateTime w_datetime;
+            DataTable w_dt_simebi = new DataTable();
+
+            tss.try_string_to_date(dgv_mibarai.Rows[0].Cells[0].Value.ToString());
+            
+            w_datetime = tss.out_datetime.AddMonths(1);    //1か月後
+            
+            w_dt_simebi = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
+            
+            if (w_dt_simebi.Rows[0]["siharai_sime_date"].ToString() == "99")
+            {
+                w_datetime = new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));   //末日を求める
+            }
+
+            DataTable dt_2 = new DataTable();
+            dt_2 = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
+            decimal kurikosigaku = decimal.Parse(dt_2.Rows[0][6].ToString());
+
+
+            bl2 = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd,siire_simebi,kurikosigaku,siharaigaku,siire_kingaku,syouhizeigaku,kaikake_zandaka,siharai_kanryou_flg,create_user_cd,create_datetime) values ('"
+
+                    + tb_torihikisaki_cd.Text.ToString() + "','"
+                    + w_datetime.ToShortDateString() + "','"
+                    // + "to_date('" + dgv_mibarai.Rows[0].Cells[0].Value.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
+                    + kurikosigaku + "','"
+                    + siharai_gaku + "','"
+                    + 0 + "','"
+                    + 0 + "','"
+                    + 0 + "','"
+                    + 0 + "','"
+                    + tss.user_cd + "',SYSDATE)");
 
             if (bl2 != true)
             {
@@ -677,14 +770,15 @@ namespace TSS_SYSTEM
             }
             else
             {
+                               
                 //買掛マスタの支払完了フラグ更新
                 dt_work = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + str2.ToString() + "'");
 
-                string siharaigaku = dt_work.Rows[0]["siharaigaku"].ToString();
+                //string siharaigaku = dt_work.Rows[0]["siharaigaku"].ToString();
                 string siiregaku = dt_work.Rows[0]["siire_kingaku"].ToString();
                 string syouhizeigaku = dt_work.Rows[0]["syouhizeigaku"].ToString();
 
-                decimal keisan = decimal.Parse(siiregaku) + decimal.Parse(syouhizeigaku) - decimal.Parse(siharaigaku);
+                decimal keisan = decimal.Parse(siiregaku) + decimal.Parse(syouhizeigaku) - siharai_gaku; //decimal.Parse(siharaigaku);
 
                 if (keisan == 0)
                 {
@@ -695,8 +789,31 @@ namespace TSS_SYSTEM
                     tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + str2.ToString() + "'");
                 }
 
+                //買掛マスタの支払完了フラグ更新（次月分）
+                DataTable dt_work2 = tss.OracleSelect("select * from tss_kaikake_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'and siire_simebi = '" + w_datetime.ToShortDateString() + "'");
+
+                string kurikosigaku2 = dt_work2.Rows[0]["kurikosigaku"].ToString();
+                string siharaigaku2 = dt_work2.Rows[0]["siharaigaku"].ToString();
+                string siiregaku2 = dt_work2.Rows[0]["siire_kingaku"].ToString();
+                string syouhizeigaku2 = dt_work2.Rows[0]["syouhizeigaku"].ToString();
+
+                decimal keisan2 = decimal.Parse(kurikosigaku2) - decimal.Parse(siharaigaku2) + decimal.Parse(siiregaku2) + decimal.Parse(syouhizeigaku2); 
+
+                if (keisan2 == 0)
+                {
+                    tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '1',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + w_datetime.ToShortDateString() + "'");
+                }
+                else
+                {
+                    tss.OracleUpdate("UPDATE TSS_kaikake_m SET siharai_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'and siire_simebi = '" + w_datetime.ToShortDateString() + "'");
+                }
+
+
+
                 MessageBox.Show("買掛処理登録しました。");
             }
+
+            //フォームの初期化必要？
 
         }
 
@@ -804,6 +921,12 @@ namespace TSS_SYSTEM
 
         private void btn_siharai_hensyu_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(3, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //w_mibarai = dgv_mibarai.CurrentRow.Cells[4].Value.ToString(); ←　未払いデータグリッドビューが空だとエラーになる
 
             //選択用のdatatableの作成

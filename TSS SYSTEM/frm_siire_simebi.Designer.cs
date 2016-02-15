@@ -58,6 +58,7 @@
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ss_status = new System.Windows.Forms.StatusStrip();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -119,6 +120,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.checkBox1);
             this.splitContainer3.Panel1.Controls.Add(this.btn_syukei);
             this.splitContainer3.Panel1.Controls.Add(this.tb_siire_simebi);
             this.splitContainer3.Panel1.Controls.Add(this.tb_update_datetime);
@@ -381,6 +383,17 @@
             this.ss_status.TabIndex = 6;
             this.ss_status.Text = "statusStrip1";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1.Location = new System.Drawing.Point(340, 12);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(234, 16);
+            this.checkBox1.TabIndex = 48;
+            this.checkBox1.Text = "内職の場合、チェックを入れる（消費税不要）";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frm_siire_simebi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -437,5 +450,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
