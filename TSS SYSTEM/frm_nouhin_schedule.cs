@@ -644,6 +644,40 @@ namespace TSS_SYSTEM
             //並び替えができないようにする（エラー対策）
             //foreach (DataGridViewColumn c in dgv_nouhin_schedule.Columns)
             //    c.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            //右詰
+            dgv_nouhin_schedule.Columns["juchu_su"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["01"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["02"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["03"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["04"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["05"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["06"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["07"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["08"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["09"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["10"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["11"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["12"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["13"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["14"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["15"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["16"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["17"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["18"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["19"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["20"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["21"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["22"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["23"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["24"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["25"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["26"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["27"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["28"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["29"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["31"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void horiday_color()
@@ -736,6 +770,10 @@ namespace TSS_SYSTEM
             DataView dv = w_dt_sort.DefaultView;
             //並び替える
             dv.Sort = "kousin_no DESC";
+
+            //右詰
+            dgv_nouhin_rireki.Columns["kousin_no"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private bool input_check()
