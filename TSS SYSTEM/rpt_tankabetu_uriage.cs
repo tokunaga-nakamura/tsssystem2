@@ -43,5 +43,10 @@ namespace TSS_SYSTEM
             tb_torihikisaki_name.Text = w_hd20;
             
         }
+
+        private void detail_Format(object sender, EventArgs e)
+        {
+
+        }
     }
 }

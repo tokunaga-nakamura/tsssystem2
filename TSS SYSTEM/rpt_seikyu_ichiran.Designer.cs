@@ -48,6 +48,7 @@
             this.label7 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label10 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label11 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label12 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.tb_uriage_kingaku = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_kouchin_kingaku = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -59,6 +60,7 @@
             this.textBox6 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox5 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox10 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.textBox11 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.groupHeader1 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
@@ -72,8 +74,6 @@
             this.textBox7 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox8 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox9 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.label12 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.textBox11 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox12 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tb_uriage_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
@@ -93,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_uriage_kingaku)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_kouchin_kingaku)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hukusizai_kingaku)).BeginInit();
@@ -103,6 +104,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
@@ -112,8 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -354,6 +354,17 @@
             this.label11.Top = 0.7291339F;
             this.label11.Width = 0.7657479F;
             // 
+            // label12
+            // 
+            this.label12.Height = 0.09370076F;
+            this.label12.HyperLink = null;
+            this.label12.Left = 6.981496F;
+            this.label12.Name = "label12";
+            this.label12.Style = "font-size: 6pt; text-align: right";
+            this.label12.Text = "今回請求額";
+            this.label12.Top = 0.7291339F;
+            this.label12.Width = 0.7657479F;
+            // 
             // detail
             // 
             this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -501,6 +512,19 @@
             this.textBox10.Top = 0.03110236F;
             this.textBox10.Width = 0.7657479F;
             // 
+            // textBox11
+            // 
+            this.textBox11.DataField = "konkai_seikyu";
+            this.textBox11.Height = 0.146063F;
+            this.textBox11.Left = 6.981496F;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.OutputFormat = resources.GetString("textBox11.OutputFormat");
+            this.textBox11.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
+            this.textBox11.SummaryGroup = "groupHeader3";
+            this.textBox11.Text = null;
+            this.textBox11.Top = 0.03110236F;
+            this.textBox11.Width = 0.7657479F;
+            // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
@@ -521,6 +545,7 @@
             // 
             this.groupHeader1.Height = 0.04166666F;
             this.groupHeader1.Name = "groupHeader1";
+            this.groupHeader1.Format += new System.EventHandler(this.groupHeader1_Format);
             // 
             // groupFooter1
             // 
@@ -659,30 +684,6 @@
             this.textBox9.Top = 0.1035433F;
             this.textBox9.Width = 0.6807084F;
             // 
-            // label12
-            // 
-            this.label12.Height = 0.09370076F;
-            this.label12.HyperLink = null;
-            this.label12.Left = 6.981496F;
-            this.label12.Name = "label12";
-            this.label12.Style = "font-size: 6pt; text-align: right";
-            this.label12.Text = "今回請求額";
-            this.label12.Top = 0.7291339F;
-            this.label12.Width = 0.7657479F;
-            // 
-            // textBox11
-            // 
-            this.textBox11.DataField = "konkai_seikyu";
-            this.textBox11.Height = 0.146063F;
-            this.textBox11.Left = 6.981496F;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.OutputFormat = resources.GetString("textBox11.OutputFormat");
-            this.textBox11.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
-            this.textBox11.SummaryGroup = "groupHeader3";
-            this.textBox11.Text = null;
-            this.textBox11.Top = 0.03110236F;
-            this.textBox11.Width = 0.7657479F;
-            // 
             // textBox12
             // 
             this.textBox12.DataField = "konkai_seikyu";
@@ -734,6 +735,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.label7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_uriage_kingaku)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_kouchin_kingaku)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hukusizai_kingaku)).EndInit();
@@ -744,6 +746,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
@@ -753,8 +756,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

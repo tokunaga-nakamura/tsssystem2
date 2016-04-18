@@ -117,11 +117,64 @@ namespace TSS_SYSTEM
             //売上マスタから、該当する締日のレコードを抽出し、取引先コードのリスト作成する
             DataTable w_dt_torihikisaki = new DataTable();
             w_dt_torihikisaki = tss.OracleSelect("select torihikisaki_cd from tss_uriage_m where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' group by torihikisaki_cd");
+
+            DataTable w_dt_torihikisaki2 = new DataTable();
+
+            //対象締日に売り上げがなかった場合
+            //画面の請求締日から1か月前の締日を求め、1カ月前の締めレコードがあったら対象にする
+            DataTable w_dt = new DataTable();
+            DateTime w_datetime;
+            DataTable w_dt_simebi = new DataTable();
+
+            string date; //締日
+            
+            //入力された締日が、末日かどうかのチェック
+            tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+            w_datetime = tss.out_datetime;
+            DateTime w_datetime2　= new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));;　//末日を入れる変数
+
+            if(w_datetime == w_datetime2)
+            {
+                //末尾なら99
+                date = "99";
+            }
+            else
+            {
+                //末尾でないなら、入力された日付の日
+                date = (tb_seikyu_simebi.Text.ToString()).Substring(8);
+            }
+
+
+            //当月の売り上げはないが、締日のdayを取出し、請求締日条件に一致する取引先で、売掛残高があるリストを抽出
+            //取引先マスタの入金未完了の金額を求めて繰越額にする
+            w_dt_torihikisaki2 = tss.OracleSelect("select torihikisaki_cd from tss_torihikisaki_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and misyori_nyukingaku != 0  and seikyu_sime_date = '" + date + "'");
+
+            
+            //tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+            //w_datetime = tss.out_datetime.AddMonths(-1);    //1か月前
+            
+            
+            //w_dt_simebi = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'");
+
+            //if (w_dt_simebi.Rows[0]["seikyu_sime_date"].ToString() == "99")
+            //{
+            //    w_datetime = new DateTime(w_datetime.Year, w_datetime.Month, DateTime.DaysInMonth(w_datetime.Year, w_datetime.Month));   //末日を求める
+            //}
+
+
+            //当月の売り上げはないが、1カ月前の締めレコードがあるリスト
+            //w_dt_torihikisaki2 = tss.OracleSelect("select torihikisaki_cd from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and uriage_simebi = '" + w_datetime.ToShortDateString() + "'");
+
+            //売上があった取引先リストと結合
+            w_dt_torihikisaki.Merge(w_dt_torihikisaki2);
+           　
             if(w_dt_torihikisaki.Rows.Count == 0)
             {
-                MessageBox.Show("入力した請求締日の売上データは存在しません。");
+                MessageBox.Show("指定した条件に当てはまるデータがありません");
                 return;
             }
+
+
             //取引先コード毎に集計を行い、売掛レコードを作成する
             DataTable w_dt_urikake = new DataTable();   //売掛マスタの既存レコード確認用
             string w_urikake_no;                        //売掛マスタの既存レコードの請求番号退避用
@@ -202,7 +255,7 @@ namespace TSS_SYSTEM
                 //売上マスタの請求番号（urikake_no）を更新
                 tss.OracleUpdate("update tss_uriage_m set urikake_no = '" + w_urikake_no + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate where TO_CHAR(uriage_simebi,'YYYY/MM/DD') = '" + tb_seikyu_simebi.Text + "' and torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "'");
 
-                //最後に取引先ますたにスプールされた未処理入金額の消し込みを行う
+                //最後に取引先マスタにスプールされた未処理入金額の消し込みを行う
                 //入金処理の他に、なぜここでもやるのか？
                 //この締め処理で、売上額の増減、新規レコードなどが作成される可能性があるので、全ての処理後に未処理入金額を処理する。
                 //そうしないと、未処理入金額を自動で処理するタイミングが他にない

@@ -199,10 +199,122 @@ namespace TSS_SYSTEM
 
             }
 
+            else
+            {
+               
+                dt_kensaku = tss.OracleSelect("select buhin_cd,buhin_name from tss_buhin_m order by buhin_cd");
+
+                int rc = dt_kensaku.Rows.Count;
+
+                if (rc != 0)
+                {
+
+                    dt_kensaku.Columns.Add("ZENGETU_ZAIKO_SU", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("TOUGETU_NYUUKO_SU", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("TOUGETU_SYUKKO_SU", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("KEISAN_ZAIKO_SU", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("GEN_ZAIKO_SU", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("ZAIKO_SAI", Type.GetType("System.Decimal"));
+                    dt_kensaku.Columns.Add("TANAOROSI_SU", Type.GetType("System.Decimal"));
 
 
 
+                    for (int i = 0; i < rc; i++)
+                    {
+                        DataTable dt_work = new DataTable();
+                        dt_work = tss.OracleSelect("select TOTAL_ZAIKO_SU from tss_getumatu_zaiko_m where buhin_cd = '" + dt_kensaku.Rows[i][0].ToString() + "' and taisyou_nengetu = '" + zengetu_yyyymm.ToString() + "'");
 
+                        if (dt_work.Rows.Count == 0)
+                        {
+                            dt_kensaku.Rows[i][2] = 0;
+                        }
+                        else
+                        {
+                            dt_kensaku.Rows[i][2] = dt_work.Rows[0][0].ToString();
+                        }
+
+                        //当月入庫数計算
+                        DataTable dt_work2 = new DataTable();
+                        dt_work2 = tss.OracleSelect("select BUHIN_CD,BUHIN_SYORI_KBN,BUHIN_SYORI_DATE,suryou from tss_buhin_nyusyukko_m where buhin_syori_kbn = '01' and buhin_cd = '" + dt_kensaku.Rows[i][0].ToString() + "' and BUHIN_SYORI_DATE  >= '" + tougetu_syo.ToShortDateString() + "' and BUHIN_SYORI_DATE <= '" + tougetu_matu.ToShortDateString() + "'");
+
+                        if (dt_work2.Rows.Count == 0)
+                        {
+                            dt_kensaku.Rows[i][3] = 0;
+                        }
+                        else
+                        {
+                            object obj = dt_work2.Compute("Sum(suryou)", null);
+                            Decimal nyuko_goukei = new decimal();
+                            nyuko_goukei = decimal.Parse(obj.ToString());
+                            dt_kensaku.Rows[i][3] = nyuko_goukei;
+                        }
+
+                        //当月出庫数計算
+                        DataTable dt_work3 = new DataTable();
+                        dt_work3 = tss.OracleSelect("select BUHIN_CD,BUHIN_SYORI_KBN,BUHIN_SYORI_DATE,suryou from tss_buhin_nyusyukko_m where buhin_syori_kbn = '02' and buhin_cd = '" + dt_kensaku.Rows[i][0].ToString() + "' and BUHIN_SYORI_DATE  >= '" + tougetu_syo.ToShortDateString() + "' and BUHIN_SYORI_DATE <= '" + tougetu_matu.ToShortDateString() + "'");
+
+                        if (dt_work3.Rows.Count == 0)
+                        {
+                            dt_kensaku.Rows[i][4] = 0;
+                        }
+                        else
+                        {
+                            object obj = dt_work3.Compute("Sum(suryou)", null);
+                            Decimal syukko_goukei = new decimal();
+                            syukko_goukei = decimal.Parse(obj.ToString());
+                            dt_kensaku.Rows[i][4] = syukko_goukei;
+                        }
+
+                        //当月在庫数計算
+                        Decimal zengetu_zaiko = decimal.Parse(dt_kensaku.Rows[i][2].ToString());
+                        Decimal nyuko = decimal.Parse(dt_kensaku.Rows[i][3].ToString());
+                        Decimal syukko = decimal.Parse(dt_kensaku.Rows[i][4].ToString());
+                        Decimal keisan_zaiko = zengetu_zaiko + nyuko - syukko;
+
+                        dt_kensaku.Rows[i][5] = keisan_zaiko;
+
+                        //現在庫数計算
+                        DataTable dt_work4 = new DataTable();
+                        dt_work4 = tss.OracleSelect("select BUHIN_CD,ZAIKO_SU from tss_buhin_zaiko_m where buhin_cd = '" + dt_kensaku.Rows[i][0].ToString() + "'");
+
+                        if (dt_work4.Rows.Count == 0)
+                        {
+                            dt_kensaku.Rows[i][6] = 0;
+                        }
+                        else
+                        {
+                            object obj = dt_work4.Compute("Sum(ZAIKO_SU)", null);
+                            Decimal gen_zaiko = new decimal();
+                            gen_zaiko = decimal.Parse(obj.ToString());
+                            dt_kensaku.Rows[i][6] = gen_zaiko;
+                        }
+
+                        //在庫差異計算
+
+                        Decimal zaiko_sai = decimal.Parse(dt_kensaku.Rows[i][6].ToString()) - decimal.Parse(dt_kensaku.Rows[i][5].ToString());
+                        dt_kensaku.Rows[i][7] = zaiko_sai;
+
+
+                    }
+
+                    dgv_m.DataSource = dt_kensaku;
+
+                    w_dt_insatu = dt_kensaku;
+                    dt_m = dt_kensaku;
+
+                    //MessageBox.Show("完了");
+
+
+                }
+                else
+                {
+                    MessageBox.Show("指定した部品の登録がありません");
+                    return;
+                }
+            }
+
+
+            list_disp(dt_kensaku);
 
             //指定年月
             //if (tb_nengetu.Text != "")
@@ -389,6 +501,64 @@ namespace TSS_SYSTEM
         private void btn_syuryou_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void list_disp(DataTable in_dt)
+        {
+            //リードオンリーにする
+            dgv_m.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_m.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_m.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_m.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_m.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_m.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_m.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_m.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_m.AllowUserToAddRows = false;
+
+            dgv_m.DataSource = null;
+            dgv_m.DataSource = in_dt;
+            dt_m = in_dt;
+
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_m.Columns[0].HeaderText = "部品コード";
+            dgv_m.Columns[1].HeaderText = "部品名";
+            dgv_m.Columns[2].HeaderText = "前月末在庫数";
+            dgv_m.Columns[3].HeaderText = "当月入庫数";
+            dgv_m.Columns[4].HeaderText = "当月出庫数";
+            dgv_m.Columns[5].HeaderText = "計算在庫数";
+            dgv_m.Columns[6].HeaderText = "現在庫数";
+            dgv_m.Columns[7].HeaderText = "差異";
+            dgv_m.Columns[8].HeaderText = "棚卸数";
+
+
+            //DataGridViewの書式設定
+            dgv_m.Columns[2].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[3].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[4].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[5].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[6].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[7].DefaultCellStyle.Format = "#,0";
+            dgv_m.Columns[8].DefaultCellStyle.Format = "#,0";
+
+
+            dgv_m.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            w_dt_insatu = dt_m;
         }
 
         private void btn_csv_Click(object sender, EventArgs e)

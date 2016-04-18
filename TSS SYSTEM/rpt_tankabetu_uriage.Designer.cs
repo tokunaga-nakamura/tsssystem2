@@ -441,6 +441,7 @@
             this.tb_kouchin_hukusizai_kingaku});
             this.detail.Height = 0.1770834F;
             this.detail.Name = "detail";
+            this.detail.Format += new System.EventHandler(this.detail_Format);
             // 
             // tb_seihin_cd
             // 

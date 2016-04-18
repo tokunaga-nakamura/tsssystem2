@@ -810,5 +810,38 @@ namespace TSS_SYSTEM
             frm_uriage_yotei_touroku.Dispose();
         }
 
+        private void btn_nyukin_ichiran_Click(object sender, EventArgs e)
+        {
+            frm_nyukin_ichiran frm_nyukin_ichiran = new frm_nyukin_ichiran();
+            frm_nyukin_ichiran.ShowDialog(this);
+            frm_nyukin_ichiran.Dispose();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_zaiko_tanaorosi frm_tanaorosi = new frm_zaiko_tanaorosi();
+            frm_tanaorosi.ShowDialog(this);
+            frm_tanaorosi.Dispose();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            srpead frm_sp = new srpead();
+            frm_sp.ShowDialog(this);
+            frm_sp.Dispose();
+        }
+
+        private void button5_Click_2(object sender, EventArgs e)
+        {
+            frm_uriage_syukei frm_uriage_syukei = new frm_uriage_syukei();
+            frm_uriage_syukei.ShowDialog(this);
+            frm_uriage_syukei.Dispose();
+        }
+
     }
 }

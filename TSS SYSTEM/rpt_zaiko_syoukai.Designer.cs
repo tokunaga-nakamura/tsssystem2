@@ -29,8 +29,6 @@
         {
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(rpt_zaiko_syoukai));
             this.pageHeader = new GrapeCity.ActiveReports.SectionReportModel.PageHeader();
-            this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
-            this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.tb_sitei_nengetu = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.label4 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label2 = new GrapeCity.ActiveReports.SectionReportModel.Label();
@@ -49,6 +47,7 @@
             this.label5 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label7 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label10 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.tb_uriage_kingaku = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_kouchin_kingaku = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_hukusizai_kingaku = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -58,6 +57,7 @@
             this.tb_buhin_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox6 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox5 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             ((System.ComponentModel.ISupportInitialize)(this.tb_sitei_nengetu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
@@ -111,27 +111,6 @@
             this.label10});
             this.pageHeader.Height = 0.9270833F;
             this.pageHeader.Name = "pageHeader";
-            // 
-            // detail
-            // 
-            this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.tb_uriage_kingaku,
-            this.tb_kouchin_kingaku,
-            this.tb_hukusizai_kingaku,
-            this.tb_buhin_kingaku,
-            this.tb_kouchin_hukusizai_kingaku,
-            this.tb_buhin_cd,
-            this.tb_buhin_name,
-            this.textBox6,
-            this.textBox5});
-            this.detail.Height = 0.146063F;
-            this.detail.Name = "detail";
-            // 
-            // pageFooter
-            // 
-            this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.reportInfo1});
-            this.pageFooter.Name = "pageFooter";
             // 
             // tb_sitei_nengetu
             // 
@@ -219,28 +198,28 @@
             this.label1.Style = "font-size: 6pt";
             this.label1.Text = "部品名";
             this.label1.Top = 0.7708662F;
-            this.label1.Width = 2.026772F;
+            this.label1.Width = 2.307874F;
             // 
             // label3
             // 
             this.label3.Height = 0.09370076F;
             this.label3.HyperLink = null;
-            this.label3.Left = 3.23878F;
+            this.label3.Left = 3.488583F;
             this.label3.Name = "label3";
             this.label3.Style = "font-size: 6pt; text-align: right";
             this.label3.Text = "①前月末在庫数";
-            this.label3.Top = 0.7708661F;
+            this.label3.Top = 0.7708662F;
             this.label3.Width = 0.8370076F;
             // 
             // label6
             // 
             this.label6.Height = 0.09370076F;
             this.label6.HyperLink = null;
-            this.label6.Left = 4.515159F;
+            this.label6.Left = 4.661024F;
             this.label6.Name = "label6";
             this.label6.Style = "font-size: 6pt; text-align: right";
             this.label6.Text = "②当月入庫数";
-            this.label6.Top = 0.7708661F;
+            this.label6.Top = 0.7708662F;
             this.label6.Width = 0.6807095F;
             // 
             // label9
@@ -326,18 +305,33 @@
             // 
             this.label10.Height = 0.09370076F;
             this.label10.HyperLink = null;
-            this.label10.Left = 5.643898F;
+            this.label10.Left = 5.7063F;
             this.label10.Name = "label10";
             this.label10.Style = "font-size: 6pt; text-align: right";
             this.label10.Text = "③当月出庫数";
-            this.label10.Top = 0.7708661F;
+            this.label10.Top = 0.7708662F;
             this.label10.Width = 0.6807095F;
+            // 
+            // detail
+            // 
+            this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
+            this.tb_uriage_kingaku,
+            this.tb_kouchin_kingaku,
+            this.tb_hukusizai_kingaku,
+            this.tb_buhin_kingaku,
+            this.tb_kouchin_hukusizai_kingaku,
+            this.tb_buhin_cd,
+            this.tb_buhin_name,
+            this.textBox6,
+            this.textBox5});
+            this.detail.Height = 0.146063F;
+            this.detail.Name = "detail";
             // 
             // tb_uriage_kingaku
             // 
             this.tb_uriage_kingaku.DataField = "zengetu_zaiko_su";
             this.tb_uriage_kingaku.Height = 0.146063F;
-            this.tb_uriage_kingaku.Left = 3.238583F;
+            this.tb_uriage_kingaku.Left = 3.488583F;
             this.tb_uriage_kingaku.Name = "tb_uriage_kingaku";
             this.tb_uriage_kingaku.OutputFormat = resources.GetString("tb_uriage_kingaku.OutputFormat");
             this.tb_uriage_kingaku.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
@@ -350,7 +344,7 @@
             // 
             this.tb_kouchin_kingaku.DataField = "tougetu_nyuuko_su";
             this.tb_kouchin_kingaku.Height = 0.146063F;
-            this.tb_kouchin_kingaku.Left = 4.514961F;
+            this.tb_kouchin_kingaku.Left = 4.661024F;
             this.tb_kouchin_kingaku.Name = "tb_kouchin_kingaku";
             this.tb_kouchin_kingaku.OutputFormat = resources.GetString("tb_kouchin_kingaku.OutputFormat");
             this.tb_kouchin_kingaku.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
@@ -422,7 +416,7 @@
             this.tb_buhin_name.SummaryGroup = "groupHeader2";
             this.tb_buhin_name.Text = null;
             this.tb_buhin_name.Top = 0F;
-            this.tb_buhin_name.Width = 2.026772F;
+            this.tb_buhin_name.Width = 2.307874F;
             // 
             // textBox6
             // 
@@ -441,7 +435,7 @@
             // 
             this.textBox5.DataField = "tougetu_syukko_su";
             this.textBox5.Height = 0.146063F;
-            this.textBox5.Left = 5.643701F;
+            this.textBox5.Left = 5.7063F;
             this.textBox5.Name = "textBox5";
             this.textBox5.OutputFormat = resources.GetString("textBox5.OutputFormat");
             this.textBox5.Style = "font-size: 8.25pt; text-align: right; ddo-char-set: 1";
@@ -449,6 +443,12 @@
             this.textBox5.Text = null;
             this.textBox5.Top = 0F;
             this.textBox5.Width = 0.6807084F;
+            // 
+            // pageFooter
+            // 
+            this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
+            this.reportInfo1});
+            this.pageFooter.Name = "pageFooter";
             // 
             // reportInfo1
             // 

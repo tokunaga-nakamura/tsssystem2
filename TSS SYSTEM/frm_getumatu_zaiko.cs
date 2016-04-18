@@ -66,7 +66,7 @@ namespace TSS_SYSTEM
                
 
                 DataTable freezaiko = new DataTable();
-                freezaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m_1228 where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '01'");
+                freezaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '01'");
                 if (freezaiko.Rows.Count == 0)
                 {
                     dt_work.Rows[i][1] = "0";
@@ -80,7 +80,7 @@ namespace TSS_SYSTEM
                 
 
                 DataTable lotzaiko = new DataTable();
-                lotzaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m_1228 where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '02'");
+                lotzaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '02'");
                 if(lotzaiko.Rows.Count == 0)
                 {
                     dt_work.Rows[i][2] = "0";
@@ -94,7 +94,7 @@ namespace TSS_SYSTEM
                 }
 
                 DataTable sonotazaiko = new DataTable();
-                sonotazaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m_1228 where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '03'");
+                sonotazaiko = tss.OracleSelect("select zaiko_su from tss_buhin_zaiko_m where buhin_cd  = '" + buhin_cd.ToString() + "' and zaiko_kbn = '03'");
                 if (sonotazaiko.Rows.Count == 0)
                 {
                     dt_work.Rows[i][3] = "0";

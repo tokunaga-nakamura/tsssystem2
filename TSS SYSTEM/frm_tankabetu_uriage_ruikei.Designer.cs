@@ -134,11 +134,11 @@
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(540, 38);
+            this.textBox18.Location = new System.Drawing.Point(650, 38);
             this.textBox18.MaxLength = 16;
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(42, 19);
+            this.textBox18.Size = new System.Drawing.Size(59, 19);
             this.textBox18.TabIndex = 41;
             this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -153,11 +153,11 @@
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(650, 38);
+            this.textBox17.Location = new System.Drawing.Point(543, 39);
             this.textBox17.MaxLength = 16;
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(54, 19);
+            this.textBox17.Size = new System.Drawing.Size(39, 19);
             this.textBox17.TabIndex = 39;
             this.textBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -344,7 +344,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox13.BackColor = System.Drawing.Color.Coral;
             this.textBox13.Location = new System.Drawing.Point(750, 78);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
@@ -365,7 +365,7 @@
             // 
             // textBox15
             // 
-            this.textBox15.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox15.BackColor = System.Drawing.Color.Coral;
             this.textBox15.Location = new System.Drawing.Point(553, 78);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
@@ -386,7 +386,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox10.BackColor = System.Drawing.Color.Coral;
             this.textBox10.Location = new System.Drawing.Point(750, 53);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
@@ -407,7 +407,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox3.BackColor = System.Drawing.Color.Coral;
             this.textBox3.Location = new System.Drawing.Point(553, 53);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -428,7 +428,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox11.BackColor = System.Drawing.Color.Coral;
             this.textBox11.Location = new System.Drawing.Point(686, 13);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;

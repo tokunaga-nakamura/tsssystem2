@@ -117,43 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="tb_sitei_nengetu.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_hardcopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk3+CgAAAAAAADYAAAAoAAAAHgAAAB4AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6KIA6KIA
+        6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA
+        6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAADoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDo
+        ogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogAAAOii
+        AOiiAOiiAOiiAOiiAOiiAOiiAP///////////+iiAOiiAP///////////////+iiAP///+iiAOiiAOii
+        AOiiAOiiAOiiAP///+iiAOiiAOiiAOiiAOiiAAAA6KIA6KIA6KIA6KIA6KIA6KIA6KIA////6KIA6KIA
+        6KIA6KIA////6KIA6KIA////6KIA////6KIA6KIA6KIA6KIA6KIA6KIA////6KIA6KIA6KIA6KIA6KIA
+        AADoogDoogDoogDoogDoogDoogDoogD////oogDoogDoogDoogD////oogDoogD////oogD/////////
+        ///////oogDoogDoogD////oogDoogDoogDoogDoogAAAOiiAOiiAOiiAOiiAOiiAOiiAOiiAP///+ii
+        AOiiAOiiAOiiAP///+iiAOiiAP///+iiAP///+iiAOiiAP///+iiAOiiAP///+iiAP///+iiAOiiAOii
+        AOiiAAAA6KIA6KIA6KIA6KIA6KIA6KIA6KIA////6KIA6KIA6KIA6KIA////6KIA6KIA////6KIA////
+        6KIA6KIA////6KIA////6KIA6KIA6KIA////6KIA6KIA6KIAAADoogDoogDoogDoogDoogDoogDoogD/
+        ///////////////oogD////////////////oogD////////////////oogD////oogDoogDoogD////o
+        ogDoogDoogAAAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAAAA6KIA6KIA6KIA6KIA6KIA6KIA
+        6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAPL/APL/APL/6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA
+        6KIA6KIA6KIA6KIAAADoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogAA8v8A8v8A8v8A
+        8v8A8v8A8v8A8v/oogDoogDoogDoogDoogDoogDoogDoogDoogDoogDoogAAAOiiAOiiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAADy/wDy/wDy/wDy/wDy/wDy/wDy/wDy/wDy/wDy/wDy/+iiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAAAA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAPL/APL/APL/APL/APL/APL/
+        APL/APL/APL/APL/APL/APL/APL/APL/APL/6KIA6KIA6KIA6KIA6KIA6KIA6KIAAADoogDoogDoogDo
+        ogDoogDoogAA8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A
+        8v8A8v/oogDoogDoogDoogDoogAAAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAADy/wDy/wDy
+        /wDy/wDy/wDy/wDy/wDy/wDy/wDy/wDy/+iiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAAAA6KIA6KIA
+        6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAPL/APL/APL/APL/APL/APL/APL/APL/APL/APL/APL/6KIA
+        6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAADoogDoogDoogDoogDoogDoogDoogDoogDoogDoogAA8v8A
+        8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v8A8v/oogDoogDoogDoogDoogDoogDoogDoogDoogAAAOii
+        AOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAAAA6KIA////////////////////////////////////
+        ////////////////////////////////////////////6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA
+        AADoogD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD////oogDoogDoogDoogDoogDoogDoogDoogDoogAAAOiiAP//////////////////////////////
+        /////////////////////////////////////////////////+iiAOiiAOiiAOiiAOiiAOiiAOiiAOii
+        AOiiAAAA6KIA////////////////////////////////////////////////////////////////////
+        ////////////6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAADoogD///8AAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAD///////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////oogDoogDoogDoogDoogDoogDo
+        ogDoogDoogAAAOiiAP//////////////////////////////////////////////////////////////
+        /////////////////+iiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAAAA6KIA////////////////////
+        ////////////////////////////////////////////////////////////6KIA6KIA6KIA6KIA6KIA
+        6KIA6KIA6KIA6KIAAADoogD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD////oogDoogDoogDoogDoogDoogDoogDoogDoogAAAOiiAP//////////////
+        /////////////////////////////////////////////////////////////////+iiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAAAA6KIAzEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/zEg/
+        zEg/zEg/zEg/zEg/zEg/zEg/zEg/6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIA6KIAAADoogDMSD/MSD/M
+        SD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/MSD/oogDoogDo
+        ogDoogDoogDoogDoogDoogDoogAAAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOii
+        AOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAOiiAAAA
+</value>
   </data>
-  <data name="tb_today.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
-  </data>
-  <data name="tb_uriage_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_kouchin_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_hukusizai_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_buhin_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_buhin_cd.OutputFormat" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tb_buhin_name.OutputFormat" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBox6.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox5.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <metadata name="$this.ScriptEditorPositionForUndo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
-  </metadata>
-  <metadata name="$this.ScriptEditorPositionForRedo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

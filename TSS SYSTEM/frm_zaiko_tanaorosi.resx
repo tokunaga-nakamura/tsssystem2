@@ -117,43 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="tb_sitei_nengetu.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
-  </data>
-  <data name="tb_today.OutputFormat" xml:space="preserve">
-    <value>yyyy年M月d日</value>
-  </data>
-  <data name="tb_uriage_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_kouchin_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_hukusizai_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_buhin_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_kouchin_hukusizai_kingaku.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="tb_buhin_cd.OutputFormat" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tb_buhin_name.OutputFormat" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBox6.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox5.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <metadata name="$this.ScriptEditorPositionForUndo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
-  </metadata>
-  <metadata name="$this.ScriptEditorPositionForRedo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

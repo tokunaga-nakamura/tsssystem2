@@ -332,8 +332,26 @@ namespace TSS_SYSTEM
                         dt_kensaku2 = tss.OracleSelect("select max(torihikisaki_cd),max(torihikisaki_name),max(uriage_simebi) from tss_uriage_m where  torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and uriage_simebi between '" + tougetu_syo.ToShortDateString() + "' and '" + tougetu_matu.ToShortDateString() + "'");
 
                         dt_kensaku3 = tss.OracleSelect("select sum(uriage_yotei_1),sum(uriage_yotei_2) from tss_uriage_yotei_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and  uriage_yotei_nengetu = '" + tb_nengetu.Text.ToString() + "'");
-                        tb_gessyo_yotei.Text = decimal.Parse(dt_kensaku3.Rows[0][0].ToString()).ToString();
-                        tb_tyuukan_yotei.Text = decimal.Parse(dt_kensaku3.Rows[0][1].ToString()).ToString();
+
+                        if (dt_kensaku3.Rows[0][0].ToString() == "")
+                        {
+                            tb_gessyo_yotei.Text = "0";
+                        }
+                        else
+                        {
+                            tb_gessyo_yotei.Text = decimal.Parse(dt_kensaku3.Rows[0][0].ToString()).ToString();
+                        }
+                        
+                        
+                        if (dt_kensaku3.Rows[0][1].ToString() == "")
+                        {
+                            tb_tyuukan_yotei.Text = "0";
+                        }
+                        else
+                        {
+                            tb_tyuukan_yotei.Text = decimal.Parse(dt_kensaku3.Rows[0][1].ToString()).ToString();
+                        }
+                        
                         
                     }
 
@@ -413,13 +431,21 @@ namespace TSS_SYSTEM
                     tb_kouchin_hukusizai.Text = dc_kouchin_hukusizai_ttl.ToString();
 
                     
-                    
-                    string tasseiritu1 = (decimal.Parse(tb_kouchin_hukusizai.Text.ToString()) / decimal.Parse(tb_gessyo_yotei.Text.ToString())).ToString("P");
-                    tb_tasseiritu1.Text = tasseiritu1;
+                    if(tb_gessyo_yotei.Text.ToString() == "0")
+                    {
+                        tb_tasseiritu1.Text = "-";
+                    }
+                    else
+                    {
+                        string tasseiritu1 = (decimal.Parse(tb_kouchin_hukusizai.Text.ToString()) / decimal.Parse(tb_gessyo_yotei.Text.ToString())).ToString("P");
+                        tb_tasseiritu1.Text = tasseiritu1;
+                    }
+
+                   
 
                     if(tb_tyuukan_yotei.Text == "0")
                     {
-                        
+                        tb_tasseiritu2.Text = "-";
                     }
                     else
                     {
@@ -518,6 +544,24 @@ namespace TSS_SYSTEM
             dgv_m.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgv_m.Columns[6].DefaultCellStyle.BackColor = Color.LightGray;
+            dgv_m.Columns[7].DefaultCellStyle.BackColor = Color.LightGray;
+            dgv_m.Columns[8].DefaultCellStyle.BackColor = Color.LightGray;
+          
+
+
+            //if(dgv_m.Rows.Count >= 2)
+            //{
+            //    dgv_m.Rows[5].Visible = false;
+            //}
+            
+
+
+            //textBox17.Text = "20";
+            //textBox16.Text = "15";
+            //textBox18.Text = "75.0%";
+            
 
             w_dt_insatu = dt_m;
         }

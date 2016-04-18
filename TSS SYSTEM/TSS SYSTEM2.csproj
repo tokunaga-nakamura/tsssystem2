@@ -49,6 +49,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da" />
+    <Reference Include="C1.Win.C1GanttView.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Schedule.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da" />
+    <Reference Include="FarPoint.Win, Version=7.0.2003.2008, Culture=neutral, PublicKeyToken=a5fa960294d899e7" />
+    <Reference Include="FarPoint.Win.SpreadJ, Version=7.0.2003.2008, Culture=neutral, PublicKeyToken=a5fa960294d899e7, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Calendar.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Chart.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Dashboard.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
@@ -75,6 +80,7 @@
     <Reference Include="GrapeCity.ActiveReports.VisualStudio.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Web.Design.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Web.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
+    <Reference Include="GrapeCity.Win.PluginInputMan, Version=7.0.2003.2008, Culture=neutral, PublicKeyToken=a5fa960294d899e7, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=2.112.4.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\app\nakamura_2\product\11.2.0\client_1\ODP.NET\bin\4\Oracle.DataAccess.dll</HintPath>
@@ -166,6 +172,18 @@
     </Compile>
     <Compile Include="frm_nyukin.Designer.cs">
       <DependentUpon>frm_nyukin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_nyukin_ichiran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nyukin_ichiran.Designer.cs">
+      <DependentUpon>frm_nyukin_ichiran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_nyukin_ichiran_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nyukin_ichiran_preview.Designer.cs">
+      <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_search_siire.cs">
       <SubType>Form</SubType>
@@ -479,6 +497,12 @@
     <Compile Include="frm_uriage_preview.Designer.cs">
       <DependentUpon>frm_uriage_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_uriage_syukei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_uriage_syukei.Designer.cs">
+      <DependentUpon>frm_uriage_syukei.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_uriage_yotei_touroku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -496,6 +520,12 @@
     </Compile>
     <Compile Include="frm_zaiko_syoukai_preview.Designer.cs">
       <DependentUpon>frm_zaiko_syoukai_preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_zaiko_tanaorosi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_zaiko_tanaorosi.Designer.cs">
+      <DependentUpon>frm_zaiko_tanaorosi.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -522,6 +552,12 @@
     </Compile>
     <Compile Include="rpt_nouhin_schedule.Designer.cs">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_nyukin_ichiran.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_nyukin_ichiran.Designer.cs">
+      <DependentUpon>rpt_nyukin_ichiran.cs</DependentUpon>
     </Compile>
     <Compile Include="rpt_seihin_buhin_zaiko.cs">
       <SubType>Component</SubType>
@@ -583,6 +619,18 @@
     <Compile Include="rpt_zaiko_syoukai.Designer.cs">
       <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
     </Compile>
+    <Compile Include="spread2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="spread2.Designer.cs">
+      <DependentUpon>spread2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srpead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srpead.Designer.cs">
+      <DependentUpon>srpead.cs</DependentUpon>
+    </Compile>
     <Compile Include="TssSystemLibrary.cs" />
     <Compile Include="ZAIKO_CHOUSEI.cs">
       <SubType>Form</SubType>
@@ -631,6 +679,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_nyukin_ichiran.resx">
+      <DependentUpon>frm_nyukin_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_nyukin_ichiran_preview.resx">
+      <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_search_siire.resx">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
@@ -788,6 +842,9 @@
     <EmbeddedResource Include="frm_uriage_preview.resx">
       <DependentUpon>frm_uriage_preview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_uriage_syukei.resx">
+      <DependentUpon>frm_uriage_syukei.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_uriage_yotei_touroku.resx">
       <DependentUpon>frm_uriage_yotei_touroku.cs</DependentUpon>
     </EmbeddedResource>
@@ -796,6 +853,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_zaiko_syoukai_preview.resx">
       <DependentUpon>frm_zaiko_syoukai_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_zaiko_tanaorosi.resx">
+      <DependentUpon>frm_zaiko_tanaorosi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -818,6 +878,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_nouhin_schedule.resx">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_nyukin_ichiran.resx">
+      <DependentUpon>rpt_nyukin_ichiran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seihin_buhin_zaiko.resx">
       <DependentUpon>rpt_seihin_buhin_zaiko.cs</DependentUpon>
@@ -849,6 +912,12 @@
     <EmbeddedResource Include="rpt_zaiko_syoukai.resx">
       <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="spread2.resx">
+      <DependentUpon>spread2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srpead.resx">
+      <DependentUpon>srpead.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ZAIKO_CHOUSEI.resx">
       <DependentUpon>ZAIKO_CHOUSEI.cs</DependentUpon>
     </EmbeddedResource>
@@ -871,6 +940,9 @@
     <None Include="rpt_uriage_denpyou.rdlx">
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="uriage_syukei.rdlx">
+      <SubType>Component</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
