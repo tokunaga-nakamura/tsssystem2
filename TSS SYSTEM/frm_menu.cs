@@ -804,6 +804,12 @@ namespace TSS_SYSTEM
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             //売上予定登録
             frm_uriage_yotei_touroku frm_uriage_yotei_touroku = new frm_uriage_yotei_touroku();
             frm_uriage_yotei_touroku.ShowDialog(this);
@@ -831,6 +837,11 @@ namespace TSS_SYSTEM
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             srpead frm_sp = new srpead();
             frm_sp.ShowDialog(this);
             frm_sp.Dispose();
@@ -838,6 +849,11 @@ namespace TSS_SYSTEM
 
         private void button5_Click_2(object sender, EventArgs e)
         {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
             frm_uriage_syukei frm_uriage_syukei = new frm_uriage_syukei();
             frm_uriage_syukei.ShowDialog(this);
             frm_uriage_syukei.Dispose();
