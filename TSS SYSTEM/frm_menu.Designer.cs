@@ -122,6 +122,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1052,6 +1053,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.button7);
             this.tabPage6.Controls.Add(this.button6);
             this.tabPage6.Controls.Add(this.button4);
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
@@ -1267,6 +1269,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(371, 184);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(62, 34);
+            this.button7.TabIndex = 17;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1437,6 +1448,7 @@
         private System.Windows.Forms.Button btn_tanaorosi;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button7;
     }
 }
 
