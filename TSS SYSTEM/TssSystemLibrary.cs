@@ -2460,7 +2460,6 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-
         #region hasu_keisan メソッド
         /// <summary>
         /// 取引先コードと数値を受け取り端数処理して返す</summary>
@@ -2993,6 +2992,37 @@ namespace TSS_SYSTEM
             return out_bl;
         }
         #endregion
+
+        #region Version_Check
+        /// -----------------------------------------------------------------------------------------
+        /// <summary>
+        /// tss_system_mの'0101'レコードのバージョンと、tss_system_libraryのバージョンをチェックし、
+        /// 違ったらfalseを返す。</summary>
+        /// -----------------------------------------------------------------------------------------
+        public bool Version_Check()
+        {
+            bool bl;    //戻り値用
+            bl = true;
+            //プログラムのバージョン確認
+            DataTable dt_system = new DataTable();
+            dt_system = OracleSelect("select * from tss_system_m where system_cd = '0101'");
+            //システムレコードのチェック
+            if (dt_system == null || dt_system.Rows.Count != 1)
+            {
+                bl = false;
+                return bl;
+            }
+            //バージョンチェック
+            if (dt_system.Rows[0]["system_version"].ToString() != "1.01")
+            {
+                bl = false;
+                return bl;
+            }
+            return bl;
+        }
+        #endregion
+
+
     }
     #endregion
 }

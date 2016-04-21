@@ -82,6 +82,28 @@ namespace TSS_SYSTEM
 
         private void frm_login_Load(object sender, EventArgs e)
         {
+            //プログラムのバージョン確認
+            if (tss.Version_Check() == false)
+            {
+                MessageBox.Show("プログラムのバージョンが違います。tss_system get_new を実行してください。");
+                Application.Exit();
+            }
+
+            //DataTable dt_system = new DataTable();
+            //dt_system = tss.OracleSelect("select * from tss_system_m where system_cd = '0101'");
+            ////システムレコードのチェック
+            //if(dt_system == null || dt_system.Rows.Count != 1)
+            //{
+            //    MessageBox.Show("TSSシステムマスタに異常があります。");
+            //    Application.Exit();
+            //}
+            ////バージョンチェック
+            //if(dt_system.Rows[0]["system_version"].ToString() != "1.01")
+            //{
+            //    MessageBox.Show("TSSシステムのバージョンが違います。 tss_system get_new を実行してください。");
+            //    Application.Exit();
+            //}
+
             this.ActiveControl = this.tb_user_cd;
         }
 

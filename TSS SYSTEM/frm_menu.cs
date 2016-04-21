@@ -46,6 +46,13 @@ namespace TSS_SYSTEM
 
         private void frm_menu_Activated(object sender, EventArgs e)
         {
+            //プログラムのバージョン確認
+            if (tss.Version_Check() == false)
+            {
+                lbl_message.Text = "TSSシステムのバージョンが違います。TSSシステムを終了し、tss_system get_new を実行してください。";
+                lbl_message.ForeColor = Color.White;
+                lbl_message.BackColor = Color.Red;
+            }
             this.Opacity = 1;
             status_disp();
             message_log_check();

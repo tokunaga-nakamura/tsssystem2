@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_menu));
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbl_build = new System.Windows.Forms.Label();
+            this.lbl_message = new System.Windows.Forms.Label();
             this.btn_message_log = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -100,6 +100,7 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button6 = new System.Windows.Forms.Button();
@@ -121,7 +122,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,7 +193,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lbl_build);
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_message);
             this.splitContainer1.Panel1.Controls.Add(this.btn_message_log);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -204,15 +204,16 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 1;
             // 
-            // lbl_build
+            // lbl_message
             // 
-            this.lbl_build.AutoSize = true;
-            this.lbl_build.Location = new System.Drawing.Point(825, 36);
-            this.lbl_build.Name = "lbl_build";
-            this.lbl_build.Size = new System.Drawing.Size(55, 12);
-            this.lbl_build.TabIndex = 1;
-            this.lbl_build.Text = "Build 1.01";
-            this.lbl_build.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_message.AutoSize = true;
+            this.lbl_message.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lbl_message.Location = new System.Drawing.Point(75, 36);
+            this.lbl_message.Name = "lbl_message";
+            this.lbl_message.Size = new System.Drawing.Size(79, 12);
+            this.lbl_message.TabIndex = 1;
+            this.lbl_message.Text = "システム稼働中";
+            this.lbl_message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_message_log
             // 
@@ -1028,6 +1029,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "集計・その他";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(472, 78);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(155, 23);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "売上集計（仮）";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_2);
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(474, 37);
@@ -1256,16 +1267,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(472, 78);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(155, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "売上集計（仮）";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_2);
-            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1420,7 +1421,7 @@
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
         private System.Windows.Forms.Button btn_tankabetu_uriage_meisai;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
-        private System.Windows.Forms.Label lbl_build;
+        private System.Windows.Forms.Label lbl_message;
         private System.Windows.Forms.Button btn_free_zaiko_record_make;
         private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
         private System.Windows.Forms.Button button4;
