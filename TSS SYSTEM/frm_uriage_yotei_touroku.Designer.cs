@@ -132,7 +132,7 @@
             this.dgv_m.RowTemplate.Height = 21;
             this.dgv_m.Size = new System.Drawing.Size(880, 330);
             this.dgv_m.TabIndex = 0;
-            this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
+            this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated_1);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
             // 
             // splitContainer4

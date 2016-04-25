@@ -71,8 +71,49 @@ namespace TSS_SYSTEM
 
                         dgv_m.DataSource = dt_w;
                         list_disp();
+
+
+                        //データテーブルdtTmpに、データグリッドビューのデータを格納
+                        DataTable dtTmp = (DataTable)this.dgv_m.DataSource;
+
+                        if (dgv_m.CurrentRow.Cells[2].Value.ToString() == "")
+                        {
+                            tb_gessyo_kei.Text = "0";
+
+                        }
+
+                        if (dgv_m.CurrentRow.Cells[3].Value.ToString() == "")
+                        {
+
+                            tb_tyuukan_kei.Text = "0";
+                        }
+
+
+                        else
+                        {
+
+                            object obj = dtTmp.Compute("SUM(uriage_yotei_1)", null);
+                            tb_gessyo_kei.Text = decimal.Parse(obj.ToString()).ToString();
+
+                            object obj2 = dtTmp.Compute("SUM(uriage_yotei_2)", null);
+                            tb_tyuukan_kei.Text = decimal.Parse(obj2.ToString()).ToString();
+
+                        }
+
+
+                        //集計後、カンマ区切り数にする
+                        decimal number = decimal.Parse(tb_gessyo_kei.Text.ToString()); // 変換前の数値
+                        string str = String.Format("{0:#,0}", number); // 変換後
+                        tb_gessyo_kei.Text = str;
+
+                        decimal number2 = decimal.Parse(tb_tyuukan_kei.Text.ToString()); // 変換前の数値
+                        string str2 = String.Format("{0:#,0}", number2); // 変換後
+                        tb_tyuukan_kei.Text = str2;
+
                     }
                    
+
+
 
 
                 }
@@ -184,8 +225,8 @@ namespace TSS_SYSTEM
           
 
             //書式を設定する
-            dgv_m.Columns[2].DefaultCellStyle.Format = "#,###,###,###";    //売上金額
-            dgv_m.Columns[3].DefaultCellStyle.Format = "#,###,###,###";    //売上金額
+            dgv_m.Columns[2].DefaultCellStyle.Format = "#,###,###,##0";    //売上金額
+            dgv_m.Columns[3].DefaultCellStyle.Format = "#,###,###,##0";    //売上金額
         
         
         }
@@ -281,8 +322,6 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                     return;
                 }
-
-
 
             }
 
@@ -474,52 +513,58 @@ namespace TSS_SYSTEM
             }
         }
 
-        private void dgv_m_CellValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            //データテーブルdtTmpに、データグリッドビューのデータを格納
-            //DataTable dtTmp = (DataTable)this.dgv_m.DataSource;
-
-            ////if (dgv_m.CurrentRow.Cells[2].Value.ToString() == "")
-            ////{
-            ////    tb_gessyo_kei.Text = "0";
-                
-            ////}
-
-            ////if (dgv_m.CurrentRow.Cells[3].Value.ToString() == "")
-            ////{
-                
-            ////    tb_tyuukan_kei.Text = "0";
-            ////}
-            
-            
-            ////else
-            ////{
-        
-            //    object obj = dtTmp.Compute("SUM(uriage_yotei_1)", null);
-            //    tb_gessyo_kei.Text = decimal.Parse(obj.ToString()).ToString();
-
-            //    object obj2 = dtTmp.Compute("SUM(uriage_yotei_2)", null);
-            //    tb_tyuukan_kei.Text = decimal.Parse(obj2.ToString()).ToString();
-
-            ////}
-            
-
-            ////集計後、カンマ区切り数にする
-            //decimal number = decimal.Parse(tb_gessyo_kei.Text.ToString()); // 変換前の数値
-            //string str = String.Format("{0:#,0}", number); // 変換後
-            //tb_gessyo_kei.Text = str;
-
-            //decimal number2 = decimal.Parse(tb_tyuukan_kei.Text.ToString()); // 変換前の数値
-            //string str2 = String.Format("{0:#,0}", number2); // 変換後
-            //tb_tyuukan_kei.Text = str2;
-
-
-        }
+       
 
         private void frm_uriage_yotei_touroku_Load(object sender, EventArgs e)
         {
-            //tb_gessyo_kei.Text = "0";
-            //tb_tyuukan_kei.Text = "0";
+            tb_gessyo_kei.Text = "0";
+            tb_tyuukan_kei.Text = "0";
         }
+
+        private void dgv_m_CellValidated_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                //データテーブルdtTmpに、データグリッドビューのデータを格納
+                DataTable dtTmp = (DataTable)this.dgv_m.DataSource;
+
+                //if (dgv_m.CurrentRow.Cells[2].Value.ToString() == "")
+                //{
+                //    //tb_gessyo_kei.Text = "0";
+
+                //}
+
+                //if (dgv_m.CurrentRow.Cells[3].Value.ToString() == "")
+                //{
+
+                //    //tb_tyuukan_kei.Text = "0";
+                //}
+
+
+                //else
+                //{
+
+                object obj = dtTmp.Compute("SUM(uriage_yotei_1)", null);
+                tb_gessyo_kei.Text = decimal.Parse(obj.ToString()).ToString();
+
+                object obj2 = dtTmp.Compute("SUM(uriage_yotei_2)", null);
+                tb_tyuukan_kei.Text = decimal.Parse(obj2.ToString()).ToString();
+
+                //}
+
+
+                //集計後、カンマ区切り数にする
+                decimal number = decimal.Parse(tb_gessyo_kei.Text.ToString()); // 変換前の数値
+                string str = String.Format("{0:#,0}", number); // 変換後
+                tb_gessyo_kei.Text = str;
+
+                decimal number2 = decimal.Parse(tb_tyuukan_kei.Text.ToString()); // 変換前の数値
+                string str2 = String.Format("{0:#,0}", number2); // 変換後
+                tb_tyuukan_kei.Text = str2;
+            }
+            
+           
+        }
+        
     }
 }
