@@ -122,6 +122,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.lbl_db = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +194,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_db);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_message);
             this.splitContainer1.Panel1.Controls.Add(this.btn_message_log);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
@@ -1267,6 +1269,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // lbl_db
+            // 
+            this.lbl_db.AutoSize = true;
+            this.lbl_db.Location = new System.Drawing.Point(580, 36);
+            this.lbl_db.Name = "lbl_db";
+            this.lbl_db.Size = new System.Drawing.Size(35, 12);
+            this.lbl_db.TabIndex = 2;
+            this.lbl_db.Text = "label5";
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1437,6 +1448,7 @@
         private System.Windows.Forms.Button btn_tanaorosi;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lbl_db;
     }
 }
 

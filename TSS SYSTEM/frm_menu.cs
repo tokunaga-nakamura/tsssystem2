@@ -118,6 +118,20 @@ namespace TSS_SYSTEM
             ss_status.Items.Add(tss.system_version);
             ss_status.Items.Add(tss.user_name);
             ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+tss.kengen4+tss.kengen5+tss.kengen6);
+
+            if (tss.DataSource == "pdb")
+            {
+                lbl_db.Text = "TSSシステムDBは正常稼働中です";
+                lbl_db.BackColor = Color.RoyalBlue;
+                lbl_db.ForeColor = Color.White;
+            }
+            else
+            {
+                lbl_db.Text = "開発用DBに接続中！";
+                lbl_db.BackColor = Color.Red;
+                lbl_db.ForeColor = Color.White;
+
+            }
         }
 
         private void btn_mst_table_Click(object sender, EventArgs e)
