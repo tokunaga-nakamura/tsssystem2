@@ -205,22 +205,23 @@
             // 
             // lbl_db
             // 
-            this.lbl_db.AutoSize = true;
-            this.lbl_db.Location = new System.Drawing.Point(580, 36);
+            this.lbl_db.BackColor = System.Drawing.Color.Red;
+            this.lbl_db.Location = new System.Drawing.Point(582, 29);
             this.lbl_db.Name = "lbl_db";
-            this.lbl_db.Size = new System.Drawing.Size(35, 12);
+            this.lbl_db.Size = new System.Drawing.Size(284, 27);
             this.lbl_db.TabIndex = 2;
-            this.lbl_db.Text = "label5";
+            this.lbl_db.Text = "接続DB表示";
+            this.lbl_db.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_message
             // 
             this.lbl_message.AutoSize = true;
             this.lbl_message.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_message.Location = new System.Drawing.Point(75, 36);
+            this.lbl_message.Location = new System.Drawing.Point(75, 12);
             this.lbl_message.Name = "lbl_message";
-            this.lbl_message.Size = new System.Drawing.Size(79, 12);
+            this.lbl_message.Size = new System.Drawing.Size(148, 12);
             this.lbl_message.TabIndex = 1;
-            this.lbl_message.Text = "システム稼働中";
+            this.lbl_message.Text = "TSS SYSTEM Latest edition";
             this.lbl_message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_message_log
@@ -1242,15 +1243,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_koutei_m
+            // lbl_db
             // 
-            this.btn_koutei_m.Location = new System.Drawing.Point(234, 146);
-            this.btn_koutei_m.Name = "btn_koutei_m";
-            this.btn_koutei_m.Size = new System.Drawing.Size(222, 23);
-            this.btn_koutei_m.TabIndex = 17;
-            this.btn_koutei_m.Text = "工程マスタ";
-            this.btn_koutei_m.UseVisualStyleBackColor = true;
-            this.btn_koutei_m.Click += new System.EventHandler(this.btn_koutei_m_Click);
+            this.lbl_db.AutoSize = true;
+            this.lbl_db.Location = new System.Drawing.Point(580, 36);
+            this.lbl_db.Name = "lbl_db";
+            this.lbl_db.Size = new System.Drawing.Size(35, 12);
+            this.lbl_db.TabIndex = 2;
+            this.lbl_db.Text = "label5";
             // 
             // frm_menu
             // 

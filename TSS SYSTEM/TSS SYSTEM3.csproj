@@ -165,6 +165,12 @@
     <Compile Include="frm_juchu_zan.Designer.cs">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_line_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_line_m.Designer.cs">
+      <DependentUpon>frm_line_m.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_koutei_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -668,9 +674,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_koutei_m.resx">
-      <DependentUpon>frm_koutei_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>
