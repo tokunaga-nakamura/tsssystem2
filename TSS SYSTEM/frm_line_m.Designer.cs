@@ -55,6 +55,7 @@
             this.dgv_line_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.lbl_line_cd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +112,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -149,6 +151,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.lbl_line_cd);
             this.splitContainer3.Panel1.Controls.Add(this.tb_update_datetime);
             this.splitContainer3.Panel1.Controls.Add(this.tb_update_user_cd);
             this.splitContainer3.Panel1.Controls.Add(this.textBox9);
@@ -172,6 +175,7 @@
             this.splitContainer3.Size = new System.Drawing.Size(884, 437);
             this.splitContainer3.SplitterDistance = 105;
             this.splitContainer3.TabIndex = 3;
+            this.splitContainer3.TabStop = false;
             // 
             // tb_update_datetime
             // 
@@ -259,9 +263,11 @@
             // tb_bikou
             // 
             this.tb_bikou.Location = new System.Drawing.Point(77, 78);
+            this.tb_bikou.MaxLength = 128;
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(571, 19);
-            this.tb_bikou.TabIndex = 7;
+            this.tb_bikou.TabIndex = 3;
+            this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // textBox5
             // 
@@ -277,9 +283,11 @@
             // tb_line_ryakusiki_name
             // 
             this.tb_line_ryakusiki_name.Location = new System.Drawing.Point(77, 53);
+            this.tb_line_ryakusiki_name.MaxLength = 20;
             this.tb_line_ryakusiki_name.Name = "tb_line_ryakusiki_name";
             this.tb_line_ryakusiki_name.Size = new System.Drawing.Size(145, 19);
-            this.tb_line_ryakusiki_name.TabIndex = 5;
+            this.tb_line_ryakusiki_name.TabIndex = 2;
+            this.tb_line_ryakusiki_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_ryakusiki_name_Validating);
             // 
             // textBox3
             // 
@@ -318,17 +326,21 @@
             // 
             this.tb_line_name.BackColor = System.Drawing.Color.White;
             this.tb_line_name.Location = new System.Drawing.Point(77, 28);
+            this.tb_line_name.MaxLength = 40;
             this.tb_line_name.Name = "tb_line_name";
             this.tb_line_name.Size = new System.Drawing.Size(291, 19);
-            this.tb_line_name.TabIndex = 2;
+            this.tb_line_name.TabIndex = 1;
+            this.tb_line_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_name_Validating);
             // 
             // tb_line_cd
             // 
             this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_line_cd.Location = new System.Drawing.Point(77, 3);
+            this.tb_line_cd.MaxLength = 3;
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(31, 19);
-            this.tb_line_cd.TabIndex = 1;
+            this.tb_line_cd.TabIndex = 0;
+            this.tb_line_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_cd_Validating);
             // 
             // splitContainer4
             // 
@@ -369,25 +381,36 @@
             this.dgv_line_m.RowTemplate.Height = 21;
             this.dgv_line_m.Size = new System.Drawing.Size(880, 287);
             this.dgv_line_m.TabIndex = 0;
+            this.dgv_line_m.TabStop = false;
             // 
             // btn_touroku
             // 
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 1;
+            this.btn_touroku.TabIndex = 4;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // btn_syuuryou
             // 
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 5;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // lbl_line_cd
+            // 
+            this.lbl_line_cd.AutoSize = true;
+            this.lbl_line_cd.Location = new System.Drawing.Point(114, 6);
+            this.lbl_line_cd.Name = "lbl_line_cd";
+            this.lbl_line_cd.Size = new System.Drawing.Size(142, 12);
+            this.lbl_line_cd.TabIndex = 16;
+            this.lbl_line_cd.Text = "ラインコードを入力してください";
             // 
             // frm_line_m
             // 
@@ -451,5 +474,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_line_m;
         private System.Windows.Forms.Button btn_touroku;
+        private System.Windows.Forms.Label lbl_line_cd;
     }
 }
