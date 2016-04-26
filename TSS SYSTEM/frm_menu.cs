@@ -834,9 +834,27 @@ namespace TSS_SYSTEM
             frm_uriage_syukei.Dispose();
         }
 
-        private void btn_koutei_m_Click_1(object sender, EventArgs e)
-        {
 
+        private void btn_line_m_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_line_m frm_line = new frm_line_m();
+            frm_line.ShowDialog(this);
+            frm_line.Dispose();
+        }
+
+        private void btn_koutei_m_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            
             frm_koutei_m frm_koutei = new frm_koutei_m();
             frm_koutei.ShowDialog(this);
             frm_koutei.Dispose();

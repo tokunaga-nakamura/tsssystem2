@@ -102,7 +102,6 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btn_koutei_m = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
@@ -121,6 +120,8 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_koutei_m = new System.Windows.Forms.Button();
+            this.btn_line_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1040,6 +1041,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.btn_line_m);
             this.tabPage6.Controls.Add(this.btn_koutei_m);
             this.tabPage6.Controls.Add(this.button4);
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
@@ -1062,18 +1064,6 @@
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
-            // 
-            // btn_koutei_m
-            // 
-            this.btn_koutei_m.BackColor = System.Drawing.Color.White;
-            this.btn_koutei_m.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_koutei_m.Location = new System.Drawing.Point(267, 265);
-            this.btn_koutei_m.Name = "btn_koutei_m";
-            this.btn_koutei_m.Size = new System.Drawing.Size(147, 35);
-            this.btn_koutei_m.TabIndex = 0;
-            this.btn_koutei_m.Text = "工程マスタ";
-            this.btn_koutei_m.UseVisualStyleBackColor = false;
-            this.btn_koutei_m.Click += new System.EventHandler(this.btn_koutei_m_Click_1);
             // 
             // button4
             // 
@@ -1256,6 +1246,26 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_koutei_m
+            // 
+            this.btn_koutei_m.Location = new System.Drawing.Point(247, 265);
+            this.btn_koutei_m.Name = "btn_koutei_m";
+            this.btn_koutei_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_koutei_m.TabIndex = 16;
+            this.btn_koutei_m.Text = "工程マスタ";
+            this.btn_koutei_m.UseVisualStyleBackColor = true;
+            this.btn_koutei_m.Click += new System.EventHandler(this.btn_koutei_m_Click);
+            // 
+            // btn_line_m
+            // 
+            this.btn_line_m.Location = new System.Drawing.Point(462, 166);
+            this.btn_line_m.Name = "btn_line_m";
+            this.btn_line_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_line_m.TabIndex = 17;
+            this.btn_line_m.Text = "ラインマスタ";
+            this.btn_line_m.UseVisualStyleBackColor = true;
+            this.btn_line_m.Click += new System.EventHandler(this.btn_line_m_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1423,6 +1433,7 @@
         private System.Windows.Forms.Button btn_nyukin_ichiran;
         private System.Windows.Forms.Button btn_tanaorosi;
         private System.Windows.Forms.Label lbl_db;
+        private System.Windows.Forms.Button btn_line_m;
         private System.Windows.Forms.Button btn_koutei_m;
     }
 }
