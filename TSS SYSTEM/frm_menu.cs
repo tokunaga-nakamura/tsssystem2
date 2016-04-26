@@ -755,42 +755,6 @@ namespace TSS_SYSTEM
             frm_siha_ichi.Dispose();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            //ごみプロ2　取引先コード000000の売上、入出庫、在庫情報などをクリアする
-
-            tss.OracleDelete("delete from tss_buhin_zaiko_m where torihikisaki_cd = '000000' and juchu_cd1 = '11'");
-            tss.OracleUpdate("UPDATE tss_juchu_m SET uriage_su = '0',uriage_kanryou_flg = '0' where torihikisaki_cd = '000000'");
-            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998101'");
-            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998102'");
-            tss.OracleDelete("delete from tss_buhin_nyusyukko_m where buhin_cd = '998103'");
-            tss.OracleDelete("delete from tss_uriage_m where torihikisaki_cd = '000000'");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //                + " VALUES ('998101','02','000000','11','11','100','" + "000000" + "',SYSDATE)");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //               + " VALUES ('998102','02','000000','11','11','200','" + "000000" + "',SYSDATE)");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //               + " VALUES ('998103','02','000000','11','11','100','" + "000000" + "',SYSDATE)");
-
-            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-15' where buhin_cd = '998101' and  zaiko_kbn = '01'");
-            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-350' where buhin_cd = '998102' and  zaiko_kbn = '01'");
-            tss.OracleUpdate("UPDATE tss_buhin_zaiko_m SET zaiko_su = '-28000' where buhin_cd = '998103' and  zaiko_kbn = '01'");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //               + " VALUES ('998101','02','000000','11','9999999999999999','-50','" + "000000" + "',SYSDATE)");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //               + " VALUES ('998102','02','000000','11','9999999999999999','-100','" + "000000" + "',SYSDATE)");
-
-            //tss.OracleInsert("INSERT INTO tss_buhin_zaiko_m (buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,zaiko_su,create_user_cd,create_datetime)"
-            //               + " VALUES ('998103','02','000000','11','9999999999999999','-30','" + "000000" + "',SYSDATE)");
-
-
-            MessageBox.Show("初期化しました");
-        }
 
         private void tb_getumatu_zaiko_Click(object sender, EventArgs e)
         {
@@ -856,17 +820,7 @@ namespace TSS_SYSTEM
             frm_tanaorosi.Dispose();
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            if (tss.User_Kengen_Check(6, 9) == false)
-            {
-                MessageBox.Show("権限がありません");
-                return;
-            }
-            srpead frm_sp = new srpead();
-            frm_sp.ShowDialog(this);
-            frm_sp.Dispose();
-        }
+        
 
         private void button5_Click_2(object sender, EventArgs e)
         {
@@ -878,6 +832,14 @@ namespace TSS_SYSTEM
             frm_uriage_syukei frm_uriage_syukei = new frm_uriage_syukei();
             frm_uriage_syukei.ShowDialog(this);
             frm_uriage_syukei.Dispose();
+        }
+
+        private void btn_koutei_m_Click(object sender, EventArgs e)
+        {
+           
+            frm_koutei_m frm_koutei = new frm_koutei_m();
+            frm_koutei.ShowDialog(this);
+            frm_koutei.Dispose();
         }
 
     }
