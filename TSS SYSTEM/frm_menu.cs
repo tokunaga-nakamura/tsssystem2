@@ -854,10 +854,21 @@ namespace TSS_SYSTEM
                 MessageBox.Show("権限がありません");
                 return;
             }
-            
             frm_koutei_m frm_koutei = new frm_koutei_m();
             frm_koutei.ShowDialog(this);
             frm_koutei.Dispose();
+        }
+
+        private void btn_busyo_m_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_busyo_m frm_busyo = new frm_busyo_m();
+            frm_busyo.ShowDialog(this);
+            frm_busyo.Dispose();
         }
 
     }

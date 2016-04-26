@@ -122,6 +122,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_busyo_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1040,6 +1041,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.btn_busyo_m);
             this.tabPage6.Controls.Add(this.btn_line_m);
             this.tabPage6.Controls.Add(this.btn_koutei_m);
             this.tabPage6.Controls.Add(this.button4);
@@ -1265,6 +1267,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_busyo_m
+            // 
+            this.btn_busyo_m.Location = new System.Drawing.Point(234, 148);
+            this.btn_busyo_m.Name = "btn_busyo_m";
+            this.btn_busyo_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_busyo_m.TabIndex = 18;
+            this.btn_busyo_m.Text = "部署マスタ";
+            this.btn_busyo_m.UseVisualStyleBackColor = true;
+            this.btn_busyo_m.Click += new System.EventHandler(this.btn_busyo_m_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1434,6 +1446,7 @@
         private System.Windows.Forms.Label lbl_db;
         private System.Windows.Forms.Button btn_line_m;
         private System.Windows.Forms.Button btn_koutei_m;
+        private System.Windows.Forms.Button btn_busyo_m;
     }
 }
 

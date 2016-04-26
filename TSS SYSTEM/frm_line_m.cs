@@ -293,11 +293,11 @@ namespace TSS_SYSTEM
             //更新
             bool bl_tss = true;
             bl_tss = tss.OracleUpdate("UPDATE TSS_line_m SET line_name = '" + tb_line_name.Text.ToString() + "',line_ryakusiki_name = '" + tb_line_ryakusiki_name.Text.ToString()
-                                    + "',bikou = '" + tb_bikou.Text.ToString() + "'"
+                                    + "',bikou = '" + tb_bikou.Text.ToString()
                                     + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE line_cd = '" + tb_line_cd.Text.ToString() + "'");
             if (bl_tss != true)
             {
-                tss.ErrorLogWrite(tss.user_cd, "製品マスタ／登録", "登録ボタン押下時のOracleUpdate");
+                tss.ErrorLogWrite(tss.user_cd, "ラインマスタ／登録", "登録ボタン押下時のOracleUpdate");
                 MessageBox.Show("書込みでエラーが発生しました。処理を中止します。");
                 this.Close();
             }

@@ -153,6 +153,12 @@
     <Compile Include="frm_buhin_zaiko_syoukai.Designer.cs">
       <DependentUpon>frm_buhin_zaiko_syoukai.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_busyo_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_busyo_m.Designer.cs">
+      <DependentUpon>frm_busyo_m.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_getumatu_zaiko.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -668,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_buhin_zaiko_syoukai.resx">
       <DependentUpon>frm_buhin_zaiko_syoukai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_busyo_m.resx">
+      <DependentUpon>frm_busyo_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_getumatu_zaiko.resx">
       <DependentUpon>frm_getumatu_zaiko.cs</DependentUpon>
