@@ -834,9 +834,9 @@ namespace TSS_SYSTEM
             frm_uriage_syukei.Dispose();
         }
 
-        private void btn_koutei_m_Click(object sender, EventArgs e)
+        private void btn_koutei_m_Click_1(object sender, EventArgs e)
         {
-           
+
             frm_koutei_m frm_koutei = new frm_koutei_m();
             frm_koutei.ShowDialog(this);
             frm_koutei.Dispose();

@@ -102,6 +102,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_koutei_m = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
             this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
@@ -120,7 +121,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_koutei_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -205,12 +205,13 @@
             // 
             // lbl_db
             // 
+            this.lbl_db.AutoSize = true;
             this.lbl_db.BackColor = System.Drawing.Color.Red;
-            this.lbl_db.Location = new System.Drawing.Point(582, 29);
+            this.lbl_db.Location = new System.Drawing.Point(580, 36);
             this.lbl_db.Name = "lbl_db";
-            this.lbl_db.Size = new System.Drawing.Size(284, 27);
+            this.lbl_db.Size = new System.Drawing.Size(35, 12);
             this.lbl_db.TabIndex = 2;
-            this.lbl_db.Text = "接続DB表示";
+            this.lbl_db.Text = "label5";
             this.lbl_db.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_message
@@ -1062,6 +1063,18 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
+            // btn_koutei_m
+            // 
+            this.btn_koutei_m.BackColor = System.Drawing.Color.White;
+            this.btn_koutei_m.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_koutei_m.Location = new System.Drawing.Point(267, 265);
+            this.btn_koutei_m.Name = "btn_koutei_m";
+            this.btn_koutei_m.Size = new System.Drawing.Size(147, 35);
+            this.btn_koutei_m.TabIndex = 0;
+            this.btn_koutei_m.Text = "工程マスタ";
+            this.btn_koutei_m.UseVisualStyleBackColor = false;
+            this.btn_koutei_m.Click += new System.EventHandler(this.btn_koutei_m_Click_1);
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(489, 237);
@@ -1242,15 +1255,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // lbl_db
-            // 
-            this.lbl_db.AutoSize = true;
-            this.lbl_db.Location = new System.Drawing.Point(580, 36);
-            this.lbl_db.Name = "lbl_db";
-            this.lbl_db.Size = new System.Drawing.Size(35, 12);
-            this.lbl_db.TabIndex = 2;
-            this.lbl_db.Text = "label5";
             // 
             // frm_menu
             // 
