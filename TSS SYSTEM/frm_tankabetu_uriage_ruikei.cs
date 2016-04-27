@@ -15,8 +15,8 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
         DataTable w_dt_insatu = new DataTable();
-        String siire_simebi;//当月累計計算時の始日
-        String siire_simebi2; //当月累計計算時の末日
+        //String siire_simebi;//当月累計計算時の始日
+        //String siire_simebi2; //当月累計計算時の末日
         
         public frm_tankabetu_uriage_ruikei()
         {

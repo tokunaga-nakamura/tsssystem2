@@ -1466,7 +1466,7 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             DataTable w_dt2 = new DataTable();  //フリー在庫以外の在庫がマイナスになる場合用
             decimal w_zaiko_su;
-            decimal w_zaiko_su_2;
+            //decimal w_zaiko_su_2;
             decimal w_zaiko_su_3;
             bool w_rireki_bl;   //履歴書込み用
             string w_rireki_kbn;

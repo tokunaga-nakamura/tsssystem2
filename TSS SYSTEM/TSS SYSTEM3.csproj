@@ -78,7 +78,6 @@
     <Reference Include="GrapeCity.ActiveReports.VisualStudio.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Web.Design.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Web.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
-    <Reference Include="GrapeCity.Win.PluginInputMan, Version=7.0.2016.2008, Culture=neutral, PublicKeyToken=a5fa960294d899e7, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=2.112.4.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\app\nakamura_2\product\11.2.0\client_1\ODP.NET\bin\4\Oracle.DataAccess.dll</HintPath>
