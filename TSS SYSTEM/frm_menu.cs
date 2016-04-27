@@ -46,6 +46,7 @@ namespace TSS_SYSTEM
 
         private void frm_menu_Activated(object sender, EventArgs e)
         {
+            tss.GetSystemSetting();
             //プログラムのバージョン確認
             if (tss.Version_Check() == false)
             {
@@ -869,6 +870,18 @@ namespace TSS_SYSTEM
             frm_busyo_m frm_busyo = new frm_busyo_m();
             frm_busyo.ShowDialog(this);
             frm_busyo.Dispose();
+        }
+
+        private void btn_system_administrator_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(1, 9) == false || tss.User_Kengen_Check(2, 9) == false || tss.User_Kengen_Check(3, 9) == false || tss.User_Kengen_Check(4, 9) == false || tss.User_Kengen_Check(5, 9) == false || tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_system_administrator frm_sysad = new frm_system_administrator();
+            frm_sysad.ShowDialog(this);
+            frm_sysad.Dispose();
         }
 
     }

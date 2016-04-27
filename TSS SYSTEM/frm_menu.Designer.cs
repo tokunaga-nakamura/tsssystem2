@@ -123,6 +123,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_system_administrator = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1041,6 +1042,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.btn_system_administrator);
             this.tabPage6.Controls.Add(this.btn_busyo_m);
             this.tabPage6.Controls.Add(this.btn_line_m);
             this.tabPage6.Controls.Add(this.btn_koutei_m);
@@ -1277,6 +1279,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_system_administrator
+            // 
+            this.btn_system_administrator.Location = new System.Drawing.Point(462, 385);
+            this.btn_system_administrator.Name = "btn_system_administrator";
+            this.btn_system_administrator.Size = new System.Drawing.Size(222, 23);
+            this.btn_system_administrator.TabIndex = 19;
+            this.btn_system_administrator.Text = "システム管理者用";
+            this.btn_system_administrator.UseVisualStyleBackColor = true;
+            this.btn_system_administrator.Click += new System.EventHandler(this.btn_system_administrator_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1447,6 +1459,7 @@
         private System.Windows.Forms.Button btn_line_m;
         private System.Windows.Forms.Button btn_koutei_m;
         private System.Windows.Forms.Button btn_busyo_m;
+        private System.Windows.Forms.Button btn_system_administrator;
     }
 }
 

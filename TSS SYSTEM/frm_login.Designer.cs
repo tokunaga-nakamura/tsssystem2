@@ -34,6 +34,7 @@
             this.tb_user_cd = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbl_system = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.btn_login = new System.Windows.Forms.Button();
@@ -108,15 +109,27 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_system);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(263, 128);
-            this.splitContainer1.SplitterDistance = 29;
+            this.splitContainer1.Size = new System.Drawing.Size(263, 139);
+            this.splitContainer1.SplitterDistance = 47;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
+            // 
+            // lbl_system
+            // 
+            this.lbl_system.AutoSize = true;
+            this.lbl_system.ForeColor = System.Drawing.Color.Silver;
+            this.lbl_system.Location = new System.Drawing.Point(150, 30);
+            this.lbl_system.Name = "lbl_system";
+            this.lbl_system.Size = new System.Drawing.Size(110, 12);
+            this.lbl_system.TabIndex = 1;
+            this.lbl_system.Text = "接続DB DBバージョン";
+            this.lbl_system.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // splitContainer2
             // 
@@ -138,8 +151,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Panel2.Controls.Add(this.btn_login);
-            this.splitContainer2.Size = new System.Drawing.Size(263, 95);
-            this.splitContainer2.SplitterDistance = 59;
+            this.splitContainer2.Size = new System.Drawing.Size(263, 88);
+            this.splitContainer2.SplitterDistance = 54;
             this.splitContainer2.TabIndex = 6;
             this.splitContainer2.TabStop = false;
             // 
@@ -167,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 128);
+            this.ClientSize = new System.Drawing.Size(263, 139);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -201,5 +214,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_syuuryou;
+        private System.Windows.Forms.Label lbl_system;
     }
 }

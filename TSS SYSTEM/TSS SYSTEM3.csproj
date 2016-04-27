@@ -441,6 +441,12 @@
     <Compile Include="frm_siire_simebi.Designer.cs">
       <DependentUpon>frm_siire_simebi.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_system_administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_system_administrator.Designer.cs">
+      <DependentUpon>frm_system_administrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_table_maintenance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -818,6 +824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siire_simebi.resx">
       <DependentUpon>frm_siire_simebi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_system_administrator.resx">
+      <DependentUpon>frm_system_administrator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_table_maintenance.resx">
       <DependentUpon>frm_table_maintenance.cs</DependentUpon>

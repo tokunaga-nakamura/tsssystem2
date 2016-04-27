@@ -3013,7 +3013,7 @@ namespace TSS_SYSTEM
                 return bl;
             }
             //バージョンチェック
-            if (dt_system.Rows[0]["system_version"].ToString() != "1.02")
+            if (dt_system.Rows[0]["system_version"].ToString() != system_version)
             {
                 bl = false;
                 return bl;
