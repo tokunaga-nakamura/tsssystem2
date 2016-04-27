@@ -27,7 +27,7 @@ namespace TSS_SYSTEM
         {
             DataTable dt_kensaku = new DataTable();
             string[] sql_where = new string[7];
-            int sql_cnt = 0;
+            //int sql_cnt = 0;
             string str_yyyymm = tb_nengetu.Text;
             DateTime YYYYMM = new DateTime();
 
@@ -586,7 +586,7 @@ namespace TSS_SYSTEM
         {
             DataTable dt_kensaku = new DataTable();
             string[] sql_where = new string[7];
-            int sql_cnt = 0;
+            //int sql_cnt = 0;
             string str_yyyymm = tb_nengetu.Text;
             DateTime YYYYMM = new DateTime();
 

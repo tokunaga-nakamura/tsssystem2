@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_koutei_m));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbl_koutei_cd = new System.Windows.Forms.Label();
             this.tb_sakujyo = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.btn_hardcopy = new System.Windows.Forms.Button();
-            this.lbl_koutei_cd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +96,17 @@
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_hardcopy
+            // 
+            this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
+            this.btn_hardcopy.Location = new System.Drawing.Point(10, 10);
+            this.btn_hardcopy.Name = "btn_hardcopy";
+            this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
+            this.btn_hardcopy.TabIndex = 100;
+            this.btn_hardcopy.TabStop = false;
+            this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click_1);
             // 
             // splitContainer2
             // 
@@ -157,6 +168,15 @@
             this.splitContainer3.SplitterDistance = 111;
             this.splitContainer3.TabIndex = 2;
             this.splitContainer3.TabStop = false;
+            // 
+            // lbl_koutei_cd
+            // 
+            this.lbl_koutei_cd.AutoSize = true;
+            this.lbl_koutei_cd.Location = new System.Drawing.Point(151, 6);
+            this.lbl_koutei_cd.Name = "lbl_koutei_cd";
+            this.lbl_koutei_cd.Size = new System.Drawing.Size(140, 12);
+            this.lbl_koutei_cd.TabIndex = 35;
+            this.lbl_koutei_cd.Text = "工程コードを入力してください";
             // 
             // tb_sakujyo
             // 
@@ -248,7 +268,7 @@
             this.tb_koutei_cd.MaxLength = 3;
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(39, 19);
-            this.tb_koutei_cd.TabIndex = 1;
+            this.tb_koutei_cd.TabIndex = 0;
             this.tb_koutei_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_koutei_cd_Validating);
             // 
             // tb_koutei_ryaku
@@ -392,24 +412,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // btn_hardcopy
-            // 
-            this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
-            this.btn_hardcopy.Location = new System.Drawing.Point(10, 10);
-            this.btn_hardcopy.Name = "btn_hardcopy";
-            this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
-            this.btn_hardcopy.TabIndex = 1;
-            this.btn_hardcopy.UseVisualStyleBackColor = true;
-            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click_1);
-            // 
-            // lbl_koutei_cd
-            // 
-            this.lbl_koutei_cd.AutoSize = true;
-            this.lbl_koutei_cd.Location = new System.Drawing.Point(209, 6);
-            this.lbl_koutei_cd.Name = "lbl_koutei_cd";
-            this.lbl_koutei_cd.Size = new System.Drawing.Size(0, 12);
-            this.lbl_koutei_cd.TabIndex = 35;
             // 
             // frm_koutei_m
             // 
