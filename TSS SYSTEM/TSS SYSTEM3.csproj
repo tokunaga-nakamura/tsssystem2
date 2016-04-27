@@ -675,6 +675,9 @@
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_koutei_m.resx">
+      <DependentUpon>frm_koutei_m.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>
     </EmbeddedResource>

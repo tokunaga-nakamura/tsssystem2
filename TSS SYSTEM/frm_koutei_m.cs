@@ -27,11 +27,7 @@ namespace TSS_SYSTEM
             ppt_cd = "";
         }
 
-        private void btn_hardcopy_Click(object sender, EventArgs e)
-        {
-            tss.HardCopy();
-        }
-
+       
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -46,6 +42,11 @@ namespace TSS_SYSTEM
                 //dgv_disp2();
                 //dgv_disp();
             }
+
+            tb_koutei_cd.Focus();
+            
+
+
         }
 
         private void tb_koutei_cd_Validating(object sender, CancelEventArgs e)
@@ -63,14 +64,15 @@ namespace TSS_SYSTEM
             {
                 if (chk_koutei_cd() == false)
                 {
-                    MessageBox.Show("入力された工程コードは存在しません。");
+                    MessageBox.Show("工程コードに異常があります");
                     e.Cancel = true;
                 }
 
                 else
                 {
-                    w_dt_koutei = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + tb_koutei_cd.Text.ToString() + "'");
-                    tb_koutei_name.Text = w_dt_koutei.Rows[0][1].ToString();
+                    
+                    //w_dt_koutei = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + tb_koutei_cd.Text.ToString() + "'");
+                    //tb_koutei_name.Text = w_dt_koutei.Rows[0][1].ToString();
 
 
                 }
@@ -79,13 +81,267 @@ namespace TSS_SYSTEM
         
         private bool chk_koutei_cd()
         {
+
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + tb_koutei_cd.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //新規
+                gamen_sinki(tb_koutei_cd.Text);
+                dgv_disp();
+            }
+            else
+            {
+                //既存データ有
+                gamen_disp(dt_work);
+            }
+            return bl;
+           
+        }
+
+
+        private void gamen_sinki(string in_koutei_cd)
+        {
+            //gamen_clear();
+            tb_koutei_cd.Text = in_koutei_cd;
+            lbl_koutei_cd.Text = "新規の工程です。";
+            //tb_seihin_name.ReadOnly = false;
+            //tb_seihin_name.TabStop = true;
+            //tb_seihin_name.BackColor = System.Drawing.SystemColors.Window;
+            //tb_seihin_name.Focus();
+            dgv_disp();
+
+        }
+
+        private void gamen_clear()
+        {
+            tb_koutei_cd.Text = "";
+            tb_koutei_name.Text = "";
+            tb_bikou.Text = "";
+            tb_koutei_ryaku.Text = "";
+            tb_sakujyo.Text = "";
+            tb_create_user_cd.Text = "";
+            tb_create_datetime.Text = "";
+            tb_update_user_cd.Text = "";
+            tb_update_datetime.Text = "";
+
+            dgv_koutei_m.DataSource = null;
+        }
+
+        private void gamen_disp(DataTable in_dt_work)
+        {
+            tb_koutei_cd.Text = in_dt_work.Rows[0]["koutei_cd"].ToString();
+            tb_koutei_name.Text = in_dt_work.Rows[0]["koutei_name"].ToString();
+            tb_bikou.Text = in_dt_work.Rows[0]["bikou"].ToString();
+            tb_koutei_ryaku.Text = in_dt_work.Rows[0]["koutei_ryakusiki_name"].ToString();
+            tb_sakujyo.Text = in_dt_work.Rows[0]["delete_flg"].ToString();
+            tb_create_user_cd.Text = in_dt_work.Rows[0]["create_user_cd"].ToString();
+            tb_create_datetime.Text = in_dt_work.Rows[0]["create_datetime"].ToString();
+            tb_update_user_cd.Text = in_dt_work.Rows[0]["update_user_cd"].ToString();
+            tb_update_datetime.Text = in_dt_work.Rows[0]["update_datetime"].ToString();
+
+            dgv_disp();
+            
+
+        }
+
+         private void dgv_disp()
+        {
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_koutei_m");
+            dgv_koutei_m.DataSource = dt_work;
+
+            //リードオンリーにする（編集できなくなる）
+            dgv_koutei_m.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_koutei_m.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_koutei_m.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_koutei_m.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_koutei_m.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_koutei_m.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_koutei_m.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_koutei_m.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_koutei_m.AllowUserToAddRows = false;
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_koutei_m.Columns["koutei_cd"].HeaderText = "工程コード";
+            dgv_koutei_m.Columns["koutei_name"].HeaderText = "工程名称";
+            dgv_koutei_m.Columns["koutei_ryakusiki_name"].HeaderText = "工程略式名称";
+            dgv_koutei_m.Columns["bikou"].HeaderText = "備考";
+            dgv_koutei_m.Columns["delete_flg"].HeaderText = "削除フラグ";
+            //DataGridViewの非表示カラム
+            dgv_koutei_m.Columns["create_user_cd"].Visible = false;
+            dgv_koutei_m.Columns["create_datetime"].Visible = false;
+            dgv_koutei_m.Columns["update_user_cd"].Visible = false;
+            dgv_koutei_m.Columns["update_datetime"].Visible = false;
+
+        }
+
+
+         private bool chk_koutei_cd2()
+         {
+             bool bl = true; //戻り値用
+
+             if (tb_koutei_name.Text == null || tb_koutei_name.Text.Length == 0 || tss.StringByte(tb_koutei_name.Text) > 4)
+             {
+                 bl = false;
+             }
+             return bl;
+         } 
+        
+        private bool chk_koutei_name()
+         {
+             bool bl = true; //戻り値用
+
+             if (tb_koutei_name.Text == null || tb_koutei_name.Text.Length == 0 || tss.StringByte(tb_koutei_name.Text) > 40)
+             {
+                 bl = false;
+             }
+             return bl;
+         }
+
+
+        private bool chk_koutei_ryaku()
+        {
             bool bl = true; //戻り値用
-            w_dt_koutei = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + tb_koutei_cd.Text.ToString() + "'");
-            if (w_dt_koutei.Rows.Count == 0)
+
+            if (tb_koutei_ryaku.Text == null || tb_koutei_ryaku.Text.Length == 0 || tss.StringByte(tb_koutei_ryaku.Text) > 20)
             {
                 bl = false;
             }
             return bl;
+        }
+
+        private bool chk_bikou()
+        {
+            bool bl = true; //戻り値用
+
+            if (tss.StringByte(tb_bikou.Text) > 128)
+            {
+                bl = false;
+            }
+            return bl;
+        }
+
+
+        private void btn_hardcopy_Click_1(object sender, EventArgs e)
+        {
+            tss.HardCopy();
+        }
+
+        private void btn_touroku_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(4, 6) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+
+            DataTable dt_work = new DataTable();
+
+            //登録前に全ての項目をチェック
+            if (chk_koutei_cd2() == false)
+            {
+                MessageBox.Show("工程コードは1文字以上、3バイト以内で入力してください。");
+                tb_koutei_cd.Focus();
+                return;
+            }
+            
+            
+            if (chk_koutei_name() == false)
+            {
+                MessageBox.Show("工程名は1文字以上、40バイト以内で入力してください。");
+                tb_koutei_name.Focus();
+                return;
+            }
+
+            if (chk_koutei_ryaku() == false)
+            {
+                MessageBox.Show("工程略式名は1文字以上、20バイト以内で入力してください。");
+                tb_koutei_name.Focus();
+                return;
+            }
+
+            if (chk_bikou() == false)
+            {
+                MessageBox.Show("備考は128バイト以内で入力してください。");
+                tb_bikou.Focus();
+                return;
+            }
+
+            
+
+            //工程の新規・更新チェック
+            dt_work = tss.OracleSelect("select * from tss_koutei_m where koutei_cd  = '" + tb_koutei_cd.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //新規
+                DialogResult result = MessageBox.Show("工程を新規に登録します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    //「はい」が選択された時
+                    //koutei_insert();
+                    //chk_seihin_cd();
+                }
+                else
+                {
+                    //「いいえ」が選択された時
+                    tb_bikou.Focus();
+                }
+            }
+            else
+            {
+                //既存データ有
+                DialogResult result = MessageBox.Show("既存工程データを更新します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    //「はい」が選択された時
+                    //koutei_update();
+                    //chk_seihin_cd();
+                }
+                else
+                {
+                    //「いいえ」が選択された時
+                    tb_bikou.Focus();
+                }
+            }
+        }
+
+        private void tb_koutei_name_Validating(object sender, CancelEventArgs e)
+        {
+            //禁止文字チェック
+            if (tss.Check_String_Escape(tb_koutei_name.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_koutei_ryaku_Validating(object sender, CancelEventArgs e)
+        {
+            //禁止文字チェック
+            if (tss.Check_String_Escape(tb_koutei_ryaku.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            //禁止文字チェック
+            if (tss.Check_String_Escape(tb_bikou.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
 
 
