@@ -32,7 +32,7 @@
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_db = new System.Windows.Forms.Label();
-            this.lbl_message = new System.Windows.Forms.Label();
+            this.lbl_program_version = new System.Windows.Forms.Label();
             this.btn_message_log = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -102,6 +102,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_busyo_m = new System.Windows.Forms.Button();
             this.btn_line_m = new System.Windows.Forms.Button();
             this.btn_koutei_m = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -122,7 +123,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_busyo_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -194,7 +194,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lbl_db);
-            this.splitContainer1.Panel1.Controls.Add(this.lbl_message);
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_program_version);
             this.splitContainer1.Panel1.Controls.Add(this.btn_message_log);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -215,16 +215,16 @@
             this.lbl_db.Text = "接続DB表示";
             this.lbl_db.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_message
+            // lbl_program_version
             // 
-            this.lbl_message.AutoSize = true;
-            this.lbl_message.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_message.Location = new System.Drawing.Point(75, 12);
-            this.lbl_message.Name = "lbl_message";
-            this.lbl_message.Size = new System.Drawing.Size(148, 12);
-            this.lbl_message.TabIndex = 1;
-            this.lbl_message.Text = "TSS SYSTEM Latest edition";
-            this.lbl_message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_program_version.AutoSize = true;
+            this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_program_version.Location = new System.Drawing.Point(69, 36);
+            this.lbl_program_version.Name = "lbl_program_version";
+            this.lbl_program_version.Size = new System.Drawing.Size(504, 12);
+            this.lbl_program_version.TabIndex = 1;
+            this.lbl_program_version.Text = "プログラムの更新メッセージが表示された場合、TSSシステムを終了し、get new を実行後起動してください。";
+            this.lbl_program_version.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_message_log
             // 
@@ -324,13 +324,13 @@
             // splitContainer4.Panel1
             // 
             this.splitContainer4.Panel1.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Panel1MinSize = 248;
+            this.splitContainer4.Panel1MinSize = 232;
             // 
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer9);
             this.splitContainer4.Size = new System.Drawing.Size(684, 436);
-            this.splitContainer4.SplitterDistance = 248;
+            this.splitContainer4.SplitterDistance = 232;
             this.splitContainer4.TabIndex = 0;
             // 
             // splitContainer5
@@ -354,7 +354,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(248, 436);
+            this.splitContainer5.Size = new System.Drawing.Size(232, 436);
             this.splitContainer5.SplitterDistance = 74;
             this.splitContainer5.TabIndex = 4;
             // 
@@ -372,30 +372,30 @@
             // 
             this.button1.Location = new System.Drawing.Point(5, 28);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 23);
+            this.button1.Size = new System.Drawing.Size(51, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "-1日";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(68, 3);
+            this.dateTimePicker1.Location = new System.Drawing.Point(62, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(104, 19);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(178, 29);
+            this.button3.Location = new System.Drawing.Point(172, 27);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 22);
+            this.button3.Size = new System.Drawing.Size(51, 22);
             this.button3.TabIndex = 3;
             this.button3.Text = "+1日";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(68, 28);
+            this.button2.Location = new System.Drawing.Point(62, 27);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 23);
             this.button2.TabIndex = 2;
@@ -417,7 +417,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer6.Size = new System.Drawing.Size(248, 358);
+            this.splitContainer6.Size = new System.Drawing.Size(232, 358);
             this.splitContainer6.SplitterDistance = 169;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -438,7 +438,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_kintai);
-            this.splitContainer7.Size = new System.Drawing.Size(244, 165);
+            this.splitContainer7.Size = new System.Drawing.Size(228, 165);
             this.splitContainer7.SplitterDistance = 25;
             this.splitContainer7.TabIndex = 0;
             // 
@@ -458,7 +458,7 @@
             this.dgv_kintai.Location = new System.Drawing.Point(0, 0);
             this.dgv_kintai.Name = "dgv_kintai";
             this.dgv_kintai.RowTemplate.Height = 21;
-            this.dgv_kintai.Size = new System.Drawing.Size(244, 136);
+            this.dgv_kintai.Size = new System.Drawing.Size(228, 136);
             this.dgv_kintai.TabIndex = 0;
             // 
             // splitContainer8
@@ -478,7 +478,7 @@
             // splitContainer8.Panel2
             // 
             this.splitContainer8.Panel2.Controls.Add(this.dgv_event);
-            this.splitContainer8.Size = new System.Drawing.Size(244, 181);
+            this.splitContainer8.Size = new System.Drawing.Size(228, 181);
             this.splitContainer8.SplitterDistance = 25;
             this.splitContainer8.TabIndex = 0;
             // 
@@ -498,7 +498,7 @@
             this.dgv_event.Location = new System.Drawing.Point(0, 0);
             this.dgv_event.Name = "dgv_event";
             this.dgv_event.RowTemplate.Height = 21;
-            this.dgv_event.Size = new System.Drawing.Size(244, 152);
+            this.dgv_event.Size = new System.Drawing.Size(228, 152);
             this.dgv_event.TabIndex = 0;
             // 
             // splitContainer9
@@ -518,7 +518,7 @@
             // splitContainer9.Panel2
             // 
             this.splitContainer9.Panel2.Controls.Add(this.splitContainer10);
-            this.splitContainer9.Size = new System.Drawing.Size(428, 432);
+            this.splitContainer9.Size = new System.Drawing.Size(444, 432);
             this.splitContainer9.SplitterDistance = 25;
             this.splitContainer9.TabIndex = 0;
             // 
@@ -547,7 +547,7 @@
             // splitContainer10.Panel2
             // 
             this.splitContainer10.Panel2.Controls.Add(this.btn_timereport);
-            this.splitContainer10.Size = new System.Drawing.Size(428, 403);
+            this.splitContainer10.Size = new System.Drawing.Size(444, 403);
             this.splitContainer10.SplitterDistance = 370;
             this.splitContainer10.TabIndex = 0;
             // 
@@ -558,7 +558,7 @@
             this.dgv_timereport.Location = new System.Drawing.Point(0, 0);
             this.dgv_timereport.Name = "dgv_timereport";
             this.dgv_timereport.RowTemplate.Height = 21;
-            this.dgv_timereport.Size = new System.Drawing.Size(428, 370);
+            this.dgv_timereport.Size = new System.Drawing.Size(444, 370);
             this.dgv_timereport.TabIndex = 0;
             // 
             // btn_timereport
@@ -1066,6 +1066,16 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
+            // btn_busyo_m
+            // 
+            this.btn_busyo_m.Location = new System.Drawing.Point(234, 148);
+            this.btn_busyo_m.Name = "btn_busyo_m";
+            this.btn_busyo_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_busyo_m.TabIndex = 18;
+            this.btn_busyo_m.Text = "部署マスタ";
+            this.btn_busyo_m.UseVisualStyleBackColor = true;
+            this.btn_busyo_m.Click += new System.EventHandler(this.btn_busyo_m_Click);
+            // 
             // btn_line_m
             // 
             this.btn_line_m.Location = new System.Drawing.Point(462, 177);
@@ -1267,16 +1277,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_busyo_m
-            // 
-            this.btn_busyo_m.Location = new System.Drawing.Point(234, 148);
-            this.btn_busyo_m.Name = "btn_busyo_m";
-            this.btn_busyo_m.Size = new System.Drawing.Size(222, 23);
-            this.btn_busyo_m.TabIndex = 18;
-            this.btn_busyo_m.Text = "部署マスタ";
-            this.btn_busyo_m.UseVisualStyleBackColor = true;
-            this.btn_busyo_m.Click += new System.EventHandler(this.btn_busyo_m_Click);
-            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1430,7 +1430,7 @@
         private System.Windows.Forms.Button btn_buhin_nyusyukko_rireki;
         private System.Windows.Forms.Button btn_tankabetu_uriage_meisai;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
-        private System.Windows.Forms.Label lbl_message;
+        private System.Windows.Forms.Label lbl_program_version;
         private System.Windows.Forms.Button btn_free_zaiko_record_make;
         private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
         private System.Windows.Forms.Button button4;

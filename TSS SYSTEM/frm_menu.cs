@@ -49,9 +49,9 @@ namespace TSS_SYSTEM
             //プログラムのバージョン確認
             if (tss.Version_Check() == false)
             {
-                lbl_message.Text = "TSSシステムのバージョンが違います。TSSシステムを終了し、tss_system get_new を実行してください。";
-                lbl_message.ForeColor = Color.White;
-                lbl_message.BackColor = Color.Red;
+                lbl_program_version.Text = "TSSシステムのバージョンが違います。TSSシステムを終了し、tss_system get_new を実行してください。";
+                lbl_program_version.ForeColor = Color.White;
+                lbl_program_version.BackColor = Color.Red;
             }
             this.Opacity = 1;
             status_disp();
@@ -121,7 +121,7 @@ namespace TSS_SYSTEM
 
             if (tss.DataSource == "pdb")
             {
-                lbl_db.Text = "TSSシステムDBは正常稼働中です";
+                lbl_db.Text = "TSS SYSTEM Connect";
                 lbl_db.BackColor = Color.RoyalBlue;
                 lbl_db.ForeColor = Color.White;
             }

@@ -383,7 +383,7 @@
             // 
             // tb_busyo_name
             // 
-            this.tb_busyo_name.BackColor = System.Drawing.Color.White;
+            this.tb_busyo_name.BackColor = System.Drawing.SystemColors.Window;
             this.tb_busyo_name.Location = new System.Drawing.Point(77, 28);
             this.tb_busyo_name.MaxLength = 20;
             this.tb_busyo_name.Name = "tb_busyo_name";
@@ -393,7 +393,7 @@
             // 
             // tb_busyo_cd
             // 
-            this.tb_busyo_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_busyo_cd.BackColor = System.Drawing.SystemColors.Window;
             this.tb_busyo_cd.Location = new System.Drawing.Point(77, 3);
             this.tb_busyo_cd.MaxLength = 4;
             this.tb_busyo_cd.Name = "tb_busyo_cd";

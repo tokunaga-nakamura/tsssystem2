@@ -3013,7 +3013,7 @@ namespace TSS_SYSTEM
                 return bl;
             }
             //バージョンチェック
-            if (dt_system.Rows[0]["system_version"].ToString() != "1.01")
+            if (dt_system.Rows[0]["system_version"].ToString() != "1.02")
             {
                 bl = false;
                 return bl;
@@ -3026,3 +3026,9 @@ namespace TSS_SYSTEM
     }
     #endregion
 }
+//更新履歴
+//1.01              正式リリース
+//1.02  2016/04/26  受注残参照画面の検索条件に、製品マスタの集計区分を追加
+//
+//
+//

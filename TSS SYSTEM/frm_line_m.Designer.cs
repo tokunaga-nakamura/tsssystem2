@@ -34,6 +34,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbl_line_cd = new System.Windows.Forms.Label();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.tb_update_user_cd = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.dgv_line_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.lbl_line_cd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -176,6 +176,15 @@
             this.splitContainer3.SplitterDistance = 105;
             this.splitContainer3.TabIndex = 3;
             this.splitContainer3.TabStop = false;
+            // 
+            // lbl_line_cd
+            // 
+            this.lbl_line_cd.AutoSize = true;
+            this.lbl_line_cd.Location = new System.Drawing.Point(114, 6);
+            this.lbl_line_cd.Name = "lbl_line_cd";
+            this.lbl_line_cd.Size = new System.Drawing.Size(142, 12);
+            this.lbl_line_cd.TabIndex = 16;
+            this.lbl_line_cd.Text = "ラインコードを入力してください";
             // 
             // tb_update_datetime
             // 
@@ -324,7 +333,7 @@
             // 
             // tb_line_name
             // 
-            this.tb_line_name.BackColor = System.Drawing.Color.White;
+            this.tb_line_name.BackColor = System.Drawing.SystemColors.Window;
             this.tb_line_name.Location = new System.Drawing.Point(77, 28);
             this.tb_line_name.MaxLength = 40;
             this.tb_line_name.Name = "tb_line_name";
@@ -334,7 +343,7 @@
             // 
             // tb_line_cd
             // 
-            this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_line_cd.BackColor = System.Drawing.SystemColors.Window;
             this.tb_line_cd.Location = new System.Drawing.Point(77, 3);
             this.tb_line_cd.MaxLength = 3;
             this.tb_line_cd.Name = "tb_line_cd";
@@ -402,15 +411,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // lbl_line_cd
-            // 
-            this.lbl_line_cd.AutoSize = true;
-            this.lbl_line_cd.Location = new System.Drawing.Point(114, 6);
-            this.lbl_line_cd.Name = "lbl_line_cd";
-            this.lbl_line_cd.Size = new System.Drawing.Size(142, 12);
-            this.lbl_line_cd.TabIndex = 16;
-            this.lbl_line_cd.Text = "ラインコードを入力してください";
             // 
             // frm_line_m
             // 
