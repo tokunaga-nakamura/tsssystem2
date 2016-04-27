@@ -49,9 +49,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da" />
-    <Reference Include="C1.Win.C1GanttView.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Schedule.4, Version=4.0.20153.110, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="GrapeCity.ActiveReports.Calendar.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Chart.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
     <Reference Include="GrapeCity.ActiveReports.Dashboard.v7, Version=7.5.8161.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
