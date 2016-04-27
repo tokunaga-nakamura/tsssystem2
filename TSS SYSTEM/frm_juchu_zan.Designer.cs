@@ -35,6 +35,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_chuusyutu = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,7 +53,18 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cb_syubetu_kbn = new System.Windows.Forms.CheckBox();
+            this.tb_syubetu_kbn = new System.Windows.Forms.TextBox();
+            this.tb_syubetu_name = new System.Windows.Forms.TextBox();
+            this.tb_type_name = new System.Windows.Forms.TextBox();
+            this.cb_bunrui_kbn = new System.Windows.Forms.CheckBox();
+            this.tb_type_kbn = new System.Windows.Forms.TextBox();
+            this.tb_bunrui_name = new System.Windows.Forms.TextBox();
+            this.cb_type_kbn = new System.Windows.Forms.CheckBox();
+            this.tb_bunrui_kbn = new System.Windows.Forms.TextBox();
+            this.tb_sijou_name = new System.Windows.Forms.TextBox();
+            this.cb_sijou_kbn = new System.Windows.Forms.CheckBox();
+            this.tb_sijou_kbn = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -148,22 +160,33 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.cb_syubetu_kbn);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_syubetu_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.label5);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_syubetu_name);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_type_name);
             this.splitContainer3.Panel1.Controls.Add(this.btn_chuusyutu);
+            this.splitContainer3.Panel1.Controls.Add(this.cb_bunrui_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.label3);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_type_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.label2);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_bunrui_name);
             this.splitContainer3.Panel1.Controls.Add(this.label1);
+            this.splitContainer3.Panel1.Controls.Add(this.cb_type_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.tb_create_datetime2);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_bunrui_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.tb_create_datetime1);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_sijou_name);
             this.splitContainer3.Panel1.Controls.Add(this.textBox7);
+            this.splitContainer3.Panel1.Controls.Add(this.cb_sijou_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seihin_cd2);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_sijou_kbn);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seihin_cd1);
             this.splitContainer3.Panel1.Controls.Add(this.textBox4);
             this.splitContainer3.Panel1.Controls.Add(this.tb_torihikisaki_cd2);
@@ -174,13 +197,22 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
             this.splitContainer3.Size = new System.Drawing.Size(884, 437);
-            this.splitContainer3.SplitterDistance = 79;
+            this.splitContainer3.SplitterDistance = 98;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(579, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(291, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "全て空白の状態で抽出すると、全受注情報から抽出します。";
+            // 
             // btn_chuusyutu
             // 
-            this.btn_chuusyutu.Location = new System.Drawing.Point(795, 49);
+            this.btn_chuusyutu.Location = new System.Drawing.Point(795, 66);
             this.btn_chuusyutu.Name = "btn_chuusyutu";
             this.btn_chuusyutu.Size = new System.Drawing.Size(75, 23);
             this.btn_chuusyutu.TabIndex = 6;
@@ -309,7 +341,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 350);
+            this.dgv_m.Size = new System.Drawing.Size(880, 331);
             this.dgv_m.TabIndex = 0;
             // 
             // btn_csv
@@ -341,14 +373,133 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // label5
+            // cb_syubetu_kbn
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(579, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(291, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "全て空白の状態で抽出すると、全受注情報から抽出します。";
+            this.cb_syubetu_kbn.AutoSize = true;
+            this.cb_syubetu_kbn.Location = new System.Drawing.Point(330, 6);
+            this.cb_syubetu_kbn.Name = "cb_syubetu_kbn";
+            this.cb_syubetu_kbn.Size = new System.Drawing.Size(72, 16);
+            this.cb_syubetu_kbn.TabIndex = 3;
+            this.cb_syubetu_kbn.Text = "種別区分";
+            this.cb_syubetu_kbn.UseVisualStyleBackColor = true;
+            this.cb_syubetu_kbn.CheckedChanged += new System.EventHandler(this.cb_syubetu_kbn_CheckedChanged);
+            // 
+            // tb_syubetu_kbn
+            // 
+            this.tb_syubetu_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_syubetu_kbn.Location = new System.Drawing.Point(410, 4);
+            this.tb_syubetu_kbn.MaxLength = 2;
+            this.tb_syubetu_kbn.Name = "tb_syubetu_kbn";
+            this.tb_syubetu_kbn.Size = new System.Drawing.Size(24, 19);
+            this.tb_syubetu_kbn.TabIndex = 4;
+            this.tb_syubetu_kbn.DoubleClick += new System.EventHandler(this.tb_syubetu_kbn_DoubleClick);
+            this.tb_syubetu_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_syubetu_kbn_Validating);
+            // 
+            // tb_syubetu_name
+            // 
+            this.tb_syubetu_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_syubetu_name.Location = new System.Drawing.Point(434, 4);
+            this.tb_syubetu_name.Name = "tb_syubetu_name";
+            this.tb_syubetu_name.ReadOnly = true;
+            this.tb_syubetu_name.Size = new System.Drawing.Size(90, 19);
+            this.tb_syubetu_name.TabIndex = 9;
+            this.tb_syubetu_name.TabStop = false;
+            // 
+            // tb_type_name
+            // 
+            this.tb_type_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_type_name.Location = new System.Drawing.Point(434, 70);
+            this.tb_type_name.Name = "tb_type_name";
+            this.tb_type_name.ReadOnly = true;
+            this.tb_type_name.Size = new System.Drawing.Size(90, 19);
+            this.tb_type_name.TabIndex = 18;
+            this.tb_type_name.TabStop = false;
+            // 
+            // cb_bunrui_kbn
+            // 
+            this.cb_bunrui_kbn.AutoSize = true;
+            this.cb_bunrui_kbn.Location = new System.Drawing.Point(330, 28);
+            this.cb_bunrui_kbn.Name = "cb_bunrui_kbn";
+            this.cb_bunrui_kbn.Size = new System.Drawing.Size(72, 16);
+            this.cb_bunrui_kbn.TabIndex = 5;
+            this.cb_bunrui_kbn.Text = "分類区分";
+            this.cb_bunrui_kbn.UseVisualStyleBackColor = true;
+            this.cb_bunrui_kbn.CheckedChanged += new System.EventHandler(this.cb_bunrui_kbn_CheckedChanged);
+            // 
+            // tb_type_kbn
+            // 
+            this.tb_type_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_type_kbn.Location = new System.Drawing.Point(410, 70);
+            this.tb_type_kbn.MaxLength = 2;
+            this.tb_type_kbn.Name = "tb_type_kbn";
+            this.tb_type_kbn.Size = new System.Drawing.Size(24, 19);
+            this.tb_type_kbn.TabIndex = 10;
+            this.tb_type_kbn.DoubleClick += new System.EventHandler(this.tb_type_kbn_DoubleClick);
+            this.tb_type_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_type_kbn_Validating);
+            // 
+            // tb_bunrui_name
+            // 
+            this.tb_bunrui_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_bunrui_name.Location = new System.Drawing.Point(434, 26);
+            this.tb_bunrui_name.Name = "tb_bunrui_name";
+            this.tb_bunrui_name.ReadOnly = true;
+            this.tb_bunrui_name.Size = new System.Drawing.Size(90, 19);
+            this.tb_bunrui_name.TabIndex = 12;
+            this.tb_bunrui_name.TabStop = false;
+            // 
+            // cb_type_kbn
+            // 
+            this.cb_type_kbn.AutoSize = true;
+            this.cb_type_kbn.Location = new System.Drawing.Point(330, 72);
+            this.cb_type_kbn.Name = "cb_type_kbn";
+            this.cb_type_kbn.Size = new System.Drawing.Size(74, 16);
+            this.cb_type_kbn.TabIndex = 9;
+            this.cb_type_kbn.Text = "タイプ区分";
+            this.cb_type_kbn.UseVisualStyleBackColor = true;
+            this.cb_type_kbn.CheckedChanged += new System.EventHandler(this.cb_type_kbn_CheckedChanged);
+            // 
+            // tb_bunrui_kbn
+            // 
+            this.tb_bunrui_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_bunrui_kbn.Location = new System.Drawing.Point(410, 26);
+            this.tb_bunrui_kbn.MaxLength = 2;
+            this.tb_bunrui_kbn.Name = "tb_bunrui_kbn";
+            this.tb_bunrui_kbn.Size = new System.Drawing.Size(24, 19);
+            this.tb_bunrui_kbn.TabIndex = 6;
+            this.tb_bunrui_kbn.DoubleClick += new System.EventHandler(this.tb_bunrui_kbn_DoubleClick);
+            this.tb_bunrui_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bunrui_kbn_Validating);
+            // 
+            // tb_sijou_name
+            // 
+            this.tb_sijou_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_sijou_name.Location = new System.Drawing.Point(434, 48);
+            this.tb_sijou_name.Name = "tb_sijou_name";
+            this.tb_sijou_name.ReadOnly = true;
+            this.tb_sijou_name.Size = new System.Drawing.Size(90, 19);
+            this.tb_sijou_name.TabIndex = 15;
+            this.tb_sijou_name.TabStop = false;
+            // 
+            // cb_sijou_kbn
+            // 
+            this.cb_sijou_kbn.AutoSize = true;
+            this.cb_sijou_kbn.Location = new System.Drawing.Point(330, 50);
+            this.cb_sijou_kbn.Name = "cb_sijou_kbn";
+            this.cb_sijou_kbn.Size = new System.Drawing.Size(72, 16);
+            this.cb_sijou_kbn.TabIndex = 7;
+            this.cb_sijou_kbn.Text = "市場区分";
+            this.cb_sijou_kbn.UseVisualStyleBackColor = true;
+            this.cb_sijou_kbn.CheckedChanged += new System.EventHandler(this.cb_sijou_kbn_CheckedChanged);
+            // 
+            // tb_sijou_kbn
+            // 
+            this.tb_sijou_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_sijou_kbn.Location = new System.Drawing.Point(410, 48);
+            this.tb_sijou_kbn.MaxLength = 2;
+            this.tb_sijou_kbn.Name = "tb_sijou_kbn";
+            this.tb_sijou_kbn.Size = new System.Drawing.Size(24, 19);
+            this.tb_sijou_kbn.TabIndex = 8;
+            this.tb_sijou_kbn.DoubleClick += new System.EventHandler(this.tb_sijou_kbn_DoubleClick);
+            this.tb_sijou_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_sijou_kbn_Validating);
             // 
             // frm_juchu_zan
             // 
@@ -360,6 +511,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_juchu_zan";
             this.Text = "受注残照会";
+            this.Load += new System.EventHandler(this.frm_juchu_zan_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -406,5 +558,17 @@
         private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cb_syubetu_kbn;
+        private System.Windows.Forms.TextBox tb_syubetu_kbn;
+        private System.Windows.Forms.TextBox tb_syubetu_name;
+        private System.Windows.Forms.TextBox tb_type_name;
+        private System.Windows.Forms.CheckBox cb_bunrui_kbn;
+        private System.Windows.Forms.TextBox tb_type_kbn;
+        private System.Windows.Forms.TextBox tb_bunrui_name;
+        private System.Windows.Forms.CheckBox cb_type_kbn;
+        private System.Windows.Forms.TextBox tb_bunrui_kbn;
+        private System.Windows.Forms.TextBox tb_sijou_name;
+        private System.Windows.Forms.CheckBox cb_sijou_kbn;
+        private System.Windows.Forms.TextBox tb_sijou_kbn;
     }
 }
