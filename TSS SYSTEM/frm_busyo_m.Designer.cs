@@ -468,6 +468,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_busyo_m";
             this.Text = "部署マスタ";
             this.Load += new System.EventHandler(this.frm_busyo_m_Load);

@@ -143,7 +143,7 @@
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -419,6 +419,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_line_m";
             this.Text = "ラインマスタ";
             this.Load += new System.EventHandler(this.frm_line_m_Load);
