@@ -21,6 +21,8 @@ namespace TSS_SYSTEM
     {
         #region TssSystemLibrary クラス
         //フィールドの定義
+        string program_version;
+
         string fld_DataSource;
         string fld_UserID;
         string fld_Password;
@@ -49,6 +51,8 @@ namespace TSS_SYSTEM
         public TssSystemLibrary()
         {
             //コンストラクタ
+            program_version = "1.02";
+
             fld_DataSource = null;
             fld_UserID = null;
             fld_Password = null;
@@ -72,8 +76,8 @@ namespace TSS_SYSTEM
             fld_kengen4 = null;
             fld_kengen5 = null;
             fld_kengen6 = null;
-
         }
+
         public string DataSource { get { return fld_DataSource; } }
         public string UserID { get { return fld_UserID; } }
         public string Password { get { return fld_Password; } }
@@ -3013,7 +3017,7 @@ namespace TSS_SYSTEM
                 return bl;
             }
             //バージョンチェック
-            if (dt_system.Rows[0]["system_version"].ToString() != system_version)
+            if (dt_system.Rows[0]["system_version"].ToString() != program_version)
             {
                 bl = false;
                 return bl;
@@ -3026,6 +3030,11 @@ namespace TSS_SYSTEM
     }
     #endregion
 }
+//プログラムの配布手順
+//①tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
+//②tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
+//③コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//
 //更新履歴
 //1.01              正式リリース
 //1.02  2016/04/26  受注残参照画面の検索条件に、製品マスタの集計区分を追加
