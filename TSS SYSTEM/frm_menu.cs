@@ -884,5 +884,12 @@ namespace TSS_SYSTEM
             frm_sysad.Dispose();
         }
 
+        private void btn_seisan_koutei_m_Click(object sender, EventArgs e)
+        {
+            frm_seisan_koutei_m frm_seisan_kou = new frm_seisan_koutei_m();
+            frm_seisan_kou.ShowDialog(this);
+            frm_seisan_kou.Dispose();
+        }
+
     }
 }

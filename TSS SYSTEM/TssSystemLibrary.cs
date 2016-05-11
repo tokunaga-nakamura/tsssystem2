@@ -46,7 +46,7 @@ namespace TSS_SYSTEM
         string fld_kengen4;
         string fld_kengen5;
         string fld_kengen6;
-
+        string fld_kengen7;
 
         public TssSystemLibrary()
         {
@@ -101,6 +101,7 @@ namespace TSS_SYSTEM
         public string kengen4 { get { return fld_kengen4; } }
         public string kengen5 { get { return fld_kengen5; } }
         public string kengen6 { get { return fld_kengen6; } }
+        public string kengen7 { get { return fld_kengen7; } }
         #endregion
 
         #region GetConnectionString メソッド
@@ -2978,6 +2979,9 @@ namespace TSS_SYSTEM
                     break;
                 case 6:
                     int.TryParse(fld_kengen6, out w_kengen_level);
+                    break;
+                case 7:
+                    int.TryParse(fld_kengen7, out w_kengen_level);
                     break;
                 default:
                     w_kengen_level = 0;

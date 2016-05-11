@@ -124,6 +124,7 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -760,6 +761,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.btn_seisan_koutei_m);
             this.tabPage3.Controls.Add(this.btn_tanaorosi);
             this.tabPage3.Controls.Add(this.btn_zaiko_syoukai);
             this.tabPage3.Controls.Add(this.tb_getumatu_zaiko);
@@ -888,7 +890,7 @@
             // 
             // btn_3_seihin_kousei_m
             // 
-            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 285);
+            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 265);
             this.btn_3_seihin_kousei_m.Name = "btn_3_seihin_kousei_m";
             this.btn_3_seihin_kousei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_kousei_m.TabIndex = 11;
@@ -1037,7 +1039,7 @@
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(690, 442);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "集計・その他";
+            this.tabPage5.Text = "生産管理";
             // 
             // tabPage6
             // 
@@ -1290,6 +1292,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_seisan_koutei_m
+            // 
+            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 265);
+            this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
+            this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_koutei_m.TabIndex = 21;
+            this.btn_seisan_koutei_m.Text = "生産工程マスタ";
+            this.btn_seisan_koutei_m.UseVisualStyleBackColor = true;
+            this.btn_seisan_koutei_m.Click += new System.EventHandler(this.btn_seisan_koutei_m_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1461,6 +1473,7 @@
         private System.Windows.Forms.Button btn_koutei_m;
         private System.Windows.Forms.Button btn_busyo_m;
         private System.Windows.Forms.Button btn_system_administrator;
+        private System.Windows.Forms.Button btn_seisan_koutei_m;
     }
 }
 
