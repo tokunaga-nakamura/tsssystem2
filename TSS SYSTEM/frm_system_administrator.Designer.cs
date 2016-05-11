@@ -60,7 +60,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_syuuryou);
             this.Name = "frm_system_administrator";
-            this.Text = "frm_system_administrator";
+            this.Text = "システム管理者用メニュー（絶対に実行しないでください！！！）";
             this.ResumeLayout(false);
 
         }

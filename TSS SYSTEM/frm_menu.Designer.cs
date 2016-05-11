@@ -102,6 +102,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_system_administrator = new System.Windows.Forms.Button();
             this.btn_busyo_m = new System.Windows.Forms.Button();
             this.btn_line_m = new System.Windows.Forms.Button();
             this.btn_koutei_m = new System.Windows.Forms.Button();
@@ -123,7 +124,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_system_administrator = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1068,6 +1068,17 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
+            // btn_system_administrator
+            // 
+            this.btn_system_administrator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_system_administrator.Location = new System.Drawing.Point(462, 385);
+            this.btn_system_administrator.Name = "btn_system_administrator";
+            this.btn_system_administrator.Size = new System.Drawing.Size(222, 23);
+            this.btn_system_administrator.TabIndex = 19;
+            this.btn_system_administrator.Text = "システム管理者用";
+            this.btn_system_administrator.UseVisualStyleBackColor = false;
+            this.btn_system_administrator.Click += new System.EventHandler(this.btn_system_administrator_Click);
+            // 
             // btn_busyo_m
             // 
             this.btn_busyo_m.Location = new System.Drawing.Point(234, 148);
@@ -1278,16 +1289,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_system_administrator
-            // 
-            this.btn_system_administrator.Location = new System.Drawing.Point(462, 385);
-            this.btn_system_administrator.Name = "btn_system_administrator";
-            this.btn_system_administrator.Size = new System.Drawing.Size(222, 23);
-            this.btn_system_administrator.TabIndex = 19;
-            this.btn_system_administrator.Text = "システム管理者用";
-            this.btn_system_administrator.UseVisualStyleBackColor = true;
-            this.btn_system_administrator.Click += new System.EventHandler(this.btn_system_administrator_Click);
             // 
             // frm_menu
             // 
