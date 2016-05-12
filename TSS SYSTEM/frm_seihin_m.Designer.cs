@@ -544,6 +544,7 @@
             this.tb_tani_name.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_tani_name.Location = new System.Drawing.Point(115, 104);
             this.tb_tani_name.Name = "tb_tani_name";
+            this.tb_tani_name.ReadOnly = true;
             this.tb_tani_name.Size = new System.Drawing.Size(84, 19);
             this.tb_tani_name.TabIndex = 15;
             this.tb_tani_name.TabStop = false;
@@ -636,6 +637,7 @@
             this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_torihikisaki_name.Location = new System.Drawing.Point(140, 79);
             this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
+            this.tb_torihikisaki_name.ReadOnly = true;
             this.tb_torihikisaki_name.Size = new System.Drawing.Size(314, 19);
             this.tb_torihikisaki_name.TabIndex = 7;
             this.tb_torihikisaki_name.TabStop = false;

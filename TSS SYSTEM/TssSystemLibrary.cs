@@ -47,6 +47,9 @@ namespace TSS_SYSTEM
         string fld_kengen5;
         string fld_kengen6;
         string fld_kengen7;
+        string fld_kengen8;
+        string fld_kengen9;
+
 
         public TssSystemLibrary()
         {
@@ -76,6 +79,9 @@ namespace TSS_SYSTEM
             fld_kengen4 = null;
             fld_kengen5 = null;
             fld_kengen6 = null;
+            fld_kengen7 = null;
+            fld_kengen8 = null;
+            fld_kengen9 = null;
         }
 
         public string DataSource { get { return fld_DataSource; } }
@@ -102,6 +108,8 @@ namespace TSS_SYSTEM
         public string kengen5 { get { return fld_kengen5; } }
         public string kengen6 { get { return fld_kengen6; } }
         public string kengen7 { get { return fld_kengen7; } }
+        public string kengen8 { get { return fld_kengen7; } }
+        public string kengen9 { get { return fld_kengen7; } }
         #endregion
 
         #region GetConnectionString メソッド
@@ -1110,8 +1118,6 @@ namespace TSS_SYSTEM
             return bl;
         }
         #endregion
-
-
 
         #region string_to_yyyymm メソッド
         /// <summary>
@@ -2948,7 +2954,7 @@ namespace TSS_SYSTEM
         /// <summary>
         ///     ユーザー権限をチェックし、条件を満たしているかどうか判定します。</summary>
         /// <param name="in_kengen_kbn">
-        ///     必要な権限の区分（1:受注、2:売上、3:仕入、4:部品・製品、5:社内情報、6:マスタ）</param>
+        ///     必要な権限の区分（1:受注、2:売上、3:仕入、4:部品・製品、5:社内情報、6:マスタ、7:生産、8:未使用、9:未使用）</param>
         /// <param name="in_kengen_level">
         ///     必要な権限のレベル（0:権限無し～9:権限無制限）</param>
         /// <returns>
@@ -2982,6 +2988,12 @@ namespace TSS_SYSTEM
                     break;
                 case 7:
                     int.TryParse(fld_kengen7, out w_kengen_level);
+                    break;
+                case 8:
+                    int.TryParse(fld_kengen8, out w_kengen_level);
+                    break;
+                case 9:
+                    int.TryParse(fld_kengen9, out w_kengen_level);
                     break;
                 default:
                     w_kengen_level = 0;

@@ -93,6 +93,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.tb_kengen9_name = new System.Windows.Forms.TextBox();
+            this.tb_kengen8_name = new System.Windows.Forms.TextBox();
+            this.tb_kengen7_name = new System.Windows.Forms.TextBox();
+            this.tb_kengen9 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.tb_kengen8 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.tb_kengen7 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -156,6 +165,15 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen9_name);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen8_name);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen7_name);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen9);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox14);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen8);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox16);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_kengen7);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox20);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
             this.splitContainer2.Panel1.Controls.Add(this.tb_login_kyoka_kbn_name);
             this.splitContainer2.Panel1.Controls.Add(this.tb_login_kyoka_kbn);
@@ -285,7 +303,7 @@
             // tb_kengen6_name
             // 
             this.tb_kengen6_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen6_name.Location = new System.Drawing.Point(132, 303);
+            this.tb_kengen6_name.Location = new System.Drawing.Point(362, 203);
             this.tb_kengen6_name.Name = "tb_kengen6_name";
             this.tb_kengen6_name.ReadOnly = true;
             this.tb_kengen6_name.Size = new System.Drawing.Size(100, 19);
@@ -535,7 +553,7 @@
             // tb_kengen6
             // 
             this.tb_kengen6.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_kengen6.Location = new System.Drawing.Point(110, 303);
+            this.tb_kengen6.Location = new System.Drawing.Point(340, 203);
             this.tb_kengen6.Name = "tb_kengen6";
             this.tb_kengen6.Size = new System.Drawing.Size(22, 19);
             this.tb_kengen6.TabIndex = 14;
@@ -545,13 +563,13 @@
             // textBox31
             // 
             this.textBox31.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox31.Location = new System.Drawing.Point(10, 303);
+            this.textBox31.Location = new System.Drawing.Point(240, 203);
             this.textBox31.Name = "textBox31";
             this.textBox31.ReadOnly = true;
             this.textBox31.Size = new System.Drawing.Size(100, 19);
             this.textBox31.TabIndex = 31;
             this.textBox31.TabStop = false;
-            this.textBox31.Text = "権限（マスタ）";
+            this.textBox31.Text = "権限6（マスタ）";
             // 
             // tb_kengen5
             // 
@@ -572,7 +590,7 @@
             this.textBox29.Size = new System.Drawing.Size(100, 19);
             this.textBox29.TabIndex = 29;
             this.textBox29.TabStop = false;
-            this.textBox29.Text = "権限（社内情報）";
+            this.textBox29.Text = "権限5（社内情報）";
             // 
             // tb_kengen4
             // 
@@ -593,7 +611,7 @@
             this.textBox27.Size = new System.Drawing.Size(100, 19);
             this.textBox27.TabIndex = 27;
             this.textBox27.TabStop = false;
-            this.textBox27.Text = "権限（在庫）";
+            this.textBox27.Text = "権限4（在庫）";
             // 
             // tb_kengen3
             // 
@@ -614,7 +632,7 @@
             this.textBox25.Size = new System.Drawing.Size(100, 19);
             this.textBox25.TabIndex = 25;
             this.textBox25.TabStop = false;
-            this.textBox25.Text = "権限（仕入）";
+            this.textBox25.Text = "権限3（仕入）";
             // 
             // tb_kengen2
             // 
@@ -635,7 +653,7 @@
             this.textBox23.Size = new System.Drawing.Size(100, 19);
             this.textBox23.TabIndex = 23;
             this.textBox23.TabStop = false;
-            this.textBox23.Text = "権限（売上）";
+            this.textBox23.Text = "権限2（売上）";
             // 
             // tb_kengen1
             // 
@@ -656,7 +674,7 @@
             this.textBox21.Size = new System.Drawing.Size(100, 19);
             this.textBox21.TabIndex = 21;
             this.textBox21.TabStop = false;
-            this.textBox21.Text = "権限（受注）";
+            this.textBox21.Text = "権限1（受注）";
             // 
             // textBox19
             // 
@@ -835,6 +853,99 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tb_kengen9_name
+            // 
+            this.tb_kengen9_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_kengen9_name.Location = new System.Drawing.Point(362, 278);
+            this.tb_kengen9_name.Name = "tb_kengen9_name";
+            this.tb_kengen9_name.ReadOnly = true;
+            this.tb_kengen9_name.Size = new System.Drawing.Size(100, 19);
+            this.tb_kengen9_name.TabIndex = 74;
+            this.tb_kengen9_name.TabStop = false;
+            // 
+            // tb_kengen8_name
+            // 
+            this.tb_kengen8_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_kengen8_name.Location = new System.Drawing.Point(362, 253);
+            this.tb_kengen8_name.Name = "tb_kengen8_name";
+            this.tb_kengen8_name.ReadOnly = true;
+            this.tb_kengen8_name.Size = new System.Drawing.Size(100, 19);
+            this.tb_kengen8_name.TabIndex = 73;
+            this.tb_kengen8_name.TabStop = false;
+            // 
+            // tb_kengen7_name
+            // 
+            this.tb_kengen7_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_kengen7_name.Location = new System.Drawing.Point(362, 228);
+            this.tb_kengen7_name.Name = "tb_kengen7_name";
+            this.tb_kengen7_name.ReadOnly = true;
+            this.tb_kengen7_name.Size = new System.Drawing.Size(100, 19);
+            this.tb_kengen7_name.TabIndex = 72;
+            this.tb_kengen7_name.TabStop = false;
+            // 
+            // tb_kengen9
+            // 
+            this.tb_kengen9.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_kengen9.Location = new System.Drawing.Point(340, 278);
+            this.tb_kengen9.Name = "tb_kengen9";
+            this.tb_kengen9.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen9.TabIndex = 68;
+            this.tb_kengen9.DoubleClick += new System.EventHandler(this.tb_kengen9_DoubleClick);
+            this.tb_kengen9.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen9_Validating);
+            // 
+            // textBox14
+            // 
+            this.textBox14.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox14.Location = new System.Drawing.Point(240, 278);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(100, 19);
+            this.textBox14.TabIndex = 71;
+            this.textBox14.TabStop = false;
+            this.textBox14.Text = "権限9（未使用）";
+            // 
+            // tb_kengen8
+            // 
+            this.tb_kengen8.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_kengen8.Location = new System.Drawing.Point(340, 253);
+            this.tb_kengen8.Name = "tb_kengen8";
+            this.tb_kengen8.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen8.TabIndex = 67;
+            this.tb_kengen8.DoubleClick += new System.EventHandler(this.tb_kengen8_DoubleClick);
+            this.tb_kengen8.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen8_Validating);
+            // 
+            // textBox16
+            // 
+            this.textBox16.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox16.Location = new System.Drawing.Point(240, 253);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(100, 19);
+            this.textBox16.TabIndex = 70;
+            this.textBox16.TabStop = false;
+            this.textBox16.Text = "権限8（未使用）";
+            // 
+            // tb_kengen7
+            // 
+            this.tb_kengen7.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_kengen7.Location = new System.Drawing.Point(340, 228);
+            this.tb_kengen7.Name = "tb_kengen7";
+            this.tb_kengen7.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen7.TabIndex = 66;
+            this.tb_kengen7.DoubleClick += new System.EventHandler(this.tb_kengen7_DoubleClick);
+            this.tb_kengen7.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen7_Validating);
+            // 
+            // textBox20
+            // 
+            this.textBox20.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox20.Location = new System.Drawing.Point(240, 228);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(100, 19);
+            this.textBox20.TabIndex = 69;
+            this.textBox20.TabStop = false;
+            this.textBox20.Text = "権限7（生産）";
+            // 
             // frm_user_m
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -926,5 +1037,14 @@
         private System.Windows.Forms.TextBox tb_login_kyoka_kbn_name;
         private System.Windows.Forms.TextBox tb_login_kyoka_kbn;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_kengen9_name;
+        private System.Windows.Forms.TextBox tb_kengen8_name;
+        private System.Windows.Forms.TextBox tb_kengen7_name;
+        private System.Windows.Forms.TextBox tb_kengen9;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox tb_kengen8;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox tb_kengen7;
+        private System.Windows.Forms.TextBox textBox20;
     }
 }
