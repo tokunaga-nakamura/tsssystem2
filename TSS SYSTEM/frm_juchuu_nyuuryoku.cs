@@ -168,6 +168,8 @@ namespace TSS_SYSTEM
             tb_seisan_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["seisan_su"].ToString()).ToString("#,###,###,###.##");
             tb_nouhin_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["nouhin_su"].ToString()).ToString("#,###,###,###.##");
             tb_uriage_su.Text = tss.try_string_to_decimal(in_dt.Rows[0]["uriage_su"].ToString()).ToString("#,###,###,##0.00");
+            tb_nouhin_start_nengetu.Text = in_dt.Rows[0]["nouhin_start_nengetu"].ToString();
+            tb_nouhin_seq.Text = in_dt.Rows[0]["nouhin_seq"].ToString();
             tb_uriage_kanryou_flg.Text = in_dt.Rows[0]["uriage_kanryou_flg"].ToString();
             tb_delete_flg.Text = in_dt.Rows[0]["delete_flg"].ToString();
             tb_kousin_riyuu.Text = "";
@@ -202,6 +204,8 @@ namespace TSS_SYSTEM
             tb_seisan_su.Text = "";
             tb_nouhin_su.Text = "";
             tb_uriage_su.Text = "";
+            tb_nouhin_start_nengetu.Text = "";
+            tb_nouhin_seq.Text = "";
             tb_uriage_kanryou_flg.Text = "";
             tb_delete_flg.Text = "";
             tb_create_user_cd.Text = "";
@@ -552,7 +556,7 @@ namespace TSS_SYSTEM
                 if (result == DialogResult.Yes)
                 {
                     //「はい」が選択された時
-                    if (data_update())
+                    if (data_update(dt_work.Rows[0]["nouhin_start_nengetu"].ToString(), dt_work.Rows[0]["nouhin_seq"].ToString()))
                     {
                         if(nouhin_schedule_write())
                         {
@@ -929,8 +933,10 @@ namespace TSS_SYSTEM
             {
                 w_jisseki_kbn = "1";
             }
-            bl_tss = tss.OracleInsert("INSERT INTO tss_juchu_m (torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seisan_kbn,nouhin_kbn,jisseki_kbn,juchu_su,seisan_su,nouhin_su,uriage_su,uriage_kanryou_flg,bikou,delete_flg,create_user_cd,create_datetime)"
-                                    + " VALUES ('" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_juchu_cd1.Text.ToString() + "','" + tb_juchu_cd2.Text.ToString() + "','" + tb_seihin_cd.Text.ToString() + "','" + w_seisan_kbn + "','" + w_nouhin_kbn + "','" + w_jisseki_kbn + "','" + tb_juchu_su.Text.ToString() + "','" + "0" + "','" + "0" + "','" + "0" + "','" + "0" + "','" + tb_bikou.Text.ToString() + "','" + "0" + "','" + tss.user_cd + "',SYSDATE)");
+            string w_nouhin_start_date;
+            w_nouhin_start_date = get_nouhin_start_nengetu();
+            bl_tss = tss.OracleInsert("INSERT INTO tss_juchu_m (torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,nouhin_start_nengetu,nouhin_seq,seisan_kbn,nouhin_kbn,jisseki_kbn,juchu_su,seisan_su,nouhin_su,uriage_su,uriage_kanryou_flg,bikou,delete_flg,create_user_cd,create_datetime)"
+                                    + " VALUES ('" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_juchu_cd1.Text.ToString() + "','" + tb_juchu_cd2.Text.ToString() + "','" + tb_seihin_cd.Text.ToString() + "','" + w_nouhin_start_date + "','" + "999999" + "','" + w_seisan_kbn + "','" + w_nouhin_kbn + "','" + w_jisseki_kbn + "','" + tb_juchu_su.Text.ToString() + "','" + "0" + "','" + "0" + "','" + "0" + "','" + "0" + "','" + tb_bikou.Text.ToString() + "','" + "0" + "','" + tss.user_cd + "',SYSDATE)");
             if (bl_tss != true)
             {
                 tss.ErrorLogWrite(tss.user_cd, "受注入力", "登録ボタン押下時のOracleInsert");
@@ -954,7 +960,7 @@ namespace TSS_SYSTEM
             return bl;
         }
 
-        private bool data_update()
+        private bool data_update(string in_nouhin_start_nengetu,string in_nouhin_seq)
         {
             bool bl = true; //戻り値用
             tss.GetUser();
@@ -975,9 +981,20 @@ namespace TSS_SYSTEM
             {
                 w_jisseki_kbn = "1";
             }
+            string w_nouhin_seq;
+            string w_nouhin_start_date;
+            w_nouhin_start_date = get_nouhin_start_nengetu();
+            if(w_nouhin_start_date != in_nouhin_start_nengetu)
+            {
+                w_nouhin_seq = in_nouhin_seq;
+            }
+            else
+            {
+                w_nouhin_seq = "999999";
+            }
 
             bl_tss = tss.OracleUpdate("UPDATE tss_juchu_m SET torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "',juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "',juchu_cd2 = '" + tb_juchu_cd2.Text.ToString()
-                                    + "',seihin_cd = '" + tb_seihin_cd.Text.ToString() + "',seisan_kbn = '" + w_seisan_kbn + "',nouhin_kbn = '" + w_nouhin_kbn + "',jisseki_kbn = '" + w_jisseki_kbn
+                                    + "',seihin_cd = '" + tb_seihin_cd.Text.ToString() + "',nouhin_start_nengetu = '" + w_nouhin_start_date + "',nouhin_seq = '" + w_nouhin_seq + "',seisan_kbn = '" + w_seisan_kbn + "',nouhin_kbn = '" + w_nouhin_kbn + "',jisseki_kbn = '" + w_jisseki_kbn
                                     + "',juchu_su = '" + tb_juchu_su.Text.ToString() //+ "',seisan_su = '" + "0" + "',nouhin_su = '" + "0" + "',uriage_su = '" + "0"
                                     + "',uriage_kanryou_flg = '" + tb_uriage_kanryou_flg.Text.ToString() + "',bikou = '" + tb_bikou.Text.ToString() //+ "',delete_flg = '" + "0"
                                     + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'");
@@ -1545,5 +1562,30 @@ namespace TSS_SYSTEM
             //string str = String.Format("{0:#,0}", number); // 変換後
             //tb_juchu_su.Text = str;
         }
+
+        private string get_nouhin_start_nengetu()
+        {
+            //納品スケジュールから一番早い納品年月を抽出し返す
+            string w_nouhin_start_nengetu;
+            w_nouhin_start_nengetu = "999999";
+
+            DateTime w_date1;
+            DateTime w_date2;
+            w_date1 = DateTime.Parse("2099/01/01");
+
+            for (int i = 0; i < dgv_nounyuu_schedule.Rows.Count - 1; i++)
+            {
+                //納品スケジュール内から一番早い納品日を抽出する
+                w_date2 = DateTime.Parse(dgv_nounyuu_schedule.Rows[i].Cells["nouhin_yotei_date"].Value.ToString());
+                if(w_date1 > w_date2)
+                {
+                    w_date1 = w_date2;
+                }
+            }
+            w_nouhin_start_nengetu = w_date1.Year.ToString("0000") + w_date1.Month.ToString("00");
+            return w_nouhin_start_nengetu;
+        }
+
+
     }
 }

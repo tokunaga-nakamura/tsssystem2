@@ -91,6 +91,10 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.tb_nouhin_seq = new System.Windows.Forms.TextBox();
+            this.tb_nouhin_start_nengetu = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -477,6 +481,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tb_nouhin_seq);
+            this.groupBox3.Controls.Add(this.tb_nouhin_start_nengetu);
+            this.groupBox3.Controls.Add(this.textBox18);
+            this.groupBox3.Controls.Add(this.textBox19);
             this.groupBox3.Controls.Add(this.btn_kaijyo);
             this.groupBox3.Controls.Add(this.tb_update_datetime);
             this.groupBox3.Controls.Add(this.tb_update_user_cd);
@@ -917,6 +925,50 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // tb_nouhin_seq
+            // 
+            this.tb_nouhin_seq.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_nouhin_seq.Location = new System.Drawing.Point(250, 43);
+            this.tb_nouhin_seq.Name = "tb_nouhin_seq";
+            this.tb_nouhin_seq.ReadOnly = true;
+            this.tb_nouhin_seq.Size = new System.Drawing.Size(100, 19);
+            this.tb_nouhin_seq.TabIndex = 21;
+            this.tb_nouhin_seq.TabStop = false;
+            this.tb_nouhin_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tb_nouhin_start_nengetu
+            // 
+            this.tb_nouhin_start_nengetu.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_nouhin_start_nengetu.Location = new System.Drawing.Point(250, 18);
+            this.tb_nouhin_start_nengetu.Name = "tb_nouhin_start_nengetu";
+            this.tb_nouhin_start_nengetu.ReadOnly = true;
+            this.tb_nouhin_start_nengetu.Size = new System.Drawing.Size(100, 19);
+            this.tb_nouhin_start_nengetu.TabIndex = 20;
+            this.tb_nouhin_start_nengetu.TabStop = false;
+            this.tb_nouhin_start_nengetu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox18
+            // 
+            this.textBox18.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox18.Location = new System.Drawing.Point(181, 43);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
+            this.textBox18.Size = new System.Drawing.Size(69, 19);
+            this.textBox18.TabIndex = 19;
+            this.textBox18.TabStop = false;
+            this.textBox18.Text = "納品順";
+            // 
+            // textBox19
+            // 
+            this.textBox19.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox19.Location = new System.Drawing.Point(181, 18);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.ReadOnly = true;
+            this.textBox19.Size = new System.Drawing.Size(69, 19);
+            this.textBox19.TabIndex = 18;
+            this.textBox19.TabStop = false;
+            this.textBox19.Text = "納品開始年月";
+            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1043,6 +1095,10 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox tb_ttl_nouhin_su;
         private System.Windows.Forms.Button btn_kaijyo;
+        private System.Windows.Forms.TextBox tb_nouhin_seq;
+        private System.Windows.Forms.TextBox tb_nouhin_start_nengetu;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox19;
 
     }
 }
