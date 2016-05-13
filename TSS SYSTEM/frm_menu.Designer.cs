@@ -76,6 +76,7 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             this.btn_tanaorosi = new System.Windows.Forms.Button();
             this.btn_zaiko_syoukai = new System.Windows.Forms.Button();
             this.tb_getumatu_zaiko = new System.Windows.Forms.Button();
@@ -124,7 +125,6 @@
             this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -787,9 +787,19 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             // 
+            // btn_seisan_koutei_m
+            // 
+            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(236, 209);
+            this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
+            this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_koutei_m.TabIndex = 21;
+            this.btn_seisan_koutei_m.Text = "生産工程マスタ";
+            this.btn_seisan_koutei_m.UseVisualStyleBackColor = true;
+            this.btn_seisan_koutei_m.Click += new System.EventHandler(this.btn_seisan_koutei_m_Click);
+            // 
             // btn_tanaorosi
             // 
-            this.btn_tanaorosi.Location = new System.Drawing.Point(462, 132);
+            this.btn_tanaorosi.Location = new System.Drawing.Point(462, 151);
             this.btn_tanaorosi.Name = "btn_tanaorosi";
             this.btn_tanaorosi.Size = new System.Drawing.Size(222, 23);
             this.btn_tanaorosi.TabIndex = 20;
@@ -799,7 +809,7 @@
             // 
             // btn_zaiko_syoukai
             // 
-            this.btn_zaiko_syoukai.Location = new System.Drawing.Point(462, 103);
+            this.btn_zaiko_syoukai.Location = new System.Drawing.Point(462, 122);
             this.btn_zaiko_syoukai.Name = "btn_zaiko_syoukai";
             this.btn_zaiko_syoukai.Size = new System.Drawing.Size(222, 23);
             this.btn_zaiko_syoukai.TabIndex = 19;
@@ -860,7 +870,7 @@
             // 
             // btn_3_seihin_tanka_m
             // 
-            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 227);
+            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 180);
             this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
             this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_tanka_m.TabIndex = 14;
@@ -890,7 +900,7 @@
             // 
             // btn_3_seihin_kousei_m
             // 
-            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 265);
+            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 209);
             this.btn_3_seihin_kousei_m.Name = "btn_3_seihin_kousei_m";
             this.btn_3_seihin_kousei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_kousei_m.TabIndex = 11;
@@ -900,7 +910,7 @@
             // 
             // btn_3_seihin_kensaku
             // 
-            this.btn_3_seihin_kensaku.Location = new System.Drawing.Point(236, 227);
+            this.btn_3_seihin_kensaku.Location = new System.Drawing.Point(236, 180);
             this.btn_3_seihin_kensaku.Name = "btn_3_seihin_kensaku";
             this.btn_3_seihin_kensaku.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_kensaku.TabIndex = 10;
@@ -910,7 +920,7 @@
             // 
             // btn_3_seihin_m
             // 
-            this.btn_3_seihin_m.Location = new System.Drawing.Point(8, 227);
+            this.btn_3_seihin_m.Location = new System.Drawing.Point(8, 180);
             this.btn_3_seihin_m.Name = "btn_3_seihin_m";
             this.btn_3_seihin_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_m.TabIndex = 9;
@@ -920,7 +930,7 @@
             // 
             // btn_3_buhin_kensaku
             // 
-            this.btn_3_buhin_kensaku.Location = new System.Drawing.Point(236, 166);
+            this.btn_3_buhin_kensaku.Location = new System.Drawing.Point(236, 122);
             this.btn_3_buhin_kensaku.Name = "btn_3_buhin_kensaku";
             this.btn_3_buhin_kensaku.Size = new System.Drawing.Size(222, 23);
             this.btn_3_buhin_kensaku.TabIndex = 8;
@@ -930,7 +940,7 @@
             // 
             // btn_3_buhin_m
             // 
-            this.btn_3_buhin_m.Location = new System.Drawing.Point(8, 166);
+            this.btn_3_buhin_m.Location = new System.Drawing.Point(8, 122);
             this.btn_3_buhin_m.Name = "btn_3_buhin_m";
             this.btn_3_buhin_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_buhin_m.TabIndex = 7;
@@ -1073,7 +1083,7 @@
             // btn_system_administrator
             // 
             this.btn_system_administrator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btn_system_administrator.Location = new System.Drawing.Point(462, 385);
+            this.btn_system_administrator.Location = new System.Drawing.Point(462, 387);
             this.btn_system_administrator.Name = "btn_system_administrator";
             this.btn_system_administrator.Size = new System.Drawing.Size(222, 23);
             this.btn_system_administrator.TabIndex = 19;
@@ -1113,7 +1123,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(462, 302);
+            this.button4.Location = new System.Drawing.Point(462, 358);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(222, 23);
             this.button4.TabIndex = 15;
@@ -1124,7 +1134,7 @@
             // 
             // btn_buhin_zaiko_juchu_check
             // 
-            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(234, 414);
+            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(236, 416);
             this.btn_buhin_zaiko_juchu_check.Name = "btn_buhin_zaiko_juchu_check";
             this.btn_buhin_zaiko_juchu_check.Size = new System.Drawing.Size(220, 23);
             this.btn_buhin_zaiko_juchu_check.TabIndex = 14;
@@ -1134,7 +1144,7 @@
             // 
             // btn_free_zaiko_record_make
             // 
-            this.btn_free_zaiko_record_make.Location = new System.Drawing.Point(234, 385);
+            this.btn_free_zaiko_record_make.Location = new System.Drawing.Point(236, 387);
             this.btn_free_zaiko_record_make.Name = "btn_free_zaiko_record_make";
             this.btn_free_zaiko_record_make.Size = new System.Drawing.Size(220, 23);
             this.btn_free_zaiko_record_make.TabIndex = 13;
@@ -1291,16 +1301,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_seisan_koutei_m
-            // 
-            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 265);
-            this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
-            this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_koutei_m.TabIndex = 21;
-            this.btn_seisan_koutei_m.Text = "生産工程マスタ";
-            this.btn_seisan_koutei_m.UseVisualStyleBackColor = true;
-            this.btn_seisan_koutei_m.Click += new System.EventHandler(this.btn_seisan_koutei_m_Click);
             // 
             // frm_menu
             // 
