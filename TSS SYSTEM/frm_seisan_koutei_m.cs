@@ -15,8 +15,8 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
         DataTable dt_insatsu = new DataTable();
-        
-        
+
+
         public frm_seisan_koutei_m()
         {
             InitializeComponent();
@@ -57,6 +57,7 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
+
         }
 
         private bool chk_seihin_cd()
@@ -67,7 +68,15 @@ namespace TSS_SYSTEM
             if (dt_work.Rows.Count <= 0)
             {
                 //新規
-                //MessageBox.Show("新規で工程を登録します");
+                MessageBox.Show("工程登録なし。新規で工程を登録します。");
+                DataTable dt_work2 = new DataTable();
+                dt_work2 = tss.OracleSelect("select * from tss_seihin_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
+                tb_seihin_cd.Text = dt_work2.Rows[0]["seihin_cd"].ToString();
+                tb_seihin_name.Text = get_seihin_name(dt_work2.Rows[0]["seihin_cd"].ToString());
+                gamen_clear();
+                tb_koutei_no.Focus();
+
+
 
                 //gamen_sinki(tb_seihin_cd.Text);
             }
@@ -77,6 +86,17 @@ namespace TSS_SYSTEM
                 tb_seihin_cd.Text = dt_work.Rows[0]["seihin_cd"].ToString();
                 tb_seihin_name.Text = get_seihin_name(dt_work.Rows[0]["seihin_cd"].ToString());
                 dgv_koutei_disp();
+                tb_koutei_no.Text = "";
+                tb_bikou.Text = "";
+                tb_busyo_cd.Text = "";
+                tb_busyo_name.Text = "";
+                tb_koutei_cd.Text = "";
+                tb_koutei_name.Text = "";
+                tb_line_select_kbn.Text = "";
+                tb_jisseki_kanri_kbn.Text = "";
+                tb_seisan_start_day.Text = "";
+                tb_koutei_start_time.Text = "";
+                dgv_line.DataSource = null;
                 //gamen_disp(dt_work);
                 //tb_seihin_cd.Text = dt_work.Rows[0]["seihin_cd"].ToString();
                 //tb_seihin_name.Text = dt_work.Rows[0]["seihin_name"].ToString();
@@ -102,8 +122,8 @@ namespace TSS_SYSTEM
             tb_jisseki_kanri_kbn.Text = dt_work.Rows[0]["jisseki_kanri_kbn"].ToString();
             tb_seisan_start_day.Text = dt_work.Rows[0]["seisan_start_day"].ToString();
             tb_koutei_start_time.Text = dt_work.Rows[0]["koutei_start_time"].ToString();
-            
-            
+
+
         }
 
         private string get_seihin_name(string in_seihin_cd)
@@ -121,7 +141,7 @@ namespace TSS_SYSTEM
             }
             return out_seihin_name;
         }
-        
+
 
         private string get_busyo_name(string in_busyo_cd)
         {
@@ -161,7 +181,7 @@ namespace TSS_SYSTEM
             dt_koutei = tss.OracleSelect("Select A1.Seq_No,A1.Koutei_Cd,b1.Koutei_Name From Tss_Seisan_Koutei_M A1 Left Outer Join Tss_Koutei_M B1 On A1.Koutei_Cd = B1.Koutei_Cd where seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
             dgv_koutei.DataSource = null;
             dgv_koutei.DataSource = dt_koutei;
-            
+
             //行ヘッダーを非表示にする
             dgv_koutei.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
@@ -201,7 +221,7 @@ namespace TSS_SYSTEM
             //１行のみ選択可能（複数行の選択不可）
             dgv_line.MultiSelect = false;
             //DataGridView1にユーザーが新しい行を追加できないようにする
-            dgv_line.AllowUserToAddRows = false;
+            //dgv_line.AllowUserToAddRows = false;
             //セルを選択すると行全体が選択されるようにする
             dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridViewのカラムヘッダーテキストを変更する
@@ -211,15 +231,191 @@ namespace TSS_SYSTEM
             dgv_line.Columns["line_name"].HeaderText = "ライン名";
             dgv_line.Columns["select_kbn"].HeaderText = "選択区分";
             dgv_line.Columns["bikou"].HeaderText = "備考";
+
+            dgv_line.Columns["line_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
+            dgv_line.Columns["line_name"].ReadOnly = true;
+            dgv_line.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
+
         }
 
-         private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
-         {
-             int rc = dgv_koutei.CurrentRow.Index;
-             gamen_disp((rc + 1).ToString());
-             dgv_line_disp();
-         }
+        private void gamen_clear()
+        {
+            tb_koutei_no.Text = "";
+            tb_bikou.Text = "";
+            tb_busyo_cd.Text = "";
+            tb_busyo_name.Text = "";
+            tb_koutei_cd.Text = "";
+            tb_koutei_name.Text = "";
+            tb_line_select_kbn.Text = "";
+            tb_jisseki_kanri_kbn.Text = "";
+            tb_seisan_start_day.Text = "";
+            tb_koutei_start_time.Text = "";
+            tb_create_user_cd.Text = "";
+            tb_create_datetime.Text = "";
+            tb_update_user_cd.Text = "";
+            tb_update_datetime.Text = "";
 
-         
+            dgv_koutei.DataSource = null;
+            dgv_line.DataSource = null;
+            dgv_line_disp();
+
+
+
+
+        }
+
+
+        private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rc = dgv_koutei.CurrentRow.Index;
+            gamen_disp((rc + 1).ToString());
+            tb_koutei_no.Text = (rc + 1).ToString();
+            dgv_line_disp();
+        }
+
+        private void tb_koutei_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_koutei_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //空白の場合はOKとする
+            if (tb_koutei_cd.Text != "")
+            {
+                if (chk_koutei_cd() != true)
+                {
+                    MessageBox.Show("工程コードに異常があります。");
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private bool chk_koutei_cd()
+        {
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_koutei_m where koutei_cd  = '" + tb_koutei_cd.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //新規
+                MessageBox.Show("工程登録なし。工程マスタで登録してください。");
+                tb_koutei_cd.Focus();
+            }
+            else
+            {
+                //既存データ有
+                tb_koutei_cd.Text = dt_work.Rows[0]["koutei_cd"].ToString();
+                tb_koutei_name.Text = get_koutei_name(dt_work.Rows[0]["koutei_cd"].ToString());
+
+            }
+            return bl;
+        }
+
+        private void tb_busyo_cd_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_busyo_cd.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //空白の場合はOKとする
+            if (tb_busyo_cd.Text != "")
+            {
+                if (chk_busyo_cd() != true)
+                {
+                    MessageBox.Show("工程コードに異常があります。");
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private bool chk_busyo_cd()
+        {
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_busyo_m where busyo_cd  = '" + tb_busyo_cd.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //新規
+                MessageBox.Show("部署登録なし。部署マスタで登録してください。");
+                tb_busyo_cd.Focus();
+            }
+            else
+            {
+                //既存データ有
+                tb_busyo_cd.Text = dt_work.Rows[0]["busyo_cd"].ToString();
+                tb_busyo_name.Text = get_busyo_name(dt_work.Rows[0]["busyo_cd"].ToString());
+
+            }
+            return bl;
+        }
+
+        private void dgv_line_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+         {
+             DataGridView dgv = (DataGridView)sender;
+             int i = e.RowIndex;
+
+             if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+             {
+                 e.Cancel = true;
+                 return;
+             }
+
+             //ラインコードが入力されたときの処理
+            if (e.ColumnIndex == 1)
+            {
+                //ラインコードがnullや空白の場合
+                if ((dgv.Rows[e.RowIndex].Cells[0] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
+                {
+                    //dgv.Rows[i].Cells[0].Value = "";
+                    dgv.Rows[i].Cells[1].Value = "";
+                    dgv.Rows[i].Cells[2].Value = "";
+                    dgv.Rows[i].Cells[3].Value = "";
+                    dgv.Rows[i].Cells[4].Value = "";
+                    dgv.Rows[i].Cells[5].Value = "";
+                    //dgv.Rows[i].Cells[2].Value = DBNull.Value;
+                    //dgv.Rows[i].Cells[3].Value = DBNull.Value;
+                    //dgv.Rows[i].Cells[4].Value = DBNull.Value;
+                    //dgv.Rows[i].Cells[5].Value = "";
+                    //dgv.Rows[i].Cells[6].Value = "";
+                    //dgv.Rows[i].Cells[7].Value = "";
+                }
+                
+                //部品コードに何か値が入力された
+                else
+                {
+                    DataTable dtTmp = (DataTable)dgv_line.DataSource;
+                    
+                    // ラインコードをキーにライン名を引っ張ってくる
+
+                    DataTable dt_work = new DataTable();
+                    int j = dt_work.Rows.Count;
+
+                    dt_work = tss.OracleSelect("select line_name from tss_line_m where line_cd = '" + e.FormattedValue.ToString() + "'");
+                    if (dt_work.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
+                       
+                        //dgv.Rows[i].Cells[1].Value = "";
+                        dgv.Rows[i].Cells[2].Value = ""; dgv.Rows[i].Cells[3].Value = "";
+                        dgv.Rows[i].Cells[4].Value = "";
+                        dgv.Rows[i].Cells[5].Value = "";
+                        dgv_line.Focus();
+                        dgv_line.CurrentCell = dgv_line[0, i];
+
+                        e.Cancel = true;
+                    }
+                    else //データグリッドビューに部品マスタから取得した一行ずつ値を入れていく   ここで入力した値と、セルにある値を比較する
+                    {
+                            dgv.Rows[i].Cells[2].Value = dt_work.Rows[j][0].ToString();
+                        
+                    }
+                    //return;
+                }
+         }
+    }
     }
 }
