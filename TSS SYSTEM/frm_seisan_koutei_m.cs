@@ -77,7 +77,6 @@ namespace TSS_SYSTEM
                 tb_koutei_no.Focus();
 
 
-
                 //gamen_sinki(tb_seihin_cd.Text);
             }
             else
@@ -205,15 +204,40 @@ namespace TSS_SYSTEM
 
         private void dgv_line_disp()
         {
-            DataTable dt_line = new DataTable();
-            dt_line = tss.OracleSelect("Select A1.Seq_No,A1.line_Cd,b1.line_Name,A1.select_kbn,A1.bikou From Tss_Seisan_Koutei_line_M A1 Left Outer Join Tss_line_M B1 On A1.line_Cd = B1.line_Cd where seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
+            int rc = dgv_koutei.CurrentRow.Index;
+            gamen_disp((rc + 1).ToString());
+            tb_koutei_no.Text = (rc + 1).ToString();
+
             dgv_line.DataSource = null;
+            DataTable dt_line = new DataTable();
+            dt_line = tss.OracleSelect("Select A1.select_kbn,A1.line_Cd,b1.line_Name,A1.tact_time,A1.dandori_time,A1.tuika_time,A1.hoju_time,A1.bikou From Tss_Seisan_Koutei_line_M A1 Left Outer Join Tss_line_M B1 On A1.line_Cd = B1.line_Cd  where seihin_cd = '" + tb_seihin_cd.Text + "' and seq_no = '" + tb_koutei_no.Text + "'ORDER BY a1.SEQ_NO");
+
+            dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
             dgv_line.DataSource = dt_line;
+            //dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
+
+            //for文で行数分
+
+            int rc2 = dt_line.Rows.Count;
+            for (int i = 0; i <= rc2 - 1; i++)
+             {
+                 //チェックボックス
+                 if (dt_line.Rows[i]["select_kbn"].ToString() == "1")
+                 {
+                     dgv_line.Rows[i].Cells[0].Value = true;
+                 }
+             }
+            
+            
+
+            
+            //選択区分を非表示
+            dgv_line.Columns["select_kbn"].Visible = false;
 
             //行ヘッダーを非表示にする
             dgv_line.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
-            dgv_line.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dgv_line.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
             dgv_line.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
@@ -221,20 +245,109 @@ namespace TSS_SYSTEM
             //１行のみ選択可能（複数行の選択不可）
             dgv_line.MultiSelect = false;
             //DataGridView1にユーザーが新しい行を追加できないようにする
-            //dgv_line.AllowUserToAddRows = false;
+            dgv_line.AllowUserToAddRows = false;
             //セルを選択すると行全体が選択されるようにする
             dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridViewのカラムヘッダーテキストを変更する
-            dgv_line.Columns["SEQ_NO"].HeaderText = "SEQ";
+            dgv_line.Columns["checkbox"].HeaderText = "選択";
             dgv_line.Columns["line_cd"].HeaderText = "ラインコード";
             dgv_line.Columns["line_name"].HeaderText = "ライン名";
-            dgv_line.Columns["line_name"].HeaderText = "ライン名";
-            dgv_line.Columns["select_kbn"].HeaderText = "選択区分";
+            dgv_line.Columns["tact_time"].HeaderText = "タクトタイム";
+            dgv_line.Columns["dandori_time"].HeaderText = "段取時間";
+            dgv_line.Columns["tuika_time"].HeaderText = "追加時間";
+            dgv_line.Columns["hoju_time"].HeaderText = "補充時間";
             dgv_line.Columns["bikou"].HeaderText = "備考";
 
+            //セルの書式設定
             dgv_line.Columns["line_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
             dgv_line.Columns["line_name"].ReadOnly = true;
             dgv_line.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
+
+            dgv_line.Columns["checkbox"].Width = 40;
+            dgv_line.Columns["line_cd"].Width = 70;
+            dgv_line.Columns["line_name"].Width = 80;
+            dgv_line.Columns["tact_time"].Width = 65;
+            dgv_line.Columns["dandori_time"].Width = 60;
+            dgv_line.Columns["tuika_time"].Width = 60;
+            dgv_line.Columns["hoju_time"].Width = 60;
+            dgv_line.Columns["bikou"].Width = 90;
+
+            dgv_line.Columns["tact_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["dandori_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["tuika_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["hoju_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+        }
+
+        private void dgv_line_disp_sinki()
+        {
+            dgv_line.DataSource = null;
+            DataTable dt_line = new DataTable();
+            //ダミー
+            dt_line = tss.OracleSelect("Select A1.select_kbn,A1.line_Cd,b1.line_Name,A1.tact_time,A1.dandori_time,A1.tuika_time,A1.hoju_time,A1.bikou From Tss_Seisan_Koutei_line_M A1 Left Outer Join Tss_line_M B1 On A1.line_Cd = B1.line_Cd  where seihin_cd = 999999 ORDER BY a1.SEQ_NO");
+
+            
+            dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
+            dt_line.Rows.Clear();
+            dt_line.Rows.Add();
+            dgv_line.DataSource = dt_line;
+
+            
+
+            
+            //dgv_line.Rows.Add();
+            ////チェックボックス
+            //if (dt_line.Rows[0]["select_kbn"].ToString() == "1")
+            //{
+            //    dgv_line.Rows[0].Cells[0].Value = true;
+            //}
+
+
+            //選択区分を非表示
+            dgv_line.Columns["select_kbn"].Visible = false;
+
+            //行ヘッダーを非表示にする
+            dgv_line.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            //dgv_line.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_line.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_line.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_line.MultiSelect = false;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_line.AllowUserToAddRows = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_line.Columns["checkbox"].HeaderText = "選択";
+            dgv_line.Columns["line_cd"].HeaderText = "ラインコード";
+            dgv_line.Columns["line_name"].HeaderText = "ライン名";
+            dgv_line.Columns["tact_time"].HeaderText = "タクトタイム";
+            dgv_line.Columns["dandori_time"].HeaderText = "段取時間";
+            dgv_line.Columns["tuika_time"].HeaderText = "追加時間";
+            dgv_line.Columns["hoju_time"].HeaderText = "補充時間";
+            dgv_line.Columns["bikou"].HeaderText = "備考";
+
+            //セルの書式設定
+            dgv_line.Columns["line_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
+            dgv_line.Columns["line_name"].ReadOnly = true;
+            dgv_line.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
+
+            dgv_line.Columns["checkbox"].Width = 40;
+            dgv_line.Columns["line_cd"].Width = 70;
+            dgv_line.Columns["line_name"].Width = 80;
+            dgv_line.Columns["tact_time"].Width = 65;
+            dgv_line.Columns["dandori_time"].Width = 60;
+            dgv_line.Columns["tuika_time"].Width = 60;
+            dgv_line.Columns["hoju_time"].Width = 60;
+            dgv_line.Columns["bikou"].Width = 90;
+
+            dgv_line.Columns["tact_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["dandori_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["tuika_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_line.Columns["hoju_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
         }
 
@@ -257,7 +370,7 @@ namespace TSS_SYSTEM
 
             dgv_koutei.DataSource = null;
             dgv_line.DataSource = null;
-            dgv_line_disp();
+            dgv_line_disp_sinki();
 
 
 
