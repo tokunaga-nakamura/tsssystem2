@@ -65,6 +65,7 @@ namespace TSS_SYSTEM
             bool bl = true; //戻り値
             DataTable dt_work = new DataTable();
             dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
+            //dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
             if (dt_work.Rows.Count <= 0)
             {
                 //新規
