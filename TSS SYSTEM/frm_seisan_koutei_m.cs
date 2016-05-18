@@ -63,10 +63,10 @@ namespace TSS_SYSTEM
         private bool chk_seihin_cd()
         {
             bool bl = true; //戻り値
-            DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
+            //DataTable dt_work = new DataTable();
+            dt_m = tss.OracleSelect("Select A1.SEIHIN_CD,A1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 Left Outer Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seihin_Cd = B1.seihin_Cd where A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
             //dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
-            if (dt_work.Rows.Count <= 0)
+            if (dt_m.Rows.Count <= 0)
             {
                 //新規
                 MessageBox.Show("工程登録なし。新規で工程を登録します。");
@@ -83,8 +83,8 @@ namespace TSS_SYSTEM
             else
             {
                 //既存データ有
-                tb_seihin_cd.Text = dt_work.Rows[0]["seihin_cd"].ToString();
-                tb_seihin_name.Text = get_seihin_name(dt_work.Rows[0]["seihin_cd"].ToString());
+                tb_seihin_cd.Text = dt_m.Rows[0]["seihin_cd"].ToString();
+                tb_seihin_name.Text = get_seihin_name(dt_m.Rows[0]["seihin_cd"].ToString());
                 dgv_koutei_disp();
                 tb_koutei_no.Text = "";
                 tb_bikou.Text = "";
@@ -97,9 +97,6 @@ namespace TSS_SYSTEM
                 tb_seisan_start_day.Text = "";
                 tb_koutei_start_time.Text = "";
                 dgv_line.DataSource = null;
-                //gamen_disp(dt_work);
-                //tb_seihin_cd.Text = dt_work.Rows[0]["seihin_cd"].ToString();
-                //tb_seihin_name.Text = dt_work.Rows[0]["seihin_name"].ToString();
 
             }
             return bl;
@@ -177,10 +174,10 @@ namespace TSS_SYSTEM
 
         private void dgv_koutei_disp()
         {
-            DataTable dt_koutei = new DataTable();
-            dt_koutei = tss.OracleSelect("Select A1.Seq_No,A1.Koutei_Cd,b1.Koutei_Name From Tss_Seisan_Koutei_M A1 Left Outer Join Tss_Koutei_M B1 On A1.Koutei_Cd = B1.Koutei_Cd where seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
+            //DataTable dt_koutei = new DataTable();
+           // dt_koutei = tss.OracleSelect("Select A1.Seq_No,A1.Koutei_Cd,b1.Koutei_Name From Tss_Seisan_Koutei_M A1 Left Outer Join Tss_Koutei_M B1 On A1.Koutei_Cd = B1.Koutei_Cd where seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
             dgv_koutei.DataSource = null;
-            dgv_koutei.DataSource = dt_koutei;
+            dgv_koutei.DataSource = dt_m;
 
             //行ヘッダーを非表示にする
             dgv_koutei.RowHeadersVisible = false;
@@ -199,7 +196,7 @@ namespace TSS_SYSTEM
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
             dgv_koutei.Columns["koutei_cd"].HeaderText = "工程コード";
-            dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
+            //dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
 
         }
 
