@@ -38,6 +38,8 @@ namespace TSS_SYSTEM
             {
                 nud_month.Value = dc;
             }
+            //納品順の変更権限チェック
+            nouhin_jun_kengen_check();
         }
 
         private void tb_torihikisaki_cd_Validating(object sender, CancelEventArgs e)
@@ -692,5 +694,57 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
+        private void nouhin_jun_kengen_check()
+        {
+            //受注の権限が５以上（実務担当１）の権限が必要
+            if (tss.User_Kengen_Check(1, 5) == false)
+            {
+                //権限無し
+                lbl_nouhin_jun.Visible = false;
+                btn_nouhin_jun_up.Visible = false;
+                btn_nouhin_jun_down.Visible = false;
+                btn_nouhin_jun_touroku.Visible = false;
+            }
+            else
+            {
+                //権限有り
+                //取引先と納品スケジュール区分が指定されていた場合のみ、納品順を変更可能とする
+                if(tb_torihikisaki_cd.Text != "" && tb_nouhin_schedule_kbn.Text != "")
+                {
+                    lbl_nouhin_jun.Visible = true;
+                    btn_nouhin_jun_up.Visible = true;
+                    btn_nouhin_jun_down.Visible = true;
+                    btn_nouhin_jun_touroku.Visible = true;
+                    lbl_nouhin_jun.Enabled = true;
+                    btn_nouhin_jun_up.Enabled = true;
+                    btn_nouhin_jun_down.Enabled = true;
+                    btn_nouhin_jun_touroku.Enabled = true;
+                    lbl_nouhin_jun.Text = "納品順を変更できます";
+                }
+                else
+                {
+                    lbl_nouhin_jun.Visible = true;
+                    btn_nouhin_jun_up.Visible = true;
+                    btn_nouhin_jun_down.Visible = true;
+                    btn_nouhin_jun_touroku.Visible = true;
+                    lbl_nouhin_jun.Enabled = true;
+                    btn_nouhin_jun_up.Enabled = false;
+                    btn_nouhin_jun_down.Enabled = false;
+                    btn_nouhin_jun_touroku.Enabled = false;
+                    lbl_nouhin_jun.Text = "取引先と納品スケジュール区分を指定した場合のみ、納品順を変更できます";
+                }
+
+            
+            
+            
+            }
+
+
+
+        }
+
+
+
     }
 }

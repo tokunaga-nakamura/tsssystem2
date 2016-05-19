@@ -1154,7 +1154,7 @@
             // 
             // btn_user_m
             // 
-            this.btn_user_m.Location = new System.Drawing.Point(6, 265);
+            this.btn_user_m.Location = new System.Drawing.Point(8, 329);
             this.btn_user_m.Name = "btn_user_m";
             this.btn_user_m.Size = new System.Drawing.Size(222, 23);
             this.btn_user_m.TabIndex = 12;
@@ -1164,7 +1164,7 @@
             // 
             // btn_eigyou_calender
             // 
-            this.btn_eigyou_calender.Location = new System.Drawing.Point(6, 195);
+            this.btn_eigyou_calender.Location = new System.Drawing.Point(8, 271);
             this.btn_eigyou_calender.Name = "btn_eigyou_calender";
             this.btn_eigyou_calender.Size = new System.Drawing.Size(222, 23);
             this.btn_eigyou_calender.TabIndex = 11;
@@ -1214,7 +1214,7 @@
             // 
             // btn_bank_m
             // 
-            this.btn_bank_m.Location = new System.Drawing.Point(6, 90);
+            this.btn_bank_m.Location = new System.Drawing.Point(8, 242);
             this.btn_bank_m.Name = "btn_bank_m";
             this.btn_bank_m.Size = new System.Drawing.Size(222, 23);
             this.btn_bank_m.TabIndex = 6;
