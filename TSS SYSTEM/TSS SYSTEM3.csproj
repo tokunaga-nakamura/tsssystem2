@@ -179,6 +179,12 @@
     <Compile Include="frm_koutei_m.Designer.cs">
       <DependentUpon>frm_koutei_m.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_nouhin_schedule2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_nouhin_schedule2.Designer.cs">
+      <DependentUpon>frm_nouhin_schedule2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_nyukin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -697,6 +703,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_koutei_m.resx">
       <DependentUpon>frm_koutei_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_nouhin_schedule2.resx">
+      <DependentUpon>frm_nouhin_schedule2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>

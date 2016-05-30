@@ -733,7 +733,7 @@
             this.tb_hd10.Style = "font-size: 8.25pt";
             this.tb_hd10.Text = null;
             this.tb_hd10.Top = 0F;
-            this.tb_hd10.Width = 0.7811024F;
+            this.tb_hd10.Width = 1.53189F;
             // 
             // tb_hd30
             // 
@@ -743,7 +743,7 @@
             this.tb_hd30.Style = "font-size: 8.25pt";
             this.tb_hd30.Text = null;
             this.tb_hd30.Top = 0.292126F;
-            this.tb_hd30.Width = 0.7811024F;
+            this.tb_hd30.Width = 1.53189F;
             // 
             // tb_hd20
             // 
@@ -753,7 +753,7 @@
             this.tb_hd20.Style = "font-size: 8.25pt";
             this.tb_hd20.Text = null;
             this.tb_hd20.Top = 0.146063F;
-            this.tb_hd20.Width = 0.7811024F;
+            this.tb_hd20.Width = 1.53189F;
             // 
             // tb_hd40
             // 
@@ -763,7 +763,7 @@
             this.tb_hd40.Style = "font-size: 8.25pt";
             this.tb_hd40.Text = null;
             this.tb_hd40.Top = 0.438189F;
-            this.tb_hd40.Width = 0.7811029F;
+            this.tb_hd40.Width = 1.53189F;
             // 
             // crossSectionLine1
             // 
@@ -1140,7 +1140,7 @@
             // tb_hd11
             // 
             this.tb_hd11.Height = 0.146063F;
-            this.tb_hd11.Left = 6.510237F;
+            this.tb_hd11.Left = 7.261024F;
             this.tb_hd11.Name = "tb_hd11";
             this.tb_hd11.Style = "font-size: 8.25pt";
             this.tb_hd11.Text = null;
@@ -1150,7 +1150,7 @@
             // tb_hd21
             // 
             this.tb_hd21.Height = 0.146063F;
-            this.tb_hd21.Left = 6.510237F;
+            this.tb_hd21.Left = 7.261024F;
             this.tb_hd21.Name = "tb_hd21";
             this.tb_hd21.Style = "font-size: 8.25pt";
             this.tb_hd21.Text = null;
@@ -1160,7 +1160,7 @@
             // tb_hd31
             // 
             this.tb_hd31.Height = 0.146063F;
-            this.tb_hd31.Left = 6.510237F;
+            this.tb_hd31.Left = 7.261024F;
             this.tb_hd31.Name = "tb_hd31";
             this.tb_hd31.Style = "font-size: 8.25pt";
             this.tb_hd31.Text = null;
@@ -1170,7 +1170,7 @@
             // tb_hd41
             // 
             this.tb_hd41.Height = 0.146063F;
-            this.tb_hd41.Left = 6.510237F;
+            this.tb_hd41.Left = 7.261024F;
             this.tb_hd41.Name = "tb_hd41";
             this.tb_hd41.Style = "font-size: 8.25pt";
             this.tb_hd41.Text = null;
@@ -1705,7 +1705,7 @@
             this.reportInfo2.Height = 0.1979167F;
             this.reportInfo2.Left = 8.749213F;
             this.reportInfo2.Name = "reportInfo2";
-            this.reportInfo2.Style = "text-align: right";
+            this.reportInfo2.Style = "font-size: 8.25pt; text-align: right";
             this.reportInfo2.Top = 0.04173229F;
             this.reportInfo2.Width = 2.076378F;
             // 
