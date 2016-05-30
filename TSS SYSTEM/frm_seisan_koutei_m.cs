@@ -27,9 +27,6 @@ namespace TSS_SYSTEM
 
         }
 
-
-
-
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -64,8 +61,21 @@ namespace TSS_SYSTEM
         {
             bool bl = true; //戻り値
             //DataTable dt_work = new DataTable();
-            dt_m = tss.OracleSelect("Select A1.SEIHIN_CD,A1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 Left Outer Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seihin_Cd = B1.seihin_Cd where A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
+            dt_m = tss.OracleSelect("Select A1.SEIHIN_CD,A1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 Left Outer Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.SEQ_NO = B1.SEQ_NO Left Outer Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd Left Outer Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+            dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
             //dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
+
+            //for文で行数分
+            int rc = dt_m.Rows.Count;
+            for (int i = 0; i <= rc - 1; i++)
+            {
+                //チェックボックス
+                if (dt_m.Rows[i]["select_kbn"].ToString() == "1")
+                {
+                    dt_m.Rows[i]["checkbox"] = true;
+                }
+            }
+            
             if (dt_m.Rows.Count <= 0)
             {
                 //新規
@@ -77,7 +87,6 @@ namespace TSS_SYSTEM
                 gamen_clear();
                 tb_koutei_no.Focus();
 
-
                 //gamen_sinki(tb_seihin_cd.Text);
             }
             else
@@ -88,6 +97,7 @@ namespace TSS_SYSTEM
                 dgv_koutei_disp();
                 tb_koutei_no.Text = "";
                 tb_bikou.Text = "";
+                tb_comments.Text = "";
                 tb_busyo_cd.Text = "";
                 tb_busyo_name.Text = "";
                 tb_koutei_cd.Text = "";
@@ -96,6 +106,11 @@ namespace TSS_SYSTEM
                 tb_jisseki_kanri_kbn.Text = "";
                 tb_seisan_start_day.Text = "";
                 tb_koutei_start_time.Text = "";
+                tb_create_user_cd.Text = dt_m.Rows[0]["create_user_cd"].ToString();
+                tb_create_datetime.Text = dt_m.Rows[0]["create_datetime"].ToString();
+                tb_update_user_cd.Text = dt_m.Rows[0]["update_user_cd"].ToString();
+                tb_update_datetime.Text = dt_m.Rows[0]["update_datetime"].ToString();
+                
                 dgv_line.DataSource = null;
 
             }
@@ -104,23 +119,27 @@ namespace TSS_SYSTEM
 
         private void gamen_disp(string in_seq_no)
         {
+            //画面表示のため、データテーブルから条件を抽出（DataTable →　DataRow）
+            DataRow[] rows = dt_m.Select("seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'  and seq_no = '" + in_seq_no.ToString() + "'");
 
-            DataTable dt_work = new DataTable();
-            dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "' and seq_no = '" + in_seq_no + "'");
+            if (rows.Length > 0)
+            {
+                tb_seihin_cd.Text = rows[0]["seihin_cd"].ToString();
+                tb_seihin_name.Text = get_seihin_name(rows[0]["seihin_cd"].ToString());
+                tb_bikou.Text = rows[0]["bikou"].ToString();
+                tb_busyo_cd.Text = rows[0]["busyo_cd"].ToString();
+                tb_busyo_name.Text = get_busyo_name(rows[0]["busyo_cd"].ToString());
+                tb_koutei_cd.Text = rows[0]["koutei_cd"].ToString();
+                tb_koutei_name.Text = get_koutei_name(rows[0]["koutei_cd"].ToString());
+                tb_line_select_kbn.Text = rows[0]["line_select_kbn"].ToString();
+                tb_jisseki_kanri_kbn.Text = rows[0]["jisseki_kanri_kbn"].ToString();
+                tb_seisan_start_day.Text = rows[0]["seisan_start_day"].ToString();
+                tb_koutei_start_time.Text = rows[0]["koutei_start_time"].ToString();
+                tb_bikou.Text = rows[0]["bikou"].ToString();
+                tb_comments.Text = rows[0]["comments"].ToString();
+            }
 
-            tb_seihin_cd.Text = dt_work.Rows[0]["seihin_cd"].ToString();
-            tb_seihin_name.Text = get_seihin_name(dt_work.Rows[0]["seihin_cd"].ToString());
-            tb_bikou.Text = dt_work.Rows[0]["bikou"].ToString();
-            tb_busyo_cd.Text = dt_work.Rows[0]["busyo_cd"].ToString();
-            tb_busyo_name.Text = get_busyo_name(dt_work.Rows[0]["busyo_cd"].ToString());
-            tb_koutei_cd.Text = dt_work.Rows[0]["koutei_cd"].ToString();
-            tb_koutei_name.Text = get_koutei_name(dt_work.Rows[0]["koutei_cd"].ToString());
-            tb_line_select_kbn.Text = dt_work.Rows[0]["line_select_kbn"].ToString();
-            tb_jisseki_kanri_kbn.Text = dt_work.Rows[0]["jisseki_kanri_kbn"].ToString();
-            tb_seisan_start_day.Text = dt_work.Rows[0]["seisan_start_day"].ToString();
-            tb_koutei_start_time.Text = dt_work.Rows[0]["koutei_start_time"].ToString();
-
-
+            
         }
 
         private string get_seihin_name(string in_seihin_cd)
@@ -174,15 +193,21 @@ namespace TSS_SYSTEM
 
         private void dgv_koutei_disp()
         {
-            //DataTable dt_koutei = new DataTable();
-           // dt_koutei = tss.OracleSelect("Select A1.Seq_No,A1.Koutei_Cd,b1.Koutei_Name From Tss_Seisan_Koutei_M A1 Left Outer Join Tss_Koutei_M B1 On A1.Koutei_Cd = B1.Koutei_Cd where seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO");
             dgv_koutei.DataSource = null;
-            dgv_koutei.DataSource = dt_m;
+            
+            //重複を除去するため DataView を使う
+            DataView vw = new DataView(dt_m);
+            vw = dt_m.DefaultView;
+
+            //Distinct（集計）をかける
+            DataTable resultDt = vw.ToTable("SEQ_NO", true, "SEQ_NO", "KOUTEI_CD", "KOUTEI_NAME");
+
+            dgv_koutei.DataSource = resultDt;
 
             //行ヘッダーを非表示にする
-            dgv_koutei.RowHeadersVisible = false;
+            //dgv_koutei.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
-            dgv_koutei.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dgv_koutei.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
             dgv_koutei.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
@@ -194,46 +219,33 @@ namespace TSS_SYSTEM
             //セルを選択すると行全体が選択されるようにする
             dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridViewのカラムヘッダーテキストを変更する
-            dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
-            dgv_koutei.Columns["koutei_cd"].HeaderText = "工程コード";
-            //dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
+            dgv_koutei.RowHeadersWidth = 20;
+            dgv_koutei.Columns["SEQ_NO"].Width = 55;
+            dgv_koutei.Columns["koutei_cd"].Width = 60;
+            dgv_koutei.Columns["koutei_name"].Width = 80;
 
+            dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
+            dgv_koutei.Columns["koutei_cd"].HeaderText = "工程ｺｰﾄﾞ";
+            dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
         }
 
         private void dgv_line_disp()
         {
-            int rc = dgv_koutei.CurrentRow.Index;
-            gamen_disp((rc + 1).ToString());
-            tb_koutei_no.Text = (rc + 1).ToString();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dt_m;
 
-            dgv_line.DataSource = null;
-            DataTable dt_line = new DataTable();
-            dt_line = tss.OracleSelect("Select A1.select_kbn,A1.line_Cd,b1.line_Name,A1.tact_time,A1.dandori_time,A1.tuika_time,A1.hoju_time,A1.bikou From Tss_Seisan_Koutei_line_M A1 Left Outer Join Tss_line_M B1 On A1.line_Cd = B1.line_Cd  where seihin_cd = '" + tb_seihin_cd.Text + "' and seq_no = '" + tb_koutei_no.Text + "'ORDER BY a1.SEQ_NO");
+            bs.Filter = "seq_no = '" + tb_koutei_no.Text.ToString() + "'";
 
-            dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
-            dgv_line.DataSource = dt_line;
-            //dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
+            ////画面表示のため、データテーブルから条件を抽出
+            //DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
 
-            //for文で行数分
+            dgv_line.DataSource = bs;
 
-            int rc2 = dt_line.Rows.Count;
-            for (int i = 0; i <= rc2 - 1; i++)
-             {
-                 //チェックボックス
-                 if (dt_line.Rows[i]["select_kbn"].ToString() == "1")
-                 {
-                     dgv_line.Rows[i].Cells[0].Value = true;
-                 }
-             }
-            
-            
-
-            
             //選択区分を非表示
             dgv_line.Columns["select_kbn"].Visible = false;
 
             //行ヘッダーを非表示にする
-            dgv_line.RowHeadersVisible = false;
+            //dgv_line.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
             //dgv_line.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
@@ -245,7 +257,34 @@ namespace TSS_SYSTEM
             //DataGridView1にユーザーが新しい行を追加できないようにする
             dgv_line.AllowUserToAddRows = false;
             //セルを選択すると行全体が選択されるようにする
-            dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgv_line.Columns["seihin_cd"].Visible = false;
+            dgv_line.Columns["SEQ_NO"].Visible = false;
+            dgv_line.Columns["busyo_cd"].Visible = false;
+            dgv_line.Columns["koutei_level"].Visible = false;
+            dgv_line.Columns["koutei_cd"].Visible = false;
+            dgv_line.Columns["koutei_name"].Visible = false;
+            dgv_line.Columns["oya_koutei_seq"].Visible = false;
+            dgv_line.Columns["oya_koutei_cd"].Visible = false;
+            dgv_line.Columns["jisseki_kanri_kbn"].Visible = false;
+            dgv_line.Columns["line_select_kbn"].Visible = false;
+            dgv_line.Columns["seisan_start_day"].Visible = false;
+            dgv_line.Columns["mae_koutei_seq"].Visible = false;
+            dgv_line.Columns["koutei_start_time"].Visible = false;
+            dgv_line.Columns["comments"].Visible = false;
+            dgv_line.Columns["delete_flg"].Visible = false;
+            dgv_line.Columns["bikou"].Visible = false;
+            dgv_line.Columns["create_user_cd"].Visible = false;
+            dgv_line.Columns["create_datetime"].Visible = false;
+            dgv_line.Columns["update_user_cd"].Visible = false;
+            dgv_line.Columns["update_datetime"].Visible = false;
+            dgv_line.Columns["delete_flg1"].Visible = false;
+            dgv_line.Columns["create_user_cd1"].Visible = false;
+            dgv_line.Columns["create_datetime1"].Visible = false;
+            dgv_line.Columns["update_user_cd1"].Visible = false;
+            dgv_line.Columns["update_datetime1"].Visible = false;
+
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_line.Columns["checkbox"].HeaderText = "選択";
             dgv_line.Columns["line_cd"].HeaderText = "ラインコード";
@@ -254,13 +293,14 @@ namespace TSS_SYSTEM
             dgv_line.Columns["dandori_time"].HeaderText = "段取時間";
             dgv_line.Columns["tuika_time"].HeaderText = "追加時間";
             dgv_line.Columns["hoju_time"].HeaderText = "補充時間";
-            dgv_line.Columns["bikou"].HeaderText = "備考";
+            dgv_line.Columns["bikou1"].HeaderText = "備考";
 
             //セルの書式設定
             dgv_line.Columns["line_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
             dgv_line.Columns["line_name"].ReadOnly = true;
             dgv_line.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
 
+            dgv_line.RowHeadersWidth = 20;
             dgv_line.Columns["checkbox"].Width = 40;
             dgv_line.Columns["line_cd"].Width = 70;
             dgv_line.Columns["line_name"].Width = 80;
@@ -277,6 +317,9 @@ namespace TSS_SYSTEM
 
         }
 
+       
+        
+
         private void dgv_line_disp_sinki()
         {
             dgv_line.DataSource = null;
@@ -284,28 +327,17 @@ namespace TSS_SYSTEM
             //ダミー
             dt_line = tss.OracleSelect("Select A1.select_kbn,A1.line_Cd,b1.line_Name,A1.tact_time,A1.dandori_time,A1.tuika_time,A1.hoju_time,A1.bikou From Tss_Seisan_Koutei_line_M A1 Left Outer Join Tss_line_M B1 On A1.line_Cd = B1.line_Cd  where seihin_cd = 999999 ORDER BY a1.SEQ_NO");
 
-            
             dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
             dt_line.Rows.Clear();
             dt_line.Rows.Add();
             dgv_line.DataSource = dt_line;
-
-            
-
-            
-            //dgv_line.Rows.Add();
-            ////チェックボックス
-            //if (dt_line.Rows[0]["select_kbn"].ToString() == "1")
-            //{
-            //    dgv_line.Rows[0].Cells[0].Value = true;
-            //}
 
 
             //選択区分を非表示
             dgv_line.Columns["select_kbn"].Visible = false;
 
             //行ヘッダーを非表示にする
-            dgv_line.RowHeadersVisible = false;
+            //dgv_line.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
             //dgv_line.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
@@ -333,6 +365,7 @@ namespace TSS_SYSTEM
             dgv_line.Columns["line_name"].ReadOnly = true;
             dgv_line.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
 
+            dgv_line.RowHeadersWidth = 20;
             dgv_line.Columns["checkbox"].Width = 40;
             dgv_line.Columns["line_cd"].Width = 70;
             dgv_line.Columns["line_name"].Width = 80;
@@ -370,17 +403,16 @@ namespace TSS_SYSTEM
             dgv_line.DataSource = null;
             dgv_line_disp_sinki();
 
-
-
-
         }
 
 
         private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rc = dgv_koutei.CurrentRow.Index;
-            gamen_disp((rc + 1).ToString());
-            tb_koutei_no.Text = (rc + 1).ToString();
+            //int rc = dgv_koutei.CurrentRow.Index;
+
+            string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
+            gamen_disp(str);
+            tb_koutei_no.Text = str;
             dgv_line_disp();
         }
 
@@ -401,6 +433,28 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
+
+            if (tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_koutei_cd.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["koutei_cd"] = str;
+                }
+            }
+
+
         }
 
         private bool chk_koutei_cd()
@@ -441,6 +495,27 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
+
+
+            if (tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_busyo_cd.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["busyo_cd"] = str;
+                }
+            }
         }
 
         private bool chk_busyo_cd()
@@ -476,17 +551,17 @@ namespace TSS_SYSTEM
              }
 
              //ラインコードが入力されたときの処理
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 21)
             {
                 //ラインコードがnullや空白の場合
-                if ((dgv.Rows[e.RowIndex].Cells[0] != null || dgv.Rows[e.RowIndex].Cells[0].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
+                if ((dgv.Rows[e.RowIndex].Cells[21] != null || dgv.Rows[e.RowIndex].Cells[21].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 {
                     //dgv.Rows[i].Cells[0].Value = "";
-                    dgv.Rows[i].Cells[1].Value = "";
-                    dgv.Rows[i].Cells[2].Value = "";
-                    dgv.Rows[i].Cells[3].Value = "";
-                    dgv.Rows[i].Cells[4].Value = "";
-                    dgv.Rows[i].Cells[5].Value = "";
+                    //dgv.Rows[i].Cells[1].Value = "";
+                    //dgv.Rows[i].Cells[2].Value = "";
+                    //dgv.Rows[i].Cells[3].Value = "";
+                    //dgv.Rows[i].Cells[4].Value = "";
+                    //dgv.Rows[i].Cells[5].Value = "";
                     //dgv.Rows[i].Cells[2].Value = DBNull.Value;
                     //dgv.Rows[i].Cells[3].Value = DBNull.Value;
                     //dgv.Rows[i].Cells[4].Value = DBNull.Value;
@@ -498,35 +573,320 @@ namespace TSS_SYSTEM
                 //部品コードに何か値が入力された
                 else
                 {
-                    DataTable dtTmp = (DataTable)dgv_line.DataSource;
+                    //DataTable dtTmp = (DataTable)dgv_line.DataSource;
                     
                     // ラインコードをキーにライン名を引っ張ってくる
 
                     DataTable dt_work = new DataTable();
                     int j = dt_work.Rows.Count;
 
-                    dt_work = tss.OracleSelect("select line_name from tss_line_m where line_cd = '" + e.FormattedValue.ToString() + "'");
+                    dt_work = tss.OracleSelect("select a1.seihin_cd,a1.seq_no,a1.line_cd,b1.line_name,a1.tact_time,a1.dandori_time,a1.tuika_time,a1.hoju_time,A1.bikou from tss_seisan_koutei_line_m a1 inner join tss_line_m b1 on a1.line_cd = b1.line_cd where a1.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and a1.line_cd = '" + e.FormattedValue.ToString() + "'");
                     if (dt_work.Rows.Count <= 0)
                     {
-                        MessageBox.Show("この部品コードは登録されていません。部品登録してください。");
-                       
-                        //dgv.Rows[i].Cells[1].Value = "";
-                        dgv.Rows[i].Cells[2].Value = ""; dgv.Rows[i].Cells[3].Value = "";
-                        dgv.Rows[i].Cells[4].Value = "";
-                        dgv.Rows[i].Cells[5].Value = "";
-                        dgv_line.Focus();
-                        dgv_line.CurrentCell = dgv_line[0, i];
-
-                        e.Cancel = true;
-                    }
-                    else //データグリッドビューに部品マスタから取得した一行ずつ値を入れていく   ここで入力した値と、セルにある値を比較する
-                    {
-                            dgv.Rows[i].Cells[2].Value = dt_work.Rows[j][0].ToString();
+                        DataTable dt_work2 = tss.OracleSelect("select line_cd,line_name from tss_line_m where line_cd = '" + e.FormattedValue.ToString() + "'");
                         
+                        if (dt_work2.Rows.Count <= 0)
+                        {
+                            MessageBox.Show("ライン登録なし。ラインマスタ画面でライン登録してください。");
+                            e.Cancel = true;
+                            return;
+                        }
+                        
+                        //MessageBox.Show("マスタ登録なし。新規でライン設定してください。");
+
+                        int rc = dgv_line.CurrentRow.Index;
+                       
+                        dgv.Rows[rc].Cells["line_name"].Value = dt_work2.Rows[0]["line_name"].ToString();
+                        dgv.Rows[rc].Cells["tact_time"].Value = DBNull.Value;
+                        dgv.Rows[rc].Cells["dandori_time"].Value = DBNull.Value;
+                        dgv.Rows[rc].Cells["tuika_time"].Value = DBNull.Value;
+                        dgv.Rows[rc].Cells["hoju_time"].Value = DBNull.Value;
+                        dgv.Rows[rc].Cells["bikou"].Value = "";
+
+                        //tb_jisseki_kanri_kbn.Text = "";
+                        //tb_seisan_start_day.Text = "";
+                        //tb_koutei_start_time.Text = "";
+                        //tb_bikou.Text = "";
+                        //tb_comments.Text = "";
+
+                    }
+                    else //データグリッドビューに生産工程ラインマスタから取得した一行ずつ値を入れていく
+                    {
+                        dgv.Rows[i].Cells["line_name"].Value = dt_work.Rows[j]["line_name"].ToString();
+                        dgv.Rows[i].Cells["tact_time"].Value = dt_work.Rows[j]["tact_time"].ToString();
+                        dgv.Rows[i].Cells["dandori_time"].Value = dt_work.Rows[j]["dandori_time"].ToString();
+                        dgv.Rows[i].Cells["tuika_time"].Value = dt_work.Rows[j]["tuika_time"].ToString();
+                        dgv.Rows[i].Cells["hoju_time"].Value = dt_work.Rows[j]["hoju_time"].ToString();
+                        dgv.Rows[i].Cells["bikou"].Value = dt_work.Rows[j]["bikou"].ToString();
+
                     }
                     //return;
                 }
          }
     }
+
+        private void tb_jisseki_kanri_kbn_Validating(object sender, CancelEventArgs e)
+        {
+            if(tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_jisseki_kanri_kbn.Text.ToString();
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["jisseki_kanri_kbn"] = str;
+                }
+            }
+        }
+
+        private void tb_line_select_kbn_Validating(object sender, CancelEventArgs e)
+        {
+            
+            if(tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_line_select_kbn.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["line_select_kbn"] = str;
+                }
+            }
+            
+        }
+
+        private void tb_seisan_start_day_Validating(object sender, CancelEventArgs e)
+        {
+            if(tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_seisan_start_day.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["seisan_start_day"] = str;
+                }
+            }
+        }
+
+        private void tb_koutei_start_time_Validating(object sender, CancelEventArgs e)
+        {
+            
+            if(tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_koutei_start_time.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["koutei_start_time"] = str;
+                }
+            }
+        }
+
+        private void tb_bikou_Validating(object sender, CancelEventArgs e)
+        {
+            if(tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_bikou.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["bikou"] = str;
+                }
+            }
+            
+        }
+
+        private void tb_comments_Validating(object sender, CancelEventArgs e)
+        {
+            if (tb_koutei_no.Text.ToString() != "")
+            {
+                //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                //画面表示のため、データテーブルから条件を抽出
+                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                //配列の長さ取得
+                int ui = rows.Length;
+
+                String str = tb_comments.Text.ToString();
+
+
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["comments"] = str;
+                }
+            }
+        }
+
+        private void dgv_koutei_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dgv_koutei.CurrentRow != null)
+            {
+                //int rc = e.RowIndex;
+
+                string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
+                gamen_disp(str);
+                tb_koutei_no.Text = str;
+                dgv_line_disp();
+            }
+
+        }
+
+        private void btn_line_tuika_Click(object sender, EventArgs e)
+        {
+            dt_m.Rows.Add();
+            int rc = dt_m.Rows.Count;
+
+            dt_m.Rows[rc - 1]["seihin_cd"] = tb_seihin_cd.Text.ToString();
+            dt_m.Rows[rc - 1]["seq_no"] = tb_koutei_no.Text.ToString();
+            dt_m.Rows[rc - 1]["busyo_cd"] = tb_busyo_cd.Text.ToString();
+            dt_m.Rows[rc - 1]["koutei_level"] = "1";
+            dt_m.Rows[rc - 1]["koutei_cd"] = tb_koutei_cd.Text.ToString();
+            dt_m.Rows[rc - 1]["koutei_name"] = tb_koutei_name.Text.ToString();
+            dt_m.Rows[rc - 1]["jisseki_kanri_kbn"] = tb_jisseki_kanri_kbn.Text.ToString();
+            dt_m.Rows[rc - 1]["line_select_kbn"] = tb_line_select_kbn.Text.ToString();
+            dt_m.Rows[rc - 1]["seisan_start_day"] = tb_seisan_start_day.Text.ToString();
+            dt_m.Rows[rc - 1]["mae_koutei_seq"] = 0;
+            dt_m.Rows[rc - 1]["koutei_start_time"] = tb_koutei_start_time.Text.ToString();
+            dt_m.Rows[rc - 1]["bikou"] = tb_bikou.Text.ToString();
+            dt_m.Rows[rc - 1]["comments"] = tb_comments.Text.ToString();
+
+            dgv_line_disp();
+            
+        }
+
+
+        private void dgv_koutei_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+
+            DialogResult bRet = MessageBox.Show("工程を削除しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (bRet == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+
+            //条件に合うデータ（行）を削除
+            string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
+
+            DataSetController.DeleteSelectRows(dt_m, "seq_no = '" + str + "'");
+
+
+            //seq_noの付けなおし
+            
+
+
+
+            dt_m.AcceptChanges();
+         
+        }
+
+        public class DataSetController
+        {
+            /// <summary>
+            /// 条件に当てはまるレコードをDataTableから削除します。
+            /// </summary>
+            /// <param name="dt">データテーブル</param>
+            /// <param name="filter">条件</param>
+            /// <returns>0:正常終了 -1:異常終了</returns>
+            public static int DeleteSelectRows(DataTable dt, string filter)
+            {
+                try
+                {
+                    DataRow[] rows = dt.Select(filter);
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        if (rows[i].RowState != DataRowState.Deleted)
+                        {
+                            rows[i].Delete();
+                        }
+                    }
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+
+            /// <summary>
+            /// 条件に当てはまるレコードをDataTableから削除します。
+            /// </summary>
+            /// <param name="dt">データテーブル</param>
+            /// <param name="filter">条件</param>
+            /// <returns>0:正常終了 -1:異常終了</returns>
+            public static int RemoveSelectRows(DataTable dt, string filter)
+            {
+                try
+                {
+                    DataRow[] rows = dt.Select(filter);
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        if (rows[i].RowState != DataRowState.Deleted)
+                        {
+                            rows[i].Delete();
+                        }
+                    }
+                    dt.AcceptChanges();
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    dt.RejectChanges();
+                    return -1;
+                }
+            }
+        }
+
     }
 }
