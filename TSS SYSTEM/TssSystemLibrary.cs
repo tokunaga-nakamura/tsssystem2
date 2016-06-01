@@ -3328,9 +3328,9 @@ namespace TSS_SYSTEM
     #endregion
 }
 //プログラムの配布手順
-//①tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
-//②tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
-//③コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//①コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//②tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
+//③tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
 //
 //更新履歴
 //1.01              正式リリース

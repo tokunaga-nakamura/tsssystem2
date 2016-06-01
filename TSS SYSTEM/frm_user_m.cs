@@ -76,7 +76,7 @@ namespace TSS_SYSTEM
             tb_syain_kbn.Text = "";
             tb_syain_kbn_name.Text = "";
             tb_busyo_cd.Text = "";
-            tb_busyo_cd_name.Text = "";
+            tb_busyo_name.Text = "";
             tb_login_kyoka_kbn.Text = "";
             tb_kinmu_time1.Text = "";
             tb_kinmu_time2.Text = "";
@@ -108,7 +108,7 @@ namespace TSS_SYSTEM
             tb_syain_kbn.Text = in_dt_work.Rows[0]["syain_kbn"].ToString();
             tb_syain_kbn_name.Text = get_syain_kbn(tb_syain_kbn.Text);
             tb_busyo_cd.Text = in_dt_work.Rows[0]["busyo_cd"].ToString();
-            tb_busyo_cd_name.Text = get_busyo_cd(tb_busyo_cd.Text);
+            tb_busyo_name.Text = get_busyo_name(tb_busyo_cd.Text);
             tb_login_kyoka_kbn.Text = in_dt_work.Rows[0]["login_kyoka_kbn"].ToString();
             tb_login_kyoka_kbn_name.Text = get_login_kyoka_kbn(tb_login_kyoka_kbn.Text);
             tb_kinmu_time1.Text = in_dt_work.Rows[0]["kinmu_time1"].ToString();
@@ -168,12 +168,19 @@ namespace TSS_SYSTEM
             return out_name;
         }
 
-        private string get_busyo_cd(string in_cd)
+        private string get_busyo_name(string in_cd)
         {
             string out_name = "";  //戻り値用
-
-            //現在はまだ未使用の為、なんでもOKにする
-
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select * from tss_busyo_m where busyo_cd = '" + in_cd + "'");
+            if(w_dt.Rows.Count <= 0)
+            {
+                out_name = "";
+            }
+            else
+            {
+                out_name = w_dt.Rows[0]["busyo_name"].ToString();
+            }
             return out_name;
         }
 
@@ -474,8 +481,9 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            tb_busyo_cd_name.Text = get_busyo_cd(tb_busyo_cd.Text);
+            tb_busyo_name.Text = get_busyo_name(tb_busyo_cd.Text);
         }
+
         private void tb_login_kyoka_kbn_Validating(object sender, CancelEventArgs e)
         {
             if (tss.Check_String_Escape(tb_login_kyoka_kbn.Text) == false)
@@ -485,6 +493,7 @@ namespace TSS_SYSTEM
             }
             tb_login_kyoka_kbn_name.Text = get_login_kyoka_kbn(tb_login_kyoka_kbn.Text);
         }
+
         private void tb_kengen1_Validating(object sender, CancelEventArgs e)
         {
             if (tss.Check_String_Escape(tb_kengen1.Text) == false)
@@ -707,6 +716,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_user_name2()
         {
             bool bl = true; //戻り値用
@@ -716,6 +726,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_password()
         {
             bool bl = true; //戻り値用
@@ -725,6 +736,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_syain_kbn()
         {
             bool bl = true; //戻り値用
@@ -738,12 +750,22 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_busyo_cd()
         {
             bool bl = true; //戻り値用
-            //現在、部署コードは未使用なので、なんでもOKにする
+            DataTable w_dt = new DataTable();
+            if(tb_busyo_cd.Text != null && tb_busyo_cd.Text.Length != 0)
+            {
+                w_dt = tss.OracleSelect("select * from tss_busyo_m where busyo_cd = '" + tb_busyo_cd.Text + "'");
+                if(w_dt.Rows.Count <= 0)
+                {
+                    bl = false;
+                }
+            }
             return bl;
         }
+
         private bool chk_login_kyoka_kbn()
         {
             bool bl = true; //戻り値用
@@ -757,6 +779,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kinmu_time1()
         {
             bool bl = true; //戻り値用
@@ -768,6 +791,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kinmu_time2()
         {
             bool bl = true; //戻り値用
@@ -779,6 +803,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen1()
         {
             bool bl = true; //戻り値用
@@ -792,6 +817,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen2()
         {
             bool bl = true; //戻り値用
@@ -805,6 +831,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen3()
         {
             bool bl = true; //戻り値用
@@ -818,6 +845,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen4()
         {
             bool bl = true; //戻り値用
@@ -831,6 +859,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen5()
         {
             bool bl = true; //戻り値用
@@ -844,6 +873,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen6()
         {
             bool bl = true; //戻り値用
@@ -857,6 +887,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen7()
         {
             bool bl = true; //戻り値用
@@ -870,6 +901,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen8()
         {
             bool bl = true; //戻り値用
@@ -883,6 +915,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_kengen9()
         {
             bool bl = true; //戻り値用
@@ -896,6 +929,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
         private bool chk_bikou()
         {
             bool bl = true; //戻り値用
@@ -924,7 +958,6 @@ namespace TSS_SYSTEM
                 MessageBox.Show("新規登録しました。");
             }
         }
-
 
         private void record_update()
         {
@@ -1283,7 +1316,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_user_name2_Validating(object sender, CancelEventArgs e)
@@ -1293,7 +1325,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void mtb_password_Validating(object sender, CancelEventArgs e)
@@ -1303,7 +1334,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_kinmu_time1_Validating(object sender, CancelEventArgs e)
@@ -1313,7 +1343,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_kinmu_time2_Validating(object sender, CancelEventArgs e)
@@ -1323,7 +1352,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_bikou_Validating(object sender, CancelEventArgs e)
@@ -1333,7 +1361,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_kengen7_DoubleClick(object sender, EventArgs e)
@@ -1496,6 +1523,16 @@ namespace TSS_SYSTEM
             //選択画面へ
             this.tb_kengen9.Text = tss.kubun_cd_select_dt("権限9（未使用）", dt_work, tb_kengen9.Text);
             tb_kengen9_name.Text = get_kengen9(tb_kengen9.Text);
+        }
+
+        private void tb_busyo_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select busyo_cd,busyo_name from tss_busyo_m where delete_flg <> '1' order by busyo_cd");
+            //選択画面へ
+            this.tb_busyo_cd.Text = tss.kubun_cd_select_dt("部署コード", dt_work, tb_busyo_cd.Text);
+            tb_busyo_name.Text = get_busyo_name(tb_busyo_cd.Text);
         }
 
 
