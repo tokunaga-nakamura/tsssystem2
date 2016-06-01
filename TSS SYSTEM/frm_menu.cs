@@ -118,7 +118,7 @@ namespace TSS_SYSTEM
             ss_status.Items.Add(tss.system_name);
             ss_status.Items.Add(tss.system_version);
             ss_status.Items.Add(tss.user_name);
-            ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+tss.kengen4+tss.kengen5+tss.kengen6);
+            ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+"-"+tss.kengen4+tss.kengen5+tss.kengen6+"-"+tss.kengen7+tss.kengen8+tss.kengen9);
 
             if (tss.DataSource == "pdb")
             {

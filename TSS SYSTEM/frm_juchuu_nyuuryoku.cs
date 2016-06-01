@@ -15,7 +15,6 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_nouhin_schedule = new DataTable();   //納品スケジュールバインド用
 
-
         public frm_juchuu_nyuuryoku()
         {
             InitializeComponent();
@@ -365,7 +364,6 @@ namespace TSS_SYSTEM
             dgv_uriage.Columns["uriage_su"].DefaultCellStyle.Format = "#,###,###,##0.00";
             dgv_uriage.Columns["hanbai_tanka"].DefaultCellStyle.Format = "#,###,###,##0.00";
             dgv_uriage.Columns["uriage_kingaku"].DefaultCellStyle.Format = "#,###,###,##0.00";
-
         }
 
         private void kousin_rireki_disp()
@@ -553,6 +551,7 @@ namespace TSS_SYSTEM
                     {
                         if (nouhin_schedule_write())
                         {
+                            tss.Seisan_Schedule_Make(tb_torihikisaki_cd.Text.ToString(), tb_juchu_cd1.Text.ToString(), tb_juchu_cd2.Text.ToString());
                             MessageBox.Show("登録されました。");
                             gamen_all_clear();
                             tb_torihikisaki_cd.Focus();
@@ -592,6 +591,7 @@ namespace TSS_SYSTEM
                     {
                         if (nouhin_schedule_write())
                         {
+                            tss.Seisan_Schedule_Make(tb_torihikisaki_cd.Text.ToString(), tb_juchu_cd1.Text.ToString(), tb_juchu_cd2.Text.ToString());
                             MessageBox.Show("更新されました。");
                             gamen_all_clear();
                             tb_torihikisaki_cd.Focus();
@@ -612,7 +612,6 @@ namespace TSS_SYSTEM
                     tb_seihin_cd.Focus();
                 }
             }
-
         }
 
         private bool chk_torihikisaki_cd()
@@ -831,50 +830,6 @@ namespace TSS_SYSTEM
                     return bl;
                 }
 
-                ////実績日
-                ////今のところ受注画面では空白を許容し、入力された文字が日付として認識できるかだけチェックする
-                //if(dgv_nounyuu_schedule.Rows[i].Cells[8].Value.ToString() != "" && dgv_nounyuu_schedule.Rows[i].Cells[8].Value.ToString() != null)
-                //{
-                //    DateTime w_date2;
-                //    DateTimeに変換できるか確かめる
-                //    if (DateTime.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[8].Value.ToString(), out w_date2))
-                //    {
-                //        変換出来たら、dtにその値が入る
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("実績日が日付として認識できない値です。");
-                //        dgv_nounyuu_schedule.CurrentCell = dgv_nounyuu_schedule[8, i];
-                //        bl = false;
-                //        return bl;
-                //    }
-                //}
-
-                ////実績数
-                ////今のところ受注画面では空白を許容し、入力された場合のみチェックする
-                //decimal db2;
-                //if (dgv_nounyuu_schedule.Rows[i].Cells[9].Value.ToString() != "" && dgv_nounyuu_schedule.Rows[i].Cells[9].Value.ToString() != null)
-                //{
-                //    if (decimal.TryParse(dgv_nounyuu_schedule.Rows[i].Cells[9].Value.ToString(), out db2))
-                //    {
-                //        変換出来たら、lgにその数値が入る
-                //        if (db > decimal.Parse("9999999999.99") || db < decimal.Parse("-999999999.99"))
-                //        {
-                //            MessageBox.Show("実績数は0から9999999999.99の範囲で入力してください。");
-                //            dgv_nounyuu_schedule.CurrentCell = dgv_nounyuu_schedule[9, i];
-                //            bl = false;
-                //            return bl;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("実績数は0から9999999999.99の範囲で入力してください。");
-                //        dgv_nounyuu_schedule.CurrentCell = dgv_nounyuu_schedule[9, i];
-                //        bl = false;
-                //        return bl;
-                //    }
-                //}
-
                 //備考
                 if (tss.StringByte(dgv_nounyuu_schedule.Rows[i].Cells[11].Value.ToString()) > 128)
                 {
@@ -904,7 +859,6 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
-
 
         private bool chk_nouhin_su_ttl()
         {
@@ -1254,7 +1208,6 @@ namespace TSS_SYSTEM
             return out_bl;
         }
 
-
         private void dgv_nounyuu_schedule_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -1550,11 +1503,9 @@ namespace TSS_SYSTEM
                 //「はい」が選択された時
                 //Console.WriteLine("「はい」が選択されました");
                 
-                
                 tss.GetUser();
                 //更新
                 bool bl_tss = true;
-
 
                 bl_tss = tss.OracleUpdate("UPDATE tss_juchu_m SET uriage_kanryou_flg = '0',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'");
                 if (bl_tss != true)
@@ -1571,7 +1522,6 @@ namespace TSS_SYSTEM
                         tb_uriage_kanryou_flg.Text = "0";
                         lbl_juchu_no.Text = "既存データ";
                         lbl_touroku.Text = "既存データは「更新理由」を入力しないと登録できません。";
-
                     }
                     else
                     {
