@@ -15,6 +15,8 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_m = new DataTable();
 
+        public string in_cd;    //外部からの進入用
+
         public frm_buhin_to_seihin()
         {
             InitializeComponent();
@@ -176,7 +178,7 @@ namespace TSS_SYSTEM
         {
             //選択画面へ
             string w_buhin_cd;
-            w_buhin_cd = tss.search_buhin("2", "");
+            w_buhin_cd = tss.search_buhin("2", tb_buhin_cd.Text);
             if(w_buhin_cd == "")
             {
                 return;
@@ -203,6 +205,15 @@ namespace TSS_SYSTEM
             frm_rpt.ShowDialog();
             //子画面から値を取得する
             frm_rpt.Dispose();
+        }
+
+        private void frm_buhin_to_seihin_Load(object sender, EventArgs e)
+        {
+            if(in_cd != null && in_cd != "")
+            {
+                tb_buhin_cd.Text = in_cd;
+
+            }
         }
     }
 }

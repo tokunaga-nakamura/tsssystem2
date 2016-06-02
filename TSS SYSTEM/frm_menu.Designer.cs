@@ -103,6 +103,7 @@
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_koutei = new System.Windows.Forms.Button();
             this.btn_system_administrator = new System.Windows.Forms.Button();
             this.btn_busyo_m = new System.Windows.Forms.Button();
             this.btn_line_m = new System.Windows.Forms.Button();
@@ -1051,6 +1052,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.btn_seisan_koutei);
             this.tabPage6.Controls.Add(this.btn_system_administrator);
             this.tabPage6.Controls.Add(this.btn_busyo_m);
             this.tabPage6.Controls.Add(this.btn_line_m);
@@ -1073,6 +1075,16 @@
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
+            // 
+            // btn_seisan_koutei
+            // 
+            this.btn_seisan_koutei.Location = new System.Drawing.Point(462, 119);
+            this.btn_seisan_koutei.Name = "btn_seisan_koutei";
+            this.btn_seisan_koutei.Size = new System.Drawing.Size(220, 23);
+            this.btn_seisan_koutei.TabIndex = 20;
+            this.btn_seisan_koutei.Text = "生産工程マスタ";
+            this.btn_seisan_koutei.UseVisualStyleBackColor = true;
+            this.btn_seisan_koutei.Click += new System.EventHandler(this.btn_seisan_koutei_Click);
             // 
             // btn_system_administrator
             // 
@@ -1434,6 +1446,7 @@
         private System.Windows.Forms.Button btn_busyo_m;
         private System.Windows.Forms.Button btn_system_administrator;
         private System.Windows.Forms.Button btn_seisan_koutei_m;
+        private System.Windows.Forms.Button btn_seisan_koutei;
     }
 }
 

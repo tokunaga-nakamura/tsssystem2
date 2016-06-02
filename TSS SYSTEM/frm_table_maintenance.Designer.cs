@@ -35,13 +35,14 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.btn_hyouji = new System.Windows.Forms.Button();
+            this.cb_table_name = new System.Windows.Forms.ComboBox();
             this.tb_sql = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_table_name = new System.Windows.Forms.ComboBox();
             this.dgv_table = new System.Windows.Forms.DataGridView();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +56,10 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -112,11 +117,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(884, 475);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.SplitterDistance = 437;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -139,7 +142,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_table);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
             this.splitContainer3.SplitterDistance = 32;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -152,6 +155,16 @@
             this.btn_hyouji.Text = "表示";
             this.btn_hyouji.UseVisualStyleBackColor = true;
             this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
+            // 
+            // cb_table_name
+            // 
+            this.cb_table_name.FormattingEnabled = true;
+            this.cb_table_name.Location = new System.Drawing.Point(93, 5);
+            this.cb_table_name.Name = "cb_table_name";
+            this.cb_table_name.Size = new System.Drawing.Size(265, 20);
+            this.cb_table_name.TabIndex = 0;
+            this.cb_table_name.Text = "メンテナンスするテーブルを選択してください。";
+            this.cb_table_name.DropDown += new System.EventHandler(this.cb_table_name_DropDown);
             // 
             // tb_sql
             // 
@@ -170,16 +183,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "select * from ";
             // 
-            // cb_table_name
-            // 
-            this.cb_table_name.FormattingEnabled = true;
-            this.cb_table_name.Location = new System.Drawing.Point(93, 5);
-            this.cb_table_name.Name = "cb_table_name";
-            this.cb_table_name.Size = new System.Drawing.Size(265, 20);
-            this.cb_table_name.TabIndex = 0;
-            this.cb_table_name.Text = "メンテナンスするテーブルを選択してください。";
-            this.cb_table_name.DropDown += new System.EventHandler(this.cb_table_name_DropDown);
-            // 
             // dgv_table
             // 
             this.dgv_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -187,12 +190,12 @@
             this.dgv_table.Location = new System.Drawing.Point(0, 0);
             this.dgv_table.Name = "dgv_table";
             this.dgv_table.RowTemplate.Height = 21;
-            this.dgv_table.Size = new System.Drawing.Size(880, 399);
+            this.dgv_table.Size = new System.Drawing.Size(880, 397);
             this.dgv_table.TabIndex = 0;
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(91, 3);
+            this.btn_csv.Location = new System.Drawing.Point(84, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 2;
@@ -202,7 +205,7 @@
             // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(10, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 1;
@@ -212,13 +215,33 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(791, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
+            this.splitContainer4.Panel1.Controls.Add(this.btn_csv);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer4.SplitterDistance = 795;
+            this.splitContainer4.TabIndex = 3;
             // 
             // frm_table_maintenance
             // 
@@ -244,6 +267,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_table)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +291,6 @@
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.DataGridView dgv_table;
+        private System.Windows.Forms.SplitContainer splitContainer4;
     }
 }

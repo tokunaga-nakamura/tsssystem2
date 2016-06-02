@@ -14,6 +14,8 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
 
+        public string in_cd;    //外部からの進入用
+
         public frm_seihin_m()
         {
             InitializeComponent();
@@ -57,6 +59,11 @@ namespace TSS_SYSTEM
         private void frm_seihin_m_Load(object sender, EventArgs e)
         {
             this.ActiveControl = this.tb_seihin_cd;
+            if(in_cd != null && in_cd != "")
+            {
+                tb_seihin_cd.Text = in_cd;
+                chk_seihin_cd();
+            }
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -878,7 +885,6 @@ namespace TSS_SYSTEM
             frm_stk.ShowDialog(this);
             frm_stk.Dispose();
             chk_seihin_cd();
-
         }
 
         private void tb_seihin_name_Validating(object sender, CancelEventArgs e)
@@ -920,6 +926,16 @@ namespace TSS_SYSTEM
         {
             this.tb_nouhin_schedule_kbn.Text = tss.kubun_cd_select("09", tb_nouhin_schedule_kbn.Text);
             this.tb_nouhin_schedule_kbn_name.Text = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
+        }
+
+        private void btn_seihin_kousei_Click(object sender, EventArgs e)
+        {
+            frm_seihin_kousei_m frm_skm = new frm_seihin_kousei_m();
+
+            //子画面のプロパティに値をセットする
+            frm_skm.in_cd = tb_seihin_cd.Text;
+            frm_skm.ShowDialog();
+            frm_skm.Dispose();
         }
 
     }

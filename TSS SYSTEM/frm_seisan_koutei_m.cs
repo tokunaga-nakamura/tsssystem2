@@ -68,7 +68,6 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
-
         }
 
         private bool chk_seihin_cd()
@@ -90,7 +89,6 @@ namespace TSS_SYSTEM
                     dt_m.Rows[i]["checkbox"] = true;
                 }
             }
-            
             if (dt_m.Rows.Count <= 0)
             {
                 //新規
@@ -112,28 +110,8 @@ namespace TSS_SYSTEM
             {
                 //既存データ有
                 gamen_disp("1");
-                //tb_seihin_cd.Text = dt_m.Rows[0]["seihin_cd"].ToString();
-                //tb_seihin_name.Text = get_seihin_name(dt_m.Rows[0]["seihin_cd"].ToString());
                 dgv_koutei_disp();
                 dgv_line_disp();
-                //tb_koutei_no.Text = "";
-                //tb_bikou.Text = "";
-                //tb_comments.Text = "";
-                //tb_busyo_cd.Text = "";
-                //tb_busyo_name.Text = "";
-                //tb_koutei_cd.Text = "";
-                //tb_koutei_name.Text = "";
-                //tb_line_select_kbn.Text = "";
-                //tb_jisseki_kanri_kbn.Text = "";
-                //tb_seisan_start_day.Text = "";
-                //tb_koutei_start_time.Text = "";
-                //tb_create_user_cd.Text = dt_m.Rows[0]["create_user_cd"].ToString();
-                //tb_create_datetime.Text = dt_m.Rows[0]["create_datetime"].ToString();
-                //tb_update_user_cd.Text = dt_m.Rows[0]["update_user_cd"].ToString();
-                //tb_update_datetime.Text = dt_m.Rows[0]["update_datetime"].ToString();
-                
-                //dgv_line.DataSource = null;
-
             }
             return bl;
         }
@@ -164,8 +142,6 @@ namespace TSS_SYSTEM
                 tb_update_user_cd.Text = rows[0]["update_user_cd"].ToString();
                 tb_update_datetime.Text = rows[0]["update_datetime"].ToString();
             }
-
-            
         }
 
         private string get_seihin_name(string in_seihin_cd)
@@ -183,7 +159,6 @@ namespace TSS_SYSTEM
             }
             return out_seihin_name;
         }
-
 
         private string get_busyo_name(string in_busyo_cd)
         {
@@ -260,7 +235,6 @@ namespace TSS_SYSTEM
             dgv_koutei.Columns["SEQ_NO"].DefaultCellStyle.BackColor = Color.LightGray;
             dgv_koutei.Columns["koutei_name"].ReadOnly = true;
             dgv_koutei.Columns["koutei_name"].DefaultCellStyle.BackColor = Color.LightGray;
-
         }
 
         private void dgv_line_disp()
@@ -348,11 +322,7 @@ namespace TSS_SYSTEM
             dgv_line.Columns["dandori_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_line.Columns["tuika_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_line.Columns["hoju_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
         }
-
-       
-        
 
         private void dgv_line_disp_sinki()
         {
@@ -365,7 +335,6 @@ namespace TSS_SYSTEM
             dt_line.Rows.Clear();
             dt_line.Rows.Add();
             dgv_line.DataSource = dt_line;
-
 
             //選択区分を非表示
             dgv_line.Columns["select_kbn"].Visible = false;
@@ -413,7 +382,6 @@ namespace TSS_SYSTEM
             dgv_line.Columns["dandori_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_line.Columns["tuika_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_line.Columns["hoju_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
         }
 
         private void gamen_clear()
@@ -436,9 +404,7 @@ namespace TSS_SYSTEM
             dgv_koutei.DataSource = null;
             dgv_line.DataSource = null;
             dgv_line_disp_sinki();
-
         }
-
 
         private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -487,8 +453,6 @@ namespace TSS_SYSTEM
                     rows[i]["koutei_cd"] = str;
                 }
             }
-
-
         }
 
         private bool chk_koutei_cd()
@@ -529,8 +493,6 @@ namespace TSS_SYSTEM
                     e.Cancel = true;
                 }
             }
-
-
             if (tb_koutei_no.Text.ToString() != "")
             {
                 //変更を一時的に保持・・・・データテーブル内のデータを変更
@@ -540,10 +502,7 @@ namespace TSS_SYSTEM
 
                 //配列の長さ取得
                 int ui = rows.Length;
-
                 String str = tb_busyo_cd.Text.ToString();
-
-
                 //指定セルの値を書き換え
                 for (int i = 0; i <= ui - 1; i++)
                 {
@@ -771,7 +730,6 @@ namespace TSS_SYSTEM
                     rows[i]["line_select_kbn"] = str;
                 }
             }
-            
         }
 
         private void tb_seisan_start_day_Validating(object sender, CancelEventArgs e)
@@ -814,17 +772,16 @@ namespace TSS_SYSTEM
                 //配列の長さ取得
                 int ui = rows.Length;
 
-                    //指定セルの値を書き換え
-                    for (int i = 0; i <= ui - 1; i++)
-                    {
-                        rows[i]["seisan_start_day"] = DBNull.Value;
-                    }
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                     rows[i]["seisan_start_day"] = DBNull.Value;
+                }
             }
         }
 
         private void tb_koutei_start_time_Validating(object sender, CancelEventArgs e)
         {
-
             if (tb_koutei_start_time.Text.ToString() != "")
             {
                 //変更を一時的に保持・・・・データテーブル内のデータを変更
@@ -852,7 +809,6 @@ namespace TSS_SYSTEM
                     tb_koutei_start_time.Focus();
                     return;
                 }
-               
             }
             else
             {
@@ -863,13 +819,11 @@ namespace TSS_SYSTEM
 
                 //配列の長さ取得
                 int ui = rows.Length;
-
-               
-                    //指定セルの値を書き換え
-                    for (int i = 0; i <= ui - 1; i++)
-                    {
-                        rows[i]["koutei_start_time"] = DBNull.Value;
-                    }
+                //指定セルの値を書き換え
+                for (int i = 0; i <= ui - 1; i++)
+                {
+                    rows[i]["koutei_start_time"] = DBNull.Value;
+                }
             }
         }
 
@@ -887,14 +841,12 @@ namespace TSS_SYSTEM
 
                 String str = tb_bikou.Text.ToString();
 
-
                 //指定セルの値を書き換え
                 for (int i = 0; i <= ui - 1; i++)
                 {
                     rows[i]["bikou"] = str;
                 }
             }
-            
         }
 
         private void tb_comments_Validating(object sender, CancelEventArgs e)
@@ -910,7 +862,6 @@ namespace TSS_SYSTEM
                 int ui = rows.Length;
 
                 String str = tb_comments.Text.ToString();
-
 
                 //指定セルの値を書き換え
                 for (int i = 0; i <= ui - 1; i++)
@@ -931,7 +882,6 @@ namespace TSS_SYSTEM
                 //tb_koutei_no.Text = str;
                 //dgv_line_disp();
             }
-
         }
 
         //dgvライン1行追加イベント
@@ -1003,9 +953,7 @@ namespace TSS_SYSTEM
             dt_m.Rows[rc - 1]["comments"] = tb_comments.Text.ToString();
 
             dgv_line_disp();
-            
         }
-
 
         private void dgv_koutei_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
@@ -1023,9 +971,7 @@ namespace TSS_SYSTEM
 
             //DataSetController.DeleteSelectRows(dt_m, "seq_no = '" + str + "'");
             DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + str + "'");
-
         }
-
         
         public class DataSetController
         {
@@ -1085,7 +1031,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
        
         //工程dgv削除後のイベント
         private void dgv_koutei_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -1167,8 +1112,6 @@ namespace TSS_SYSTEM
             tb_busyo_name.Clear();
 
             dgv_line_disp();
-
-
         }
 
         //工程dgvのセルの値が変更された
@@ -1225,8 +1168,6 @@ namespace TSS_SYSTEM
                         //データグリッドビューに生産工程ラインマスタから取得した値を入れる
                         dgv.Rows[i].Cells["koutei_cd"].Value = dt_work.Rows[j]["koutei_cd"].ToString();
                         dgv.Rows[i].Cells["koutei_name"].Value = dt_work.Rows[j]["koutei_name"].ToString();
-                        
-                        
 
                         //データテーブルの指定行に工程コードと工程名を入れる
 
@@ -1384,8 +1325,6 @@ namespace TSS_SYSTEM
                     dt_m.Rows[i]["select_kbn"] = 0;
                 }
             }
-
-            
             
             //if (tss.User_Kengen_Check(4, 6) == false)
             //{
@@ -1422,8 +1361,6 @@ namespace TSS_SYSTEM
             //    return;
             //}
             
-           
-            
             //①生産工程マスタ更新
             //既存のデータの削除
             tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
@@ -1458,7 +1395,6 @@ namespace TSS_SYSTEM
                 }
             }
 
-
             for (int i = 0; i < rc ; i++)
             {
                 tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (SEIHIN_CD,SEQ_NO,BUSYO_CD,KOUTEI_LEVEL,KOUTEI_CD,OYA_KOUTEI_SEQ,OYA_KOUTEI_CD,JISSEKI_KANRI_KBN,LINE_SELECT_KBN,SEISAN_START_DAY,MAE_KOUTEI_SEQ,KOUTEI_START_TIME,COMMENTS,BIKOU,DELETE_FLG,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
@@ -1484,7 +1420,6 @@ namespace TSS_SYSTEM
             }
 
             MessageBox.Show("生産工程マスタに登録しました");
-
             
             //②生産工程ラインマスタ更新
             //既存のデータの削除
@@ -1495,11 +1430,8 @@ namespace TSS_SYSTEM
             //作成、編集した内容で生産工程テーブルにインサート  
             DataTable dt_seisan_koutei_line_m = new DataTable();
 
-
-
             //重複を除去するため DataView を使う
             DataView vw2 = new DataView(dt_m);
-
 
             //Distinct（集計）をかける
             dt_seisan_koutei_line_m = vw2.ToTable("dt_seisan_koutei_line", true, "SEIHIN_CD", "SEQ_NO","LINE_CD","SELECT_KBN","TACT_TIME","DANDORI_TIME","TUIKA_TIME","HOJU_TIME","BIKOU1", "DELETE_FLG1", "CREATE_USER_CD1", "CREATE_DATETIME1", "UPDATE_USER_CD1", "UPDATE_DATETIME1");
@@ -1518,7 +1450,6 @@ namespace TSS_SYSTEM
                     dt_seisan_koutei_line_m.Rows[i]["create_datetime1"] = System.DateTime.Now;
                 }
             }
-
 
             for (int i = 0; i < rc2; i++)
             {
@@ -1540,12 +1471,6 @@ namespace TSS_SYSTEM
             }
 
             MessageBox.Show("生産工程ラインマスタに登録しました");
-
-            
-
-
-
-
         }
 
         //ここから下、各項目のチェックメソッド
@@ -1562,8 +1487,6 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
-
-       
 
         private bool chk_line_select_kbn()
         {
@@ -1599,8 +1522,5 @@ namespace TSS_SYSTEM
         {
 
         }
-
-
-
     }
 }

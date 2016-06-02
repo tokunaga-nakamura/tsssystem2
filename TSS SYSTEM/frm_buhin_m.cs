@@ -992,5 +992,13 @@ namespace TSS_SYSTEM
         {
             zaiko_disp(tb_buhin_cd.Text);
         }
+
+        private void btn_buhin_seihin_Click(object sender, EventArgs e)
+        {
+            frm_buhin_to_seihin frm_bts = new frm_buhin_to_seihin();
+            frm_bts.in_cd = tb_buhin_cd.Text;
+            frm_bts.ShowDialog();
+            frm_bts.Dispose();
+        }
     }
 }

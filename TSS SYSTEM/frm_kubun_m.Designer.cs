@@ -39,10 +39,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cb_kubun_meisyou_cd = new System.Windows.Forms.ComboBox();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dgv_kubun_m = new System.Windows.Forms.DataGridView();
-            this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,11 +55,11 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_kubun_m)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_kubun_m)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -128,9 +128,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(884, 473);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.SplitterDistance = 436;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -153,8 +153,8 @@
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
+            this.splitContainer3.Panel2.Controls.Add(this.dgv_kubun_m);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 436);
             this.splitContainer3.SplitterDistance = 56;
             this.splitContainer3.TabIndex = 2;
             this.splitContainer3.TabStop = false;
@@ -202,28 +202,6 @@
             this.cb_kubun_meisyou_cd.DropDown += new System.EventHandler(this.cb_kubun_meisyou_cd_DropDown);
             this.cb_kubun_meisyou_cd.SelectionChangeCommitted += new System.EventHandler(this.cb_kubun_meisyou_cd_SelectionChangeCommitted);
             // 
-            // splitContainer4
-            // 
-            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer4.IsSplitterFixed = true;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.dgv_kubun_m);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 379);
-            this.splitContainer4.SplitterDistance = 343;
-            this.splitContainer4.TabIndex = 0;
-            this.splitContainer4.TabStop = false;
-            // 
             // dgv_kubun_m
             // 
             this.dgv_kubun_m.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -231,13 +209,23 @@
             this.dgv_kubun_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_kubun_m.Name = "dgv_kubun_m";
             this.dgv_kubun_m.RowTemplate.Height = 21;
-            this.dgv_kubun_m.Size = new System.Drawing.Size(880, 339);
+            this.dgv_kubun_m.Size = new System.Drawing.Size(880, 372);
             this.dgv_kubun_m.TabIndex = 0;
             this.dgv_kubun_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_kubun_m_CellValidating);
             // 
+            // btn_syuuryou
+            // 
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(795, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 0;
@@ -245,15 +233,24 @@
             this.btn_touroku.UseVisualStyleBackColor = true;
             this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
-            // btn_syuuryou
+            // splitContainer4
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 29);
+            this.splitContainer4.SplitterDistance = 795;
+            this.splitContainer4.TabIndex = 1;
             // 
             // frm_kubun_m
             // 
@@ -280,11 +277,11 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_kubun_m)).EndInit();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_kubun_m)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,9 +299,9 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox tb_bikou;
-        private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.DataGridView dgv_kubun_m;
-        private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.Button btn_touroku;
     }
 }

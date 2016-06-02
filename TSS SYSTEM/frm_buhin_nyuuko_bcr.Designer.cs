@@ -37,6 +37,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbl_test_mode = new System.Windows.Forms.Label();
             this.tb_syori_date = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -46,7 +47,7 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.lbl_test_mode = new System.Windows.Forms.Label();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,6 +61,10 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -139,10 +144,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(884, 477);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -167,10 +171,21 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
             this.splitContainer3.SplitterDistance = 66;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
+            // 
+            // lbl_test_mode
+            // 
+            this.lbl_test_mode.AutoSize = true;
+            this.lbl_test_mode.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_test_mode.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_test_mode.Location = new System.Drawing.Point(537, 3);
+            this.lbl_test_mode.Name = "lbl_test_mode";
+            this.lbl_test_mode.Size = new System.Drawing.Size(0, 21);
+            this.lbl_test_mode.TabIndex = 5;
+            this.lbl_test_mode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_syori_date
             // 
@@ -230,7 +245,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 366);
+            this.dgv_m.Size = new System.Drawing.Size(880, 365);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
@@ -239,7 +254,7 @@
             // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(10, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 0;
@@ -249,7 +264,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 1;
@@ -261,16 +276,25 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // lbl_test_mode
+            // splitContainer4
             // 
-            this.lbl_test_mode.AutoSize = true;
-            this.lbl_test_mode.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_test_mode.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_test_mode.Location = new System.Drawing.Point(537, 3);
-            this.lbl_test_mode.Name = "lbl_test_mode";
-            this.lbl_test_mode.Size = new System.Drawing.Size(0, 21);
-            this.lbl_test_mode.TabIndex = 5;
-            this.lbl_test_mode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer4.SplitterDistance = 794;
+            this.splitContainer4.TabIndex = 2;
+            this.splitContainer4.TabStop = false;
             // 
             // frm_buhin_nyuuko_bcr
             // 
@@ -297,6 +321,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,5 +350,6 @@
         private System.Windows.Forms.TextBox tb_syori_date;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lbl_test_mode;
+        private System.Windows.Forms.SplitContainer splitContainer4;
     }
 }

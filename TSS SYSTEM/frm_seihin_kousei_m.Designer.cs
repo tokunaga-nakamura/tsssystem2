@@ -56,6 +56,7 @@
             this.btn_tsuika = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_buhin_m = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_kousei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -132,7 +133,7 @@
             this.dgv_seihin_kousei.Location = new System.Drawing.Point(0, 0);
             this.dgv_seihin_kousei.Name = "dgv_seihin_kousei";
             this.dgv_seihin_kousei.RowTemplate.Height = 21;
-            this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 300);
+            this.dgv_seihin_kousei.Size = new System.Drawing.Size(880, 298);
             this.dgv_seihin_kousei.TabIndex = 0;
             this.dgv_seihin_kousei.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellDoubleClick);
             this.dgv_seihin_kousei.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_seihin_kousei_CellEndEdit);
@@ -167,7 +168,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_seihin_kousei);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 438);
             this.splitContainer3.SplitterDistance = 132;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -345,20 +346,21 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btn_buhin_m);
             this.splitContainer2.Panel2.Controls.Add(this.cb_1);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatsu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_tsuika);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.SplitterDistance = 438;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
             // cb_1
             // 
             this.cb_1.AutoSize = true;
-            this.cb_1.Location = new System.Drawing.Point(191, 8);
+            this.cb_1.Location = new System.Drawing.Point(165, 7);
             this.cb_1.Name = "cb_1";
             this.cb_1.Size = new System.Drawing.Size(170, 16);
             this.cb_1.TabIndex = 6;
@@ -368,7 +370,7 @@
             // 
             // btn_insatsu
             // 
-            this.btn_insatsu.Location = new System.Drawing.Point(108, 4);
+            this.btn_insatsu.Location = new System.Drawing.Point(84, 3);
             this.btn_insatsu.Name = "btn_insatsu";
             this.btn_insatsu.Size = new System.Drawing.Size(75, 23);
             this.btn_insatsu.TabIndex = 5;
@@ -378,7 +380,7 @@
             // 
             // btn_tsuika
             // 
-            this.btn_tsuika.Location = new System.Drawing.Point(10, 4);
+            this.btn_tsuika.Location = new System.Drawing.Point(3, 3);
             this.btn_tsuika.Name = "btn_tsuika";
             this.btn_tsuika.Size = new System.Drawing.Size(75, 23);
             this.btn_tsuika.TabIndex = 4;
@@ -418,6 +420,16 @@
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_buhin_m
+            // 
+            this.btn_buhin_m.Location = new System.Drawing.Point(437, 3);
+            this.btn_buhin_m.Name = "btn_buhin_m";
+            this.btn_buhin_m.Size = new System.Drawing.Size(75, 23);
+            this.btn_buhin_m.TabIndex = 7;
+            this.btn_buhin_m.Text = "部品マスタ";
+            this.btn_buhin_m.UseVisualStyleBackColor = true;
+            this.btn_buhin_m.Click += new System.EventHandler(this.btn_buhin_m_Click);
             // 
             // frm_seihin_kousei_m
             // 
@@ -485,5 +497,6 @@
         private System.Windows.Forms.Button btn_tsuika;
         private System.Windows.Forms.Button btn_insatsu;
         private System.Windows.Forms.CheckBox cb_1;
+        private System.Windows.Forms.Button btn_buhin_m;
     }
 }

@@ -1550,5 +1550,21 @@ namespace TSS_SYSTEM
             //string str = String.Format("{0:#,0}", number); // 変換後
             //tb_juchu_su.Text = str;
         }
+
+        private void btn_seihin_m_Click(object sender, EventArgs e)
+        {
+            frm_seihin_m frm_sm = new frm_seihin_m();
+            frm_sm.in_cd = tb_seihin_cd.Text;
+            frm_sm.ShowDialog();
+            frm_sm.Dispose();
+        }
+
+        private void btn_seihin_kousei_Click(object sender, EventArgs e)
+        {
+            frm_seihin_kousei_m frm_skm = new frm_seihin_kousei_m();
+            frm_skm.in_cd = tb_seihin_cd.Text;
+            frm_skm.ShowDialog();
+            frm_skm.Dispose();
+        }
     }
 }

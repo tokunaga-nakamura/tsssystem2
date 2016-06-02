@@ -62,10 +62,10 @@
             this.cb_lot_zaiko = new System.Windows.Forms.CheckBox();
             this.tb_torihikisaki_cd_midasi = new System.Windows.Forms.TextBox();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -168,7 +168,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 438;
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -198,7 +198,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 434);
+            this.splitContainer3.Size = new System.Drawing.Size(880, 435);
             this.splitContainer3.SplitterDistance = 73;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
@@ -346,7 +346,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_m);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 357);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 358);
             this.splitContainer4.SplitterDistance = 57;
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
@@ -494,9 +494,29 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(876, 292);
+            this.dgv_m.Size = new System.Drawing.Size(876, 293);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.button2);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 29);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 3;
             // 
             // btn_insatu
             // 
@@ -527,26 +547,6 @@
             this.button2.Text = "終了";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer5.IsSplitterFixed = true;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Name = "splitContainer5";
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
-            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.button2);
-            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
-            this.splitContainer5.SplitterDistance = 795;
-            this.splitContainer5.TabIndex = 3;
             // 
             // frm_seihin_to_zaiko
             // 

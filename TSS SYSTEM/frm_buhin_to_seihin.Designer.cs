@@ -35,17 +35,17 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.btn_kensaku = new System.Windows.Forms.Button();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_buhin_cd = new System.Windows.Forms.TextBox();
             this.tb_buhin_name = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tb_buhin_cd = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_kensaku = new System.Windows.Forms.Button();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,11 +58,11 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
@@ -161,15 +161,49 @@
             this.splitContainer3.SplitterDistance = 52;
             this.splitContainer3.TabIndex = 0;
             // 
-            // btn_kensaku
+            // splitContainer4
             // 
-            this.btn_kensaku.Location = new System.Drawing.Point(3, 3);
-            this.btn_kensaku.Name = "btn_kensaku";
-            this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_kensaku.TabIndex = 4;
-            this.btn_kensaku.Text = "検索";
-            this.btn_kensaku.UseVisualStyleBackColor = true;
-            this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_cd);
+            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_name);
+            this.splitContainer4.Panel1.Controls.Add(this.textBox3);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_kensaku);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 52);
+            this.splitContainer4.SplitterDistance = 792;
+            this.splitContainer4.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(65, 19);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "部品コード";
+            // 
+            // tb_buhin_cd
+            // 
+            this.tb_buhin_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_buhin_cd.Location = new System.Drawing.Point(68, 3);
+            this.tb_buhin_cd.MaxLength = 16;
+            this.tb_buhin_cd.Name = "tb_buhin_cd";
+            this.tb_buhin_cd.Size = new System.Drawing.Size(110, 19);
+            this.tb_buhin_cd.TabIndex = 1;
+            this.tb_buhin_cd.DoubleClick += new System.EventHandler(this.tb_buhin_cd_DoubleClick);
+            this.tb_buhin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd_Validating);
             // 
             // tb_buhin_name
             // 
@@ -192,27 +226,15 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "部品名";
             // 
-            // tb_buhin_cd
+            // btn_kensaku
             // 
-            this.tb_buhin_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_buhin_cd.Location = new System.Drawing.Point(68, 3);
-            this.tb_buhin_cd.MaxLength = 16;
-            this.tb_buhin_cd.Name = "tb_buhin_cd";
-            this.tb_buhin_cd.Size = new System.Drawing.Size(110, 19);
-            this.tb_buhin_cd.TabIndex = 1;
-            this.tb_buhin_cd.DoubleClick += new System.EventHandler(this.tb_buhin_cd_DoubleClick);
-            this.tb_buhin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd_Validating);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(65, 19);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "部品コード";
+            this.btn_kensaku.Location = new System.Drawing.Point(3, 3);
+            this.btn_kensaku.Name = "btn_kensaku";
+            this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
+            this.btn_kensaku.TabIndex = 4;
+            this.btn_kensaku.Text = "検索";
+            this.btn_kensaku.UseVisualStyleBackColor = true;
+            this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
             // 
             // dgv_m
             // 
@@ -223,6 +245,26 @@
             this.dgv_m.RowTemplate.Height = 21;
             this.dgv_m.Size = new System.Drawing.Size(880, 378);
             this.dgv_m.TabIndex = 0;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 3;
             // 
             // btn_insatu
             // 
@@ -254,48 +296,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer4.IsSplitterFixed = true;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_cd);
-            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_name);
-            this.splitContainer4.Panel1.Controls.Add(this.textBox3);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.btn_kensaku);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 52);
-            this.splitContainer4.SplitterDistance = 792;
-            this.splitContainer4.TabIndex = 5;
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer5.IsSplitterFixed = true;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Name = "splitContainer5";
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
-            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
-            this.splitContainer5.SplitterDistance = 795;
-            this.splitContainer5.TabIndex = 3;
-            // 
             // frm_buhin_to_seihin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -306,6 +306,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_buhin_to_seihin";
             this.Text = "部品→製品検索";
+            this.Load += new System.EventHandler(this.frm_buhin_to_seihin_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -319,12 +320,12 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();

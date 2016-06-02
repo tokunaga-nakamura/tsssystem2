@@ -56,6 +56,7 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +74,10 @@
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_koutei_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -93,7 +98,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(884, 540);
-            this.splitContainer1.SplitterDistance = 62;
+            this.splitContainer1.SplitterDistance = 58;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
             // 
@@ -124,9 +129,8 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 474);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer2.Size = new System.Drawing.Size(884, 478);
             this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -165,7 +169,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer3.Size = new System.Drawing.Size(884, 440);
-            this.splitContainer3.SplitterDistance = 111;
+            this.splitContainer3.SplitterDistance = 105;
             this.splitContainer3.TabIndex = 2;
             this.splitContainer3.TabStop = false;
             // 
@@ -181,7 +185,7 @@
             // tb_sakujyo
             // 
             this.tb_sakujyo.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_sakujyo.Location = new System.Drawing.Point(825, 3);
+            this.tb_sakujyo.Location = new System.Drawing.Point(741, 3);
             this.tb_sakujyo.Name = "tb_sakujyo";
             this.tb_sakujyo.ReadOnly = true;
             this.tb_sakujyo.Size = new System.Drawing.Size(45, 19);
@@ -191,7 +195,7 @@
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox7.Location = new System.Drawing.Point(747, 3);
+            this.textBox7.Location = new System.Drawing.Point(663, 3);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(78, 19);
@@ -202,7 +206,7 @@
             // tb_update_datetime
             // 
             this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(746, 81);
+            this.tb_update_datetime.Location = new System.Drawing.Point(750, 78);
             this.tb_update_datetime.Name = "tb_update_datetime";
             this.tb_update_datetime.ReadOnly = true;
             this.tb_update_datetime.Size = new System.Drawing.Size(127, 19);
@@ -212,7 +216,7 @@
             // tb_update_user_cd
             // 
             this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(701, 81);
+            this.tb_update_user_cd.Location = new System.Drawing.Point(705, 78);
             this.tb_update_user_cd.Name = "tb_update_user_cd";
             this.tb_update_user_cd.ReadOnly = true;
             this.tb_update_user_cd.Size = new System.Drawing.Size(45, 19);
@@ -222,7 +226,7 @@
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox9.Location = new System.Drawing.Point(663, 81);
+            this.textBox9.Location = new System.Drawing.Point(667, 78);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(38, 19);
@@ -233,7 +237,7 @@
             // tb_create_datetime
             // 
             this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(746, 62);
+            this.tb_create_datetime.Location = new System.Drawing.Point(750, 59);
             this.tb_create_datetime.Name = "tb_create_datetime";
             this.tb_create_datetime.ReadOnly = true;
             this.tb_create_datetime.Size = new System.Drawing.Size(127, 19);
@@ -243,7 +247,7 @@
             // tb_create_user_cd
             // 
             this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(701, 62);
+            this.tb_create_user_cd.Location = new System.Drawing.Point(705, 59);
             this.tb_create_user_cd.Name = "tb_create_user_cd";
             this.tb_create_user_cd.ReadOnly = true;
             this.tb_create_user_cd.Size = new System.Drawing.Size(45, 19);
@@ -253,7 +257,7 @@
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox5.Location = new System.Drawing.Point(663, 62);
+            this.textBox5.Location = new System.Drawing.Point(667, 59);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(38, 19);
@@ -361,7 +365,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_koutei_m);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 325);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 331);
             this.splitContainer4.SplitterDistance = 31;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -382,12 +386,12 @@
             this.dgv_koutei_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_koutei_m.Name = "dgv_koutei_m";
             this.dgv_koutei_m.RowTemplate.Height = 21;
-            this.dgv_koutei_m.Size = new System.Drawing.Size(880, 286);
+            this.dgv_koutei_m.Size = new System.Drawing.Size(880, 292);
             this.dgv_koutei_m.TabIndex = 1;
             // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(3, 2);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 5;
@@ -397,7 +401,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(802, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 6;
@@ -412,6 +416,25 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.btn_touroku);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 7;
             // 
             // frm_koutei_m
             // 
@@ -443,6 +466,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_koutei_m)).EndInit();
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +504,6 @@
         private System.Windows.Forms.DataGridView dgv_koutei_m;
         private System.Windows.Forms.Button btn_hardcopy;
         private System.Windows.Forms.Label lbl_koutei_cd;
+        private System.Windows.Forms.SplitContainer splitContainer5;
     }
 }

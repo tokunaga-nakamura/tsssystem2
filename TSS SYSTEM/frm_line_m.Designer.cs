@@ -56,6 +56,7 @@
             this.dgv_line_m = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +74,10 @@
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_line_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -132,10 +137,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer2.Size = new System.Drawing.Size(884, 475);
-            this.splitContainer2.SplitterDistance = 437;
+            this.splitContainer2.SplitterDistance = 438;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -172,7 +176,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 438);
             this.splitContainer3.SplitterDistance = 105;
             this.splitContainer3.TabIndex = 3;
             this.splitContainer3.TabStop = false;
@@ -251,7 +255,7 @@
             // tb_delete_flg
             // 
             this.tb_delete_flg.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_delete_flg.Location = new System.Drawing.Point(846, 3);
+            this.tb_delete_flg.Location = new System.Drawing.Point(720, 6);
             this.tb_delete_flg.Name = "tb_delete_flg";
             this.tb_delete_flg.ReadOnly = true;
             this.tb_delete_flg.Size = new System.Drawing.Size(24, 19);
@@ -261,7 +265,7 @@
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox4.Location = new System.Drawing.Point(780, 3);
+            this.textBox4.Location = new System.Drawing.Point(654, 6);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(66, 19);
@@ -367,7 +371,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_line_m);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 324);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 325);
             this.splitContainer4.SplitterDistance = 33;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -388,13 +392,13 @@
             this.dgv_line_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_line_m.Name = "dgv_line_m";
             this.dgv_line_m.RowTemplate.Height = 21;
-            this.dgv_line_m.Size = new System.Drawing.Size(880, 287);
+            this.dgv_line_m.Size = new System.Drawing.Size(880, 288);
             this.dgv_line_m.TabIndex = 0;
             this.dgv_line_m.TabStop = false;
             // 
             // btn_touroku
             // 
-            this.btn_touroku.Location = new System.Drawing.Point(10, 3);
+            this.btn_touroku.Location = new System.Drawing.Point(3, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
             this.btn_touroku.TabIndex = 4;
@@ -404,13 +408,32 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 5;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.btn_touroku);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 29);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 6;
             // 
             // frm_line_m
             // 
@@ -442,6 +465,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_line_m)).EndInit();
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,5 +503,6 @@
         private System.Windows.Forms.DataGridView dgv_line_m;
         private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.Label lbl_line_cd;
+        private System.Windows.Forms.SplitContainer splitContainer5;
     }
 }
