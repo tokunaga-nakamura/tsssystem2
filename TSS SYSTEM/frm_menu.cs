@@ -883,6 +883,10 @@ namespace TSS_SYSTEM
             frm_seisan_koutei_m frm_seisan_kou = new frm_seisan_koutei_m();
             frm_seisan_kou.ShowDialog(this);
             frm_seisan_kou.Dispose();
+
+            //frm_seisan_koutei_m frm_seisan_kou = new frm_seisan_koutei_m();
+            //frm_seisan_kou.Show();
+           
         }
     }
 }

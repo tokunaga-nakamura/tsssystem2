@@ -400,6 +400,7 @@
             this.btn_koutei_tuika.TabStop = false;
             this.btn_koutei_tuika.Text = "1行追加";
             this.btn_koutei_tuika.UseVisualStyleBackColor = true;
+            this.btn_koutei_tuika.Click += new System.EventHandler(this.btn_koutei_tuika_Click);
             // 
             // dgv_koutei
             // 
@@ -412,7 +413,10 @@
             this.dgv_koutei.TabIndex = 97;
             this.dgv_koutei.TabStop = false;
             this.dgv_koutei.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellClick);
+            this.dgv_koutei.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellValidated);
+            this.dgv_koutei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_koutei_CellValidating);
             this.dgv_koutei.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_RowEnter);
+            this.dgv_koutei.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_koutei_UserDeletedRow);
             this.dgv_koutei.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_koutei_UserDeletingRow);
             // 
             // btn_line_tuika
@@ -518,6 +522,7 @@
             this.dgv_line.TabIndex = 6;
             this.dgv_line.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_line.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_line_CellValidating);
+            this.dgv_line.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_line_DataError);
             // 
             // tb_busyo_cd
             // 
@@ -723,6 +728,7 @@
             this.btn_touroku.TabIndex = 12;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // statusStrip1
             // 
