@@ -50,7 +50,6 @@ namespace TSS_SYSTEM
         string fld_kengen8;
         string fld_kengen9;
 
-
         public TssSystemLibrary()
         {
             //コンストラクタ
@@ -108,8 +107,8 @@ namespace TSS_SYSTEM
         public string kengen5 { get { return fld_kengen5; } }
         public string kengen6 { get { return fld_kengen6; } }
         public string kengen7 { get { return fld_kengen7; } }
-        public string kengen8 { get { return fld_kengen7; } }
-        public string kengen9 { get { return fld_kengen7; } }
+        public string kengen8 { get { return fld_kengen8; } }
+        public string kengen9 { get { return fld_kengen9; } }
         #endregion
 
         #region GetConnectionString メソッド
@@ -214,6 +213,9 @@ namespace TSS_SYSTEM
                 fld_kengen4 = dt.Rows[0]["kengen4"].ToString();
                 fld_kengen5 = dt.Rows[0]["kengen5"].ToString();
                 fld_kengen6 = dt.Rows[0]["kengen6"].ToString();
+                fld_kengen7 = dt.Rows[0]["kengen7"].ToString();
+                fld_kengen8 = dt.Rows[0]["kengen8"].ToString();
+                fld_kengen9 = dt.Rows[0]["kengen9"].ToString();
             }
         }
         #endregion
@@ -357,7 +359,6 @@ namespace TSS_SYSTEM
                     rtncode = false;
                     GetUser();
                     ErrorLogWrite(user_cd, "OracleInsert", sql.Replace("'", "#"));
-
                 }
                 finally
                 {
@@ -1042,8 +1043,6 @@ namespace TSS_SYSTEM
             return out_cd;
         }
         #endregion
-
-        //public string out_str_seihin_kousei_no { get; set; }
 
         #region try_string_to_date メソッド
         /// <summary>
@@ -3042,14 +3041,296 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region seisan_schedule_make
+        /// -----------------------------------------------------------------------------------------
+        /// <summary>
+        /// 生産スケジュール作成
+        /// 受注コードを受け取り、受け取った受注コードの生産スケジュールを作成する
+        /// 既に作成済みの場合は、編集済みフラグが立っていなければ再作成し、立っていた場合はメッセージを表示し、ユーザーに判断を委ねる。
+        /// </summary>
+        /// -----------------------------------------------------------------------------------------
+        public bool Seisan_Schedule_Make(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2)
+        {
+            DataTable w_dt_juchu = new DataTable();
+            DataTable w_dt_seihin = new DataTable();
+            DataTable w_dt_seisan_koutei = new DataTable();
+            DataTable w_dt_nouhin_schedule = new DataTable();
+            DataTable w_dt_seisan_schedule = new DataTable();
+            string w_msg;
 
+            //受注マスタ取得
+            w_dt_juchu = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            //製品マスタ取得
+            w_dt_seihin = OracleSelect("select * from tss_seihin_m where seihin_cd = '" + w_dt_juchu.Rows[0]["seihin_cd"].ToString() + "'");
+            //編集済みの生産スケジュールがあるかチェック
+            w_dt_seisan_schedule = OracleSelect("select * from tss_seisan_schedule where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' and hensyu_flg = '1'");
+            if(w_dt_seisan_schedule.Rows.Count >=1)
+            {
+                //編集済みの生産スケジュール有り
+                DialogResult result = MessageBox.Show("既に編集されている生産スケジュールがあります。\n再作成してもよろしいですか？\n「はい」=作作成＋メッセージ送信\n「いいえ」=作成しない＋受注変更メッセージの送信\n「キャンセル」=受注の更新のみ行い、メッセージも送信しない", "確認", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    //「はい」
+                    //■既にあるデータ削除
+                    if(ssm_delete(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2) == false)
+                    {
+                        return false;
+                    }
+                    //■生産スケジュール作成
+                    if (ssm_sakusei(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2) == false)
+                    {
+                        return false;
+                    }
+                    //■メッセージ送信
+                    w_msg = "受注コード" + in_torihikisaki_cd + "-" + in_juchu_cd1 + "-" + in_juchu_cd2 + " が変更され、編集済みの生産スケジュールが更新されました。確認し、再編集してください。";
+                    if (ssm_message(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2,w_msg) == false)
+                    {
+                        return false;
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    //「いいえ」
+                    //生産スケジュールは何も行わない
+                    //■メッセージ送信
+                    w_msg = "受注コード" + in_torihikisaki_cd + "-" + in_juchu_cd1 + "-" + in_juchu_cd2 + " が変更されましたので、生産スケジュールを確認・再編集してください。";
+                    if (ssm_message(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2, w_msg) == false)
+                    {
+                        return false;
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    //「キャンセル」
+                    //■生産スケジュールは何も行わない
+                    //メッセージは送信しないが、処理者には送信する
+                    w_msg = "受注コード" + in_torihikisaki_cd + "-" + in_juchu_cd1 + "-" + in_juchu_cd2 + " 編集済みの生産スケジュールが有る受注の変更を行いましたがユーザーにメッセージを送信しませんでした。";
+                    MessageLogWrite(user_cd, user_cd, "生産スケジュール編集後の受注情報の変更", w_msg);
+                }
+            }
+            else
+            {
+                //編集済みの生産スケジュール無し
+                //■生産スケジュール作成
+                if (ssm_sakusei(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2) == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        private bool ssm_sakusei(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            //生産スケジュール作成メソッド
+            DataTable w_dt_juchu = new DataTable();
+            DataTable w_dt_seihin = new DataTable();
+            DataTable w_dt_seisan_koutei = new DataTable();
+            DataTable w_dt_nouhin_schedule = new DataTable();
+            DataTable w_dt_seisan_schedule = new DataTable();
+            DataTable w_dt_seisan_koutei_line = new DataTable();
+
+            //受注マスタ取得
+            w_dt_juchu = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            //製品マスタ取得
+            w_dt_seihin = OracleSelect("select * from tss_seihin_m where seihin_cd = '" + w_dt_juchu.Rows[0]["seihin_cd"].ToString() + "'");
+            //生産工程マスタ取得
+            w_dt_seisan_koutei = OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + w_dt_juchu.Rows[0]["seihin_cd"].ToString() + "' order by seq");
+            if(w_dt_seisan_koutei.Rows.Count <=0)
+            {
+                MessageBox.Show("生産工程マスタが未登録、または異常があります。\n確認し、再度生産スケジュールを作成してください。");
+                return false;
+            }
+            //納品スケジュールマスタの取得
+            w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
+
+            DateTime w_date;        //納品日
+            TimeSpan w_timespan;    //○日前からの生産
+            DateTime w_date_start;  //生産開始日
+
+            double w_seisan_su;     //生産数（納品スケジュールの1レコードの）
+            double w_seisan_siji_su;//生産指示数
+            double w_mst_tact;      //タクト
+            double w_mst_dandori;   //段取り
+            double w_mst_tuika;     //追加
+            double w_mst_hoju;      //補充
+            double w_kousu;         //必要工数
+            double w_cnt;           //ライン数のカウント
+            TimeSpan w_spn_kousu;   //計算用
+            DateTime w_start_time;  //開始時刻
+            DateTime w_end_time;    //終了時刻
+            string w_sql;           //書込み用のsql文字列
+            DataTable w_dt_seq;     //最大seq算出用
+            int w_seq_max;          //最大seq
+
+            //納品スケジュールマスタのレコード分繰り返す
+            foreach(DataRow dr_nouhin_schedule in w_dt_seisan_schedule.Rows)
+            {
+                //生産工程マスタのレコード分繰り返す
+                foreach(DataRow dr_seisan_koutei in w_dt_seisan_koutei.Rows)
+                {
+                    //親子に関係なく、登録されている工程レコード分作成する
+                    //2016.05.31現在、「親でも子でも、作業が発生するのであれば、生産スケジュールは必要だろう」という考え。
+                    //よって、現状では生産スケジュールを作成しなくてもよい工程は無いと考えている。
+
+                    //納品日と生産開始日から生産スケジュールの日を算出
+                    w_date = DateTime.Parse(dr_nouhin_schedule["nouhin_yotei_date"].ToString());
+                    w_timespan = TimeSpan.Parse(dr_seisan_koutei["seisan_start_day"].ToString());
+                    w_date_start = w_date - w_timespan;
+                    //生産工程ラインマスタの選択区分が立っているレコードを取得する（選択区分は必要なもののみ立っているとみなす）
+                    w_dt_seisan_koutei_line = OracleSelect("select * from tss_seisan_koutei_line_m where seihin_cd = '" + dr_seisan_koutei["seihin_cd"].ToString() + "' and seq = '" + dr_seisan_koutei["seq"].ToString() + "' and select_kbn = '1' order by seq asc");
+                    if (w_dt_seisan_koutei_line.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("生産工程ラインマスタの整合性が取れていません。\n確認し、再度生産スケジュールを作成してください。");
+                        return false;
+                    }
+                    //生産工程ラインマスタのレコード分、生産スケジュールのレコードを作成する
+                    //ライン選択区分と選択区分の整合性がとれているものとし、複数レコードが存在するのは「分割」の場合のみ。
+                    //レコード数で生産数を割ってレコードを作成する（端数は最終レコードにまとめる）
+                    w_cnt = 0;
+                    foreach(DataRow dr_seisan_koutei_line in w_dt_seisan_koutei_line.Rows)
+                    {
+                        //計算に必要な項目を求める
+                        //納品数
+                        if (double.TryParse(dr_nouhin_schedule["nouhin_yotei_su"].ToString(), out w_seisan_su) == false)
+                        {
+                            w_seisan_su = 0;
+                        }
+                        //タクト
+                        if (double.TryParse(dr_seisan_koutei_line["tact_time"].ToString(), out w_mst_tact) == false)
+                        {
+                            w_mst_tact = 0;
+                        }
+                        //段取時間
+                        if (double.TryParse(dr_seisan_koutei_line["dandori_time"].ToString(), out w_mst_dandori) == false)
+                        {
+                            w_mst_dandori = 0;
+                        }
+                        //追加時間
+                        if (double.TryParse(dr_seisan_koutei_line["tuika_time"].ToString(), out w_mst_tuika) == false)
+                        {
+                            w_mst_tuika = 0;
+                        }
+                        //補充時間
+                        if (double.TryParse(dr_seisan_koutei_line["hoju_time"].ToString(), out w_mst_hoju) == false)
+                        {
+                            w_mst_hoju = 0;
+                        }
+                        //生産指示数を求める
+                        w_seisan_siji_su = Math.Floor(w_seisan_su / w_dt_seisan_koutei_line.Rows.Count) - (Math.Floor(w_seisan_su / w_dt_seisan_koutei_line.Rows.Count) * w_cnt);
+                        //必要工数を求める（小数点以下は切り捨てる）
+                        w_kousu = Math.Floor(w_seisan_siji_su * w_mst_tact + w_mst_dandori + w_mst_tuika + w_mst_hoju);
+                        //開始時刻を08:35とし、工数から終了時刻を求める
+                        w_start_time = DateTime.Parse(w_date_start.ToShortDateString() + " 08:35:00");  //開始時刻
+                        w_spn_kousu = TimeSpan.FromSeconds(w_kousu);                                    //必要工数（秒）
+                        w_end_time = w_start_time + w_spn_kousu;                                        //終了時刻
+                        //書き込むレコードseqを求める（現在登録されている生産スケジュールの最大seq+1を求める）
+                        w_dt_seq = OracleSelect("Select max(seq) max_seq from tss_seisan_schedule_f where seisan_yotei_date = '" + w_date_start.ToShortDateString() + "'　and busyo_cd = '" + dr_seisan_koutei["busyo_cd"].ToString() + "' and koutei_cd = '" + dr_seisan_koutei["koutei_cd"].ToString() + "' and line_cd = '" + dr_seisan_koutei_line["line_cd"].ToString() + "'");
+                        if (w_dt_seq.Rows.Count <= 0)
+                        {
+                            w_seq_max = 0;
+                        }
+                        else
+                        {
+                            if (int.TryParse(w_dt_seq.Rows[0]["max_seq"].ToString(), out w_seq_max) == false)
+                            {
+                                w_seq_max = 0;
+                            }
+                        }
+                        w_seq_max = w_seq_max + 1;
+                        //全ての項目をセットし書き込む
+                        w_sql = "insert into tss_seisan_schedule_f (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq,torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,juchu_su,seisan_su,tact_time,dandori_kousu,tuika_kousu,hoju_kousu,seisan_time,start_time,end_time,seisan_zumi_su,ninzu,member,hensyu_flg,bikou,create_user_cd,create_datetime) value ("
+                                + "'" + w_date_start.ToShortDateString() + "'"                              //生産予定日
+                                + ",'" + dr_seisan_koutei["busyo_cd"].ToString() + "'"                      //部署コード
+                                + ",'" + dr_seisan_koutei["koutei_cd"].ToString() + "'"                     //工程コード
+                                + ",'" + dr_seisan_koutei_line["line_cd"].ToString() + "'"                  //ラインコード
+                                + ",'" + w_seq_max.ToString("000") + "'"                                    //seq
+                                + ",'" + dr_nouhin_schedule["torihikisaki_cd"].ToString() + "'"             //取引先コード
+                                + ",'" + dr_nouhin_schedule["juchu_cd1"].ToString() + "'"                   //受注コード１
+                                + ",'" + dr_nouhin_schedule["juchu_cd2"].ToString() + "'"                   //受注コード２
+                                + ",'" + dr_seisan_koutei["seihin_cd"].ToString() + "'"                     //製品コード
+                                + ",'" + w_dt_seihin.Rows[0]["seihin_name"].ToString() + "'"                //製品名
+                                + ",'" + w_dt_juchu.Rows[0]["juchu_su"].ToString() + "'"                    //受注数
+                                + ",'" + w_seisan_siji_su.ToString() + "'"                                  //生産指示数
+                                + ",'" + dr_seisan_koutei_line["tact_time"].ToString() + "'"                //タクト
+                                + ",'" + dr_seisan_koutei_line["dandori_time"].ToString() + "'"             //段取り時間
+                                + ",'" + dr_seisan_koutei_line["tuika_time"].ToString() + "'"               //追加時間
+                                + ",'" + dr_seisan_koutei_line["hoju_time"].ToString() + "'"                //補充時間
+                                + ",'" + w_kousu.ToString() + "'"                                           //必要工数
+                                + ",to_date('" + w_start_time.ToString() + "','YYYY/MM/DD HH24:MI:SS')"     //開始時刻
+                                + ",to_date('" + w_end_time.ToString() + "','YYYY/MM/DD HH24:MI:SS')"       //終了時刻
+                                + ",'0'"                                                                    //生産済み数
+                                + ",'0'"                                                                    //人数
+                                + ",''"                                                                     //メンバー
+                                + ",'0'"                                                                    //編集済みフラグ
+                                + ",''"                                                                     //備考
+                                + user_cd                                                                   //作成者コード
+                                + ",SYSDATE)";                                                              //作成日時
+                                ;
+                        if(OracleInsert(w_sql) == false)
+                        {
+                            ErrorLogWrite(user_cd, "TSS System Libraly", "aam_sakuseiのOracleInsert");
+                            MessageBox.Show("生産スケジュールの書き込みでエラーが発生しました。\n処理を中止します。");
+                            return false;
+                        }
+                        w_cnt = w_cnt + 1;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool ssm_delete(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            //生産スケジュール削除
+            DataTable w_dt = new DataTable();
+            if (OracleDelete("delete from tss_seisan_schedule_f where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'") == false)
+            {
+                ErrorLogWrite(user_cd, "TSS System Libraly", "aam_deleteのOracleDelete");
+                MessageBox.Show("生産スケジュールの削除でエラーが発生しました。\n処理を中止します。");
+                return false;
+            }
+            return true;
+        }
+
+        private bool ssm_message(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2,string in_msg)
+        {
+            //受注マスタから製品マスタ→生産工程マスタとリンクし部署コードを抽出、その部署に所属するユーザー且つ生産の権限が3以上のユーザーにメッセージを送信する
+            DataTable w_dt_juchu = new DataTable();
+            DataTable w_dt_seihin = new DataTable();
+            DataTable w_dt_seisan_koutei = new DataTable();
+            DataTable w_dt_user = new DataTable();
+            //受注マスタ取得
+            w_dt_juchu = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            //製品マスタ取得
+            w_dt_seihin = OracleSelect("select * from tss_seihin_m where seihin_cd = '" + w_dt_juchu.Rows[0]["seihin_cd"].ToString() + "'");
+            //生産工程マスタ取得
+            w_dt_seisan_koutei = OracleSelect("select busyo_cd from tss_seisan_koutei_m where seihin_cd = '" + w_dt_juchu.Rows[0]["seihin_cd"].ToString() + "' group by busyo_cd");
+            if (w_dt_seisan_koutei.Rows.Count <= 0)
+            {
+                MessageBox.Show("生産工程マスタが未登録、または異常があります。\n確認し、再度生産スケジュールを作成してください。");
+                return false;
+            }
+            foreach(DataRow dr_seisan_koutei in w_dt_seisan_koutei.Rows)
+            {
+                //生産工程に存在する部署に所属しているユーザーマスタ取得
+                w_dt_user = OracleSelect("select * from tss_user_m where busyo_cd = '" + dr_seisan_koutei["busyo_cd"].ToString() + "' and login_kyoka_kbn = '1'");
+                //関係部署の権限３以上のユーザーにメッセージを送信
+                foreach(DataRow dr_user in w_dt_user.Rows)
+                {
+                    MessageLogWrite(dr_user["user_cd"].ToString(), user_cd, "生産スケジュール編集後の受注情報の変更",in_msg);
+                }
+            }
+            return true;
+        }
     }
     #endregion
 }
 //プログラムの配布手順
-//①tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
-//②tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
-//③コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//①コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//②tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
+//③tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
 //
 //更新履歴
 //1.01              正式リリース

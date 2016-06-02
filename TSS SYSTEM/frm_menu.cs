@@ -109,6 +109,7 @@ namespace TSS_SYSTEM
                 Application.Exit();
             }
         }
+
         private void status_disp()
         {
             TssSystemLibrary tss = new TssSystemLibrary();
@@ -118,7 +119,7 @@ namespace TSS_SYSTEM
             ss_status.Items.Add(tss.system_name);
             ss_status.Items.Add(tss.system_version);
             ss_status.Items.Add(tss.user_name);
-            ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+tss.kengen4+tss.kengen5+tss.kengen6);
+            ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+"-"+tss.kengen4+tss.kengen5+tss.kengen6+"-"+tss.kengen7+tss.kengen8+tss.kengen9);
 
             if (tss.DataSource == "pdb")
             {
@@ -131,7 +132,6 @@ namespace TSS_SYSTEM
                 lbl_db.Text = "開発用DBに接続中！";
                 lbl_db.BackColor = Color.Red;
                 lbl_db.ForeColor = Color.White;
-
             }
         }
 
@@ -736,7 +736,6 @@ namespace TSS_SYSTEM
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             if (tss.User_Kengen_Check(4, 5) == false)
             {
                 MessageBox.Show("権限がありません");
@@ -756,10 +755,8 @@ namespace TSS_SYSTEM
             frm_siha_ichi.Dispose();
         }
 
-
         private void tb_getumatu_zaiko_Click(object sender, EventArgs e)
         {
-            
              if (tss.User_Kengen_Check(4, 5) == false)
             {
                 MessageBox.Show("権限がありません");
@@ -769,7 +766,6 @@ namespace TSS_SYSTEM
             frm_getumatu_zaiko frm_getumatu_zai = new frm_getumatu_zaiko();
             frm_getumatu_zai.ShowDialog(this);
             frm_getumatu_zai.Dispose();
-            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -820,8 +816,6 @@ namespace TSS_SYSTEM
             frm_tanaorosi.ShowDialog(this);
             frm_tanaorosi.Dispose();
         }
-
-        
 
         private void button5_Click_2(object sender, EventArgs e)
         {
@@ -894,6 +888,5 @@ namespace TSS_SYSTEM
             //frm_seisan_kou.Show();
            
         }
-
     }
 }

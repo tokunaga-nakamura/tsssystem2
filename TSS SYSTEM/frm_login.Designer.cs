@@ -51,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(231, 12);
             this.label1.TabIndex = 0;
@@ -122,9 +122,8 @@
             // 
             // lbl_system
             // 
-            this.lbl_system.AutoSize = true;
             this.lbl_system.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_system.Location = new System.Drawing.Point(150, 30);
+            this.lbl_system.Location = new System.Drawing.Point(150, 9);
             this.lbl_system.Name = "lbl_system";
             this.lbl_system.Size = new System.Drawing.Size(110, 12);
             this.lbl_system.TabIndex = 1;

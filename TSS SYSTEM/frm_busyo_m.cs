@@ -42,7 +42,7 @@ namespace TSS_SYSTEM
             if (dt.Rows.Count >= 1)
             {
                 dgv_busyo_m.DataSource = dt;
-                dgv_busyo_m.Columns[0].HeaderText = "部署ンコード";
+                dgv_busyo_m.Columns[0].HeaderText = "部署コード";
                 dgv_busyo_m.Columns[1].HeaderText = "部署名称";
                 dgv_busyo_m.Columns[2].HeaderText = "部署略式名称";
                 dgv_busyo_m.Columns[3].HeaderText = "所属人数";
