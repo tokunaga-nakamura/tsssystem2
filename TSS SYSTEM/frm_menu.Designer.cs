@@ -107,9 +107,7 @@
             this.btn_busyo_m = new System.Windows.Forms.Button();
             this.btn_line_m = new System.Windows.Forms.Button();
             this.btn_koutei_m = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.btn_buhin_zaiko_juchu_check = new System.Windows.Forms.Button();
-            this.btn_free_zaiko_record_make = new System.Windows.Forms.Button();
             this.btn_user_m = new System.Windows.Forms.Button();
             this.btn_eigyou_calender = new System.Windows.Forms.Button();
             this.btn_seihin_kousei_m = new System.Windows.Forms.Button();
@@ -122,7 +120,6 @@
             this.btn_seihin_m = new System.Windows.Forms.Button();
             this.btn_kubun_m = new System.Windows.Forms.Button();
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
-            this.btn_mst_table = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -1058,9 +1055,7 @@
             this.tabPage6.Controls.Add(this.btn_busyo_m);
             this.tabPage6.Controls.Add(this.btn_line_m);
             this.tabPage6.Controls.Add(this.btn_koutei_m);
-            this.tabPage6.Controls.Add(this.button4);
             this.tabPage6.Controls.Add(this.btn_buhin_zaiko_juchu_check);
-            this.tabPage6.Controls.Add(this.btn_free_zaiko_record_make);
             this.tabPage6.Controls.Add(this.btn_user_m);
             this.tabPage6.Controls.Add(this.btn_eigyou_calender);
             this.tabPage6.Controls.Add(this.btn_seihin_kousei_m);
@@ -1073,7 +1068,6 @@
             this.tabPage6.Controls.Add(this.btn_seihin_m);
             this.tabPage6.Controls.Add(this.btn_kubun_m);
             this.tabPage6.Controls.Add(this.btn_kubun_meisyou_m);
-            this.tabPage6.Controls.Add(this.btn_mst_table);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
@@ -1083,7 +1077,7 @@
             // btn_system_administrator
             // 
             this.btn_system_administrator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btn_system_administrator.Location = new System.Drawing.Point(462, 387);
+            this.btn_system_administrator.Location = new System.Drawing.Point(462, 416);
             this.btn_system_administrator.Name = "btn_system_administrator";
             this.btn_system_administrator.Size = new System.Drawing.Size(222, 23);
             this.btn_system_administrator.TabIndex = 19;
@@ -1121,36 +1115,15 @@
             this.btn_koutei_m.UseVisualStyleBackColor = true;
             this.btn_koutei_m.Click += new System.EventHandler(this.btn_koutei_m_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(462, 358);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(222, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "ロット在庫→フリー在庫";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // btn_buhin_zaiko_juchu_check
             // 
-            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(236, 416);
+            this.btn_buhin_zaiko_juchu_check.Location = new System.Drawing.Point(236, 388);
             this.btn_buhin_zaiko_juchu_check.Name = "btn_buhin_zaiko_juchu_check";
             this.btn_buhin_zaiko_juchu_check.Size = new System.Drawing.Size(220, 23);
             this.btn_buhin_zaiko_juchu_check.TabIndex = 14;
             this.btn_buhin_zaiko_juchu_check.Text = "在庫レコード滞りチェック";
             this.btn_buhin_zaiko_juchu_check.UseVisualStyleBackColor = true;
             this.btn_buhin_zaiko_juchu_check.Click += new System.EventHandler(this.btn_buhin_zaiko_juchu_check_Click);
-            // 
-            // btn_free_zaiko_record_make
-            // 
-            this.btn_free_zaiko_record_make.Location = new System.Drawing.Point(236, 387);
-            this.btn_free_zaiko_record_make.Name = "btn_free_zaiko_record_make";
-            this.btn_free_zaiko_record_make.Size = new System.Drawing.Size(220, 23);
-            this.btn_free_zaiko_record_make.TabIndex = 13;
-            this.btn_free_zaiko_record_make.Text = "フリー在庫レコード作成";
-            this.btn_free_zaiko_record_make.UseVisualStyleBackColor = true;
-            this.btn_free_zaiko_record_make.Click += new System.EventHandler(this.btn_free_zaiko_record_make_Click);
             // 
             // btn_user_m
             // 
@@ -1271,16 +1244,6 @@
             this.btn_kubun_meisyou_m.Text = "区分名称マスタ";
             this.btn_kubun_meisyou_m.UseVisualStyleBackColor = true;
             this.btn_kubun_meisyou_m.Click += new System.EventHandler(this.btn_kubun_meisyou_m_Click);
-            // 
-            // btn_mst_table
-            // 
-            this.btn_mst_table.Location = new System.Drawing.Point(462, 416);
-            this.btn_mst_table.Name = "btn_mst_table";
-            this.btn_mst_table.Size = new System.Drawing.Size(222, 23);
-            this.btn_mst_table.TabIndex = 0;
-            this.btn_mst_table.Text = "テーブルメンテナンス（管理者用）";
-            this.btn_mst_table.UseVisualStyleBackColor = true;
-            this.btn_mst_table.Click += new System.EventHandler(this.btn_mst_table_Click);
             // 
             // btn_logout
             // 
@@ -1411,7 +1374,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Button btn_mst_table;
         private System.Windows.Forms.Button btn_kubun_meisyou_m;
         private System.Windows.Forms.Button btn_kubun_m;
         private System.Windows.Forms.Button btn_juchuu_nyuuryoku;
@@ -1456,9 +1418,7 @@
         private System.Windows.Forms.Button btn_tankabetu_uriage_meisai;
         private System.Windows.Forms.Button btn_buhin_nyusyukko_kousei;
         private System.Windows.Forms.Label lbl_program_version;
-        private System.Windows.Forms.Button btn_free_zaiko_record_make;
         private System.Windows.Forms.Button btn_buhin_zaiko_juchu_check;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button tb_zaiko_chousei;
         private System.Windows.Forms.Button btn_seikyu_ichiran;
         private System.Windows.Forms.Button btn_siharai_ichiran;

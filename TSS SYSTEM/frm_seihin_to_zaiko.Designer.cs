@@ -36,6 +36,8 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_bikou = new System.Windows.Forms.TextBox();
             this.lbl_seihin_kousei_msg = new System.Windows.Forms.Label();
             this.tb_seisan_kanou_daisuu = new System.Windows.Forms.TextBox();
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
@@ -63,8 +65,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.tb_bikou = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,6 +83,10 @@
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -161,11 +166,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
-            this.splitContainer2.Panel2.Controls.Add(this.button2);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.SplitterDistance = 438;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -173,6 +176,7 @@
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -194,10 +198,31 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 436);
-            this.splitContainer3.SplitterDistance = 76;
+            this.splitContainer3.Size = new System.Drawing.Size(880, 434);
+            this.splitContainer3.SplitterDistance = 73;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox5.Location = new System.Drawing.Point(550, 4);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 19);
+            this.textBox5.TabIndex = 10;
+            this.textBox5.TabStop = false;
+            this.textBox5.Text = "備考";
+            // 
+            // tb_bikou
+            // 
+            this.tb_bikou.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_bikou.Location = new System.Drawing.Point(650, 4);
+            this.tb_bikou.Name = "tb_bikou";
+            this.tb_bikou.ReadOnly = true;
+            this.tb_bikou.Size = new System.Drawing.Size(226, 19);
+            this.tb_bikou.TabIndex = 9;
+            this.tb_bikou.TabStop = false;
             // 
             // lbl_seihin_kousei_msg
             // 
@@ -297,6 +322,7 @@
             this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -320,7 +346,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_m);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 356);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 357);
             this.splitContainer4.SplitterDistance = 57;
             this.splitContainer4.TabIndex = 10;
             this.splitContainer4.TabStop = false;
@@ -468,13 +494,13 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(876, 291);
+            this.dgv_m.Size = new System.Drawing.Size(876, 292);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
             // btn_insatu
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
+            this.btn_insatu.Location = new System.Drawing.Point(3, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
             this.btn_insatu.TabIndex = 0;
@@ -484,7 +510,7 @@
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(91, 3);
+            this.btn_csv.Location = new System.Drawing.Point(84, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 1;
@@ -494,7 +520,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(795, 3);
+            this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -502,26 +528,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // tb_bikou
+            // splitContainer5
             // 
-            this.tb_bikou.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_bikou.Location = new System.Drawing.Point(650, 4);
-            this.tb_bikou.Name = "tb_bikou";
-            this.tb_bikou.ReadOnly = true;
-            this.tb_bikou.Size = new System.Drawing.Size(226, 19);
-            this.tb_bikou.TabIndex = 9;
-            this.tb_bikou.TabStop = false;
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
             // 
-            // textBox5
+            // splitContainer5.Panel1
             // 
-            this.textBox5.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox5.Location = new System.Drawing.Point(550, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 19);
-            this.textBox5.TabIndex = 10;
-            this.textBox5.TabStop = false;
-            this.textBox5.Text = "備考";
+            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.button2);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 3;
             // 
             // frm_seihin_to_zaiko
             // 
@@ -553,6 +578,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,5 +625,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox tb_bikou;
+        private System.Windows.Forms.SplitContainer splitContainer5;
     }
 }

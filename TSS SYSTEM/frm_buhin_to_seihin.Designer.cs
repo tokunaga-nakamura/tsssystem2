@@ -41,9 +41,11 @@
             this.tb_buhin_cd = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_insatu = new System.Windows.Forms.Button();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +59,14 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -126,11 +136,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.SplitterDistance = 438;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -144,22 +152,18 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.btn_kensaku);
-            this.splitContainer3.Panel1.Controls.Add(this.tb_buhin_name);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox3);
-            this.splitContainer3.Panel1.Controls.Add(this.tb_buhin_cd);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_m);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 436);
-            this.splitContainer3.SplitterDistance = 53;
+            this.splitContainer3.Size = new System.Drawing.Size(880, 434);
+            this.splitContainer3.SplitterDistance = 52;
             this.splitContainer3.TabIndex = 0;
             // 
             // btn_kensaku
             // 
-            this.btn_kensaku.Location = new System.Drawing.Point(795, 27);
+            this.btn_kensaku.Location = new System.Drawing.Point(3, 3);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
             this.btn_kensaku.TabIndex = 4;
@@ -170,7 +174,7 @@
             // tb_buhin_name
             // 
             this.tb_buhin_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_buhin_name.Location = new System.Drawing.Point(60, 28);
+            this.tb_buhin_name.Location = new System.Drawing.Point(53, 28);
             this.tb_buhin_name.Name = "tb_buhin_name";
             this.tb_buhin_name.ReadOnly = true;
             this.tb_buhin_name.Size = new System.Drawing.Size(399, 19);
@@ -180,7 +184,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(10, 28);
+            this.textBox3.Location = new System.Drawing.Point(3, 28);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(50, 19);
@@ -191,7 +195,7 @@
             // tb_buhin_cd
             // 
             this.tb_buhin_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_buhin_cd.Location = new System.Drawing.Point(75, 3);
+            this.tb_buhin_cd.Location = new System.Drawing.Point(68, 3);
             this.tb_buhin_cd.MaxLength = 16;
             this.tb_buhin_cd.Name = "tb_buhin_cd";
             this.tb_buhin_cd.Size = new System.Drawing.Size(110, 19);
@@ -202,7 +206,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(65, 19);
@@ -217,12 +221,22 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 379);
+            this.dgv_m.Size = new System.Drawing.Size(880, 378);
             this.dgv_m.TabIndex = 0;
+            // 
+            // btn_insatu
+            // 
+            this.btn_insatu.Location = new System.Drawing.Point(3, 3);
+            this.btn_insatu.Name = "btn_insatu";
+            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu.TabIndex = 2;
+            this.btn_insatu.Text = "印刷";
+            this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(98, 3);
+            this.btn_csv.Location = new System.Drawing.Point(84, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 1;
@@ -232,7 +246,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
@@ -240,15 +254,47 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_insatu
+            // splitContainer4
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
-            this.btn_insatu.Name = "btn_insatu";
-            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 2;
-            this.btn_insatu.Text = "印刷";
-            this.btn_insatu.UseVisualStyleBackColor = true;
-            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_cd);
+            this.splitContainer4.Panel1.Controls.Add(this.tb_buhin_name);
+            this.splitContainer4.Panel1.Controls.Add(this.textBox3);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_kensaku);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 52);
+            this.splitContainer4.SplitterDistance = 792;
+            this.splitContainer4.TabIndex = 5;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.IsSplitterFixed = true;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer5.Panel1.Controls.Add(this.btn_csv);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer5.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer5.SplitterDistance = 795;
+            this.splitContainer5.TabIndex = 3;
             // 
             // frm_buhin_to_seihin
             // 
@@ -270,11 +316,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_m)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel1.PerformLayout();
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,5 +351,7 @@
         private System.Windows.Forms.Button btn_kensaku;
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.SplitContainer splitContainer5;
     }
 }

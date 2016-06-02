@@ -570,6 +570,7 @@ namespace TSS_SYSTEM
         {
             //Altキー＋Print Screenキーの送信
             SendKeys.SendWait("%{PRTSC}");
+            MessageBox.Show("画面をクリップボードにコピーしました。");
         }
         #endregion
 
