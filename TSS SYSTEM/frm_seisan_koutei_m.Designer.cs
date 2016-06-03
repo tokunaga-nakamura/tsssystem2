@@ -137,7 +137,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -170,8 +170,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 473);
-            this.splitContainer2.SplitterDistance = 436;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 474);
+            this.splitContainer2.SplitterDistance = 437;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -201,7 +201,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 436);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
             this.splitContainer3.SplitterDistance = 52;
             this.splitContainer3.TabIndex = 91;
             this.splitContainer3.TabStop = false;
@@ -244,6 +244,7 @@
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(112, 19);
             this.tb_seihin_cd.TabIndex = 0;
+            this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 
             // tb_create_user_cd
@@ -290,10 +291,11 @@
             // 
             // tb_seihin_name
             // 
-            this.tb_seihin_name.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_seihin_name.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_seihin_name.Location = new System.Drawing.Point(93, 28);
             this.tb_seihin_name.MaxLength = 40;
             this.tb_seihin_name.Name = "tb_seihin_name";
+            this.tb_seihin_name.ReadOnly = true;
             this.tb_seihin_name.Size = new System.Drawing.Size(361, 19);
             this.tb_seihin_name.TabIndex = 1;
             this.tb_seihin_name.TabStop = false;
@@ -360,7 +362,7 @@
             this.splitContainer4.Panel2.Controls.Add(this.textBox10);
             this.splitContainer4.Panel2.Controls.Add(this.textBox7);
             this.splitContainer4.Panel2.Controls.Add(this.textBox4);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 380);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 381);
             this.splitContainer4.SplitterDistance = 221;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -383,7 +385,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dgv_koutei);
-            this.splitContainer5.Size = new System.Drawing.Size(221, 380);
+            this.splitContainer5.Size = new System.Drawing.Size(221, 381);
             this.splitContainer5.TabIndex = 50;
             this.splitContainer5.TabStop = false;
             // 
@@ -414,11 +416,10 @@
             this.dgv_koutei.Location = new System.Drawing.Point(0, 0);
             this.dgv_koutei.Name = "dgv_koutei";
             this.dgv_koutei.RowTemplate.Height = 21;
-            this.dgv_koutei.Size = new System.Drawing.Size(217, 322);
-            this.dgv_koutei.TabIndex = 97;
-            this.dgv_koutei.TabStop = false;
+            this.dgv_koutei.Size = new System.Drawing.Size(217, 323);
+            this.dgv_koutei.TabIndex = 1;
             this.dgv_koutei.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellClick);
-            this.dgv_koutei.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellValidated);
+            this.dgv_koutei.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellDoubleClick);
             this.dgv_koutei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_koutei_CellValidating);
             this.dgv_koutei.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_RowEnter);
             this.dgv_koutei.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_koutei_UserDeletedRow);
@@ -473,7 +474,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 12);
             this.label5.TabIndex = 99;
-            this.label5.Text = "0:固定 1:分割 2:複数";
+            this.label5.Text = "0:固定 1:分割 2:選択";
             // 
             // tb_comments
             // 
@@ -525,7 +526,7 @@
             this.dgv_line.RowTemplate.Height = 21;
             this.dgv_line.Size = new System.Drawing.Size(549, 145);
             this.dgv_line.TabIndex = 6;
-            this.dgv_line.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_line.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_line_CellDoubleClick);
             this.dgv_line.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_line_CellValidating);
             this.dgv_line.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_line_DataError);
             // 
@@ -537,6 +538,7 @@
             this.tb_busyo_cd.Name = "tb_busyo_cd";
             this.tb_busyo_cd.Size = new System.Drawing.Size(72, 19);
             this.tb_busyo_cd.TabIndex = 4;
+            this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
             this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
             // 
             // label3
@@ -594,12 +596,13 @@
             // 
             // tb_koutei_cd
             // 
-            this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_koutei_cd.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_koutei_cd.Location = new System.Drawing.Point(103, 28);
             this.tb_koutei_cd.MaxLength = 16;
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(72, 19);
             this.tb_koutei_cd.TabIndex = 3;
+            this.tb_koutei_cd.TabStop = false;
             this.tb_koutei_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_koutei_cd_Validating);
             // 
             // tb_seisan_start_day
@@ -756,7 +759,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
@@ -766,7 +769,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
