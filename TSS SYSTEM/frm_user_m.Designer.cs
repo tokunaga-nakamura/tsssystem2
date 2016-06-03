@@ -276,7 +276,7 @@
             this.tb_kengen9.Location = new System.Drawing.Point(340, 278);
             this.tb_kengen9.Name = "tb_kengen9";
             this.tb_kengen9.Size = new System.Drawing.Size(22, 19);
-            this.tb_kengen9.TabIndex = 68;
+            this.tb_kengen9.TabIndex = 17;
             this.tb_kengen9.DoubleClick += new System.EventHandler(this.tb_kengen9_DoubleClick);
             this.tb_kengen9.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen9_Validating);
             // 
@@ -297,7 +297,7 @@
             this.tb_kengen8.Location = new System.Drawing.Point(340, 253);
             this.tb_kengen8.Name = "tb_kengen8";
             this.tb_kengen8.Size = new System.Drawing.Size(22, 19);
-            this.tb_kengen8.TabIndex = 67;
+            this.tb_kengen8.TabIndex = 16;
             this.tb_kengen8.DoubleClick += new System.EventHandler(this.tb_kengen8_DoubleClick);
             this.tb_kengen8.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen8_Validating);
             // 
@@ -318,7 +318,7 @@
             this.tb_kengen7.Location = new System.Drawing.Point(340, 228);
             this.tb_kengen7.Name = "tb_kengen7";
             this.tb_kengen7.Size = new System.Drawing.Size(22, 19);
-            this.tb_kengen7.TabIndex = 66;
+            this.tb_kengen7.TabIndex = 15;
             this.tb_kengen7.DoubleClick += new System.EventHandler(this.tb_kengen7_DoubleClick);
             this.tb_kengen7.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen7_Validating);
             // 
@@ -474,9 +474,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(238, 181);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 12);
+            this.label1.Size = new System.Drawing.Size(445, 12);
             this.label1.TabIndex = 50;
-            this.label1.Text = "0:不可 1:参照のみ 9:すべて可";
+            this.label1.Text = "0:不可 1:参照のみ 3:管理職 5:兼務担当（必要業務の更新権限有） 6:実務担当 9:すべて可";
             // 
             // tb_update_datetime
             // 
@@ -618,7 +618,7 @@
             this.tb_bikou.Location = new System.Drawing.Point(110, 328);
             this.tb_bikou.Name = "tb_bikou";
             this.tb_bikou.Size = new System.Drawing.Size(760, 19);
-            this.tb_bikou.TabIndex = 15;
+            this.tb_bikou.TabIndex = 18;
             this.tb_bikou.Validating += new System.ComponentModel.CancelEventHandler(this.tb_bikou_Validating);
             // 
             // textBox33
@@ -921,7 +921,7 @@
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 0;
+            this.btn_touroku.TabIndex = 19;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
             this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
@@ -931,7 +931,7 @@
             this.button2.Location = new System.Drawing.Point(795, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 20;
             this.button2.Text = "終了";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
