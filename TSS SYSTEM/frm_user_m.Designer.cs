@@ -113,9 +113,9 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 536);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 535);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(880, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -136,7 +136,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 536);
+            this.splitContainer1.Size = new System.Drawing.Size(880, 535);
             this.splitContainer1.SplitterDistance = 64;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -235,8 +235,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.button2);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 468);
-            this.splitContainer2.SplitterDistance = 432;
+            this.splitContainer2.Size = new System.Drawing.Size(880, 467);
+            this.splitContainer2.SplitterDistance = 431;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -474,9 +474,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(238, 181);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 12);
+            this.label1.Size = new System.Drawing.Size(517, 12);
             this.label1.TabIndex = 50;
-            this.label1.Text = "0:不可 1:参照のみ 3:管理職 5:兼務担当（必要業務の更新権限有） 6:実務担当 9:すべて可";
+            this.label1.Text = "0:不可 1:参照のみ 3:管理職（更新権限無） 5:兼務担当（必要業務の更新権限有） 6:実務担当 9:すべて可";
             // 
             // tb_update_datetime
             // 
@@ -756,7 +756,7 @@
             this.textBox21.Size = new System.Drawing.Size(100, 19);
             this.textBox21.TabIndex = 21;
             this.textBox21.TabStop = false;
-            this.textBox21.Text = "権限1（受注）";
+            this.textBox21.Text = "権限1（生産管理）";
             // 
             // textBox19
             // 
@@ -940,7 +940,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 558);
+            this.ClientSize = new System.Drawing.Size(880, 557);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

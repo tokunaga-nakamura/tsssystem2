@@ -92,6 +92,24 @@ namespace TSS_SYSTEM
             return out_name;
         }
 
+        private string get_seisan_koutei(string in_cd)
+        {
+            string out_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + in_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_name = "生産工程が未登録です";
+                lbl_seisan_koutei.Visible = true;
+            }
+            else
+            {
+                out_name = "";
+                lbl_seisan_koutei.Visible = false;
+            }
+            return out_name;
+        }
+
         private string get_nouhin_schedule_kbn(string in_cd)
         {
             string out_name = "";  //戻り値用
@@ -170,6 +188,7 @@ namespace TSS_SYSTEM
             tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
             tb_seihin_cd.Text = in_dt.Rows[0]["seihin_cd"].ToString();
             tb_seihin_name.Text = get_seihin_name(in_dt.Rows[0]["seihin_cd"].ToString());
+            lbl_seisan_koutei.Text = get_seisan_koutei(in_dt.Rows[0]["seihin_cd"].ToString());
             tb_juchu_su.Text = in_dt.Rows[0]["juchu_su"].ToString();
             tb_nouhin_schedule_kbn.Text = get_nouhin_schedule_kbn(in_dt.Rows[0]["seihin_cd"].ToString());
             tb_nouhin_schedule_kbn_name.Text = get_nouhin_schedule_kbn_name(tb_nouhin_schedule_kbn.Text);
@@ -230,6 +249,8 @@ namespace TSS_SYSTEM
             tb_seihin_cd.Text = "";
             tb_seihin_name.Text = "";
             tb_juchu_su.Text = "";
+            lbl_seisan_koutei.Text = "";
+            lbl_seisan_koutei.Visible = false;
             tb_nouhin_schedule_kbn.Text = "";
             tb_nouhin_schedule_kbn_name.Text = "";
             cb_nouhin_schedule.Checked = true;
@@ -239,8 +260,7 @@ namespace TSS_SYSTEM
             tb_seisan_su.Text = "";
             tb_nouhin_su.Text = "";
             tb_uriage_su.Text = "";
-            //tb_nouhin_start_nengetu.Text = "";
-            //tb_nouhin_seq.Text = "";
+
             tb_uriage_kanryou_flg.Text = "";
             tb_delete_flg.Text = "";
             tb_create_user_cd.Text = "";
@@ -304,6 +324,8 @@ namespace TSS_SYSTEM
 
             //書式を設定する
             //dgv_nounyuu_schedule.Columns[2].DefaultCellStyle.Format = "#,###,###,##0.00";
+            //検索項目を水色にする
+            dgv_nounyuu_schedule.Columns[1].DefaultCellStyle.BackColor = Color.PowderBlue;
             //入力不可の項目をグレーにする
             dgv_nounyuu_schedule.Columns[2].DefaultCellStyle.BackColor = Color.Gainsboro;
             //指定列を非表示にする
@@ -1565,6 +1587,27 @@ namespace TSS_SYSTEM
             frm_skm.in_cd = tb_seihin_cd.Text;
             frm_skm.ShowDialog();
             frm_skm.Dispose();
+        }
+
+        private void dgv_nounyuu_schedule_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            //新規行の場合、表示がおかしい（原因不明）なので、納品予定日が入っている場合のみとする
+            //if (dgv.Rows[e.RowIndex].Cells[0].Value == "null") return;
+            //納品スケジュール区分をダブルクリックした時
+            if(e.ColumnIndex == 1)
+            {
+                dgv.Rows[e.RowIndex].Cells[1].Value = tss.kubun_cd_select("09", dgv.Rows[e.RowIndex].Cells[1].Value.ToString());
+                dgv.Rows[e.RowIndex].Cells[2].Value = tss.kubun_name_select("09", dgv.Rows[e.RowIndex].Cells[1].Value.ToString());
+                dgv.EndEdit();
+                //dgv_nounyuu_schedule.Rows[e.RowIndex].Cells[1].Value = tss.kubun_cd_select("09", tb_nouhin_schedule_kbn.Text);
+                //dgv_nounyuu_schedule.Rows[e.RowIndex].Cells[2].Value = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
+                dgv_nounyuu_schedule.EndEdit();
+            }
+
+
+
+
         }
     }
 }
