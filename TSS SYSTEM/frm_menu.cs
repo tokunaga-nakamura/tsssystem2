@@ -891,5 +891,14 @@ namespace TSS_SYSTEM
             frm_seisan_kou.ShowDialog(this);
             frm_seisan_kou.Dispose();
         }
+
+        private void btn_seisan_kousu_Click(object sender, EventArgs e)
+        {
+            frm_seisan_kousu frm_sk = new frm_seisan_kousu();
+            frm_sk.ShowDialog(this);
+            frm_sk.Dispose();
+        }
+
+
     }
 }
