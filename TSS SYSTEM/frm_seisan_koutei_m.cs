@@ -68,11 +68,8 @@ namespace TSS_SYSTEM
         private bool chk_seihin_cd()
         {
             bool bl = true; //戻り値
-            //DataTable dt_work = new DataTable();
             dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + tb_seihin_cd.Text + "' and A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
-            //dt_m = tss.OracleSelect("Select A1.SEIHIN_CD,A1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 Left Outer Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seihin_cd = B1.seihin_cd Left Outer Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_No = B1.seq_no Left Outer Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd Left Outer Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
             dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
-            //dt_work = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
 
             //for文で行数分
             int rc = dt_m.Rows.Count;
@@ -560,7 +557,6 @@ namespace TSS_SYSTEM
             if (e.ColumnIndex == 21)
             {
                 //ラインコードがnullや空白の場合
-                //if ((dgv.Rows[e.RowIndex].Cells[21] != null || dgv.Rows[e.RowIndex].Cells[21].Value.ToString() != "") && ( e.FormattedValue == null || e.FormattedValue.ToString() == ""))
                 if (dgv.Rows[e.RowIndex].Cells[21].Value.ToString() == "")
                 {
                    //何もしない
@@ -580,7 +576,7 @@ namespace TSS_SYSTEM
                     DataTable dt_work = new DataTable();
                     int j = dt_work.Rows.Count;
 
-                    dt_work = tss.OracleSelect("select a1.seihin_cd,a1.seq_no,a1.line_cd,b1.line_name,a1.tact_time,a1.dandori_time,a1.tuika_time,a1.hoju_time,A1.bikou from tss_seisan_koutei_line_m a1 inner join tss_line_m b1 on a1.line_cd = b1.line_cd where a1.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and a1.line_cd = '" + e.FormattedValue.ToString() + "'");
+                    dt_work = tss.OracleSelect("select a1.seihin_cd,a1.seq_no,a1.line_cd,b1.line_name,a1.tact_time,a1.dandori_time,a1.tuika_time,a1.hoju_time,A1.bikou from tss_seisan_koutei_line_m a1 inner join tss_line_m b1 on a1.line_cd = b1.line_cd where a1.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and a1.line_cd = '" + e.FormattedValue.ToString() + "' and seq_no = '" + tb_koutei_no.Text.ToString() + "'");
                     if (dt_work.Rows.Count <= 0)
                     {
                         DataTable dt_work2 = tss.OracleSelect("select line_cd,line_name from tss_line_m where line_cd = '" + e.FormattedValue.ToString() + "'");
@@ -1051,7 +1047,18 @@ namespace TSS_SYSTEM
 
             DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + str + "'");
         }
-        
+
+        private void dgv_line_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult bRet = MessageBox.Show("ラインを削除しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (bRet == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
+
+
         public class DataSetController
         {
             /// <summary>
@@ -1155,6 +1162,16 @@ namespace TSS_SYSTEM
                 gamen_clear();
             }
         }
+
+        //ラインdgv削除後のイベント
+        private void dgv_line_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            dt_m.AcceptChanges();
+            dgv_line_disp();
+            
+        
+        }
+
 
         private void btn_koutei_tuika_Click(object sender, EventArgs e)
         {
@@ -1261,7 +1278,7 @@ namespace TSS_SYSTEM
         }
 
        
-
+        //登録ボタンの処理
         private void btn_touroku_Click(object sender, EventArgs e)
         {
             dt_m.AcceptChanges();
@@ -1379,6 +1396,12 @@ namespace TSS_SYSTEM
                     MessageBox.Show("補充時間の値が異常です 0～99999.99");
                     return;
                 }
+                if (dt_m.Rows[i]["tact_time"].ToString() == "" &&  dt_m.Rows[i]["dandori_time"].ToString() == "" && dt_m.Rows[i]["tuika_time"].ToString() == "" && dt_m.Rows[i]["hoju_time"].ToString() == "")
+                {
+                    MessageBox.Show("時間登録されていないラインがあります 工程順 " + dt_m.Rows[i]["seq_no"].ToString() + "ラインコード　" + dt_m.Rows[i]["line_cd"].ToString() + "");
+                    return;
+                }
+                
                 if (tss.StringByte(dt_m.Rows[i]["bikou"].ToString()) > 128)
                 {
                     MessageBox.Show("備考の文字数が128バイトを超えています。");
@@ -1394,12 +1417,121 @@ namespace TSS_SYSTEM
                 {
                     dt_m.Rows[i]["select_kbn"] = 1;
                 }
+                if (dt_m.Rows[i]["checkbox"].ToString() == "")
+                {
+                    dt_m.Rows[i]["select_kbn"] = 0;
+                }
                 if (dt_m.Rows[i]["checkbox"].ToString() == "False")
                 {
                     dt_m.Rows[i]["select_kbn"] = 0;
                 }
             }
+
+
+            //ラインセレクト区分のチェック
+            //重複を除去するため DataView を使う
+
+            DataView seq_view = new DataView(dt_m);
+            seq_view.Sort = "SEQ_NO";
             
+            //SEQ_NOで集計をかける
+            DataTable dt_seq = seq_view.ToTable("dt_seq", true, "SEQ_NO");
+            int dt_seq_rc = dt_seq.Rows.Count;
+            String seq;
+            
+            for (int i = 0; i < dt_seq_rc; i++)
+            {
+                seq = dt_seq.Rows[i]["SEQ_NO"].ToString();
+                //MessageBox.Show(seq);
+                DataView koutei_line = new DataView(dt_m);
+                DataRow[] dr = dt_m.Select("seq_no = '" + seq + "'");
+
+                int dr_count = dr.Length;
+
+                for (int j = 0; j < dr_count; j++)
+                {
+                    //ライン選択区分が0（固定）の時
+                    if (dr[j]["LINE_SELECT_KBN"].ToString() == "0")
+                    {
+                        //ライン選択区分が0で、複数のラインがあるとき
+                        if (dr_count > 1)
+                        {
+                            MessageBox.Show("ライン選択区分が0の時は、複数のラインを登録できません 工程順 " + seq + "");
+                            return;
+                        }
+                        //ライン選択区分が0で、ライン選択のチェックボックスが未チェックのとき
+                        if (dr_count.ToString() == "1" && dr[j]["SELECT_KBN"].ToString() == "0")
+                        {
+                            MessageBox.Show("ライン選択のチェックボックスエラー 工程順 " + seq + "");
+                            return;
+                        }
+                    }
+                    //ライン選択区分が1（分割）の時
+                    if (dr[j]["LINE_SELECT_KBN"].ToString() == "1")
+                    {
+                        //ライン選択区分が1で、一つのラインしか無いとき
+                        if (dr_count <= 1)
+                        {
+                            MessageBox.Show("ライン選択区分が1の時は、複数のラインを登録してください。 工程順 " + seq + "");
+                            return;
+                        }
+
+                        MessageBox.Show(dr[j]["SELECT_KBN"].ToString());
+                        //ライン選択区分が1で、ライン選択のチェックボックスが未チェックのとき
+                        if (dr_count > 1 && dr[j]["SELECT_KBN"].ToString() == "0")
+                        {
+                            MessageBox.Show("ライン選択のチェックボックスに未チェックがあります。 工程順 " + seq + "");
+                            return;
+                        }
+                        
+                    }
+                    //ライン選択区分が2（選択）の時
+                    if (dr[j]["LINE_SELECT_KBN"].ToString() == "2")
+                    {
+                        //ライン選択区分が2で、一つのラインしか無いとき
+                        if (dr_count <= 1)
+                        {
+                            MessageBox.Show("ライン選択区分が2の時は、複数のラインを登録してください。 工程順 " + seq + "");
+                            return;
+                        }
+                        //ライン選択区分が2で、ライン選択のチェックボックスセルが2つ以上あるとき
+                       
+                        if (dr_count >= 2)
+                        {
+                            int sum = 0; //ライン選択区分の合計値用変数
+                            for (j = 0; j < dr_count; j++)
+                            {
+                                //行数分ループして、ライン選択区分 0 or 1 の合計を求める
+                                int sum2 = int.Parse(dr[j]["SELECT_KBN"].ToString());
+                                sum = sum + sum2;
+                            }
+
+                            if(sum > 1)
+                            {
+                                MessageBox.Show("ライン選択区分が2の時は、ライン選択チェックは1つにしてください 工程順 " + seq + "");
+                                return;
+                            }
+                            if (sum == 0)
+                            {
+                                MessageBox.Show("ライン選択のチェックボックスに未チェックがあります。　工程順 " + seq + "");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+   
+            DataView line_view = new DataView(dt_m);
+            line_view.Sort = "SEQ_NO";
+
+            //Distinct（集計）をかける
+            DataTable dt_seisan_koutei_line = line_view.ToTable("dt_seisan_koutei_line", true, "SEQ_NO", "LINE_CD", "LINE_SELECT_KBN","SELECT_KBN");
+
+            int dt_rc = dt_seisan_koutei_line.Rows.Count;
+            
+
             //①生産工程マスタ更新
             //既存のデータの削除
             tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
@@ -1473,9 +1605,10 @@ namespace TSS_SYSTEM
             DataView vw2 = new DataView(dt_m);
 
             //Distinct（集計）をかける
-            dt_seisan_koutei_line_m = vw2.ToTable("dt_seisan_koutei_line", true, "SEIHIN_CD", "SEQ_NO","LINE_CD","SELECT_KBN","TACT_TIME","DANDORI_TIME","TUIKA_TIME","HOJU_TIME","BIKOU1", "DELETE_FLG1", "CREATE_USER_CD1", "CREATE_DATETIME1", "UPDATE_USER_CD1", "UPDATE_DATETIME1");
+            dt_seisan_koutei_line_m = vw2.ToTable("dt_seisan_koutei_line", true, "SEIHIN_CD", "SEQ_NO","LINE_CD","SELECT_KBN","TACT_TIME","DANDORI_TIME","TUIKA_TIME","HOJU_TIME","BIKOU1", "DELETE_FLG1", "CREATE_USER_CD1", "CREATE_DATETIME1", "UPDATE_USER_CD1", "UPDATE_DATETIME1","LINE_SELECT_KBN");
 
             int rc2 = dt_seisan_koutei_line_m.Rows.Count;
+
 
             for (int i = 0; i < rc2; i++)
             {
@@ -1583,7 +1716,7 @@ namespace TSS_SYSTEM
             //選択用のdatatableの作成
             DataTable dt_work = new DataTable();
          
-            dt_work = tss.OracleSelect("select busyo_cd,busyo_name from TSS_BUSYO_M ORDER BY BUSYO_CD");
+            dt_work = tss.OracleSelect("select busyo_cd,busyo_name from TSS_BUSYO_M WHERE delete_flg = 0 ORDER BY BUSYO_CD");
             dt_work.Columns["busyo_cd"].ColumnName = "部署コード";
             dt_work.Columns["busyo_name"].ColumnName = "部署名";
 
@@ -1603,7 +1736,7 @@ namespace TSS_SYSTEM
                 //選択用のdatatableの作成
                 DataTable dt_work = new DataTable();
 
-                dt_work = tss.OracleSelect("select koutei_cd,koutei_name from TSS_KOUTEI_M ORDER BY KOUTEI_CD");
+                dt_work = tss.OracleSelect("select koutei_cd,koutei_name from TSS_KOUTEI_M where delete_flg = 0 ORDER BY KOUTEI_CD");
                 dt_work.Columns["koutei_cd"].ColumnName = "工程コード";
                 dt_work.Columns["koutei_name"].ColumnName = "工程名";
 
@@ -1634,7 +1767,7 @@ namespace TSS_SYSTEM
                   //選択用のdatatableの作成
                   DataTable dt_work = new DataTable();
 
-                  dt_work = tss.OracleSelect("select line_cd,line_name from TSS_LINE_M ORDER BY LINE_CD");
+                  dt_work = tss.OracleSelect("select line_cd,line_name from TSS_LINE_M where delete_flg = 0 ORDER BY LINE_CD");
                   dt_work.Columns["line_cd"].ColumnName = "ラインコード";
                   dt_work.Columns["line_name"].ColumnName = "ライン名";
 
@@ -1647,7 +1780,7 @@ namespace TSS_SYSTEM
                   DataTable dt_work2 = new DataTable();
                   int j = dt_work2.Rows.Count;
 
-                  dt_work2 = tss.OracleSelect("select a1.seihin_cd,a1.seq_no,a1.line_cd,b1.line_name,a1.tact_time,a1.dandori_time,a1.tuika_time,a1.hoju_time,A1.bikou from tss_seisan_koutei_line_m a1 inner join tss_line_m b1 on a1.line_cd = b1.line_cd where a1.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and a1.line_cd = '" + dgv_line.CurrentCell.Value.ToString() + "'");
+                  dt_work2 = tss.OracleSelect("select a1.seihin_cd,a1.seq_no,a1.line_cd,b1.line_name,a1.tact_time,a1.dandori_time,a1.tuika_time,a1.hoju_time,A1.bikou from tss_seisan_koutei_line_m a1 inner join tss_line_m b1 on a1.line_cd = b1.line_cd where a1.seihin_cd = '" + tb_seihin_cd.Text.ToString() + "' and a1.line_cd = '" + dgv_line.CurrentCell.Value.ToString() + "' and seq_no = '" + tb_koutei_no.Text.ToString() + "'");
                   if (dt_work2.Rows.Count <= 0)
                   {
                       DataTable dt_work3 = tss.OracleSelect("select line_cd,line_name from tss_line_m where line_cd = '" + dgv_line.CurrentCell.Value.ToString() + "'");
@@ -1715,6 +1848,10 @@ namespace TSS_SYSTEM
                   dgv_line.EndEdit();
               }
         }
+
+      
+
+       
 
        
     }

@@ -529,6 +529,8 @@
             this.dgv_line.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_line_CellDoubleClick);
             this.dgv_line.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_line_CellValidating);
             this.dgv_line.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_line_DataError);
+            this.dgv_line.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_line_UserDeletedRow);
+            this.dgv_line.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_line_UserDeletingRow);
             // 
             // tb_busyo_cd
             // 
