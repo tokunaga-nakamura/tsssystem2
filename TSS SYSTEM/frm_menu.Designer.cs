@@ -123,6 +123,7 @@
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_seisan_kousu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -170,6 +171,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1043,6 +1045,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(690, 442);
@@ -1277,6 +1280,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_seisan_kousu
+            // 
+            this.btn_seisan_kousu.Location = new System.Drawing.Point(6, 3);
+            this.btn_seisan_kousu.Name = "btn_seisan_kousu";
+            this.btn_seisan_kousu.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_kousu.TabIndex = 0;
+            this.btn_seisan_kousu.Text = "生産工数参照";
+            this.btn_seisan_kousu.UseVisualStyleBackColor = true;
+            this.btn_seisan_kousu.Click += new System.EventHandler(this.btn_seisan_kousu_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1345,6 +1358,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1447,6 +1461,7 @@
         private System.Windows.Forms.Button btn_system_administrator;
         private System.Windows.Forms.Button btn_seisan_koutei_m;
         private System.Windows.Forms.Button btn_seisan_koutei;
+        private System.Windows.Forms.Button btn_seisan_kousu;
     }
 }
 
