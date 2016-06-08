@@ -115,6 +115,7 @@ namespace TSS_SYSTEM
 
             if (rows.Length > 0)
             {
+                
                 tb_seihin_cd.Text = rows[0]["seihin_cd"].ToString();
                 tb_seihin_name.Text = get_seihin_name(rows[0]["seihin_cd"].ToString());
                 tb_koutei_no.Text = rows[0]["seq_no"].ToString();
@@ -129,10 +130,14 @@ namespace TSS_SYSTEM
                 tb_koutei_start_time.Text = rows[0]["koutei_start_time"].ToString();
                 tb_bikou.Text = rows[0]["bikou"].ToString();
                 tb_comments.Text = rows[0]["comments"].ToString();
+
+                object create_datetime = dt_m.Compute("Min(create_datetime)", null);
+                object update_datetime = dt_m.Compute("Max(update_datetime)", null);
+                
                 tb_create_user_cd.Text = rows[0]["create_user_cd"].ToString();
-                tb_create_datetime.Text = rows[0]["create_datetime"].ToString();
+                tb_create_datetime.Text = create_datetime.ToString();
                 tb_update_user_cd.Text = rows[0]["update_user_cd"].ToString();
-                tb_update_datetime.Text = rows[0]["update_datetime"].ToString();
+                tb_update_datetime.Text = update_datetime.ToString();
             }
         }
 
@@ -1442,7 +1447,6 @@ namespace TSS_SYSTEM
             for (int i = 0; i < dt_seq_rc; i++)
             {
                 seq = dt_seq.Rows[i]["SEQ_NO"].ToString();
-                //MessageBox.Show(seq);
                 DataView koutei_line = new DataView(dt_m);
                 DataRow[] dr = dt_m.Select("seq_no = '" + seq + "'");
 
@@ -1475,15 +1479,12 @@ namespace TSS_SYSTEM
                             MessageBox.Show("ライン選択区分が1の時は、複数のラインを登録してください。 工程順 " + seq + "");
                             return;
                         }
-
-                        MessageBox.Show(dr[j]["SELECT_KBN"].ToString());
                         //ライン選択区分が1で、ライン選択のチェックボックスが未チェックのとき
                         if (dr_count > 1 && dr[j]["SELECT_KBN"].ToString() == "0")
                         {
                             MessageBox.Show("ライン選択のチェックボックスに未チェックがあります。 工程順 " + seq + "");
                             return;
                         }
-                        
                     }
                     //ライン選択区分が2（選択）の時
                     if (dr[j]["LINE_SELECT_KBN"].ToString() == "2")
@@ -1641,6 +1642,12 @@ namespace TSS_SYSTEM
                                    + "to_date('" + dt_seisan_koutei_line_m.Rows[i][11].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                                    + tss.user_cd + "',SYSDATE)");
             }
+
+
+            tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
+            tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
+            tb_update_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][12].ToString();
+            tb_update_datetime.Text = dt_seisan_koutei_line_m.Rows[0][13].ToString();
 
             MessageBox.Show("生産工程マスタに登録しました");
         }
