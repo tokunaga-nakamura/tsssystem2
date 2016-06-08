@@ -102,6 +102,7 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_kousu = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btn_seisan_koutei = new System.Windows.Forms.Button();
             this.btn_system_administrator = new System.Windows.Forms.Button();
@@ -123,7 +124,7 @@
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_seisan_kousu = new System.Windows.Forms.Button();
+            this.btn_seisan_schedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1045,12 +1046,23 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage5.Controls.Add(this.btn_seisan_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(690, 442);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産管理";
+            // 
+            // btn_seisan_kousu
+            // 
+            this.btn_seisan_kousu.Location = new System.Drawing.Point(6, 3);
+            this.btn_seisan_kousu.Name = "btn_seisan_kousu";
+            this.btn_seisan_kousu.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_kousu.TabIndex = 0;
+            this.btn_seisan_kousu.Text = "生産工数参照";
+            this.btn_seisan_kousu.UseVisualStyleBackColor = true;
+            this.btn_seisan_kousu.Click += new System.EventHandler(this.btn_seisan_kousu_Click);
             // 
             // tabPage6
             // 
@@ -1280,15 +1292,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_seisan_kousu
+            // btn_seisan_schedule
             // 
-            this.btn_seisan_kousu.Location = new System.Drawing.Point(6, 3);
-            this.btn_seisan_kousu.Name = "btn_seisan_kousu";
-            this.btn_seisan_kousu.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_kousu.TabIndex = 0;
-            this.btn_seisan_kousu.Text = "生産工数参照";
-            this.btn_seisan_kousu.UseVisualStyleBackColor = true;
-            this.btn_seisan_kousu.Click += new System.EventHandler(this.btn_seisan_kousu_Click);
+            this.btn_seisan_schedule.Location = new System.Drawing.Point(8, 204);
+            this.btn_seisan_schedule.Name = "btn_seisan_schedule";
+            this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule.TabIndex = 1;
+            this.btn_seisan_schedule.Text = "生産スケジュール調整";
+            this.btn_seisan_schedule.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule.Click += new System.EventHandler(this.btn_seisan_schedule_Click);
             // 
             // frm_menu
             // 
@@ -1462,6 +1474,7 @@
         private System.Windows.Forms.Button btn_seisan_koutei_m;
         private System.Windows.Forms.Button btn_seisan_koutei;
         private System.Windows.Forms.Button btn_seisan_kousu;
+        private System.Windows.Forms.Button btn_seisan_schedule;
     }
 }
 

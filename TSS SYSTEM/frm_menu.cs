@@ -899,6 +899,13 @@ namespace TSS_SYSTEM
             frm_sk.Dispose();
         }
 
+        private void btn_seisan_schedule_Click(object sender, EventArgs e)
+        {
+            frm_seisan_schedule frm_ssc = new frm_seisan_schedule();
+            frm_ssc.ShowDialog(this);
+            frm_ssc.Dispose();
+        }
+
 
     }
 }
