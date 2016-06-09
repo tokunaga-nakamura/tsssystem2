@@ -39,16 +39,12 @@
             this.btn_hyouji = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_line_name = new System.Windows.Forms.TextBox();
-            this.tb_koutei_name = new System.Windows.Forms.TextBox();
             this.tb_busyo_name = new System.Windows.Forms.TextBox();
             this.tb_line_cd = new System.Windows.Forms.TextBox();
-            this.tb_koutei_cd = new System.Windows.Forms.TextBox();
             this.tb_busyo_cd = new System.Windows.Forms.TextBox();
             this.tb_busyo_midasi = new System.Windows.Forms.TextBox();
-            this.tb_koutei_midasi = new System.Windows.Forms.TextBox();
             this.tb_line_midasi = new System.Windows.Forms.TextBox();
             this.cb_line_sitei = new System.Windows.Forms.CheckBox();
-            this.cb_koutei_sitei = new System.Windows.Forms.CheckBox();
             this.cb_busyo_sitei = new System.Windows.Forms.CheckBox();
             this.nud_month = new System.Windows.Forms.NumericUpDown();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -114,9 +110,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(171, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 12);
+            this.label1.Size = new System.Drawing.Size(397, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "明細行は、同一受注は1行にまとめて表示されます。";
+            this.label1.Text = "明細行は、部署・工程・ライン等に関わらず同一受注は1行にまとめて表示されます。";
             // 
             // btn_hardcopy
             // 
@@ -175,7 +171,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_list);
             this.splitContainer3.Size = new System.Drawing.Size(884, 436);
-            this.splitContainer3.SplitterDistance = 107;
+            this.splitContainer3.SplitterDistance = 80;
             this.splitContainer3.TabIndex = 0;
             // 
             // cb_meisai
@@ -190,7 +186,7 @@
             // 
             // btn_hyouji
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(582, 77);
+            this.btn_hyouji.Location = new System.Drawing.Point(582, 49);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
             this.btn_hyouji.TabIndex = 5;
@@ -201,41 +197,28 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tb_line_name);
-            this.groupBox1.Controls.Add(this.tb_koutei_name);
             this.groupBox1.Controls.Add(this.tb_busyo_name);
             this.groupBox1.Controls.Add(this.tb_line_cd);
-            this.groupBox1.Controls.Add(this.tb_koutei_cd);
             this.groupBox1.Controls.Add(this.tb_busyo_cd);
             this.groupBox1.Controls.Add(this.tb_busyo_midasi);
-            this.groupBox1.Controls.Add(this.tb_koutei_midasi);
             this.groupBox1.Controls.Add(this.tb_line_midasi);
             this.groupBox1.Controls.Add(this.cb_line_sitei);
-            this.groupBox1.Controls.Add(this.cb_koutei_sitei);
             this.groupBox1.Controls.Add(this.cb_busyo_sitei);
             this.groupBox1.Location = new System.Drawing.Point(261, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 95);
+            this.groupBox1.Size = new System.Drawing.Size(315, 67);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "絞込み";
             // 
             // tb_line_name
             // 
-            this.tb_line_name.Location = new System.Drawing.Point(209, 68);
+            this.tb_line_name.Location = new System.Drawing.Point(209, 41);
             this.tb_line_name.Name = "tb_line_name";
             this.tb_line_name.ReadOnly = true;
             this.tb_line_name.Size = new System.Drawing.Size(100, 19);
             this.tb_line_name.TabIndex = 17;
             this.tb_line_name.TabStop = false;
-            // 
-            // tb_koutei_name
-            // 
-            this.tb_koutei_name.Location = new System.Drawing.Point(209, 42);
-            this.tb_koutei_name.Name = "tb_koutei_name";
-            this.tb_koutei_name.ReadOnly = true;
-            this.tb_koutei_name.Size = new System.Drawing.Size(100, 19);
-            this.tb_koutei_name.TabIndex = 16;
-            this.tb_koutei_name.TabStop = false;
             // 
             // tb_busyo_name
             // 
@@ -249,20 +232,12 @@
             // tb_line_cd
             // 
             this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_line_cd.Location = new System.Drawing.Point(176, 68);
+            this.tb_line_cd.Location = new System.Drawing.Point(176, 41);
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(33, 19);
             this.tb_line_cd.TabIndex = 14;
             this.tb_line_cd.DoubleClick += new System.EventHandler(this.tb_line_cd_DoubleClick);
-            // 
-            // tb_koutei_cd
-            // 
-            this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_koutei_cd.Location = new System.Drawing.Point(176, 42);
-            this.tb_koutei_cd.Name = "tb_koutei_cd";
-            this.tb_koutei_cd.Size = new System.Drawing.Size(33, 19);
-            this.tb_koutei_cd.TabIndex = 13;
-            this.tb_koutei_cd.DoubleClick += new System.EventHandler(this.tb_koutei_cd_DoubleClick);
+            this.tb_line_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_cd_Validating);
             // 
             // tb_busyo_cd
             // 
@@ -272,6 +247,7 @@
             this.tb_busyo_cd.Size = new System.Drawing.Size(33, 19);
             this.tb_busyo_cd.TabIndex = 12;
             this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
+            this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
             // 
             // tb_busyo_midasi
             // 
@@ -284,21 +260,10 @@
             this.tb_busyo_midasi.TabStop = false;
             this.tb_busyo_midasi.Text = "部署コード";
             // 
-            // tb_koutei_midasi
-            // 
-            this.tb_koutei_midasi.BackColor = System.Drawing.Color.NavajoWhite;
-            this.tb_koutei_midasi.Location = new System.Drawing.Point(114, 42);
-            this.tb_koutei_midasi.Name = "tb_koutei_midasi";
-            this.tb_koutei_midasi.ReadOnly = true;
-            this.tb_koutei_midasi.Size = new System.Drawing.Size(62, 19);
-            this.tb_koutei_midasi.TabIndex = 10;
-            this.tb_koutei_midasi.TabStop = false;
-            this.tb_koutei_midasi.Text = "工程コード";
-            // 
             // tb_line_midasi
             // 
             this.tb_line_midasi.BackColor = System.Drawing.Color.NavajoWhite;
-            this.tb_line_midasi.Location = new System.Drawing.Point(114, 68);
+            this.tb_line_midasi.Location = new System.Drawing.Point(114, 41);
             this.tb_line_midasi.Name = "tb_line_midasi";
             this.tb_line_midasi.ReadOnly = true;
             this.tb_line_midasi.Size = new System.Drawing.Size(62, 19);
@@ -309,24 +274,13 @@
             // cb_line_sitei
             // 
             this.cb_line_sitei.AutoSize = true;
-            this.cb_line_sitei.Location = new System.Drawing.Point(6, 70);
+            this.cb_line_sitei.Location = new System.Drawing.Point(6, 43);
             this.cb_line_sitei.Name = "cb_line_sitei";
             this.cb_line_sitei.Size = new System.Drawing.Size(102, 16);
             this.cb_line_sitei.TabIndex = 8;
             this.cb_line_sitei.Text = "ラインを指定する";
             this.cb_line_sitei.UseVisualStyleBackColor = true;
             this.cb_line_sitei.CheckedChanged += new System.EventHandler(this.cb_line_sitei_CheckedChanged);
-            // 
-            // cb_koutei_sitei
-            // 
-            this.cb_koutei_sitei.AutoSize = true;
-            this.cb_koutei_sitei.Location = new System.Drawing.Point(6, 44);
-            this.cb_koutei_sitei.Name = "cb_koutei_sitei";
-            this.cb_koutei_sitei.Size = new System.Drawing.Size(100, 16);
-            this.cb_koutei_sitei.TabIndex = 7;
-            this.cb_koutei_sitei.Text = "工程を指定する";
-            this.cb_koutei_sitei.UseVisualStyleBackColor = true;
-            this.cb_koutei_sitei.CheckedChanged += new System.EventHandler(this.cb_koutei_sitei_CheckedChanged);
             // 
             // cb_busyo_sitei
             // 
@@ -414,7 +368,7 @@
             this.dgv_list.Location = new System.Drawing.Point(0, 0);
             this.dgv_list.Name = "dgv_list";
             this.dgv_list.RowTemplate.Height = 21;
-            this.dgv_list.Size = new System.Drawing.Size(880, 321);
+            this.dgv_list.Size = new System.Drawing.Size(880, 348);
             this.dgv_list.TabIndex = 0;
             // 
             // splitContainer4
@@ -495,16 +449,12 @@
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.Button btn_hyouji;
         private System.Windows.Forms.TextBox tb_line_name;
-        private System.Windows.Forms.TextBox tb_koutei_name;
         private System.Windows.Forms.TextBox tb_busyo_name;
         private System.Windows.Forms.TextBox tb_line_cd;
-        private System.Windows.Forms.TextBox tb_koutei_cd;
         private System.Windows.Forms.TextBox tb_busyo_cd;
         private System.Windows.Forms.TextBox tb_busyo_midasi;
-        private System.Windows.Forms.TextBox tb_koutei_midasi;
         private System.Windows.Forms.TextBox tb_line_midasi;
         private System.Windows.Forms.CheckBox cb_line_sitei;
-        private System.Windows.Forms.CheckBox cb_koutei_sitei;
         private System.Windows.Forms.CheckBox cb_busyo_sitei;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.DataGridView dgv_list;

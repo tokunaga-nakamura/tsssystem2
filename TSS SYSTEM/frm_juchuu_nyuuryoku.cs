@@ -1182,6 +1182,7 @@ namespace TSS_SYSTEM
                     //納品スケジュール区分を取得・表示
                     tb_nouhin_schedule_kbn.Text = get_nouhin_schedule_kbn(tb_seihin_cd.Text);
                     //納品スケジュール区分名称を取得・表示
+                    tb_nouhin_schedule_kbn.Text = get_nouhin_schedule_kbn(tb_seihin_cd.Text);
                     tb_nouhin_schedule_kbn_name.Text = get_nouhin_schedule_kbn_name(tb_nouhin_schedule_kbn.Text);
 
                     //製品マスタの取引先コードと受注の取引先コードが違う場合
@@ -1197,6 +1198,8 @@ namespace TSS_SYSTEM
                             //「いいえ」が選択された時
                             tb_seihin_cd.Text = "";
                             tb_seihin_name.Text = "";
+                            tb_nouhin_schedule_kbn.Text = "";
+                            tb_nouhin_schedule_kbn_name.Text = "";
                             e.Cancel = true;
                             return;
                         }
