@@ -32,6 +32,9 @@
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.dgv_list = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.btn_touroku = new System.Windows.Forms.Button();
+            this.btn_insatu = new System.Windows.Forms.Button();
+            this.btn_csv = new System.Windows.Forms.Button();
             this.tb_line_name = new System.Windows.Forms.TextBox();
             this.tb_koutei_name = new System.Windows.Forms.TextBox();
             this.tb_busyo_name = new System.Windows.Forms.TextBox();
@@ -46,6 +49,15 @@
             this.cb_koutei_sitei = new System.Windows.Forms.CheckBox();
             this.cb_busyo_sitei = new System.Windows.Forms.CheckBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
+            this.btn_line_tuika = new System.Windows.Forms.Button();
+            this.btn_seisan_jun_down = new System.Windows.Forms.Button();
+            this.btn_seisan_jun_up = new System.Windows.Forms.Button();
             this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,6 +67,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -89,10 +102,13 @@
             this.dgv_list.Location = new System.Drawing.Point(0, 0);
             this.dgv_list.Name = "dgv_list";
             this.dgv_list.RowTemplate.Height = 21;
-            this.dgv_list.Size = new System.Drawing.Size(880, 322);
+            this.dgv_list.Size = new System.Drawing.Size(880, 299);
             this.dgv_list.TabIndex = 0;
+            this.dgv_list.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellDoubleClick);
             this.dgv_list.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_list_CellFormatting);
             this.dgv_list.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_list_CellPainting);
+            this.dgv_list.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellValidated);
+            this.dgv_list.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_list_CellValidating);
             // 
             // splitContainer4
             // 
@@ -102,6 +118,12 @@
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
+            this.splitContainer4.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer4.Panel1.Controls.Add(this.btn_csv);
+            // 
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
@@ -109,9 +131,36 @@
             this.splitContainer4.SplitterDistance = 795;
             this.splitContainer4.TabIndex = 1;
             // 
+            // btn_touroku
+            // 
+            this.btn_touroku.Location = new System.Drawing.Point(6, 5);
+            this.btn_touroku.Name = "btn_touroku";
+            this.btn_touroku.Size = new System.Drawing.Size(75, 23);
+            this.btn_touroku.TabIndex = 13;
+            this.btn_touroku.Text = "登録";
+            this.btn_touroku.UseVisualStyleBackColor = true;
+            // 
+            // btn_insatu
+            // 
+            this.btn_insatu.Location = new System.Drawing.Point(119, 5);
+            this.btn_insatu.Name = "btn_insatu";
+            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu.TabIndex = 2;
+            this.btn_insatu.Text = "印刷";
+            this.btn_insatu.UseVisualStyleBackColor = true;
+            // 
+            // btn_csv
+            // 
+            this.btn_csv.Location = new System.Drawing.Point(200, 5);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 3;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            // 
             // tb_line_name
             // 
-            this.tb_line_name.Location = new System.Drawing.Point(759, 16);
+            this.tb_line_name.Location = new System.Drawing.Point(171, 60);
             this.tb_line_name.Name = "tb_line_name";
             this.tb_line_name.ReadOnly = true;
             this.tb_line_name.Size = new System.Drawing.Size(100, 19);
@@ -120,7 +169,7 @@
             // 
             // tb_koutei_name
             // 
-            this.tb_koutei_name.Location = new System.Drawing.Point(472, 16);
+            this.tb_koutei_name.Location = new System.Drawing.Point(170, 38);
             this.tb_koutei_name.Name = "tb_koutei_name";
             this.tb_koutei_name.ReadOnly = true;
             this.tb_koutei_name.Size = new System.Drawing.Size(100, 19);
@@ -139,7 +188,7 @@
             // tb_line_cd
             // 
             this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_line_cd.Location = new System.Drawing.Point(726, 16);
+            this.tb_line_cd.Location = new System.Drawing.Point(138, 60);
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(33, 19);
             this.tb_line_cd.TabIndex = 14;
@@ -148,7 +197,7 @@
             // tb_koutei_cd
             // 
             this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_koutei_cd.Location = new System.Drawing.Point(439, 16);
+            this.tb_koutei_cd.Location = new System.Drawing.Point(137, 38);
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(33, 19);
             this.tb_koutei_cd.TabIndex = 13;
@@ -156,7 +205,7 @@
             // 
             // btn_hyouji
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(804, 5);
+            this.btn_hyouji.Location = new System.Drawing.Point(219, 5);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
             this.btn_hyouji.TabIndex = 5;
@@ -187,7 +236,7 @@
             // tb_koutei_midasi
             // 
             this.tb_koutei_midasi.BackColor = System.Drawing.Color.NavajoWhite;
-            this.tb_koutei_midasi.Location = new System.Drawing.Point(377, 16);
+            this.tb_koutei_midasi.Location = new System.Drawing.Point(75, 38);
             this.tb_koutei_midasi.Name = "tb_koutei_midasi";
             this.tb_koutei_midasi.ReadOnly = true;
             this.tb_koutei_midasi.Size = new System.Drawing.Size(62, 19);
@@ -198,7 +247,7 @@
             // tb_line_midasi
             // 
             this.tb_line_midasi.BackColor = System.Drawing.Color.NavajoWhite;
-            this.tb_line_midasi.Location = new System.Drawing.Point(664, 16);
+            this.tb_line_midasi.Location = new System.Drawing.Point(76, 60);
             this.tb_line_midasi.Name = "tb_line_midasi";
             this.tb_line_midasi.ReadOnly = true;
             this.tb_line_midasi.Size = new System.Drawing.Size(62, 19);
@@ -209,7 +258,7 @@
             // cb_line_sitei
             // 
             this.cb_line_sitei.AutoSize = true;
-            this.cb_line_sitei.Location = new System.Drawing.Point(594, 18);
+            this.cb_line_sitei.Location = new System.Drawing.Point(6, 62);
             this.cb_line_sitei.Name = "cb_line_sitei";
             this.cb_line_sitei.Size = new System.Drawing.Size(74, 16);
             this.cb_line_sitei.TabIndex = 8;
@@ -220,7 +269,7 @@
             // cb_koutei_sitei
             // 
             this.cb_koutei_sitei.AutoSize = true;
-            this.cb_koutei_sitei.Location = new System.Drawing.Point(305, 18);
+            this.cb_koutei_sitei.Location = new System.Drawing.Point(6, 40);
             this.cb_koutei_sitei.Name = "cb_koutei_sitei";
             this.cb_koutei_sitei.Size = new System.Drawing.Size(72, 16);
             this.cb_koutei_sitei.TabIndex = 7;
@@ -251,6 +300,15 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.textBox32);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_create_user_cd);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_create_datetime);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox35);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_update_user_cd);
+            this.splitContainer3.Panel1.Controls.Add(this.tb_update_datetime);
+            this.splitContainer3.Panel1.Controls.Add(this.btn_line_tuika);
+            this.splitContainer3.Panel1.Controls.Add(this.btn_seisan_jun_down);
+            this.splitContainer3.Panel1.Controls.Add(this.btn_seisan_jun_up);
             this.splitContainer3.Panel1.Controls.Add(this.tb_seisan_yotei_date);
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer3.Panel1.Controls.Add(this.textBox6);
@@ -260,8 +318,101 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_list);
             this.splitContainer3.Size = new System.Drawing.Size(884, 437);
-            this.splitContainer3.SplitterDistance = 107;
+            this.splitContainer3.SplitterDistance = 130;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // textBox32
+            // 
+            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox32.Location = new System.Drawing.Point(659, 9);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.ReadOnly = true;
+            this.textBox32.Size = new System.Drawing.Size(45, 19);
+            this.textBox32.TabIndex = 105;
+            this.textBox32.TabStop = false;
+            this.textBox32.Text = "作成";
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(704, 9);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_create_user_cd.TabIndex = 106;
+            this.tb_create_user_cd.TabStop = false;
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(746, 9);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_create_datetime.TabIndex = 107;
+            this.tb_create_datetime.TabStop = false;
+            // 
+            // textBox35
+            // 
+            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox35.Location = new System.Drawing.Point(659, 28);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.ReadOnly = true;
+            this.textBox35.Size = new System.Drawing.Size(45, 19);
+            this.textBox35.TabIndex = 108;
+            this.textBox35.TabStop = false;
+            this.textBox35.Text = "更新";
+            // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(704, 28);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_update_user_cd.TabIndex = 109;
+            this.tb_update_user_cd.TabStop = false;
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(746, 28);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_update_datetime.TabIndex = 110;
+            this.tb_update_datetime.TabStop = false;
+            // 
+            // btn_line_tuika
+            // 
+            this.btn_line_tuika.Location = new System.Drawing.Point(300, 95);
+            this.btn_line_tuika.Name = "btn_line_tuika";
+            this.btn_line_tuika.Size = new System.Drawing.Size(75, 23);
+            this.btn_line_tuika.TabIndex = 104;
+            this.btn_line_tuika.TabStop = false;
+            this.btn_line_tuika.Text = "1行追加";
+            this.btn_line_tuika.UseVisualStyleBackColor = true;
+            this.btn_line_tuika.Click += new System.EventHandler(this.btn_line_tuika_Click);
+            // 
+            // btn_seisan_jun_down
+            // 
+            this.btn_seisan_jun_down.Location = new System.Drawing.Point(462, 94);
+            this.btn_seisan_jun_down.Name = "btn_seisan_jun_down";
+            this.btn_seisan_jun_down.Size = new System.Drawing.Size(75, 23);
+            this.btn_seisan_jun_down.TabIndex = 9;
+            this.btn_seisan_jun_down.Text = "下へ";
+            this.btn_seisan_jun_down.UseVisualStyleBackColor = true;
+            this.btn_seisan_jun_down.Click += new System.EventHandler(this.btn_seisan_jun_down_Click);
+            // 
+            // btn_seisan_jun_up
+            // 
+            this.btn_seisan_jun_up.Location = new System.Drawing.Point(381, 94);
+            this.btn_seisan_jun_up.Name = "btn_seisan_jun_up";
+            this.btn_seisan_jun_up.Size = new System.Drawing.Size(75, 23);
+            this.btn_seisan_jun_up.TabIndex = 8;
+            this.btn_seisan_jun_up.Text = "上へ";
+            this.btn_seisan_jun_up.UseVisualStyleBackColor = true;
+            this.btn_seisan_jun_up.Click += new System.EventHandler(this.btn_seisan_jun_up_Click);
             // 
             // tb_seisan_yotei_date
             // 
@@ -299,7 +450,7 @@
             this.groupBox1.Controls.Add(this.cb_busyo_sitei);
             this.groupBox1.Location = new System.Drawing.Point(3, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(874, 47);
+            this.groupBox1.Size = new System.Drawing.Size(291, 88);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "絞込み";
@@ -379,6 +530,7 @@
             this.Text = "生産スケジュール";
             this.Load += new System.EventHandler(this.frm_seisan_schedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_list)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
@@ -428,5 +580,17 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TextBox tb_seisan_yotei_date;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btn_insatu;
+        private System.Windows.Forms.Button btn_csv;
+        private System.Windows.Forms.Button btn_touroku;
+        private System.Windows.Forms.Button btn_seisan_jun_down;
+        private System.Windows.Forms.Button btn_seisan_jun_up;
+        private System.Windows.Forms.Button btn_line_tuika;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox tb_create_user_cd;
+        private System.Windows.Forms.TextBox tb_create_datetime;
+        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox tb_update_user_cd;
+        private System.Windows.Forms.TextBox tb_update_datetime;
     }
 }
