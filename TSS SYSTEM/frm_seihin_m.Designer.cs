@@ -77,12 +77,13 @@
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.btn_seihin_kousei = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_seihin_kousei = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgv_seihin_koutei = new System.Windows.Forms.DataGridView();
+            this.dgv_seisan_koutei = new System.Windows.Forms.DataGridView();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
             this.label2 = new System.Windows.Forms.Label();
@@ -93,7 +94,6 @@
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_seihin_kousei = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -123,7 +123,7 @@
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_koutei)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_seisan_koutei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
@@ -739,6 +739,16 @@
             this.splitContainer8.TabIndex = 0;
             this.splitContainer8.TabStop = false;
             // 
+            // btn_seihin_kousei
+            // 
+            this.btn_seihin_kousei.Location = new System.Drawing.Point(379, 3);
+            this.btn_seihin_kousei.Name = "btn_seihin_kousei";
+            this.btn_seihin_kousei.Size = new System.Drawing.Size(75, 23);
+            this.btn_seihin_kousei.TabIndex = 1;
+            this.btn_seihin_kousei.Text = "製品構成";
+            this.btn_seihin_kousei.UseVisualStyleBackColor = true;
+            this.btn_seihin_kousei.Click += new System.EventHandler(this.btn_seihin_kousei_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -794,7 +804,7 @@
             // 
             // splitContainer5.Panel2
             // 
-            this.splitContainer5.Panel2.Controls.Add(this.dgv_seihin_koutei);
+            this.splitContainer5.Panel2.Controls.Add(this.dgv_seisan_koutei);
             this.splitContainer5.Size = new System.Drawing.Size(415, 227);
             this.splitContainer5.SplitterDistance = 31;
             this.splitContainer5.TabIndex = 1;
@@ -807,18 +817,18 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "製品工程";
+            this.label1.Text = "生産工程";
             // 
-            // dgv_seihin_koutei
+            // dgv_seisan_koutei
             // 
-            this.dgv_seihin_koutei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_seihin_koutei.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_seihin_koutei.Location = new System.Drawing.Point(0, 0);
-            this.dgv_seihin_koutei.Name = "dgv_seihin_koutei";
-            this.dgv_seihin_koutei.RowTemplate.Height = 21;
-            this.dgv_seihin_koutei.Size = new System.Drawing.Size(415, 192);
-            this.dgv_seihin_koutei.TabIndex = 0;
-            this.dgv_seihin_koutei.TabStop = false;
+            this.dgv_seisan_koutei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_seisan_koutei.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_seisan_koutei.Location = new System.Drawing.Point(0, 0);
+            this.dgv_seisan_koutei.Name = "dgv_seisan_koutei";
+            this.dgv_seisan_koutei.RowTemplate.Height = 21;
+            this.dgv_seisan_koutei.Size = new System.Drawing.Size(415, 192);
+            this.dgv_seisan_koutei.TabIndex = 0;
+            this.dgv_seisan_koutei.TabStop = false;
             // 
             // splitContainer6
             // 
@@ -953,16 +963,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_seihin_kousei
-            // 
-            this.btn_seihin_kousei.Location = new System.Drawing.Point(379, 3);
-            this.btn_seihin_kousei.Name = "btn_seihin_kousei";
-            this.btn_seihin_kousei.Size = new System.Drawing.Size(75, 23);
-            this.btn_seihin_kousei.TabIndex = 1;
-            this.btn_seihin_kousei.Text = "製品構成";
-            this.btn_seihin_kousei.UseVisualStyleBackColor = true;
-            this.btn_seihin_kousei.Click += new System.EventHandler(this.btn_seihin_kousei_Click);
-            // 
             // frm_seihin_m
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1006,7 +1006,7 @@
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_seihin_koutei)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_seisan_koutei)).EndInit();
             this.splitContainer6.Panel1.ResumeLayout(false);
             this.splitContainer6.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
@@ -1046,7 +1046,7 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgv_seihin_koutei;
+        private System.Windows.Forms.DataGridView dgv_seisan_koutei;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.TextBox tb_type_kbn;
         private System.Windows.Forms.TextBox tb_sijou_kbn;

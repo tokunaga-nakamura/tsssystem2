@@ -148,7 +148,7 @@ namespace TSS_SYSTEM
             tb_update_datetime.Text = "";
 
             dgv_seihin_kousei.DataSource = null;
-            dgv_seihin_koutei.DataSource = null;
+            dgv_seisan_koutei.DataSource = null;
             dgv_tanka.DataSource = null;
         }
     
@@ -183,9 +183,10 @@ namespace TSS_SYSTEM
             tb_update_datetime.Text = in_dt_work.Rows[0]["update_datetime"].ToString();
 
             seihin_kousei_disp(tb_seihin_cd.Text);
-            dgv_seihin_koutei.DataSource = null;
-            seihin_tanka_disp(tb_seihin_cd.Text);   //dgv_tanka.DataSource = null;
+            seisan_koutei_disp(tb_seihin_cd.Text);
+            seihin_tanka_disp(tb_seihin_cd.Text);
         }
+
         private void seihin_kousei_disp(string in_cd)
         {
             DataTable w_dt = new DataTable();
@@ -213,6 +214,35 @@ namespace TSS_SYSTEM
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_seihin_kousei.Columns[0].HeaderText = "構成番号";
             dgv_seihin_kousei.Columns[1].HeaderText = "構成名称";
+        }
+
+        private void seisan_koutei_disp(string in_cd)
+        {
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select seq_no,busyo_cd,koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,koutei_start_time,comments,bikou from tss_seisan_koutei_m where seihin_cd = '" + in_cd + "' order by seq_no");
+            dgv_seisan_koutei.DataSource = null;
+            dgv_seisan_koutei.DataSource = w_dt;
+            //リードオンリーにする（編集できなくなる）
+            dgv_seisan_koutei.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_seisan_koutei.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_seisan_koutei.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_seisan_koutei.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_seisan_koutei.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_seisan_koutei.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_seisan_koutei.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_seisan_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_seisan_koutei.AllowUserToAddRows = false;
+            //DataGridViewのカラムヘッダーテキストを変更する
+            //dgv_seisan_koutei.Columns[0].HeaderText = "構成番号";
+            //dgv_seisan_koutei.Columns[1].HeaderText = "構成名称";
         }
 
         private void seihin_tanka_disp(string in_cd)
@@ -805,8 +835,8 @@ namespace TSS_SYSTEM
             tss.GetUser();
             //新規書込み
             bool bl_tss = true;
-            bl_tss = tss.OracleInsert("INSERT INTO tss_seihin_m (seihin_cd,seihin_name,bikou,torihikisaki_cd,genka_tanka,hanbai_tanka,tani_kbn,syuukei_syubetu_kbn,syuukei_bunrui_kbn,syuukei_sijou_kbn,syuukei_type_kbn,seihin_kousei_no,create_user_cd,create_datetime)"
-                                    + " VALUES ('" + tb_seihin_cd.Text.ToString() + "','" + tb_seihin_name.Text.ToString() + "','" + tb_bikou.Text.ToString() + "','" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_genka.Text.ToString() + "','" + tb_hanbai_tanka.Text.ToString() + "','" + tb_tani_kbn.Text.ToString() + "','" + tb_seihin_syubetu_kbn.Text.ToString() + "','" + tb_seihin_bunrui_kbn.Text.ToString() + "','" + tb_sijou_kbn.Text.ToString() + "','" + tb_type_kbn.Text.ToString() + "','" + tb_seihin_kousei_no.Text.ToString() + "','" + tss.user_cd + "',SYSDATE)");
+            bl_tss = tss.OracleInsert("INSERT INTO tss_seihin_m (seihin_cd,seihin_name,bikou,torihikisaki_cd,genka_tanka,hanbai_tanka,tani_kbn,nouhin_schedule_kbn,syuukei_syubetu_kbn,syuukei_bunrui_kbn,syuukei_sijou_kbn,syuukei_type_kbn,seihin_kousei_no,create_user_cd,create_datetime)"
+                                    + " VALUES ('" + tb_seihin_cd.Text.ToString() + "','" + tb_seihin_name.Text.ToString() + "','" + tb_bikou.Text.ToString() + "','" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_genka.Text.ToString() + "','" + tb_hanbai_tanka.Text.ToString() + "','" + tb_tani_kbn.Text.ToString() + "','" + tb_nouhin_schedule_kbn.Text.ToString() + "','" + tb_seihin_syubetu_kbn.Text.ToString() + "','" + tb_seihin_bunrui_kbn.Text.ToString() + "','" + tb_sijou_kbn.Text.ToString() + "','" + tb_type_kbn.Text.ToString() + "','" + tb_seihin_kousei_no.Text.ToString() + "','" + tss.user_cd + "',SYSDATE)");
             if (bl_tss != true)
             {
                 tss.ErrorLogWrite(tss.user_cd, "製品マスタ／登録", "登録ボタン押下時のOracleInsert");
@@ -818,7 +848,6 @@ namespace TSS_SYSTEM
                 MessageBox.Show("新規登録しました。");
             }
         }
-
 
         private void seihin_update()
         {

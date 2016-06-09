@@ -249,7 +249,7 @@ namespace TSS_SYSTEM
             if (decimal.TryParse(tb_kousu.Text.ToString(), out db))
             {
                 //変換出来たら、dbにその数値が入る
-                if (db > decimal.Parse("99999.99") || db < decimal.Parse("0.00"))
+                if (db > decimal.Parse("99999999.99") || db < decimal.Parse("0.00"))
                 {
                     bl = false;
                 }
@@ -307,7 +307,7 @@ namespace TSS_SYSTEM
 
             if (chk_kousu() == false)
             {
-                MessageBox.Show("保有工数は99999.99までの値を入力してください。");
+                MessageBox.Show("保有工数は99999999.99までの値を入力してください。");
                 tb_kousu.Focus();
                 return;
             }
