@@ -249,6 +249,8 @@ namespace TSS_SYSTEM
                 }
             }
 
+            out_sql = out_sql + " order by koutei_cd,line_cd,seq ";
+
             return out_sql;
         }
 
@@ -324,19 +326,19 @@ namespace TSS_SYSTEM
             dgv_list.Columns["update_datetime"].Visible = false;
 
             //DataGridViewのカラムヘッダーテキストを変更する
-            dgv_list.Columns[2].HeaderText = "工程コード";
+            dgv_list.Columns[2].HeaderText = "工程CD";
             dgv_list.Columns[3].HeaderText = "工程名";
-            dgv_list.Columns[4].HeaderText = "ラインコード";
-            dgv_list.Columns[5].HeaderText = "ライン名";
-            dgv_list.Columns[6].HeaderText = "seq";
-            dgv_list.Columns[7].HeaderText = "取引先コード";
-            dgv_list.Columns[8].HeaderText = "受注コード1";
-            dgv_list.Columns[9].HeaderText = "受注コード2";
-            dgv_list.Columns[10].HeaderText = "製品コード";
+            dgv_list.Columns[4].HeaderText = "ﾗｲﾝCD";
+            dgv_list.Columns[5].HeaderText = "ﾗｲﾝ名";
+            dgv_list.Columns[6].HeaderText = "順番";
+            dgv_list.Columns[7].HeaderText = "取引先CD";
+            dgv_list.Columns[8].HeaderText = "受注cd1";
+            dgv_list.Columns[9].HeaderText = "受注cd2";
+            dgv_list.Columns[10].HeaderText = "製品cd";
             dgv_list.Columns[11].HeaderText = "製品名";
             dgv_list.Columns[12].HeaderText = "受注数";
             dgv_list.Columns[13].HeaderText = "生産数";
-            dgv_list.Columns[14].HeaderText = "タクトタイム";
+            dgv_list.Columns[14].HeaderText = "ﾀｸﾄﾀｲﾑ";
             dgv_list.Columns[15].HeaderText = "段取工数";
             dgv_list.Columns[16].HeaderText = "検査工数";
             dgv_list.Columns[17].HeaderText = "補充工数";
@@ -345,17 +347,25 @@ namespace TSS_SYSTEM
             dgv_list.Columns[20].HeaderText = "終了時刻";
             dgv_list.Columns[21].HeaderText = "生産済数";
             dgv_list.Columns[22].HeaderText = "人数";
-            dgv_list.Columns[23].HeaderText = "メンバー";
-            dgv_list.Columns[24].HeaderText = "編集済フラグ";
+            dgv_list.Columns[23].HeaderText = "ﾒﾝﾊﾞｰ";
+            dgv_list.Columns[24].HeaderText = "編集済ﾌﾗｸﾞ";
             dgv_list.Columns[25].HeaderText = "備考";
 
-            ////"Column1"列のセルのテキストの配置を設定する（右詰とか）
-            //dgv_list.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgv_list.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgv_list.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgv_list.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //"Column1"列のセルのテキストの配置を設定する（右詰とか）
+            dgv_list.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[15].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_list.Columns[20].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             ////書式を設定する
+            dgv_list.Columns["start_time"].DefaultCellStyle.Format = "HH:mm";
+            dgv_list.Columns["end_time"].DefaultCellStyle.Format = "HH:mm";
+            
             //dgv_list.Columns[8].DefaultCellStyle.Format = "#,###,###,##0";
             //dgv_list.Columns[9].DefaultCellStyle.Format = "#,###,###,##0";
             //dgv_list.Columns[10].DefaultCellStyle.Format = "#,###,###,##0";
@@ -367,29 +377,35 @@ namespace TSS_SYSTEM
         private bool IsTheSameCellValue(int column, int row)
         {
 
-            DataGridViewCell cell1 = dgv_list[column, row];
-            DataGridViewCell cell2 = dgv_list[column, row - 1];
+                DataGridViewCell cell1 = dgv_list[column, row];
+                DataGridViewCell cell2 = dgv_list[column, row - 1];
+                
 
-            if (cell1.Value == null || cell2.Value == null)
-            {
-                return false;
-            }
 
-            // ここでは文字列としてセルの値を比較
-            if (cell1.Value.ToString() == cell2.Value.ToString())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                if (cell1.Value == null || cell2.Value == null)
+                {
+                    return false;
+                }
+
+                // ここでは文字列としてセルの値を比較
+                if (cell1.Value.ToString() == cell2.Value.ToString())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
         }
 
         private void dgv_list_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             // 1行目については何もしない
             if (e.RowIndex == 0)
+                return;
+
+            // 6列目以降については何もしない
+            if (e.ColumnIndex > 5)
                 return;
 
             if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
@@ -402,22 +418,28 @@ namespace TSS_SYSTEM
 
         private void dgv_list_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            // セルの下側の境界線を「境界線なし」に設定
-            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-
-            // 1行目や列ヘッダ、行ヘッダの場合は何もしない
-            if (e.RowIndex < 1 || e.ColumnIndex < 0)
-                return;
-
-            if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
+            if (e.RowIndex > 0 && e.ColumnIndex < 5)
             {
-                // セルの上側の境界線を「境界線なし」に設定
-                e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
-            }
-            else
-            {
-                // セルの上側の境界線を既定の境界線に設定
-                e.AdvancedBorderStyle.Top = dgv_list.AdvancedCellBorderStyle.Top;
+                // セルの下側の境界線を「境界線なし」に設定
+                e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+
+                // 1行目や列ヘッダ、行ヘッダの場合は何もしない
+                if (e.RowIndex < 1 || e.ColumnIndex < 0)
+                {
+                    return;
+
+                }
+
+                if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
+                {
+                    // セルの上側の境界線を「境界線なし」に設定
+                    e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                }
+                else
+                {
+                    // セルの上側の境界線を既定の境界線に設定
+                    e.AdvancedBorderStyle.Top = dgv_list.AdvancedCellBorderStyle.Top;
+                }
             }
 
         }
