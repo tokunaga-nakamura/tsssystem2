@@ -53,6 +53,7 @@
             this.dgv_list = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_csv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_year)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
@@ -379,6 +381,10 @@
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_csv);
+            // 
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
@@ -395,6 +401,16 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // btn_csv
+            // 
+            this.btn_csv.Location = new System.Drawing.Point(10, 3);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 0;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
             // 
             // frm_seisan_kousu
             // 
@@ -426,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_month)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_year)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_list)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
@@ -460,5 +477,6 @@
         private System.Windows.Forms.DataGridView dgv_list;
         private System.Windows.Forms.CheckBox cb_meisai;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_csv;
     }
 }

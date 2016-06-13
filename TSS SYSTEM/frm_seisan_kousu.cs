@@ -536,7 +536,7 @@ namespace TSS_SYSTEM
             //１行のみ選択可能（複数行の選択不可）
             dgv_list.MultiSelect = false;
             //セルを選択すると行全体が選択されるようにする
-            dgv_list.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dgv_list.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridView1にユーザーが新しい行を追加できないようにする
             dgv_list.AllowUserToAddRows = false;
 
@@ -654,6 +654,28 @@ namespace TSS_SYSTEM
         private void tb_line_cd_Validating(object sender, CancelEventArgs e)
         {
             tb_line_name.Text = get_line_name(tb_line_cd.Text.ToString());
+        }
+
+        private void btn_csv_Click(object sender, EventArgs e)
+        {
+            if (w_dt_list.Rows.Count != 0)
+            {
+                string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
+                string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString("00") + "分 生産工数" + w_str_now + ".csv";
+                if (tss.DataTableCSV(w_dt_list, true, w_str_filename, "\"", true))
+                {
+                    MessageBox.Show("保存されました。");
+                }
+                else
+                {
+                    MessageBox.Show("キャンセルまたはエラー");
+                }
+            }
+            else
+            {
+                MessageBox.Show("出力するデータがありません。");
+            }
+
         }
     }
 }

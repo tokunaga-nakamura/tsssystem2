@@ -167,6 +167,12 @@
     <Compile Include="frm_juchu_zan.Designer.cs">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_kintai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kintai.Designer.cs">
+      <DependentUpon>frm_kintai.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_line_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,12 @@
     </Compile>
     <Compile Include="frm_search_siire.Designer.cs">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search_syain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_syain.Designer.cs">
+      <DependentUpon>frm_search_syain.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_seihin_buhin_zaiko.cs">
       <SubType>Form</SubType>
@@ -274,6 +286,12 @@
     </Compile>
     <Compile Include="frm_seisan_schedule.Designer.cs">
       <DependentUpon>frm_seisan_schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_seisan_schedule_remake.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seisan_schedule_remake.Designer.cs">
+      <DependentUpon>frm_seisan_schedule_remake.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_siharai_ichiran.cs">
       <SubType>Form</SubType>
@@ -454,6 +472,12 @@
     </Compile>
     <Compile Include="frm_siire_simebi.Designer.cs">
       <DependentUpon>frm_siire_simebi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_syain_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_syain_m.Designer.cs">
+      <DependentUpon>frm_syain_m.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_system_administrator.cs">
       <SubType>Form</SubType>
@@ -704,6 +728,9 @@
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_kintai.resx">
+      <DependentUpon>frm_kintai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_line_m.resx">
       <DependentUpon>frm_line_m.cs</DependentUpon>
     </EmbeddedResource>
@@ -721,6 +748,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_search_siire.resx">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_syain.resx">
+      <DependentUpon>frm_search_syain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seihin_buhin_zaiko.resx">
       <DependentUpon>frm_seihin_buhin_zaiko.cs</DependentUpon>
@@ -757,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seisan_schedule.resx">
       <DependentUpon>frm_seisan_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seisan_schedule_remake.resx">
+      <DependentUpon>frm_seisan_schedule_remake.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siharai_ichiran.resx">
       <DependentUpon>frm_siharai_ichiran.cs</DependentUpon>
@@ -847,6 +880,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siire_simebi.resx">
       <DependentUpon>frm_siire_simebi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_syain_m.resx">
+      <DependentUpon>frm_syain_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_system_administrator.resx">
       <DependentUpon>frm_system_administrator.cs</DependentUpon>

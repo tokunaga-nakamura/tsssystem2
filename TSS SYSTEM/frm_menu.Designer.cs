@@ -48,9 +48,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+            this.btn_kintai = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_kintai = new System.Windows.Forms.DataGridView();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.btn_event = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_event = new System.Windows.Forms.DataGridView();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
@@ -102,8 +104,11 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_schedule_remake = new System.Windows.Forms.Button();
+            this.btn_seisan_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_kousu = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_syain_m = new System.Windows.Forms.Button();
             this.btn_seisan_koutei = new System.Windows.Forms.Button();
             this.btn_system_administrator = new System.Windows.Forms.Button();
             this.btn_busyo_m = new System.Windows.Forms.Button();
@@ -124,7 +129,7 @@
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_seisan_schedule = new System.Windows.Forms.Button();
+            this.btn_kintai_nyuuryoku = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -435,6 +440,7 @@
             // 
             // splitContainer7.Panel1
             // 
+            this.splitContainer7.Panel1.Controls.Add(this.btn_kintai);
             this.splitContainer7.Panel1.Controls.Add(this.label1);
             this.splitContainer7.Panel1MinSize = 24;
             // 
@@ -442,8 +448,17 @@
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_kintai);
             this.splitContainer7.Size = new System.Drawing.Size(228, 165);
-            this.splitContainer7.SplitterDistance = 25;
+            this.splitContainer7.SplitterDistance = 29;
             this.splitContainer7.TabIndex = 0;
+            // 
+            // btn_kintai
+            // 
+            this.btn_kintai.Location = new System.Drawing.Point(150, 3);
+            this.btn_kintai.Name = "btn_kintai";
+            this.btn_kintai.Size = new System.Drawing.Size(75, 23);
+            this.btn_kintai.TabIndex = 0;
+            this.btn_kintai.Text = "一覧";
+            this.btn_kintai.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -461,7 +476,7 @@
             this.dgv_kintai.Location = new System.Drawing.Point(0, 0);
             this.dgv_kintai.Name = "dgv_kintai";
             this.dgv_kintai.RowTemplate.Height = 21;
-            this.dgv_kintai.Size = new System.Drawing.Size(228, 136);
+            this.dgv_kintai.Size = new System.Drawing.Size(228, 132);
             this.dgv_kintai.TabIndex = 0;
             // 
             // splitContainer8
@@ -475,6 +490,7 @@
             // 
             // splitContainer8.Panel1
             // 
+            this.splitContainer8.Panel1.Controls.Add(this.btn_event);
             this.splitContainer8.Panel1.Controls.Add(this.label3);
             this.splitContainer8.Panel1MinSize = 24;
             // 
@@ -482,8 +498,17 @@
             // 
             this.splitContainer8.Panel2.Controls.Add(this.dgv_event);
             this.splitContainer8.Size = new System.Drawing.Size(228, 181);
-            this.splitContainer8.SplitterDistance = 25;
+            this.splitContainer8.SplitterDistance = 29;
             this.splitContainer8.TabIndex = 0;
+            // 
+            // btn_event
+            // 
+            this.btn_event.Location = new System.Drawing.Point(150, 3);
+            this.btn_event.Name = "btn_event";
+            this.btn_event.Size = new System.Drawing.Size(75, 23);
+            this.btn_event.TabIndex = 1;
+            this.btn_event.Text = "一覧";
+            this.btn_event.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -501,7 +526,7 @@
             this.dgv_event.Location = new System.Drawing.Point(0, 0);
             this.dgv_event.Name = "dgv_event";
             this.dgv_event.RowTemplate.Height = 21;
-            this.dgv_event.Size = new System.Drawing.Size(228, 152);
+            this.dgv_event.Size = new System.Drawing.Size(228, 148);
             this.dgv_event.TabIndex = 0;
             // 
             // splitContainer9
@@ -1046,6 +1071,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage5.Controls.Add(this.btn_seisan_schedule_remake);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -1053,6 +1079,26 @@
             this.tabPage5.Size = new System.Drawing.Size(690, 442);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産管理";
+            // 
+            // btn_seisan_schedule_remake
+            // 
+            this.btn_seisan_schedule_remake.Location = new System.Drawing.Point(6, 32);
+            this.btn_seisan_schedule_remake.Name = "btn_seisan_schedule_remake";
+            this.btn_seisan_schedule_remake.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule_remake.TabIndex = 2;
+            this.btn_seisan_schedule_remake.Text = "生産スケジュール再作成";
+            this.btn_seisan_schedule_remake.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule_remake.Click += new System.EventHandler(this.btn_seisan_schedule_remake_Click);
+            // 
+            // btn_seisan_schedule
+            // 
+            this.btn_seisan_schedule.Location = new System.Drawing.Point(8, 204);
+            this.btn_seisan_schedule.Name = "btn_seisan_schedule";
+            this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule.TabIndex = 1;
+            this.btn_seisan_schedule.Text = "生産スケジュール調整";
+            this.btn_seisan_schedule.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule.Click += new System.EventHandler(this.btn_seisan_schedule_Click);
             // 
             // btn_seisan_kousu
             // 
@@ -1067,6 +1113,8 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage6.Controls.Add(this.btn_kintai_nyuuryoku);
+            this.tabPage6.Controls.Add(this.btn_syain_m);
             this.tabPage6.Controls.Add(this.btn_seisan_koutei);
             this.tabPage6.Controls.Add(this.btn_system_administrator);
             this.tabPage6.Controls.Add(this.btn_busyo_m);
@@ -1090,6 +1138,16 @@
             this.tabPage6.Size = new System.Drawing.Size(690, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
+            // 
+            // btn_syain_m
+            // 
+            this.btn_syain_m.Location = new System.Drawing.Point(8, 358);
+            this.btn_syain_m.Name = "btn_syain_m";
+            this.btn_syain_m.Size = new System.Drawing.Size(220, 23);
+            this.btn_syain_m.TabIndex = 21;
+            this.btn_syain_m.Text = "社員マスタ";
+            this.btn_syain_m.UseVisualStyleBackColor = true;
+            this.btn_syain_m.Click += new System.EventHandler(this.btn_syain_m_Click);
             // 
             // btn_seisan_koutei
             // 
@@ -1292,15 +1350,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_seisan_schedule
+            // btn_kintai_nyuuryoku
             // 
-            this.btn_seisan_schedule.Location = new System.Drawing.Point(8, 204);
-            this.btn_seisan_schedule.Name = "btn_seisan_schedule";
-            this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_schedule.TabIndex = 1;
-            this.btn_seisan_schedule.Text = "生産スケジュール調整";
-            this.btn_seisan_schedule.UseVisualStyleBackColor = true;
-            this.btn_seisan_schedule.Click += new System.EventHandler(this.btn_seisan_schedule_Click);
+            this.btn_kintai_nyuuryoku.Location = new System.Drawing.Point(8, 387);
+            this.btn_kintai_nyuuryoku.Name = "btn_kintai_nyuuryoku";
+            this.btn_kintai_nyuuryoku.Size = new System.Drawing.Size(220, 23);
+            this.btn_kintai_nyuuryoku.TabIndex = 22;
+            this.btn_kintai_nyuuryoku.Text = "勤怠入力";
+            this.btn_kintai_nyuuryoku.UseVisualStyleBackColor = true;
+            this.btn_kintai_nyuuryoku.Click += new System.EventHandler(this.btn_kintai_nyuuryoku_Click);
             // 
             // frm_menu
             // 
@@ -1475,6 +1533,11 @@
         private System.Windows.Forms.Button btn_seisan_koutei;
         private System.Windows.Forms.Button btn_seisan_kousu;
         private System.Windows.Forms.Button btn_seisan_schedule;
+        private System.Windows.Forms.Button btn_seisan_schedule_remake;
+        private System.Windows.Forms.Button btn_syain_m;
+        private System.Windows.Forms.Button btn_kintai;
+        private System.Windows.Forms.Button btn_event;
+        private System.Windows.Forms.Button btn_kintai_nyuuryoku;
     }
 }
 

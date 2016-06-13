@@ -76,7 +76,8 @@ namespace TSS_SYSTEM
             TssSystemLibrary tsslib = new TssSystemLibrary();
             string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
             tsslib.OracleUpdate(sql);
-
+            //ログイン履歴の更新
+            tss.Login_Rireki("2");
             Application.Exit();
         }
 
@@ -93,6 +94,8 @@ namespace TSS_SYSTEM
             TssSystemLibrary tsslib = new TssSystemLibrary();
             string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
             tsslib.OracleUpdate(sql);
+            //ログイン履歴の更新
+            tss.Login_Rireki("2");
             //ログイン画面へ
             this.Opacity = 0;
             frm_login frm_login = new frm_login();
@@ -906,6 +909,40 @@ namespace TSS_SYSTEM
             frm_ssc.Dispose();
         }
 
+        private void btn_seisan_schedule_remake_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(7, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_seisan_schedule_remake frm_ssr = new frm_seisan_schedule_remake();
+            frm_ssr.ShowDialog(this);
+            frm_ssr.Dispose();
+        }
 
+        private void btn_syain_m_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(1, 3) == false && tss.User_Kengen_Check(7, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_syain_m frm_sm = new frm_syain_m();
+            frm_sm.ShowDialog(this);
+            frm_sm.Dispose();
+        }
+
+        private void btn_kintai_nyuuryoku_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(1, 3) == false && tss.User_Kengen_Check(5, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_kintai frm_kt = new frm_kintai();
+            frm_kt.ShowDialog(this);
+            frm_kt.Dispose();
+        }
     }
 }

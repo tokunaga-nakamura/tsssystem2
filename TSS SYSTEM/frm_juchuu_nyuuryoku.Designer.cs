@@ -45,8 +45,6 @@
             this.tb_juchu_cd2 = new System.Windows.Forms.TextBox();
             this.tb_juchu_cd1 = new System.Windows.Forms.TextBox();
             this.lbl_seisan_koutei = new System.Windows.Forms.Label();
-            this.btn_seihin_kousei = new System.Windows.Forms.Button();
-            this.btn_seihin_m = new System.Windows.Forms.Button();
             this.cb_seisan_jisseki = new System.Windows.Forms.CheckBox();
             this.tb_bikou = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -60,6 +58,9 @@
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.tb_juchu_su = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_seihin_m = new System.Windows.Forms.Button();
+            this.btn_seihin_kousei = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_kaijyo = new System.Windows.Forms.Button();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
@@ -98,7 +99,6 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -119,6 +119,7 @@
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
             this.splitContainer10.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -151,7 +152,6 @@
             this.splitContainer12.Panel1.SuspendLayout();
             this.splitContainer12.Panel2.SuspendLayout();
             this.splitContainer12.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -362,7 +362,7 @@
             this.textBox2.Size = new System.Drawing.Size(77, 19);
             this.textBox2.TabIndex = 1;
             this.textBox2.TabStop = false;
-            this.textBox2.Text = "受注コード1";
+            this.textBox2.Text = "受注コード";
             // 
             // tb_juchu_cd2
             // 
@@ -396,28 +396,6 @@
             this.lbl_seisan_koutei.Text = "生産工程の有無表示";
             this.lbl_seisan_koutei.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_seisan_koutei.Visible = false;
-            // 
-            // btn_seihin_kousei
-            // 
-            this.btn_seihin_kousei.Location = new System.Drawing.Point(87, 18);
-            this.btn_seihin_kousei.Name = "btn_seihin_kousei";
-            this.btn_seihin_kousei.Size = new System.Drawing.Size(75, 23);
-            this.btn_seihin_kousei.TabIndex = 0;
-            this.btn_seihin_kousei.TabStop = false;
-            this.btn_seihin_kousei.Text = "製品構成";
-            this.btn_seihin_kousei.UseVisualStyleBackColor = true;
-            this.btn_seihin_kousei.Click += new System.EventHandler(this.btn_seihin_kousei_Click);
-            // 
-            // btn_seihin_m
-            // 
-            this.btn_seihin_m.Location = new System.Drawing.Point(6, 18);
-            this.btn_seihin_m.Name = "btn_seihin_m";
-            this.btn_seihin_m.Size = new System.Drawing.Size(75, 23);
-            this.btn_seihin_m.TabIndex = 0;
-            this.btn_seihin_m.TabStop = false;
-            this.btn_seihin_m.Text = "製品マスタ";
-            this.btn_seihin_m.UseVisualStyleBackColor = true;
-            this.btn_seihin_m.Click += new System.EventHandler(this.btn_seihin_m_Click);
             // 
             // cb_seisan_jisseki
             // 
@@ -559,6 +537,39 @@
             this.tb_juchu_su.TabIndex = 1;
             this.tb_juchu_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_juchu_su.Validated += new System.EventHandler(this.tb_juchu_su_Validated);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_seihin_m);
+            this.groupBox1.Controls.Add(this.btn_seihin_kousei);
+            this.groupBox1.Location = new System.Drawing.Point(9, 130);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(383, 54);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "他画面へリンク";
+            // 
+            // btn_seihin_m
+            // 
+            this.btn_seihin_m.Location = new System.Drawing.Point(6, 18);
+            this.btn_seihin_m.Name = "btn_seihin_m";
+            this.btn_seihin_m.Size = new System.Drawing.Size(75, 23);
+            this.btn_seihin_m.TabIndex = 0;
+            this.btn_seihin_m.TabStop = false;
+            this.btn_seihin_m.Text = "製品マスタ";
+            this.btn_seihin_m.UseVisualStyleBackColor = true;
+            this.btn_seihin_m.Click += new System.EventHandler(this.btn_seihin_m_Click);
+            // 
+            // btn_seihin_kousei
+            // 
+            this.btn_seihin_kousei.Location = new System.Drawing.Point(87, 18);
+            this.btn_seihin_kousei.Name = "btn_seihin_kousei";
+            this.btn_seihin_kousei.Size = new System.Drawing.Size(75, 23);
+            this.btn_seihin_kousei.TabIndex = 0;
+            this.btn_seihin_kousei.TabStop = false;
+            this.btn_seihin_kousei.Text = "製品構成";
+            this.btn_seihin_kousei.UseVisualStyleBackColor = true;
+            this.btn_seihin_kousei.Click += new System.EventHandler(this.btn_seihin_kousei_Click);
             // 
             // groupBox3
             // 
@@ -1046,17 +1057,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btn_seihin_m);
-            this.groupBox1.Controls.Add(this.btn_seihin_kousei);
-            this.groupBox1.Location = new System.Drawing.Point(9, 130);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(383, 54);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "他画面へリンク";
-            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1090,6 +1090,7 @@
             this.splitContainer10.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).EndInit();
             this.splitContainer10.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -1128,7 +1129,6 @@
             this.splitContainer12.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
             this.splitContainer12.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -220,6 +220,24 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region Login_Rireki メソッド
+        /// <summary>
+        /// ログイン、ログアウトの記録を更新する
+        /// 引数：区分 1:ログイン 2:ログアウト
+        /// </summary>
+        public void Login_Rireki(string in_kbn)
+        {
+            if(in_kbn != "1" && in_kbn != "2")
+            {
+                return;
+            }
+            string w_host_name;
+            GetUser();
+            w_host_name = System.Net.Dns.GetHostName();
+            OracleInsert("insert into tss_login_f (log_date,user_cd,login_kbn,host_name,create_user_cd,create_datetime) values (sysdate,'" + user_cd + "','" + in_kbn + "','" + w_host_name + "','" + user_cd + "',sysdate)");
+        }
+        #endregion
+
         #region GetCOM メソッド
         /// <summary>
         /// BCRのCOMポートを取得する
@@ -887,6 +905,33 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region search_syain
+        public string search_syain(string in_mode, string in_cd)
+        {
+            //マウスのX座標を取得する
+            //int x = System.Windows.Forms.Cursor.Position.X;
+            //マウスのY座標を取得する
+            //int y = System.Windows.Forms.Cursor.Position.Y;
+
+            string out_cd = "";   //戻り値用
+            frm_search_syain frm_sb = new frm_search_syain();
+
+            //フォームをマウスの位置に表示する
+            //frm_sb.Left = x;
+            //frm_sb.Top = y;
+            //frm_sb.StartPosition = FormStartPosition.Manual;
+
+            //子画面のプロパティに値をセットする
+            frm_sb.str_mode = in_mode;
+            frm_sb.str_name = in_cd;
+            frm_sb.ShowDialog();
+            //子画面から値を取得する
+            out_cd = frm_sb.str_cd;
+            frm_sb.Dispose();
+            return out_cd;
+        }
+        #endregion
+
         #region 受注コード２選択画面
         public string select_juchu_cd(DataTable in_dt)
         {
@@ -1197,6 +1242,31 @@ namespace TSS_SYSTEM
             else
             {
                 out_str = w_dt.Rows[0]["torihikisaki_name"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_busyo_name メソッド
+        /// <summary>
+        /// 部署コードを受け取り部署名を返す</summary>
+        /// <param name="in_cd">
+        /// 部署名を取得する部署コード</param>
+        /// <returns>
+        /// string 部署名
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_busyo_name(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_busyo_m where busyo_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["busyo_name"].ToString();
             }
             return out_str;
         }
@@ -3075,7 +3145,7 @@ namespace TSS_SYSTEM
             if(w_dt_seisan_schedule.Rows.Count >=1)
             {
                 //編集済みの生産スケジュール有り
-                DialogResult result = MessageBox.Show("既に編集されている生産スケジュールがあります。\n再作成してもよろしいですか？\n「はい」=作作成＋メッセージ送信\n「いいえ」=作成しない＋受注変更メッセージの送信\n「キャンセル」=受注の更新のみ行い、メッセージも送信しない", "確認", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("既に編集されている生産スケジュールがあります。\n再作成してもよろしいですか？\n「はい」=再作成＋メッセージ送信\n「いいえ」=作成しない＋受注変更メッセージの送信\n「キャンセル」=受注の更新のみ行い、メッセージも送信しない", "確認", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 {
                     //「はい」
@@ -3119,6 +3189,11 @@ namespace TSS_SYSTEM
             else
             {
                 //編集済みの生産スケジュール無し
+                //■未編集のレコードがあるかもしれないので削除
+                if (ssm_delete(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2) == false)
+                {
+                    return false;
+                }
                 //■生産スケジュール作成
                 if (ssm_sakusei(in_torihikisaki_cd, in_juchu_cd1, in_juchu_cd2) == false)
                 {

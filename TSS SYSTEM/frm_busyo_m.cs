@@ -66,6 +66,13 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
+            //オール０は他の画面で使用するため使用不可とする
+            if(tb_busyo_cd.Text == "000000")
+            {
+                MessageBox.Show("部署コードに「000000」は使用できません。");
+                e.Cancel = true;
+                return;
+            }
             //空白の場合はOKとする
             if (tb_busyo_cd.Text != "")
             {

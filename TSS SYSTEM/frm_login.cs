@@ -27,12 +27,13 @@ namespace TSS_SYSTEM
         {
             //ログインせずに終了
             string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
-
             using (StreamWriter sw = new StreamWriter(TempPath + "user.txt", false))
             {
                 // ファイルへの書き込み
                 sw.Write("notlogin");   //ユーザー名を書き込む
             }
+            //ログイン履歴の更新
+            tss.Login_Rireki("2");
             Application.Exit();
         }
 
@@ -69,6 +70,8 @@ namespace TSS_SYSTEM
                     //ログイン情報更新
                     string sql = "UPDATE tss_user_m SET login_flg = '1',login_datetime = sysdate WHERE user_cd = '" + tb_user_cd.Text.ToString() + "'";
                     tsslib.OracleUpdate(sql);
+                    //ログイン記録の更新
+                    tss.Login_Rireki("1");
                     //ログイン画面を閉じる
                     this.Close();
                 }
