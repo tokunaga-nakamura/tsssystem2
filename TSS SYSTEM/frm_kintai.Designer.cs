@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_kintai));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -93,6 +94,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
             // splitContainer1.Panel2
@@ -103,6 +105,15 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(119, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(252, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "左の社員一覧からドラッグ＆ドロップで追加できます。";
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -110,6 +121,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -150,7 +162,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer6);
             this.splitContainer4.Size = new System.Drawing.Size(884, 437);
-            this.splitContainer4.SplitterDistance = 661;
+            this.splitContainer4.SplitterDistance = 646;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -171,7 +183,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dgv_kintai);
-            this.splitContainer5.Size = new System.Drawing.Size(657, 433);
+            this.splitContainer5.Size = new System.Drawing.Size(642, 433);
             this.splitContainer5.SplitterDistance = 25;
             this.splitContainer5.TabIndex = 0;
             this.splitContainer5.TabStop = false;
@@ -182,7 +194,7 @@
             this.tb_hizuke.MaxLength = 10;
             this.tb_hizuke.Name = "tb_hizuke";
             this.tb_hizuke.Size = new System.Drawing.Size(73, 19);
-            this.tb_hizuke.TabIndex = 1;
+            this.tb_hizuke.TabIndex = 0;
             this.tb_hizuke.Validating += new System.ComponentModel.CancelEventHandler(this.tb_hizuke_Validating);
             // 
             // textBox1
@@ -204,8 +216,12 @@
             this.dgv_kintai.Location = new System.Drawing.Point(0, 0);
             this.dgv_kintai.Name = "dgv_kintai";
             this.dgv_kintai.RowTemplate.Height = 21;
-            this.dgv_kintai.Size = new System.Drawing.Size(657, 404);
+            this.dgv_kintai.Size = new System.Drawing.Size(642, 404);
             this.dgv_kintai.TabIndex = 0;
+            this.dgv_kintai.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_kintai_CellDoubleClick);
+            this.dgv_kintai.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgv_kintai_CellParsing);
+            this.dgv_kintai.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_kintai_CellValidating);
+            this.dgv_kintai.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_kintai_UserDeletingRow);
             this.dgv_kintai.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgv_kintai_DragDrop);
             this.dgv_kintai.DragOver += new System.Windows.Forms.DragEventHandler(this.dgv_kintai_DragOver);
             // 
@@ -226,7 +242,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.dgv_syain);
-            this.splitContainer6.Size = new System.Drawing.Size(215, 433);
+            this.splitContainer6.Size = new System.Drawing.Size(230, 433);
             this.splitContainer6.SplitterDistance = 25;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
@@ -239,6 +255,7 @@
             this.cb_busyo.Name = "cb_busyo";
             this.cb_busyo.Size = new System.Drawing.Size(148, 20);
             this.cb_busyo.TabIndex = 1;
+            this.cb_busyo.TabStop = false;
             this.cb_busyo.SelectedValueChanged += new System.EventHandler(this.cb_busyo_SelectedValueChanged);
             // 
             // label1
@@ -257,7 +274,7 @@
             this.dgv_syain.Location = new System.Drawing.Point(0, 0);
             this.dgv_syain.Name = "dgv_syain";
             this.dgv_syain.RowTemplate.Height = 21;
-            this.dgv_syain.Size = new System.Drawing.Size(215, 404);
+            this.dgv_syain.Size = new System.Drawing.Size(230, 404);
             this.dgv_syain.TabIndex = 0;
             this.dgv_syain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgv_syain_MouseDown);
             // 
@@ -289,6 +306,7 @@
             this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // btn_syuuryou
             // 
@@ -312,6 +330,7 @@
             this.Text = "勤怠入力";
             this.Load += new System.EventHandler(this.frm_kintai_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -362,5 +381,6 @@
         private System.Windows.Forms.ComboBox cb_busyo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_syain;
+        private System.Windows.Forms.Label label2;
     }
 }
