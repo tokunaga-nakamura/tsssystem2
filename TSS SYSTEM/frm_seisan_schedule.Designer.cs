@@ -105,10 +105,10 @@
             this.dgv_list.Size = new System.Drawing.Size(880, 299);
             this.dgv_list.TabIndex = 0;
             this.dgv_list.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellDoubleClick);
-            this.dgv_list.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_list_CellFormatting);
-            this.dgv_list.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_list_CellPainting);
             this.dgv_list.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellValidated);
             this.dgv_list.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_list_CellValidating);
+            this.dgv_list.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_list_UserDeletedRow);
+            this.dgv_list.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_list_UserDeletingRow);
             // 
             // splitContainer4
             // 
@@ -139,6 +139,7 @@
             this.btn_touroku.TabIndex = 13;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // btn_insatu
             // 
@@ -160,6 +161,7 @@
             // 
             // tb_line_name
             // 
+            this.tb_line_name.Enabled = false;
             this.tb_line_name.Location = new System.Drawing.Point(171, 60);
             this.tb_line_name.Name = "tb_line_name";
             this.tb_line_name.ReadOnly = true;
@@ -169,6 +171,7 @@
             // 
             // tb_koutei_name
             // 
+            this.tb_koutei_name.Enabled = false;
             this.tb_koutei_name.Location = new System.Drawing.Point(170, 38);
             this.tb_koutei_name.Name = "tb_koutei_name";
             this.tb_koutei_name.ReadOnly = true;
@@ -178,6 +181,7 @@
             // 
             // tb_busyo_name
             // 
+            this.tb_busyo_name.Enabled = false;
             this.tb_busyo_name.Location = new System.Drawing.Point(170, 16);
             this.tb_busyo_name.Name = "tb_busyo_name";
             this.tb_busyo_name.ReadOnly = true;
@@ -188,6 +192,7 @@
             // tb_line_cd
             // 
             this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_line_cd.Enabled = false;
             this.tb_line_cd.Location = new System.Drawing.Point(138, 60);
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(33, 19);
@@ -197,6 +202,7 @@
             // tb_koutei_cd
             // 
             this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_koutei_cd.Enabled = false;
             this.tb_koutei_cd.Location = new System.Drawing.Point(137, 38);
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(33, 19);
@@ -205,6 +211,7 @@
             // 
             // btn_hyouji
             // 
+            this.btn_hyouji.Enabled = false;
             this.btn_hyouji.Location = new System.Drawing.Point(219, 5);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
@@ -216,6 +223,7 @@
             // tb_busyo_cd
             // 
             this.tb_busyo_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_busyo_cd.Enabled = false;
             this.tb_busyo_cd.Location = new System.Drawing.Point(137, 16);
             this.tb_busyo_cd.Name = "tb_busyo_cd";
             this.tb_busyo_cd.Size = new System.Drawing.Size(33, 19);
@@ -225,6 +233,7 @@
             // tb_busyo_midasi
             // 
             this.tb_busyo_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_busyo_midasi.Enabled = false;
             this.tb_busyo_midasi.Location = new System.Drawing.Point(75, 16);
             this.tb_busyo_midasi.Name = "tb_busyo_midasi";
             this.tb_busyo_midasi.ReadOnly = true;
@@ -236,6 +245,7 @@
             // tb_koutei_midasi
             // 
             this.tb_koutei_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_koutei_midasi.Enabled = false;
             this.tb_koutei_midasi.Location = new System.Drawing.Point(75, 38);
             this.tb_koutei_midasi.Name = "tb_koutei_midasi";
             this.tb_koutei_midasi.ReadOnly = true;
@@ -247,6 +257,7 @@
             // tb_line_midasi
             // 
             this.tb_line_midasi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tb_line_midasi.Enabled = false;
             this.tb_line_midasi.Location = new System.Drawing.Point(76, 60);
             this.tb_line_midasi.Name = "tb_line_midasi";
             this.tb_line_midasi.ReadOnly = true;
@@ -258,6 +269,7 @@
             // cb_line_sitei
             // 
             this.cb_line_sitei.AutoSize = true;
+            this.cb_line_sitei.Enabled = false;
             this.cb_line_sitei.Location = new System.Drawing.Point(6, 62);
             this.cb_line_sitei.Name = "cb_line_sitei";
             this.cb_line_sitei.Size = new System.Drawing.Size(74, 16);
@@ -269,6 +281,7 @@
             // cb_koutei_sitei
             // 
             this.cb_koutei_sitei.AutoSize = true;
+            this.cb_koutei_sitei.Enabled = false;
             this.cb_koutei_sitei.Location = new System.Drawing.Point(6, 40);
             this.cb_koutei_sitei.Name = "cb_koutei_sitei";
             this.cb_koutei_sitei.Size = new System.Drawing.Size(72, 16);
@@ -280,6 +293,7 @@
             // cb_busyo_sitei
             // 
             this.cb_busyo_sitei.AutoSize = true;
+            this.cb_busyo_sitei.Enabled = false;
             this.cb_busyo_sitei.Location = new System.Drawing.Point(6, 18);
             this.cb_busyo_sitei.Name = "cb_busyo_sitei";
             this.cb_busyo_sitei.Size = new System.Drawing.Size(72, 16);

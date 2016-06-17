@@ -1360,43 +1360,43 @@ namespace TSS_SYSTEM
                     return;
                 }
 
-                if (dt_m.Rows[i]["tact_time"] == null && decimal.TryParse(dt_m.Rows[i]["tact_time"].ToString(), out result) == false)
+                if (dt_m.Rows[i]["tact_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["tact_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("タクトタイムの値が異常です　0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["tact_time"] == null && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
+                if (dt_m.Rows[i]["tact_time"] == DBNull.Value && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
                 {
                     MessageBox.Show("タクトタイムの値が異常です 0～99999.99");
                     return;
                 }
 
-                if (dt_m.Rows[i]["dandori_time"] == null && decimal.TryParse(dt_m.Rows[i]["dandori_time"].ToString(), out result) == false)
+                if (dt_m.Rows[i]["dandori_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["dandori_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("段取り時間の値が異常です　0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["dandori_time"] == null && result > decimal.Parse("99.99") || result < decimal.Parse("0.00"))
+                if (dt_m.Rows[i]["dandori_time"] == DBNull.Value && result > decimal.Parse("99.99") || result < decimal.Parse("0.00"))
                 {
                     MessageBox.Show("段取り時間の値が異常です 0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["tuika_time"] == null && decimal.TryParse(dt_m.Rows[i]["tuika_time"].ToString(), out result) == false)
+                if (dt_m.Rows[i]["tuika_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["tuika_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("追加時間の値が異常です　0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["tuika_time"] == null && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
+                if (dt_m.Rows[i]["tuika_time"] == DBNull.Value && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
                 {
                     MessageBox.Show("追加時間の値が異常です 0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["hoju_time"] == null && decimal.TryParse(dt_m.Rows[i]["hoju_time"].ToString(), out result) == false)
+                if (dt_m.Rows[i]["hoju_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["hoju_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("補充時間の値が異常です　0～99999.99");
                     return;
                 }
-                if (dt_m.Rows[i]["hoju_time"] == null && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
+                if (dt_m.Rows[i]["hoju_time"] == DBNull.Value && result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
                 {
                     MessageBox.Show("補充時間の値が異常です 0～99999.99");
                     return;
@@ -1554,7 +1554,6 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < rc ; i++)
             {
-                //MessageBox.Show(dt_seisan_koutei_m.Rows[i]["create_datetime"].ToString());
 
                 if (dt_seisan_koutei_m.Rows[i]["create_user_cd"].ToString() == "")
                 {
