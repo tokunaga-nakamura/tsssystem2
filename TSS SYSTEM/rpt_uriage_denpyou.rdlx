@@ -1020,7 +1020,7 @@
 	<DataSources>
 		<DataSource Name="DataSource1">
 			<ConnectionProperties>
-				<ConnectString>User Id=tss;Password=Tokunaga1;Data Source=pdb;</ConnectString>
+				<ConnectString>User Id=tss;Password=Tokunaga1;Data Source=pdb_kaihatu;</ConnectString>
 				<DataProvider>ORACLE</DataProvider>
 			</ConnectionProperties>
 		</DataSource>

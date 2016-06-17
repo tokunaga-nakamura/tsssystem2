@@ -944,5 +944,17 @@ namespace TSS_SYSTEM
             frm_kt.ShowDialog(this);
             frm_kt.Dispose();
         }
+
+        private void btn_kari_juchu_to_hon_juchu_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(1, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_kari_juchu_to_hon_juchu frm_kjthj = new frm_kari_juchu_to_hon_juchu();
+            frm_kjthj.ShowDialog(this);
+            frm_kjthj.Dispose();
+        }
     }
 }

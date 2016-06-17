@@ -61,6 +61,7 @@
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
             this.btn_timereport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_kari_juchu_to_hon_juchu = new System.Windows.Forms.Button();
             this.btn_nyukin_ichiran = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -108,6 +109,7 @@
             this.btn_seisan_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_kousu = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btn_kintai_nyuuryoku = new System.Windows.Forms.Button();
             this.btn_syain_m = new System.Windows.Forms.Button();
             this.btn_seisan_koutei = new System.Windows.Forms.Button();
             this.btn_system_administrator = new System.Windows.Forms.Button();
@@ -129,7 +131,6 @@
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_kintai_nyuuryoku = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -601,6 +602,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tabPage2.Controls.Add(this.btn_kari_juchu_to_hon_juchu);
             this.tabPage2.Controls.Add(this.btn_nyukin_ichiran);
             this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.button8);
@@ -624,9 +626,19 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
             // 
+            // btn_kari_juchu_to_hon_juchu
+            // 
+            this.btn_kari_juchu_to_hon_juchu.Location = new System.Drawing.Point(8, 64);
+            this.btn_kari_juchu_to_hon_juchu.Name = "btn_kari_juchu_to_hon_juchu";
+            this.btn_kari_juchu_to_hon_juchu.Size = new System.Drawing.Size(222, 23);
+            this.btn_kari_juchu_to_hon_juchu.TabIndex = 20;
+            this.btn_kari_juchu_to_hon_juchu.Text = "仮受注 → 本受注 移行処理";
+            this.btn_kari_juchu_to_hon_juchu.UseVisualStyleBackColor = true;
+            this.btn_kari_juchu_to_hon_juchu.Click += new System.EventHandler(this.btn_kari_juchu_to_hon_juchu_Click);
+            // 
             // btn_nyukin_ichiran
             // 
-            this.btn_nyukin_ichiran.Location = new System.Drawing.Point(234, 303);
+            this.btn_nyukin_ichiran.Location = new System.Drawing.Point(234, 332);
             this.btn_nyukin_ichiran.Name = "btn_nyukin_ichiran";
             this.btn_nyukin_ichiran.Size = new System.Drawing.Size(222, 23);
             this.btn_nyukin_ichiran.TabIndex = 19;
@@ -636,7 +648,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(462, 154);
+            this.button9.Location = new System.Drawing.Point(462, 187);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(222, 23);
             this.button9.TabIndex = 18;
@@ -646,7 +658,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(462, 125);
+            this.button8.Location = new System.Drawing.Point(462, 158);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(222, 23);
             this.button8.TabIndex = 17;
@@ -656,7 +668,7 @@
             // 
             // btn_seikyu_ichiran
             // 
-            this.btn_seikyu_ichiran.Location = new System.Drawing.Point(236, 245);
+            this.btn_seikyu_ichiran.Location = new System.Drawing.Point(234, 245);
             this.btn_seikyu_ichiran.Name = "btn_seikyu_ichiran";
             this.btn_seikyu_ichiran.Size = new System.Drawing.Size(222, 23);
             this.btn_seikyu_ichiran.TabIndex = 16;
@@ -666,7 +678,7 @@
             // 
             // btn_tankabetu_uriage_meisai
             // 
-            this.btn_tankabetu_uriage_meisai.Location = new System.Drawing.Point(234, 125);
+            this.btn_tankabetu_uriage_meisai.Location = new System.Drawing.Point(234, 158);
             this.btn_tankabetu_uriage_meisai.Name = "btn_tankabetu_uriage_meisai";
             this.btn_tankabetu_uriage_meisai.Size = new System.Drawing.Size(222, 23);
             this.btn_tankabetu_uriage_meisai.TabIndex = 15;
@@ -686,7 +698,7 @@
             // 
             // btn_nyukin
             // 
-            this.btn_nyukin.Location = new System.Drawing.Point(8, 303);
+            this.btn_nyukin.Location = new System.Drawing.Point(6, 332);
             this.btn_nyukin.Name = "btn_nyukin";
             this.btn_nyukin.Size = new System.Drawing.Size(222, 23);
             this.btn_nyukin.TabIndex = 13;
@@ -696,7 +708,7 @@
             // 
             // btn_seikyu_preview
             // 
-            this.btn_seikyu_preview.Location = new System.Drawing.Point(8, 245);
+            this.btn_seikyu_preview.Location = new System.Drawing.Point(8, 274);
             this.btn_seikyu_preview.Name = "btn_seikyu_preview";
             this.btn_seikyu_preview.Size = new System.Drawing.Size(222, 23);
             this.btn_seikyu_preview.TabIndex = 12;
@@ -706,7 +718,7 @@
             // 
             // btn_seikyu
             // 
-            this.btn_seikyu.Location = new System.Drawing.Point(8, 216);
+            this.btn_seikyu.Location = new System.Drawing.Point(8, 245);
             this.btn_seikyu.Name = "btn_seikyu";
             this.btn_seikyu.Size = new System.Drawing.Size(222, 23);
             this.btn_seikyu.TabIndex = 11;
@@ -716,7 +728,7 @@
             // 
             // btn_uriage_log
             // 
-            this.btn_uriage_log.Location = new System.Drawing.Point(462, 96);
+            this.btn_uriage_log.Location = new System.Drawing.Point(462, 125);
             this.btn_uriage_log.Name = "btn_uriage_log";
             this.btn_uriage_log.Size = new System.Drawing.Size(222, 23);
             this.btn_uriage_log.TabIndex = 10;
@@ -726,7 +738,7 @@
             // 
             // btn_uriage_denpyou_insatu
             // 
-            this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 125);
+            this.btn_uriage_denpyou_insatu.Location = new System.Drawing.Point(6, 158);
             this.btn_uriage_denpyou_insatu.Name = "btn_uriage_denpyou_insatu";
             this.btn_uriage_denpyou_insatu.Size = new System.Drawing.Size(222, 23);
             this.btn_uriage_denpyou_insatu.TabIndex = 9;
@@ -736,7 +748,7 @@
             // 
             // btn_uriage_kensaku
             // 
-            this.btn_uriage_kensaku.Location = new System.Drawing.Point(234, 96);
+            this.btn_uriage_kensaku.Location = new System.Drawing.Point(234, 125);
             this.btn_uriage_kensaku.Name = "btn_uriage_kensaku";
             this.btn_uriage_kensaku.Size = new System.Drawing.Size(222, 23);
             this.btn_uriage_kensaku.TabIndex = 8;
@@ -746,7 +758,7 @@
             // 
             // btn_uriage
             // 
-            this.btn_uriage.Location = new System.Drawing.Point(6, 96);
+            this.btn_uriage.Location = new System.Drawing.Point(6, 125);
             this.btn_uriage.Name = "btn_uriage";
             this.btn_uriage.Size = new System.Drawing.Size(222, 23);
             this.btn_uriage.TabIndex = 7;
@@ -1139,6 +1151,16 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
+            // btn_kintai_nyuuryoku
+            // 
+            this.btn_kintai_nyuuryoku.Location = new System.Drawing.Point(8, 387);
+            this.btn_kintai_nyuuryoku.Name = "btn_kintai_nyuuryoku";
+            this.btn_kintai_nyuuryoku.Size = new System.Drawing.Size(220, 23);
+            this.btn_kintai_nyuuryoku.TabIndex = 22;
+            this.btn_kintai_nyuuryoku.Text = "勤怠入力";
+            this.btn_kintai_nyuuryoku.UseVisualStyleBackColor = true;
+            this.btn_kintai_nyuuryoku.Click += new System.EventHandler(this.btn_kintai_nyuuryoku_Click);
+            // 
             // btn_syain_m
             // 
             this.btn_syain_m.Location = new System.Drawing.Point(8, 358);
@@ -1350,16 +1372,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_kintai_nyuuryoku
-            // 
-            this.btn_kintai_nyuuryoku.Location = new System.Drawing.Point(8, 387);
-            this.btn_kintai_nyuuryoku.Name = "btn_kintai_nyuuryoku";
-            this.btn_kintai_nyuuryoku.Size = new System.Drawing.Size(220, 23);
-            this.btn_kintai_nyuuryoku.TabIndex = 22;
-            this.btn_kintai_nyuuryoku.Text = "勤怠入力";
-            this.btn_kintai_nyuuryoku.UseVisualStyleBackColor = true;
-            this.btn_kintai_nyuuryoku.Click += new System.EventHandler(this.btn_kintai_nyuuryoku_Click);
-            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1538,6 +1550,7 @@
         private System.Windows.Forms.Button btn_kintai;
         private System.Windows.Forms.Button btn_event;
         private System.Windows.Forms.Button btn_kintai_nyuuryoku;
+        private System.Windows.Forms.Button btn_kari_juchu_to_hon_juchu;
     }
 }
 

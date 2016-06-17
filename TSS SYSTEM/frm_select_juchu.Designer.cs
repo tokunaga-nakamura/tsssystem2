@@ -59,8 +59,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(284, 261);
-            this.splitContainer1.SplitterDistance = 29;
+            this.splitContainer1.Size = new System.Drawing.Size(515, 284);
+            this.splitContainer1.SplitterDistance = 31;
             this.splitContainer1.TabIndex = 0;
             // 
             // lbl_name
@@ -87,8 +87,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer2.Size = new System.Drawing.Size(284, 228);
-            this.splitContainer2.SplitterDistance = 190;
+            this.splitContainer2.Size = new System.Drawing.Size(515, 249);
+            this.splitContainer2.SplitterDistance = 207;
             this.splitContainer2.TabIndex = 0;
             // 
             // dgv_m
@@ -98,7 +98,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(284, 190);
+            this.dgv_m.Size = new System.Drawing.Size(515, 207);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
@@ -114,7 +114,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(197, 3);
+            this.btn_cancel.Location = new System.Drawing.Point(428, 3);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 0;
@@ -127,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OliveDrab;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(515, 284);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;

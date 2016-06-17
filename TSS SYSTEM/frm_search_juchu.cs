@@ -224,7 +224,7 @@ namespace TSS_SYSTEM
         private void kensaku()
         {
             DataTable dt_kensaku = new DataTable();
-            string[] sql_where = new string[7];
+            string[] sql_where = new string[10];
             int sql_cnt = 0;
             //取引先コード
             if (tb_torihikisaki_cd1.Text != "" || tb_torihikisaki_cd2.Text != "")
@@ -318,6 +318,24 @@ namespace TSS_SYSTEM
                     return;
                 }
             }
+
+            //納品スケジュール区分
+            if (tb_nouhin_schedule_kbn.Text != "")
+            {
+                if (chk_nouhin_schedule_kbn())
+                {
+                    sql_where[sql_cnt] = "B.nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "'";
+                    sql_cnt++;
+                }
+                else
+                {
+                    //コード異常
+                    MessageBox.Show("納品スケジュール区分に異常があります。");
+                    tb_nouhin_schedule_kbn.Focus();
+                    return;
+                }
+            }
+
             //登録日
             if (tb_create_date1.Text != "" && tb_create_date2.Text != "")
             {
@@ -363,6 +381,22 @@ namespace TSS_SYSTEM
                         sql_where[sql_cnt] = "A.uriage_kanryou_flg = '1'";
                         sql_cnt++;
                     }
+
+            //受注区分（正式受注・仮受注）
+            if (rb_juchu_kbn_seisiki.Checked)
+            {
+                sql_where[sql_cnt] = "(A.kari_juchu_kbn is null or A.kari_juchu_kbn <> '1')";
+                sql_cnt++;
+            }
+            else
+            {
+                if (rb_juchu_kbn_kari.Checked)
+                {
+                    sql_where[sql_cnt] = "A.kari_juchu_kbn = '1'";
+                    sql_cnt++;
+                }
+            }
+            
             //検索条件が全て空白
             if (sql_cnt == 0)
             {
@@ -371,7 +405,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where ";
+            string sql = "select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,B.seihin_name,B.nouhin_schedule_kbn,A.seisan_kbn,A.nouhin_kbn,A.jisseki_kbn,A.juchu_su,A.seisan_su,A.nouhin_su,A.uriage_su,A.uriage_kanryou_flg,A.bikou,A.delete_flg,A.kari_juchu_kbn,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime from tss_juchu_m A LEFT OUTER JOIN tss_seihin_m B ON (A.seihin_cd = B.seihin_cd) where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -414,34 +448,34 @@ namespace TSS_SYSTEM
             dgv_m.Columns[2].HeaderText = "受注コード2";
             dgv_m.Columns[3].HeaderText = "製品コード";
             dgv_m.Columns[4].HeaderText = "製品名";
-            dgv_m.Columns[5].HeaderText = "生産区分";
-            dgv_m.Columns[6].HeaderText = "納品区分";
-            dgv_m.Columns[7].HeaderText = "実績区分";
-            dgv_m.Columns[8].HeaderText = "受注数";
-            dgv_m.Columns[9].HeaderText = "生産数";
-            dgv_m.Columns[10].HeaderText = "納品数";
-            dgv_m.Columns[11].HeaderText = "売上数";
-            dgv_m.Columns[12].HeaderText = "売上完了フラグ";
-            dgv_m.Columns[13].HeaderText = "備考";
-            dgv_m.Columns[14].HeaderText = "削除フラグ";
-            dgv_m.Columns[15].HeaderText = "作成者";
-            dgv_m.Columns[16].HeaderText = "作成日時";
-            dgv_m.Columns[17].HeaderText = "更新者";
-            dgv_m.Columns[18].HeaderText = "更新日時";
+            dgv_m.Columns[5].HeaderText = "納品スケジュール区分";
+            dgv_m.Columns[6].HeaderText = "生産区分";
+            dgv_m.Columns[7].HeaderText = "納品区分";
+            dgv_m.Columns[8].HeaderText = "実績区分";
+            dgv_m.Columns[9].HeaderText = "受注数";
+            dgv_m.Columns[10].HeaderText = "生産数";
+            dgv_m.Columns[11].HeaderText = "納品数";
+            dgv_m.Columns[12].HeaderText = "売上数";
+            dgv_m.Columns[13].HeaderText = "売上完了フラグ";
+            dgv_m.Columns[14].HeaderText = "備考";
+            dgv_m.Columns[15].HeaderText = "削除フラグ";
+            dgv_m.Columns[16].HeaderText = "仮受注区分";
+            dgv_m.Columns[17].HeaderText = "作成者";
+            dgv_m.Columns[18].HeaderText = "作成日時";
+            dgv_m.Columns[19].HeaderText = "更新者";
+            dgv_m.Columns[20].HeaderText = "更新日時";
 
             //"Column1"列のセルのテキストの配置を設定する（右詰とか）
-            dgv_m.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //書式を設定する
-            dgv_m.Columns[8].DefaultCellStyle.Format = "#,###,###,##0";
             dgv_m.Columns[9].DefaultCellStyle.Format = "#,###,###,##0";
             dgv_m.Columns[10].DefaultCellStyle.Format = "#,###,###,##0";
             dgv_m.Columns[11].DefaultCellStyle.Format = "#,###,###,##0";
-
-
+            dgv_m.Columns[12].DefaultCellStyle.Format = "#,###,###,##0";
         }
 
         private bool chk_seihin_cd(string in_cd)
@@ -628,7 +662,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_juchu_cd2_1_Validating(object sender, CancelEventArgs e)
@@ -638,7 +671,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_juchu_cd2_2_Validating(object sender, CancelEventArgs e)
@@ -648,10 +680,62 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
+        private void tb_nouhin_schedule_kbn_DoubleClick(object sender, EventArgs e)
+        {
+            this.tb_nouhin_schedule_kbn.Text = tss.kubun_cd_select("09", tb_nouhin_schedule_kbn.Text);
+            this.tb_nouhin_schedule_kbn_name.Text = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
+        }
 
+        private void tb_nouhin_schedule_kbn_Validating(object sender, CancelEventArgs e)
+        {
+            //納品スケジュール区分が空白の場合はOKとする
+            if (tb_nouhin_schedule_kbn.Text != "")
+            {
+                if (chk_nouhin_schedule_kbn() != true)
+                {
+                    MessageBox.Show("納品スケジュール区分に異常があります。");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    tb_nouhin_schedule_kbn_name.Text = get_kubun_name("09", tb_nouhin_schedule_kbn.Text);
+                }
+            }
+        }
 
+        private bool chk_nouhin_schedule_kbn()
+        {
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd  = '09' and kubun_cd = '" + tb_nouhin_schedule_kbn.Text.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //無し
+                bl = false;
+            }
+            else
+            {
+                //既存データ有
+            }
+            return bl;
+        }
+
+        private string get_kubun_name(string in_kubun_meisyou_cd, string in_kubun_cd)
+        {
+            string out_kubun_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd = '" + in_kubun_meisyou_cd + "' and kubun_cd = '" + in_kubun_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_kubun_name = "";
+            }
+            else
+            {
+                out_kubun_name = dt_work.Rows[0]["kubun_name"].ToString();
+            }
+            return out_kubun_name;
+        }
     }
 }

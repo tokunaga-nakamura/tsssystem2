@@ -36,6 +36,8 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
+            this.lbl_kari_juchu = new System.Windows.Forms.Label();
+            this.cb_kari_juchu_kbn = new System.Windows.Forms.CheckBox();
             this.lbl_juchu_no = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_juchu_kensaku = new System.Windows.Forms.Button();
@@ -58,7 +60,6 @@
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.tb_juchu_su = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_seihin_m = new System.Windows.Forms.Button();
             this.btn_seihin_kousei = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -99,6 +100,8 @@
             this.tb_kousin_riyuu = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.lbl_kari_juchu_keikoku = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -119,7 +122,6 @@
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
             this.splitContainer10.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -152,6 +154,7 @@
             this.splitContainer12.Panel1.SuspendLayout();
             this.splitContainer12.Panel2.SuspendLayout();
             this.splitContainer12.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -242,7 +245,6 @@
             // 
             this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
             this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -253,10 +255,9 @@
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer6.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer6.Size = new System.Drawing.Size(402, 438);
-            this.splitContainer6.SplitterDistance = 243;
+            this.splitContainer6.SplitterDistance = 301;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
             // 
@@ -265,13 +266,15 @@
             this.splitContainer10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer10.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer10.IsSplitterFixed = true;
             this.splitContainer10.Location = new System.Drawing.Point(0, 0);
             this.splitContainer10.Name = "splitContainer10";
             this.splitContainer10.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer10.Panel1
             // 
+            this.splitContainer10.Panel1.Controls.Add(this.lbl_kari_juchu_keikoku);
+            this.splitContainer10.Panel1.Controls.Add(this.lbl_kari_juchu);
+            this.splitContainer10.Panel1.Controls.Add(this.cb_kari_juchu_kbn);
             this.splitContainer10.Panel1.Controls.Add(this.lbl_juchu_no);
             this.splitContainer10.Panel1.Controls.Add(this.textBox1);
             this.splitContainer10.Panel1.Controls.Add(this.btn_juchu_kensaku);
@@ -283,6 +286,7 @@
             // 
             // splitContainer10.Panel2
             // 
+            this.splitContainer10.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer10.Panel2.Controls.Add(this.lbl_seisan_koutei);
             this.splitContainer10.Panel2.Controls.Add(this.cb_seisan_jisseki);
             this.splitContainer10.Panel2.Controls.Add(this.tb_bikou);
@@ -297,9 +301,32 @@
             this.splitContainer10.Panel2.Controls.Add(this.tb_seihin_cd);
             this.splitContainer10.Panel2.Controls.Add(this.textBox6);
             this.splitContainer10.Panel2.Controls.Add(this.tb_juchu_su);
-            this.splitContainer10.Size = new System.Drawing.Size(402, 243);
-            this.splitContainer10.SplitterDistance = 69;
+            this.splitContainer10.Size = new System.Drawing.Size(402, 301);
+            this.splitContainer10.SplitterDistance = 125;
             this.splitContainer10.TabIndex = 22;
+            // 
+            // lbl_kari_juchu
+            // 
+            this.lbl_kari_juchu.BackColor = System.Drawing.Color.Tomato;
+            this.lbl_kari_juchu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_kari_juchu.ForeColor = System.Drawing.Color.White;
+            this.lbl_kari_juchu.Location = new System.Drawing.Point(155, 68);
+            this.lbl_kari_juchu.Name = "lbl_kari_juchu";
+            this.lbl_kari_juchu.Size = new System.Drawing.Size(237, 20);
+            this.lbl_kari_juchu.TabIndex = 8;
+            this.lbl_kari_juchu.Text = "仮登録された受注です";
+            this.lbl_kari_juchu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_kari_juchu.Visible = false;
+            // 
+            // cb_kari_juchu_kbn
+            // 
+            this.cb_kari_juchu_kbn.AutoSize = true;
+            this.cb_kari_juchu_kbn.Location = new System.Drawing.Point(10, 71);
+            this.cb_kari_juchu_kbn.Name = "cb_kari_juchu_kbn";
+            this.cb_kari_juchu_kbn.Size = new System.Drawing.Size(139, 16);
+            this.cb_kari_juchu_kbn.TabIndex = 7;
+            this.cb_kari_juchu_kbn.Text = "仮の受注として登録する";
+            this.cb_kari_juchu_kbn.UseVisualStyleBackColor = true;
             // 
             // lbl_juchu_no
             // 
@@ -538,17 +565,6 @@
             this.tb_juchu_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_juchu_su.Validated += new System.EventHandler(this.tb_juchu_su_Validated);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btn_seihin_m);
-            this.groupBox1.Controls.Add(this.btn_seihin_kousei);
-            this.groupBox1.Location = new System.Drawing.Point(9, 130);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(383, 54);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "他画面へリンク";
-            // 
             // btn_seihin_m
             // 
             this.btn_seihin_m.Location = new System.Drawing.Point(6, 18);
@@ -562,7 +578,7 @@
             // 
             // btn_seihin_kousei
             // 
-            this.btn_seihin_kousei.Location = new System.Drawing.Point(87, 18);
+            this.btn_seihin_kousei.Location = new System.Drawing.Point(6, 47);
             this.btn_seihin_kousei.Name = "btn_seihin_kousei";
             this.btn_seihin_kousei.Size = new System.Drawing.Size(75, 23);
             this.btn_seihin_kousei.TabIndex = 0;
@@ -1057,6 +1073,30 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // lbl_kari_juchu_keikoku
+            // 
+            this.lbl_kari_juchu_keikoku.BackColor = System.Drawing.Color.YellowGreen;
+            this.lbl_kari_juchu_keikoku.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_kari_juchu_keikoku.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_kari_juchu_keikoku.Location = new System.Drawing.Point(9, 95);
+            this.lbl_kari_juchu_keikoku.Name = "lbl_kari_juchu_keikoku";
+            this.lbl_kari_juchu_keikoku.Size = new System.Drawing.Size(382, 20);
+            this.lbl_kari_juchu_keikoku.TabIndex = 9;
+            this.lbl_kari_juchu_keikoku.Text = "同一受注コード（取引先+受注CD1）の仮受注があります。";
+            this.lbl_kari_juchu_keikoku.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_kari_juchu_keikoku.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_seihin_kousei);
+            this.groupBox1.Controls.Add(this.btn_seihin_m);
+            this.groupBox1.Location = new System.Drawing.Point(233, 53);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(159, 85);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "他の画面へリンク";
+            // 
             // frm_juchuu_nyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1090,7 +1130,6 @@
             this.splitContainer10.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).EndInit();
             this.splitContainer10.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -1129,6 +1168,7 @@
             this.splitContainer12.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
             this.splitContainer12.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1205,6 +1245,9 @@
         private System.Windows.Forms.Button btn_seihin_kousei;
         private System.Windows.Forms.Button btn_seihin_m;
         private System.Windows.Forms.Label lbl_seisan_koutei;
+        private System.Windows.Forms.Label lbl_kari_juchu;
+        private System.Windows.Forms.CheckBox cb_kari_juchu_kbn;
+        private System.Windows.Forms.Label lbl_kari_juchu_keikoku;
         private System.Windows.Forms.GroupBox groupBox1;
 
     }

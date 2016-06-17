@@ -154,6 +154,7 @@ namespace TSS_SYSTEM
                 tb_kousin_riyuu.Visible = false;
                 lbl_touroku.Text = "";
                 btn_touroku.Enabled = true;
+                cb_kari_juchu_kbn.Enabled = true; //新規の場合のみ仮受注区分の変更可
 
                 gamen_clear();
                 nounyuu_schedule_disp();
@@ -173,6 +174,7 @@ namespace TSS_SYSTEM
                 {
                     lbl_juchu_no.Text = "既存データ";
                     lbl_touroku.Text = "既存データは「更新理由」を入力しないと登録できません。";
+                    cb_kari_juchu_kbn.Enabled = false; //新規の場合のみ仮受注区分の変更可
                 }
                 tb_midasi_kousin_riyuu.Visible = true;
                 tb_kousin_riyuu.Visible = true;
@@ -188,6 +190,16 @@ namespace TSS_SYSTEM
             tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
             tb_seihin_cd.Text = in_dt.Rows[0]["seihin_cd"].ToString();
             tb_seihin_name.Text = get_seihin_name(in_dt.Rows[0]["seihin_cd"].ToString());
+            if (in_dt.Rows[0]["kari_juchu_kbn"].ToString() == "1")
+            {
+                cb_kari_juchu_kbn.Checked = true;
+                lbl_kari_juchu.Visible = true;
+            }
+            else
+            {
+                cb_kari_juchu_kbn.Checked = false;
+                lbl_kari_juchu.Visible = false;
+            }
             lbl_seisan_koutei.Text = get_seisan_koutei(in_dt.Rows[0]["seihin_cd"].ToString());
             tb_juchu_su.Text = in_dt.Rows[0]["juchu_su"].ToString();
             tb_nouhin_schedule_kbn.Text = get_nouhin_schedule_kbn(in_dt.Rows[0]["seihin_cd"].ToString());
@@ -230,6 +242,7 @@ namespace TSS_SYSTEM
             tb_update_user_cd.Text = in_dt.Rows[0]["update_user_cd"].ToString();
             tb_update_datetime.Text = in_dt.Rows[0]["update_datetime"].ToString();
 
+            kari_juchu_keikoku_check();
             nounyuu_schedule_disp();
             uriage_disp();
             kousin_rireki_disp();
@@ -251,6 +264,8 @@ namespace TSS_SYSTEM
             tb_juchu_su.Text = "";
             lbl_seisan_koutei.Text = "";
             lbl_seisan_koutei.Visible = false;
+            lbl_kari_juchu.Visible = false;
+            lbl_kari_juchu_keikoku.Visible = false;
             tb_nouhin_schedule_kbn.Text = "";
             tb_nouhin_schedule_kbn_name.Text = "";
             cb_nouhin_schedule.Checked = true;
@@ -979,6 +994,7 @@ namespace TSS_SYSTEM
             tss.GetUser();
             //新規書込み
             bool bl_tss = true;
+            string w_kari_juchu_kbn = "0";
             string w_seisan_kbn = "0";
             string w_nouhin_kbn = "0";
             string w_jisseki_kbn = "0";
@@ -994,10 +1010,14 @@ namespace TSS_SYSTEM
             {
                 w_jisseki_kbn = "1";
             }
+            if (cb_kari_juchu_kbn.Checked)
+            {
+                w_kari_juchu_kbn = "1";
+            }
             //string w_nouhin_start_date;
             //w_nouhin_start_date = get_nouhin_start_nengetu();
-            bl_tss = tss.OracleInsert("INSERT INTO tss_juchu_m (torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seisan_kbn,nouhin_kbn,jisseki_kbn,juchu_su,seisan_su,nouhin_su,uriage_su,uriage_kanryou_flg,bikou,delete_flg,create_user_cd,create_datetime)"
-                                    + " VALUES ('" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_juchu_cd1.Text.ToString() + "','" + tb_juchu_cd2.Text.ToString() + "','" + tb_seihin_cd.Text.ToString() + "','" + w_seisan_kbn + "','" + w_nouhin_kbn + "','" + w_jisseki_kbn + "','" + tb_juchu_su.Text.ToString() + "','" + "0" + "','" + "0" + "','" + "0" + "','" + "0" + "','" + tb_bikou.Text.ToString() + "','" + "0" + "','" + tss.user_cd + "',SYSDATE)");
+            bl_tss = tss.OracleInsert("INSERT INTO tss_juchu_m (torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seisan_kbn,nouhin_kbn,jisseki_kbn,juchu_su,seisan_su,nouhin_su,uriage_su,uriage_kanryou_flg,bikou,delete_flg,kari_juchu_kbn,create_user_cd,create_datetime)"
+                                    + " VALUES ('" + tb_torihikisaki_cd.Text.ToString() + "','" + tb_juchu_cd1.Text.ToString() + "','" + tb_juchu_cd2.Text.ToString() + "','" + tb_seihin_cd.Text.ToString() + "','" + w_seisan_kbn + "','" + w_nouhin_kbn + "','" + w_jisseki_kbn + "','" + tb_juchu_su.Text.ToString() + "','" + "0" + "','" + "0" + "','" + "0" + "','" + "0" + "','" + tb_bikou.Text.ToString() + "','" + "0" + "','" + w_kari_juchu_kbn + "','" + tss.user_cd + "',SYSDATE)");
             if (bl_tss != true)
             {
                 tss.ErrorLogWrite(tss.user_cd, "受注入力", "登録ボタン押下時のOracleInsert");
@@ -1027,6 +1047,7 @@ namespace TSS_SYSTEM
             tss.GetUser();
             //更新
             bool bl_tss = true;
+            string w_kari_juchu_kbn = "0";
             string w_seisan_kbn = "0";
             string w_nouhin_kbn = "0";
             string w_jisseki_kbn = "0";
@@ -1042,11 +1063,15 @@ namespace TSS_SYSTEM
             {
                 w_jisseki_kbn = "1";
             }
+            if (cb_kari_juchu_kbn.Checked)
+            {
+                w_kari_juchu_kbn = "1";
+            }
 
             bl_tss = tss.OracleUpdate("UPDATE tss_juchu_m SET torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "',juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "',juchu_cd2 = '" + tb_juchu_cd2.Text.ToString()
                                     + "',seihin_cd = '" + tb_seihin_cd.Text.ToString() + "',seisan_kbn = '" + w_seisan_kbn + "',nouhin_kbn = '" + w_nouhin_kbn + "',jisseki_kbn = '" + w_jisseki_kbn
                                     + "',juchu_su = '" + tb_juchu_su.Text.ToString() //+ "',seisan_su = '" + "0" + "',nouhin_su = '" + "0" + "',uriage_su = '" + "0"
-                                    + "',uriage_kanryou_flg = '" + tb_uriage_kanryou_flg.Text.ToString() + "',bikou = '" + tb_bikou.Text.ToString() //+ "',delete_flg = '" + "0"
+                                    + "',uriage_kanryou_flg = '" + tb_uriage_kanryou_flg.Text.ToString() + "',bikou = '" + tb_bikou.Text.ToString() + "',kari_juchu_kbn = '" + w_kari_juchu_kbn //+ "',delete_flg = '" + "0"
                                     + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString() + "'");
             if (bl_tss != true)
             {
@@ -1445,7 +1470,7 @@ namespace TSS_SYSTEM
             string w_cd;
             w_cd = "";
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,B.seihin_name "
+            w_dt = tss.OracleSelect("select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,B.seihin_name,A.kari_juchu_kbn "
                                     + "from tss_juchu_m a left outer join tss_seihin_m B on A.seihin_cd = B.seihin_cd "
                                     + "where A.torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and A.juchu_cd1 = '" + tb_juchu_cd1.Text + "'");
             if(w_dt.Rows.Count > 0)
@@ -1607,10 +1632,22 @@ namespace TSS_SYSTEM
                 //dgv_nounyuu_schedule.Rows[e.RowIndex].Cells[2].Value = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
                 dgv_nounyuu_schedule.EndEdit();
             }
+        }
 
-
-
-
+        private void kari_juchu_keikoku_check()
+        {
+            DataTable w_dt_kari = new DataTable();
+            string w_sql;
+            w_sql = "select * from tss_juchu_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and kari_juchu_kbn = '1'";
+            w_dt_kari = tss.OracleSelect(w_sql);
+            if(w_dt_kari.Rows.Count >= 1)
+            {
+                lbl_kari_juchu_keikoku.Visible = true;
+            }
+            else
+            {
+                lbl_kari_juchu_keikoku.Visible = false;
+            }
         }
     }
 }

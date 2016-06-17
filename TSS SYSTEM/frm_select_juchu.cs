@@ -165,7 +165,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns[1].HeaderText = "受注CD1";
             dgv_m.Columns[2].HeaderText = "受注CD2";
             dgv_m.Columns[3].HeaderText = "製品名";
-
+            dgv_m.Columns[4].HeaderText = "仮受注";
         }
 
         private void btn_sentaku_Click(object sender, EventArgs e)
