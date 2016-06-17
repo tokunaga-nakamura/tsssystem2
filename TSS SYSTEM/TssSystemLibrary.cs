@@ -1127,6 +1127,43 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region try_string_to_time メソッド
+        /// <summary>
+        /// 文字列を受け取りtime型に変換できるか（適切な時刻か）を調べ、bool型を返す</summary>
+        /// <param name="in_str">
+        /// 変換前の時刻文字列</param>
+        /// <returns>
+        /// bool true:変換可能 false:変換不能
+        /// 変換可能時にプロパティ out_time に変換後の値を格納</returns>
+        public DateTime out_time;
+        public bool try_string_to_time(string in_str)
+        {
+            bool bl;    //戻り値用
+            bl = true;
+            string w_str = in_str;
+            //4文字以下はNG
+            if (StringByte(in_str) < 4)
+            {
+                bl = false;
+                return bl;
+            }
+            //コロンがある場合はそのまま使用し、なければコロンを加える
+            if (in_str.IndexOf(":") == -1)
+            {
+                w_str = in_str.Substring(0, 2) + ":" + in_str.Substring(2) + ":00";
+            }
+            if (DateTime.TryParse(w_str, out out_time))
+            {
+                bl = true;
+            }
+            else
+            {
+                bl = false;
+            }
+            return bl;
+        }
+        #endregion
+
         #region try_string_to_yyyymm メソッド
         /// <summary>
         /// 文字列を受け取りdate型に変換できるか（適切な日付か）を調べ、bool型を返す</summary>
