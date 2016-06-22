@@ -827,7 +827,7 @@
             // 
             // btn_seisan_koutei_m
             // 
-            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(236, 209);
+            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 267);
             this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
             this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_koutei_m.TabIndex = 21;
@@ -908,7 +908,7 @@
             // 
             // btn_3_seihin_tanka_m
             // 
-            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 180);
+            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 209);
             this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
             this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_tanka_m.TabIndex = 14;
@@ -938,7 +938,7 @@
             // 
             // btn_3_seihin_kousei_m
             // 
-            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 209);
+            this.btn_3_seihin_kousei_m.Location = new System.Drawing.Point(8, 238);
             this.btn_3_seihin_kousei_m.Name = "btn_3_seihin_kousei_m";
             this.btn_3_seihin_kousei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_kousei_m.TabIndex = 11;
@@ -948,7 +948,7 @@
             // 
             // btn_3_seihin_kensaku
             // 
-            this.btn_3_seihin_kensaku.Location = new System.Drawing.Point(236, 180);
+            this.btn_3_seihin_kensaku.Location = new System.Drawing.Point(236, 209);
             this.btn_3_seihin_kensaku.Name = "btn_3_seihin_kensaku";
             this.btn_3_seihin_kensaku.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_kensaku.TabIndex = 10;
@@ -958,7 +958,7 @@
             // 
             // btn_3_seihin_m
             // 
-            this.btn_3_seihin_m.Location = new System.Drawing.Point(8, 180);
+            this.btn_3_seihin_m.Location = new System.Drawing.Point(8, 209);
             this.btn_3_seihin_m.Name = "btn_3_seihin_m";
             this.btn_3_seihin_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_m.TabIndex = 9;

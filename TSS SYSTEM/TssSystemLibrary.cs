@@ -10,6 +10,21 @@ using Oracle.DataAccess.Client; //（参照設定にも追加）
 using System.Data;              //OracleのUPDATE文の実行の際にIsolationLevelを指定するのに必要らしい
 using System.IO;                //StreamWriter
 
+//プログラムのバージョン管理方法
+
+//プログラムの配布手順
+//①コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
+//②tss system libraryのコンストラクタ（このライブラリのもう少し下）に宣言してある変数 program_version の値を変更する
+//③tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
+//
+//更新履歴
+//1.01              正式リリース
+//1.02  2016/04/26  受注残参照画面の検索条件に、製品マスタの集計区分を追加
+//1.03  2016/06/22  1.03は自挿生産工程対応版
+//
+//
+
+
 namespace TSS_SYSTEM
 {
     #region TssSystemLibrary
@@ -53,7 +68,7 @@ namespace TSS_SYSTEM
         public TssSystemLibrary()
         {
             //コンストラクタ
-            program_version = "1.02";
+            program_version = "1.03";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -3447,14 +3462,4 @@ namespace TSS_SYSTEM
     }
     #endregion
 }
-//プログラムの配布手順
-//①コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
-//②tss system libraryのコンストラクタ（このライブラリの上側）に宣言してある変数 program_version の値を変更する
-//③tss_system_mのsystem_cd = '0101'のレコードのsystem_versionの値を変更する（上記のprogram_versionと同じ値にする）
-//
-//更新履歴
-//1.01              正式リリース
-//1.02  2016/04/26  受注残参照画面の検索条件に、製品マスタの集計区分を追加
-//
-//
-//
+
