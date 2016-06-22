@@ -17,6 +17,7 @@ namespace TSS_SYSTEM
         DataTable w_dt_list = new DataTable();
         string out_sql;     //戻り値用
         decimal result;
+
         public frm_seisan_schedule()
         {
             InitializeComponent();
@@ -182,20 +183,23 @@ namespace TSS_SYSTEM
 
         private void tb_seisan_yotei_date_Validating(object sender, CancelEventArgs e)
         {
-            if (tb_seisan_yotei_date.Text != "")
-            {
-                if (chk_seisan_yotei_date(tb_seisan_yotei_date.Text))
+                if (tb_seisan_yotei_date.Text != "")
                 {
-                    tb_seisan_yotei_date.Text = tss.out_datetime.ToShortDateString();
+                    if (chk_seisan_yotei_date(tb_seisan_yotei_date.Text))
+                    {
+                        //MessageBox.Show("日付を変更すると、これまでの編集内容は反映されません。必要に応じて更新ボタンで更新してください。");
+                        tb_seisan_yotei_date.Text = tss.out_datetime.ToShortDateString();
+                        kensaku();
+                    }
+                    else
+                    {
+                        MessageBox.Show("生産予定日に異常があります。");
+                        e.Cancel = true;
+                        tb_seisan_yotei_date.Focus();
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("生産予定日に異常があります。");
-                    tb_seisan_yotei_date.Focus();
-                }
-            }
-
-            kensaku();
+               
+                //kensaku();          
         }
 
         private bool chk_seisan_yotei_date(string in_str)
@@ -274,6 +278,10 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("検索条件に一致するデータがありません");
                 w_dt_list = null;
+                tb_create_user_cd.Text = "";
+                tb_create_datetime.Text = "";
+                tb_update_user_cd.Text = "";
+                tb_update_datetime.Text = "";
                 dgv_list.DataSource = w_dt_list;
                 return;
             }
@@ -405,6 +413,12 @@ namespace TSS_SYSTEM
             dgv_list.Columns["seihin_name"].DefaultCellStyle.BackColor = Color.LightGray;
             dgv_list.Columns["juchu_su"].DefaultCellStyle.BackColor = Color.LightGray;
             dgv_list.Columns["hensyu_flg"].DefaultCellStyle.BackColor = Color.LightGray;
+
+            tb_create_user_cd.Text = w_dt_list.Rows[0]["create_user_cd"].ToString();
+            tb_create_datetime.Text = w_dt_list.Rows[0]["create_datetime"].ToString();
+            tb_update_user_cd.Text = w_dt_list.Rows[0]["update_user_cd"].ToString();
+            tb_update_datetime.Text = w_dt_list.Rows[0]["update_datetime"].ToString();
+            
         }
 
         ////データグリッドビューの重複結合
@@ -803,14 +817,22 @@ namespace TSS_SYSTEM
                 end_time_keisan(dgv_list.CurrentRow.Index.ToString());
             }
 
-            //生産数～工数を変更したとき
-            if (e.ColumnIndex >= 13 && e.ColumnIndex <= 17)
+            //タクト～工数を変更したとき
+            if (e.ColumnIndex >= 14 && e.ColumnIndex <= 17)
             {
                 seisan_time_keisan(dgv_list.CurrentRow.Index.ToString());
                 end_time_keisan(dgv_list.CurrentRow.Index.ToString());
             }
 
+            //生産数を変更したとき
+            if (e.ColumnIndex == 13)
+            {
+                seisan_time_keisan(dgv_list.CurrentRow.Index.ToString());
+                end_time_keisan(dgv_list.CurrentRow.Index.ToString());
 
+                MessageBox.Show("生産数を変更しました。翌日以降の生産数は自動で変更されませんので、ご注意ください。");
+
+            }
 
             ////製品コードを変更したとき
             //if (e.ColumnIndex == 10)
@@ -1213,9 +1235,7 @@ namespace TSS_SYSTEM
         //登録ボタンクリック
         private void btn_touroku_Click(object sender, EventArgs e)
         {
-            dgv_chk();
-            touroku();
-
+            dgv_chk();　//チェックメソッド
         }
 
         //データグリッドビュー行削除
@@ -1236,57 +1256,7 @@ namespace TSS_SYSTEM
             list_disp();
         }
 
-        //登録処理
-        private void touroku()
-        {
-            tss.GetUser();
-
-            int rc = w_dt_list.Rows.Count;
-
-            for (int i = 0; i < rc; i++)
-            {
-                w_dt_list.Rows[i]["seq"] = (i + 1);
-                
-                if (w_dt_list.Rows[i]["hensyu_flg"].ToString() == "0")
-                {
-                    w_dt_list.Rows[i]["hensyu_flg"] = "1";
-                }
-                
-                if (w_dt_list.Rows[i]["create_user_cd"].ToString() == "")
-                {
-                    w_dt_list.Rows[i]["create_user_cd"] = tss.user_cd;
-                }
-
-                if (w_dt_list.Rows[i]["create_datetime"].ToString() == "")
-                {
-                    w_dt_list.Rows[i]["create_datetime"] = System.DateTime.Now;
-                }
-            }
-
-            //for (int i = 0; i < rc; i++)
-            //{
-            //    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (SEIHIN_CD,SEQ_NO,BUSYO_CD,KOUTEI_LEVEL,KOUTEI_CD,OYA_KOUTEI_SEQ,OYA_KOUTEI_CD,JISSEKI_KANRI_KBN,LINE_SELECT_KBN,SEISAN_START_DAY,MAE_KOUTEI_SEQ,KOUTEI_START_TIME,COMMENTS,BIKOU,DELETE_FLG,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
-            //                       + " VALUES ('"
-            //                       + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
-            //                       + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
-            //                       + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
-            //                       + tss.user_cd + "',SYSDATE)");
-            //}
-        }
+       
 
         //登録時のデータグリッドビューチェック
         private void dgv_chk()
@@ -1349,8 +1319,6 @@ namespace TSS_SYSTEM
                     MessageBox.Show("製品名の値が異常です。行 " + (i + 1).ToString() + "");
                     return;
                 }
-
-
                 if (w_dt_list.Rows[i]["juchu_su"] == DBNull.Value && decimal.TryParse(w_dt_list.Rows[i]["juchu_su"].ToString(), out result) == false)
                 {
                     MessageBox.Show("受注数の値が異常です　0～9999999999.99");
@@ -1436,7 +1404,6 @@ namespace TSS_SYSTEM
                     MessageBox.Show("人数の値が異常です 0～999.99");
                     return;
                 }
-
                 if (tss.StringByte(w_dt_list.Rows[i]["bikou"].ToString()) > 128)
                 {
                     MessageBox.Show("備考の文字数が128バイトを超えています。");
@@ -1447,7 +1414,117 @@ namespace TSS_SYSTEM
                     MessageBox.Show("メンバーの文字数が256バイトを超えています。");
                     return;
                 }
+            }
 
+            touroku();　//チェックで異常がなければ登録
+        }
+        
+        
+        //登録処理
+        private void touroku()
+        {
+            tss.OracleDelete("delete from TSS_SEISAN_SCHEDULE_F WHERE seisan_yotei_date = '" + tb_seisan_yotei_date.Text.ToString() + "'");
+
+
+            tss.GetUser();
+
+            int rc = w_dt_list.Rows.Count;
+
+            for (int i = 0; i < rc; i++)
+            {
+                w_dt_list.Rows[i]["seq"] = (i + 1);
+
+
+                if (w_dt_list.Rows[i]["SEISAN_YOTEI_DATE"].ToString() == "")
+                {
+                    w_dt_list.Rows[i]["SEISAN_YOTEI_DATE"] = tb_seisan_yotei_date.Text.ToString();
+                }
+
+                if (w_dt_list.Rows[i]["SEISAN_ZUMI_SU"].ToString() == "")
+                {
+                    w_dt_list.Rows[i]["SEISAN_ZUMI_SU"] = "0";
+                }
+
+                if (w_dt_list.Rows[i]["hensyu_flg"].ToString() == "0")
+                {
+                    w_dt_list.Rows[i]["hensyu_flg"] = "1";
+                }
+
+                if (w_dt_list.Rows[i]["hensyu_flg"].ToString() == "")
+                {
+                    w_dt_list.Rows[i]["hensyu_flg"] = "1";
+                }
+
+                if (w_dt_list.Rows[i]["create_user_cd"].ToString() == "")
+                {
+                    w_dt_list.Rows[i]["create_user_cd"] = tss.user_cd;
+                }
+
+                if (w_dt_list.Rows[i]["create_datetime"].ToString() == "")
+                {
+                    w_dt_list.Rows[i]["create_datetime"] = System.DateTime.Now;
+                }
+            }
+
+            for (int i = 0; i < rc; i++)
+            {
+                tss.OracleInsert("INSERT INTO tss_seisan_schedule_f (SEISAN_YOTEI_DATE,BUSYO_CD,KOUTEI_CD,LINE_CD,SEQ,TORIHIKISAKI_CD,JUCHU_CD1,JUCHU_CD2,SEIHIN_CD,SEIHIN_NAME,JUCHU_SU,SEISAN_SU,TACT_TIME,DANDORI_KOUSU,TUIKA_KOUSU,HOJU_KOUSU,SEISAN_TIME,START_TIME,END_TIME,SEISAN_ZUMI_SU,NINZU,MEMBERS,HENSYU_FLG,BIKOU,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
+                                + " VALUES ('"
+                                + w_dt_list.Rows[i]["seisan_yotei_date"].ToString() + "'"   //生産予定日
+                                + ",'" + w_dt_list.Rows[i]["busyo_cd"].ToString() + "'"     //部署コード
+                                + ",'" + w_dt_list.Rows[i]["koutei_cd"].ToString() + "'"    //工程コード
+                                + ",'" + w_dt_list.Rows[i]["line_cd"].ToString() + "'"      //ラインコード
+                                + ",'" + w_dt_list.Rows[i]["seq"] + "'"                     //seq
+                                + ",'" + w_dt_list.Rows[i]["torihikisaki_cd"].ToString() + "'"    //取引先コード
+                                + ",'" + w_dt_list.Rows[i]["juchu_cd1"].ToString() + "'"         //受注コード１
+                                + ",'" + w_dt_list.Rows[i]["juchu_cd2"].ToString() + "'"         //受注コード２
+                                + ",'" + w_dt_list.Rows[i]["seihin_cd"].ToString() + "'"         //製品コード
+                                + ",'" + w_dt_list.Rows[i]["seihin_name"].ToString() + "'"       //製品名
+                                + ",'" + w_dt_list.Rows[i]["juchu_su"].ToString() + "'"          //受注数
+                                + ",'" + w_dt_list.Rows[i]["seisan_su"].ToString() + "'"         //生産指示数
+                                + ",'" + w_dt_list.Rows[i]["tact_time"].ToString() + "'"         //タクト
+                                + ",'" + w_dt_list.Rows[i]["dandori_kousu"].ToString() + "'"     //段取り時間
+                                + ",'" + w_dt_list.Rows[i]["tuika_kousu"].ToString() + "'"       //追加時間
+                                + ",'" + w_dt_list.Rows[i]["hoju_kousu"].ToString() + "'"        //補充時間
+                                + ",'" + w_dt_list.Rows[i]["seisan_time"].ToString() + "'"       //生産時間
+                                + ",to_date('" + w_dt_list.Rows[i]["start_time"].ToString() + "','YYYY/MM/DD HH24:MI:SS')"     //開始時刻
+                                + ",to_date('" + w_dt_list.Rows[i]["end_time"].ToString() + "','YYYY/MM/DD HH24:MI:SS')"       //終了時刻
+                                + ",'" + w_dt_list.Rows[i]["seisan_zumi_su"].ToString() + "'"    //生産済み数
+                                + ",'" + w_dt_list.Rows[i]["ninzu"].ToString() + "'"             //人数
+                                + ",'" + w_dt_list.Rows[i]["members"].ToString() + "'"           //メンバー
+                                + ",'" + w_dt_list.Rows[i]["hensyu_flg"].ToString() + "'"        //編集済みフラグ
+                                + ",'" + w_dt_list.Rows[i]["bikou"].ToString() + "'"             //備考
+                                + ",'" + w_dt_list.Rows[i]["create_user_cd"].ToString() + "'"　　//作成者コード
+                                + ",to_date('" + w_dt_list.Rows[i]["create_datetime"].ToString() + "','YYYY/MM/DD HH24:MI:SS')"　//作成日時
+                                + ",'" + tss.user_cd + "'"                                       //更新者コード
+                                + ",SYSDATE)");                                                  //更新日時
+            }
+
+            tb_update_user_cd.Text = tss.user_cd;
+            tb_update_datetime.Text = DateTime.Now.ToString();
+            MessageBox.Show("生産スケジュールに登録しました");
+
+            kensaku();
+        }
+
+        private void btn_csv_Click(object sender, EventArgs e)
+        {
+            if (w_dt_list.Rows.Count != 0)
+            {
+                string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
+                string w_str_filename = "" + tb_seisan_yotei_date.Text + "の生産スケジュール" + w_str_now + ".csv";
+                if (tss.DataTableCSV(w_dt_list, true, w_str_filename, "\"", true))
+                {
+                    MessageBox.Show("保存されました。");
+                }
+                else
+                {
+                    MessageBox.Show("キャンセルまたはエラー");
+                }
+            }
+            else
+            {
+                MessageBox.Show("出力するデータがありません。");
             }
         }
     }

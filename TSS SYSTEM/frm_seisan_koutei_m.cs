@@ -68,10 +68,10 @@ namespace TSS_SYSTEM
         private bool chk_seihin_cd()
         {
             bool bl = true; //戻り値
-            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.COMMENTS,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + tb_seihin_cd.Text + "' and A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + tb_seihin_cd.Text + "' and A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
             dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
 
-            //for文で行数分
+            //for文で行数分f
             int rc = dt_m.Rows.Count;
             for (int i = 0; i <= rc - 1; i++)
             {
@@ -84,7 +84,10 @@ namespace TSS_SYSTEM
             if (dt_m.Rows.Count <= 0)
             {
                 //新規
-                MessageBox.Show("工程登録なし。新規で工程を登録します。");
+                label_sinki.Text = "新規";
+                
+
+                //MessageBox.Show("工程登録なし。新規で工程を登録します。");
 
                 dt_m.Rows.Clear();
                 dt_m.Rows.Add();
@@ -101,6 +104,8 @@ namespace TSS_SYSTEM
             else
             {
                 //既存データ有
+                label_sinki.Text = "";
+                
                 gamen_disp("1");
                 dgv_koutei_disp();
                 dgv_line_disp();
@@ -129,14 +134,14 @@ namespace TSS_SYSTEM
                 tb_seisan_start_day.Text = rows[0]["seisan_start_day"].ToString();
                 tb_koutei_start_time.Text = rows[0]["koutei_start_time"].ToString();
                 tb_bikou.Text = rows[0]["bikou"].ToString();
-                tb_comments.Text = rows[0]["comments"].ToString();
+                tb_seisankisyu.Text = rows[0]["seisankisyu"].ToString();
 
-                object create_datetime = dt_m.Compute("Min(create_datetime)", null);
-                object update_datetime = dt_m.Compute("Max(update_datetime)", null);
+                object create_datetime = dt_m.Compute("Min(create_datetime1)", null);
+                object update_datetime = dt_m.Compute("Max(update_datetime1)", null);
                 
-                tb_create_user_cd.Text = rows[0]["create_user_cd"].ToString();
+                tb_create_user_cd.Text = dt_m.Rows[0]["create_user_cd"].ToString();
                 tb_create_datetime.Text = create_datetime.ToString();
-                tb_update_user_cd.Text = rows[0]["update_user_cd"].ToString();
+                tb_update_user_cd.Text = dt_m.Rows[0]["update_user_cd"].ToString();
                 tb_update_datetime.Text = update_datetime.ToString();
             }
         }
@@ -232,7 +237,7 @@ namespace TSS_SYSTEM
             //DataGridView1にユーザーが新しい行を追加できないようにする
             dgv_koutei.AllowUserToAddRows = false;
             //セルを選択すると行全体が選択されるようにする
-            dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_koutei.RowHeadersWidth = 20;
             dgv_koutei.Columns["SEQ_NO"].Width = 55;
@@ -294,7 +299,7 @@ namespace TSS_SYSTEM
             dgv_line.Columns["seisan_start_day"].Visible = false;
             dgv_line.Columns["mae_koutei_seq"].Visible = false;
             dgv_line.Columns["koutei_start_time"].Visible = false;
-            dgv_line.Columns["comments"].Visible = false;
+            dgv_line.Columns["seisankisyu"].Visible = false;
             dgv_line.Columns["delete_flg"].Visible = false;
             dgv_line.Columns["bikou"].Visible = false;
             dgv_line.Columns["create_user_cd"].Visible = false;
@@ -306,7 +311,7 @@ namespace TSS_SYSTEM
             dgv_line.Columns["create_datetime1"].Visible = false;
             dgv_line.Columns["update_user_cd1"].Visible = false;
             dgv_line.Columns["update_datetime1"].Visible = false;
-
+            
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_line.Columns["checkbox"].HeaderText = "選択";
             dgv_line.Columns["line_cd"].HeaderText = "ラインコード";
@@ -348,6 +353,7 @@ namespace TSS_SYSTEM
             dt_line.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
             dt_line.Rows.Clear();
             dt_line.Rows.Add();
+            dt_line.Rows[0]["checkbox"] = true;
             dgv_line.DataSource = dt_line;
 
             //選択区分を非表示
@@ -933,7 +939,7 @@ namespace TSS_SYSTEM
 
         private void tb_comments_Validating(object sender, CancelEventArgs e)
         {
-            if (tb_comments.Text.ToString() != "")
+            if (tb_seisankisyu.Text.ToString() != "")
             {
                 //変更を一時的に保持・・・・データテーブル内のデータを変更
 
@@ -943,12 +949,12 @@ namespace TSS_SYSTEM
                 //配列の長さ取得
                 int ui = rows.Length;
 
-                String str = tb_comments.Text.ToString();
+                String str = tb_seisankisyu.Text.ToString();
 
                 //指定セルの値を書き換え
                 for (int i = 0; i <= ui - 1; i++)
                 {
-                    rows[i]["comments"] = str;
+                    rows[i]["seisankisyu"] = str;
                 }
             }
         }
@@ -1031,7 +1037,7 @@ namespace TSS_SYSTEM
             }
 
             dt_m.Rows[rc - 1]["bikou"] = tb_bikou.Text.ToString();
-            dt_m.Rows[rc - 1]["comments"] = tb_comments.Text.ToString();
+            dt_m.Rows[rc - 1]["seisankisyu"] = tb_seisankisyu.Text.ToString();
 
             dgv_line_disp();
         }
@@ -1200,7 +1206,7 @@ namespace TSS_SYSTEM
             dt_m.Rows[rc - 1]["mae_koutei_seq"] = dt_m.Rows[rc-2]["seq_no"];
             dt_m.Rows[rc - 1]["koutei_start_time"] = DBNull.Value;
             dt_m.Rows[rc - 1]["bikou"] = null;
-            dt_m.Rows[rc - 1]["comments"] = null;
+            dt_m.Rows[rc - 1]["seisankisyu"] = tb_seisankisyu.Text.ToString();;
             
             dgv_koutei_disp();
 
@@ -1316,7 +1322,7 @@ namespace TSS_SYSTEM
                     MessageBox.Show("工程名の値が異常です");
                     return;
                 }
-                if (dt_m.Rows[i]["jisseki_kanri_kbn"] == null || dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() == "" || dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() != "1" && dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() != "1")
+                if (dt_m.Rows[i]["jisseki_kanri_kbn"] == null || dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() == "" || dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() != "0" && dt_m.Rows[i]["jisseki_kanri_kbn"].ToString() != "1")
                 {
                     MessageBox.Show("実績管理区分の値が異常です。 0か1");
                     return;
@@ -1412,7 +1418,7 @@ namespace TSS_SYSTEM
                     MessageBox.Show("備考の文字数が128バイトを超えています。");
                     return;
                 }
-                if (tss.StringByte(dt_m.Rows[i]["comments"].ToString()) > 128)
+                if (tss.StringByte(dt_m.Rows[i]["seisankisyu"].ToString()) > 128)
                 {
                     MessageBox.Show("コメントの文字数が128バイトを超えています。");
                     return;
@@ -1546,7 +1552,7 @@ namespace TSS_SYSTEM
             DataView vw = new DataView(dt_m);
 
             //Distinct（集計）をかける
-            dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei", true, "SEIHIN_CD","SEQ_NO","BUSYO_CD","KOUTEI_LEVEL", "KOUTEI_CD","OYA_KOUTEI_SEQ","OYA_KOUTEI_CD","JISSEKI_KANRI_KBN","LINE_SELECT_KBN","SEISAN_START_DAY","MAE_KOUTEI_SEQ","KOUTEI_START_TIME","COMMENTS","BIKOU","DELETE_FLG","CREATE_USER_CD","CREATE_DATETIME","UPDATE_USER_CD","UPDATE_DATETIME");
+            dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei", true, "SEIHIN_CD","SEQ_NO","BUSYO_CD","KOUTEI_LEVEL", "KOUTEI_CD","OYA_KOUTEI_SEQ","OYA_KOUTEI_CD","JISSEKI_KANRI_KBN","LINE_SELECT_KBN","SEISAN_START_DAY","MAE_KOUTEI_SEQ","KOUTEI_START_TIME","SEISANKISYU","BIKOU","DELETE_FLG","CREATE_USER_CD","CREATE_DATETIME","UPDATE_USER_CD","UPDATE_DATETIME");
 
             tss.GetUser();
 
@@ -1566,9 +1572,35 @@ namespace TSS_SYSTEM
                 }
             }
 
+            if(label_sinki.Text == "新規")
+            {
+                //for (int i = 0; i < rc; i++)
+                //{
+                //    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+                //                       + " VALUES ('"
+                //                       + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
+                //                       + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
+                //                       + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS')");
+                //}
+            }
+
             for (int i = 0; i < rc ; i++)
             {
-                tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (SEIHIN_CD,SEQ_NO,BUSYO_CD,KOUTEI_LEVEL,KOUTEI_CD,OYA_KOUTEI_SEQ,OYA_KOUTEI_CD,JISSEKI_KANRI_KBN,LINE_SELECT_KBN,SEISAN_START_DAY,MAE_KOUTEI_SEQ,KOUTEI_START_TIME,COMMENTS,BIKOU,DELETE_FLG,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
+                tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,UPDATE_USER_CD,UPDATE_DATETIME)"
                                    + " VALUES ('"
                                    + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
                                    + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
@@ -1643,10 +1675,11 @@ namespace TSS_SYSTEM
             }
 
 
+
             tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
             tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
-            tb_update_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][12].ToString();
-            tb_update_datetime.Text = dt_seisan_koutei_line_m.Rows[0][13].ToString();
+            tb_update_user_cd.Text = tss.user_cd.ToString();
+            tb_update_datetime.Text = System.DateTime.Now.ToString();
 
             MessageBox.Show("生産工程マスタに登録しました");
         }
@@ -1854,11 +1887,6 @@ namespace TSS_SYSTEM
                   dgv_line.EndEdit();
               }
         }
-
-      
-
-       
-
        
     }
 }
