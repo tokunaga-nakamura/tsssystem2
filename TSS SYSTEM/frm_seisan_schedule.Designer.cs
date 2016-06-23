@@ -102,7 +102,7 @@
             this.dgv_list.Location = new System.Drawing.Point(0, 0);
             this.dgv_list.Name = "dgv_list";
             this.dgv_list.RowTemplate.Height = 21;
-            this.dgv_list.Size = new System.Drawing.Size(880, 299);
+            this.dgv_list.Size = new System.Drawing.Size(1180, 299);
             this.dgv_list.TabIndex = 0;
             this.dgv_list.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellDoubleClick);
             this.dgv_list.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_list_CellValidated);
@@ -127,8 +127,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 31);
-            this.splitContainer4.SplitterDistance = 795;
+            this.splitContainer4.Size = new System.Drawing.Size(1180, 31);
+            this.splitContainer4.SplitterDistance = 1095;
             this.splitContainer4.TabIndex = 1;
             // 
             // btn_touroku
@@ -332,14 +332,14 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_list);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
+            this.splitContainer3.Size = new System.Drawing.Size(1184, 437);
             this.splitContainer3.SplitterDistance = 130;
             this.splitContainer3.TabIndex = 0;
             // 
             // textBox32
             // 
             this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox32.Location = new System.Drawing.Point(659, 9);
+            this.textBox32.Location = new System.Drawing.Point(959, 9);
             this.textBox32.Name = "textBox32";
             this.textBox32.ReadOnly = true;
             this.textBox32.Size = new System.Drawing.Size(45, 19);
@@ -350,7 +350,7 @@
             // tb_create_user_cd
             // 
             this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(704, 9);
+            this.tb_create_user_cd.Location = new System.Drawing.Point(1004, 9);
             this.tb_create_user_cd.Name = "tb_create_user_cd";
             this.tb_create_user_cd.ReadOnly = true;
             this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
@@ -360,7 +360,7 @@
             // tb_create_datetime
             // 
             this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(746, 9);
+            this.tb_create_datetime.Location = new System.Drawing.Point(1046, 9);
             this.tb_create_datetime.Name = "tb_create_datetime";
             this.tb_create_datetime.ReadOnly = true;
             this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
@@ -370,7 +370,7 @@
             // textBox35
             // 
             this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox35.Location = new System.Drawing.Point(659, 28);
+            this.textBox35.Location = new System.Drawing.Point(959, 28);
             this.textBox35.Name = "textBox35";
             this.textBox35.ReadOnly = true;
             this.textBox35.Size = new System.Drawing.Size(45, 19);
@@ -381,7 +381,7 @@
             // tb_update_user_cd
             // 
             this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(704, 28);
+            this.tb_update_user_cd.Location = new System.Drawing.Point(1004, 28);
             this.tb_update_user_cd.Name = "tb_update_user_cd";
             this.tb_update_user_cd.ReadOnly = true;
             this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
@@ -391,7 +391,7 @@
             // tb_update_datetime
             // 
             this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(746, 28);
+            this.tb_update_datetime.Location = new System.Drawing.Point(1046, 28);
             this.tb_update_datetime.Name = "tb_update_datetime";
             this.tb_update_datetime.ReadOnly = true;
             this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
@@ -487,7 +487,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
+            this.splitContainer2.Size = new System.Drawing.Size(1184, 476);
             this.splitContainer2.SplitterDistance = 437;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -520,7 +520,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(1184, 540);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -529,7 +529,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1184, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -537,10 +537,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(1184, 562);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
-            this.MinimumSize = new System.Drawing.Size(900, 600);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "frm_seisan_schedule";
             this.Text = "生産スケジュール";
             this.Load += new System.EventHandler(this.frm_seisan_schedule_Load);
