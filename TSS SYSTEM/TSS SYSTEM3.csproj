@@ -581,6 +581,12 @@
     <Compile Include="frm_user_m.Designer.cs">
       <DependentUpon>frm_user_m.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_utl_tss_nouhin_m_to tss_nouhin_schedule_m.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_utl_tss_nouhin_m_to tss_nouhin_schedule_m.Designer.cs">
+      <DependentUpon>frm_utl_tss_nouhin_m_to tss_nouhin_schedule_m.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_zaiko_syoukai_preview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -940,6 +946,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_user_m.resx">
       <DependentUpon>frm_user_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_utl_tss_nouhin_m_to tss_nouhin_schedule_m.resx">
+      <DependentUpon>frm_utl_tss_nouhin_m_to tss_nouhin_schedule_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_zaiko_syoukai_preview.resx">
       <DependentUpon>frm_zaiko_syoukai_preview.cs</DependentUpon>

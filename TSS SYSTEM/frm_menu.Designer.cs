@@ -217,9 +217,9 @@
             // lbl_db
             // 
             this.lbl_db.BackColor = System.Drawing.Color.Red;
-            this.lbl_db.Location = new System.Drawing.Point(722, 29);
+            this.lbl_db.Location = new System.Drawing.Point(639, 31);
             this.lbl_db.Name = "lbl_db";
-            this.lbl_db.Size = new System.Drawing.Size(144, 19);
+            this.lbl_db.Size = new System.Drawing.Size(248, 19);
             this.lbl_db.TabIndex = 2;
             this.lbl_db.Text = "接続DB表示";
             this.lbl_db.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -230,17 +230,17 @@
             this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_program_version.Location = new System.Drawing.Point(69, 36);
             this.lbl_program_version.Name = "lbl_program_version";
-            this.lbl_program_version.Size = new System.Drawing.Size(504, 12);
+            this.lbl_program_version.Size = new System.Drawing.Size(552, 12);
             this.lbl_program_version.TabIndex = 1;
-            this.lbl_program_version.Text = "プログラムの更新メッセージが表示された場合、TSSシステムを終了し、get new を実行後起動してください。";
+            this.lbl_program_version.Text = "プログラムの更新メッセージが表示された場合、TSSシステムを終了し、get new を実行してから再度起動してください。";
             this.lbl_program_version.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_message_log
             // 
             this.btn_message_log.BackColor = System.Drawing.Color.Orange;
-            this.btn_message_log.Location = new System.Drawing.Point(582, 3);
+            this.btn_message_log.Location = new System.Drawing.Point(639, 3);
             this.btn_message_log.Name = "btn_message_log";
-            this.btn_message_log.Size = new System.Drawing.Size(284, 23);
+            this.btn_message_log.Size = new System.Drawing.Size(248, 23);
             this.btn_message_log.TabIndex = 0;
             this.btn_message_log.Text = "システムメッセージが届いています";
             this.btn_message_log.UseVisualStyleBackColor = false;
@@ -827,7 +827,7 @@
             // 
             // btn_seisan_koutei_m
             // 
-            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 267);
+            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(236, 296);
             this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
             this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_koutei_m.TabIndex = 21;
@@ -857,7 +857,7 @@
             // 
             // tb_getumatu_zaiko
             // 
-            this.tb_getumatu_zaiko.Location = new System.Drawing.Point(464, 390);
+            this.tb_getumatu_zaiko.Location = new System.Drawing.Point(464, 412);
             this.tb_getumatu_zaiko.Name = "tb_getumatu_zaiko";
             this.tb_getumatu_zaiko.Size = new System.Drawing.Size(220, 23);
             this.tb_getumatu_zaiko.TabIndex = 18;
@@ -867,7 +867,7 @@
             // 
             // tb_zaiko_chousei
             // 
-            this.tb_zaiko_chousei.Location = new System.Drawing.Point(236, 390);
+            this.tb_zaiko_chousei.Location = new System.Drawing.Point(238, 412);
             this.tb_zaiko_chousei.Name = "tb_zaiko_chousei";
             this.tb_zaiko_chousei.Size = new System.Drawing.Size(220, 23);
             this.tb_zaiko_chousei.TabIndex = 17;
@@ -908,7 +908,7 @@
             // 
             // btn_3_seihin_tanka_m
             // 
-            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 209);
+            this.btn_3_seihin_tanka_m.Location = new System.Drawing.Point(462, 180);
             this.btn_3_seihin_tanka_m.Name = "btn_3_seihin_tanka_m";
             this.btn_3_seihin_tanka_m.Size = new System.Drawing.Size(222, 23);
             this.btn_3_seihin_tanka_m.TabIndex = 14;
@@ -918,7 +918,7 @@
             // 
             // btn_seihim_to_zaiko
             // 
-            this.btn_seihim_to_zaiko.Location = new System.Drawing.Point(462, 314);
+            this.btn_seihim_to_zaiko.Location = new System.Drawing.Point(462, 354);
             this.btn_seihim_to_zaiko.Name = "btn_seihim_to_zaiko";
             this.btn_seihim_to_zaiko.Size = new System.Drawing.Size(222, 23);
             this.btn_seihim_to_zaiko.TabIndex = 13;
@@ -928,7 +928,7 @@
             // 
             // btn_buhin_seihin
             // 
-            this.btn_buhin_seihin.Location = new System.Drawing.Point(234, 314);
+            this.btn_buhin_seihin.Location = new System.Drawing.Point(236, 354);
             this.btn_buhin_seihin.Name = "btn_buhin_seihin";
             this.btn_buhin_seihin.Size = new System.Drawing.Size(222, 23);
             this.btn_buhin_seihin.TabIndex = 12;
@@ -1114,7 +1114,7 @@
             // 
             // btn_seisan_kousu
             // 
-            this.btn_seisan_kousu.Location = new System.Drawing.Point(6, 3);
+            this.btn_seisan_kousu.Location = new System.Drawing.Point(234, 32);
             this.btn_seisan_kousu.Name = "btn_seisan_kousu";
             this.btn_seisan_kousu.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_kousu.TabIndex = 0;

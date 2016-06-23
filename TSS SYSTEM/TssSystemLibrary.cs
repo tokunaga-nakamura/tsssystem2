@@ -434,7 +434,7 @@ namespace TSS_SYSTEM
                     dt = null;
                     GetUser();
                     ErrorLogWrite(user_cd, "OracleSelect", sql.Replace("'", "#"));
-                    MessageBox.Show("データベースの処理中にエラーが発生しました。");
+                    MessageBox.Show("データベースの処理中にエラーが発生しました。\n" + sql);
                 }
             }
             return dt;
