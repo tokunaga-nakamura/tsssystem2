@@ -3375,7 +3375,7 @@ namespace TSS_SYSTEM
                         }
                         w_seq_max = w_seq_max + 1;
                         //全ての項目をセットし書き込む
-                        w_sql = "insert into tss_seisan_schedule_f (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq,torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,juchu_su,seisan_su,tact_time,dandori_kousu,tuika_kousu,hoju_kousu,seisan_time,start_time,end_time,seisan_zumi_su,ninzu,members,hensyu_flg,bikou,create_user_cd,create_datetime) values ("
+                        w_sql = "insert into tss_seisan_schedule_f (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq,torihikisaki_cd,juchu_cd1,juchu_cd2,seihin_cd,seihin_name,seisankisyu,juchu_su,seisan_su,tact_time,dandori_kousu,tuika_kousu,hoju_kousu,seisan_time,start_time,end_time,seisan_zumi_su,ninzu,members,hensyu_flg,bikou,create_user_cd,create_datetime) values ("
                                 + "'" + w_date_start.ToShortDateString() + "'"                              //生産予定日
                                 + ",'" + dr_seisan_koutei["busyo_cd"].ToString() + "'"                      //部署コード
                                 + ",'" + dr_seisan_koutei["koutei_cd"].ToString() + "'"                     //工程コード
@@ -3386,7 +3386,7 @@ namespace TSS_SYSTEM
                                 + ",'" + dr_nouhin_schedule["juchu_cd2"].ToString() + "'"                   //受注コード２
                                 + ",'" + dr_seisan_koutei["seihin_cd"].ToString() + "'"                     //製品コード
                                 + ",'" + w_dt_seihin.Rows[0]["seihin_name"].ToString() + "'"                //製品名
-                                + ",'" + w_dt_seihin.Rows[0]["seisan_kisyu"].ToString() + "'"               //生産機種
+                                + ",'" + dr_seisan_koutei["seisankisyu"].ToString() + "'"                   //生産機種
                                 + ",'" + w_dt_juchu.Rows[0]["juchu_su"].ToString() + "'"                    //受注数
                                 + ",'" + w_seisan_siji_su.ToString() + "'"                                  //生産指示数
                                 + ",'" + dr_seisan_koutei_line["tact_time"].ToString() + "'"                //タクト
