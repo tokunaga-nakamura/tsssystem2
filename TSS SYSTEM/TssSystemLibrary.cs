@@ -3386,6 +3386,7 @@ namespace TSS_SYSTEM
                                 + ",'" + dr_nouhin_schedule["juchu_cd2"].ToString() + "'"                   //受注コード２
                                 + ",'" + dr_seisan_koutei["seihin_cd"].ToString() + "'"                     //製品コード
                                 + ",'" + w_dt_seihin.Rows[0]["seihin_name"].ToString() + "'"                //製品名
+                                + ",'" + w_dt_seihin.Rows[0]["seisan_kisyu"].ToString() + "'"               //生産機種
                                 + ",'" + w_dt_juchu.Rows[0]["juchu_su"].ToString() + "'"                    //受注数
                                 + ",'" + w_seisan_siji_su.ToString() + "'"                                  //生産指示数
                                 + ",'" + dr_seisan_koutei_line["tact_time"].ToString() + "'"                //タクト
