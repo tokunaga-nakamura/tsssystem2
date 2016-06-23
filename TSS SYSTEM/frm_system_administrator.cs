@@ -79,5 +79,18 @@ namespace TSS_SYSTEM
             }
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (tss.User_Kengen_Check(6, 9) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            //納品マスタ→納品スケジュールマスタコンバート
+            frm_utl_tss_nouhin_m_to_tss_nouhin_schedule_m frm_utl = new frm_utl_tss_nouhin_m_to_tss_nouhin_schedule_m();
+            frm_utl.ShowDialog(this);
+            frm_utl.Dispose();
+        }
     }
 }

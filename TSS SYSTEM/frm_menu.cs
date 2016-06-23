@@ -124,17 +124,28 @@ namespace TSS_SYSTEM
             ss_status.Items.Add(tss.user_name);
             ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+"-"+tss.kengen4+tss.kengen5+tss.kengen6+"-"+tss.kengen7+tss.kengen8+tss.kengen9);
 
-            if (tss.DataSource == "pdb")
+            switch(tss.DataSource)
             {
-                lbl_db.Text = "TSS SYSTEM Connect";
-                lbl_db.BackColor = Color.RoyalBlue;
-                lbl_db.ForeColor = Color.White;
-            }
-            else
-            {
-                lbl_db.Text = "開発用DBに接続中！";
-                lbl_db.BackColor = Color.Red;
-                lbl_db.ForeColor = Color.White;
+                case "pdb":
+                    lbl_db.Text = "TSS SYSTEM pdb Connect";
+                    lbl_db.BackColor = Color.RoyalBlue;
+                    lbl_db.ForeColor = Color.White;
+                    break;
+                case "pdb2a":
+                    lbl_db.Text = "TSS SYSTEM pdb2a Connect";
+                    lbl_db.BackColor = Color.RoyalBlue;
+                    lbl_db.ForeColor = Color.White;
+                    break;
+                case "pdb_kaihatu":
+                    lbl_db.Text = "開発用DBに接続中！";
+                    lbl_db.BackColor = Color.Red;
+                    lbl_db.ForeColor = Color.White;
+                    break;
+                default:
+                    lbl_db.Text = "不明なDBに接続されています！";
+                    lbl_db.BackColor = Color.Red;
+                    lbl_db.ForeColor = Color.White;
+                    break;
             }
         }
 

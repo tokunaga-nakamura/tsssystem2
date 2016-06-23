@@ -205,9 +205,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(350, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(317, 12);
+            this.label2.Size = new System.Drawing.Size(361, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "※既に調整済みのスケジュールがある場合、再作成は行いません。";
+            this.label2.Text = "※既に調整済みのスケジュールがある場合、確認メッセージが表示されます。";
             // 
             // splitContainer5
             // 
