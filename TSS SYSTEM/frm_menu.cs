@@ -19,6 +19,7 @@ namespace TSS_SYSTEM
     public partial class frm_menu : Form
     {
         TssSystemLibrary tss = new TssSystemLibrary();
+        DataTable w_dt_kintai = new DataTable();    //勤怠用
 
         public frm_menu()
         {
@@ -57,6 +58,7 @@ namespace TSS_SYSTEM
             this.Opacity = 1;
             status_disp();
             message_log_check();
+            kintai_disp();
         }
 
         private void btn_hardcopy_Click(object sender, EventArgs e)
@@ -966,6 +968,103 @@ namespace TSS_SYSTEM
             frm_kari_juchu_to_hon_juchu frm_kjthj = new frm_kari_juchu_to_hon_juchu();
             frm_kjthj.ShowDialog(this);
             frm_kjthj.Dispose();
+        }
+
+        private void kintai_disp()
+        {
+            if(dtp_1.Value.ToShortDateString() != DateTime.Now.ToShortDateString())
+            {
+                lbl_honjitu.Text = "今日ではない日が選択・表示されています";
+            }
+            else
+            {
+                lbl_honjitu.Text = "";
+            }
+
+            w_dt_kintai = tss.OracleSelect("select B.syain_name,A.kintai_kbn,'' kintai_name,A.kintai_date1,A.kintai_time1,A.kintai_date2,A.kintai_time2,A.bikou from tss_kintai_f A left outer join tss_syain_m B on(A.syain_cd = B.syain_cd) where kintai_date1 = '" + dtp_1.Value.ToShortDateString() + "'");
+            dgv_kintai.DataSource = null;
+            dgv_kintai.DataSource = w_dt_kintai;
+            //リードオンリーにする（編集できなくなる）
+            dgv_kintai.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_kintai.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_kintai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_kintai.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_kintai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_kintai.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_kintai.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_kintai.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_kintai.AllowUserToAddRows = false;
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_kintai.Columns[0].HeaderText = "社員名";
+            dgv_kintai.Columns[1].HeaderText = "勤怠区分";
+            dgv_kintai.Columns[2].HeaderText = "勤怠名";
+            dgv_kintai.Columns[3].HeaderText = "開始日";
+            dgv_kintai.Columns[4].HeaderText = "開始時刻";
+            dgv_kintai.Columns[5].HeaderText = "終了日";
+            dgv_kintai.Columns[6].HeaderText = "終了時刻";
+            dgv_kintai.Columns[7].HeaderText = "備考";
+            //右詰とか
+            //dgv_kintai.Columns["tanka"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //書式を設定する
+            //dgv_kintai.Columns["tanka"].DefaultCellStyle.Format = "#,###,###,##0.00";
+            //指定列を非表示にする
+            dgv_kintai.Columns[1].Visible = false;
+
+            //勤怠名をセット
+            foreach(DataRow dr in w_dt_kintai.Rows)
+            {
+                switch(dr["kintai_kbn"].ToString())
+                {
+                    case "01":
+                        dr["kintai_name"] = "欠勤";
+                        break;
+                    case "02":
+                        dr["kintai_name"] = "遅刻";
+                        break;
+                    case "03":
+                        dr["kintai_name"] = "早退";
+                        break;
+                    case "04":
+                        dr["kintai_name"] = "外出";
+                        break;
+                    case "05":
+                        dr["kintai_name"] = "代休";
+                        break;
+                    default:
+                        dr["kintai_name"] = "????";
+                        break;
+                }
+            }
+        }
+
+        private void btn_day_down_Click(object sender, EventArgs e)
+        {
+            TimeSpan w_ts = TimeSpan.Parse("1");
+            dtp_1.Value = dtp_1.Value - w_ts;
+        }
+
+        private void dtp_1_ValueChanged(object sender, EventArgs e)
+        {
+            kintai_disp();
+        }
+
+        private void btn_day_up_Click(object sender, EventArgs e)
+        {
+            TimeSpan w_ts = TimeSpan.Parse("1");
+            dtp_1.Value = dtp_1.Value + w_ts;
+        }
+
+        private void btn_day_today_Click(object sender, EventArgs e)
+        {
+            dtp_1.Value = DateTime.Now;
         }
     }
 }

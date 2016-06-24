@@ -15,6 +15,7 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_nouhin_schedule = new DataTable();
         DataTable w_dt_seisan_schedule = new DataTable();
+        DataTable w_dt_seisan_koutei = new DataTable();
 
         public frm_seisan_schedule_remake()
         {
@@ -182,6 +183,7 @@ namespace TSS_SYSTEM
                     juchu_disp(w_dt);
                     nouhin_schedule_disp();
                     seisan_schedule_disp();
+                    seisan_koutei_disp();
                 }
             }
         }
@@ -333,6 +335,58 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns[9].Visible = false;
             dgv_nouhin_schedule.Columns[10].Visible = false;
         }
+
+        private void seisan_koutei_disp()
+        {
+            //納品スケジュールの表示
+            w_dt_seisan_koutei = tss.OracleSelect("select A.seq_no,B.busyo_name,C.koutei_name,A.jisseki_kanri_kbn,A.seisan_schedule_sakusei_kbn,A.line_select_kbn,A.seisan_start_day,A.seisankisyu,A.bikou from tss_seisan_koutei_m A left outer join tss_busyo_m B on (A.busyo_cd = B.busyo_cd)  left outer join tss_koutei_m C on (A.koutei_cd = C.koutei_cd) where A.seihin_cd = '" + tb_seihin_cd.Text + "' order by A.seq_no asc");
+            dgv_seisan_koutei.DataSource = null;
+            dgv_seisan_koutei.DataSource = w_dt_seisan_koutei;
+            //編集不可にする
+            dgv_seisan_koutei.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            //dgv_nouhin_schedule.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_seisan_koutei.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_seisan_koutei.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_seisan_koutei.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_seisan_koutei.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_seisan_koutei.MultiSelect = true;
+            //セルを選択するとセルが選択されるようにする
+            dgv_seisan_koutei.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            //新しい行を追加できないようにする
+            dgv_seisan_koutei.AllowUserToAddRows = false;
+
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_seisan_koutei.Columns[0].HeaderText = "順";
+            dgv_seisan_koutei.Columns[1].HeaderText = "部署";
+            dgv_seisan_koutei.Columns[2].HeaderText = "工程";
+            dgv_seisan_koutei.Columns[3].HeaderText = "実績管理";
+            dgv_seisan_koutei.Columns[4].HeaderText = "スケジュール作成";
+            dgv_seisan_koutei.Columns[5].HeaderText = "ライン選択区分";
+            dgv_seisan_koutei.Columns[6].HeaderText = "生産開始日";
+            dgv_seisan_koutei.Columns[7].HeaderText = "生産機種";
+            dgv_seisan_koutei.Columns[8].HeaderText = "備考";
+
+            //列を右詰にする
+            dgv_seisan_koutei.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_seisan_koutei.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //書式を設定する
+            //dgv_seisan_koutei.Columns[2].DefaultCellStyle.Format = "#,###,###,##0.00";
+            //検索項目を水色にする
+            //dgv_seisan_koutei.Columns[1].DefaultCellStyle.BackColor = Color.PowderBlue;
+            //入力不可の項目をグレーにする
+            //dgv_seisan_koutei.Columns[2].DefaultCellStyle.BackColor = Color.Gainsboro;
+            //指定列を非表示にする
+            //dgv_seisan_koutei.Columns[3].Visible = false;
+        }
+
+
 
         private void tb_juchu_cd2_Validating(object sender, CancelEventArgs e)
         {

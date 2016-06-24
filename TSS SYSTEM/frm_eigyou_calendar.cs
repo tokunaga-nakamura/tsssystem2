@@ -61,7 +61,6 @@ namespace TSS_SYSTEM
             //rows.countに影響するので、先に設定する
             dgv_calendar.AllowUserToAddRows = false;
 
-
             //曜日表示用に列を追加、同じループを使用して休日に色を付ける
             DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
             dgv_calendar.Columns.Insert(3,textColumn);
@@ -97,7 +96,6 @@ namespace TSS_SYSTEM
 
             //行ヘッダーを非表示にする
             dgv_calendar.RowHeadersVisible = false;
-
 
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_calendar.Columns[0].HeaderText = "年";
@@ -156,7 +154,6 @@ namespace TSS_SYSTEM
             dgv_calendar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
-
         private void calendar_create()
         {
             tss.GetUser();
@@ -189,7 +186,7 @@ namespace TSS_SYSTEM
         {
             if (tss.User_Kengen_Check(6, 5) == false)
             {
-                MessageBox.Show("権限がありません");
+                MessageBox.Show("権限がありません\n6,5");
                 return;
             }
             
@@ -275,7 +272,6 @@ namespace TSS_SYSTEM
                     }
                 }
             }
-
         }
     }
 }

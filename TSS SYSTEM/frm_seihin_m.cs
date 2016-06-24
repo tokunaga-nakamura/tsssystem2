@@ -219,7 +219,7 @@ namespace TSS_SYSTEM
         private void seisan_koutei_disp(string in_cd)
         {
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select A.seq_no,B.busyo_name,C.koutei_name,A.jisseki_kanri_kbn,A.line_select_kbn,A.seisan_start_day,A.koutei_start_time,A.comments,A.bikou from tss_seisan_koutei_m A left outer join tss_busyo_m B on (A.busyo_cd = B.busyo_cd) left outer join tss_koutei_m C on (A.koutei_cd = C.koutei_cd) where seihin_cd = '" + in_cd + "' order by seq_no");
+            w_dt = tss.OracleSelect("select A.seq_no,B.busyo_name,C.koutei_name,A.seisankisyu,A.jisseki_kanri_kbn,A.line_select_kbn,A.seisan_start_day,A.koutei_start_time,A.bikou from tss_seisan_koutei_m A left outer join tss_busyo_m B on (A.busyo_cd = B.busyo_cd) left outer join tss_koutei_m C on (A.koutei_cd = C.koutei_cd) where seihin_cd = '" + in_cd + "' order by seq_no");
             dgv_seisan_koutei.DataSource = null;
             dgv_seisan_koutei.DataSource = w_dt;
             //リードオンリーにする（編集できなくなる）
@@ -244,11 +244,11 @@ namespace TSS_SYSTEM
             dgv_seisan_koutei.Columns[0].HeaderText = "順";
             dgv_seisan_koutei.Columns[1].HeaderText = "部署";
             dgv_seisan_koutei.Columns[2].HeaderText = "工程";
-            dgv_seisan_koutei.Columns[3].HeaderText = "実績管理";
-            dgv_seisan_koutei.Columns[4].HeaderText = "ライン選択";
-            dgv_seisan_koutei.Columns[5].HeaderText = "生産開始日";
-            dgv_seisan_koutei.Columns[6].HeaderText = "工程開始時間";
-            dgv_seisan_koutei.Columns[7].HeaderText = "コメント（表示・印刷）";
+            dgv_seisan_koutei.Columns[3].HeaderText = "生産機種";
+            dgv_seisan_koutei.Columns[4].HeaderText = "実績管理";
+            dgv_seisan_koutei.Columns[5].HeaderText = "ライン選択";
+            dgv_seisan_koutei.Columns[6].HeaderText = "生産開始日";
+            dgv_seisan_koutei.Columns[7].HeaderText = "工程開始時間";
             dgv_seisan_koutei.Columns[8].HeaderText = "備考";
         }
 

@@ -43,6 +43,8 @@
             this.dgv_calendar = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,6 +82,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -94,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(247, 24);
+            this.label1.Location = new System.Drawing.Point(558, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 12);
             this.label1.TabIndex = 1;
@@ -267,6 +271,24 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(93, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(241, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "生産スケジュールの自動生成などに使用されます。";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(93, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(274, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "生産を行わない（運動会や旅行等）も休日としてください。";
+            // 
             // frm_eigyou_calendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -316,5 +338,7 @@
         private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.Button btn_hyouji;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

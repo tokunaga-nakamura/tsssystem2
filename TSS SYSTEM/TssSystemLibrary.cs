@@ -3197,7 +3197,7 @@ namespace TSS_SYSTEM
             if(w_dt_seisan_schedule.Rows.Count >=1)
             {
                 //編集済みの生産スケジュール有り
-                DialogResult result = MessageBox.Show("既に編集されている生産スケジュールがあります。\n再作成してもよろしいですか？\n「はい」=再作成＋メッセージ送信\n「いいえ」=作成しない＋受注変更メッセージの送信\n「キャンセル」=受注の更新のみ行い、メッセージも送信しない", "確認", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("既に編集されている生産スケジュールがあります。\n再作成してもよろしいですか？\n「はい」=再作成＋メッセージ送信\n「いいえ」=作成しない＋メッセージの送信\n「キャンセル」=生産スケジュールは何もしない", "確認", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 {
                     //「はい」
@@ -3280,9 +3280,11 @@ namespace TSS_SYSTEM
             //納品スケジュールマスタの取得
             w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
 
-            DateTime w_date;        //納品日
-            TimeSpan w_timespan;    //○日前からの生産
-            DateTime w_date_start;  //生産開始日
+            DateTime w_date;            //納品日
+            TimeSpan w_timespan;        //○日前からの生産
+            int w_kaisi_day;            //○日前からの生産
+            DateTime w_date_start;      //生産開始日
+            DataTable w_dt_calendar;    //営業カレンダー読み込み用
 
             double w_seisan_su;     //生産数（納品スケジュールの1レコードの）
             double w_seisan_siji_su;//生産指示数
@@ -3299,6 +3301,7 @@ namespace TSS_SYSTEM
             DataTable w_dt_seq;     //最大seq算出用
             int w_seq_max;          //最大seq
 
+            int w_loop_flg = 0;     //ループ用のフラグ
             //納品スケジュールマスタのレコード分繰り返す
             foreach(DataRow dr_nouhin_schedule in w_dt_nouhin_schedule.Rows)
             {
@@ -3310,9 +3313,53 @@ namespace TSS_SYSTEM
                     //よって、現状では生産スケジュールを作成しなくてもよい工程は無いと考えている。
 
                     //納品日と生産開始日から生産スケジュールの日を算出
+                    //w_date = DateTime.Parse(dr_nouhin_schedule["nouhin_yotei_date"].ToString());
+                    //w_timespan = TimeSpan.Parse(dr_seisan_koutei["seisan_start_day"].ToString());
+                    //w_date_start = w_date - w_timespan;
+
+                    //納品日と生産開始日から営業日を考慮した生産日を算出
+                    //納品日
                     w_date = DateTime.Parse(dr_nouhin_schedule["nouhin_yotei_date"].ToString());
-                    w_timespan = TimeSpan.Parse(dr_seisan_koutei["seisan_start_day"].ToString());
-                    w_date_start = w_date - w_timespan;
+                    //○日前を1日ずつさかのぼりながら営業日での算出をする
+                    if(int.TryParse(dr_seisan_koutei["seisan_start_day"].ToString(),out w_kaisi_day))
+                    {
+
+                    }
+                    else
+                    {
+                        w_kaisi_day = 0;
+                    }
+                    w_timespan = TimeSpan.Parse("1");
+                    w_date_start = w_date;
+                    for (int i = 0; i < w_kaisi_day; i++)
+                    {
+                        //営業日を見つけるまで－1日づつして繰り返す
+                        w_loop_flg = 0;
+                        while(w_loop_flg ==0)
+                        {
+                            w_date_start = w_date_start - w_timespan;
+                            w_dt_calendar = OracleSelect("select * from tss_calendar_f where calendar_year = '" + w_date_start.Year.ToString("0000") + "' and calendar_month = '" + w_date_start.Month.ToString("00") + "' and calendar_day = '" + w_date_start.Day.ToString("00") + "'");
+                            if(w_dt_calendar.Rows.Count <= 0)
+                            {
+                                MessageBox.Show("営業カレンダーに異常があります。\n" + w_date_start.ToShortDateString());
+                                return false;
+                            }
+                            else
+                            {
+                                if(w_dt_calendar.Rows[0]["eigyou_kbn"].ToString() != "1" && w_dt_calendar.Rows[0]["eigyou_kbn"].ToString() != "2")
+                                {
+                                    //営業日の場合
+                                    w_loop_flg = 1;
+                                }
+                                else
+                                {
+                                    //休日の場合、更に一日前に進む
+                                }
+                            }
+                        }
+                    }
+                    //ループを抜けるとw_date_startの中に生産日が入っている
+
                     //生産工程ラインマスタの選択区分が立っているレコードを取得する（選択区分は必要なもののみ立っているとみなす）
                     w_dt_seisan_koutei_line = OracleSelect("select * from tss_seisan_koutei_line_m where seihin_cd = '" + dr_seisan_koutei["seihin_cd"].ToString() + "' and seq_no = '" + dr_seisan_koutei["seq_no"].ToString() + "' and select_kbn = '1' order by seq_no asc");
                     if (w_dt_seisan_koutei_line.Rows.Count <= 0)
@@ -3432,6 +3479,7 @@ namespace TSS_SYSTEM
 
         private bool ssm_message(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2,string in_msg)
         {
+            GetUser();
             //受注マスタから製品マスタ→生産工程マスタとリンクし部署コードを抽出、その部署に所属するユーザー且つ生産の権限が3以上のユーザーにメッセージを送信する
             DataTable w_dt_juchu = new DataTable();
             DataTable w_dt_seihin = new DataTable();

@@ -1567,14 +1567,15 @@ namespace TSS_SYSTEM
                 {
                     w_dt_list.Rows[i]["create_datetime"] = System.DateTime.Now;
                 }
-                if (w_dt_list.Rows[i]["create_user_cd1"].ToString() == "")
+
+                if (w_dt_list.Rows[i]["update_user_cd"].ToString() == "")
                 {
-                    w_dt_list.Rows[i]["create_user_cd1"] = tss.user_cd;
+                    w_dt_list.Rows[i]["update_user_cd"] = tss.user_cd;
                 }
 
-                if (w_dt_list.Rows[i]["create_datetime1"].ToString() == "")
+                if (w_dt_list.Rows[i]["update_datetime"].ToString() == "")
                 {
-                    w_dt_list.Rows[i]["create_datetime1"] = System.DateTime.Now;
+                    w_dt_list.Rows[i]["update_datetime"] = System.DateTime.Now;
                 }
             }
 
