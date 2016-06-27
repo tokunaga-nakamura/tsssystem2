@@ -757,75 +757,82 @@ namespace TSS_SYSTEM
                     dgv_m.CurrentCell = dgv_m[16, i];
                     return;
                 }
+            }
 
-                //新規・更新チェック
-                if (w_mode == 0)
+            //新規・更新チェック
+            if (w_mode == 0)
+            {
+                //新規
+                DialogResult result = MessageBox.Show("新規に登録します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    //新規
-                    DialogResult result = MessageBox.Show("新規に登録します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //「はい」が選択された時
-                        ////新しい売上を書き込み
-                        uriage_insert();
+                    //「はい」が選択された時
+                    ////新しい売上を書き込み
+                    uriage_insert();
 
-                        //自社伝発行区分が1の場合、自社伝を発行するか確認し、印刷する
-                        if(get_torihikisaki_jisyaden_kbn(tb_torihikisaki_cd.Text) == "1")
-                        {
-                            DialogResult result2 = MessageBox.Show("売上伝票を発行しますか？", "確認", MessageBoxButtons.YesNo);
-                            if (result2 == DialogResult.Yes)
-                            {
-                                //伝票印刷
-                                denpyou_insatu();
-                            }
-                        }
-                        MessageBox.Show("登録しました。");
-                        gamen_clear();
-                        //連番を新たに取得
-                        w_uriage_no = tss.GetSeq("05");
-                        uriage_no_disp();
-                    }
-                    else
+                    //自社伝発行区分が1の場合、自社伝を発行するか確認し、印刷する
+                    if (get_torihikisaki_jisyaden_kbn(tb_torihikisaki_cd.Text) == "1")
                     {
-                        //「いいえ」が選択された時
-                        return;
+                        DialogResult result2 = MessageBox.Show("売上伝票を発行しますか？", "確認", MessageBoxButtons.YesNo);
+                        if (result2 == DialogResult.Yes)
+                        {
+                            //伝票印刷
+                            denpyou_insatu();
+                        }
                     }
+                    MessageBox.Show("登録しました。");
+                    gamen_clear();
+                    //連番を新たに取得
+                    w_uriage_no = tss.GetSeq("05");
+                    uriage_no_disp();
                 }
                 else
                 {
-                    //既存データ有
-                    DialogResult result = MessageBox.Show("既存データを更新します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
+                    //「いいえ」が選択された時
+                    return;
+                }
+            }
+            else
+            {
+                //既存データ有
+                DialogResult result = MessageBox.Show("既存データを更新します。よろしいですか？", "確認", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    //備忘録
+                    //既存売上に新規行を加えて登録した場合・・・・・
+                    //①juchu_kousinで売上マスタの同一伝票レコードをマイナス　→　ここで新規行は関係なく、既存データだけマイナスされる
+                    //②在庫も同様
+                    //③売上マスタの同一伝票レコードをマイナス　→　同一伝票番号のデータはこの時点で無くなる
+                    //④画面のデータを元に売上マスタに書き込む　→　ここで既存＋新規のレコードが売上マスタに出来上がる
+
+                    //「はい」が選択された時
+                    //受注マスタの売上数、売上完了区分等をマイナス
+                    juchu_kousin(tb_uriage_no.Text, -1);
+                    //在庫をマイナス
+                    zaiko_kousin(tb_uriage_no.Text, -1);
+                    //売上情報を削除
+                    uriage_delete();
+                    //新しい売上を書き込み
+                    uriage_insert();
+                    //自社伝発行区分が1の場合、自社伝を発行するか確認し、印刷する
+                    if (get_torihikisaki_jisyaden_kbn(tb_torihikisaki_cd.Text) == "1")
                     {
-                        //「はい」が選択された時
-                        //受注マスタの売上数、売上完了区分等をマイナス
-                        juchu_kousin(tb_uriage_no.Text, -1);
-                        //在庫をマイナス
-                        zaiko_kousin(tb_uriage_no.Text, -1);
-                        //売上情報を削除
-                        uriage_delete();
-                        //新しい売上を書き込み
-                        uriage_insert();
-                        //自社伝発行区分が1の場合、自社伝を発行するか確認し、印刷する
-                        if (get_torihikisaki_jisyaden_kbn(tb_torihikisaki_cd.Text) == "1")
+                        DialogResult result2 = MessageBox.Show("売上伝票を発行しますか？", "確認", MessageBoxButtons.YesNo);
+                        if (result2 == DialogResult.Yes)
                         {
-                            DialogResult result2 = MessageBox.Show("売上伝票を発行しますか？", "確認", MessageBoxButtons.YesNo);
-                            if (result2 == DialogResult.Yes)
-                            {
-                                //伝票印刷
-                                denpyou_insatu();
-                            }
+                            //伝票印刷
+                            denpyou_insatu();
                         }
-                        MessageBox.Show("更新しました。");
-                        gamen_clear();
-                        //退避していた連番を表示
-                        uriage_no_disp();
                     }
-                    else
-                    {
-                        //「いいえ」が選択された時
-                        return;
-                    }
+                    MessageBox.Show("更新しました。");
+                    gamen_clear();
+                    //退避していた連番を表示
+                    uriage_no_disp();
+                }
+                else
+                {
+                    //「いいえ」が選択された時
+                    return;
                 }
             }
         }

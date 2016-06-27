@@ -284,6 +284,7 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -608,7 +609,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(690, 442);
+            this.tabPage2.Size = new System.Drawing.Size(750, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
             // 
@@ -807,7 +808,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(690, 442);
+            this.tabPage3.Size = new System.Drawing.Size(750, 442);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             // 
@@ -1012,7 +1013,7 @@
             this.tabPage4.Controls.Add(this.btn_siire);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(690, 442);
+            this.tabPage4.Size = new System.Drawing.Size(750, 442);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
             // 
@@ -1074,7 +1075,7 @@
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(690, 442);
+            this.tabPage5.Size = new System.Drawing.Size(750, 442);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
             // 
@@ -1133,7 +1134,7 @@
             this.tabPage6.Controls.Add(this.btn_kubun_meisyou_m);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(690, 442);
+            this.tabPage6.Size = new System.Drawing.Size(750, 442);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 

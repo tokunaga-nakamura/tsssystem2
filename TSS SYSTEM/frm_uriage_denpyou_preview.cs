@@ -133,7 +133,24 @@ namespace TSS_SYSTEM
 
         private void viewer_disp()
         {
-            viewer1.LoadDocument("rpt_uriage_denpyou.rdlx");
+            //ページレポートに接続文字列とクエリ（sql）をセットして表示する
+
+            GrapeCity.ActiveReports.PageReport rpt = new GrapeCity.ActiveReports.PageReport();
+            // レポート定義のファイルをロードします。 
+            rpt.Load(new System.IO.FileInfo("rpt_uriage_denpyou.rdlx"));
+
+            // 接続文字列を変更します
+            //rpt.Report.DataSources[0].ConnectionProperties.DataProvider = tss.DataSource;
+            rpt.Report.DataSources[0].ConnectionProperties.ConnectString = tss.GetConnectionString();
+
+            // 変更するSQL文を定義します
+            String tmpQuery = "select * from tss_uriage_denpyou_trn";
+            // SQL文を変更します
+            rpt.Report.DataSets[0].Query.CommandText = GrapeCity.ActiveReports.Expressions.ExpressionInfo.Parse(tmpQuery,GrapeCity.ActiveReports.Expressions.ExpressionResultType.String);
+
+            GrapeCity.ActiveReports.Document.PageDocument pageDocument = new GrapeCity.ActiveReports.Document.PageDocument(rpt);
+            viewer1.LoadDocument(pageDocument);
+            //viewer1.LoadDocument("rpt_uriage_denpyou.rdlx");
         }
 
         private void tb_uriage_no_DoubleClick(object sender, EventArgs e)
