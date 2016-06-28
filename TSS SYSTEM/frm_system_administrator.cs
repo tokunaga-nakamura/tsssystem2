@@ -92,5 +92,13 @@ namespace TSS_SYSTEM
             frm_utl.ShowDialog(this);
             frm_utl.Dispose();
         }
+
+        private void btn_control_m_Click(object sender, EventArgs e)
+        {
+            //コントロールマスタ
+            frm_control_m frm_ctrl = new frm_control_m();
+            frm_ctrl.ShowDialog(this);
+            frm_ctrl.Dispose();
+        }
     }
 }

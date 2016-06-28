@@ -55,6 +55,12 @@ namespace TSS_SYSTEM
                 lbl_program_version.ForeColor = Color.White;
                 lbl_program_version.BackColor = Color.Red;
             }
+            else
+            {
+                lbl_program_version.Text = "";
+                //lbl_program_version.ForeColor = Color.White;
+                //lbl_program_version.BackColor = Color.Red;
+            }
             this.Opacity = 1;
             status_disp();
             message_log_check();
@@ -149,6 +155,16 @@ namespace TSS_SYSTEM
                     lbl_db.ForeColor = Color.White;
                     break;
             }
+            //メッセージ表示
+            DataTable w_dt_ctrl = new DataTable();
+            w_dt_ctrl = tss.OracleSelect("select * from tss_control_m where system_cd = '0101'");
+            if(w_dt_ctrl.Rows.Count<=0)
+            {
+                MessageBox.Show("コントロールマスタに異常があります。\nシステムを終了します。");
+                Application.Exit();
+            }
+            lbl_msg1.Text = w_dt_ctrl.Rows[0]["msg1"].ToString();
+            lbl_msg2.Text = w_dt_ctrl.Rows[0]["msg2"].ToString();
         }
 
         private void btn_mst_table_Click(object sender, EventArgs e)

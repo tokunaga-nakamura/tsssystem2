@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btn_control_m = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_syuuryou
@@ -85,12 +86,23 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btn_control_m
+            // 
+            this.btn_control_m.Location = new System.Drawing.Point(299, 99);
+            this.btn_control_m.Name = "btn_control_m";
+            this.btn_control_m.Size = new System.Drawing.Size(281, 23);
+            this.btn_control_m.TabIndex = 5;
+            this.btn_control_m.Text = "コントロールマスタ";
+            this.btn_control_m.UseVisualStyleBackColor = true;
+            this.btn_control_m.Click += new System.EventHandler(this.btn_control_m_Click);
+            // 
             // frm_system_administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btn_control_m);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_control_m;
     }
 }
