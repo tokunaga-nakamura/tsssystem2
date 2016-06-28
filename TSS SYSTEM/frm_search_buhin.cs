@@ -350,6 +350,18 @@ namespace TSS_SYSTEM
 
         private void dgv_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //通常モードでダブルクリックされた場合、部品マスタ画面を子画面として表示
+            if(str_mode == "1")
+            {
+                if(dgv_m.SelectedRows.Count>=1)
+                {
+                    frm_buhin_m frm_bhn = new frm_buhin_m();
+                    frm_bhn.pub_buhin_cd = dgv_m.CurrentRow.Cells[0].Value.ToString();
+                    frm_bhn.ShowDialog();
+                    frm_bhn.Dispose();
+                }
+            }
+            //子画面モードでダブルクリックされた場合
             if(str_mode == "2")
             {
                 form_close_true();

@@ -245,6 +245,7 @@
             this.dgv_m.RowTemplate.Height = 21;
             this.dgv_m.Size = new System.Drawing.Size(880, 378);
             this.dgv_m.TabIndex = 0;
+            this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
             // splitContainer5
             // 

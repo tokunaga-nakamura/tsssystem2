@@ -787,6 +787,7 @@ namespace TSS_SYSTEM
             frm_rpt.ppt_dt = w_dt_schedule;
             frm_rpt.w_yyyy = nud_year.Value.ToString();
             frm_rpt.w_mm = nud_month.Value.ToString("00");
+            frm_rpt.w_hd_torihikisaki_cd = tb_torihikisaki_cd.Text;
             if (tb_torihikisaki_cd.Text != "")
             {
                 frm_rpt.w_hd_torihikisaki_name = tb_torihikisaki_name.Text;

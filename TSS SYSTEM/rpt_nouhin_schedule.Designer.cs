@@ -160,6 +160,7 @@
             this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.reportInfo2 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
+            this.tb_hd_torihikisaki_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).BeginInit();
@@ -249,11 +250,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
             // 
             this.pageHeader.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
+            this.tb_hd41,
             this.lbl_31,
             this.lbl_30,
             this.lbl_29,
@@ -339,8 +342,9 @@
             this.tb_hd11,
             this.tb_hd21,
             this.tb_hd31,
-            this.tb_hd41});
-            this.pageHeader.Height = 1.072917F;
+            this.tb_hd_torihikisaki_cd,
+            this.reportInfo1});
+            this.pageHeader.Height = 0.8125004F;
             this.pageHeader.Name = "pageHeader";
             // 
             // lbl_31
@@ -351,7 +355,7 @@
             this.lbl_31.Name = "lbl_31";
             this.lbl_31.Style = "font-size: 6pt; text-align: center";
             this.lbl_31.Text = "31";
-            this.lbl_31.Top = 0.8574803F;
+            this.lbl_31.Top = 0.5889764F;
             this.lbl_31.Width = 0.2125974F;
             // 
             // lbl_30
@@ -362,7 +366,7 @@
             this.lbl_30.Name = "lbl_30";
             this.lbl_30.Style = "font-size: 6pt; text-align: center";
             this.lbl_30.Text = "30";
-            this.lbl_30.Top = 0.8574803F;
+            this.lbl_30.Top = 0.5901575F;
             this.lbl_30.Width = 0.2125984F;
             // 
             // lbl_29
@@ -373,7 +377,7 @@
             this.lbl_29.Name = "lbl_29";
             this.lbl_29.Style = "font-size: 6pt; text-align: center";
             this.lbl_29.Text = "29";
-            this.lbl_29.Top = 0.8574803F;
+            this.lbl_29.Top = 0.5901575F;
             this.lbl_29.Width = 0.2125984F;
             // 
             // lbl_28
@@ -384,7 +388,7 @@
             this.lbl_28.Name = "lbl_28";
             this.lbl_28.Style = "font-size: 6pt; text-align: center";
             this.lbl_28.Text = "28";
-            this.lbl_28.Top = 0.8574803F;
+            this.lbl_28.Top = 0.5901575F;
             this.lbl_28.Width = 0.2125984F;
             // 
             // lbl_27
@@ -395,7 +399,7 @@
             this.lbl_27.Name = "lbl_27";
             this.lbl_27.Style = "font-size: 6pt; text-align: center";
             this.lbl_27.Text = "27";
-            this.lbl_27.Top = 0.8574803F;
+            this.lbl_27.Top = 0.5901575F;
             this.lbl_27.Width = 0.2125984F;
             // 
             // lbl_26
@@ -406,7 +410,7 @@
             this.lbl_26.Name = "lbl_26";
             this.lbl_26.Style = "font-size: 6pt; text-align: center";
             this.lbl_26.Text = "26";
-            this.lbl_26.Top = 0.8574803F;
+            this.lbl_26.Top = 0.5901575F;
             this.lbl_26.Width = 0.2125984F;
             // 
             // lbl_25
@@ -417,18 +421,18 @@
             this.lbl_25.Name = "lbl_25";
             this.lbl_25.Style = "font-size: 6pt; text-align: center";
             this.lbl_25.Text = "25";
-            this.lbl_25.Top = 0.8574803F;
+            this.lbl_25.Top = 0.5901575F;
             this.lbl_25.Width = 0.2125984F;
             // 
             // lbl_24
             // 
             this.lbl_24.Height = 0.2062993F;
             this.lbl_24.HyperLink = null;
-            this.lbl_24.Left = 7.473622F;
+            this.lbl_24.Left = 7.473623F;
             this.lbl_24.Name = "lbl_24";
             this.lbl_24.Style = "font-size: 6pt; text-align: center";
             this.lbl_24.Text = "24";
-            this.lbl_24.Top = 0.8574803F;
+            this.lbl_24.Top = 0.5901575F;
             this.lbl_24.Width = 0.2125984F;
             // 
             // lbl_23
@@ -439,7 +443,7 @@
             this.lbl_23.Name = "lbl_23";
             this.lbl_23.Style = "font-size: 6pt; text-align: center";
             this.lbl_23.Text = "23";
-            this.lbl_23.Top = 0.8574803F;
+            this.lbl_23.Top = 0.5901575F;
             this.lbl_23.Width = 0.2125984F;
             // 
             // lbl_22
@@ -450,7 +454,7 @@
             this.lbl_22.Name = "lbl_22";
             this.lbl_22.Style = "font-size: 6pt; text-align: center";
             this.lbl_22.Text = "22";
-            this.lbl_22.Top = 0.8574803F;
+            this.lbl_22.Top = 0.5901575F;
             this.lbl_22.Width = 0.2125984F;
             // 
             // lbl_21
@@ -461,7 +465,7 @@
             this.lbl_21.Name = "lbl_21";
             this.lbl_21.Style = "font-size: 6pt; text-align: center";
             this.lbl_21.Text = "21";
-            this.lbl_21.Top = 0.8574803F;
+            this.lbl_21.Top = 0.5901575F;
             this.lbl_21.Width = 0.2125984F;
             // 
             // lbl_20
@@ -472,7 +476,7 @@
             this.lbl_20.Name = "lbl_20";
             this.lbl_20.Style = "font-size: 6pt; text-align: center";
             this.lbl_20.Text = "20";
-            this.lbl_20.Top = 0.8574803F;
+            this.lbl_20.Top = 0.5913386F;
             this.lbl_20.Width = 0.2125984F;
             // 
             // lbl_19
@@ -483,7 +487,7 @@
             this.lbl_19.Name = "lbl_19";
             this.lbl_19.Style = "font-size: 6pt; text-align: center";
             this.lbl_19.Text = "19";
-            this.lbl_19.Top = 0.8574803F;
+            this.lbl_19.Top = 0.5913386F;
             this.lbl_19.Width = 0.2125984F;
             // 
             // lbl_18
@@ -494,7 +498,7 @@
             this.lbl_18.Name = "lbl_18";
             this.lbl_18.Style = "font-size: 6pt; text-align: center";
             this.lbl_18.Text = "18";
-            this.lbl_18.Top = 0.8574803F;
+            this.lbl_18.Top = 0.5925197F;
             this.lbl_18.Width = 0.2125984F;
             // 
             // lbl_17
@@ -505,7 +509,7 @@
             this.lbl_17.Name = "lbl_17";
             this.lbl_17.Style = "font-size: 6pt; text-align: center";
             this.lbl_17.Text = "17";
-            this.lbl_17.Top = 0.8574803F;
+            this.lbl_17.Top = 0.5913386F;
             this.lbl_17.Width = 0.2125984F;
             // 
             // lbl_16
@@ -516,29 +520,29 @@
             this.lbl_16.Name = "lbl_16";
             this.lbl_16.Style = "font-size: 6pt; text-align: center";
             this.lbl_16.Text = "16";
-            this.lbl_16.Top = 0.8574803F;
+            this.lbl_16.Top = 0.5925197F;
             this.lbl_16.Width = 0.2125984F;
             // 
             // lbl_15
             // 
             this.lbl_15.Height = 0.2062993F;
             this.lbl_15.HyperLink = null;
-            this.lbl_15.Left = 5.560237F;
+            this.lbl_15.Left = 5.560236F;
             this.lbl_15.Name = "lbl_15";
             this.lbl_15.Style = "font-size: 6pt; text-align: center";
             this.lbl_15.Text = "15";
-            this.lbl_15.Top = 0.8574803F;
+            this.lbl_15.Top = 0.5925197F;
             this.lbl_15.Width = 0.2125984F;
             // 
             // lbl_14
             // 
             this.lbl_14.Height = 0.2062993F;
             this.lbl_14.HyperLink = null;
-            this.lbl_14.Left = 5.347639F;
+            this.lbl_14.Left = 5.347638F;
             this.lbl_14.Name = "lbl_14";
             this.lbl_14.Style = "font-size: 6pt; text-align: center";
             this.lbl_14.Text = "14";
-            this.lbl_14.Top = 0.8574803F;
+            this.lbl_14.Top = 0.5925197F;
             this.lbl_14.Width = 0.2125984F;
             // 
             // lbl_13
@@ -549,7 +553,7 @@
             this.lbl_13.Name = "lbl_13";
             this.lbl_13.Style = "font-size: 6pt; text-align: center";
             this.lbl_13.Text = "13";
-            this.lbl_13.Top = 0.8574803F;
+            this.lbl_13.Top = 0.5889764F;
             this.lbl_13.Width = 0.2125984F;
             // 
             // lbl_12
@@ -560,7 +564,7 @@
             this.lbl_12.Name = "lbl_12";
             this.lbl_12.Style = "font-size: 6pt; text-align: center";
             this.lbl_12.Text = "12";
-            this.lbl_12.Top = 0.8574803F;
+            this.lbl_12.Top = 0.5877953F;
             this.lbl_12.Width = 0.2125984F;
             // 
             // lbl_11
@@ -571,29 +575,29 @@
             this.lbl_11.Name = "lbl_11";
             this.lbl_11.Style = "font-size: 6pt; text-align: center";
             this.lbl_11.Text = "11";
-            this.lbl_11.Top = 0.8574803F;
+            this.lbl_11.Top = 0.5877953F;
             this.lbl_11.Width = 0.2125984F;
             // 
             // lbl_10
             // 
             this.lbl_10.Height = 0.2062993F;
             this.lbl_10.HyperLink = null;
-            this.lbl_10.Left = 4.497245F;
+            this.lbl_10.Left = 4.497244F;
             this.lbl_10.Name = "lbl_10";
             this.lbl_10.Style = "font-size: 6pt; text-align: center";
             this.lbl_10.Text = "10";
-            this.lbl_10.Top = 0.8574803F;
+            this.lbl_10.Top = 0.5877953F;
             this.lbl_10.Width = 0.2125984F;
             // 
             // lbl_09
             // 
             this.lbl_09.Height = 0.2074802F;
             this.lbl_09.HyperLink = null;
-            this.lbl_09.Left = 4.284647F;
+            this.lbl_09.Left = 4.284646F;
             this.lbl_09.Name = "lbl_09";
             this.lbl_09.Style = "font-size: 6pt; text-align: center";
             this.lbl_09.Text = "9";
-            this.lbl_09.Top = 0.8551182F;
+            this.lbl_09.Top = 0.5866142F;
             this.lbl_09.Width = 0.2125984F;
             // 
             // lbl_08
@@ -604,7 +608,7 @@
             this.lbl_08.Name = "lbl_08";
             this.lbl_08.Style = "font-size: 6pt; text-align: center";
             this.lbl_08.Text = "8";
-            this.lbl_08.Top = 0.8574803F;
+            this.lbl_08.Top = 0.5866142F;
             this.lbl_08.Width = 0.2125984F;
             // 
             // lbl_07
@@ -615,7 +619,7 @@
             this.lbl_07.Name = "lbl_07";
             this.lbl_07.Style = "font-size: 6pt; text-align: center";
             this.lbl_07.Text = "7";
-            this.lbl_07.Top = 0.8551182F;
+            this.lbl_07.Top = 0.584252F;
             this.lbl_07.Width = 0.2125984F;
             // 
             // lbl_06
@@ -626,7 +630,7 @@
             this.lbl_06.Name = "lbl_06";
             this.lbl_06.Style = "font-size: 6pt; text-align: center";
             this.lbl_06.Text = "6";
-            this.lbl_06.Top = 0.8551182F;
+            this.lbl_06.Top = 0.584252F;
             this.lbl_06.Width = 0.2125984F;
             // 
             // lbl_05
@@ -637,7 +641,7 @@
             this.lbl_05.Name = "lbl_05";
             this.lbl_05.Style = "font-size: 6pt; text-align: center";
             this.lbl_05.Text = "5";
-            this.lbl_05.Top = 0.8551182F;
+            this.lbl_05.Top = 0.584252F;
             this.lbl_05.Width = 0.2125984F;
             // 
             // lbl_04
@@ -648,7 +652,7 @@
             this.lbl_04.Name = "lbl_04";
             this.lbl_04.Style = "font-size: 6pt; text-align: center";
             this.lbl_04.Text = "4";
-            this.lbl_04.Top = 0.8551182F;
+            this.lbl_04.Top = 0.5830709F;
             this.lbl_04.Width = 0.2125984F;
             // 
             // lbl_03
@@ -659,7 +663,7 @@
             this.lbl_03.Name = "lbl_03";
             this.lbl_03.Style = "font-size: 6pt; text-align: center";
             this.lbl_03.Text = "3";
-            this.lbl_03.Top = 0.8551182F;
+            this.lbl_03.Top = 0.584252F;
             this.lbl_03.Width = 0.2125984F;
             // 
             // lbl_02
@@ -670,7 +674,7 @@
             this.lbl_02.Name = "lbl_02";
             this.lbl_02.Style = "font-size: 6pt; text-align: center";
             this.lbl_02.Text = "2";
-            this.lbl_02.Top = 0.8551182F;
+            this.lbl_02.Top = 0.584252F;
             this.lbl_02.Width = 0.2125984F;
             // 
             // label6
@@ -681,7 +685,7 @@
             this.label6.Name = "label6";
             this.label6.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
             this.label6.Text = "製品名";
-            this.label6.Top = 0.9594489F;
+            this.label6.Top = 0.6885827F;
             this.label6.Width = 1.718898F;
             // 
             // lbl_01
@@ -692,7 +696,7 @@
             this.lbl_01.Name = "lbl_01";
             this.lbl_01.Style = "font-size: 6pt; text-align: center";
             this.lbl_01.Text = "1";
-            this.lbl_01.Top = 0.8551182F;
+            this.lbl_01.Top = 0.584252F;
             this.lbl_01.Width = 0.2125984F;
             // 
             // tb_hd_yyyymm
@@ -711,7 +715,7 @@
             this.label1.Left = 0.02047244F;
             this.label1.Name = "label1";
             this.label1.Style = "";
-            this.label1.Text = "納入スケジュール";
+            this.label1.Text = "納品スケジュール";
             this.label1.Top = 0F;
             this.label1.Width = 1F;
             // 
@@ -722,7 +726,7 @@
             this.tb_hd_torihikisaki_name.Name = "tb_hd_torihikisaki_name";
             this.tb_hd_torihikisaki_name.Style = "font-size: 9pt";
             this.tb_hd_torihikisaki_name.Text = "DN工業株式会社";
-            this.tb_hd_torihikisaki_name.Top = 0F;
+            this.tb_hd_torihikisaki_name.Top = 0.1665355F;
             this.tb_hd_torihikisaki_name.Width = 2.687401F;
             // 
             // tb_hd10
@@ -771,7 +775,7 @@
             this.crossSectionLine1.Left = 10.85118F;
             this.crossSectionLine1.LineWeight = 1F;
             this.crossSectionLine1.Name = "crossSectionLine1";
-            this.crossSectionLine1.Top = 0.8574803F;
+            this.crossSectionLine1.Top = 0.5830713F;
             // 
             // crossSectionLine2
             // 
@@ -779,7 +783,7 @@
             this.crossSectionLine2.Left = 9.17441F;
             this.crossSectionLine2.LineWeight = 1F;
             this.crossSectionLine2.Name = "crossSectionLine2";
-            this.crossSectionLine2.Top = 0.8574803F;
+            this.crossSectionLine2.Top = 0.5830713F;
             // 
             // crossSectionLine3
             // 
@@ -787,7 +791,7 @@
             this.crossSectionLine3.Left = 8.961812F;
             this.crossSectionLine3.LineWeight = 1F;
             this.crossSectionLine3.Name = "crossSectionLine3";
-            this.crossSectionLine3.Top = 0.8574803F;
+            this.crossSectionLine3.Top = 0.5830713F;
             // 
             // crossSectionLine4
             // 
@@ -795,7 +799,7 @@
             this.crossSectionLine4.Left = 8.749213F;
             this.crossSectionLine4.LineWeight = 1F;
             this.crossSectionLine4.Name = "crossSectionLine4";
-            this.crossSectionLine4.Top = 0.8574803F;
+            this.crossSectionLine4.Top = 0.5830713F;
             // 
             // crossSectionLine5
             // 
@@ -803,7 +807,7 @@
             this.crossSectionLine5.Left = 8.536614F;
             this.crossSectionLine5.LineWeight = 1F;
             this.crossSectionLine5.Name = "crossSectionLine5";
-            this.crossSectionLine5.Top = 0.8574803F;
+            this.crossSectionLine5.Top = 0.5866142F;
             // 
             // crossSectionLine6
             // 
@@ -811,7 +815,7 @@
             this.crossSectionLine6.Left = 8.324017F;
             this.crossSectionLine6.LineWeight = 1F;
             this.crossSectionLine6.Name = "crossSectionLine6";
-            this.crossSectionLine6.Top = 0.8574803F;
+            this.crossSectionLine6.Top = 0.5866142F;
             // 
             // crossSectionLine7
             // 
@@ -819,7 +823,7 @@
             this.crossSectionLine7.Left = 8.111418F;
             this.crossSectionLine7.LineWeight = 1F;
             this.crossSectionLine7.Name = "crossSectionLine7";
-            this.crossSectionLine7.Top = 0.8574803F;
+            this.crossSectionLine7.Top = 0.5830713F;
             // 
             // crossSectionLine8
             // 
@@ -827,7 +831,7 @@
             this.crossSectionLine8.Left = 7.898819F;
             this.crossSectionLine8.LineWeight = 1F;
             this.crossSectionLine8.Name = "crossSectionLine8";
-            this.crossSectionLine8.Top = 0.8574803F;
+            this.crossSectionLine8.Top = 0.5830713F;
             // 
             // crossSectionLine9
             // 
@@ -835,7 +839,7 @@
             this.crossSectionLine9.Left = 7.686221F;
             this.crossSectionLine9.LineWeight = 1F;
             this.crossSectionLine9.Name = "crossSectionLine9";
-            this.crossSectionLine9.Top = 0.8574803F;
+            this.crossSectionLine9.Top = 0.5830713F;
             // 
             // crossSectionLine10
             // 
@@ -843,7 +847,7 @@
             this.crossSectionLine10.Left = 7.473623F;
             this.crossSectionLine10.LineWeight = 1F;
             this.crossSectionLine10.Name = "crossSectionLine10";
-            this.crossSectionLine10.Top = 0.8551182F;
+            this.crossSectionLine10.Top = 0.584252F;
             // 
             // crossSectionLine11
             // 
@@ -851,7 +855,7 @@
             this.crossSectionLine11.Left = 7.261024F;
             this.crossSectionLine11.LineWeight = 1F;
             this.crossSectionLine11.Name = "crossSectionLine11";
-            this.crossSectionLine11.Top = 0.8574803F;
+            this.crossSectionLine11.Top = 0.5889764F;
             // 
             // crossSectionLine12
             // 
@@ -859,7 +863,7 @@
             this.crossSectionLine12.Left = 7.048426F;
             this.crossSectionLine12.LineWeight = 1F;
             this.crossSectionLine12.Name = "crossSectionLine12";
-            this.crossSectionLine12.Top = 0.8574803F;
+            this.crossSectionLine12.Top = 0.5830713F;
             // 
             // crossSectionLine13
             // 
@@ -867,7 +871,7 @@
             this.crossSectionLine13.Left = 6.835827F;
             this.crossSectionLine13.LineWeight = 1F;
             this.crossSectionLine13.Name = "crossSectionLine13";
-            this.crossSectionLine13.Top = 0.8551182F;
+            this.crossSectionLine13.Top = 0.5830713F;
             // 
             // crossSectionLine14
             // 
@@ -875,7 +879,7 @@
             this.crossSectionLine14.Left = 6.623229F;
             this.crossSectionLine14.LineWeight = 1F;
             this.crossSectionLine14.Name = "crossSectionLine14";
-            this.crossSectionLine14.Top = 0.8551182F;
+            this.crossSectionLine14.Top = 0.5830713F;
             // 
             // crossSectionLine15
             // 
@@ -883,7 +887,7 @@
             this.crossSectionLine15.Left = 6.41063F;
             this.crossSectionLine15.LineWeight = 1F;
             this.crossSectionLine15.Name = "crossSectionLine15";
-            this.crossSectionLine15.Top = 0.8551182F;
+            this.crossSectionLine15.Top = 0.5830709F;
             // 
             // crossSectionLine16
             // 
@@ -891,7 +895,7 @@
             this.crossSectionLine16.Left = 6.198032F;
             this.crossSectionLine16.LineWeight = 1F;
             this.crossSectionLine16.Name = "crossSectionLine16";
-            this.crossSectionLine16.Top = 0.8551182F;
+            this.crossSectionLine16.Top = 0.584252F;
             // 
             // crossSectionLine17
             // 
@@ -899,7 +903,7 @@
             this.crossSectionLine17.Left = 5.985434F;
             this.crossSectionLine17.LineWeight = 1F;
             this.crossSectionLine17.Name = "crossSectionLine17";
-            this.crossSectionLine17.Top = 0.8551182F;
+            this.crossSectionLine17.Top = 0.5830713F;
             // 
             // crossSectionLine18
             // 
@@ -907,7 +911,7 @@
             this.crossSectionLine18.Left = 5.772835F;
             this.crossSectionLine18.LineWeight = 1F;
             this.crossSectionLine18.Name = "crossSectionLine18";
-            this.crossSectionLine18.Top = 0.8551182F;
+            this.crossSectionLine18.Top = 0.5830713F;
             // 
             // crossSectionLine19
             // 
@@ -915,7 +919,7 @@
             this.crossSectionLine19.Left = 5.560236F;
             this.crossSectionLine19.LineWeight = 1F;
             this.crossSectionLine19.Name = "crossSectionLine19";
-            this.crossSectionLine19.Top = 0.8551182F;
+            this.crossSectionLine19.Top = 0.5830713F;
             // 
             // crossSectionLine20
             // 
@@ -923,7 +927,7 @@
             this.crossSectionLine20.Left = 5.347638F;
             this.crossSectionLine20.LineWeight = 1F;
             this.crossSectionLine20.Name = "crossSectionLine20";
-            this.crossSectionLine20.Top = 0.8551182F;
+            this.crossSectionLine20.Top = 0.584252F;
             // 
             // crossSectionLine21
             // 
@@ -931,7 +935,7 @@
             this.crossSectionLine21.Left = 5.13504F;
             this.crossSectionLine21.LineWeight = 1F;
             this.crossSectionLine21.Name = "crossSectionLine21";
-            this.crossSectionLine21.Top = 0.8551182F;
+            this.crossSectionLine21.Top = 0.584252F;
             // 
             // crossSectionLine22
             // 
@@ -939,7 +943,7 @@
             this.crossSectionLine22.Left = 4.922441F;
             this.crossSectionLine22.LineWeight = 1F;
             this.crossSectionLine22.Name = "crossSectionLine22";
-            this.crossSectionLine22.Top = 0.8551182F;
+            this.crossSectionLine22.Top = 0.584252F;
             // 
             // crossSectionLine23
             // 
@@ -947,7 +951,7 @@
             this.crossSectionLine23.Left = 4.709843F;
             this.crossSectionLine23.LineWeight = 1F;
             this.crossSectionLine23.Name = "crossSectionLine23";
-            this.crossSectionLine23.Top = 0.8551182F;
+            this.crossSectionLine23.Top = 0.584252F;
             // 
             // crossSectionLine24
             // 
@@ -955,7 +959,7 @@
             this.crossSectionLine24.Left = 4.497244F;
             this.crossSectionLine24.LineWeight = 1F;
             this.crossSectionLine24.Name = "crossSectionLine24";
-            this.crossSectionLine24.Top = 0.8551182F;
+            this.crossSectionLine24.Top = 0.584252F;
             // 
             // crossSectionLine25
             // 
@@ -963,7 +967,7 @@
             this.crossSectionLine25.Left = 4.284646F;
             this.crossSectionLine25.LineWeight = 1F;
             this.crossSectionLine25.Name = "crossSectionLine25";
-            this.crossSectionLine25.Top = 0.8551182F;
+            this.crossSectionLine25.Top = 0.584252F;
             // 
             // crossSectionLine26
             // 
@@ -971,7 +975,7 @@
             this.crossSectionLine26.Left = 4.072048F;
             this.crossSectionLine26.LineWeight = 1F;
             this.crossSectionLine26.Name = "crossSectionLine26";
-            this.crossSectionLine26.Top = 0.8551182F;
+            this.crossSectionLine26.Top = 0.584252F;
             // 
             // crossSectionLine27
             // 
@@ -979,7 +983,7 @@
             this.crossSectionLine27.Left = 3.859449F;
             this.crossSectionLine27.LineWeight = 1F;
             this.crossSectionLine27.Name = "crossSectionLine27";
-            this.crossSectionLine27.Top = 0.8551182F;
+            this.crossSectionLine27.Top = 0.584252F;
             // 
             // crossSectionLine28
             // 
@@ -987,7 +991,7 @@
             this.crossSectionLine28.Left = 3.646851F;
             this.crossSectionLine28.LineWeight = 1F;
             this.crossSectionLine28.Name = "crossSectionLine28";
-            this.crossSectionLine28.Top = 0.8551182F;
+            this.crossSectionLine28.Top = 0.584252F;
             // 
             // crossSectionLine29
             // 
@@ -995,7 +999,7 @@
             this.crossSectionLine29.Left = 3.434252F;
             this.crossSectionLine29.LineWeight = 1F;
             this.crossSectionLine29.Name = "crossSectionLine29";
-            this.crossSectionLine29.Top = 0.8551182F;
+            this.crossSectionLine29.Top = 0.584252F;
             // 
             // crossSectionLine30
             // 
@@ -1003,7 +1007,7 @@
             this.crossSectionLine30.Left = 3.221654F;
             this.crossSectionLine30.LineWeight = 1F;
             this.crossSectionLine30.Name = "crossSectionLine30";
-            this.crossSectionLine30.Top = 0.8551185F;
+            this.crossSectionLine30.Top = 0.584252F;
             // 
             // crossSectionLine31
             // 
@@ -1011,7 +1015,7 @@
             this.crossSectionLine31.Left = 3.009055F;
             this.crossSectionLine31.LineWeight = 1F;
             this.crossSectionLine31.Name = "crossSectionLine31";
-            this.crossSectionLine31.Top = 0.8551185F;
+            this.crossSectionLine31.Top = 0.584252F;
             // 
             // crossSectionLine32
             // 
@@ -1019,7 +1023,7 @@
             this.crossSectionLine32.Left = 2.796457F;
             this.crossSectionLine32.LineWeight = 1F;
             this.crossSectionLine32.Name = "crossSectionLine32";
-            this.crossSectionLine32.Top = 0.8551185F;
+            this.crossSectionLine32.Top = 0.584252F;
             // 
             // crossSectionLine34
             // 
@@ -1027,28 +1031,28 @@
             this.crossSectionLine34.Left = 2.583858F;
             this.crossSectionLine34.LineWeight = 1F;
             this.crossSectionLine34.Name = "crossSectionLine34";
-            this.crossSectionLine34.Top = 0.8551185F;
+            this.crossSectionLine34.Top = 0.584252F;
             // 
             // crossSectionLine37
             // 
-            this.crossSectionLine37.Bottom = 0.0010335F;
-            this.crossSectionLine37.Left = 0.02047244F;
+            this.crossSectionLine37.Bottom = 0F;
+            this.crossSectionLine37.Left = 0.02559055F;
             this.crossSectionLine37.LineWeight = 1F;
             this.crossSectionLine37.Name = "crossSectionLine37";
-            this.crossSectionLine37.Top = 0.8551185F;
+            this.crossSectionLine37.Top = 0.584252F;
             // 
             // line2
             // 
             this.line2.Height = 0F;
-            this.line2.Left = 0.02047626F;
+            this.line2.Left = 0.02047817F;
             this.line2.LineWeight = 1F;
             this.line2.Name = "line2";
-            this.line2.Top = 1.06378F;
+            this.line2.Top = 0.7976379F;
             this.line2.Width = 10.8307F;
             this.line2.X1 = 10.85118F;
-            this.line2.X2 = 0.02047626F;
-            this.line2.Y1 = 1.06378F;
-            this.line2.Y2 = 1.06378F;
+            this.line2.X2 = 0.02047817F;
+            this.line2.Y1 = 0.7976379F;
+            this.line2.Y2 = 0.7976379F;
             // 
             // label2
             // 
@@ -1058,7 +1062,7 @@
             this.label2.Name = "label2";
             this.label2.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
             this.label2.Text = "顧客";
-            this.label2.Top = 0.8551182F;
+            this.label2.Top = 0.584252F;
             this.label2.Width = 0.3078741F;
             // 
             // label3
@@ -1069,7 +1073,7 @@
             this.label3.Name = "label3";
             this.label3.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
             this.label3.Text = "コード";
-            this.label3.Top = 0.8551182F;
+            this.label3.Top = 0.584252F;
             this.label3.Width = 0.2917325F;
             // 
             // label4
@@ -1080,7 +1084,7 @@
             this.label4.Name = "label4";
             this.label4.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
             this.label4.Text = "受注コード１";
-            this.label4.Top = 0.8551182F;
+            this.label4.Top = 0.584252F;
             this.label4.Width = 0.7291337F;
             // 
             // label5
@@ -1091,7 +1095,7 @@
             this.label5.Name = "label5";
             this.label5.Style = "font-size: 6pt; text-align: left; vertical-align: middle";
             this.label5.Text = "受注コード2";
-            this.label5.Top = 0.8551182F;
+            this.label5.Top = 0.584252F;
             this.label5.Width = 0.6980316F;
             // 
             // label7
@@ -1102,7 +1106,7 @@
             this.label7.Name = "label7";
             this.label7.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.label7.Text = "受注数";
-            this.label7.Top = 0.8551182F;
+            this.label7.Top = 0.584252F;
             this.label7.Width = 0.5314962F;
             // 
             // line3
@@ -1111,23 +1115,23 @@
             this.line3.Left = 0.02047244F;
             this.line3.LineWeight = 1F;
             this.line3.Name = "line3";
-            this.line3.Top = 0.8551182F;
+            this.line3.Top = 0.584252F;
             this.line3.Width = 10.83386F;
             this.line3.X1 = 0.02047244F;
             this.line3.X2 = 10.85433F;
-            this.line3.Y1 = 0.8551182F;
-            this.line3.Y2 = 0.8551182F;
+            this.line3.Y1 = 0.584252F;
+            this.line3.Y2 = 0.584252F;
             // 
             // label39
             // 
             this.label39.Height = 0.1043307F;
             this.label39.HyperLink = null;
-            this.label39.Left = 9.17441F;
+            this.label39.Left = 9.195276F;
             this.label39.Name = "label39";
             this.label39.Style = "font-size: 6pt; text-align: center";
             this.label39.Text = "備考";
-            this.label39.Top = 0.8574803F;
-            this.label39.Width = 1.651181F;
+            this.label39.Top = 0.5889764F;
+            this.label39.Width = 1.630315F;
             // 
             // crossSectionLine33
             // 
@@ -1135,7 +1139,7 @@
             this.crossSectionLine33.Left = 2.052362F;
             this.crossSectionLine33.LineWeight = 1F;
             this.crossSectionLine33.Name = "crossSectionLine33";
-            this.crossSectionLine33.Top = 0.8551185F;
+            this.crossSectionLine33.Top = 0.584252F;
             // 
             // tb_hd11
             // 
@@ -1169,7 +1173,7 @@
             // 
             // tb_hd41
             // 
-            this.tb_hd41.Height = 0.146063F;
+            this.tb_hd41.Height = 0.1448819F;
             this.tb_hd41.Left = 7.261024F;
             this.tb_hd41.Name = "tb_hd41";
             this.tb_hd41.Style = "font-size: 8.25pt";
@@ -1662,9 +1666,9 @@
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
             this.line5.Top = 0F;
-            this.line5.Width = 10.82559F;
+            this.line5.Width = 10.83386F;
             this.line5.X1 = 0.02047244F;
-            this.line5.X2 = 10.84606F;
+            this.line5.X2 = 10.85433F;
             this.line5.Y1 = 0F;
             this.line5.Y2 = 0F;
             // 
@@ -1672,8 +1676,8 @@
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.line4,
-            this.reportInfo1,
             this.reportInfo2});
+            this.pageFooter.Height = 0.2604167F;
             this.pageFooter.Name = "pageFooter";
             // 
             // line4
@@ -1692,22 +1696,32 @@
             // reportInfo1
             // 
             this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
-            this.reportInfo1.Height = 0.1979167F;
-            this.reportInfo1.Left = 4.497244F;
+            this.reportInfo1.Height = 0.146063F;
+            this.reportInfo1.Left = 8.961812F;
             this.reportInfo1.Name = "reportInfo1";
             this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
-            this.reportInfo1.Top = 0.05196851F;
-            this.reportInfo1.Width = 2.489584F;
+            this.reportInfo1.Top = 0F;
+            this.reportInfo1.Width = 1.89234F;
             // 
             // reportInfo2
             // 
             this.reportInfo2.FormatString = "{RunDateTime:}";
-            this.reportInfo2.Height = 0.1979167F;
+            this.reportInfo2.Height = 0.1665354F;
             this.reportInfo2.Left = 8.749213F;
             this.reportInfo2.Name = "reportInfo2";
             this.reportInfo2.Style = "font-size: 8.25pt; text-align: right";
             this.reportInfo2.Top = 0.04173229F;
             this.reportInfo2.Width = 2.076378F;
+            // 
+            // tb_hd_torihikisaki_cd
+            // 
+            this.tb_hd_torihikisaki_cd.Height = 0.146063F;
+            this.tb_hd_torihikisaki_cd.Left = 2.760237F;
+            this.tb_hd_torihikisaki_cd.Name = "tb_hd_torihikisaki_cd";
+            this.tb_hd_torihikisaki_cd.Style = "font-size: 9pt";
+            this.tb_hd_torihikisaki_cd.Text = "999999";
+            this.tb_hd_torihikisaki_cd.Top = 0F;
+            this.tb_hd_torihikisaki_cd.Width = 1F;
             // 
             // rpt_nouhin_schedule
             // 
@@ -1817,6 +1831,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1951,5 +1966,6 @@
         private GrapeCity.ActiveReports.SectionReportModel.ReportInfo reportInfo1;
         private GrapeCity.ActiveReports.SectionReportModel.ReportInfo reportInfo2;
         private GrapeCity.ActiveReports.SectionReportModel.Line line5;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_hd_torihikisaki_cd;
     }
 }

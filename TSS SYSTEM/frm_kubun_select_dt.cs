@@ -154,7 +154,7 @@ namespace TSS_SYSTEM
         //エラー及びキャンセル時の終了処理
         private void form_close_false()
         {
-            ppt_str_kubun_cd = "";
+            ppt_str_kubun_cd = ppt_str_initial_cd;
             ppt_bl_sentaku = false;
             this.Close();
         }

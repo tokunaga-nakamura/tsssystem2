@@ -34,7 +34,7 @@ namespace TSS_SYSTEM
 
         private void tb_seihin_syubetu_kbn_DoubleClick(object sender, EventArgs e)
         {
-            this.tb_seihin_syubetu_kbn.Text = tss.kubun_cd_select("03",tb_seihin_bunrui_kbn.Text);
+            this.tb_seihin_syubetu_kbn.Text = tss.kubun_cd_select("03",tb_seihin_syubetu_kbn.Text);
             this.tb_seihin_syubetu_name.Text = tss.kubun_name_select("03",tb_seihin_syubetu_kbn.Text);
         }
 

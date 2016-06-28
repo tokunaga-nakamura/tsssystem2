@@ -18,6 +18,7 @@ namespace TSS_SYSTEM
         //ヘッダーの受け渡し変数の定義
         public string w_yyyy;
         public string w_mm;
+        public string w_hd_torihikisaki_cd;
         public string w_hd_torihikisaki_name;
         public string w_hd10;
         public string w_hd11;
@@ -60,6 +61,7 @@ namespace TSS_SYSTEM
             rpt.DataSource = ppt_dt;
             rpt.w_yyyy = w_yyyy;
             rpt.w_mm = w_mm;
+            rpt.w_hd_torihikisaki_cd = w_hd_torihikisaki_cd;
             rpt.w_hd_torihikisaki_name = w_hd_torihikisaki_name;
             rpt.w_hd10 = w_hd10;
             rpt.w_hd11 = w_hd11;

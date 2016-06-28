@@ -18,6 +18,7 @@ namespace TSS_SYSTEM
         //ヘッダーの受け渡し変数の定義
         public string w_yyyy;
         public string w_mm;
+        public string w_hd_torihikisaki_cd;
         public string w_hd_torihikisaki_name;
         public string w_hd10;
         public string w_hd11;
@@ -45,6 +46,7 @@ namespace TSS_SYSTEM
             this.PageSettings.Margins.Bottom = GrapeCity.ActiveReports.SectionReport.CmToInch(1.0f);   //上マージン
 
             tb_hd_yyyymm.Text = w_yyyy + "年" + w_mm + "月";
+            tb_hd_torihikisaki_cd.Text = w_hd_torihikisaki_cd;
             tb_hd_torihikisaki_name.Text = w_hd_torihikisaki_name;
             tb_hd10.Text = w_hd10;
             tb_hd11.Text = w_hd11;

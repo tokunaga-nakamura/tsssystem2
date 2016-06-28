@@ -349,6 +349,12 @@ namespace TSS_SYSTEM
                     DataRow w_dt_kintai_row = w_dt_kintai.NewRow();
                     w_dt_kintai_row["syain_cd"] = Row_Work.Cells[0].Value.ToString();
                     w_dt_kintai_row["syain_name"] = Row_Work.Cells[1].Value.ToString();
+                    w_dt_kintai_row["kintai_kbn"] = "01";
+                    w_dt_kintai_row["kintai_kbn_name"] = "欠勤";
+                    w_dt_kintai_row["kintai_date1"] = tb_hizuke.Text;
+                    w_dt_kintai_row["kintai_time1"] = "08:35";
+                    w_dt_kintai_row["kintai_date2"] = tb_hizuke.Text;
+                    w_dt_kintai_row["kintai_time2"] = "17:15";
                     w_dt_kintai.Rows.InsertAt(w_dt_kintai_row, hit.RowIndex);
                     //追加した行を選択状態にする。
                     dgv_kintai.Rows[hit.RowIndex].Selected = true;
@@ -360,6 +366,12 @@ namespace TSS_SYSTEM
                     DataRow w_dt_kintai_row = w_dt_kintai.NewRow();
                     w_dt_kintai_row["syain_cd"] = Row_Work.Cells[0].Value.ToString();
                     w_dt_kintai_row["syain_name"] = Row_Work.Cells[1].Value.ToString();
+                    w_dt_kintai_row["kintai_kbn"] = "01";
+                    w_dt_kintai_row["kintai_kbn_name"] = "欠勤";
+                    w_dt_kintai_row["kintai_date1"] = tb_hizuke.Text;
+                    w_dt_kintai_row["kintai_time1"] = "08:35";
+                    w_dt_kintai_row["kintai_date2"] = tb_hizuke.Text;
+                    w_dt_kintai_row["kintai_time2"] = "17:15";
                     w_dt_kintai.Rows.Add(w_dt_kintai_row);
                 }
             }
@@ -662,7 +674,6 @@ namespace TSS_SYSTEM
                     }
                 }
             }
-
         }
 
         private void dgv_kintai_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -759,7 +770,6 @@ namespace TSS_SYSTEM
                     }
                 }
             }
-
         }
 
         private void dgv_kintai_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)

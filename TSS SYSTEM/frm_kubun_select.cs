@@ -159,7 +159,7 @@ namespace TSS_SYSTEM
         //エラー及びキャンセル時の終了処理
         private void form_close_false()
         {
-            str_kubun_cd = "";
+            str_kubun_cd = str_initial_cd;
             bl_sentaku = false;
             this.Close();
         }
