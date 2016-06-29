@@ -283,7 +283,9 @@ namespace TSS_SYSTEM
                 tb_update_user_cd.Text = "";
                 tb_update_datetime.Text = "";
                 dgv_list.DataSource = w_dt_list;
+                tb_seisan_yotei_date.Focus();
                 return;
+                
             }
             else
             {
@@ -1646,6 +1648,82 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_seisan_schedule_preview frm_rpt = new frm_seisan_schedule_preview();
+
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_list;
+
+            string yyyymmdd = tb_seisan_yotei_date.Text.Substring(0, 4) + "年" + tb_seisan_yotei_date.Text.Substring(5, 2) + "月" + tb_seisan_yotei_date.Text.Substring(8, 2) + "日";
+
+            frm_rpt.w_hd10 = yyyymmdd;
+            //frm_rpt.w_hd10 = tb_seisan_yotei_date.Text;
+
+            if (tb_busyo_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd11 = "指定なし";
+                frm_rpt.w_hd12 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd11 = tb_busyo_cd.Text;
+                frm_rpt.w_hd12 = tb_busyo_name.Text;
+            }
+            if (tb_koutei_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd20 = "指定なし";
+                frm_rpt.w_hd21 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd20 = tb_koutei_cd.Text;
+                frm_rpt.w_hd21 = tb_koutei_name.Text;
+            }
+            if (tb_line_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd30 = "指定なし";
+                frm_rpt.w_hd31 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd30 = tb_line_cd.Text;
+                frm_rpt.w_hd31 = tb_line_name.Text;
+            }
+
+            if(tb_create_user_cd.Text.ToString() != "")
+            {
+                DataTable dt1 = new DataTable();
+                dt1 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_create_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd40 = dt1.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd41 = tb_create_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd40 = "";
+                frm_rpt.w_hd41 = "";
+            }
+            if(tb_update_user_cd.Text.ToString() != "")
+            {
+                DataTable dt2 = new DataTable();
+                dt2 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_update_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd50 = dt2.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd51 = tb_update_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd50 = "";
+                frm_rpt.w_hd51 = "";
+            }
+
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
         }
 
        

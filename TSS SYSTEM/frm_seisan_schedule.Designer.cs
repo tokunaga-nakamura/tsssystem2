@@ -149,6 +149,7 @@
             this.btn_insatu.TabIndex = 2;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
             // 
             // btn_csv
             // 
