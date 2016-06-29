@@ -158,35 +158,35 @@ namespace TSS_SYSTEM
             DataTable dt_kensaku = new DataTable();
             string[] sql_where = new string[7];
             int sql_cnt = 0;
-            //部品コード
+            //製品コード
             if (tb_seihin_cd1.Text != "" && tb_seihin_cd2.Text != "")
             {
                 int w_int_hikaku = string.Compare(tb_seihin_cd1.Text, tb_seihin_cd2.Text);
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "seihin_cd = '" + tb_seihin_cd1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.seihin_cd = '" + tb_seihin_cd1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "seihin_cd >= '" + tb_seihin_cd1.Text.ToString() + "' and seihin_cd <= '" + tb_seihin_cd2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "A.seihin_cd >= '" + tb_seihin_cd1.Text.ToString() + "' and A.seihin_cd <= '" + tb_seihin_cd2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "seihin_cd >= '" + tb_seihin_cd2.Text.ToString() + "' and seihin_cd <= '" + tb_seihin_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "A.seihin_cd >= '" + tb_seihin_cd2.Text.ToString() + "' and A.seihin_cd <= '" + tb_seihin_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }
             //製品名
             if (tb_seihin_name.Text != "")
             {
-                sql_where[sql_cnt] = "seihin_name like '%" + tb_seihin_name.Text.ToString() + "%'";
+                sql_where[sql_cnt] = "A.seihin_name like '%" + tb_seihin_name.Text.ToString() + "%'";
                 sql_cnt++;
             }
             //取引先コード
@@ -194,7 +194,23 @@ namespace TSS_SYSTEM
             {
                 if (chk_torihikisaki_cd(tb_torihikisaki_cd.Text))
                 {
-                    sql_where[sql_cnt] = "torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "A.torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
+                    sql_cnt++;
+                }
+                else
+                {
+                    //コード異常
+                    MessageBox.Show("取引先コードに異常があります。");
+                    tb_torihikisaki_cd.Focus();
+                    return;
+                }
+            }
+            //納品スケジュール区分
+            if (tb_nouhin_schedule_kbn.Text != "")
+            {
+                if (chk_nouhin_schedule_kbn(tb_nouhin_schedule_kbn.Text))
+                {
+                    sql_where[sql_cnt] = "A.nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
@@ -213,7 +229,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select * from tss_seihin_m where ";
+            string sql = "select A.seihin_cd,A.seihin_name,A.torihikisaki_cd,B.torihikisaki_name,A.nouhin_schedule_kbn,A.seihin_kousei_no,A.bikou from tss_seihin_m A left outer join tss_torihikisaki_m B on A.torihikisaki_cd = B.torihikisaki_cd where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -243,6 +259,22 @@ namespace TSS_SYSTEM
             return bl;
         }
 
+        private bool chk_nouhin_schedule_kbn(string in_cd)
+        {
+            bool bl = true; //戻り値
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd = '09' and kubun_cd  = '" + in_cd.ToString() + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                //無し
+                bl = false;
+            }
+            else
+            {
+                //既存データ有
+            }
+            return bl;
+        }
         private void list_disp(DataTable in_dt)
         {
             //リードオンリーにする
@@ -270,20 +302,11 @@ namespace TSS_SYSTEM
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_m.Columns[0].HeaderText = "製品コード";
             dgv_m.Columns[1].HeaderText = "製品名";
-            dgv_m.Columns[2].HeaderText = "備考";
-            dgv_m.Columns[3].HeaderText = "取引先コード";
-            dgv_m.Columns[4].HeaderText = "原価";
-            dgv_m.Columns[5].HeaderText = "販売単価";
-            dgv_m.Columns[6].HeaderText = "単位区分";
-            dgv_m.Columns[7].HeaderText = "種別区分";
-            dgv_m.Columns[8].HeaderText = "分類区分";
-            dgv_m.Columns[9].HeaderText = "市場区分";
-            dgv_m.Columns[10].HeaderText = "タイプ区分";
-            dgv_m.Columns[11].HeaderText = "製品構成番号";
-            dgv_m.Columns[12].HeaderText = "作成者";
-            dgv_m.Columns[13].HeaderText = "作成日時";
-            dgv_m.Columns[14].HeaderText = "更新者";
-            dgv_m.Columns[15].HeaderText = "更新日時";
+            dgv_m.Columns[2].HeaderText = "取引先コード";
+            dgv_m.Columns[3].HeaderText = "取引先名";
+            dgv_m.Columns[4].HeaderText = "納品スケジュール区分";
+            dgv_m.Columns[5].HeaderText = "製品構成番号";
+            dgv_m.Columns[6].HeaderText = "備考";
         }
 
         private void dgv_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -374,6 +397,73 @@ namespace TSS_SYSTEM
             {
                 tb_torihikisaki_name.Text = tss.get_torihikisaki_name(tb_torihikisaki_cd.Text);
             }
+        }
+
+        private void tb_nouhin_schedule_kbn_Validating(object sender, CancelEventArgs e)
+        {
+            //納品スケジュール区分が空白の場合はOKとする
+            if (tb_nouhin_schedule_kbn.Text != "")
+            {
+                if (chk_nouhin_schedule_kbn(tb_nouhin_schedule_kbn.Text) != true)
+                {
+                    MessageBox.Show("納品スケジュール区分に異常があります。");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    tb_nouhin_schedule_kbn_name.Text = get_kubun_name("09", tb_nouhin_schedule_kbn.Text);
+                }
+            }
+        }
+
+        private string get_kubun_name(string in_kubun_meisyou_cd, string in_kubun_cd)
+        {
+            string out_kubun_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_kubun_m where kubun_meisyou_cd = '" + in_kubun_meisyou_cd + "' and kubun_cd = '" + in_kubun_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_kubun_name = "";
+            }
+            else
+            {
+                out_kubun_name = dt_work.Rows[0]["kubun_name"].ToString();
+            }
+            return out_kubun_name;
+        }
+
+        private void tb_nouhin_schedule_kbn_DoubleClick(object sender, EventArgs e)
+        {
+            this.tb_nouhin_schedule_kbn.Text = tss.kubun_cd_select("09", tb_nouhin_schedule_kbn.Text);
+            this.tb_nouhin_schedule_kbn_name.Text = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
+        }
+
+        private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", tb_torihikisaki_cd.Text);
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd.Text = w_cd;
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+            }
+        }
+
+        private string get_torihikisaki_name(string in_torihikisaki_cd)
+        {
+            string out_torihikisaki_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_torihikisaki_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_torihikisaki_name = "";
+            }
+            else
+            {
+                out_torihikisaki_name = dt_work.Rows[0]["torihikisaki_name"].ToString();
+            }
+            return out_torihikisaki_name;
         }
     }
 }
