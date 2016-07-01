@@ -65,7 +65,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(284, 261);
+            this.splitContainer1.Size = new System.Drawing.Size(284, 284);
             this.splitContainer1.SplitterDistance = 42;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
@@ -118,8 +118,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
-            this.splitContainer2.Size = new System.Drawing.Size(284, 215);
-            this.splitContainer2.SplitterDistance = 180;
+            this.splitContainer2.Size = new System.Drawing.Size(284, 238);
+            this.splitContainer2.SplitterDistance = 203;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -130,7 +130,7 @@
             this.dgv_kubun_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_kubun_m.Name = "dgv_kubun_m";
             this.dgv_kubun_m.RowTemplate.Height = 21;
-            this.dgv_kubun_m.Size = new System.Drawing.Size(284, 180);
+            this.dgv_kubun_m.Size = new System.Drawing.Size(284, 203);
             this.dgv_kubun_m.TabIndex = 0;
             this.dgv_kubun_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kubun_m_CellMouseDoubleClick);
             // 
@@ -158,8 +158,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(284, 284);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;

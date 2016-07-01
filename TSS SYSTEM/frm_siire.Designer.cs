@@ -51,12 +51,12 @@
             this.tb_create_datetime = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btn_hardcopy = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tb_siire_goukei = new System.Windows.Forms.TextBox();
+            this.btn_hardcopy = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_siire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -66,14 +66,14 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -172,7 +172,7 @@
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Location = new System.Drawing.Point(0, 539);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 4;
@@ -195,7 +195,7 @@
             this.dgv_siire.Name = "dgv_siire";
             this.dgv_siire.RowHeadersVisible = false;
             this.dgv_siire.RowTemplate.Height = 21;
-            this.dgv_siire.Size = new System.Drawing.Size(880, 288);
+            this.dgv_siire.Size = new System.Drawing.Size(880, 287);
             this.dgv_siire.TabIndex = 5;
             this.dgv_siire.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellDoubleClick);
             this.dgv_siire.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellEndEdit);
@@ -254,7 +254,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_siire);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 412);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 411);
             this.splitContainer3.SplitterDistance = 116;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -336,53 +336,10 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 498);
-            this.splitContainer2.SplitterDistance = 412;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 497);
+            this.splitContainer2.SplitterDistance = 411;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
-            // 
-            // btn_hardcopy
-            // 
-            this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
-            this.btn_hardcopy.Location = new System.Drawing.Point(12, 12);
-            this.btn_hardcopy.Name = "btn_hardcopy";
-            this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
-            this.btn_hardcopy.TabIndex = 0;
-            this.btn_hardcopy.TabStop = false;
-            this.btn_hardcopy.UseVisualStyleBackColor = true;
-            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
-            this.splitContainer1.SplitterDistance = 60;
-            this.splitContainer1.TabIndex = 5;
-            this.splitContainer1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(366, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(504, 12);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "一時的な単価変更はこの画面で行ってください。恒久的な単価変更は部品マスタメンテで修正してください。";
             // 
             // splitContainer4
             // 
@@ -428,11 +385,54 @@
             this.tb_siire_goukei.TabIndex = 49;
             this.tb_siire_goukei.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btn_hardcopy
+            // 
+            this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
+            this.btn_hardcopy.Location = new System.Drawing.Point(12, 12);
+            this.btn_hardcopy.Name = "btn_hardcopy";
+            this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
+            this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
+            this.btn_hardcopy.UseVisualStyleBackColor = true;
+            this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
+            this.splitContainer1.SplitterDistance = 60;
+            this.splitContainer1.TabIndex = 5;
+            this.splitContainer1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(366, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(504, 12);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "一時的な単価変更はこの画面で行ってください。恒久的な単価変更は部品マスタメンテで修正してください。";
+            // 
             // frm_siire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.ss_status);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
@@ -449,16 +449,16 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

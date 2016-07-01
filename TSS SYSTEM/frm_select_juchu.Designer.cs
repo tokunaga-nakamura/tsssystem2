@@ -60,7 +60,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(515, 284);
-            this.splitContainer1.SplitterDistance = 31;
+            this.splitContainer1.SplitterDistance = 30;
             this.splitContainer1.TabIndex = 0;
             // 
             // lbl_name
@@ -87,7 +87,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer2.Size = new System.Drawing.Size(515, 249);
+            this.splitContainer2.Size = new System.Drawing.Size(515, 250);
             this.splitContainer2.SplitterDistance = 207;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
+            this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(515, 284);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);

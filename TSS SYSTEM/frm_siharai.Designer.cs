@@ -187,7 +187,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 9;
             this.splitContainer1.TabStop = false;
@@ -220,8 +220,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 187;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
+            this.splitContainer2.SplitterDistance = 186;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -246,7 +246,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_mibarai);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 187);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 186);
             this.splitContainer3.SplitterDistance = 68;
             this.splitContainer3.TabIndex = 8;
             this.splitContainer3.TabStop = false;
@@ -304,7 +304,7 @@
             this.dgv_mibarai.ReadOnly = true;
             this.dgv_mibarai.RowHeadersVisible = false;
             this.dgv_mibarai.RowTemplate.Height = 21;
-            this.dgv_mibarai.Size = new System.Drawing.Size(880, 111);
+            this.dgv_mibarai.Size = new System.Drawing.Size(880, 110);
             this.dgv_mibarai.TabIndex = 0;
             this.dgv_mibarai.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_mibarai_RowEnter);
             // 
@@ -602,7 +602,7 @@
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Location = new System.Drawing.Point(0, 539);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 8;
@@ -612,7 +612,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);

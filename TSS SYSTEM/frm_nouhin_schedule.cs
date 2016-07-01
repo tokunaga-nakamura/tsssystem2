@@ -824,7 +824,7 @@ namespace TSS_SYSTEM
             if (w_dt_schedule.Rows.Count != 0)
             {
                 string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
-                string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString() + "分 納品スケジュール" + w_str_now + ".csv";
+                string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString("00") + "分 納品スケジュール" + w_str_now + ".csv";
                 if (tss.DataTableCSV(w_dt_schedule, true, w_str_filename, "\"", true))
                 {
                     MessageBox.Show("保存されました。");

@@ -36,6 +36,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btn_syukei = new System.Windows.Forms.Button();
             this.tb_siire_simebi = new System.Windows.Forms.TextBox();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ss_status = new System.Windows.Forms.StatusStrip();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -103,8 +103,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -139,10 +139,21 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_siire_simebi);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
             this.splitContainer3.SplitterDistance = 66;
             this.splitContainer3.TabIndex = 8;
             this.splitContainer3.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1.Location = new System.Drawing.Point(340, 12);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(234, 16);
+            this.checkBox1.TabIndex = 48;
+            this.checkBox1.Text = "内職の場合、チェックを入れる（消費税不要）";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // btn_syukei
             // 
@@ -291,7 +302,7 @@
             this.dgv_siire_simebi.Name = "dgv_siire_simebi";
             this.dgv_siire_simebi.RowHeadersVisible = false;
             this.dgv_siire_simebi.RowTemplate.Height = 21;
-            this.dgv_siire_simebi.Size = new System.Drawing.Size(880, 366);
+            this.dgv_siire_simebi.Size = new System.Drawing.Size(880, 365);
             this.dgv_siire_simebi.TabIndex = 0;
             // 
             // Column7
@@ -370,35 +381,24 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 7;
             this.splitContainer1.TabStop = false;
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Location = new System.Drawing.Point(0, 539);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 6;
             this.ss_status.Text = "statusStrip1";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.Red;
-            this.checkBox1.Location = new System.Drawing.Point(340, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(234, 16);
-            this.checkBox1.TabIndex = 48;
-            this.checkBox1.Text = "内職の場合、チェックを入れる（消費税不要）";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // frm_siire_simebi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);

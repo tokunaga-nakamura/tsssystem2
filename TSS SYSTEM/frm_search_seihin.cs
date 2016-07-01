@@ -136,7 +136,6 @@ namespace TSS_SYSTEM
                     form_close_false();
                     break;
             }
-
         }
 
         private void mode1()

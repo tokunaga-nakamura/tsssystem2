@@ -37,6 +37,8 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dtp_buhin_syori_date = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
@@ -58,8 +60,6 @@
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.ss_status = new System.Windows.Forms.StatusStrip();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,7 +92,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -126,8 +126,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -159,9 +159,27 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_nyusyukkoidou);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
             this.splitContainer3.SplitterDistance = 145;
             this.splitContainer3.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(372, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(387, 12);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "例：田上さんからの操作盤本体の場合、取引先コードはダイニチ（000051）となる。";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(372, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(375, 12);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "支給品、購入品にかかわらず、どの取引先用の在庫か？で判断し、登録する。";
             // 
             // dtp_buhin_syori_date
             // 
@@ -281,7 +299,7 @@
             this.dgv_nyusyukkoidou.Name = "dgv_nyusyukkoidou";
             this.dgv_nyusyukkoidou.RowHeadersVisible = false;
             this.dgv_nyusyukkoidou.RowTemplate.Height = 21;
-            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 287);
+            this.dgv_nyusyukkoidou.Size = new System.Drawing.Size(880, 286);
             this.dgv_nyusyukkoidou.TabIndex = 3;
             this.dgv_nyusyukkoidou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellDoubleClick);
             this.dgv_nyusyukkoidou.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nyusyukkoidou_CellEndEdit);
@@ -360,35 +378,17 @@
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Location = new System.Drawing.Point(0, 539);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 2;
             this.ss_status.Text = "statusStrip1";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(372, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 12);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "支給品、購入品にかかわらず、どの取引先用の在庫か？で判断し、登録する。";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(372, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(387, 12);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "例：田上さんからの操作盤本体の場合、取引先コードはダイニチ（000051）となる。";
-            // 
             // frm_buhin_nyusyukkoidou
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ss_status);
             this.MinimumSize = new System.Drawing.Size(900, 600);

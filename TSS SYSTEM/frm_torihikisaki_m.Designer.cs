@@ -152,7 +152,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -186,8 +186,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 476);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 475);
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             this.splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer2_SplitterMoved);
@@ -246,7 +246,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
             this.splitContainer3.SplitterDistance = 285;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
@@ -1014,7 +1014,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_tantousya);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 147);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 146);
             this.splitContainer4.SplitterDistance = 30;
             this.splitContainer4.TabIndex = 134;
             this.splitContainer4.TabStop = false;
@@ -1080,7 +1080,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_tantousya.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_tantousya.RowTemplate.Height = 21;
-            this.dgv_tantousya.Size = new System.Drawing.Size(880, 113);
+            this.dgv_tantousya.Size = new System.Drawing.Size(880, 112);
             this.dgv_tantousya.TabIndex = 133;
             this.dgv_tantousya.TabStop = false;
             // 
@@ -1106,7 +1106,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
@@ -1116,7 +1116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);

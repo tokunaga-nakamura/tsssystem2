@@ -101,7 +101,7 @@
             this.dgv_idou.Name = "dgv_idou";
             this.dgv_idou.RowHeadersVisible = false;
             this.dgv_idou.RowTemplate.Height = 21;
-            this.dgv_idou.Size = new System.Drawing.Size(880, 312);
+            this.dgv_idou.Size = new System.Drawing.Size(880, 311);
             this.dgv_idou.TabIndex = 2;
             this.dgv_idou.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_idou_CellClick);
             this.dgv_idou.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_idou_CellDoubleClick);
@@ -247,7 +247,7 @@
             // 
             // ss_status
             // 
-            this.ss_status.Location = new System.Drawing.Point(0, 540);
+            this.ss_status.Location = new System.Drawing.Point(0, 539);
             this.ss_status.Name = "ss_status";
             this.ss_status.Size = new System.Drawing.Size(884, 22);
             this.ss_status.TabIndex = 4;
@@ -317,7 +317,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_idou);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 440);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 439);
             this.splitContainer3.SplitterDistance = 120;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -352,8 +352,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_sakujyo);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 498);
-            this.splitContainer2.SplitterDistance = 440;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 497);
+            this.splitContainer2.SplitterDistance = 439;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -395,7 +395,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
@@ -404,7 +404,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.ss_status);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);

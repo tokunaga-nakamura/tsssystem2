@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lbl_kubun_name = new System.Windows.Forms.Label();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_sentaku = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgv_kubun = new System.Windows.Forms.DataGridView();
+            this.btn_sentaku = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,10 +61,19 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(284, 261);
+            this.splitContainer1.Size = new System.Drawing.Size(284, 284);
             this.splitContainer1.SplitterDistance = 28;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
+            // 
+            // lbl_kubun_name
+            // 
+            this.lbl_kubun_name.AutoSize = true;
+            this.lbl_kubun_name.Location = new System.Drawing.Point(12, 9);
+            this.lbl_kubun_name.Name = "lbl_kubun_name";
+            this.lbl_kubun_name.Size = new System.Drawing.Size(35, 12);
+            this.lbl_kubun_name.TabIndex = 0;
+            this.lbl_kubun_name.Text = "label1";
             // 
             // splitContainer2
             // 
@@ -83,29 +92,21 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer2.Size = new System.Drawing.Size(284, 229);
-            this.splitContainer2.SplitterDistance = 195;
+            this.splitContainer2.Size = new System.Drawing.Size(284, 252);
+            this.splitContainer2.SplitterDistance = 218;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
-            // lbl_kubun_name
+            // dgv_kubun
             // 
-            this.lbl_kubun_name.AutoSize = true;
-            this.lbl_kubun_name.Location = new System.Drawing.Point(12, 9);
-            this.lbl_kubun_name.Name = "lbl_kubun_name";
-            this.lbl_kubun_name.Size = new System.Drawing.Size(35, 12);
-            this.lbl_kubun_name.TabIndex = 0;
-            this.lbl_kubun_name.Text = "label1";
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(197, 3);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 0;
-            this.btn_cancel.Text = "キャンセル";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.dgv_kubun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_kubun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_kubun.Location = new System.Drawing.Point(0, 0);
+            this.dgv_kubun.Name = "dgv_kubun";
+            this.dgv_kubun.RowTemplate.Height = 21;
+            this.dgv_kubun.Size = new System.Drawing.Size(284, 218);
+            this.dgv_kubun.TabIndex = 0;
+            this.dgv_kubun.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kubun_CellMouseDoubleClick);
             // 
             // btn_sentaku
             // 
@@ -117,23 +118,22 @@
             this.btn_sentaku.UseVisualStyleBackColor = true;
             this.btn_sentaku.Click += new System.EventHandler(this.btn_sentaku_Click);
             // 
-            // dgv_kubun
+            // btn_cancel
             // 
-            this.dgv_kubun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_kubun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_kubun.Location = new System.Drawing.Point(0, 0);
-            this.dgv_kubun.Name = "dgv_kubun";
-            this.dgv_kubun.RowTemplate.Height = 21;
-            this.dgv_kubun.Size = new System.Drawing.Size(284, 195);
-            this.dgv_kubun.TabIndex = 0;
-            this.dgv_kubun.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kubun_CellMouseDoubleClick);
+            this.btn_cancel.Location = new System.Drawing.Point(197, 3);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 0;
+            this.btn_cancel.Text = "キャンセル";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // frm_kubun_select_dt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(284, 284);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;

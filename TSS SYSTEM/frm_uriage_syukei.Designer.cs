@@ -43,6 +43,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_uriage = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_ruikei = new System.Windows.Forms.DataGridView();
             this.btn_csv = new System.Windows.Forms.Button();
@@ -81,8 +83,6 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
@@ -131,8 +131,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 325);
-            this.splitContainer4.SplitterDistance = 131;
+            this.splitContainer4.Size = new System.Drawing.Size(884, 324);
+            this.splitContainer4.SplitterDistance = 130;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -143,7 +143,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 127);
+            this.dgv_m.Size = new System.Drawing.Size(880, 126);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.TabStop = false;
             // 
@@ -302,6 +302,25 @@
             this.textBox7.TabStop = false;
             this.textBox7.Text = "売上合計";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label5.Location = new System.Drawing.Point(209, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 15);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "時点";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(109, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 15);
+            this.label3.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -343,7 +362,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 3;
@@ -375,7 +394,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 376);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 375);
             this.splitContainer3.SplitterDistance = 47;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
@@ -493,8 +512,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 508);
-            this.splitContainer2.SplitterDistance = 376;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 507);
+            this.splitContainer2.SplitterDistance = 375;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -750,34 +769,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
             this.splitContainer1.TabIndex = 2;
             this.splitContainer1.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(109, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 15);
-            this.label3.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(209, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "時点";
             // 
             // frm_uriage_syukei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);

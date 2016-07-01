@@ -142,7 +142,7 @@ namespace TSS_SYSTEM
             string w_cd;
             w_cd = "";
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,B.seihin_name "
+            w_dt = tss.OracleSelect("select A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,B.seihin_name,A.kari_juchu_kbn "
                                     + "from tss_juchu_m a left outer join tss_seihin_m B on A.seihin_cd = B.seihin_cd "
                                     + "where A.torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and A.juchu_cd1 = '" + tb_juchu_cd1.Text + "'");
             if (w_dt.Rows.Count > 0)
@@ -246,6 +246,7 @@ namespace TSS_SYSTEM
             //列を右詰にする
             dgv_seisan_schedule.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_seisan_schedule.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_seisan_schedule.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_seisan_schedule.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //書式を設定する
@@ -422,6 +423,8 @@ namespace TSS_SYSTEM
                 {
                     seisan_schedule_disp();
                     MessageBox.Show("作成されました。");
+                    gamen_clear();
+                    tb_torihikisaki_cd.Focus();
                 }
                 else
                 {
@@ -432,6 +435,26 @@ namespace TSS_SYSTEM
             {
                 //「いいえ」が選択された時
             }
+        }
+
+        private void gamen_clear()
+        {
+            tb_torihikisaki_cd.Text = "";
+            tb_torihikisaki_name.Text = "";
+            tb_juchu_cd1.Text = "";
+            tb_juchu_cd2.Text = "";
+            tb_seihin_cd.Text = "";
+            tb_seihin_name.Text = "";
+            tb_juchu_su.Text = "";
+            dgv_nouhin_schedule.DataSource = null;
+            dgv_seisan_koutei.DataSource = null;
+            dgv_seisan_schedule.DataSource = null;
+        }
+
+        private void btn_gamen_clear_Click(object sender, EventArgs e)
+        {
+            gamen_clear();
+            tb_torihikisaki_cd.Focus();
         }
     }
 }

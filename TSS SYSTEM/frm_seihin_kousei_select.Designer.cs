@@ -58,7 +58,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.OliveDrab;
             this.splitContainer1.Panel1.Controls.Add(this.tb_seihin_name);
             this.splitContainer1.Panel1.Controls.Add(this.tb_seihin_cd);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
@@ -66,7 +65,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(284, 262);
+            this.splitContainer1.Size = new System.Drawing.Size(284, 261);
             this.splitContainer1.SplitterDistance = 42;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -117,11 +116,10 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.OliveDrab;
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
-            this.splitContainer2.Size = new System.Drawing.Size(284, 216);
-            this.splitContainer2.SplitterDistance = 181;
+            this.splitContainer2.Size = new System.Drawing.Size(284, 215);
+            this.splitContainer2.SplitterDistance = 180;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -134,7 +132,7 @@
             this.dgv_kubun_m.Name = "dgv_kubun_m";
             this.dgv_kubun_m.ReadOnly = true;
             this.dgv_kubun_m.RowTemplate.Height = 21;
-            this.dgv_kubun_m.Size = new System.Drawing.Size(284, 181);
+            this.dgv_kubun_m.Size = new System.Drawing.Size(284, 180);
             this.dgv_kubun_m.TabIndex = 2;
             this.dgv_kubun_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kubun_m_CellMouseDoubleClick);
             // 
@@ -162,7 +160,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "frm_seihin_kousei_select";

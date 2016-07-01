@@ -293,8 +293,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.bt_close);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sakujyo);
             this.splitContainer2.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 474);
-            this.splitContainer2.SplitterDistance = 438;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 473);
+            this.splitContainer2.SplitterDistance = 437;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -333,7 +333,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_bank_m);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 438);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
             this.splitContainer3.SplitterDistance = 158;
             this.splitContainer3.TabIndex = 40;
             // 
@@ -362,7 +362,7 @@
             this.dgv_bank_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_bank_m.Name = "dgv_bank_m";
             this.dgv_bank_m.RowTemplate.Height = 21;
-            this.dgv_bank_m.Size = new System.Drawing.Size(880, 272);
+            this.dgv_bank_m.Size = new System.Drawing.Size(880, 271);
             this.dgv_bank_m.TabIndex = 0;
             // 
             // bt_hensyu
@@ -403,14 +403,14 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 4;
@@ -420,7 +420,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "frm_bank_m";
