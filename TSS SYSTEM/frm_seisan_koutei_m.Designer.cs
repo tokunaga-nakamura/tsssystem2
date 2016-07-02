@@ -35,8 +35,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.tb_seisankisyu = new System.Windows.Forms.TextBox();
             this.lbl_seihin_cd = new System.Windows.Forms.Label();
             this.textBox32 = new System.Windows.Forms.TextBox();
             this.tb_seihin_cd = new System.Windows.Forms.TextBox();
@@ -54,6 +52,8 @@
             this.btn_koutei_tuika = new System.Windows.Forms.Button();
             this.dgv_koutei = new System.Windows.Forms.DataGridView();
             this.btn_line_tuika = new System.Windows.Forms.Button();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.tb_seisankisyu = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.tb_koutei_no = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -217,26 +217,6 @@
             this.textBox8.TabIndex = 87;
             this.textBox8.TabStop = false;
             this.textBox8.Text = "製品コード";
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox12.Location = new System.Drawing.Point(3, 82);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(100, 19);
-            this.textBox12.TabIndex = 97;
-            this.textBox12.TabStop = false;
-            this.textBox12.Text = "生産機種";
-            // 
-            // tb_seisankisyu
-            // 
-            this.tb_seisankisyu.Location = new System.Drawing.Point(100, 82);
-            this.tb_seisankisyu.MaxLength = 128;
-            this.tb_seisankisyu.Name = "tb_seisankisyu";
-            this.tb_seisankisyu.Size = new System.Drawing.Size(202, 19);
-            this.tb_seisankisyu.TabIndex = 4;
-            this.tb_seisankisyu.Validating += new System.ComponentModel.CancelEventHandler(this.tb_comments_Validating);
             // 
             // lbl_seihin_cd
             // 
@@ -468,6 +448,26 @@
             this.btn_line_tuika.UseVisualStyleBackColor = true;
             this.btn_line_tuika.Click += new System.EventHandler(this.btn_line_tuika_Click);
             // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox12.Location = new System.Drawing.Point(3, 82);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(100, 19);
+            this.textBox12.TabIndex = 97;
+            this.textBox12.TabStop = false;
+            this.textBox12.Text = "生産機種";
+            // 
+            // tb_seisankisyu
+            // 
+            this.tb_seisankisyu.Location = new System.Drawing.Point(100, 82);
+            this.tb_seisankisyu.MaxLength = 128;
+            this.tb_seisankisyu.Name = "tb_seisankisyu";
+            this.tb_seisankisyu.Size = new System.Drawing.Size(202, 19);
+            this.tb_seisankisyu.TabIndex = 4;
+            this.tb_seisankisyu.Validating += new System.ComponentModel.CancelEventHandler(this.tb_comments_Validating);
+            // 
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
@@ -670,12 +670,13 @@
             // 
             // tb_jisseki_kanri_kbn
             // 
-            this.tb_jisseki_kanri_kbn.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_jisseki_kanri_kbn.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_jisseki_kanri_kbn.Location = new System.Drawing.Point(103, 280);
             this.tb_jisseki_kanri_kbn.MaxLength = 1;
             this.tb_jisseki_kanri_kbn.Name = "tb_jisseki_kanri_kbn";
             this.tb_jisseki_kanri_kbn.Size = new System.Drawing.Size(17, 19);
             this.tb_jisseki_kanri_kbn.TabIndex = 7;
+            this.tb_jisseki_kanri_kbn.DoubleClick += new System.EventHandler(this.tb_jisseki_kanri_kbn_DoubleClick);
             this.tb_jisseki_kanri_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jisseki_kanri_kbn_Validating);
             // 
             // textBox26
@@ -700,12 +701,13 @@
             // 
             // tb_line_select_kbn
             // 
-            this.tb_line_select_kbn.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_line_select_kbn.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_line_select_kbn.Location = new System.Drawing.Point(103, 104);
             this.tb_line_select_kbn.MaxLength = 1;
             this.tb_line_select_kbn.Name = "tb_line_select_kbn";
             this.tb_line_select_kbn.Size = new System.Drawing.Size(17, 19);
             this.tb_line_select_kbn.TabIndex = 5;
+            this.tb_line_select_kbn.DoubleClick += new System.EventHandler(this.tb_line_select_kbn_DoubleClick);
             this.tb_line_select_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_select_kbn_Validating);
             // 
             // textBox10

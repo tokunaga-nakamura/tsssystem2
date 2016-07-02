@@ -777,47 +777,57 @@ namespace TSS_SYSTEM
 
         private void tb_jisseki_kanri_kbn_Validating(object sender, CancelEventArgs e)
         {
-            if(tb_jisseki_kanri_kbn.Text.ToString() != "")
+            if (tb_koutei_no.Text != "")
             {
-                //変更を一時的に保持・・・・データテーブル内のデータを変更
-
-                //画面表示のため、データテーブルから条件を抽出
-                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
-
-                //配列の長さ取得
-                int ui = rows.Length;
-
-                String str = tb_jisseki_kanri_kbn.Text.ToString();
-
-                //指定セルの値を書き換え
-                for (int i = 0; i <= ui - 1; i++)
+                if (tb_jisseki_kanri_kbn.Text.ToString() != "")
                 {
-                    rows[i]["jisseki_kanri_kbn"] = str;
+                    //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                    //画面表示のため、データテーブルから条件を抽出
+                    DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                    //配列の長さ取得
+                    int ui = rows.Length;
+
+                    String str = tb_jisseki_kanri_kbn.Text.ToString();
+
+                    //指定セルの値を書き換え
+                    for (int i = 0; i <= ui - 1; i++)
+                    {
+                        rows[i]["jisseki_kanri_kbn"] = str;
+                    }
                 }
             }
+            
+           
         }
 
         private void tb_line_select_kbn_Validating(object sender, CancelEventArgs e)
         {
-            if(tb_koutei_no.Text.ToString() != "")
+            if (tb_koutei_no.Text != "")
             {
-                //変更を一時的に保持・・・・データテーブル内のデータを変更
-
-                //画面表示のため、データテーブルから条件を抽出
-                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
-
-                //配列の長さ取得
-                int ui = rows.Length;
-
-                String str = tb_line_select_kbn.Text.ToString();
-
-
-                //指定セルの値を書き換え
-                for (int i = 0; i <= ui - 1; i++)
+                if (tb_koutei_no.Text.ToString() != "")
                 {
-                    rows[i]["line_select_kbn"] = str;
+                    //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                    //画面表示のため、データテーブルから条件を抽出
+                    DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                    //配列の長さ取得
+                    int ui = rows.Length;
+
+                    String str = tb_line_select_kbn.Text.ToString();
+
+
+                    //指定セルの値を書き換え
+                    for (int i = 0; i <= ui - 1; i++)
+                    {
+                        rows[i]["line_select_kbn"] = str;
+                    }
                 }
             }
+            
+            
         }
 
         private void tb_seisan_start_day_Validating(object sender, CancelEventArgs e)
@@ -852,19 +862,23 @@ namespace TSS_SYSTEM
             }
             else
             {
-                //変更を一時的に保持・・・・データテーブル内のデータを変更
-
-                //画面表示のため、データテーブルから条件を抽出
-                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
-
-                //配列の長さ取得
-                int ui = rows.Length;
-
-                //指定セルの値を書き換え
-                for (int i = 0; i <= ui - 1; i++)
+                if(tb_koutei_no.Text != "")
                 {
-                     rows[i]["seisan_start_day"] = DBNull.Value;
+                    //変更を一時的に保持・・・・データテーブル内のデータを変更
+
+                    //画面表示のため、データテーブルから条件を抽出
+                    DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+
+                    //配列の長さ取得
+                    int ui = rows.Length;
+
+                    //指定セルの値を書き換え
+                    for (int i = 0; i <= ui - 1; i++)
+                    {
+                        rows[i]["seisan_start_day"] = DBNull.Value;
+                    }
                 }
+                
             }
         }
 
@@ -900,18 +914,23 @@ namespace TSS_SYSTEM
             }
             else
             {
-                //変更を一時的に保持・・・・データテーブル内のデータを変更
+                 if(tb_koutei_no.Text != "")
+                 {
+                     //変更を一時的に保持・・・・データテーブル内のデータを変更
 
-                //画面表示のため、データテーブルから条件を抽出
-                DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
+                     //画面表示のため、データテーブルから条件を抽出
+                     DataRow[] rows = dt_m.Select("seq_no = '" + tb_koutei_no.Text.ToString() + "'");
 
-                //配列の長さ取得
-                int ui = rows.Length;
-                //指定セルの値を書き換え
-                for (int i = 0; i <= ui - 1; i++)
-                {
-                    rows[i]["koutei_start_time"] = DBNull.Value;
-                }
+                     //配列の長さ取得
+                     int ui = rows.Length;
+                     //指定セルの値を書き換え
+                     for (int i = 0; i <= ui - 1; i++)
+                     {
+                         rows[i]["koutei_start_time"] = DBNull.Value;
+                     }
+                 }
+                
+               
             }
         }
 
@@ -1025,8 +1044,21 @@ namespace TSS_SYSTEM
                 dt_m.Rows[rc - 1]["seisan_start_day"] = DBNull.Value;
             }
 
-            dt_m.Rows[rc - 1]["mae_koutei_seq"] = dt_m.Rows[rc - 2]["mae_koutei_seq"];
+            int mae_kou = int.Parse(tb_koutei_no.Text.ToString()) -1;
+            String str = mae_kou.ToString();
 
+
+            //dt_m.Rows[rc - 1]["mae_koutei_seq"] = dt_m.Rows[rc - 2]["mae_koutei_seq"];
+
+            if(str == "0")
+            {
+                dt_m.Rows[rc - 1]["mae_koutei_seq"] = DBNull.Value;
+            }
+            else
+            {
+                dt_m.Rows[rc - 1]["mae_koutei_seq"] = str;
+            }
+            
             if (tb_koutei_start_time.Text.ToString() != "")
             {
                 dt_m.Rows[rc - 1]["koutei_start_time"] = tb_koutei_start_time.Text.ToString();
@@ -1057,6 +1089,7 @@ namespace TSS_SYSTEM
             int idx = dgv_koutei.CurrentRow.Index;
 
             DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + str + "'");
+
         }
 
         private void dgv_line_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -1136,20 +1169,20 @@ namespace TSS_SYSTEM
 
             if(rc > 0)
             {
-                dt_m.Rows[0]["seq_no"] = 1;
+                //dt_m.Rows[0]["seq_no"] = 1;
 
-                for (int i = 0; i <= rc - 2; i++)
-                {
-                    int we = int.Parse(dt_m.Rows[i]["seq_no"].ToString());
-                    if (dt_m.Rows[i]["koutei_cd"].ToString() != dt_m.Rows[i + 1]["koutei_cd"].ToString())
-                    {
-                        dt_m.Rows[i + 1]["seq_no"] = we + 1;
-                    }
-                    else
-                    {
-                        dt_m.Rows[i + 1]["seq_no"] = we;
-                    }
-                }
+                //for (int i = 0; i <= rc - 2; i++)
+                //{
+                //    int we = int.Parse(dt_m.Rows[i]["seq_no"].ToString());
+                //    if (dt_m.Rows[i]["koutei_cd"].ToString() != dt_m.Rows[i + 1]["koutei_cd"].ToString())
+                //    {
+                //        dt_m.Rows[i + 1]["seq_no"] = we + 1;
+                //    }
+                //    else
+                //    {
+                //        dt_m.Rows[i + 1]["seq_no"] = we;
+                //    }
+                //}
 
                 dt_m.AcceptChanges();
 
@@ -1160,13 +1193,16 @@ namespace TSS_SYSTEM
                 //vw = dt_m.DefaultView;
 
                 //Distinct（集計）をかける
-                DataTable resultDt = vw.ToTable("dt_koutei", true, "SEQ_NO", "KOUTEI_CD", "KOUTEI_NAME");
+                DataTable resultDt = vw.ToTable("dt_koutei", true, "seq_no","KOUTEI_CD", "KOUTEI_NAME");
 
                 dgv_koutei.DataSource = resultDt;
 
 
                 string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
                 gamen_disp(str);
+                dgv_koutei_disp();
+                dgv_line_disp();
+                
             }
             else
             {
@@ -1288,11 +1324,12 @@ namespace TSS_SYSTEM
             }
         }
 
-       
         //登録ボタンの処理
         private void btn_touroku_Click(object sender, EventArgs e)
         {
             dt_m.AcceptChanges();
+
+            string str_datetime = System.DateTime.Now.ToString();
 
             if (tss.User_Kengen_Check(4, 6) == false)
             {
@@ -1366,6 +1403,10 @@ namespace TSS_SYSTEM
                     return;
                 }
 
+           　　 if (dt_m.Rows[i]["tact_time"] == DBNull.Value)
+                {
+                    dt_m.Rows[i]["tact_time"] = 0;
+                } 
                 if (dt_m.Rows[i]["tact_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["tact_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("タクトタイムの値が異常です　0～99999.99");
@@ -1376,7 +1417,10 @@ namespace TSS_SYSTEM
                     MessageBox.Show("タクトタイムの値が異常です 0～99999.99");
                     return;
                 }
-
+                if (dt_m.Rows[i]["dandori_time"] == DBNull.Value)
+                {
+                    dt_m.Rows[i]["dandori_time"] = 0;
+                } 
                 if (dt_m.Rows[i]["dandori_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["dandori_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("段取り時間の値が異常です　0～99999.99");
@@ -1387,6 +1431,10 @@ namespace TSS_SYSTEM
                     MessageBox.Show("段取り時間の値が異常です 0～99999.99");
                     return;
                 }
+                if (dt_m.Rows[i]["tuika_time"] == DBNull.Value)
+                {
+                    dt_m.Rows[i]["tuika_time"] = 0;
+                } 
                 if (dt_m.Rows[i]["tuika_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["tuika_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("追加時間の値が異常です　0～99999.99");
@@ -1397,6 +1445,10 @@ namespace TSS_SYSTEM
                     MessageBox.Show("追加時間の値が異常です 0～99999.99");
                     return;
                 }
+                if (dt_m.Rows[i]["hoju_time"] == DBNull.Value)
+                {
+                    dt_m.Rows[i]["hoju_time"] = 0;
+                } 
                 if (dt_m.Rows[i]["hoju_time"] == DBNull.Value && decimal.TryParse(dt_m.Rows[i]["hoju_time"].ToString(), out result) == false)
                 {
                     MessageBox.Show("補充時間の値が異常です　0～99999.99");
@@ -1442,7 +1494,7 @@ namespace TSS_SYSTEM
                 }
                 if (dt_m.Rows[i]["create_datetime"].ToString() == "")
                 {
-                    dt_m.Rows[i]["create_datetime"] = System.DateTime.Now;
+                    dt_m.Rows[i]["create_datetime"] = str_datetime;
                 }
                 if (dt_m.Rows[i]["create_user_cd1"].ToString() == "")
                 {
@@ -1450,7 +1502,7 @@ namespace TSS_SYSTEM
                 }
                 if (dt_m.Rows[i]["create_datetime1"].ToString() == "")
                 {
-                    dt_m.Rows[i]["create_datetime1"] = System.DateTime.Now;
+                    dt_m.Rows[i]["create_datetime1"] = str_datetime;
                 }
             }
 
@@ -1557,7 +1609,7 @@ namespace TSS_SYSTEM
 
             //①生産工程マスタ更新
             //既存のデータの削除
-            tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+            //tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
             
             tss.OracleDelete("delete from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
             
@@ -1569,77 +1621,157 @@ namespace TSS_SYSTEM
 
             //Distinct（集計）をかける
             dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei", true, "SEIHIN_CD","SEQ_NO","BUSYO_CD","KOUTEI_LEVEL", "KOUTEI_CD","OYA_KOUTEI_SEQ","OYA_KOUTEI_CD","JISSEKI_KANRI_KBN","LINE_SELECT_KBN","SEISAN_START_DAY","MAE_KOUTEI_SEQ","KOUTEI_START_TIME","SEISANKISYU","BIKOU","DELETE_FLG","CREATE_USER_CD","CREATE_DATETIME","UPDATE_USER_CD","UPDATE_DATETIME");
-
-            tss.GetUser();
+            //dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei2", true, "SEIHIN_CD", "SEQ_NO", "BUSYO_CD", "KOUTEI_LEVEL", "KOUTEI_CD", "OYA_KOUTEI_SEQ", "OYA_KOUTEI_CD", "JISSEKI_KANRI_KBN", "LINE_SELECT_KBN", "SEISAN_START_DAY", "MAE_KOUTEI_SEQ", "KOUTEI_START_TIME", "SEISANKISYU");
 
             int rc = dt_seisan_koutei_m.Rows.Count;
 
-            for (int i = 0; i < rc ; i++)
+            for (int i = 0; i < rc; i++)
             {
 
                 if (dt_seisan_koutei_m.Rows[i]["create_user_cd"].ToString() == "")
                 {
                     dt_seisan_koutei_m.Rows[i]["create_user_cd"] = tss.user_cd;
                 }
-                
-                if(dt_seisan_koutei_m.Rows[i]["create_datetime"].ToString() == "")
+
+                if (dt_seisan_koutei_m.Rows[i]["create_datetime"].ToString() == "")
                 {
-                    dt_seisan_koutei_m.Rows[i]["create_datetime"] = System.DateTime.Now;
+                    dt_seisan_koutei_m.Rows[i]["create_datetime"] = str_datetime;
                 }
             }
 
-            if(label_sinki.Text == "新規")
-            {
-                for (int i = 0; i < rc; i++)
-                {
-                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
-                                       + " VALUES ('"
-                                       + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
-                                       + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
-                }
+            DataTable dt_seisan_koutei_m2 = new DataTable();
+            
+            //重複を除去するため DataView を使う
+            DataView vw_2 = new DataView(dt_seisan_koutei_m);
+            //Distinct（集計）をかける
+            dt_seisan_koutei_m2 = vw_2.ToTable("dt_seisan_koutei2", true, "SEIHIN_CD", "SEQ_NO");
 
+            int rc5 = dt_seisan_koutei_m2.Rows.Count;
+
+            //作成、編集した内容で生産工程テーブルにインサート  
+
+            tss.GetUser();
+
+
+            if (label_sinki.Text == "新規")
+            {
+                for (int i = 0; i < rc5; i++)
+                {
+                    string str_seq = dt_seisan_koutei_m2.Rows[i]["seq_no"].ToString();
+
+                    //画面表示のため、データテーブルから条件を抽出
+                    DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
+
+
+                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+                                          + " VALUES ('"
+                                          + rows[0][0].ToString() + "','"
+                                          + rows[0][1].ToString() + "','"
+                                          + rows[0][2].ToString() + "','"
+                                          + rows[0][3].ToString() + "','"
+                                          + rows[0][4].ToString() + "','"
+                                          + rows[0][5].ToString() + "','"
+                                          + rows[0][6].ToString() + "','"
+                                          + rows[0][7].ToString() + "','"
+                                          + rows[0][8].ToString() + "','"
+                                          + rows[0][9].ToString() + "','"
+                                          + rows[0][10].ToString() + "','"
+                                          + rows[0][11].ToString() + "','"
+                                          + rows[0][12].ToString() + "','"
+                                          + rows[0][13].ToString() + "','"
+                                          + rows[0][14].ToString() + "','"
+                                          + rows[0][15].ToString() + "',"
+                                          + "to_date('" + rows[0][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
+
+                }
             }
             else
             {
-                for (int i = 0; i < rc; i++)
+                for (int i = 0; i < rc5; i++)
                 {
-                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,UPDATE_USER_CD,UPDATE_DATETIME)"
-                                       + " VALUES ('"
-                                       + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
-                                       + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
-                                       + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
-                                       + tss.user_cd + "',SYSDATE)");
+                    string str_seq = dt_seisan_koutei_m2.Rows[i]["seq_no"].ToString();
+
+                    //画面表示のため、データテーブルから条件を抽出
+                    DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
+
+
+                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+                                          + " VALUES ('"
+                                          + rows[0][0].ToString() + "','"
+                                          + rows[0][1].ToString() + "','"
+                                          + rows[0][2].ToString() + "','"
+                                          + rows[0][3].ToString() + "','"
+                                          + rows[0][4].ToString() + "','"
+                                          + rows[0][5].ToString() + "','"
+                                          + rows[0][6].ToString() + "','"
+                                          + rows[0][7].ToString() + "','"
+                                          + rows[0][8].ToString() + "','"
+                                          + rows[0][9].ToString() + "','"
+                                          + rows[0][10].ToString() + "','"
+                                          + rows[0][11].ToString() + "','"
+                                          + rows[0][12].ToString() + "','"
+                                          + rows[0][13].ToString() + "','"
+                                          + rows[0][14].ToString() + "','"
+                                          + rows[0][15].ToString() + "',"
+                                          + "to_date('" + rows[0][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
+                                          + tss.user_cd + "',SYSDATE)");
+
                 }
             }
+            
+
+            //if(label_sinki.Text == "新規")
+            //{
+            //    for (int i = 0; i < rc; i++)
+            //    {
+            //        tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+            //                           + " VALUES ('"
+            //                           + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
+            //                           + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
+            //    }
+
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < rc; i++)
+            //    {
+            //        tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,UPDATE_USER_CD,UPDATE_DATETIME)"
+            //                           + " VALUES ('"
+            //                           + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
+            //                           + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
+            //                           + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
+            //                           + tss.user_cd + "',SYSDATE)");
+            //    }
+            //}
            
 
             //MessageBox.Show("生産工程マスタに登録しました");
@@ -1931,6 +2063,54 @@ namespace TSS_SYSTEM
                   //編集確定
                   dgv_line.EndEdit();
               }
+        }
+
+        private void tb_line_select_kbn_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            //列の定義
+            dt_work.Columns.Add("区分コード");
+            dt_work.Columns.Add("区分名");
+            //行追加
+            DataRow dr_work = dt_work.NewRow();
+            dr_work["区分コード"] = "0";
+            dr_work["区分名"] = "固定";
+            dt_work.Rows.Add(dr_work);
+            dr_work = dt_work.NewRow();
+            dr_work["区分コード"] = "1";
+            dr_work["区分名"] = "分割";
+            dt_work.Rows.Add(dr_work);
+            dr_work = dt_work.NewRow();
+            dr_work["区分コード"] = "2";
+            dr_work["区分名"] = "選択";
+            dt_work.Rows.Add(dr_work);
+            dr_work = dt_work.NewRow();
+            //選択画面へ
+            this.tb_line_select_kbn.Text = tss.kubun_cd_select_dt("ライン選択区分", dt_work, tb_line_select_kbn.Text);
+            chk_line_select_kbn();   
+        }
+
+        private void tb_jisseki_kanri_kbn_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            //列の定義
+            dt_work.Columns.Add("区分コード");
+            dt_work.Columns.Add("区分名");
+            //行追加
+            DataRow dr_work = dt_work.NewRow();
+            dr_work["区分コード"] = "0";
+            dr_work["区分名"] = "管理しない";
+            dt_work.Rows.Add(dr_work);
+            dr_work = dt_work.NewRow();
+            dr_work["区分コード"] = "1";
+            dr_work["区分名"] = "管理する";
+            dt_work.Rows.Add(dr_work);
+            dr_work = dt_work.NewRow();
+            //選択画面へ
+            this.tb_jisseki_kanri_kbn.Text = tss.kubun_cd_select_dt("実績管理区分", dt_work, tb_jisseki_kanri_kbn.Text);
+            chk_line_select_kbn();
         }
        
     }
