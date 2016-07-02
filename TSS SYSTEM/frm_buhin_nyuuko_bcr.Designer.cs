@@ -44,10 +44,10 @@
             this.tb_maisuu = new System.Windows.Forms.TextBox();
             this.lbl_message = new System.Windows.Forms.Label();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -252,6 +252,26 @@
             this.dgv_m.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_m_RowsAdded);
             this.dgv_m.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgv_m_RowsRemoved);
             // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.IsSplitterFixed = true;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer4.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer4.SplitterDistance = 794;
+            this.splitContainer4.TabIndex = 2;
+            this.splitContainer4.TabStop = false;
+            // 
             // btn_touroku
             // 
             this.btn_touroku.Location = new System.Drawing.Point(3, 3);
@@ -276,26 +296,6 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer4.IsSplitterFixed = true;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.btn_touroku);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer4.Size = new System.Drawing.Size(880, 30);
-            this.splitContainer4.SplitterDistance = 794;
-            this.splitContainer4.TabIndex = 2;
-            this.splitContainer4.TabStop = false;
-            // 
             // frm_buhin_nyuuko_bcr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -303,6 +303,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_buhin_nyuuko_bcr";
             this.Text = "部品入庫（ダイニチ工業用BCR入力）";
             this.Load += new System.EventHandler(this.frm_buhin_nyuuko_bcr_Load);

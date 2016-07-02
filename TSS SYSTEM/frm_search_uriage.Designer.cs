@@ -52,11 +52,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgv_m = new System.Windows.Forms.DataGridView();
+            this.btn_uriage_meisai = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_uriage_meisai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 562);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 0;
@@ -94,7 +94,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
             this.splitContainer1.SplitterDistance = 176;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -339,8 +339,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 382);
-            this.splitContainer2.SplitterDistance = 328;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 359);
+            this.splitContainer2.SplitterDistance = 305;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -351,9 +351,19 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 324);
+            this.dgv_m.Size = new System.Drawing.Size(880, 301);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
+            // 
+            // btn_uriage_meisai
+            // 
+            this.btn_uriage_meisai.Location = new System.Drawing.Point(176, 11);
+            this.btn_uriage_meisai.Name = "btn_uriage_meisai";
+            this.btn_uriage_meisai.Size = new System.Drawing.Size(114, 23);
+            this.btn_uriage_meisai.TabIndex = 4;
+            this.btn_uriage_meisai.Text = "売上明細リスト";
+            this.btn_uriage_meisai.UseVisualStyleBackColor = true;
+            this.btn_uriage_meisai.Click += new System.EventHandler(this.btn_uriage_meisai_Click);
             // 
             // btn_csv
             // 
@@ -395,22 +405,12 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_uriage_meisai
-            // 
-            this.btn_uriage_meisai.Location = new System.Drawing.Point(176, 11);
-            this.btn_uriage_meisai.Name = "btn_uriage_meisai";
-            this.btn_uriage_meisai.Size = new System.Drawing.Size(114, 23);
-            this.btn_uriage_meisai.TabIndex = 4;
-            this.btn_uriage_meisai.Text = "売上明細リスト";
-            this.btn_uriage_meisai.UseVisualStyleBackColor = true;
-            this.btn_uriage_meisai.Click += new System.EventHandler(this.btn_uriage_meisai_Click);
-            // 
             // frm_search_uriage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
-            this.ClientSize = new System.Drawing.Size(884, 584);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);

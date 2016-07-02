@@ -382,12 +382,14 @@ namespace TSS_SYSTEM
             w_dt_schedule.Columns.Add("bikou");
             w_dt_schedule.Columns.Add("seq");
             w_dt_schedule.Columns.Add("nouhin_schedule_kbn");
+            w_dt_schedule.Columns.Add("seisan_schedule_flg");
 
             //行追加
             DataTable w_dt_juchu_m = new DataTable();
             DataTable w_dt_seihin_m = new DataTable();
             DataTable w_dt_torihikisaki_m = new DataTable();
             DataRow w_dr_schedule;
+            DataTable w_dt_seisan = new DataTable();
 
             string w_torihikisaki_cd;   //退避用
             string w_juchu_cd1;         //退避用
@@ -493,11 +495,14 @@ namespace TSS_SYSTEM
                 w_juchu_cd1 = dr["juchu_cd1"].ToString();
                 w_juchu_cd2 = dr["juchu_cd2"].ToString();
             }
-            //最後に、受注数と行の合計数が違う場合、受注数を「納品予定数/受注数」にする
+            //最後に、
+            //・受注数と行の合計数が違う場合、受注数を「納品予定数/受注数」にする
+            //・受注数と生産スケジュールの生産予定数がアンマッチの場合に生産スケジュールフラグに×を表示する
             int w_nouhin_su_ttl;
             int w_nouhin_su;
             foreach(DataRow dr in w_dt_schedule.Rows)
             {
+                //受注数の分割表示
                 w_nouhin_su_ttl = 0;
                 for(int i = 1;i <= 31;i++)
                 {
@@ -510,6 +515,56 @@ namespace TSS_SYSTEM
                 if(w_nouhin_su_ttl.ToString() != dr["juchu_su"].ToString())
                 {
                     dr["juchu_su"] = w_nouhin_su_ttl.ToString() + "/" + dr["juchu_su"].ToString();
+                }
+                //受注数と生産スケジュールの生産数のアンマッチ処理
+                int w_juchu_seisan_su;
+                int w_seisan_seisan_su;
+                w_juchu_seisan_su = 0;
+                w_seisan_seisan_su = 0;
+                int w_flg;
+                w_flg = 0;
+
+                if(int.TryParse(dr["juchu_su"].ToString(),out w_juchu_seisan_su))
+                {
+
+                }
+                else
+                {
+                    w_juchu_seisan_su = 0;
+                }
+                //受注数と生産数のアンマッチは、各工程毎で比較し、1つでもアンマッチがあれば×とする
+                w_dt_seisan = tss.OracleSelect("select sum(seisan_su) seisan_su,busyo_cd,koutei_cd from tss_seisan_schedule_f where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + dr["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + dr["juchu_cd2"].ToString() + "' group by busyo_cd,koutei_cd");
+                if(w_dt_seisan.Rows.Count <= 0)
+                {
+                    w_seisan_seisan_su = 0;
+                    dr["seisan_schedule_flg"] = "×";
+                }
+                else
+                {
+                    w_flg = 0;  //アンマッチ＝１
+                    foreach(DataRow w_dr_sum in w_dt_seisan.Rows)
+                    {
+                        if (int.TryParse(w_dr_sum["seisan_su"].ToString(), out w_seisan_seisan_su))
+                        {
+
+                        }
+                        else
+                        {
+                            w_seisan_seisan_su = 0;
+                        }
+                        if(w_juchu_seisan_su != w_seisan_seisan_su)
+                        {
+                            w_flg = 1;
+                        }
+                    }
+                    if(w_flg == 0)
+                    {
+                        dr["seisan_schedule_flg"] = "○";
+                    }
+                    else
+                    {
+                        dr["seisan_schedule_flg"] = "×";
+                    }
                 }
             }
         }
@@ -589,6 +644,7 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["bikou"].HeaderText = "備考";
             dgv_nouhin_schedule.Columns["seq"].HeaderText = "管理番号";
             dgv_nouhin_schedule.Columns["nouhin_schedule_kbn"].HeaderText = "納品区分";
+            dgv_nouhin_schedule.Columns["seisan_schedule_flg"].HeaderText = "生産スケジュール";
 
             //休日をグレーにする
             horiday_color();
@@ -824,7 +880,7 @@ namespace TSS_SYSTEM
             if (w_dt_schedule.Rows.Count != 0)
             {
                 string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
-                string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString() + "分 納品スケジュール" + w_str_now + ".csv";
+                string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString("00") + "分 納品スケジュール" + w_str_now + ".csv";
                 if (tss.DataTableCSV(w_dt_schedule, true, w_str_filename, "\"", true))
                 {
                     MessageBox.Show("保存されました。");

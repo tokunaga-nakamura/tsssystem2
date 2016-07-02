@@ -30,6 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_nouhin_schedule_kbn_name = new System.Windows.Forms.TextBox();
+            this.tb_nouhin_schedule_kbn = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_kensaku = new System.Windows.Forms.Button();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
@@ -46,9 +49,6 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_sentaku = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.tb_nouhin_schedule_kbn_name = new System.Windows.Forms.TextBox();
-            this.tb_nouhin_schedule_kbn = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,7 +78,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 584);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
             this.splitContainer1.SplitterDistance = 103;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
@@ -105,6 +105,37 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索条件";
+            // 
+            // tb_nouhin_schedule_kbn_name
+            // 
+            this.tb_nouhin_schedule_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_nouhin_schedule_kbn_name.Location = new System.Drawing.Point(526, 18);
+            this.tb_nouhin_schedule_kbn_name.Name = "tb_nouhin_schedule_kbn_name";
+            this.tb_nouhin_schedule_kbn_name.ReadOnly = true;
+            this.tb_nouhin_schedule_kbn_name.Size = new System.Drawing.Size(156, 19);
+            this.tb_nouhin_schedule_kbn_name.TabIndex = 13;
+            this.tb_nouhin_schedule_kbn_name.TabStop = false;
+            // 
+            // tb_nouhin_schedule_kbn
+            // 
+            this.tb_nouhin_schedule_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_nouhin_schedule_kbn.Location = new System.Drawing.Point(505, 18);
+            this.tb_nouhin_schedule_kbn.Name = "tb_nouhin_schedule_kbn";
+            this.tb_nouhin_schedule_kbn.Size = new System.Drawing.Size(21, 19);
+            this.tb_nouhin_schedule_kbn.TabIndex = 12;
+            this.tb_nouhin_schedule_kbn.DoubleClick += new System.EventHandler(this.tb_nouhin_schedule_kbn_DoubleClick);
+            this.tb_nouhin_schedule_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_nouhin_schedule_kbn_Validating);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(389, 18);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(116, 19);
+            this.textBox2.TabIndex = 11;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "納品スケジュール区分";
             // 
             // label1
             // 
@@ -227,8 +258,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_sentaku);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 477);
-            this.splitContainer2.SplitterDistance = 439;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 454);
+            this.splitContainer2.SplitterDistance = 416;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -239,7 +270,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 435);
+            this.dgv_m.Size = new System.Drawing.Size(880, 412);
             this.dgv_m.TabIndex = 0;
             this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
@@ -282,43 +313,12 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // tb_nouhin_schedule_kbn_name
-            // 
-            this.tb_nouhin_schedule_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_nouhin_schedule_kbn_name.Location = new System.Drawing.Point(506, 18);
-            this.tb_nouhin_schedule_kbn_name.Name = "tb_nouhin_schedule_kbn_name";
-            this.tb_nouhin_schedule_kbn_name.ReadOnly = true;
-            this.tb_nouhin_schedule_kbn_name.Size = new System.Drawing.Size(156, 19);
-            this.tb_nouhin_schedule_kbn_name.TabIndex = 16;
-            this.tb_nouhin_schedule_kbn_name.TabStop = false;
-            // 
-            // tb_nouhin_schedule_kbn
-            // 
-            this.tb_nouhin_schedule_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_nouhin_schedule_kbn.Location = new System.Drawing.Point(485, 18);
-            this.tb_nouhin_schedule_kbn.Name = "tb_nouhin_schedule_kbn";
-            this.tb_nouhin_schedule_kbn.Size = new System.Drawing.Size(21, 19);
-            this.tb_nouhin_schedule_kbn.TabIndex = 15;
-            this.tb_nouhin_schedule_kbn.DoubleClick += new System.EventHandler(this.tb_nouhin_schedule_kbn_DoubleClick);
-            this.tb_nouhin_schedule_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_nouhin_schedule_kbn_Validating);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(369, 18);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(116, 19);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "納品スケジュール区分";
-            // 
             // frm_search_seihin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
-            this.ClientSize = new System.Drawing.Size(884, 584);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;

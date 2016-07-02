@@ -1510,7 +1510,7 @@ namespace TSS_SYSTEM
             //ラインセレクト区分のチェック
             //重複を除去するため DataView を使う
 
-            DataView seq_view = new DataView(dt_m);
+                DataView seq_view = new DataView(dt_m);
             seq_view.Sort = "SEQ_NO";
             
             //SEQ_NOで集計をかける

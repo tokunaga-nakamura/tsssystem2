@@ -61,7 +61,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -92,8 +92,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(880, 492);
-            this.splitContainer2.SplitterDistance = 455;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 495);
+            this.splitContainer2.SplitterDistance = 458;
             this.splitContainer2.TabIndex = 0;
             // 
             // vwr
@@ -127,7 +127,7 @@
             this.vwr.Sidebar.TocPanel.ContextMenu = null;
             this.vwr.Sidebar.TocPanel.Width = 200;
             this.vwr.Sidebar.Width = 200;
-            this.vwr.Size = new System.Drawing.Size(876, 451);
+            this.vwr.Size = new System.Drawing.Size(880, 454);
             this.vwr.TabIndex = 0;
             // 
             // btn_syuuryou
@@ -144,8 +144,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seihin_buhin_zaiko";
             this.Text = "製品別部品在庫印刷プレビュー";
             this.Load += new System.EventHandler(this.frm_seihin_buhin_zaiko_Load);
