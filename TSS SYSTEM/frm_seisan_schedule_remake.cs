@@ -17,6 +17,10 @@ namespace TSS_SYSTEM
         DataTable w_dt_seisan_schedule = new DataTable();
         DataTable w_dt_seisan_koutei = new DataTable();
 
+        public string w_in_torihikisaki_cd;
+        public string w_in_juchu_cd1;
+        public string w_in_juchu_cd2;
+
         public frm_seisan_schedule_remake()
         {
             InitializeComponent();
@@ -455,6 +459,20 @@ namespace TSS_SYSTEM
         {
             gamen_clear();
             tb_torihikisaki_cd.Focus();
+        }
+
+        private void frm_seisan_schedule_remake_Load(object sender, EventArgs e)
+        {
+            if(w_in_torihikisaki_cd != null && w_in_torihikisaki_cd != "")
+            {
+                tb_torihikisaki_cd.Text = w_in_torihikisaki_cd;
+                tb_juchu_cd1.Text = w_in_juchu_cd1;
+                tb_juchu_cd2.Text = w_in_juchu_cd2;
+                //取引先名を取得・表示
+                tb_torihikisaki_name.Text = get_torihikisaki_name(tb_torihikisaki_cd.Text);
+                //受注情報を表示
+                find_juchu_cd2(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+            }
         }
     }
 }
