@@ -60,9 +60,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dgv_seisan_schedule = new System.Windows.Forms.DataGridView();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btn_gamen_clear = new System.Windows.Forms.Button();
             this.btn_remake = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_gamen_clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -526,6 +526,16 @@
             this.splitContainer3.SplitterDistance = 796;
             this.splitContainer3.TabIndex = 0;
             // 
+            // btn_gamen_clear
+            // 
+            this.btn_gamen_clear.Location = new System.Drawing.Point(194, 3);
+            this.btn_gamen_clear.Name = "btn_gamen_clear";
+            this.btn_gamen_clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_gamen_clear.TabIndex = 12;
+            this.btn_gamen_clear.Text = "画面クリア";
+            this.btn_gamen_clear.UseVisualStyleBackColor = true;
+            this.btn_gamen_clear.Click += new System.EventHandler(this.btn_gamen_clear_Click);
+            // 
             // btn_remake
             // 
             this.btn_remake.Location = new System.Drawing.Point(10, 3);
@@ -546,16 +556,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_gamen_clear
-            // 
-            this.btn_gamen_clear.Location = new System.Drawing.Point(194, 3);
-            this.btn_gamen_clear.Name = "btn_gamen_clear";
-            this.btn_gamen_clear.Size = new System.Drawing.Size(75, 23);
-            this.btn_gamen_clear.TabIndex = 12;
-            this.btn_gamen_clear.Text = "画面クリア";
-            this.btn_gamen_clear.UseVisualStyleBackColor = true;
-            this.btn_gamen_clear.Click += new System.EventHandler(this.btn_gamen_clear_Click);
-            // 
             // frm_seisan_schedule_remake
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -566,6 +566,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seisan_schedule_remake";
             this.Text = "生産スケジュール再作成";
+            this.Load += new System.EventHandler(this.frm_seisan_schedule_remake_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

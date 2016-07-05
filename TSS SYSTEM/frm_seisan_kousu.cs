@@ -421,7 +421,8 @@ namespace TSS_SYSTEM
 
                 //合計行の次の行に比率行を追加する
                 w_hyoujun_kousu = get_kousu(in_column, in_cd);
-                w_dt_list.Rows[w_dt_list.Rows.Count - 1]["seihin_name"] = w_hyoujun_kousu.ToString("#######0.00");
+                //w_dt_list.Rows[w_dt_list.Rows.Count - 1]["seihin_name"] = w_hyoujun_kousu.ToString("#######0.00");
+                w_dt_list.Rows[w_dt_list.Rows.Count - 1]["seihin_name"] = w_hyoujun_kousu.ToString("#######0");
                 for (int i = 1; i <= 31; i++)
                 {
                     if (w_dt_list.Rows[w_dt_list.Rows.Count - 2][i.ToString("00")].ToString() != null && w_dt_list.Rows[w_dt_list.Rows.Count - 2][i.ToString("00")].ToString() != "")

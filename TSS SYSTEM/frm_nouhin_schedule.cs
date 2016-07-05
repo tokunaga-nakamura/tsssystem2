@@ -221,6 +221,8 @@ namespace TSS_SYSTEM
             w_dt_schedule.Columns.Add("bikou");
             w_dt_schedule.Columns.Add("seq");
             w_dt_schedule.Columns.Add("nouhin_schedule_kbn");
+            w_dt_schedule.Columns.Add("seisan_schedule_flg");
+            w_dt_schedule.Columns.Add("juchu_su2");
             
             //行追加
             DataTable w_dt_juchu_m = new DataTable();
@@ -383,6 +385,7 @@ namespace TSS_SYSTEM
             w_dt_schedule.Columns.Add("seq");
             w_dt_schedule.Columns.Add("nouhin_schedule_kbn");
             w_dt_schedule.Columns.Add("seisan_schedule_flg");
+            w_dt_schedule.Columns.Add("juchu_su2");
 
             //行追加
             DataTable w_dt_juchu_m = new DataTable();
@@ -487,6 +490,7 @@ namespace TSS_SYSTEM
                     }
                     w_dr_schedule["seq"] = dr["seq"].ToString();
                     w_dr_schedule["nouhin_schedule_kbn"] = dr["nouhin_schedule_kbn"].ToString();
+                    w_dr_schedule["juchu_su2"] = w_dt_juchu_m.Rows[0]["juchu_su"].ToString();
                     w_dt_schedule.Rows.Add(w_dr_schedule);
                     //行数カウント１up
                     w_int_gyou = w_int_gyou + 1;
@@ -524,7 +528,7 @@ namespace TSS_SYSTEM
                 int w_flg;
                 w_flg = 0;
 
-                if(int.TryParse(dr["juchu_su"].ToString(),out w_juchu_seisan_su))
+                if(int.TryParse(dr["juchu_su2"].ToString(),out w_juchu_seisan_su))
                 {
 
                 }
@@ -645,6 +649,7 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["seq"].HeaderText = "管理番号";
             dgv_nouhin_schedule.Columns["nouhin_schedule_kbn"].HeaderText = "納品区分";
             dgv_nouhin_schedule.Columns["seisan_schedule_flg"].HeaderText = "生産スケジュール";
+            dgv_nouhin_schedule.Columns["juchu_su2"].HeaderText = "正式受注数";
 
             //休日をグレーにする
             horiday_color();
@@ -1104,6 +1109,25 @@ namespace TSS_SYSTEM
                 }
             }
             return true;
+        }
+
+        private void dgv_nouhin_schedule_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            //生産スケジュールフラグをダブルクリックした時
+            if(e.ColumnIndex == 41)
+            {
+                //ダブルクリックされた行（受注）の生産スケジュールを表示するフォームを表示する
+                frm_seisan_schedule_disp frm_ssd = new frm_seisan_schedule_disp();
+                frm_ssd.w_torihikisaki_cd = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
+                frm_ssd.w_juchu_cd1 = dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
+                frm_ssd.w_juchu_cd2 = dgv.Rows[e.RowIndex].Cells[3].Value.ToString();
+                frm_ssd.w_seihin_cd = dgv.Rows[e.RowIndex].Cells[4].Value.ToString();
+                frm_ssd.w_seihin_name = dgv.Rows[e.RowIndex].Cells[5].Value.ToString();
+                frm_ssd.w_juchu_su = dgv.Rows[e.RowIndex].Cells[6].Value.ToString();
+                frm_ssd.ShowDialog(this);
+                frm_ssd.Dispose();
+            }
         }
     }
 }

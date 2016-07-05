@@ -34,21 +34,23 @@
             this.lbl_nouhin_jun = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.cb_henkou_mode = new System.Windows.Forms.CheckBox();
-            this.btn_nouhin_jun_touroku = new System.Windows.Forms.Button();
-            this.btn_nouhin_jun_down = new System.Windows.Forms.Button();
-            this.btn_nouhin_jun_up = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.tb_nouhin_schedule_kbn = new System.Windows.Forms.TextBox();
-            this.tb_nouhin_schedule_kbn_name = new System.Windows.Forms.TextBox();
-            this.btn_hyouji = new System.Windows.Forms.Button();
-            this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
-            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.nud_month = new System.Windows.Forms.NumericUpDown();
             this.nud_year = new System.Windows.Forms.NumericUpDown();
+            this.nud_month = new System.Windows.Forms.NumericUpDown();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_cd = new System.Windows.Forms.TextBox();
+            this.tb_nouhin_schedule_kbn = new System.Windows.Forms.TextBox();
+            this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
+            this.tb_nouhin_schedule_kbn_name = new System.Windows.Forms.TextBox();
+            this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.cb_henkou_mode = new System.Windows.Forms.CheckBox();
+            this.btn_nouhin_jun_down = new System.Windows.Forms.Button();
+            this.btn_nouhin_jun_touroku = new System.Windows.Forms.Button();
+            this.btn_nouhin_jun_up = new System.Windows.Forms.Button();
+            this.btn_hyouji = new System.Windows.Forms.Button();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dgv_nouhin_schedule = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
@@ -59,8 +61,7 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,8 +74,16 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_month)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
+            this.splitContainer7.Panel1.SuspendLayout();
+            this.splitContainer7.Panel2.SuspendLayout();
+            this.splitContainer7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_year)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_month)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).BeginInit();
+            this.splitContainer8.Panel1.SuspendLayout();
+            this.splitContainer8.Panel2.SuspendLayout();
+            this.splitContainer8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
@@ -89,14 +98,6 @@
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
-            this.splitContainer7.Panel1.SuspendLayout();
-            this.splitContainer7.Panel2.SuspendLayout();
-            this.splitContainer7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).BeginInit();
-            this.splitContainer8.Panel1.SuspendLayout();
-            this.splitContainer8.Panel2.SuspendLayout();
-            this.splitContainer8.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -111,6 +112,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_nouhin_jun);
             // 
@@ -186,130 +188,34 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
-            // cb_henkou_mode
+            // splitContainer7
             // 
-            this.cb_henkou_mode.AutoSize = true;
-            this.cb_henkou_mode.Location = new System.Drawing.Point(3, 3);
-            this.cb_henkou_mode.Name = "cb_henkou_mode";
-            this.cb_henkou_mode.Size = new System.Drawing.Size(76, 16);
-            this.cb_henkou_mode.TabIndex = 4;
-            this.cb_henkou_mode.Text = "変更モード";
-            this.cb_henkou_mode.UseVisualStyleBackColor = true;
+            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer7.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer7.IsSplitterFixed = true;
+            this.splitContainer7.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer7.Name = "splitContainer7";
             // 
-            // btn_nouhin_jun_touroku
+            // splitContainer7.Panel1
             // 
-            this.btn_nouhin_jun_touroku.Location = new System.Drawing.Point(166, 32);
-            this.btn_nouhin_jun_touroku.Name = "btn_nouhin_jun_touroku";
-            this.btn_nouhin_jun_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_nouhin_jun_touroku.TabIndex = 2;
-            this.btn_nouhin_jun_touroku.Text = "納品順登録";
-            this.btn_nouhin_jun_touroku.UseVisualStyleBackColor = true;
-            this.btn_nouhin_jun_touroku.Click += new System.EventHandler(this.btn_nouhin_jun_touroku_Click);
+            this.splitContainer7.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer7.Panel1.Controls.Add(this.nud_year);
+            this.splitContainer7.Panel1.Controls.Add(this.nud_month);
+            this.splitContainer7.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer7.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer7.Panel1.Controls.Add(this.textBox6);
+            this.splitContainer7.Panel1.Controls.Add(this.tb_torihikisaki_cd);
+            this.splitContainer7.Panel1.Controls.Add(this.tb_nouhin_schedule_kbn);
+            this.splitContainer7.Panel1.Controls.Add(this.tb_torihikisaki_name);
+            this.splitContainer7.Panel1.Controls.Add(this.tb_nouhin_schedule_kbn_name);
             // 
-            // btn_nouhin_jun_down
+            // splitContainer7.Panel2
             // 
-            this.btn_nouhin_jun_down.Location = new System.Drawing.Point(85, 32);
-            this.btn_nouhin_jun_down.Name = "btn_nouhin_jun_down";
-            this.btn_nouhin_jun_down.Size = new System.Drawing.Size(75, 23);
-            this.btn_nouhin_jun_down.TabIndex = 1;
-            this.btn_nouhin_jun_down.Text = "下へ";
-            this.btn_nouhin_jun_down.UseVisualStyleBackColor = true;
-            this.btn_nouhin_jun_down.Click += new System.EventHandler(this.btn_nouhin_jun_down_Click);
-            // 
-            // btn_nouhin_jun_up
-            // 
-            this.btn_nouhin_jun_up.Location = new System.Drawing.Point(85, 3);
-            this.btn_nouhin_jun_up.Name = "btn_nouhin_jun_up";
-            this.btn_nouhin_jun_up.Size = new System.Drawing.Size(75, 23);
-            this.btn_nouhin_jun_up.TabIndex = 0;
-            this.btn_nouhin_jun_up.Text = "上へ";
-            this.btn_nouhin_jun_up.UseVisualStyleBackColor = true;
-            this.btn_nouhin_jun_up.Click += new System.EventHandler(this.btn_nouhin_jun_up_Click);
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox6.Location = new System.Drawing.Point(158, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(122, 19);
-            this.textBox6.TabIndex = 23;
-            this.textBox6.TabStop = false;
-            this.textBox6.Text = "納品スケジュール区分";
-            // 
-            // tb_nouhin_schedule_kbn
-            // 
-            this.tb_nouhin_schedule_kbn.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_nouhin_schedule_kbn.Location = new System.Drawing.Point(280, 3);
-            this.tb_nouhin_schedule_kbn.MaxLength = 2;
-            this.tb_nouhin_schedule_kbn.Name = "tb_nouhin_schedule_kbn";
-            this.tb_nouhin_schedule_kbn.Size = new System.Drawing.Size(24, 19);
-            this.tb_nouhin_schedule_kbn.TabIndex = 2;
-            this.tb_nouhin_schedule_kbn.DoubleClick += new System.EventHandler(this.tb_nouhin_schedule_kbn_DoubleClick);
-            this.tb_nouhin_schedule_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_nouhin_schedule_kbn_Validating);
-            // 
-            // tb_nouhin_schedule_kbn_name
-            // 
-            this.tb_nouhin_schedule_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_nouhin_schedule_kbn_name.Location = new System.Drawing.Point(304, 3);
-            this.tb_nouhin_schedule_kbn_name.Name = "tb_nouhin_schedule_kbn_name";
-            this.tb_nouhin_schedule_kbn_name.ReadOnly = true;
-            this.tb_nouhin_schedule_kbn_name.Size = new System.Drawing.Size(153, 19);
-            this.tb_nouhin_schedule_kbn_name.TabIndex = 22;
-            this.tb_nouhin_schedule_kbn_name.TabStop = false;
-            // 
-            // btn_hyouji
-            // 
-            this.btn_hyouji.Location = new System.Drawing.Point(3, 32);
-            this.btn_hyouji.Name = "btn_hyouji";
-            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
-            this.btn_hyouji.TabIndex = 5;
-            this.btn_hyouji.Text = "表示";
-            this.btn_hyouji.UseVisualStyleBackColor = true;
-            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
-            // 
-            // tb_torihikisaki_name
-            // 
-            this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_torihikisaki_name.Location = new System.Drawing.Point(125, 28);
-            this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
-            this.tb_torihikisaki_name.ReadOnly = true;
-            this.tb_torihikisaki_name.Size = new System.Drawing.Size(251, 19);
-            this.tb_torihikisaki_name.TabIndex = 6;
-            this.tb_torihikisaki_name.TabStop = false;
-            // 
-            // tb_torihikisaki_cd
-            // 
-            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(76, 28);
-            this.tb_torihikisaki_cd.MaxLength = 6;
-            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
-            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(49, 19);
-            this.tb_torihikisaki_cd.TabIndex = 3;
-            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
-            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(2, 28);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(74, 19);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "取引先コード";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(92, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(24, 19);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "月";
+            this.splitContainer7.Panel2.Controls.Add(this.splitContainer8);
+            this.splitContainer7.Size = new System.Drawing.Size(880, 60);
+            this.splitContainer7.SplitterDistance = 466;
+            this.splitContainer7.TabIndex = 24;
+            this.splitContainer7.TabStop = false;
             // 
             // textBox1
             // 
@@ -321,6 +227,28 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "年";
+            // 
+            // nud_year
+            // 
+            this.nud_year.Location = new System.Drawing.Point(26, 3);
+            this.nud_year.Maximum = new decimal(new int[] {
+            2099,
+            0,
+            0,
+            0});
+            this.nud_year.Minimum = new decimal(new int[] {
+            2015,
+            0,
+            0,
+            0});
+            this.nud_year.Name = "nud_year";
+            this.nud_year.Size = new System.Drawing.Size(60, 19);
+            this.nud_year.TabIndex = 0;
+            this.nud_year.Value = new decimal(new int[] {
+            2015,
+            0,
+            0,
+            0});
             // 
             // nud_month
             // 
@@ -344,27 +272,153 @@
             0,
             0});
             // 
-            // nud_year
+            // textBox2
             // 
-            this.nud_year.Location = new System.Drawing.Point(26, 3);
-            this.nud_year.Maximum = new decimal(new int[] {
-            2099,
-            0,
-            0,
-            0});
-            this.nud_year.Minimum = new decimal(new int[] {
-            2015,
-            0,
-            0,
-            0});
-            this.nud_year.Name = "nud_year";
-            this.nud_year.Size = new System.Drawing.Size(60, 19);
-            this.nud_year.TabIndex = 0;
-            this.nud_year.Value = new decimal(new int[] {
-            2015,
-            0,
-            0,
-            0});
+            this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox2.Location = new System.Drawing.Point(92, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(24, 19);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "月";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox3.Location = new System.Drawing.Point(2, 28);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(74, 19);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "取引先コード";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(158, 3);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(122, 19);
+            this.textBox6.TabIndex = 23;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "納品スケジュール区分";
+            // 
+            // tb_torihikisaki_cd
+            // 
+            this.tb_torihikisaki_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_torihikisaki_cd.Location = new System.Drawing.Point(76, 28);
+            this.tb_torihikisaki_cd.MaxLength = 6;
+            this.tb_torihikisaki_cd.Name = "tb_torihikisaki_cd";
+            this.tb_torihikisaki_cd.Size = new System.Drawing.Size(49, 19);
+            this.tb_torihikisaki_cd.TabIndex = 3;
+            this.tb_torihikisaki_cd.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd_DoubleClick);
+            this.tb_torihikisaki_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd_Validating);
+            // 
+            // tb_nouhin_schedule_kbn
+            // 
+            this.tb_nouhin_schedule_kbn.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_nouhin_schedule_kbn.Location = new System.Drawing.Point(280, 3);
+            this.tb_nouhin_schedule_kbn.MaxLength = 2;
+            this.tb_nouhin_schedule_kbn.Name = "tb_nouhin_schedule_kbn";
+            this.tb_nouhin_schedule_kbn.Size = new System.Drawing.Size(24, 19);
+            this.tb_nouhin_schedule_kbn.TabIndex = 2;
+            this.tb_nouhin_schedule_kbn.DoubleClick += new System.EventHandler(this.tb_nouhin_schedule_kbn_DoubleClick);
+            this.tb_nouhin_schedule_kbn.Validating += new System.ComponentModel.CancelEventHandler(this.tb_nouhin_schedule_kbn_Validating);
+            // 
+            // tb_torihikisaki_name
+            // 
+            this.tb_torihikisaki_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_torihikisaki_name.Location = new System.Drawing.Point(125, 28);
+            this.tb_torihikisaki_name.Name = "tb_torihikisaki_name";
+            this.tb_torihikisaki_name.ReadOnly = true;
+            this.tb_torihikisaki_name.Size = new System.Drawing.Size(251, 19);
+            this.tb_torihikisaki_name.TabIndex = 6;
+            this.tb_torihikisaki_name.TabStop = false;
+            // 
+            // tb_nouhin_schedule_kbn_name
+            // 
+            this.tb_nouhin_schedule_kbn_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_nouhin_schedule_kbn_name.Location = new System.Drawing.Point(304, 3);
+            this.tb_nouhin_schedule_kbn_name.Name = "tb_nouhin_schedule_kbn_name";
+            this.tb_nouhin_schedule_kbn_name.ReadOnly = true;
+            this.tb_nouhin_schedule_kbn_name.Size = new System.Drawing.Size(153, 19);
+            this.tb_nouhin_schedule_kbn_name.TabIndex = 22;
+            this.tb_nouhin_schedule_kbn_name.TabStop = false;
+            // 
+            // splitContainer8
+            // 
+            this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer8.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer8.IsSplitterFixed = true;
+            this.splitContainer8.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer8.Name = "splitContainer8";
+            // 
+            // splitContainer8.Panel1
+            // 
+            this.splitContainer8.Panel1.Controls.Add(this.cb_henkou_mode);
+            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_down);
+            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_touroku);
+            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_up);
+            // 
+            // splitContainer8.Panel2
+            // 
+            this.splitContainer8.Panel2.Controls.Add(this.btn_hyouji);
+            this.splitContainer8.Size = new System.Drawing.Size(410, 60);
+            this.splitContainer8.SplitterDistance = 323;
+            this.splitContainer8.TabIndex = 6;
+            this.splitContainer8.TabStop = false;
+            // 
+            // cb_henkou_mode
+            // 
+            this.cb_henkou_mode.AutoSize = true;
+            this.cb_henkou_mode.Location = new System.Drawing.Point(3, 3);
+            this.cb_henkou_mode.Name = "cb_henkou_mode";
+            this.cb_henkou_mode.Size = new System.Drawing.Size(76, 16);
+            this.cb_henkou_mode.TabIndex = 4;
+            this.cb_henkou_mode.Text = "変更モード";
+            this.cb_henkou_mode.UseVisualStyleBackColor = true;
+            // 
+            // btn_nouhin_jun_down
+            // 
+            this.btn_nouhin_jun_down.Location = new System.Drawing.Point(85, 32);
+            this.btn_nouhin_jun_down.Name = "btn_nouhin_jun_down";
+            this.btn_nouhin_jun_down.Size = new System.Drawing.Size(75, 23);
+            this.btn_nouhin_jun_down.TabIndex = 1;
+            this.btn_nouhin_jun_down.Text = "下へ";
+            this.btn_nouhin_jun_down.UseVisualStyleBackColor = true;
+            this.btn_nouhin_jun_down.Click += new System.EventHandler(this.btn_nouhin_jun_down_Click);
+            // 
+            // btn_nouhin_jun_touroku
+            // 
+            this.btn_nouhin_jun_touroku.Location = new System.Drawing.Point(166, 32);
+            this.btn_nouhin_jun_touroku.Name = "btn_nouhin_jun_touroku";
+            this.btn_nouhin_jun_touroku.Size = new System.Drawing.Size(75, 23);
+            this.btn_nouhin_jun_touroku.TabIndex = 2;
+            this.btn_nouhin_jun_touroku.Text = "納品順登録";
+            this.btn_nouhin_jun_touroku.UseVisualStyleBackColor = true;
+            this.btn_nouhin_jun_touroku.Click += new System.EventHandler(this.btn_nouhin_jun_touroku_Click);
+            // 
+            // btn_nouhin_jun_up
+            // 
+            this.btn_nouhin_jun_up.Location = new System.Drawing.Point(85, 3);
+            this.btn_nouhin_jun_up.Name = "btn_nouhin_jun_up";
+            this.btn_nouhin_jun_up.Size = new System.Drawing.Size(75, 23);
+            this.btn_nouhin_jun_up.TabIndex = 0;
+            this.btn_nouhin_jun_up.Text = "上へ";
+            this.btn_nouhin_jun_up.UseVisualStyleBackColor = true;
+            this.btn_nouhin_jun_up.Click += new System.EventHandler(this.btn_nouhin_jun_up_Click);
+            // 
+            // btn_hyouji
+            // 
+            this.btn_hyouji.Location = new System.Drawing.Point(3, 32);
+            this.btn_hyouji.Name = "btn_hyouji";
+            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
+            this.btn_hyouji.TabIndex = 5;
+            this.btn_hyouji.Text = "表示";
+            this.btn_hyouji.UseVisualStyleBackColor = true;
+            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
             // 
             // splitContainer4
             // 
@@ -396,6 +450,7 @@
             this.dgv_nouhin_schedule.Size = new System.Drawing.Size(880, 231);
             this.dgv_nouhin_schedule.TabIndex = 0;
             this.dgv_nouhin_schedule.TabStop = false;
+            this.dgv_nouhin_schedule.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nouhin_schedule_CellDoubleClick);
             this.dgv_nouhin_schedule.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_nouhin_schedule_CellMouseClick);
             // 
             // splitContainer5
@@ -496,57 +551,14 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // splitContainer7
+            // label2
             // 
-            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer7.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer7.IsSplitterFixed = true;
-            this.splitContainer7.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer7.Name = "splitContainer7";
-            // 
-            // splitContainer7.Panel1
-            // 
-            this.splitContainer7.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer7.Panel1.Controls.Add(this.nud_year);
-            this.splitContainer7.Panel1.Controls.Add(this.nud_month);
-            this.splitContainer7.Panel1.Controls.Add(this.textBox2);
-            this.splitContainer7.Panel1.Controls.Add(this.textBox3);
-            this.splitContainer7.Panel1.Controls.Add(this.textBox6);
-            this.splitContainer7.Panel1.Controls.Add(this.tb_torihikisaki_cd);
-            this.splitContainer7.Panel1.Controls.Add(this.tb_nouhin_schedule_kbn);
-            this.splitContainer7.Panel1.Controls.Add(this.tb_torihikisaki_name);
-            this.splitContainer7.Panel1.Controls.Add(this.tb_nouhin_schedule_kbn_name);
-            // 
-            // splitContainer7.Panel2
-            // 
-            this.splitContainer7.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer7.Size = new System.Drawing.Size(880, 60);
-            this.splitContainer7.SplitterDistance = 466;
-            this.splitContainer7.TabIndex = 24;
-            this.splitContainer7.TabStop = false;
-            // 
-            // splitContainer8
-            // 
-            this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer8.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer8.IsSplitterFixed = true;
-            this.splitContainer8.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer8.Name = "splitContainer8";
-            // 
-            // splitContainer8.Panel1
-            // 
-            this.splitContainer8.Panel1.Controls.Add(this.cb_henkou_mode);
-            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_down);
-            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_touroku);
-            this.splitContainer8.Panel1.Controls.Add(this.btn_nouhin_jun_up);
-            // 
-            // splitContainer8.Panel2
-            // 
-            this.splitContainer8.Panel2.Controls.Add(this.btn_hyouji);
-            this.splitContainer8.Size = new System.Drawing.Size(410, 60);
-            this.splitContainer8.SplitterDistance = 323;
-            this.splitContainer8.TabIndex = 6;
-            this.splitContainer8.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(433, 12);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "生産スケジュールの項目をダブルクリックすると、その受注の生産スケジュールを参照できます。";
             // 
             // frm_nouhin_schedule
             // 
@@ -572,8 +584,18 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nud_month)).EndInit();
+            this.splitContainer7.Panel1.ResumeLayout(false);
+            this.splitContainer7.Panel1.PerformLayout();
+            this.splitContainer7.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
+            this.splitContainer7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nud_year)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_month)).EndInit();
+            this.splitContainer8.Panel1.ResumeLayout(false);
+            this.splitContainer8.Panel1.PerformLayout();
+            this.splitContainer8.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
+            this.splitContainer8.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
@@ -589,16 +611,6 @@
             this.splitContainer6.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
-            this.splitContainer7.Panel1.ResumeLayout(false);
-            this.splitContainer7.Panel1.PerformLayout();
-            this.splitContainer7.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
-            this.splitContainer7.ResumeLayout(false);
-            this.splitContainer8.Panel1.ResumeLayout(false);
-            this.splitContainer8.Panel1.PerformLayout();
-            this.splitContainer8.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
-            this.splitContainer8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,5 +650,6 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer8;
+        private System.Windows.Forms.Label label2;
     }
 }
