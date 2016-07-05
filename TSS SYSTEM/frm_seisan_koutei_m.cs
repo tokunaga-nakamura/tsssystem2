@@ -1510,7 +1510,7 @@ namespace TSS_SYSTEM
             //ラインセレクト区分のチェック
             //重複を除去するため DataView を使う
 
-                DataView seq_view = new DataView(dt_m);
+            DataView seq_view = new DataView(dt_m);
             seq_view.Sort = "SEQ_NO";
             
             //SEQ_NOで集計をかける
@@ -1609,8 +1609,6 @@ namespace TSS_SYSTEM
 
             //①生産工程マスタ更新
             //既存のデータの削除
-            //tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
-            
             tss.OracleDelete("delete from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
             
             //作成、編集した内容で生産工程テーブルにインサート  
@@ -1659,10 +1657,10 @@ namespace TSS_SYSTEM
                 {
                     string str_seq = dt_seisan_koutei_m2.Rows[i]["seq_no"].ToString();
 
-                    //画面表示のため、データテーブルから条件を抽出
+                    //条件にあう行を抽出
                     DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
 
-
+                    //1行ずつ生産工程マスタテーブルに挿入
                     tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
                                           + " VALUES ('"
                                           + rows[0][0].ToString() + "','"
@@ -1691,10 +1689,10 @@ namespace TSS_SYSTEM
                 {
                     string str_seq = dt_seisan_koutei_m2.Rows[i]["seq_no"].ToString();
 
-                    //画面表示のため、データテーブルから条件を抽出
+                    //条件にあう行を抽出
                     DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
 
-
+                    //1行ずつ生産工程マスタテーブルに挿入
                     tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
                                           + " VALUES ('"
                                           + rows[0][0].ToString() + "','"
@@ -1778,8 +1776,6 @@ namespace TSS_SYSTEM
             
             //②生産工程ラインマスタ更新
             //既存のデータの削除
-            tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_LINE_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
-
             tss.OracleDelete("delete from TSS_SEISAN_KOUTEI_LINE_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
 
             //作成、編集した内容で生産工程テーブルにインサート  
@@ -2111,6 +2107,13 @@ namespace TSS_SYSTEM
             //選択画面へ
             this.tb_jisseki_kanri_kbn.Text = tss.kubun_cd_select_dt("実績管理区分", dt_work, tb_jisseki_kanri_kbn.Text);
             chk_line_select_kbn();
+        }
+
+        private void btn_koutei_copy_Click(object sender, EventArgs e)
+        {
+            frm_search_seisan_koutei frm_s_seisan_kou = new frm_search_seisan_koutei();
+            frm_s_seisan_kou.ShowDialog(this);
+            frm_s_seisan_kou.Dispose();
         }
        
     }
