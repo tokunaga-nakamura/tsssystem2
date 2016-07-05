@@ -215,6 +215,12 @@
     <Compile Include="frm_nyukin_ichiran_preview.Designer.cs">
       <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_search_seisan_koutei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_search_seisan_koutei.Designer.cs">
+      <DependentUpon>frm_search_seisan_koutei.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_search_siire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -787,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin_ichiran_preview.resx">
       <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_search_seisan_koutei.resx">
+      <DependentUpon>frm_search_seisan_koutei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_search_siire.resx">
       <DependentUpon>frm_search_siire.cs</DependentUpon>
