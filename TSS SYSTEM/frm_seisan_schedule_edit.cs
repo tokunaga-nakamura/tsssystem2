@@ -31,16 +31,14 @@ namespace TSS_SYSTEM
         private void frm_seisan_schedule_edit_Load(object sender, EventArgs e)
         {
 
-            //テスト
-            set_combobox();
-            get_schedule_data("2016/07/06");
-            disp_schedule_data();            
+            set_combobox(); //コンボボックスの初期化
 
 
         }
 
         private void get_schedule_data(string in_str)
         {
+            //前日・翌日等のデータ取得
             string w_sql;
             w_sql = "select A.seisan_yotei_date,A.busyo_cd,B.busyo_name,A.koutei_cd,C.koutei_name,A.line_cd,D.line_name,A.seq,A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,A.seihin_name,A.seisankisyu,A.juchu_su,A.seisan_su,A.bikou"
                     + " from tss_seisan_schedule_f A"
@@ -53,6 +51,14 @@ namespace TSS_SYSTEM
 
         private void disp_schedule_data()
         {
+            //if(aaa == 1)
+            //{
+            //    DataGridView dgv = (dgv_before)sender;
+            //}
+            //else
+            //{
+            //    DataGridView dgv = (dgv_next)sender;
+            //}
             //リードオンリーにする
             dgv_before.ReadOnly = true;
             //行ヘッダーを非表示にする
