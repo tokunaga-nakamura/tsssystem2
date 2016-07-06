@@ -327,7 +327,7 @@ namespace TSS_SYSTEM
             //セルを選択すると行全体が選択されるようにする
             //dgv_list.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridView1にユーザーが新しい行を追加できないようにする
-            //dgv_list.AllowUserToAddRows = false;
+            dgv_list.AllowUserToAddRows = false;
 
 
             //非表示セル
@@ -419,145 +419,18 @@ namespace TSS_SYSTEM
             dgv_list.Columns["juchu_su"].DefaultCellStyle.BackColor = Color.LightGray;
             dgv_list.Columns["hensyu_flg"].DefaultCellStyle.BackColor = Color.LightGray;
 
-            
-            //セルの色
-            cell_color();
-              
+  
             
             tb_create_user_cd.Text = w_dt_list.Rows[0]["create_user_cd"].ToString();
             tb_create_datetime.Text = w_dt_list.Rows[0]["create_datetime"].ToString();
             tb_update_user_cd.Text = w_dt_list.Rows[0]["update_user_cd"].ToString();
             tb_update_datetime.Text = w_dt_list.Rows[0]["update_datetime"].ToString();
 
-            
+     
         }
 
-        //データグリッドビューの重複結合
-        private void cell_color()
-        {
-            int ri = dgv_list.RowCount;
-
-            dgv_list.Rows[0].Cells[3].Style.BackColor = Color.Coral;
-
-            for (int i = 0; i < ri-2 ; i++)
-            {
-                if (dgv_list.Rows[i].Cells[3].Value.ToString() == dgv_list.Rows[i + 1].Cells[3].Value.ToString())
-                {
-                    
-                    dgv_list.Rows[i + 1].Cells[3].Style.BackColor = dgv_list.Rows[i].Cells[3].Style.BackColor;
-
-                }
-                else
-                {
-                    if (dgv_list.Rows[i].Cells[3].Style.BackColor == Color.Coral)
-                    {
-                        dgv_list.Rows[i + 1].Cells[3].Style.BackColor = Color.YellowGreen;
-                    }
-                    if (dgv_list.Rows[i].Cells[3].Style.BackColor == Color.YellowGreen)
-                    {
-                        dgv_list.Rows[i + 1].Cells[3].Style.BackColor = Color.Coral;
-                    }
-                    
-                }
-            }
-
-            dgv_list.Rows[0].Cells[5].Style.BackColor = Color.LightPink;
-
-            for (int i = 0; i < ri - 2; i++)
-            {
-                if (dgv_list.Rows[i].Cells[5].Value.ToString() == dgv_list.Rows[i + 1].Cells[5].Value.ToString())
-                {
-
-                    dgv_list.Rows[i + 1].Cells[5].Style.BackColor = dgv_list.Rows[i].Cells[5].Style.BackColor;
-
-                }
-                else
-                {
-                    if (dgv_list.Rows[i].Cells[5].Style.BackColor == Color.LightPink)
-                    {
-                        dgv_list.Rows[i + 1].Cells[5].Style.BackColor = Color.LemonChiffon;
-                    }
-                    if (dgv_list.Rows[i].Cells[5].Style.BackColor == Color.LemonChiffon)
-                    {
-                        dgv_list.Rows[i + 1].Cells[5].Style.BackColor = Color.LightPink;
-                    }
-
-                }
-            }
-        }
+ 
            
-        
-
-        //private void dgv_list_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-
-        //    int ri = dgv_list.RowCount;
-
-        //    for (int i = 0; i < ri - 2; i++)
-        //    {
-        //        if (dgv_list.Rows[i].Cells[3].Value.ToString() == dgv_list.Rows[i + 1].Cells[3].Value.ToString())
-        //        {
-        //            dgv_list.Rows[i].Cells[3].Style.BackColor = Color.Azure;
-        //            //dgv_list.Rows[i+1].Cells[3].Style.BackColor = Color.Azure;
-        //            //dgv_list[i, 3].Style.BackColor = Color.Red;
-        //            //dgv_list[i+1, 3].Style.BackColor = Color.Red;
-        //        }
-        //        else
-        //        {
-        //            dgv_list.Rows[i].Cells[3].Style.BackColor = Color.Azure;
-        //            dgv_list.Rows[i + 1].Cells[3].Style.BackColor = Color.YellowGreen;
-        //        }
-        //    }
-
-
-
-        //    // 1行目については何もしない
-        //    if (e.RowIndex == 0)
-        //    {
-        //        return;
-        //    }
-
-
-        //    // 6列目以降については何もしない
-        //    if (e.ColumnIndex < 6)
-        //    {
-
-        //        if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
-        //        {
-        //            e.Value = "";
-        //            e.FormattingApplied = true; // 以降の書式設定は不要
-        //        }
-        //        return;
-        //    }
-        //}
-
-        //private void dgv_list_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        //{
-        //    if (e.RowIndex > 0 && e.ColumnIndex < 5)
-        //    {
-        //        // セルの下側の境界線を「境界線なし」に設定
-        //        e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-
-        //        // 1行目や列ヘッダ、行ヘッダの場合は何もしない
-        //        if (e.RowIndex < 1 || e.ColumnIndex < 0)
-        //        {
-        //            return;
-
-        //        }
-
-        //        if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
-        //        {
-        //            // セルの上側の境界線を「境界線なし」に設定
-        //            e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
-        //        }
-        //        else
-        //        {
-        //            // セルの上側の境界線を既定の境界線に設定
-        //            e.AdvancedBorderStyle.Top = dgv_list.AdvancedCellBorderStyle.Top;
-        //        }
-        //    }
-
-        //}
 
         private void dgv_list_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
@@ -1169,7 +1042,7 @@ namespace TSS_SYSTEM
             w_dt_list.Rows[dgv_list.CurrentCell.RowIndex - 1].ItemArray = obj;
             dgv_list.CurrentCell = dgv_list.Rows[dgv_list.CurrentCell.RowIndex - 1].Cells[2];
 
-            cell_color();
+         
 
         }
 
@@ -1192,7 +1065,7 @@ namespace TSS_SYSTEM
             w_dt_list.Rows[dgv_list.CurrentCell.RowIndex + 1].ItemArray = obj;
             dgv_list.CurrentCell = dgv_list.Rows[dgv_list.CurrentCell.RowIndex + 1].Cells[2];
 
-            cell_color();
+           
         }
 
         private void btn_line_tuika_Click(object sender, EventArgs e)
@@ -1202,6 +1075,13 @@ namespace TSS_SYSTEM
             DataRow dr = w_dt_list.NewRow();
             int rn = dgv_list.CurrentRow.Index;
             w_dt_list.Rows.InsertAt(w_dt_list.NewRow(), rn);　//rn・・・選択行のインデックス。36行目で定義
+            w_dt_list.Rows[rn][0] = w_dt_list.Rows[rn - 1][0];
+            w_dt_list.Rows[rn][1] = w_dt_list.Rows[rn - 1][1];
+            w_dt_list.Rows[rn][2] = w_dt_list.Rows[rn - 1][2];
+            w_dt_list.Rows[rn][3] = w_dt_list.Rows[rn - 1][3];
+            w_dt_list.Rows[rn][4] = w_dt_list.Rows[rn - 1][4];
+            w_dt_list.Rows[rn][5] = w_dt_list.Rows[rn - 1][5];
+            w_dt_list.Rows[rn][6] = w_dt_list.Rows[rn - 1][6];
             dgv_list.DataSource = w_dt_list;
         }
 
@@ -1648,7 +1528,132 @@ namespace TSS_SYSTEM
             }
         }
 
-       
+      
+
+        bool IsTheSameCellValue(int column, int row)
+        {
+
+            DataGridViewCell cell1 = dgv_list[column, row];
+            DataGridViewCell cell2 = dgv_list[column, row - 1];
+
+            if (cell1.Value == null || cell2.Value == null)
+            {
+                return false;
+            }
+
+            // ここでは文字列としてセルの値を比較
+            if (cell1.Value.ToString() == cell2.Value.ToString())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool IsTheSameCellValue_2(int column, int row)
+        {
+
+            DataGridViewCell cell1 = dgv_list[1, row];
+            DataGridViewCell cell2 = dgv_list[2, row];
+            DataGridViewCell cell3 = dgv_list[4, row];
+
+            DataGridViewCell cell4 = dgv_list[1, row-1];
+            DataGridViewCell cell5 = dgv_list[2, row-1];
+            DataGridViewCell cell6 = dgv_list[4, row-1];
+
+
+            if (cell1.Value == null || cell2.Value == null || cell3.Value == null)
+            {
+                return false;
+            }
+            if (cell4.Value == null || cell5.Value == null || cell6.Value == null)
+            {
+                return false;
+            }
+
+            string str = cell1.Value.ToString() + cell2.Value.ToString() +  cell3.Value.ToString();
+            string str2 = cell4.Value.ToString() + cell5.Value.ToString() + cell6.Value.ToString();
+
+            // ここでは文字列としてセルの値を比較
+            if (str == str2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        private void dgv_list_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // 1行目については何もしない
+            if (e.RowIndex == 0)
+                return;
+
+            if (e.ColumnIndex < 6)
+            {
+                if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
+                {
+                    e.Value = "";
+                    e.FormattingApplied = true; // 以降の書式設定は不要
+                }
+            }
+              
+        }
+
+        private void dgv_list_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex < 6)
+            {
+                // セルの下側の境界線を「境界線なし」に設定
+                e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+
+                // 1行目や列ヘッダ、行ヘッダの場合は何もしない
+                if (e.RowIndex < 1 || e.ColumnIndex < 0)
+                    return;
+
+                if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
+                {
+                    // セルの上側の境界線を「境界線なし」に設定
+                    e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                }
+                else
+                {
+                    // セルの上側の境界線を既定の境界線に設定
+                    e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.InsetDouble;
+                }
+            }
+
+            if (e.ColumnIndex >= 6)
+            {
+
+                //1行目や列ヘッダ、行ヘッダの場合は何もしない
+                if (e.RowIndex < 1 || e.ColumnIndex < 0)
+                    return;
+
+
+                if (IsTheSameCellValue_2(e.ColumnIndex, e.RowIndex))
+                {
+                    //セルの上側の境界線を「境界線なし」に設定
+                    //e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                }
+                else
+                {
+                    //セルの上側の境界線を既定の境界線に設定
+                    e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.InsetDouble;
+                }
+            }
+
+        }
+
+     
+
+        
+
 
 
     }
