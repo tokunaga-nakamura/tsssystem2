@@ -1082,5 +1082,12 @@ namespace TSS_SYSTEM
         {
             dtp_1.Value = DateTime.Now;
         }
+
+        private void btn_seisan_schedule_edit_Click(object sender, EventArgs e)
+        {
+            frm_seisan_schedule_edit frm_sse = new frm_seisan_schedule_edit();
+            frm_sse.ShowDialog(this);
+            frm_sse.Dispose();
+        }
     }
 }

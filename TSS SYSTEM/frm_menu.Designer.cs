@@ -134,6 +134,7 @@
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_seisan_schedule_edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -641,7 +642,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(816, 379);
+            this.tabPage2.Size = new System.Drawing.Size(830, 416);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
             // 
@@ -842,7 +843,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(816, 379);
+            this.tabPage3.Size = new System.Drawing.Size(830, 416);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
             // 
@@ -1049,7 +1050,7 @@
             this.tabPage4.Controls.Add(this.btn_siire);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(816, 379);
+            this.tabPage4.Size = new System.Drawing.Size(830, 416);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
             // 
@@ -1107,12 +1108,13 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_seisan_schedule_edit);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_remake);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(816, 379);
+            this.tabPage5.Size = new System.Drawing.Size(830, 416);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
             // 
@@ -1128,7 +1130,7 @@
             // 
             // btn_seisan_schedule
             // 
-            this.btn_seisan_schedule.Location = new System.Drawing.Point(8, 204);
+            this.btn_seisan_schedule.Location = new System.Drawing.Point(6, 204);
             this.btn_seisan_schedule.Name = "btn_seisan_schedule";
             this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_schedule.TabIndex = 1;
@@ -1171,7 +1173,7 @@
             this.tabPage6.Controls.Add(this.btn_kubun_meisyou_m);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(816, 379);
+            this.tabPage6.Size = new System.Drawing.Size(830, 416);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
@@ -1429,6 +1431,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_seisan_schedule_edit
+            // 
+            this.btn_seisan_schedule_edit.Location = new System.Drawing.Point(234, 204);
+            this.btn_seisan_schedule_edit.Name = "btn_seisan_schedule_edit";
+            this.btn_seisan_schedule_edit.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule_edit.TabIndex = 3;
+            this.btn_seisan_schedule_edit.Text = "生産スケジュール編集";
+            this.btn_seisan_schedule_edit.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule_edit.Click += new System.EventHandler(this.btn_seisan_schedule_edit_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1612,6 +1624,7 @@
         private System.Windows.Forms.Button btn_quick_seisan_schedule;
         private System.Windows.Forms.Button btn_quick_seisan_kousu;
         private System.Windows.Forms.Button btn_quick_nouhin_schedule;
+        private System.Windows.Forms.Button btn_seisan_schedule_edit;
     }
 }
 
