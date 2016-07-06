@@ -57,19 +57,18 @@ namespace TSS_SYSTEM
             {
                 btn_seisan_schedule_remake.Enabled = false;
             }
-
         }
 
         private void data_read()
         {
             string w_sql;
-            w_sql = "select A.seisan_yotei_date,B.busyo_name,C.koutei_name,D.line_name,A.seq,A.seisan_su,A.seisan_time,A.start_time,A.end_time,A.ninzu,A.members,A.bikou,A.hensyu_flg"
+            w_sql = "select A.seisan_yotei_date,B.busyo_name,C.koutei_name,D.line_name,A.seq,A.seisankisyu,A.seisan_su,A.seisan_time,A.start_time,A.end_time,A.ninzu,A.members,A.bikou,A.hensyu_flg"
                   + " from tss_seisan_schedule_f A"
                   + " left outer join tss_busyo_m B on (A.busyo_cd = B.busyo_cd)"
                   + " left outer join tss_koutei_m C on (A.koutei_cd = C.koutei_cd)"
                   + " left outer join tss_line_m D on (A.line_cd = D.line_cd)"
                   + " where torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and juchu_cd1 = '" + tb_juchu_cd1.Text.ToString() + "' and juchu_cd2 = '" + tb_juchu_cd2.Text.ToString()
-                  + "' order by A.seisan_yotei_date asc";
+                  + "' order by A.seisan_yotei_date,seq asc";
             w_dt_seisan_schedule = tss.OracleSelect(w_sql);
 
             w_dt_busyo_koutei = tss.OracleSelect("select A.busyo_cd,B.busyo_name,A.koutei_cd,C.koutei_name,sum(A.seisan_su) seisan_su from tss_seisan_schedule_f A left outer join tss_busyo_m B on A.busyo_cd = B.busyo_cd left outer join tss_koutei_m C on A.koutei_cd = C.koutei_cd where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "' group by A.busyo_cd, A.koutei_cd, B.busyo_name, C.koutei_name order by A.busyo_cd,A.koutei_cd asc");
@@ -104,20 +103,21 @@ namespace TSS_SYSTEM
             dgv_seisan_schedule.Columns[2].HeaderText = "工程名";
             dgv_seisan_schedule.Columns[3].HeaderText = "ライン名";
             dgv_seisan_schedule.Columns[4].HeaderText = "生産順";
-            dgv_seisan_schedule.Columns[5].HeaderText = "生産数";
-            dgv_seisan_schedule.Columns[6].HeaderText = "生産時間";
-            dgv_seisan_schedule.Columns[7].HeaderText = "開始日時";
-            dgv_seisan_schedule.Columns[8].HeaderText = "終了日時";
-            dgv_seisan_schedule.Columns[9].HeaderText = "人数";
-            dgv_seisan_schedule.Columns[10].HeaderText = "メンバー";
-            dgv_seisan_schedule.Columns[11].HeaderText = "備考";
-            dgv_seisan_schedule.Columns[12].HeaderText = "編集済みフラグ";
+            dgv_seisan_schedule.Columns[5].HeaderText = "生産機種";
+            dgv_seisan_schedule.Columns[6].HeaderText = "生産数";
+            dgv_seisan_schedule.Columns[7].HeaderText = "生産時間";
+            dgv_seisan_schedule.Columns[8].HeaderText = "開始日時";
+            dgv_seisan_schedule.Columns[9].HeaderText = "終了日時";
+            dgv_seisan_schedule.Columns[10].HeaderText = "人数";
+            dgv_seisan_schedule.Columns[11].HeaderText = "メンバー";
+            dgv_seisan_schedule.Columns[12].HeaderText = "備考";
+            dgv_seisan_schedule.Columns[13].HeaderText = "編集済みフラグ";
 
             //列を右詰にする
             dgv_seisan_schedule.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_seisan_schedule.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_seisan_schedule.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgv_seisan_schedule.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_seisan_schedule.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_seisan_schedule.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //書式を設定する
             //dgv_seisan_schedule.Columns[2].DefaultCellStyle.Format = "#,###,###,##0.00";
@@ -175,6 +175,17 @@ namespace TSS_SYSTEM
             //指定列を非表示にする
             dgv_busyo_koutei.Columns[0].Visible = false;
             dgv_busyo_koutei.Columns[2].Visible = false;
+            for(int i=0;i<dgv_busyo_koutei.Rows.Count;i++)
+            {
+                if(dgv_busyo_koutei.Rows[i].Cells["seisan_su"].Value.ToString() != tb_juchu_su.Text)
+                {
+                    dgv_busyo_koutei.Rows[i].Cells["seisan_su"].Style.ForeColor = Color.Red;
+                }
+                else
+                {
+                    dgv_busyo_koutei.Rows[i].Cells["seisan_su"].Style.ForeColor = Color.Black;
+                }
+            }
         }
 
         private void get_seisan_koutei()

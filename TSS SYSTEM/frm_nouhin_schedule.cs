@@ -521,57 +521,68 @@ namespace TSS_SYSTEM
                     dr["juchu_su"] = w_nouhin_su_ttl.ToString() + "/" + dr["juchu_su"].ToString();
                 }
                 //受注数と生産スケジュールの生産数のアンマッチ処理
-                int w_juchu_seisan_su;
-                int w_seisan_seisan_su;
+                dr["seisan_schedule_flg"] = seisan_schedule_ox(dr["torihikisaki_cd"].ToString(),dr["juchu_cd1"].ToString(),dr["juchu_cd2"].ToString(),dr["juchu_su"].ToString());
+            }
+        }
+
+        private string seisan_schedule_ox(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_juchu_su)
+        {
+            //受注数と生産スケジュールの生産指示数を工程毎に確認し、アンマッチの場合は×を表示する
+            string out_str;
+            out_str = "";
+            DataTable w_dt_seisan = new DataTable();
+            int w_juchu_seisan_su;
+            int w_seisan_seisan_su;
+            w_juchu_seisan_su = 0;
+            w_seisan_seisan_su = 0;
+            int w_flg;
+            w_flg = 0;
+
+            if (int.TryParse(in_juchu_su, out w_juchu_seisan_su))
+            {
+
+            }
+            else
+            {
                 w_juchu_seisan_su = 0;
+            }
+            //受注数と生産数のアンマッチは、各工程毎で比較し、1つでもアンマッチがあれば×とする
+            w_dt_seisan = tss.OracleSelect("select sum(seisan_su) seisan_su,busyo_cd,koutei_cd from tss_seisan_schedule_f where torihikisaki_cd = '" +in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' group by busyo_cd,koutei_cd");
+            if (w_dt_seisan.Rows.Count <= 0)
+            {
                 w_seisan_seisan_su = 0;
-                int w_flg;
-                w_flg = 0;
-
-                if(int.TryParse(dr["juchu_su2"].ToString(),out w_juchu_seisan_su))
+                out_str = "×";
+            }
+            else
+            {
+                w_flg = 0;  //アンマッチ＝１
+                foreach (DataRow w_dr_sum in w_dt_seisan.Rows)
                 {
-
-                }
-                else
-                {
-                    w_juchu_seisan_su = 0;
-                }
-                //受注数と生産数のアンマッチは、各工程毎で比較し、1つでもアンマッチがあれば×とする
-                w_dt_seisan = tss.OracleSelect("select sum(seisan_su) seisan_su,busyo_cd,koutei_cd from tss_seisan_schedule_f where torihikisaki_cd = '" + dr["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + dr["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + dr["juchu_cd2"].ToString() + "' group by busyo_cd,koutei_cd");
-                if(w_dt_seisan.Rows.Count <= 0)
-                {
-                    w_seisan_seisan_su = 0;
-                    dr["seisan_schedule_flg"] = "×";
-                }
-                else
-                {
-                    w_flg = 0;  //アンマッチ＝１
-                    foreach(DataRow w_dr_sum in w_dt_seisan.Rows)
+                    if (int.TryParse(w_dr_sum["seisan_su"].ToString(), out w_seisan_seisan_su))
                     {
-                        if (int.TryParse(w_dr_sum["seisan_su"].ToString(), out w_seisan_seisan_su))
-                        {
 
-                        }
-                        else
-                        {
-                            w_seisan_seisan_su = 0;
-                        }
-                        if(w_juchu_seisan_su != w_seisan_seisan_su)
-                        {
-                            w_flg = 1;
-                        }
-                    }
-                    if(w_flg == 0)
-                    {
-                        dr["seisan_schedule_flg"] = "○";
                     }
                     else
                     {
-                        dr["seisan_schedule_flg"] = "×";
+                        w_seisan_seisan_su = 0;
+                    }
+                    if (w_juchu_seisan_su != w_seisan_seisan_su)
+                    {
+                        w_flg = 1;
                     }
                 }
+                if (w_flg == 0)
+                {
+                    out_str = "○";
+                }
+                else
+                {
+                    out_str = "×";
+                }
             }
+            return out_str;
         }
+
 
         private void make_nouhin_schedule_goukei()
         {
@@ -1124,9 +1135,11 @@ namespace TSS_SYSTEM
                 frm_ssd.w_juchu_cd2 = dgv.Rows[e.RowIndex].Cells[3].Value.ToString();
                 frm_ssd.w_seihin_cd = dgv.Rows[e.RowIndex].Cells[4].Value.ToString();
                 frm_ssd.w_seihin_name = dgv.Rows[e.RowIndex].Cells[5].Value.ToString();
-                frm_ssd.w_juchu_su = dgv.Rows[e.RowIndex].Cells[6].Value.ToString();
+                frm_ssd.w_juchu_su = dgv.Rows[e.RowIndex].Cells[42].Value.ToString();
                 frm_ssd.ShowDialog(this);
                 frm_ssd.Dispose();
+                //生産スケジュールが調整された場合を想定し、○×の再表示
+                dgv.Rows[e.RowIndex].Cells[41].Value = seisan_schedule_ox(dgv.Rows[e.RowIndex].Cells[1].Value.ToString(), dgv.Rows[e.RowIndex].Cells[2].Value.ToString(), dgv.Rows[e.RowIndex].Cells[3].Value.ToString(), dgv.Rows[e.RowIndex].Cells[42].Value.ToString());
             }
         }
     }

@@ -391,8 +391,6 @@ namespace TSS_SYSTEM
             //dgv_seisan_koutei.Columns[3].Visible = false;
         }
 
-
-
         private void tb_juchu_cd2_Validating(object sender, CancelEventArgs e)
         {
             if (tss.Check_String_Escape(tb_juchu_cd2.Text) == false)
