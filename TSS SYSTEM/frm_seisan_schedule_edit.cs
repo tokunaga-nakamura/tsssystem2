@@ -129,9 +129,7 @@ namespace TSS_SYSTEM
 
             //指定列を非表示にする
             dgv_today.Columns["seisan_yotei_date"].Visible = false;
-            dgv_today.Columns["busyo_cd"].Visible = false;
-            dgv_today.Columns["koutei_cd"].Visible = false;
-            dgv_today.Columns["line_cd"].Visible = false;
+            dgv_today.Columns["seq"].Visible = false;
 
             ////書式を設定する
             dgv_today.Columns["start_time"].DefaultCellStyle.Format = "HH:mm";
@@ -589,13 +587,13 @@ namespace TSS_SYSTEM
         bool IsTheSameCellValue_2(int column, int row)
         {
 
-            DataGridViewCell cell1 = dgv_today[2, row];
-            DataGridViewCell cell2 = dgv_today[4, row];
-            DataGridViewCell cell3 = dgv_today[6, row];
+            DataGridViewCell cell1 = dgv_today["busyo_cd", row];
+            DataGridViewCell cell2 = dgv_today["koutei_cd", row];
+            DataGridViewCell cell3 = dgv_today["line_cd", row];
 
-            DataGridViewCell cell4 = dgv_today[2, row - 1];
-            DataGridViewCell cell5 = dgv_today[4, row - 1];
-            DataGridViewCell cell6 = dgv_today[6, row - 1];
+            DataGridViewCell cell4 = dgv_today["busyo_cd", row - 1];
+            DataGridViewCell cell5 = dgv_today["koutei_cd", row - 1];
+            DataGridViewCell cell6 = dgv_today["line_cd", row - 1];
 
 
             if (cell1.Value == null || cell2.Value == null || cell3.Value == null)
