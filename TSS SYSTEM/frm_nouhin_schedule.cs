@@ -701,6 +701,8 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["seq"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             nouhin_jun_kengen_check();
+
+            //セルを固定する
             dgv_nouhin_schedule.Columns["juchu_su"].Frozen = true;
 
         }
