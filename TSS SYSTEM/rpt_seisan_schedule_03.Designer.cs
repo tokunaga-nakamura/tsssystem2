@@ -41,6 +41,13 @@
             this.tb_busyo_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_koutei_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_line_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.label1 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label2 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.tb_create_user_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_update_user_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_create_datetime = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_update_datetime = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.label3 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.textBox4 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox5 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -108,13 +115,6 @@
             this.label41 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label42 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.groupFooter2 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
-            this.label1 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.label2 = new GrapeCity.ActiveReports.SectionReportModel.Label();
-            this.tb_create_user_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_update_user_name = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_create_datetime = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_update_datetime = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.label3 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             ((System.ComponentModel.ISupportInitialize)(this.label8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_today)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
@@ -127,6 +127,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_busyo_name)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_koutei_name)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_line_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_create_user_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_update_user_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_create_datetime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_update_datetime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
@@ -167,13 +174,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.label40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_create_user_name)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_update_user_name)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_create_datetime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_update_datetime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -215,13 +215,13 @@
             // tb_today
             // 
             this.tb_today.Height = 0.1409449F;
-            this.tb_today.Left = 9.760237F;
+            this.tb_today.Left = 9.984647F;
             this.tb_today.Name = "tb_today";
             this.tb_today.OutputFormat = resources.GetString("tb_today.OutputFormat");
             this.tb_today.Style = "font-size: 8.25pt; text-align: right";
             this.tb_today.Text = null;
-            this.tb_today.Top = 0F;
-            this.tb_today.Width = 1.09409F;
+            this.tb_today.Top = 0.0937008F;
+            this.tb_today.Width = 0.9011755F;
             // 
             // label6
             // 
@@ -326,6 +326,81 @@
             this.tb_line_name.Text = null;
             this.tb_line_name.Top = 0.4862204F;
             this.tb_line_name.Width = 1.322834F;
+            // 
+            // label1
+            // 
+            this.label1.Height = 0.09370076F;
+            this.label1.HyperLink = null;
+            this.label1.Left = 8.824803F;
+            this.label1.Name = "label1";
+            this.label1.Style = "font-size: 6pt";
+            this.label1.Text = "作成";
+            this.label1.Top = 0.3925197F;
+            this.label1.Width = 0.3704714F;
+            // 
+            // label2
+            // 
+            this.label2.Height = 0.09370076F;
+            this.label2.HyperLink = null;
+            this.label2.Left = 8.824803F;
+            this.label2.Name = "label2";
+            this.label2.Style = "font-size: 6pt";
+            this.label2.Text = "更新";
+            this.label2.Top = 0.4862205F;
+            this.label2.Width = 0.3704714F;
+            // 
+            // tb_create_user_name
+            // 
+            this.tb_create_user_name.Height = 0.09370083F;
+            this.tb_create_user_name.Left = 9.202363F;
+            this.tb_create_user_name.Name = "tb_create_user_name";
+            this.tb_create_user_name.Style = "font-size: 8.25pt; text-align: left";
+            this.tb_create_user_name.Text = null;
+            this.tb_create_user_name.Top = 0.3925197F;
+            this.tb_create_user_name.Width = 0.5830704F;
+            // 
+            // tb_update_user_name
+            // 
+            this.tb_update_user_name.Height = 0.09370083F;
+            this.tb_update_user_name.Left = 9.202363F;
+            this.tb_update_user_name.Name = "tb_update_user_name";
+            this.tb_update_user_name.Style = "font-size: 8.25pt; text-align: left";
+            this.tb_update_user_name.Text = null;
+            this.tb_update_user_name.Top = 0.4862205F;
+            this.tb_update_user_name.Width = 0.5830704F;
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.Height = 0.09370083F;
+            this.tb_create_datetime.Left = 9.785434F;
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.OutputFormat = resources.GetString("tb_create_datetime.OutputFormat");
+            this.tb_create_datetime.Style = "font-size: 8.25pt; text-align: left";
+            this.tb_create_datetime.Text = null;
+            this.tb_create_datetime.Top = 0.3925197F;
+            this.tb_create_datetime.Width = 1.068898F;
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.Height = 0.09370083F;
+            this.tb_update_datetime.Left = 9.785434F;
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.OutputFormat = resources.GetString("tb_update_datetime.OutputFormat");
+            this.tb_update_datetime.Style = "font-size: 8.25pt; text-align: left";
+            this.tb_update_datetime.Text = null;
+            this.tb_update_datetime.Top = 0.4862205F;
+            this.tb_update_datetime.Width = 1.068898F;
+            // 
+            // label3
+            // 
+            this.label3.Height = 0.09370076F;
+            this.label3.HyperLink = null;
+            this.label3.Left = 10.52244F;
+            this.label3.Name = "label3";
+            this.label3.Style = "font-size: 6pt; text-align: right";
+            this.label3.Text = "出力日";
+            this.label3.Top = 0F;
+            this.label3.Width = 0.3704714F;
             // 
             // detail
             // 
@@ -1169,81 +1244,6 @@
             this.groupFooter2.Height = 0.1734799F;
             this.groupFooter2.Name = "groupFooter2";
             // 
-            // label1
-            // 
-            this.label1.Height = 0.09370076F;
-            this.label1.HyperLink = null;
-            this.label1.Left = 8.824803F;
-            this.label1.Name = "label1";
-            this.label1.Style = "font-size: 6pt";
-            this.label1.Text = "作成";
-            this.label1.Top = 0.3925197F;
-            this.label1.Width = 0.3704714F;
-            // 
-            // label2
-            // 
-            this.label2.Height = 0.09370076F;
-            this.label2.HyperLink = null;
-            this.label2.Left = 8.824803F;
-            this.label2.Name = "label2";
-            this.label2.Style = "font-size: 6pt";
-            this.label2.Text = "更新";
-            this.label2.Top = 0.4862205F;
-            this.label2.Width = 0.3704714F;
-            // 
-            // tb_create_user_name
-            // 
-            this.tb_create_user_name.Height = 0.09370083F;
-            this.tb_create_user_name.Left = 9.202363F;
-            this.tb_create_user_name.Name = "tb_create_user_name";
-            this.tb_create_user_name.Style = "font-size: 8.25pt; text-align: left";
-            this.tb_create_user_name.Text = null;
-            this.tb_create_user_name.Top = 0.3925197F;
-            this.tb_create_user_name.Width = 0.5830704F;
-            // 
-            // tb_update_user_name
-            // 
-            this.tb_update_user_name.Height = 0.09370083F;
-            this.tb_update_user_name.Left = 9.202363F;
-            this.tb_update_user_name.Name = "tb_update_user_name";
-            this.tb_update_user_name.Style = "font-size: 8.25pt; text-align: left";
-            this.tb_update_user_name.Text = null;
-            this.tb_update_user_name.Top = 0.4862205F;
-            this.tb_update_user_name.Width = 0.5830704F;
-            // 
-            // tb_create_datetime
-            // 
-            this.tb_create_datetime.Height = 0.09370083F;
-            this.tb_create_datetime.Left = 9.785434F;
-            this.tb_create_datetime.Name = "tb_create_datetime";
-            this.tb_create_datetime.OutputFormat = resources.GetString("tb_create_datetime.OutputFormat");
-            this.tb_create_datetime.Style = "font-size: 8.25pt; text-align: left";
-            this.tb_create_datetime.Text = null;
-            this.tb_create_datetime.Top = 0.3925197F;
-            this.tb_create_datetime.Width = 1.068898F;
-            // 
-            // tb_update_datetime
-            // 
-            this.tb_update_datetime.Height = 0.09370083F;
-            this.tb_update_datetime.Left = 9.785434F;
-            this.tb_update_datetime.Name = "tb_update_datetime";
-            this.tb_update_datetime.OutputFormat = resources.GetString("tb_update_datetime.OutputFormat");
-            this.tb_update_datetime.Style = "font-size: 8.25pt; text-align: left";
-            this.tb_update_datetime.Text = null;
-            this.tb_update_datetime.Top = 0.4862205F;
-            this.tb_update_datetime.Width = 1.068898F;
-            // 
-            // label3
-            // 
-            this.label3.Height = 0.09370076F;
-            this.label3.HyperLink = null;
-            this.label3.Left = 9.389765F;
-            this.label3.Name = "label3";
-            this.label3.Style = "font-size: 6pt";
-            this.label3.Text = "出力日";
-            this.label3.Top = 0.0472441F;
-            this.label3.Width = 0.3704714F;
-            // 
             // rpt_seisan_schedule_03
             // 
             this.MasterReport = false;
@@ -1277,6 +1277,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_busyo_name)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_koutei_name)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_line_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_create_user_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_update_user_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_create_datetime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_update_datetime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
@@ -1317,13 +1324,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.label40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_create_user_name)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_update_user_name)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_create_datetime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_update_datetime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.label3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

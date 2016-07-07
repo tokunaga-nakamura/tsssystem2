@@ -49,6 +49,7 @@
             this.cb_koutei_sitei = new System.Windows.Forms.CheckBox();
             this.cb_busyo_sitei = new System.Windows.Forms.CheckBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btn_line_tuika_under = new System.Windows.Forms.Button();
             this.textBox32 = new System.Windows.Forms.TextBox();
             this.tb_create_user_cd = new System.Windows.Forms.TextBox();
             this.tb_create_datetime = new System.Windows.Forms.TextBox();
@@ -151,6 +152,7 @@
             this.btn_insatu.TabIndex = 2;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
+            this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
             // 
             // btn_csv
             // 
@@ -317,6 +319,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.btn_line_tuika_under);
             this.splitContainer3.Panel1.Controls.Add(this.textBox32);
             this.splitContainer3.Panel1.Controls.Add(this.tb_create_user_cd);
             this.splitContainer3.Panel1.Controls.Add(this.tb_create_datetime);
@@ -337,6 +340,17 @@
             this.splitContainer3.Size = new System.Drawing.Size(1184, 437);
             this.splitContainer3.SplitterDistance = 130;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // btn_line_tuika_under
+            // 
+            this.btn_line_tuika_under.Location = new System.Drawing.Point(328, 94);
+            this.btn_line_tuika_under.Name = "btn_line_tuika_under";
+            this.btn_line_tuika_under.Size = new System.Drawing.Size(122, 23);
+            this.btn_line_tuika_under.TabIndex = 111;
+            this.btn_line_tuika_under.TabStop = false;
+            this.btn_line_tuika_under.Text = "下に1行追加";
+            this.btn_line_tuika_under.UseVisualStyleBackColor = true;
+            this.btn_line_tuika_under.Click += new System.EventHandler(this.btn_line_tuika_under_Click);
             // 
             // textBox32
             // 
@@ -402,32 +416,32 @@
             // 
             // btn_line_tuika
             // 
-            this.btn_line_tuika.Location = new System.Drawing.Point(300, 95);
+            this.btn_line_tuika.Location = new System.Drawing.Point(328, 63);
             this.btn_line_tuika.Name = "btn_line_tuika";
-            this.btn_line_tuika.Size = new System.Drawing.Size(75, 23);
+            this.btn_line_tuika.Size = new System.Drawing.Size(122, 23);
             this.btn_line_tuika.TabIndex = 104;
             this.btn_line_tuika.TabStop = false;
-            this.btn_line_tuika.Text = "1行追加";
+            this.btn_line_tuika.Text = "上に1行追加";
             this.btn_line_tuika.UseVisualStyleBackColor = true;
             this.btn_line_tuika.Click += new System.EventHandler(this.btn_line_tuika_Click);
             // 
             // btn_seisan_jun_down
             // 
-            this.btn_seisan_jun_down.Location = new System.Drawing.Point(462, 94);
+            this.btn_seisan_jun_down.Location = new System.Drawing.Point(577, 95);
             this.btn_seisan_jun_down.Name = "btn_seisan_jun_down";
             this.btn_seisan_jun_down.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_down.TabIndex = 9;
-            this.btn_seisan_jun_down.Text = "下へ";
+            this.btn_seisan_jun_down.Text = "下に移動";
             this.btn_seisan_jun_down.UseVisualStyleBackColor = true;
             this.btn_seisan_jun_down.Click += new System.EventHandler(this.btn_seisan_jun_down_Click);
             // 
             // btn_seisan_jun_up
             // 
-            this.btn_seisan_jun_up.Location = new System.Drawing.Point(381, 94);
+            this.btn_seisan_jun_up.Location = new System.Drawing.Point(496, 95);
             this.btn_seisan_jun_up.Name = "btn_seisan_jun_up";
             this.btn_seisan_jun_up.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_up.TabIndex = 8;
-            this.btn_seisan_jun_up.Text = "上へ";
+            this.btn_seisan_jun_up.Text = "上に移動";
             this.btn_seisan_jun_up.UseVisualStyleBackColor = true;
             this.btn_seisan_jun_up.Click += new System.EventHandler(this.btn_seisan_jun_up_Click);
             // 
@@ -609,5 +623,6 @@
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.TextBox tb_update_user_cd;
         private System.Windows.Forms.TextBox tb_update_datetime;
+        private System.Windows.Forms.Button btn_line_tuika_under;
     }
 }

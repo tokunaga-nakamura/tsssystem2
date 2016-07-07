@@ -79,6 +79,12 @@ namespace TSS_SYSTEM
 
         private void frm_seisan_schedule_Load(object sender, EventArgs e)
         {
+            btn_line_tuika.Enabled = false;
+            btn_line_tuika_under.Enabled = false;
+
+            btn_seisan_jun_down.Enabled = false;
+            btn_seisan_jun_up.Enabled = false;
+
 
         }
 
@@ -426,7 +432,11 @@ namespace TSS_SYSTEM
             tb_update_user_cd.Text = w_dt_list.Rows[0]["update_user_cd"].ToString();
             tb_update_datetime.Text = w_dt_list.Rows[0]["update_datetime"].ToString();
 
-     
+
+            btn_line_tuika.Enabled = true;
+            btn_line_tuika_under.Enabled = true;
+            btn_seisan_jun_down.Enabled = true;
+            btn_seisan_jun_up.Enabled = true;
         }
 
  
@@ -513,9 +523,30 @@ namespace TSS_SYSTEM
 
                     if (dt_work.Rows.Count == 0)
                     {
-                        MessageBox.Show("この製品工程に、このラインは登録されていません");
-                        e.Cancel = true;
-                        return;
+                        //MessageBox.Show("この製品工程に、このラインは登録されていません");
+                        //e.Cancel = true;
+                        //return;
+
+                        DialogResult result = MessageBox.Show("この製品工程に、このラインは登録されていませんが、よろしいですか？",
+                       "質問",
+                       MessageBoxButtons.OKCancel,
+                       MessageBoxIcon.Exclamation,
+                       MessageBoxDefaultButton.Button1);
+
+                        //何が選択されたか調べる
+                        if (result == DialogResult.OK)
+                        {
+                            //「はい」が選択された時
+                            dgv_list.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_list.CurrentCell.Value.ToString());
+                            dgv_list.EndEdit();
+
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            //「キャンセル」が選択された時
+                            e.Cancel = true;
+                            return;
+                        }
                     }
 
                     else
@@ -1085,6 +1116,24 @@ namespace TSS_SYSTEM
             dgv_list.DataSource = w_dt_list;
         }
 
+
+        private void btn_line_tuika_under_Click(object sender, EventArgs e)
+        {
+            DataTable w_dt_list = (DataTable)this.dgv_list.DataSource;
+
+            DataRow dr = w_dt_list.NewRow();
+            int rn = dgv_list.CurrentRow.Index;
+            w_dt_list.Rows.InsertAt(w_dt_list.NewRow(), rn + 1);　//rn・・・選択行のインデックス。36行目で定義
+            w_dt_list.Rows[rn+1][0] = w_dt_list.Rows[rn][0];
+            w_dt_list.Rows[rn+1][1] = w_dt_list.Rows[rn][1];
+            w_dt_list.Rows[rn+1][2] = w_dt_list.Rows[rn][2];
+            w_dt_list.Rows[rn+1][3] = w_dt_list.Rows[rn][3];
+            w_dt_list.Rows[rn+1][4] = w_dt_list.Rows[rn][4];
+            w_dt_list.Rows[rn+1][5] = w_dt_list.Rows[rn][5];
+            w_dt_list.Rows[rn+1][6] = w_dt_list.Rows[rn][6];
+            dgv_list.DataSource = w_dt_list;
+        }
+
         private void dgv_list_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int ci = e.ColumnIndex;
@@ -1126,9 +1175,29 @@ namespace TSS_SYSTEM
 
                     if (dt_work.Rows.Count == 0)
                     {
-                        MessageBox.Show("この製品工程に、このラインは登録されていません");
-                        dgv_list.CurrentCell.Value = "";
-                        return;
+                        //MessageBox.Show("この製品工程に、このラインは登録されていません");
+                        //dgv_list.CurrentCell.Value = "";
+                        //return;
+
+
+                        DialogResult result = MessageBox.Show("この製品工程に、このラインは登録されていませんが、よろしいですか？",
+                        "質問",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Exclamation,
+                        MessageBoxDefaultButton.Button1);
+
+                        //何が選択されたか調べる
+                        if (result == DialogResult.OK)
+                        {
+                            //「はい」が選択された時
+                            dgv_list.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_list.CurrentCell.Value.ToString());
+                            
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            //「キャンセル」が選択された時
+                            return;
+                        }
                     }
                 }
                 else
@@ -1461,7 +1530,7 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < rc; i++)
             {
-                tss.OracleInsert("INSERT INTO tss_seisan_schedule_f (SEISAN_YOTEI_DATE,BUSYO_CD,KOUTEI_CD,LINE_CD,SEQ,TORIHIKISAKI_CD,JUCHU_CD1,JUCHU_CD2,SEIHIN_CD,SEIHIN_NAME,JUCHU_SU,SEISAN_SU,TACT_TIME,DANDORI_KOUSU,TUIKA_KOUSU,HOJU_KOUSU,SEISAN_TIME,START_TIME,END_TIME,SEISAN_ZUMI_SU,NINZU,MEMBERS,HENSYU_FLG,BIKOU,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
+                tss.OracleInsert("INSERT INTO tss_seisan_schedule_f (SEISAN_YOTEI_DATE,BUSYO_CD,KOUTEI_CD,LINE_CD,SEQ,TORIHIKISAKI_CD,JUCHU_CD1,JUCHU_CD2,SEIHIN_CD,SEIHIN_NAME,SEISANKISYU,JUCHU_SU,SEISAN_SU,TACT_TIME,DANDORI_KOUSU,TUIKA_KOUSU,HOJU_KOUSU,SEISAN_TIME,START_TIME,END_TIME,SEISAN_ZUMI_SU,NINZU,MEMBERS,HENSYU_FLG,BIKOU,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
                                 + " VALUES ('"
                                 + w_dt_list.Rows[i]["seisan_yotei_date"].ToString() + "'"   //生産予定日
                                 + ",'" + w_dt_list.Rows[i]["busyo_cd"].ToString() + "'"     //部署コード
@@ -1473,6 +1542,7 @@ namespace TSS_SYSTEM
                                 + ",'" + w_dt_list.Rows[i]["juchu_cd2"].ToString() + "'"         //受注コード２
                                 + ",'" + w_dt_list.Rows[i]["seihin_cd"].ToString() + "'"         //製品コード
                                 + ",'" + w_dt_list.Rows[i]["seihin_name"].ToString() + "'"       //製品名
+                                + ",'" + w_dt_list.Rows[i]["seisankisyu"].ToString() + "'"       //製品名
                                 + ",'" + w_dt_list.Rows[i]["juchu_su"].ToString() + "'"          //受注数
                                 + ",'" + w_dt_list.Rows[i]["seisan_su"].ToString() + "'"         //生産指示数
                                 + ",'" + w_dt_list.Rows[i]["tact_time"].ToString() + "'"         //タクト
@@ -1528,8 +1598,8 @@ namespace TSS_SYSTEM
             }
         }
 
-      
 
+        //データグリッドビューの罫線を引くためのセルの値比較
         bool IsTheSameCellValue(int column, int row)
         {
 
@@ -1552,6 +1622,7 @@ namespace TSS_SYSTEM
             }
         }
 
+        //データグリッドビューの罫線を引くためのセルの値比較（ライン名以降の罫線）
         bool IsTheSameCellValue_2(int column, int row)
         {
 
@@ -1576,7 +1647,7 @@ namespace TSS_SYSTEM
             string str = cell1.Value.ToString() + cell2.Value.ToString() +  cell3.Value.ToString();
             string str2 = cell4.Value.ToString() + cell5.Value.ToString() + cell6.Value.ToString();
 
-            // ここでは文字列としてセルの値を比較
+            // 文字列としてセルの値を比較
             if (str == str2)
             {
                 return true;
@@ -1607,7 +1678,7 @@ namespace TSS_SYSTEM
 
         private void dgv_list_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex < 6)
+            if (e.ColumnIndex < 6) //ライン名までの罫線
             {
                 // セルの下側の境界線を「境界線なし」に設定
                 e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
@@ -1628,7 +1699,7 @@ namespace TSS_SYSTEM
                 }
             }
 
-            if (e.ColumnIndex >= 6)
+            if (e.ColumnIndex >= 6)　//ライン名以降の罫線
             {
 
                 //1行目や列ヘッダ、行ヘッダの場合は何もしない
@@ -1649,6 +1720,84 @@ namespace TSS_SYSTEM
             }
 
         }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_seisan_schedule_preview frm_rpt = new frm_seisan_schedule_preview();
+
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_list;
+
+            string yyyymmdd = tb_seisan_yotei_date.Text.Substring(0, 4) + "年" + tb_seisan_yotei_date.Text.Substring(5, 2) + "月" + tb_seisan_yotei_date.Text.Substring(8, 2) + "日";
+
+            frm_rpt.w_hd10 = yyyymmdd;
+            //frm_rpt.w_hd10 = tb_seisan_yotei_date.Text;
+
+            if (tb_busyo_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd11 = "指定なし";
+                frm_rpt.w_hd12 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd11 = tb_busyo_cd.Text;
+                frm_rpt.w_hd12 = tb_busyo_name.Text;
+            }
+            if (tb_koutei_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd20 = "指定なし";
+                frm_rpt.w_hd21 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd20 = tb_koutei_cd.Text;
+                frm_rpt.w_hd21 = tb_koutei_name.Text;
+            }
+            if (tb_line_cd.Text.ToString() == "")
+            {
+                frm_rpt.w_hd30 = "指定なし";
+                frm_rpt.w_hd31 = "";
+            }
+            else
+            {
+                frm_rpt.w_hd30 = tb_line_cd.Text;
+                frm_rpt.w_hd31 = tb_line_name.Text;
+            }
+
+            if (tb_create_user_cd.Text.ToString() != "")
+            {
+                DataTable dt1 = new DataTable();
+                dt1 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_create_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd40 = dt1.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd41 = tb_create_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd40 = "";
+                frm_rpt.w_hd41 = "";
+            }
+            if (tb_update_user_cd.Text.ToString() != "")
+            {
+                DataTable dt2 = new DataTable();
+                dt2 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_update_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd50 = dt2.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd51 = tb_update_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd50 = "";
+                frm_rpt.w_hd51 = "";
+            }
+
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
+        }
+
+      
 
      
 
