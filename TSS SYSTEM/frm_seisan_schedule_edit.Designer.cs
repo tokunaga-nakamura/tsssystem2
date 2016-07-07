@@ -175,6 +175,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -255,9 +256,10 @@
             this.btn_hyouji.Location = new System.Drawing.Point(221, 30);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
-            this.btn_hyouji.TabIndex = 5;
+            this.btn_hyouji.TabIndex = 2;
             this.btn_hyouji.Text = "表示";
             this.btn_hyouji.UseVisualStyleBackColor = true;
+            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
             // 
             // tb_busyo_name
             // 
@@ -287,7 +289,9 @@
             this.tb_busyo_cd.MaxLength = 4;
             this.tb_busyo_cd.Name = "tb_busyo_cd";
             this.tb_busyo_cd.Size = new System.Drawing.Size(34, 19);
-            this.tb_busyo_cd.TabIndex = 3;
+            this.tb_busyo_cd.TabIndex = 1;
+            this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
+            this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
             // 
             // tb_seisan_yotei_date
             // 
@@ -295,7 +299,8 @@
             this.tb_seisan_yotei_date.MaxLength = 10;
             this.tb_seisan_yotei_date.Name = "tb_seisan_yotei_date";
             this.tb_seisan_yotei_date.Size = new System.Drawing.Size(71, 19);
-            this.tb_seisan_yotei_date.TabIndex = 1;
+            this.tb_seisan_yotei_date.TabIndex = 0;
+            this.tb_seisan_yotei_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_yotei_date_Validating);
             // 
             // textBox3
             // 
@@ -314,6 +319,7 @@
             this.btn_auto_time.Name = "btn_auto_time";
             this.btn_auto_time.Size = new System.Drawing.Size(88, 23);
             this.btn_auto_time.TabIndex = 8;
+            this.btn_auto_time.TabStop = false;
             this.btn_auto_time.Text = "自動時間調整";
             this.btn_auto_time.UseVisualStyleBackColor = true;
             // 
@@ -323,6 +329,7 @@
             this.btn_line_tuika.Name = "btn_line_tuika";
             this.btn_line_tuika.Size = new System.Drawing.Size(75, 23);
             this.btn_line_tuika.TabIndex = 5;
+            this.btn_line_tuika.TabStop = false;
             this.btn_line_tuika.Text = "1行追加";
             this.btn_line_tuika.UseVisualStyleBackColor = true;
             // 
@@ -332,6 +339,7 @@
             this.btn_seisan_jun_up.Name = "btn_seisan_jun_up";
             this.btn_seisan_jun_up.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_up.TabIndex = 6;
+            this.btn_seisan_jun_up.TabStop = false;
             this.btn_seisan_jun_up.Text = "行を上へ";
             this.btn_seisan_jun_up.UseVisualStyleBackColor = true;
             // 
@@ -341,6 +349,7 @@
             this.btn_seisan_jun_down.Name = "btn_seisan_jun_down";
             this.btn_seisan_jun_down.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_down.TabIndex = 7;
+            this.btn_seisan_jun_down.TabStop = false;
             this.btn_seisan_jun_down.Text = "行を下へ";
             this.btn_seisan_jun_down.UseVisualStyleBackColor = true;
             // 
@@ -391,6 +400,7 @@
             this.btn_day_down.Name = "btn_day_down";
             this.btn_day_down.Size = new System.Drawing.Size(46, 232);
             this.btn_day_down.TabIndex = 0;
+            this.btn_day_down.TabStop = false;
             this.btn_day_down.Text = "-1日";
             this.btn_day_down.UseVisualStyleBackColor = true;
             // 
@@ -431,6 +441,7 @@
             this.btn_day_up.Name = "btn_day_up";
             this.btn_day_up.Size = new System.Drawing.Size(45, 232);
             this.btn_day_up.TabIndex = 0;
+            this.btn_day_up.TabStop = false;
             this.btn_day_up.Text = "+1日";
             this.btn_day_up.UseVisualStyleBackColor = true;
             // 
@@ -499,6 +510,7 @@
             this.btn_before_day_down.Name = "btn_before_day_down";
             this.btn_before_day_down.Size = new System.Drawing.Size(39, 23);
             this.btn_before_day_down.TabIndex = 1;
+            this.btn_before_day_down.TabStop = false;
             this.btn_before_day_down.Text = "-1日";
             this.btn_before_day_down.UseVisualStyleBackColor = true;
             // 
@@ -548,6 +560,7 @@
             this.btn_before_day_up.Name = "btn_before_day_up";
             this.btn_before_day_up.Size = new System.Drawing.Size(39, 23);
             this.btn_before_day_up.TabIndex = 2;
+            this.btn_before_day_up.TabStop = false;
             this.btn_before_day_up.Text = "+1日";
             this.btn_before_day_up.UseVisualStyleBackColor = true;
             // 
@@ -560,6 +573,7 @@
             this.dgv_before.RowTemplate.Height = 21;
             this.dgv_before.Size = new System.Drawing.Size(538, 100);
             this.dgv_before.TabIndex = 0;
+            this.dgv_before.TabStop = false;
             // 
             // splitContainer7
             // 
@@ -607,6 +621,7 @@
             this.btn_next_day_down.Name = "btn_next_day_down";
             this.btn_next_day_down.Size = new System.Drawing.Size(39, 23);
             this.btn_next_day_down.TabIndex = 0;
+            this.btn_next_day_down.TabStop = false;
             this.btn_next_day_down.Text = "-1日";
             this.btn_next_day_down.UseVisualStyleBackColor = true;
             // 
@@ -655,6 +670,7 @@
             this.btn_next_day_up.Name = "btn_next_day_up";
             this.btn_next_day_up.Size = new System.Drawing.Size(39, 23);
             this.btn_next_day_up.TabIndex = 0;
+            this.btn_next_day_up.TabStop = false;
             this.btn_next_day_up.Text = "+1日";
             this.btn_next_day_up.UseVisualStyleBackColor = true;
             // 
@@ -667,6 +683,7 @@
             this.dgv_next.RowTemplate.Height = 21;
             this.dgv_next.Size = new System.Drawing.Size(534, 100);
             this.dgv_next.TabIndex = 0;
+            this.dgv_next.TabStop = false;
             // 
             // splitContainer8
             // 
