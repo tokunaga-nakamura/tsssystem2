@@ -41,6 +41,7 @@
             this.tb_busyo_cd = new System.Windows.Forms.TextBox();
             this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btn_line_tuika_under = new System.Windows.Forms.Button();
             this.btn_auto_time = new System.Windows.Forms.Button();
             this.btn_line_tuika = new System.Windows.Forms.Button();
             this.btn_seisan_jun_up = new System.Windows.Forms.Button();
@@ -242,6 +243,7 @@
             // 
             // splitContainer9.Panel2
             // 
+            this.splitContainer9.Panel2.Controls.Add(this.btn_line_tuika_under);
             this.splitContainer9.Panel2.Controls.Add(this.btn_auto_time);
             this.splitContainer9.Panel2.Controls.Add(this.btn_line_tuika);
             this.splitContainer9.Panel2.Controls.Add(this.btn_seisan_jun_up);
@@ -313,6 +315,17 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "部署コード";
             // 
+            // btn_line_tuika_under
+            // 
+            this.btn_line_tuika_under.Location = new System.Drawing.Point(3, 30);
+            this.btn_line_tuika_under.Name = "btn_line_tuika_under";
+            this.btn_line_tuika_under.Size = new System.Drawing.Size(75, 23);
+            this.btn_line_tuika_under.TabIndex = 9;
+            this.btn_line_tuika_under.TabStop = false;
+            this.btn_line_tuika_under.Text = "下1行追加";
+            this.btn_line_tuika_under.UseVisualStyleBackColor = true;
+            this.btn_line_tuika_under.Click += new System.EventHandler(this.btn_line_tuika_under_Click);
+            // 
             // btn_auto_time
             // 
             this.btn_auto_time.Location = new System.Drawing.Point(165, 3);
@@ -330,8 +343,9 @@
             this.btn_line_tuika.Size = new System.Drawing.Size(75, 23);
             this.btn_line_tuika.TabIndex = 5;
             this.btn_line_tuika.TabStop = false;
-            this.btn_line_tuika.Text = "1行追加";
+            this.btn_line_tuika.Text = "上1行追加";
             this.btn_line_tuika.UseVisualStyleBackColor = true;
+            this.btn_line_tuika.Click += new System.EventHandler(this.btn_line_tuika_Click);
             // 
             // btn_seisan_jun_up
             // 
@@ -342,6 +356,7 @@
             this.btn_seisan_jun_up.TabStop = false;
             this.btn_seisan_jun_up.Text = "行を上へ";
             this.btn_seisan_jun_up.UseVisualStyleBackColor = true;
+            this.btn_seisan_jun_up.Click += new System.EventHandler(this.btn_seisan_jun_up_Click);
             // 
             // btn_seisan_jun_down
             // 
@@ -352,6 +367,7 @@
             this.btn_seisan_jun_down.TabStop = false;
             this.btn_seisan_jun_down.Text = "行を下へ";
             this.btn_seisan_jun_down.UseVisualStyleBackColor = true;
+            this.btn_seisan_jun_down.Click += new System.EventHandler(this.btn_seisan_jun_down_Click);
             // 
             // splitContainer4
             // 
@@ -433,6 +449,8 @@
             this.dgv_today.RowTemplate.Height = 21;
             this.dgv_today.Size = new System.Drawing.Size(981, 232);
             this.dgv_today.TabIndex = 0;
+            this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
+            this.dgv_today.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_today_CellPainting);
             // 
             // btn_day_up
             // 
@@ -547,9 +565,10 @@
             // lbl_seisan_yotei_date_before
             // 
             this.lbl_seisan_yotei_date_before.AutoSize = true;
-            this.lbl_seisan_yotei_date_before.Location = new System.Drawing.Point(171, 8);
+            this.lbl_seisan_yotei_date_before.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_seisan_yotei_date_before.Location = new System.Drawing.Point(175, 6);
             this.lbl_seisan_yotei_date_before.Name = "lbl_seisan_yotei_date_before";
-            this.lbl_seisan_yotei_date_before.Size = new System.Drawing.Size(65, 12);
+            this.lbl_seisan_yotei_date_before.Size = new System.Drawing.Size(88, 16);
             this.lbl_seisan_yotei_date_before.TabIndex = 0;
             this.lbl_seisan_yotei_date_before.Text = "9999/99/99";
             this.lbl_seisan_yotei_date_before.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -657,9 +676,10 @@
             // lbl_seisan_yotei_date_next
             // 
             this.lbl_seisan_yotei_date_next.AutoSize = true;
-            this.lbl_seisan_yotei_date_next.Location = new System.Drawing.Point(171, 6);
+            this.lbl_seisan_yotei_date_next.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_seisan_yotei_date_next.Location = new System.Drawing.Point(173, 5);
             this.lbl_seisan_yotei_date_next.Name = "lbl_seisan_yotei_date_next";
-            this.lbl_seisan_yotei_date_next.Size = new System.Drawing.Size(65, 12);
+            this.lbl_seisan_yotei_date_next.Size = new System.Drawing.Size(88, 16);
             this.lbl_seisan_yotei_date_next.TabIndex = 0;
             this.lbl_seisan_yotei_date_next.Text = "9999/99/99";
             this.lbl_seisan_yotei_date_next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -871,5 +891,6 @@
         private System.Windows.Forms.Button btn_next_day_up;
         private System.Windows.Forms.ComboBox cb_before_busyo;
         private System.Windows.Forms.ComboBox cb_next_busyo;
+        private System.Windows.Forms.Button btn_line_tuika_under;
     }
 }
