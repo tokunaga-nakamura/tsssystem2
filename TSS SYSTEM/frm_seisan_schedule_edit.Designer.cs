@@ -35,6 +35,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
+            this.cb_today_busyo = new System.Windows.Forms.ComboBox();
             this.btn_hyouji = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
@@ -45,34 +46,33 @@
             this.btn_seisan_jun_up = new System.Windows.Forms.Button();
             this.btn_seisan_jun_down = new System.Windows.Forms.Button();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer10 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer11 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer17 = new System.Windows.Forms.SplitContainer();
             this.btn_day_down = new System.Windows.Forms.Button();
-            this.dgv_today = new System.Windows.Forms.DataGridView();
+            this.splitContainer16 = new System.Windows.Forms.SplitContainer();
+            this.lbl_seisan_yotei_date_today = new System.Windows.Forms.Label();
+            this.splitContainer18 = new System.Windows.Forms.SplitContainer();
             this.btn_day_up = new System.Windows.Forms.Button();
+            this.dgv_today = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btn_before_day_down = new System.Windows.Forms.Button();
-            this.cb_before_busyo = new System.Windows.Forms.ComboBox();
-            this.lbl_seisan_yotei_date_before = new System.Windows.Forms.Label();
             this.btn_before_day_up = new System.Windows.Forms.Button();
+            this.lbl_seisan_yotei_date_before = new System.Windows.Forms.Label();
+            this.cb_before_busyo = new System.Windows.Forms.ComboBox();
             this.dgv_before = new System.Windows.Forms.DataGridView();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.btn_next_day_down = new System.Windows.Forms.Button();
-            this.cb_next_busyo = new System.Windows.Forms.ComboBox();
             this.btn_next_day_up = new System.Windows.Forms.Button();
+            this.lbl_seisan_yotei_date_next = new System.Windows.Forms.Label();
+            this.cb_next_busyo = new System.Windows.Forms.ComboBox();
+            this.btn_next_day_down = new System.Windows.Forms.Button();
             this.dgv_next = new System.Windows.Forms.DataGridView();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.splitContainer10 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer11 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer16 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer17 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer18 = new System.Windows.Forms.SplitContainer();
-            this.lbl_seisan_yotei_date_today = new System.Windows.Forms.Label();
-            this.lbl_seisan_yotei_date_next = new System.Windows.Forms.Label();
-            this.cb_today_busyo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +93,24 @@
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
+            this.splitContainer10.Panel1.SuspendLayout();
+            this.splitContainer10.Panel2.SuspendLayout();
+            this.splitContainer10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).BeginInit();
+            this.splitContainer11.Panel1.SuspendLayout();
+            this.splitContainer11.Panel2.SuspendLayout();
+            this.splitContainer11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer17)).BeginInit();
+            this.splitContainer17.Panel2.SuspendLayout();
+            this.splitContainer17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer16)).BeginInit();
+            this.splitContainer16.Panel1.SuspendLayout();
+            this.splitContainer16.Panel2.SuspendLayout();
+            this.splitContainer16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).BeginInit();
+            this.splitContainer18.Panel1.SuspendLayout();
+            this.splitContainer18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_today)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
@@ -112,24 +130,6 @@
             this.splitContainer8.Panel1.SuspendLayout();
             this.splitContainer8.Panel2.SuspendLayout();
             this.splitContainer8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
-            this.splitContainer10.Panel1.SuspendLayout();
-            this.splitContainer10.Panel2.SuspendLayout();
-            this.splitContainer10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).BeginInit();
-            this.splitContainer11.Panel1.SuspendLayout();
-            this.splitContainer11.Panel2.SuspendLayout();
-            this.splitContainer11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer16)).BeginInit();
-            this.splitContainer16.Panel1.SuspendLayout();
-            this.splitContainer16.Panel2.SuspendLayout();
-            this.splitContainer16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer17)).BeginInit();
-            this.splitContainer17.Panel2.SuspendLayout();
-            this.splitContainer17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).BeginInit();
-            this.splitContainer18.Panel1.SuspendLayout();
-            this.splitContainer18.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -244,6 +244,15 @@
             this.splitContainer9.SplitterDistance = 819;
             this.splitContainer9.TabIndex = 0;
             this.splitContainer9.TabStop = false;
+            // 
+            // cb_today_busyo
+            // 
+            this.cb_today_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_today_busyo.FormattingEnabled = true;
+            this.cb_today_busyo.Location = new System.Drawing.Point(81, 32);
+            this.cb_today_busyo.Name = "cb_today_busyo";
+            this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
+            this.cb_today_busyo.TabIndex = 1;
             // 
             // btn_hyouji
             // 
@@ -360,6 +369,60 @@
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
+            // splitContainer10
+            // 
+            this.splitContainer10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer10.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer10.IsSplitterFixed = true;
+            this.splitContainer10.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer10.Name = "splitContainer10";
+            this.splitContainer10.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer10.Panel1
+            // 
+            this.splitContainer10.Panel1.Controls.Add(this.splitContainer11);
+            // 
+            // splitContainer10.Panel2
+            // 
+            this.splitContainer10.Panel2.Controls.Add(this.dgv_today);
+            this.splitContainer10.Size = new System.Drawing.Size(1080, 232);
+            this.splitContainer10.SplitterDistance = 29;
+            this.splitContainer10.TabIndex = 1;
+            this.splitContainer10.TabStop = false;
+            // 
+            // splitContainer11
+            // 
+            this.splitContainer11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer11.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer11.Name = "splitContainer11";
+            // 
+            // splitContainer11.Panel1
+            // 
+            this.splitContainer11.Panel1.Controls.Add(this.splitContainer17);
+            // 
+            // splitContainer11.Panel2
+            // 
+            this.splitContainer11.Panel2.Controls.Add(this.splitContainer16);
+            this.splitContainer11.Size = new System.Drawing.Size(1080, 29);
+            this.splitContainer11.SplitterDistance = 476;
+            this.splitContainer11.TabIndex = 0;
+            // 
+            // splitContainer17
+            // 
+            this.splitContainer17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer17.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer17.IsSplitterFixed = true;
+            this.splitContainer17.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer17.Name = "splitContainer17";
+            // 
+            // splitContainer17.Panel2
+            // 
+            this.splitContainer17.Panel2.Controls.Add(this.btn_day_down);
+            this.splitContainer17.Size = new System.Drawing.Size(476, 29);
+            this.splitContainer17.SplitterDistance = 389;
+            this.splitContainer17.TabIndex = 0;
+            this.splitContainer17.TabStop = false;
+            // 
             // btn_day_down
             // 
             this.btn_day_down.Location = new System.Drawing.Point(3, 3);
@@ -369,6 +432,60 @@
             this.btn_day_down.TabStop = false;
             this.btn_day_down.Text = "-1日";
             this.btn_day_down.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer16
+            // 
+            this.splitContainer16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer16.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer16.Name = "splitContainer16";
+            // 
+            // splitContainer16.Panel1
+            // 
+            this.splitContainer16.Panel1.Controls.Add(this.lbl_seisan_yotei_date_today);
+            // 
+            // splitContainer16.Panel2
+            // 
+            this.splitContainer16.Panel2.Controls.Add(this.splitContainer18);
+            this.splitContainer16.Size = new System.Drawing.Size(600, 29);
+            this.splitContainer16.SplitterDistance = 132;
+            this.splitContainer16.TabIndex = 0;
+            // 
+            // lbl_seisan_yotei_date_today
+            // 
+            this.lbl_seisan_yotei_date_today.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_seisan_yotei_date_today.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_seisan_yotei_date_today.Location = new System.Drawing.Point(0, 0);
+            this.lbl_seisan_yotei_date_today.Name = "lbl_seisan_yotei_date_today";
+            this.lbl_seisan_yotei_date_today.Size = new System.Drawing.Size(132, 29);
+            this.lbl_seisan_yotei_date_today.TabIndex = 0;
+            this.lbl_seisan_yotei_date_today.Text = "9999/99/99";
+            this.lbl_seisan_yotei_date_today.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // splitContainer18
+            // 
+            this.splitContainer18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer18.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer18.IsSplitterFixed = true;
+            this.splitContainer18.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer18.Name = "splitContainer18";
+            // 
+            // splitContainer18.Panel1
+            // 
+            this.splitContainer18.Panel1.Controls.Add(this.btn_day_up);
+            this.splitContainer18.Size = new System.Drawing.Size(464, 29);
+            this.splitContainer18.SplitterDistance = 84;
+            this.splitContainer18.TabIndex = 0;
+            this.splitContainer18.TabStop = false;
+            // 
+            // btn_day_up
+            // 
+            this.btn_day_up.Location = new System.Drawing.Point(5, 3);
+            this.btn_day_up.Name = "btn_day_up";
+            this.btn_day_up.Size = new System.Drawing.Size(75, 23);
+            this.btn_day_up.TabIndex = 0;
+            this.btn_day_up.TabStop = false;
+            this.btn_day_up.Text = "+1日";
+            this.btn_day_up.UseVisualStyleBackColor = true;
             // 
             // dgv_today
             // 
@@ -381,16 +498,10 @@
             this.dgv_today.TabIndex = 0;
             this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
             this.dgv_today.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_today_CellPainting);
-            // 
-            // btn_day_up
-            // 
-            this.btn_day_up.Location = new System.Drawing.Point(5, 3);
-            this.btn_day_up.Name = "btn_day_up";
-            this.btn_day_up.Size = new System.Drawing.Size(75, 23);
-            this.btn_day_up.TabIndex = 0;
-            this.btn_day_up.TabStop = false;
-            this.btn_day_up.Text = "+1日";
-            this.btn_day_up.UseVisualStyleBackColor = true;
+            this.dgv_today.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellValidated);
+            this.dgv_today.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_today_CellValidating);
+            this.dgv_today.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_today_UserDeletedRow);
+            this.dgv_today.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_today_UserDeletingRow);
             // 
             // splitContainer5
             // 
@@ -445,15 +556,15 @@
             this.btn_before_day_down.Text = "-1日";
             this.btn_before_day_down.UseVisualStyleBackColor = true;
             // 
-            // cb_before_busyo
+            // btn_before_day_up
             // 
-            this.cb_before_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_before_busyo.FormattingEnabled = true;
-            this.cb_before_busyo.Location = new System.Drawing.Point(10, 3);
-            this.cb_before_busyo.Name = "cb_before_busyo";
-            this.cb_before_busyo.Size = new System.Drawing.Size(120, 20);
-            this.cb_before_busyo.TabIndex = 1;
-            this.cb_before_busyo.SelectedValueChanged += new System.EventHandler(this.cb_before_busyo_SelectedValueChanged);
+            this.btn_before_day_up.Location = new System.Drawing.Point(321, 1);
+            this.btn_before_day_up.Name = "btn_before_day_up";
+            this.btn_before_day_up.Size = new System.Drawing.Size(75, 23);
+            this.btn_before_day_up.TabIndex = 2;
+            this.btn_before_day_up.TabStop = false;
+            this.btn_before_day_up.Text = "+1日";
+            this.btn_before_day_up.UseVisualStyleBackColor = true;
             // 
             // lbl_seisan_yotei_date_before
             // 
@@ -466,15 +577,15 @@
             this.lbl_seisan_yotei_date_before.Text = "9999/99/99";
             this.lbl_seisan_yotei_date_before.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn_before_day_up
+            // cb_before_busyo
             // 
-            this.btn_before_day_up.Location = new System.Drawing.Point(321, 1);
-            this.btn_before_day_up.Name = "btn_before_day_up";
-            this.btn_before_day_up.Size = new System.Drawing.Size(75, 23);
-            this.btn_before_day_up.TabIndex = 2;
-            this.btn_before_day_up.TabStop = false;
-            this.btn_before_day_up.Text = "+1日";
-            this.btn_before_day_up.UseVisualStyleBackColor = true;
+            this.cb_before_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_before_busyo.FormattingEnabled = true;
+            this.cb_before_busyo.Location = new System.Drawing.Point(10, 3);
+            this.cb_before_busyo.Name = "cb_before_busyo";
+            this.cb_before_busyo.Size = new System.Drawing.Size(120, 20);
+            this.cb_before_busyo.TabIndex = 1;
+            this.cb_before_busyo.SelectedValueChanged += new System.EventHandler(this.cb_before_busyo_SelectedValueChanged);
             // 
             // dgv_before
             // 
@@ -511,15 +622,26 @@
             this.splitContainer7.TabIndex = 0;
             this.splitContainer7.TabStop = false;
             // 
-            // btn_next_day_down
+            // btn_next_day_up
             // 
-            this.btn_next_day_down.Location = new System.Drawing.Point(138, 2);
-            this.btn_next_day_down.Name = "btn_next_day_down";
-            this.btn_next_day_down.Size = new System.Drawing.Size(75, 23);
-            this.btn_next_day_down.TabIndex = 0;
-            this.btn_next_day_down.TabStop = false;
-            this.btn_next_day_down.Text = "-1日";
-            this.btn_next_day_down.UseVisualStyleBackColor = true;
+            this.btn_next_day_up.Location = new System.Drawing.Point(323, 2);
+            this.btn_next_day_up.Name = "btn_next_day_up";
+            this.btn_next_day_up.Size = new System.Drawing.Size(75, 23);
+            this.btn_next_day_up.TabIndex = 0;
+            this.btn_next_day_up.TabStop = false;
+            this.btn_next_day_up.Text = "+1日";
+            this.btn_next_day_up.UseVisualStyleBackColor = true;
+            // 
+            // lbl_seisan_yotei_date_next
+            // 
+            this.lbl_seisan_yotei_date_next.AutoSize = true;
+            this.lbl_seisan_yotei_date_next.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbl_seisan_yotei_date_next.Location = new System.Drawing.Point(219, 4);
+            this.lbl_seisan_yotei_date_next.Name = "lbl_seisan_yotei_date_next";
+            this.lbl_seisan_yotei_date_next.Size = new System.Drawing.Size(98, 16);
+            this.lbl_seisan_yotei_date_next.TabIndex = 0;
+            this.lbl_seisan_yotei_date_next.Text = "9999/99/99";
+            this.lbl_seisan_yotei_date_next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_next_busyo
             // 
@@ -530,15 +652,15 @@
             this.cb_next_busyo.Size = new System.Drawing.Size(120, 20);
             this.cb_next_busyo.TabIndex = 1;
             // 
-            // btn_next_day_up
+            // btn_next_day_down
             // 
-            this.btn_next_day_up.Location = new System.Drawing.Point(323, 2);
-            this.btn_next_day_up.Name = "btn_next_day_up";
-            this.btn_next_day_up.Size = new System.Drawing.Size(75, 23);
-            this.btn_next_day_up.TabIndex = 0;
-            this.btn_next_day_up.TabStop = false;
-            this.btn_next_day_up.Text = "+1日";
-            this.btn_next_day_up.UseVisualStyleBackColor = true;
+            this.btn_next_day_down.Location = new System.Drawing.Point(138, 2);
+            this.btn_next_day_down.Name = "btn_next_day_down";
+            this.btn_next_day_down.Size = new System.Drawing.Size(75, 23);
+            this.btn_next_day_down.TabIndex = 0;
+            this.btn_next_day_down.TabStop = false;
+            this.btn_next_day_down.Text = "-1日";
+            this.btn_next_day_down.UseVisualStyleBackColor = true;
             // 
             // dgv_next
             // 
@@ -610,124 +732,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // splitContainer10
-            // 
-            this.splitContainer10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer10.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer10.IsSplitterFixed = true;
-            this.splitContainer10.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer10.Name = "splitContainer10";
-            this.splitContainer10.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer10.Panel1
-            // 
-            this.splitContainer10.Panel1.Controls.Add(this.splitContainer11);
-            // 
-            // splitContainer10.Panel2
-            // 
-            this.splitContainer10.Panel2.Controls.Add(this.dgv_today);
-            this.splitContainer10.Size = new System.Drawing.Size(1080, 232);
-            this.splitContainer10.SplitterDistance = 29;
-            this.splitContainer10.TabIndex = 1;
-            this.splitContainer10.TabStop = false;
-            // 
-            // splitContainer11
-            // 
-            this.splitContainer11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer11.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer11.Name = "splitContainer11";
-            // 
-            // splitContainer11.Panel1
-            // 
-            this.splitContainer11.Panel1.Controls.Add(this.splitContainer17);
-            // 
-            // splitContainer11.Panel2
-            // 
-            this.splitContainer11.Panel2.Controls.Add(this.splitContainer16);
-            this.splitContainer11.Size = new System.Drawing.Size(1080, 29);
-            this.splitContainer11.SplitterDistance = 476;
-            this.splitContainer11.TabIndex = 0;
-            // 
-            // splitContainer16
-            // 
-            this.splitContainer16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer16.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer16.Name = "splitContainer16";
-            // 
-            // splitContainer16.Panel1
-            // 
-            this.splitContainer16.Panel1.Controls.Add(this.lbl_seisan_yotei_date_today);
-            // 
-            // splitContainer16.Panel2
-            // 
-            this.splitContainer16.Panel2.Controls.Add(this.splitContainer18);
-            this.splitContainer16.Size = new System.Drawing.Size(600, 29);
-            this.splitContainer16.SplitterDistance = 132;
-            this.splitContainer16.TabIndex = 0;
-            // 
-            // splitContainer17
-            // 
-            this.splitContainer17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer17.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer17.IsSplitterFixed = true;
-            this.splitContainer17.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer17.Name = "splitContainer17";
-            // 
-            // splitContainer17.Panel2
-            // 
-            this.splitContainer17.Panel2.Controls.Add(this.btn_day_down);
-            this.splitContainer17.Size = new System.Drawing.Size(476, 29);
-            this.splitContainer17.SplitterDistance = 389;
-            this.splitContainer17.TabIndex = 0;
-            this.splitContainer17.TabStop = false;
-            // 
-            // splitContainer18
-            // 
-            this.splitContainer18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer18.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer18.IsSplitterFixed = true;
-            this.splitContainer18.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer18.Name = "splitContainer18";
-            // 
-            // splitContainer18.Panel1
-            // 
-            this.splitContainer18.Panel1.Controls.Add(this.btn_day_up);
-            this.splitContainer18.Size = new System.Drawing.Size(464, 29);
-            this.splitContainer18.SplitterDistance = 84;
-            this.splitContainer18.TabIndex = 0;
-            this.splitContainer18.TabStop = false;
-            // 
-            // lbl_seisan_yotei_date_today
-            // 
-            this.lbl_seisan_yotei_date_today.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_seisan_yotei_date_today.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_seisan_yotei_date_today.Location = new System.Drawing.Point(0, 0);
-            this.lbl_seisan_yotei_date_today.Name = "lbl_seisan_yotei_date_today";
-            this.lbl_seisan_yotei_date_today.Size = new System.Drawing.Size(132, 29);
-            this.lbl_seisan_yotei_date_today.TabIndex = 0;
-            this.lbl_seisan_yotei_date_today.Text = "9999/99/99";
-            this.lbl_seisan_yotei_date_today.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_seisan_yotei_date_next
-            // 
-            this.lbl_seisan_yotei_date_next.AutoSize = true;
-            this.lbl_seisan_yotei_date_next.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_seisan_yotei_date_next.Location = new System.Drawing.Point(219, 4);
-            this.lbl_seisan_yotei_date_next.Name = "lbl_seisan_yotei_date_next";
-            this.lbl_seisan_yotei_date_next.Size = new System.Drawing.Size(98, 16);
-            this.lbl_seisan_yotei_date_next.TabIndex = 0;
-            this.lbl_seisan_yotei_date_next.Text = "9999/99/99";
-            this.lbl_seisan_yotei_date_next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cb_today_busyo
-            // 
-            this.cb_today_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_today_busyo.FormattingEnabled = true;
-            this.cb_today_busyo.Location = new System.Drawing.Point(81, 32);
-            this.cb_today_busyo.Name = "cb_today_busyo";
-            this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
-            this.cb_today_busyo.TabIndex = 1;
-            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -760,6 +764,24 @@
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            this.splitContainer10.Panel1.ResumeLayout(false);
+            this.splitContainer10.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).EndInit();
+            this.splitContainer10.ResumeLayout(false);
+            this.splitContainer11.Panel1.ResumeLayout(false);
+            this.splitContainer11.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).EndInit();
+            this.splitContainer11.ResumeLayout(false);
+            this.splitContainer17.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer17)).EndInit();
+            this.splitContainer17.ResumeLayout(false);
+            this.splitContainer16.Panel1.ResumeLayout(false);
+            this.splitContainer16.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer16)).EndInit();
+            this.splitContainer16.ResumeLayout(false);
+            this.splitContainer18.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).EndInit();
+            this.splitContainer18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_today)).EndInit();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
@@ -781,24 +803,6 @@
             this.splitContainer8.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
             this.splitContainer8.ResumeLayout(false);
-            this.splitContainer10.Panel1.ResumeLayout(false);
-            this.splitContainer10.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).EndInit();
-            this.splitContainer10.ResumeLayout(false);
-            this.splitContainer11.Panel1.ResumeLayout(false);
-            this.splitContainer11.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).EndInit();
-            this.splitContainer11.ResumeLayout(false);
-            this.splitContainer16.Panel1.ResumeLayout(false);
-            this.splitContainer16.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer16)).EndInit();
-            this.splitContainer16.ResumeLayout(false);
-            this.splitContainer17.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer17)).EndInit();
-            this.splitContainer17.ResumeLayout(false);
-            this.splitContainer18.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).EndInit();
-            this.splitContainer18.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

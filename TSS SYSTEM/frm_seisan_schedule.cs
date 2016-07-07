@@ -472,7 +472,7 @@ namespace TSS_SYSTEM
                 //dgv.CurrentCell.Value = st;
             }
 
-            if (e.ColumnIndex >= 13 && e.ColumnIndex <= 19)
+            if (e.ColumnIndex >= 13 && e.ColumnIndex <= 19)//ﾀｸﾄﾀｲﾑ～終了時刻
              {
                  decimal result;
                  if (decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
@@ -482,6 +482,8 @@ namespace TSS_SYSTEM
                  }
              }
 
+
+            //工程コード
             if (e.ColumnIndex  == 2)
             {
                 //選択用のdatatableの作成
@@ -502,6 +504,7 @@ namespace TSS_SYSTEM
                 dgv_list.EndEdit();
             }
 
+            //ラインコード
             if (e.ColumnIndex == 4)
             {
                 //選択用のdatatableの作成
@@ -686,7 +689,7 @@ namespace TSS_SYSTEM
             }
             
             
-
+            //生産数
             if(e.ColumnIndex == 14)
             {
                //変更後の値

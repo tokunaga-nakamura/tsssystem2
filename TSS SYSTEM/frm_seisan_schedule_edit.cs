@@ -727,6 +727,630 @@ namespace TSS_SYSTEM
             dgv_today.CurrentCell = dgv_today.Rows[dgv_today.CurrentCell.RowIndex + 1].Cells["koutei_name"];
         }
 
+        private void dgv_today_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (tss.Check_String_Escape(e.FormattedValue.ToString()) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+
+            if (e.FormattedValue.ToString() == "") return;
+
+            //新しい行のセルでなく、セルの内容が変更されている時だけ検証する
+            if (e.RowIndex == dgv_today.NewRowIndex || !dgv_today.IsCurrentCellDirty)
+            {
+                return;
+            }
+
+            DataGridView dgv = (DataGridView)sender;
+            string st = null;
+            if (dgv.Columns[e.ColumnIndex].Name == "START_TIME" || dgv.Columns[e.ColumnIndex].Name == "END_TIME")
+            {
+                st = HHMMcheck(e.FormattedValue.ToString());
+                if (st == null)
+                {
+                    MessageBox.Show("入力した値が正しくありません。00:00から23:59の形式で入力してください");
+                    e.Cancel = true;
+                }
+                //dgv.CurrentCell.Value = st;
+            }
+
+            if (e.ColumnIndex >= 13 && e.ColumnIndex <= 19)//ﾀｸﾄﾀｲﾑ～終了時刻
+            {
+                decimal result;
+                if (decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
+                {
+                    MessageBox.Show("入力した値が異常です");
+                    e.Cancel = true;
+                }
+            }
+
+
+            //工程コード
+            if (e.ColumnIndex == 3)
+            {
+                //選択用のdatatableの作成
+                DataTable dt_work = new DataTable();
+
+                dt_work = tss.OracleSelect("select * from TSS_KOUTEI_M where koutei_cd = '" + e.FormattedValue.ToString() + "' and  delete_flg = 0 ORDER BY KOUTEI_CD");
+                if (dt_work.Rows.Count == 0)
+                {
+                    MessageBox.Show("この工程コードは登録されていません");
+                    e.Cancel = true;
+                }
+
+                //選択画面へ
+                dgv_today.CurrentCell.Value = e.FormattedValue.ToString();
+                dgv_today.CurrentRow.Cells["koutei_name"].Value = get_koutei_name(dgv_today.CurrentCell.Value.ToString());
+
+                //編集確定
+                dgv_today.EndEdit();
+            }
+
+            //ラインコード
+            if (e.ColumnIndex == 5)
+            {
+                //選択用のdatatableの作成
+                DataTable dt_work = new DataTable();
+
+                dt_work = tss.OracleSelect("select * from TSS_LINE_M where line_cd = '" + e.FormattedValue.ToString() + "' and  delete_flg = 0 ORDER BY LINE_CD");
+
+                if (dt_work.Rows.Count == 0)
+                {
+                    MessageBox.Show("このラインコードは登録されていません");
+                    e.Cancel = true;
+                    return;
+                }
+
+                //製品コードが空欄でない場合
+                if (dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() != "")
+                {
+                    dt_work = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where A1.busyo_cd = '" + dgv_today.CurrentRow.Cells["busyo_cd"].Value.ToString() + "' and A1.koutei_cd = '" + dgv_today.CurrentRow.Cells["koutei_cd"].Value.ToString() + "' and B1.LINE_CD = '" + e.FormattedValue.ToString() + "' and B1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+
+                    if (dt_work.Rows.Count == 0)
+                    {
+                        //MessageBox.Show("この製品工程に、このラインは登録されていません");
+                        //e.Cancel = true;
+                        //return;
+
+                        DialogResult result = MessageBox.Show("この製品工程に、このラインは登録されていませんが、よろしいですか？",
+                       "質問",
+                       MessageBoxButtons.OKCancel,
+                       MessageBoxIcon.Exclamation,
+                       MessageBoxDefaultButton.Button1);
+
+                        //何が選択されたか調べる
+                        if (result == DialogResult.OK)
+                        {
+                            //「はい」が選択された時
+                            dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
+                            dgv_today.EndEdit();
+
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            //「キャンセル」が選択された時
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+
+                    else
+                    {
+                        dgv_today.CurrentCell.Value = e.FormattedValue.ToString();
+                        dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
+                    }
+
+
+                    seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+
+
+                    //編集確定
+                    dgv_today.EndEdit();
+
+
+                }
+
+                ////dt_work = tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_LINE_M where seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' and line_cd = '" + e.FormattedValue.ToString() + "' and  delete_flg = 0 ORDER BY LINE_CD");
+                ////dt_work = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' and A1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+                ////dt_work = tss.OracleSelect("Select B1.SEIHIN_CD,A1.BUSYO_CD,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.DELETE_FLG,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.DELETE_FLG From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where A1.busyo_cd = '" + dgv_today.CurrentRow.Cells["busyo_cd"].Value.ToString() + "' and A1.koutei_cd = '" + dgv_today.CurrentRow.Cells["koutei_cd"].Value.ToString() + "' and B1.LINE_CD = '" + dgv_today.CurrentRow.Cells["line_cd"].Value.ToString() + "' and B1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' and A1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+                //dt_work = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where A1.busyo_cd = '" + dgv_today.CurrentRow.Cells["busyo_cd"].Value.ToString() + "' and A1.koutei_cd = '" + dgv_today.CurrentRow.Cells["koutei_cd"].Value.ToString() + "' and B1.LINE_CD = '" + e.FormattedValue.ToString() + "' and B1.seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+
+
+
+                else
+                {
+                    dgv_today.CurrentCell.Value = e.FormattedValue.ToString();
+                    dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
+                }
+
+
+
+                seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+
+
+                //編集確定
+                dgv_today.EndEdit();
+            }
+
+
+            //取引先コード
+            if (e.ColumnIndex == 8)
+            {
+                int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
+                int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
+                string w_seihin_cd;
+
+                if (dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString() != null && dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString() != "")
+                {
+                    w_juchu_cd1_flg = 1;
+                }
+                if (dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString() != null && dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString() != "")
+                {
+                    w_juchu_cd2_flg = 1;
+                }
+                //受注コード1または受注コード2のどちらかが入力されていたら、受注マスタを読み製品名を表示する
+                if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
+                {
+                    w_seihin_cd = tss.get_juchu_to_seihin_cd(e.FormattedValue.ToString(), dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString(), dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString());
+                    dgv_today.CurrentRow.Cells["seihin_cd"].Value = w_seihin_cd;
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                    dgv_today.CurrentRow.Cells["juchu_su"].Value = get_juchu_su(e.FormattedValue.ToString(), dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString(), dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString());
+                }
+                else
+                {
+
+                }
+
+                seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+            }
+
+            //受注コード1
+            if (e.ColumnIndex == 9)
+            {
+                int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
+                int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
+                string w_seihin_cd;
+
+                if (e.FormattedValue.ToString() != null && e.FormattedValue.ToString() != "")
+                {
+                    w_juchu_cd1_flg = 1;
+                }
+                if (dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString() != null && dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString() != "")
+                {
+                    w_juchu_cd2_flg = 1;
+                }
+                //受注コード1または受注コード2のどちらかが入力されていたら、受注マスタを読み製品名を表示する
+                if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
+                {
+                    w_seihin_cd = tss.get_juchu_to_seihin_cd(dgv_today.CurrentRow.Cells["torihikisaki_cd"].Value.ToString(), e.FormattedValue.ToString(), dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString());
+                    dgv_today.CurrentRow.Cells["seihin_cd"].Value = w_seihin_cd;
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                    dgv_today.CurrentRow.Cells["juchu_su"].Value = get_juchu_su(dgv_today.CurrentRow.Cells["torihikisaki_cd"].Value.ToString(), e.FormattedValue.ToString(), dgv_today.CurrentRow.Cells["juchu_cd2"].Value.ToString());
+                }
+                else
+                {
+
+                }
+
+
+                seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                //chk_juchu(e.RowIndex);
+            }
+
+            //受注コード2
+            if (e.ColumnIndex == 10)
+            {
+                int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
+                int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
+                string w_seihin_cd;
+
+                if (e.FormattedValue.ToString() != null && e.FormattedValue.ToString() != "")
+                {
+                    w_juchu_cd2_flg = 1;
+                }
+                if (dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString() != null && dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString() != "")
+                {
+                    w_juchu_cd1_flg = 1;
+                }
+                //受注コード1または受注コード2のどちらかが入力されていたら、受注マスタを読み製品名を表示する
+                if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
+                {
+                    w_seihin_cd = tss.get_juchu_to_seihin_cd(dgv_today.CurrentRow.Cells["torihikisaki_cd"].Value.ToString(), dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString(), e.FormattedValue.ToString());
+                    dgv_today.CurrentRow.Cells["seihin_cd"].Value = w_seihin_cd;
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                    dgv_today.CurrentRow.Cells["juchu_su"].Value = get_juchu_su(dgv_today.CurrentRow.Cells["torihikisaki_cd"].Value.ToString(), dgv_today.CurrentRow.Cells["juchu_cd1"].Value.ToString(), e.FormattedValue.ToString());
+                }
+                else
+                {
+
+                }
+
+
+                seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                //chk_juchu(e.RowIndex);
+            }
+
+
+            //生産数
+            if (e.ColumnIndex == 15)
+            {
+                //変更後の値
+                string str1 = e.FormattedValue.ToString();
+
+                //変更前の値
+                string str2 = ((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+                if (str1 != str2)
+                {
+                    MessageBox.Show("生産数を変更すると、翌日以降の生産数は自動で更新されませんのでご注意ください。");
+                }
+
+            }
+        }
+
+        private string get_koutei_name(string in_koutei_cd)
+        {
+            string out_koutei_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + in_koutei_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_koutei_name = "";
+            }
+            else
+            {
+                out_koutei_name = dt_work.Rows[0]["koutei_name"].ToString();
+            }
+            return out_koutei_name;
+        }
+
+        private string get_line_name(string in_line_cd)
+        {
+            string out_line_name = "";  //戻り値用
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select * from tss_line_m where line_cd = '" + in_line_cd + "'");
+            if (dt_work.Rows.Count <= 0)
+            {
+                out_line_name = "";
+            }
+            else
+            {
+                out_line_name = dt_work.Rows[0]["line_name"].ToString();
+            }
+            return out_line_name;
+        }
+
+        public object get_juchu_su(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            object out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + dgv_today.CurrentRow.Cells["torihikisaki_cd"].Value.ToString() + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                //MessageBox.Show("受注登録がありません。");
+                out_str = DBNull.Value;
+            }
+            else
+            {
+                out_str = double.Parse(w_dt.Rows[0]["juchu_su"].ToString());
+            }
+            return out_str;
+        }
+
+        private string HHMMcheck(string hhmm)
+        {
+            //3文字以下はNG
+            if (hhmm.Length < 3)
+            {
+                return null;
+            }
+            //コロン（:）が先頭または末尾にあるとNG
+            if (hhmm.Substring(0, 1) == ":" || hhmm.Substring(hhmm.Length - 1, 1) == ":")
+            {
+                return null;
+            }
+            //コロン（:）が無ければNG
+            int idx;
+            idx = hhmm.IndexOf(":");
+            if (idx <= 0)
+            {
+                return null;
+            }
+            //00～23以外の時間はNG
+            double dHH;
+            if (double.TryParse(hhmm.Substring(0, idx), out dHH) == false)
+            {
+                //変換出来なかったら（false）NG
+                return null;
+            }
+            if (dHH < 00 || dHH > 23)
+            {
+                return null;
+            }
+            //00～59以外の分はNG
+            double dMM;
+            if (double.TryParse(hhmm.Substring(idx + 1), out dMM) == false)
+            {
+                //変換出来なかったら（false）NG
+                return null;
+            }
+            if (dMM < 00 || dMM > 59)
+            {
+                return null;
+            }
+            //正常時にはHH:MMの書式にした文字列を返す
+            return dHH.ToString("00") + ":" + dMM.ToString("00");
+        }
+
+        //製品コード変更時のメソッド
+        private void seihin_cd_change(string in_cd)
+        {
+
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+
+            dt_work = tss.OracleSelect("select * from TSS_SEISAN_KOUTEI_LINE_M where seihin_cd = '" + dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString() + "' and line_cd = '" + dgv_today.CurrentRow.Cells["line_cd"].Value.ToString() + "'");
+
+            if (dt_work.Rows.Count > 0)
+            {
+
+                double w_seisan_su;     //生産数（納品スケジュールの1レコードの）
+                double w_mst_tact;      //タクト
+                double w_mst_dandori;   //段取り
+                double w_mst_tuika;     //追加
+                double w_mst_hoju;      //補充
+                double w_kousu;         //必要工数
+
+                //計算に必要な項目を求める
+                //生産数
+                if (double.TryParse(dgv_today.CurrentRow.Cells["seisan_su"].Value.ToString(), out w_seisan_su) == false)
+                {
+                    w_seisan_su = 0;
+                }
+                //タクト
+                if (double.TryParse(dt_work.Rows[0]["tact_time"].ToString(), out w_mst_tact) == false)
+                {
+                    w_mst_tact = 0;
+                }
+                //段取時間
+                if (double.TryParse(dt_work.Rows[0]["dandori_time"].ToString(), out w_mst_dandori) == false)
+                {
+                    w_mst_dandori = 0;
+                }
+                //追加時間
+                if (double.TryParse(dt_work.Rows[0]["tuika_time"].ToString(), out w_mst_tuika) == false)
+                {
+                    w_mst_tuika = 0;
+                }
+                //補充時間
+                if (double.TryParse(dt_work.Rows[0]["hoju_time"].ToString(), out w_mst_hoju) == false)
+                {
+                    w_mst_hoju = 0;
+                }
+                //工数を求める
+                dgv_today.CurrentRow.Cells["seisan_su"].Value = w_seisan_su.ToString();
+                dgv_today.CurrentRow.Cells["tact_time"].Value = w_mst_tact.ToString();
+                dgv_today.CurrentRow.Cells["dandori_kousu"].Value = w_mst_dandori.ToString();
+                dgv_today.CurrentRow.Cells["tuika_kousu"].Value = w_mst_tuika.ToString();
+                dgv_today.CurrentRow.Cells["hoju_kousu"].Value = w_mst_hoju.ToString();
+                w_kousu = Math.Floor(w_seisan_su * w_mst_tact + w_mst_dandori + w_mst_tuika + w_mst_hoju + 0.99);
+                dgv_today.CurrentRow.Cells["seisan_time"].Value = w_kousu;
+
+            }
+
+            else
+            {
+                if (dgv_today.CurrentRow.Cells["seihin_cd"].Value == DBNull.Value)
+                {
+                    dgv_today.CurrentRow.Cells["seihin_cd"].Value = null;
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = null;
+                    dgv_today.CurrentRow.Cells["juchu_su"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["seisan_su"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["tact_time"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["dandori_kousu"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["tuika_kousu"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["hoju_kousu"].Value = DBNull.Value;
+                    dgv_today.CurrentRow.Cells["seisan_time"].Value = 0;
+
+                    MessageBox.Show("工程・ラインマスタに登録がありません。");
+
+
+                    return;
+                }
+
+                //dgv_today.CurrentRow.Cells["tact_time"].Value = DBNull.Value;
+                //dgv_today.CurrentRow.Cells["dandori_kousu"].Value = DBNull.Value;
+                //dgv_today.CurrentRow.Cells["tuika_kousu"].Value = DBNull.Value;
+                //dgv_today.CurrentRow.Cells["hoju_kousu"].Value = DBNull.Value;
+                //dgv_today.CurrentRow.Cells["seisan_time"].Value = 0;
+
+
+            }
+        }
+
+
+        //終了時間の計算メソッド
+        private void end_time_keisan(string in_cd)
+        {
+
+            DateTime time1;
+            DateTime time2;
+            int rowindex = int.Parse(in_cd);
+            int result;
+
+
+            if (int.TryParse(dgv_today.Rows[rowindex].Cells["seisan_time"].Value.ToString(), out result) == true)
+            {
+                TimeSpan ts = new TimeSpan(0, 0, result);
+
+                if (dgv_today.Rows[rowindex].Cells["start_time"].Value != DBNull.Value)
+                {
+                    time1 = DateTime.Parse(dgv_today.Rows[rowindex].Cells["start_time"].Value.ToString());
+                    time2 = time1 + ts;
+
+                    dgv_today.Rows[rowindex].Cells["end_time"].Value = time2.ToShortTimeString();
+                }
+
+            }
+        }
+
+        //生産時間の計算メソッド
+        private void seisan_time_keisan(string in_cd)
+        {
+            decimal seisan_su;
+            decimal tact_time;
+            decimal dandori_time;
+            decimal tuika_time;
+            decimal hoju_time;
+
+            int rowindex = int.Parse(in_cd);
+            decimal result;
+            decimal seisan_time;
+
+            if (dgv_today.Rows[rowindex].Cells["juchu_su"].Value.ToString() == "")
+            {
+                seisan_su = 0;
+            }
+            else
+            {
+                if (decimal.TryParse(dgv_today.Rows[rowindex].Cells["juchu_su"].Value.ToString(), out result) == true)
+                {
+                    seisan_su = decimal.Parse(dgv_today.Rows[rowindex].Cells["seisan_su"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("生産数の値が異常です");
+                    return;
+                }
+            }
+
+            if (dgv_today.Rows[rowindex].Cells["tact_time"].Value.ToString() == "")
+            {
+                tact_time = 0;
+            }
+            else
+            {
+                if (decimal.TryParse(dgv_today.Rows[rowindex].Cells["tact_time"].Value.ToString(), out result) == true)
+                {
+                    tact_time = decimal.Parse(dgv_today.Rows[rowindex].Cells["tact_time"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("タクトタイムの値が異常です");
+                    return;
+                }
+            }
+
+            if (dgv_today.Rows[rowindex].Cells["dandori_kousu"].Value.ToString() == "")
+            {
+                dandori_time = 0;
+            }
+            else
+            {
+                if (decimal.TryParse(dgv_today.Rows[rowindex].Cells["dandori_kousu"].Value.ToString(), out result) == true)
+                {
+                    dandori_time = decimal.Parse(dgv_today.Rows[rowindex].Cells["dandori_kousu"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("段取時間の値が異常です");
+                    return;
+                }
+            }
+
+            if (dgv_today.Rows[rowindex].Cells["tuika_kousu"].Value.ToString() == "")
+            {
+                tuika_time = 0;
+            }
+            else
+            {
+                if (decimal.TryParse(dgv_today.Rows[rowindex].Cells["tuika_kousu"].Value.ToString(), out result) == true)
+                {
+                    tuika_time = decimal.Parse(dgv_today.Rows[rowindex].Cells["tuika_kousu"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("追加時間の値が異常です");
+                    return;
+                }
+            }
+
+            if (dgv_today.Rows[rowindex].Cells["hoju_kousu"].Value.ToString() == "")
+            {
+                hoju_time = 0;
+            }
+            else
+            {
+                if (decimal.TryParse(dgv_today.Rows[rowindex].Cells["hoju_kousu"].Value.ToString(), out result) == true)
+                {
+                    hoju_time = decimal.Parse(dgv_today.Rows[rowindex].Cells["hoju_kousu"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("補充時間の値が異常です");
+                    return;
+                }
+            }
+
+            seisan_time = seisan_su * tact_time + dandori_time + tuika_time + hoju_time;
+
+            dgv_today.Rows[rowindex].Cells["seisan_time"].Value = seisan_time;
+        }
+
+        private void dgv_today_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //開始時間を変更したとき
+            if (e.ColumnIndex == 21)
+            {
+                end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            }
+
+            //タクト～工数を変更したとき
+            if (e.ColumnIndex >= 16 && e.ColumnIndex <= 19)
+            {
+                seisan_time_keisan(dgv_today.CurrentRow.Index.ToString());
+                end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            }
+
+            //生産数を変更したとき
+            if (e.ColumnIndex == 15)
+            {
+                seisan_time_keisan(dgv_today.CurrentRow.Index.ToString());
+                end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+
+                //MessageBox.Show("生産数を変更しました。翌日以降の生産数は自動で変更されませんので、ご注意ください。");
+            }
+
+            string busyo = dgv_today.CurrentRow.Cells["busyo_cd"].Value.ToString();
+            string koutei = dgv_today.CurrentRow.Cells["koutei_cd"].Value.ToString();
+            string line = dgv_today.CurrentRow.Cells["line_cd"].Value.ToString();
+            string seihin = dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString();
+
+            DataTable dt_work = new DataTable();
+        }
+
+        private void dgv_today_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult bRet = MessageBox.Show("この行を削除しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (bRet == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+
+        }
+
+        private void dgv_today_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            w_dt_today.AcceptChanges();
+            disp_schedule_data(dgv_today);
+        }
+
+
 
     }
 }
