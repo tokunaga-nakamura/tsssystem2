@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_schedule_edit));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -162,6 +168,68 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
+            // textBox32
+            // 
+            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox32.Location = new System.Drawing.Point(596, 17);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.ReadOnly = true;
+            this.textBox32.Size = new System.Drawing.Size(45, 19);
+            this.textBox32.TabIndex = 111;
+            this.textBox32.TabStop = false;
+            this.textBox32.Text = "作成";
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(641, 17);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_create_user_cd.TabIndex = 112;
+            this.tb_create_user_cd.TabStop = false;
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(683, 17);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_create_datetime.TabIndex = 113;
+            this.tb_create_datetime.TabStop = false;
+            // 
+            // textBox35
+            // 
+            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox35.Location = new System.Drawing.Point(596, 36);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.ReadOnly = true;
+            this.textBox35.Size = new System.Drawing.Size(45, 19);
+            this.textBox35.TabIndex = 114;
+            this.textBox35.TabStop = false;
+            this.textBox35.Text = "更新";
+            // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(641, 36);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_update_user_cd.TabIndex = 115;
+            this.tb_update_user_cd.TabStop = false;
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(683, 36);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_update_datetime.TabIndex = 116;
+            this.tb_update_datetime.TabStop = false;
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -227,10 +295,16 @@
             // 
             // splitContainer9.Panel1
             // 
+            this.splitContainer9.Panel1.Controls.Add(this.textBox32);
             this.splitContainer9.Panel1.Controls.Add(this.cb_today_busyo);
+            this.splitContainer9.Panel1.Controls.Add(this.tb_create_user_cd);
+            this.splitContainer9.Panel1.Controls.Add(this.tb_create_datetime);
             this.splitContainer9.Panel1.Controls.Add(this.btn_hyouji);
+            this.splitContainer9.Panel1.Controls.Add(this.textBox35);
             this.splitContainer9.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer9.Panel1.Controls.Add(this.tb_update_user_cd);
             this.splitContainer9.Panel1.Controls.Add(this.tb_seisan_yotei_date);
+            this.splitContainer9.Panel1.Controls.Add(this.tb_update_datetime);
             this.splitContainer9.Panel1.Controls.Add(this.textBox3);
             // 
             // splitContainer9.Panel2
@@ -432,6 +506,7 @@
             this.btn_day_down.TabStop = false;
             this.btn_day_down.Text = "-1日";
             this.btn_day_down.UseVisualStyleBackColor = true;
+            this.btn_day_down.Click += new System.EventHandler(this.btn_day_down_Click);
             // 
             // splitContainer16
             // 
@@ -486,6 +561,7 @@
             this.btn_day_up.TabStop = false;
             this.btn_day_up.Text = "+1日";
             this.btn_day_up.UseVisualStyleBackColor = true;
+            this.btn_day_up.Click += new System.EventHandler(this.btn_day_up_Click);
             // 
             // dgv_today
             // 
@@ -496,6 +572,7 @@
             this.dgv_today.RowTemplate.Height = 21;
             this.dgv_today.Size = new System.Drawing.Size(1080, 199);
             this.dgv_today.TabIndex = 0;
+            this.dgv_today.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellDoubleClick);
             this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
             this.dgv_today.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_today_CellPainting);
             this.dgv_today.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellValidated);
@@ -555,6 +632,7 @@
             this.btn_before_day_down.TabStop = false;
             this.btn_before_day_down.Text = "-1日";
             this.btn_before_day_down.UseVisualStyleBackColor = true;
+            this.btn_before_day_down.Click += new System.EventHandler(this.btn_before_day_down_Click);
             // 
             // btn_before_day_up
             // 
@@ -565,6 +643,7 @@
             this.btn_before_day_up.TabStop = false;
             this.btn_before_day_up.Text = "+1日";
             this.btn_before_day_up.UseVisualStyleBackColor = true;
+            this.btn_before_day_up.Click += new System.EventHandler(this.btn_before_day_up_Click);
             // 
             // lbl_seisan_yotei_date_before
             // 
@@ -597,6 +676,8 @@
             this.dgv_before.Size = new System.Drawing.Size(536, 100);
             this.dgv_before.TabIndex = 0;
             this.dgv_before.TabStop = false;
+            this.dgv_before.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_before_CellFormatting);
+            this.dgv_before.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_before_CellPainting);
             // 
             // splitContainer7
             // 
@@ -631,6 +712,7 @@
             this.btn_next_day_up.TabStop = false;
             this.btn_next_day_up.Text = "+1日";
             this.btn_next_day_up.UseVisualStyleBackColor = true;
+            this.btn_next_day_up.Click += new System.EventHandler(this.btn_next_day_up_Click);
             // 
             // lbl_seisan_yotei_date_next
             // 
@@ -661,6 +743,7 @@
             this.btn_next_day_down.TabStop = false;
             this.btn_next_day_down.Text = "-1日";
             this.btn_next_day_down.UseVisualStyleBackColor = true;
+            this.btn_next_day_down.Click += new System.EventHandler(this.btn_next_day_down_Click);
             // 
             // dgv_next
             // 
@@ -672,6 +755,8 @@
             this.dgv_next.Size = new System.Drawing.Size(536, 100);
             this.dgv_next.TabIndex = 0;
             this.dgv_next.TabStop = false;
+            this.dgv_next.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_next_CellFormatting);
+            this.dgv_next.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_next_CellPainting);
             // 
             // splitContainer8
             // 
@@ -721,6 +806,7 @@
             this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // btn_syuuryou
             // 
@@ -854,5 +940,11 @@
         private System.Windows.Forms.SplitContainer splitContainer18;
         private System.Windows.Forms.Label lbl_seisan_yotei_date_next;
         private System.Windows.Forms.ComboBox cb_today_busyo;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox tb_create_user_cd;
+        private System.Windows.Forms.TextBox tb_create_datetime;
+        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox tb_update_user_cd;
+        private System.Windows.Forms.TextBox tb_update_datetime;
     }
 }
