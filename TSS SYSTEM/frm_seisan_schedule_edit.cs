@@ -77,7 +77,7 @@ namespace TSS_SYSTEM
             //行ヘッダーを非表示にする
             //w_dgv.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
-            w_dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //w_dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
             w_dgv.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
@@ -166,7 +166,11 @@ namespace TSS_SYSTEM
             w_dgv.Columns["line_name"].Frozen = true;
 
             //ヘッダーのwrapmodeをオフにする（余白をなくす）
-            //w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            w_dgv = 50;
+            w_dgv.Columns["busyo_cd"].HeaderCell.Style.WrapMode = DataGridViewTriState.True;
+
 
             if(w_dgv.Name == "dgv_today")
             {
