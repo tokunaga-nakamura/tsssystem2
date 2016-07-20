@@ -628,7 +628,7 @@
             this.dtp_before.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_before.Location = new System.Drawing.Point(217, 3);
             this.dtp_before.Name = "dtp_before";
-            this.dtp_before.Size = new System.Drawing.Size(121, 19);
+            this.dtp_before.Size = new System.Drawing.Size(98, 19);
             this.dtp_before.TabIndex = 3;
             this.dtp_before.ValueChanged += new System.EventHandler(this.dtp_before_ValueChanged);
             // 
@@ -645,7 +645,7 @@
             // 
             // btn_before_day_up
             // 
-            this.btn_before_day_up.Location = new System.Drawing.Point(344, 1);
+            this.btn_before_day_up.Location = new System.Drawing.Point(321, 1);
             this.btn_before_day_up.Name = "btn_before_day_up";
             this.btn_before_day_up.Size = new System.Drawing.Size(75, 23);
             this.btn_before_day_up.TabIndex = 2;
@@ -705,13 +705,13 @@
             this.dtp_next.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_next.Location = new System.Drawing.Point(219, 3);
             this.dtp_next.Name = "dtp_next";
-            this.dtp_next.Size = new System.Drawing.Size(121, 19);
+            this.dtp_next.Size = new System.Drawing.Size(97, 19);
             this.dtp_next.TabIndex = 4;
             this.dtp_next.ValueChanged += new System.EventHandler(this.dtp_next_ValueChanged);
             // 
             // btn_next_day_up
             // 
-            this.btn_next_day_up.Location = new System.Drawing.Point(346, 2);
+            this.btn_next_day_up.Location = new System.Drawing.Point(322, 1);
             this.btn_next_day_up.Name = "btn_next_day_up";
             this.btn_next_day_up.Size = new System.Drawing.Size(75, 23);
             this.btn_next_day_up.TabIndex = 0;
