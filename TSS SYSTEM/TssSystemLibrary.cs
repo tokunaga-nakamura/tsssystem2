@@ -11,7 +11,14 @@ using System.Data;              //OracleのUPDATE文の実行の際にIsolationL
 using System.IO;                //StreamWriter
 
 //プログラムのバージョン管理方法
-
+//
+//system_versionでシステム全体のバージョン管理をする
+//code_versionでプログラムのバージョン管理をする
+//主なバージョンのカウント方法は、
+//・テーブルの変更、仕様の変更等、新と旧のDBまたはプログラムの混載が許されない場合はシステムのバージョンを上げる
+//・プログラムの機能の追加やバグ修正など、現状バージョンのまま使用できる場合は、プログラムバージョンのみ上げる
+//※尚、system_versionが上がると、get_newしないと起動できなくなるので、新規プログラムの確実な配信に役立てることも可能
+//
 //プログラムの配布手順
 //①コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
 //②tss system libraryのコンストラクタ（このライブラリのもう少し下）に宣言してある変数 program_version の値を変更する
@@ -31,7 +38,10 @@ using System.IO;                //StreamWriter
 //                  -ユーザーマスタに権限7（生産）の追加
 //                  -各検索画面、入力画面の検索機能・区分等の選択機能の充実
 //                  などなど
-//
+//                  code:1
+//      2016/07/xx  -スケジュール調整画面大幅変更
+//                  -メニューのステータスにコードバージョンの表示を追加
+//                  code:2
 
 
 namespace TSS_SYSTEM
@@ -46,6 +56,7 @@ namespace TSS_SYSTEM
         #region TssSystemLibrary クラス
         //フィールドの定義
         string program_version;
+        string program_code_version;
 
         string fld_DataSource;
         string fld_UserID;
@@ -78,6 +89,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.03";
+            program_code_version = "1.03.2";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -117,6 +129,7 @@ namespace TSS_SYSTEM
         public string system_cd { get { return fld_system_cd; } }
         public string system_name { get { return fld_system_name; } }
         public string system_version { get { return fld_system_version; } }
+        public string code_version { get { return program_code_version; } }
         public int chat_update_interval { get { return fld_chat_update_interval; } }
         public string share_directory { get { return fld_share_directory; } }
 
