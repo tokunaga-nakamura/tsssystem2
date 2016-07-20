@@ -77,7 +77,7 @@ namespace TSS_SYSTEM
             //行ヘッダーを非表示にする
             //w_dgv.RowHeadersVisible = false;
             //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
-            w_dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //w_dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             //セルの高さ変更不可
             w_dgv.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
@@ -116,13 +116,13 @@ namespace TSS_SYSTEM
             w_dgv.Columns["juchu_su"].HeaderText = "受注数";
             w_dgv.Columns["seisan_su"].HeaderText = "生産数";
             w_dgv.Columns["tact_time"].HeaderText = "タクトタイム";
-            w_dgv.Columns["dandori_kousu"].HeaderText = "段取工数数";
+            w_dgv.Columns["dandori_kousu"].HeaderText = "段取工数";
             w_dgv.Columns["tuika_kousu"].HeaderText = "追加工数";
             w_dgv.Columns["hoju_kousu"].HeaderText = "補充工数";
             w_dgv.Columns["seisan_time"].HeaderText = "生産時間";
             w_dgv.Columns["start_time"].HeaderText = "開始時刻";
             w_dgv.Columns["end_time"].HeaderText = "終了時刻";
-            w_dgv.Columns["ninzu"].HeaderText = "人数数";
+            w_dgv.Columns["ninzu"].HeaderText = "人数";
             w_dgv.Columns["members"].HeaderText = "メンバー";
             w_dgv.Columns["hensyu_flg"].HeaderText = "編集フラグ";
             w_dgv.Columns["bikou"].HeaderText = "備考";
@@ -165,8 +165,45 @@ namespace TSS_SYSTEM
             //セルを固定する
             w_dgv.Columns["line_name"].Frozen = true;
 
+
+            //カラムの幅を固定
+            w_dgv.ColumnHeadersHeight = 40;
+            w_dgv.Columns["busyo_cd"].Width = 40;
+            w_dgv.Columns["busyo_name"].Width = 60;
+            w_dgv.Columns["koutei_cd"].Width = 40;
+            w_dgv.Columns["koutei_name"].Width = 60;
+            w_dgv.Columns["line_cd"].Width = 40;
+            w_dgv.Columns["line_name"].Width = 60;
+            w_dgv.Columns["torihikisaki_cd"].Width = 50;
+            w_dgv.Columns["juchu_cd1"].Width = 50;
+            w_dgv.Columns["juchu_cd2"].Width = 50;
+            w_dgv.Columns["seihin_cd"].Width = 80;
+            w_dgv.Columns["seihin_name"].Width = 120;
+            w_dgv.Columns["seisankisyu"].Width = 120;
+            w_dgv.Columns["juchu_su"].Width = 50;
+            w_dgv.Columns["seisan_su"].Width = 50;
+            w_dgv.Columns["tact_time"].Width = 50;
+            w_dgv.Columns["dandori_kousu"].Width = 50;
+            w_dgv.Columns["tuika_kousu"].Width = 50;
+            w_dgv.Columns["hoju_kousu"].Width = 50;
+            w_dgv.Columns["seisan_time"].Width = 50;
+            w_dgv.Columns["start_time"].Width = 50;
+            w_dgv.Columns["end_time"].Width = 50;
+            w_dgv.Columns["ninzu"].Width = 30;
+            w_dgv.Columns["members"].Width = 50;
+            w_dgv.Columns["hensyu_flg"].Width = 30;
+            w_dgv.Columns["bikou"].Width = 80;
+
             //ヘッダーのwrapmodeをオフにする（余白をなくす）
-            //w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            //w_dgv.Columns["busyo_cd"].HeaderCell.Style.WrapMode = DataGridViewTriState.True;
+            //w_dgv.Columns["busyo_cd"].HeaderCell.Style.WrapMode = DataGridViewTriState.True;
+
+
+            //並べ替え禁止
+            foreach (DataGridViewColumn c in w_dgv.Columns)
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+
 
             if(w_dgv.Name == "dgv_today")
             {
@@ -252,6 +289,10 @@ namespace TSS_SYSTEM
                 cb_before_busyo.SelectedValue = w_dt_busyo.Rows[0]["busyo_cd"].ToString();
                 cb_next_busyo.SelectedValue = w_dt_busyo.Rows[0]["busyo_cd"].ToString();
             }
+
+            cb_today_busyo.SelectedValueChanged += new EventHandler(cb_today_busyo_SelectedValueChanged);
+            cb_before_busyo.SelectedValueChanged += new EventHandler(cb_before_busyo_SelectedValueChanged);
+            cb_next_busyo.SelectedValueChanged += new EventHandler(cb_next_busyo_SelectedValueChanged);
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
@@ -259,14 +300,7 @@ namespace TSS_SYSTEM
             this.Close();
         }
 
-        private void cb_before_busyo_SelectedValueChanged(object sender, EventArgs e)
-        {
-            //選択されていればSelectedValueに入っている
-            if (cb_before_busyo.SelectedIndex != -1)
-            {
-                //変更された場合の処理
-            }
-        }
+       
 
         private bool henkou_check()
         {
@@ -344,14 +378,15 @@ namespace TSS_SYSTEM
                 get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
                 disp_schedule_data(dgv_before , w_dt_before);
                 cb_before_busyo.SelectedValue = cb_today_busyo.SelectedValue.ToString();
-                lbl_seisan_yotei_date_before.Text = w_before_day.ToShortDateString();
+                dtp_before.Value = w_before_day;
+
                 //+1
                 DateTime w_next_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
                 w_next_day = w_next_day.AddDays(1);
                 get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
                 disp_schedule_data(dgv_next , w_dt_next);
                 cb_before_busyo.SelectedValue = cb_today_busyo.SelectedValue.ToString();
-                lbl_seisan_yotei_date_next.Text = w_next_day.ToShortDateString();
+                dtp_next.Value = w_next_day;
             }
             else
             {
@@ -832,7 +867,7 @@ namespace TSS_SYSTEM
                 //dgv.CurrentCell.Value = st;
             }
 
-            if (e.ColumnIndex >= 13 && e.ColumnIndex <= 19)//ﾀｸﾄﾀｲﾑ～終了時刻
+            if (e.ColumnIndex >= 14 && e.ColumnIndex <= 19)//ﾀｸﾄﾀｲﾑ～終了時刻
             {
                 decimal result;
                 if (decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
@@ -1422,12 +1457,17 @@ namespace TSS_SYSTEM
         private void dgv_today_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             w_dt_today.AcceptChanges();
-            disp_schedule_data(dgv_today , w_dt_today);
+            disp_schedule_data(dgv_today, w_dt_today);
         }
 
         private void dgv_today_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int ci = e.ColumnIndex;
+
+            if(e.RowIndex == -1)
+            {
+                return;
+            }
 
             //工程コード
             if (ci == 3)
@@ -1576,82 +1616,98 @@ namespace TSS_SYSTEM
 
         private void btn_day_up_Click(object sender, EventArgs e)
         {
-            henkou_check();
-            DateTime w_next_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(1);
-            get_schedule_data(cb_today_busyo, w_next_day.ToShortDateString());
-            disp_schedule_data(dgv_today , w_dt_today);
-            tb_seisan_yotei_date.Text = w_next_day.ToShortDateString();
-            lbl_seisan_yotei_date_today.Text = w_next_day.ToShortDateString();
-            if (w_dt_today.Rows.Count > 0)
+            if(henkou_check() == true)
             {
-                tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
-                tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
-                tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
-                tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                DateTime w_next_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(1);
+                get_schedule_data(cb_today_busyo, w_next_day.ToShortDateString());
+                disp_schedule_data(dgv_today, w_dt_today);
+                tb_seisan_yotei_date.Text = w_next_day.ToShortDateString();
+                lbl_seisan_yotei_date_today.Text = w_next_day.ToShortDateString();
+                if (w_dt_today.Rows.Count > 0)
+                {
+                    tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
+                    tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
+                    tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
+                    tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                }
+                else
+                {
+                    tb_create_user_cd.Text = "";
+                    tb_create_datetime.Text = "";
+                    tb_update_user_cd.Text = "";
+                    tb_update_datetime.Text = "";
+                }
             }
             else
             {
-                tb_create_user_cd.Text = "";
-                tb_create_datetime.Text = "";
-                tb_update_user_cd.Text = "";
-                tb_update_datetime.Text = "";
-            }
+                MessageBox.Show("キャンセルしました。");
+                return;
+            }  
+           
         }
 
         private void btn_day_down_Click(object sender, EventArgs e)
         {
-            henkou_check();
-            DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(-1);
-            get_schedule_data(cb_today_busyo, w_before_day.ToShortDateString());
-            disp_schedule_data(dgv_today, w_dt_today);
-            tb_seisan_yotei_date.Text = w_before_day.ToShortDateString();
-            lbl_seisan_yotei_date_today.Text = w_before_day.ToShortDateString();
-            if (w_dt_today.Rows.Count > 0)
+            if(henkou_check() == true)
             {
-                tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
-                tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
-                tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
-                tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(-1);
+                get_schedule_data(cb_today_busyo, w_before_day.ToShortDateString());
+                disp_schedule_data(dgv_today, w_dt_today);
+                tb_seisan_yotei_date.Text = w_before_day.ToShortDateString();
+                lbl_seisan_yotei_date_today.Text = w_before_day.ToShortDateString();
+                if (w_dt_today.Rows.Count > 0)
+                {
+                    tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
+                    tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
+                    tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
+                    tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                }
+                else
+                {
+                    tb_create_user_cd.Text = "";
+                    tb_create_datetime.Text = "";
+                    tb_update_user_cd.Text = "";
+                    tb_update_datetime.Text = "";
+                }
             }
             else
             {
-                tb_create_user_cd.Text = "";
-                tb_create_datetime.Text = "";
-                tb_update_user_cd.Text = "";
-                tb_update_datetime.Text = "";
-            }
+                MessageBox.Show("キャンセルしました。");
+                return;
+            }  
+           
         }
 
         private void btn_before_day_up_Click(object sender, EventArgs e)
         {
-            DateTime w_next_day = DateTime.Parse(lbl_seisan_yotei_date_before.Text.ToString()).AddDays(1);
+            DateTime w_next_day = dtp_before.Value.AddDays(1);
             get_schedule_data(cb_before_busyo, w_next_day.ToShortDateString());
             disp_schedule_data(dgv_before, w_dt_before);
-            lbl_seisan_yotei_date_before.Text = w_next_day.ToShortDateString();
+            dtp_before.Value = w_next_day;
         }
 
         private void btn_before_day_down_Click(object sender, EventArgs e)
         {
-            DateTime w_before_day = DateTime.Parse(lbl_seisan_yotei_date_before.Text.ToString()).AddDays(-1);
+            DateTime w_before_day = dtp_before.Value.AddDays(-1);
             get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
             disp_schedule_data(dgv_before, w_dt_before);
-            lbl_seisan_yotei_date_before.Text = w_before_day.ToShortDateString();
+            dtp_before.Value = w_before_day;
         }
 
         private void btn_next_day_up_Click(object sender, EventArgs e)
         {
-            DateTime w_next_day = DateTime.Parse(lbl_seisan_yotei_date_next.Text.ToString()).AddDays(1);
+            DateTime w_next_day = dtp_next.Value.AddDays(1);
             get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
             disp_schedule_data(dgv_next, w_dt_next);
-            lbl_seisan_yotei_date_next.Text = w_next_day.ToShortDateString();
+            dtp_next.Value = w_next_day;
         }
 
         private void btn_next_day_down_Click(object sender, EventArgs e)
         {
-            DateTime w_before_day = DateTime.Parse(lbl_seisan_yotei_date_next.Text.ToString()).AddDays(-1);
+            DateTime w_before_day = dtp_next.Value.AddDays(-1);
             get_schedule_data(cb_next_busyo, w_before_day.ToShortDateString());
             disp_schedule_data(dgv_next, w_dt_next);
-            lbl_seisan_yotei_date_next.Text = w_before_day.ToShortDateString();
+            dtp_next.Value = w_before_day;
         }
 
         private void btn_touroku_Click(object sender, EventArgs e)
@@ -1933,6 +1989,37 @@ namespace TSS_SYSTEM
             MessageBox.Show("生産スケジュールに登録しました");
 
             //kensaku();
+        }
+
+        private void dtp_before_ValueChanged(object sender, EventArgs e)
+        {
+            get_schedule_data(cb_before_busyo, dtp_before.Value.ToShortDateString());
+            disp_schedule_data(dgv_before, w_dt_before);
+
+        }
+
+        private void dtp_next_ValueChanged(object sender, EventArgs e)
+        {
+            get_schedule_data(cb_next_busyo, dtp_next.Value.ToShortDateString());
+            disp_schedule_data(dgv_next, w_dt_next);
+        }
+
+        private void cb_today_busyo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
+            disp_schedule_data(dgv_today, w_dt_today);
+        }
+
+        private void cb_before_busyo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            get_schedule_data(cb_before_busyo, dtp_before.Value.ToShortDateString());
+            disp_schedule_data(dgv_before, w_dt_before);
+        }
+
+        private void cb_next_busyo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            get_schedule_data(cb_next_busyo, dtp_next.Value.ToShortDateString());
+            disp_schedule_data(dgv_next, w_dt_next);
         }
       
        
