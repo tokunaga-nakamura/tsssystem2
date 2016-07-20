@@ -31,20 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_schedule_edit));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
-            this.tb_create_datetime = new System.Windows.Forms.TextBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
-            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
+            this.textBox32 = new System.Windows.Forms.TextBox();
             this.cb_today_busyo = new System.Windows.Forms.ComboBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
             this.btn_hyouji = new System.Windows.Forms.Button();
+            this.textBox35 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
             this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.btn_line_tuika_under = new System.Windows.Forms.Button();
             this.btn_auto_time = new System.Windows.Forms.Button();
@@ -63,14 +63,14 @@
             this.dgv_today = new System.Windows.Forms.DataGridView();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.dtp_before = new System.Windows.Forms.DateTimePicker();
             this.btn_before_day_down = new System.Windows.Forms.Button();
             this.btn_before_day_up = new System.Windows.Forms.Button();
-            this.lbl_seisan_yotei_date_before = new System.Windows.Forms.Label();
             this.cb_before_busyo = new System.Windows.Forms.ComboBox();
             this.dgv_before = new System.Windows.Forms.DataGridView();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+            this.dtp_next = new System.Windows.Forms.DateTimePicker();
             this.btn_next_day_up = new System.Windows.Forms.Button();
-            this.lbl_seisan_yotei_date_next = new System.Windows.Forms.Label();
             this.cb_next_busyo = new System.Windows.Forms.ComboBox();
             this.btn_next_day_down = new System.Windows.Forms.Button();
             this.dgv_next = new System.Windows.Forms.DataGridView();
@@ -168,68 +168,6 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
-            // textBox32
-            // 
-            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox32.Location = new System.Drawing.Point(596, 17);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(45, 19);
-            this.textBox32.TabIndex = 111;
-            this.textBox32.TabStop = false;
-            this.textBox32.Text = "作成";
-            // 
-            // tb_create_user_cd
-            // 
-            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(641, 17);
-            this.tb_create_user_cd.Name = "tb_create_user_cd";
-            this.tb_create_user_cd.ReadOnly = true;
-            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
-            this.tb_create_user_cd.TabIndex = 112;
-            this.tb_create_user_cd.TabStop = false;
-            // 
-            // tb_create_datetime
-            // 
-            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(683, 17);
-            this.tb_create_datetime.Name = "tb_create_datetime";
-            this.tb_create_datetime.ReadOnly = true;
-            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
-            this.tb_create_datetime.TabIndex = 113;
-            this.tb_create_datetime.TabStop = false;
-            // 
-            // textBox35
-            // 
-            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox35.Location = new System.Drawing.Point(596, 36);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.ReadOnly = true;
-            this.textBox35.Size = new System.Drawing.Size(45, 19);
-            this.textBox35.TabIndex = 114;
-            this.textBox35.TabStop = false;
-            this.textBox35.Text = "更新";
-            // 
-            // tb_update_user_cd
-            // 
-            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(641, 36);
-            this.tb_update_user_cd.Name = "tb_update_user_cd";
-            this.tb_update_user_cd.ReadOnly = true;
-            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
-            this.tb_update_user_cd.TabIndex = 115;
-            this.tb_update_user_cd.TabStop = false;
-            // 
-            // tb_update_datetime
-            // 
-            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(683, 36);
-            this.tb_update_datetime.Name = "tb_update_datetime";
-            this.tb_update_datetime.ReadOnly = true;
-            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
-            this.tb_update_datetime.TabIndex = 116;
-            this.tb_update_datetime.TabStop = false;
-            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -319,6 +257,17 @@
             this.splitContainer9.TabIndex = 0;
             this.splitContainer9.TabStop = false;
             // 
+            // textBox32
+            // 
+            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox32.Location = new System.Drawing.Point(596, 17);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.ReadOnly = true;
+            this.textBox32.Size = new System.Drawing.Size(45, 19);
+            this.textBox32.TabIndex = 111;
+            this.textBox32.TabStop = false;
+            this.textBox32.Text = "作成";
+            // 
             // cb_today_busyo
             // 
             this.cb_today_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -327,6 +276,26 @@
             this.cb_today_busyo.Name = "cb_today_busyo";
             this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
             this.cb_today_busyo.TabIndex = 1;
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(641, 17);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_create_user_cd.TabIndex = 112;
+            this.tb_create_user_cd.TabStop = false;
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(683, 17);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_create_datetime.TabIndex = 113;
+            this.tb_create_datetime.TabStop = false;
             // 
             // btn_hyouji
             // 
@@ -337,6 +306,17 @@
             this.btn_hyouji.Text = "表示";
             this.btn_hyouji.UseVisualStyleBackColor = true;
             this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
+            // 
+            // textBox35
+            // 
+            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox35.Location = new System.Drawing.Point(596, 36);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.ReadOnly = true;
+            this.textBox35.Size = new System.Drawing.Size(45, 19);
+            this.textBox35.TabIndex = 114;
+            this.textBox35.TabStop = false;
+            this.textBox35.Text = "更新";
             // 
             // textBox1
             // 
@@ -349,6 +329,16 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "生産予定日";
             // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(641, 36);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_update_user_cd.TabIndex = 115;
+            this.tb_update_user_cd.TabStop = false;
+            // 
             // tb_seisan_yotei_date
             // 
             this.tb_seisan_yotei_date.Location = new System.Drawing.Point(81, 7);
@@ -357,6 +347,16 @@
             this.tb_seisan_yotei_date.Size = new System.Drawing.Size(71, 19);
             this.tb_seisan_yotei_date.TabIndex = 0;
             this.tb_seisan_yotei_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_yotei_date_Validating);
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(683, 36);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_update_datetime.TabIndex = 116;
+            this.tb_update_datetime.TabStop = false;
             // 
             // textBox3
             // 
@@ -610,9 +610,9 @@
             // 
             // splitContainer6.Panel1
             // 
+            this.splitContainer6.Panel1.Controls.Add(this.dtp_before);
             this.splitContainer6.Panel1.Controls.Add(this.btn_before_day_down);
             this.splitContainer6.Panel1.Controls.Add(this.btn_before_day_up);
-            this.splitContainer6.Panel1.Controls.Add(this.lbl_seisan_yotei_date_before);
             this.splitContainer6.Panel1.Controls.Add(this.cb_before_busyo);
             // 
             // splitContainer6.Panel2
@@ -622,6 +622,15 @@
             this.splitContainer6.SplitterDistance = 25;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
+            // 
+            // dtp_before
+            // 
+            this.dtp_before.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_before.Location = new System.Drawing.Point(217, 3);
+            this.dtp_before.Name = "dtp_before";
+            this.dtp_before.Size = new System.Drawing.Size(121, 19);
+            this.dtp_before.TabIndex = 3;
+            this.dtp_before.ValueChanged += new System.EventHandler(this.dtp_before_ValueChanged);
             // 
             // btn_before_day_down
             // 
@@ -636,7 +645,7 @@
             // 
             // btn_before_day_up
             // 
-            this.btn_before_day_up.Location = new System.Drawing.Point(321, 1);
+            this.btn_before_day_up.Location = new System.Drawing.Point(344, 1);
             this.btn_before_day_up.Name = "btn_before_day_up";
             this.btn_before_day_up.Size = new System.Drawing.Size(75, 23);
             this.btn_before_day_up.TabIndex = 2;
@@ -644,17 +653,6 @@
             this.btn_before_day_up.Text = "+1日";
             this.btn_before_day_up.UseVisualStyleBackColor = true;
             this.btn_before_day_up.Click += new System.EventHandler(this.btn_before_day_up_Click);
-            // 
-            // lbl_seisan_yotei_date_before
-            // 
-            this.lbl_seisan_yotei_date_before.AutoSize = true;
-            this.lbl_seisan_yotei_date_before.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_seisan_yotei_date_before.Location = new System.Drawing.Point(217, 4);
-            this.lbl_seisan_yotei_date_before.Name = "lbl_seisan_yotei_date_before";
-            this.lbl_seisan_yotei_date_before.Size = new System.Drawing.Size(98, 16);
-            this.lbl_seisan_yotei_date_before.TabIndex = 0;
-            this.lbl_seisan_yotei_date_before.Text = "9999/99/99";
-            this.lbl_seisan_yotei_date_before.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_before_busyo
             // 
@@ -664,7 +662,6 @@
             this.cb_before_busyo.Name = "cb_before_busyo";
             this.cb_before_busyo.Size = new System.Drawing.Size(120, 20);
             this.cb_before_busyo.TabIndex = 1;
-            this.cb_before_busyo.SelectedValueChanged += new System.EventHandler(this.cb_before_busyo_SelectedValueChanged);
             // 
             // dgv_before
             // 
@@ -690,8 +687,8 @@
             // 
             // splitContainer7.Panel1
             // 
+            this.splitContainer7.Panel1.Controls.Add(this.dtp_next);
             this.splitContainer7.Panel1.Controls.Add(this.btn_next_day_up);
-            this.splitContainer7.Panel1.Controls.Add(this.lbl_seisan_yotei_date_next);
             this.splitContainer7.Panel1.Controls.Add(this.cb_next_busyo);
             this.splitContainer7.Panel1.Controls.Add(this.btn_next_day_down);
             // 
@@ -703,9 +700,18 @@
             this.splitContainer7.TabIndex = 0;
             this.splitContainer7.TabStop = false;
             // 
+            // dtp_next
+            // 
+            this.dtp_next.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_next.Location = new System.Drawing.Point(219, 3);
+            this.dtp_next.Name = "dtp_next";
+            this.dtp_next.Size = new System.Drawing.Size(121, 19);
+            this.dtp_next.TabIndex = 4;
+            this.dtp_next.ValueChanged += new System.EventHandler(this.dtp_next_ValueChanged);
+            // 
             // btn_next_day_up
             // 
-            this.btn_next_day_up.Location = new System.Drawing.Point(323, 2);
+            this.btn_next_day_up.Location = new System.Drawing.Point(346, 2);
             this.btn_next_day_up.Name = "btn_next_day_up";
             this.btn_next_day_up.Size = new System.Drawing.Size(75, 23);
             this.btn_next_day_up.TabIndex = 0;
@@ -713,17 +719,6 @@
             this.btn_next_day_up.Text = "+1日";
             this.btn_next_day_up.UseVisualStyleBackColor = true;
             this.btn_next_day_up.Click += new System.EventHandler(this.btn_next_day_up_Click);
-            // 
-            // lbl_seisan_yotei_date_next
-            // 
-            this.lbl_seisan_yotei_date_next.AutoSize = true;
-            this.lbl_seisan_yotei_date_next.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbl_seisan_yotei_date_next.Location = new System.Drawing.Point(219, 4);
-            this.lbl_seisan_yotei_date_next.Name = "lbl_seisan_yotei_date_next";
-            this.lbl_seisan_yotei_date_next.Size = new System.Drawing.Size(98, 16);
-            this.lbl_seisan_yotei_date_next.TabIndex = 0;
-            this.lbl_seisan_yotei_date_next.Text = "9999/99/99";
-            this.lbl_seisan_yotei_date_next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_next_busyo
             // 
@@ -874,13 +869,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             this.splitContainer6.Panel1.ResumeLayout(false);
-            this.splitContainer6.Panel1.PerformLayout();
             this.splitContainer6.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_before)).EndInit();
             this.splitContainer7.Panel1.ResumeLayout(false);
-            this.splitContainer7.Panel1.PerformLayout();
             this.splitContainer7.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
             this.splitContainer7.ResumeLayout(false);
@@ -918,7 +911,6 @@
         private System.Windows.Forms.Button btn_auto_time;
         private System.Windows.Forms.Button btn_day_down;
         private System.Windows.Forms.Button btn_day_up;
-        private System.Windows.Forms.Label lbl_seisan_yotei_date_before;
         private System.Windows.Forms.Button btn_csv;
         private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Button btn_touroku;
@@ -938,7 +930,6 @@
         private System.Windows.Forms.SplitContainer splitContainer16;
         private System.Windows.Forms.Label lbl_seisan_yotei_date_today;
         private System.Windows.Forms.SplitContainer splitContainer18;
-        private System.Windows.Forms.Label lbl_seisan_yotei_date_next;
         private System.Windows.Forms.ComboBox cb_today_busyo;
         private System.Windows.Forms.TextBox textBox32;
         private System.Windows.Forms.TextBox tb_create_user_cd;
@@ -946,5 +937,7 @@
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.TextBox tb_update_user_cd;
         private System.Windows.Forms.TextBox tb_update_datetime;
+        private System.Windows.Forms.DateTimePicker dtp_before;
+        private System.Windows.Forms.DateTimePicker dtp_next;
     }
 }
