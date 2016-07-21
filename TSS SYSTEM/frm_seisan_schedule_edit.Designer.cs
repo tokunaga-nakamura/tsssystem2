@@ -79,6 +79,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -136,6 +137,10 @@
             this.splitContainer8.Panel1.SuspendLayout();
             this.splitContainer8.Panel2.SuspendLayout();
             this.splitContainer8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
+            this.splitContainer12.Panel1.SuspendLayout();
+            this.splitContainer12.Panel2.SuspendLayout();
+            this.splitContainer12.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -219,7 +224,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer3.Size = new System.Drawing.Size(1084, 440);
-            this.splitContainer3.SplitterDistance = 63;
+            this.splitContainer3.SplitterDistance = 59;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
@@ -233,34 +238,25 @@
             // 
             // splitContainer9.Panel1
             // 
-            this.splitContainer9.Panel1.Controls.Add(this.textBox32);
-            this.splitContainer9.Panel1.Controls.Add(this.cb_today_busyo);
-            this.splitContainer9.Panel1.Controls.Add(this.tb_create_user_cd);
-            this.splitContainer9.Panel1.Controls.Add(this.tb_create_datetime);
-            this.splitContainer9.Panel1.Controls.Add(this.btn_hyouji);
-            this.splitContainer9.Panel1.Controls.Add(this.textBox35);
-            this.splitContainer9.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer9.Panel1.Controls.Add(this.tb_update_user_cd);
-            this.splitContainer9.Panel1.Controls.Add(this.tb_seisan_yotei_date);
-            this.splitContainer9.Panel1.Controls.Add(this.tb_update_datetime);
-            this.splitContainer9.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer9.Panel1.Controls.Add(this.splitContainer12);
             // 
             // splitContainer9.Panel2
             // 
-            this.splitContainer9.Panel2.Controls.Add(this.btn_line_tuika_under);
-            this.splitContainer9.Panel2.Controls.Add(this.btn_auto_time);
-            this.splitContainer9.Panel2.Controls.Add(this.btn_line_tuika);
-            this.splitContainer9.Panel2.Controls.Add(this.btn_seisan_jun_up);
-            this.splitContainer9.Panel2.Controls.Add(this.btn_seisan_jun_down);
-            this.splitContainer9.Size = new System.Drawing.Size(1080, 59);
-            this.splitContainer9.SplitterDistance = 819;
+            this.splitContainer9.Panel2.Controls.Add(this.textBox32);
+            this.splitContainer9.Panel2.Controls.Add(this.tb_update_datetime);
+            this.splitContainer9.Panel2.Controls.Add(this.tb_update_user_cd);
+            this.splitContainer9.Panel2.Controls.Add(this.textBox35);
+            this.splitContainer9.Panel2.Controls.Add(this.tb_create_datetime);
+            this.splitContainer9.Panel2.Controls.Add(this.tb_create_user_cd);
+            this.splitContainer9.Size = new System.Drawing.Size(1080, 55);
+            this.splitContainer9.SplitterDistance = 852;
             this.splitContainer9.TabIndex = 0;
             this.splitContainer9.TabStop = false;
             // 
             // textBox32
             // 
             this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox32.Location = new System.Drawing.Point(596, 17);
+            this.textBox32.Location = new System.Drawing.Point(3, 3);
             this.textBox32.Name = "textBox32";
             this.textBox32.ReadOnly = true;
             this.textBox32.Size = new System.Drawing.Size(45, 19);
@@ -272,7 +268,7 @@
             // 
             this.cb_today_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_today_busyo.FormattingEnabled = true;
-            this.cb_today_busyo.Location = new System.Drawing.Point(81, 32);
+            this.cb_today_busyo.Location = new System.Drawing.Point(81, 28);
             this.cb_today_busyo.Name = "cb_today_busyo";
             this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
             this.cb_today_busyo.TabIndex = 1;
@@ -280,7 +276,7 @@
             // tb_create_user_cd
             // 
             this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(641, 17);
+            this.tb_create_user_cd.Location = new System.Drawing.Point(48, 3);
             this.tb_create_user_cd.Name = "tb_create_user_cd";
             this.tb_create_user_cd.ReadOnly = true;
             this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
@@ -290,7 +286,7 @@
             // tb_create_datetime
             // 
             this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(683, 17);
+            this.tb_create_datetime.Location = new System.Drawing.Point(90, 3);
             this.tb_create_datetime.Name = "tb_create_datetime";
             this.tb_create_datetime.ReadOnly = true;
             this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
@@ -299,7 +295,7 @@
             // 
             // btn_hyouji
             // 
-            this.btn_hyouji.Location = new System.Drawing.Point(221, 30);
+            this.btn_hyouji.Location = new System.Drawing.Point(208, 26);
             this.btn_hyouji.Name = "btn_hyouji";
             this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
             this.btn_hyouji.TabIndex = 2;
@@ -310,7 +306,7 @@
             // textBox35
             // 
             this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox35.Location = new System.Drawing.Point(596, 36);
+            this.textBox35.Location = new System.Drawing.Point(3, 22);
             this.textBox35.Name = "textBox35";
             this.textBox35.ReadOnly = true;
             this.textBox35.Size = new System.Drawing.Size(45, 19);
@@ -321,7 +317,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(10, 7);
+            this.textBox1.Location = new System.Drawing.Point(10, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(71, 19);
@@ -332,7 +328,7 @@
             // tb_update_user_cd
             // 
             this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(641, 36);
+            this.tb_update_user_cd.Location = new System.Drawing.Point(48, 22);
             this.tb_update_user_cd.Name = "tb_update_user_cd";
             this.tb_update_user_cd.ReadOnly = true;
             this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
@@ -341,7 +337,7 @@
             // 
             // tb_seisan_yotei_date
             // 
-            this.tb_seisan_yotei_date.Location = new System.Drawing.Point(81, 7);
+            this.tb_seisan_yotei_date.Location = new System.Drawing.Point(81, 3);
             this.tb_seisan_yotei_date.MaxLength = 10;
             this.tb_seisan_yotei_date.Name = "tb_seisan_yotei_date";
             this.tb_seisan_yotei_date.Size = new System.Drawing.Size(71, 19);
@@ -351,7 +347,7 @@
             // tb_update_datetime
             // 
             this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(683, 36);
+            this.tb_update_datetime.Location = new System.Drawing.Point(90, 22);
             this.tb_update_datetime.Name = "tb_update_datetime";
             this.tb_update_datetime.ReadOnly = true;
             this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
@@ -361,7 +357,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(10, 32);
+            this.textBox3.Location = new System.Drawing.Point(10, 28);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(71, 19);
@@ -389,6 +385,7 @@
             this.btn_auto_time.TabStop = false;
             this.btn_auto_time.Text = "自動時間調整";
             this.btn_auto_time.UseVisualStyleBackColor = true;
+            this.btn_auto_time.Click += new System.EventHandler(this.btn_auto_time_Click);
             // 
             // btn_line_tuika
             // 
@@ -414,7 +411,7 @@
             // 
             // btn_seisan_jun_down
             // 
-            this.btn_seisan_jun_down.Location = new System.Drawing.Point(84, 32);
+            this.btn_seisan_jun_down.Location = new System.Drawing.Point(85, 30);
             this.btn_seisan_jun_down.Name = "btn_seisan_jun_down";
             this.btn_seisan_jun_down.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_down.TabIndex = 7;
@@ -438,8 +435,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(1084, 373);
-            this.splitContainer4.SplitterDistance = 236;
+            this.splitContainer4.Size = new System.Drawing.Size(1084, 377);
+            this.splitContainer4.SplitterDistance = 238;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -459,7 +456,7 @@
             // splitContainer10.Panel2
             // 
             this.splitContainer10.Panel2.Controls.Add(this.dgv_today);
-            this.splitContainer10.Size = new System.Drawing.Size(1080, 232);
+            this.splitContainer10.Size = new System.Drawing.Size(1080, 234);
             this.splitContainer10.SplitterDistance = 29;
             this.splitContainer10.TabIndex = 1;
             this.splitContainer10.TabStop = false;
@@ -570,7 +567,7 @@
             this.dgv_today.Location = new System.Drawing.Point(0, 0);
             this.dgv_today.Name = "dgv_today";
             this.dgv_today.RowTemplate.Height = 21;
-            this.dgv_today.Size = new System.Drawing.Size(1080, 199);
+            this.dgv_today.Size = new System.Drawing.Size(1080, 201);
             this.dgv_today.TabIndex = 0;
             this.dgv_today.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellDoubleClick);
             this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
@@ -594,7 +591,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer7);
-            this.splitContainer5.Size = new System.Drawing.Size(1084, 133);
+            this.splitContainer5.Size = new System.Drawing.Size(1084, 135);
             this.splitContainer5.SplitterDistance = 540;
             this.splitContainer5.TabIndex = 0;
             this.splitContainer5.TabStop = false;
@@ -618,7 +615,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.dgv_before);
-            this.splitContainer6.Size = new System.Drawing.Size(536, 129);
+            this.splitContainer6.Size = new System.Drawing.Size(536, 131);
             this.splitContainer6.SplitterDistance = 25;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
@@ -670,7 +667,7 @@
             this.dgv_before.Location = new System.Drawing.Point(0, 0);
             this.dgv_before.Name = "dgv_before";
             this.dgv_before.RowTemplate.Height = 21;
-            this.dgv_before.Size = new System.Drawing.Size(536, 100);
+            this.dgv_before.Size = new System.Drawing.Size(536, 102);
             this.dgv_before.TabIndex = 0;
             this.dgv_before.TabStop = false;
             this.dgv_before.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_before_CellFormatting);
@@ -695,7 +692,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_next);
-            this.splitContainer7.Size = new System.Drawing.Size(536, 129);
+            this.splitContainer7.Size = new System.Drawing.Size(536, 131);
             this.splitContainer7.SplitterDistance = 25;
             this.splitContainer7.TabIndex = 0;
             this.splitContainer7.TabStop = false;
@@ -747,7 +744,7 @@
             this.dgv_next.Location = new System.Drawing.Point(0, 0);
             this.dgv_next.Name = "dgv_next";
             this.dgv_next.RowTemplate.Height = 21;
-            this.dgv_next.Size = new System.Drawing.Size(536, 100);
+            this.dgv_next.Size = new System.Drawing.Size(536, 102);
             this.dgv_next.TabIndex = 0;
             this.dgv_next.TabStop = false;
             this.dgv_next.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_next_CellFormatting);
@@ -813,6 +810,34 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // splitContainer12
+            // 
+            this.splitContainer12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer12.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer12.IsSplitterFixed = true;
+            this.splitContainer12.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer12.Name = "splitContainer12";
+            // 
+            // splitContainer12.Panel1
+            // 
+            this.splitContainer12.Panel1.Controls.Add(this.cb_today_busyo);
+            this.splitContainer12.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer12.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer12.Panel1.Controls.Add(this.btn_hyouji);
+            this.splitContainer12.Panel1.Controls.Add(this.tb_seisan_yotei_date);
+            // 
+            // splitContainer12.Panel2
+            // 
+            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika_under);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_up);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_auto_time);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_down);
+            this.splitContainer12.Size = new System.Drawing.Size(852, 55);
+            this.splitContainer12.SplitterDistance = 593;
+            this.splitContainer12.TabIndex = 0;
+            this.splitContainer12.TabStop = false;
+            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -837,8 +862,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.splitContainer9.Panel1.ResumeLayout(false);
-            this.splitContainer9.Panel1.PerformLayout();
             this.splitContainer9.Panel2.ResumeLayout(false);
+            this.splitContainer9.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer9)).EndInit();
             this.splitContainer9.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -882,6 +907,11 @@
             this.splitContainer8.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
             this.splitContainer8.ResumeLayout(false);
+            this.splitContainer12.Panel1.ResumeLayout(false);
+            this.splitContainer12.Panel1.PerformLayout();
+            this.splitContainer12.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
+            this.splitContainer12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -939,5 +969,6 @@
         private System.Windows.Forms.TextBox tb_update_datetime;
         private System.Windows.Forms.DateTimePicker dtp_before;
         private System.Windows.Forms.DateTimePicker dtp_next;
+        private System.Windows.Forms.SplitContainer splitContainer12;
     }
 }
