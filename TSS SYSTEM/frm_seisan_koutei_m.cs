@@ -2114,6 +2114,11 @@ namespace TSS_SYSTEM
             frm_search_seisan_koutei frm_s_seisan_kou = new frm_search_seisan_koutei();
             frm_s_seisan_kou.ShowDialog(this);
             frm_s_seisan_kou.Dispose();
+
+            //子画面から値を取得する
+            this.label1.Text = frm_s_seisan_kou.str_cd;
+            frm_s_seisan_kou.Dispose();
+
         }
        
     }
