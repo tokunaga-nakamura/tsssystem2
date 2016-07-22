@@ -1693,7 +1693,7 @@ namespace TSS_SYSTEM
                     DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
 
                     //1行ずつ生産工程マスタテーブルに挿入
-                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,update_user_cd,update_datetime)"
                                           + " VALUES ('"
                                           + rows[0][0].ToString() + "','"
                                           + rows[0][1].ToString() + "','"
@@ -1717,60 +1717,6 @@ namespace TSS_SYSTEM
                 }
             }
             
-
-            //if(label_sinki.Text == "新規")
-            //{
-            //    for (int i = 0; i < rc; i++)
-            //    {
-            //        tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
-            //                           + " VALUES ('"
-            //                           + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
-            //                           + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
-            //    }
-
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < rc; i++)
-            //    {
-            //        tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,UPDATE_USER_CD,UPDATE_DATETIME)"
-            //                           + " VALUES ('"
-            //                           + dt_seisan_koutei_m.Rows[i][0].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][1].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][2].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][3].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][4].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][5].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][6].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][7].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][8].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][9].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][10].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][11].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][12].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][13].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][14].ToString() + "','"
-            //                           + dt_seisan_koutei_m.Rows[i][15].ToString() + "',"
-            //                           + "to_date('" + dt_seisan_koutei_m.Rows[i][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
-            //                           + tss.user_cd + "',SYSDATE)");
-            //    }
-            //}
-           
 
             //MessageBox.Show("生産工程マスタに登録しました");
             

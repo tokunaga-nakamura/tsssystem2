@@ -82,12 +82,13 @@
             this.line14 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line15 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line16 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line17 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line18 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line19 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line20 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line21 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.textBox23 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.line22 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
             this.groupHeader1 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
             this.textBox6 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -114,7 +115,10 @@
             this.label40 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label41 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label42 = new GrapeCity.ActiveReports.SectionReportModel.Label();
+            this.label4 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.groupFooter2 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
+            this.line23 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             ((System.ComponentModel.ISupportInitialize)(this.label8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_today)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
@@ -152,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
@@ -174,6 +179,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -200,6 +207,7 @@
             this.label3});
             this.pageHeader.Height = 0.6251314F;
             this.pageHeader.Name = "pageHeader";
+            this.pageHeader.Visible = false;
             // 
             // label8
             // 
@@ -331,7 +339,7 @@
             // 
             this.label1.Height = 0.09370076F;
             this.label1.HyperLink = null;
-            this.label1.Left = 8.824803F;
+            this.label1.Left = 8.596851F;
             this.label1.Name = "label1";
             this.label1.Style = "font-size: 6pt";
             this.label1.Text = "作成";
@@ -342,7 +350,7 @@
             // 
             this.label2.Height = 0.09370076F;
             this.label2.HyperLink = null;
-            this.label2.Left = 8.824803F;
+            this.label2.Left = 8.596851F;
             this.label2.Name = "label2";
             this.label2.Style = "font-size: 6pt";
             this.label2.Text = "更新";
@@ -352,22 +360,22 @@
             // tb_create_user_name
             // 
             this.tb_create_user_name.Height = 0.09370083F;
-            this.tb_create_user_name.Left = 9.202363F;
+            this.tb_create_user_name.Left = 8.974411F;
             this.tb_create_user_name.Name = "tb_create_user_name";
             this.tb_create_user_name.Style = "font-size: 8.25pt; text-align: left";
             this.tb_create_user_name.Text = null;
             this.tb_create_user_name.Top = 0.3925197F;
-            this.tb_create_user_name.Width = 0.5830704F;
+            this.tb_create_user_name.Width = 0.8110225F;
             // 
             // tb_update_user_name
             // 
             this.tb_update_user_name.Height = 0.09370083F;
-            this.tb_update_user_name.Left = 9.202363F;
+            this.tb_update_user_name.Left = 8.974411F;
             this.tb_update_user_name.Name = "tb_update_user_name";
             this.tb_update_user_name.Style = "font-size: 8.25pt; text-align: left";
             this.tb_update_user_name.Text = null;
             this.tb_update_user_name.Top = 0.4862205F;
-            this.tb_update_user_name.Width = 0.5830704F;
+            this.tb_update_user_name.Width = 0.8110225F;
             // 
             // tb_create_datetime
             // 
@@ -438,13 +446,15 @@
             this.line14,
             this.line15,
             this.line16,
-            this.line17,
             this.line18,
             this.line19,
             this.line20,
             this.line21,
-            this.line4});
-            this.detail.Height = 0.1666666F;
+            this.textBox23,
+            this.line22,
+            this.line4,
+            this.line23});
+            this.detail.Height = 0.1669292F;
             this.detail.Name = "detail";
             // 
             // textBox4
@@ -456,18 +466,18 @@
             this.textBox4.Style = "font-size: 8.25pt; text-align: left";
             this.textBox4.Text = null;
             this.textBox4.Top = 0F;
-            this.textBox4.Width = 0.6614174F;
+            this.textBox4.Width = 0.5562993F;
             // 
             // textBox5
             // 
             this.textBox5.DataField = "juchu_cd2";
             this.textBox5.Height = 0.146063F;
-            this.textBox5.Left = 1.206693F;
+            this.textBox5.Left = 1.114961F;
             this.textBox5.Name = "textBox5";
             this.textBox5.Style = "font-size: 8.25pt; text-align: left";
             this.textBox5.Text = null;
             this.textBox5.Top = 0F;
-            this.textBox5.Width = 0.6425197F;
+            this.textBox5.Width = 0.5381891F;
             // 
             // textBox7
             // 
@@ -484,7 +494,7 @@
             // 
             this.textBox8.DataField = "seihin_cd";
             this.textBox8.Height = 0.146063F;
-            this.textBox8.Left = 1.888976F;
+            this.textBox8.Left = 1.679528F;
             this.textBox8.Name = "textBox8";
             this.textBox8.Style = "font-size: 8.25pt; text-align: left";
             this.textBox8.Text = null;
@@ -495,138 +505,138 @@
             // 
             this.textBox9.DataField = "seihin_name";
             this.textBox9.Height = 0.146063F;
-            this.textBox9.Left = 2.711417F;
+            this.textBox9.Left = 2.485827F;
             this.textBox9.Name = "textBox9";
             this.textBox9.Style = "font-size: 8.25pt; text-align: left";
             this.textBox9.Text = null;
-            this.textBox9.Top = 0F;
+            this.textBox9.Top = 0.0003937008F;
             this.textBox9.Width = 1.317716F;
             // 
             // textBox10
             // 
             this.textBox10.DataField = "juchu_su";
             this.textBox10.Height = 0.146063F;
-            this.textBox10.Left = 4.029134F;
+            this.textBox10.Left = 4.577953F;
             this.textBox10.Name = "textBox10";
             this.textBox10.OutputFormat = resources.GetString("textBox10.OutputFormat");
             this.textBox10.Style = "font-size: 8.25pt; text-align: right";
             this.textBox10.Text = null;
-            this.textBox10.Top = 0F;
-            this.textBox10.Width = 0.4637801F;
+            this.textBox10.Top = 0.0003936589F;
+            this.textBox10.Width = 0.4003935F;
             // 
             // textBox11
             // 
             this.textBox11.DataField = "seisan_su";
             this.textBox11.Height = 0.146063F;
-            this.textBox11.Left = 4.512992F;
+            this.textBox11.Left = 4.998425F;
             this.textBox11.Name = "textBox11";
             this.textBox11.OutputFormat = resources.GetString("textBox11.OutputFormat");
             this.textBox11.Style = "font-size: 8.25pt; text-align: right";
             this.textBox11.Text = null;
-            this.textBox11.Top = 0F;
+            this.textBox11.Top = 0.0003936589F;
             this.textBox11.Width = 0.4637801F;
             // 
             // textBox12
             // 
             this.textBox12.DataField = "tact_time";
             this.textBox12.Height = 0.146063F;
-            this.textBox12.Left = 4.985827F;
+            this.textBox12.Left = 5.47126F;
             this.textBox12.Name = "textBox12";
             this.textBox12.OutputFormat = resources.GetString("textBox12.OutputFormat");
             this.textBox12.Style = "font-size: 8.25pt; text-align: right";
             this.textBox12.Text = null;
-            this.textBox12.Top = 0F;
+            this.textBox12.Top = 0.0003936589F;
             this.textBox12.Width = 0.4637801F;
             // 
             // textBox13
             // 
             this.textBox13.DataField = "dandori_kousu";
             this.textBox13.Height = 0.146063F;
-            this.textBox13.Left = 5.464961F;
+            this.textBox13.Left = 5.950394F;
             this.textBox13.Name = "textBox13";
             this.textBox13.OutputFormat = resources.GetString("textBox13.OutputFormat");
             this.textBox13.Style = "font-size: 8.25pt; text-align: right";
             this.textBox13.Text = null;
-            this.textBox13.Top = 0F;
+            this.textBox13.Top = 0.0003936589F;
             this.textBox13.Width = 0.4637801F;
             // 
             // textBox14
             // 
             this.textBox14.DataField = "tuika_kousu";
             this.textBox14.Height = 0.146063F;
-            this.textBox14.Left = 5.944489F;
+            this.textBox14.Left = 6.429922F;
             this.textBox14.Name = "textBox14";
             this.textBox14.OutputFormat = resources.GetString("textBox14.OutputFormat");
             this.textBox14.Style = "font-size: 8.25pt; text-align: right";
             this.textBox14.Text = null;
-            this.textBox14.Top = 0F;
+            this.textBox14.Top = 0.0003936589F;
             this.textBox14.Width = 0.4637801F;
             // 
             // textBox15
             // 
             this.textBox15.DataField = "hoju_kousu";
             this.textBox15.Height = 0.146063F;
-            this.textBox15.Left = 6.423229F;
+            this.textBox15.Left = 6.908662F;
             this.textBox15.Name = "textBox15";
             this.textBox15.OutputFormat = resources.GetString("textBox15.OutputFormat");
             this.textBox15.Style = "font-size: 8.25pt; text-align: right";
             this.textBox15.Text = null;
-            this.textBox15.Top = 0F;
+            this.textBox15.Top = 0.0003936589F;
             this.textBox15.Width = 0.4637801F;
             // 
             // textBox16
             // 
             this.textBox16.DataField = "seisan_time";
             this.textBox16.Height = 0.146063F;
-            this.textBox16.Left = 6.912992F;
+            this.textBox16.Left = 7.398425F;
             this.textBox16.Name = "textBox16";
             this.textBox16.OutputFormat = resources.GetString("textBox16.OutputFormat");
             this.textBox16.Style = "font-size: 8.25pt; text-align: right";
             this.textBox16.Text = null;
-            this.textBox16.Top = 0F;
+            this.textBox16.Top = 0.0003936589F;
             this.textBox16.Width = 0.4637801F;
             // 
             // textBox17
             // 
             this.textBox17.DataField = "start_time";
             this.textBox17.Height = 0.146063F;
-            this.textBox17.Left = 7.392127F;
+            this.textBox17.Left = 7.87756F;
             this.textBox17.Name = "textBox17";
             this.textBox17.OutputFormat = resources.GetString("textBox17.OutputFormat");
             this.textBox17.Style = "font-size: 8.25pt; text-align: right";
             this.textBox17.Text = null;
-            this.textBox17.Top = 0F;
+            this.textBox17.Top = 0.0003936589F;
             this.textBox17.Width = 0.4637799F;
             // 
             // textBox18
             // 
             this.textBox18.DataField = "end_time";
             this.textBox18.Height = 0.146063F;
-            this.textBox18.Left = 7.88189F;
+            this.textBox18.Left = 8.367324F;
             this.textBox18.Name = "textBox18";
             this.textBox18.OutputFormat = resources.GetString("textBox18.OutputFormat");
             this.textBox18.Style = "font-size: 8.25pt; text-align: right";
             this.textBox18.Text = null;
-            this.textBox18.Top = 0F;
-            this.textBox18.Width = 0.4637804F;
+            this.textBox18.Top = 0.0003936589F;
+            this.textBox18.Width = 0.4637794F;
             // 
             // textBox19
             // 
             this.textBox19.DataField = "seisan_zumisu";
             this.textBox19.Height = 0.146063F;
-            this.textBox19.Left = 8.361024F;
+            this.textBox19.Left = 8.871655F;
             this.textBox19.Name = "textBox19";
             this.textBox19.OutputFormat = resources.GetString("textBox19.OutputFormat");
             this.textBox19.Style = "font-size: 8.25pt; text-align: right";
             this.textBox19.Text = null;
             this.textBox19.Top = 0F;
-            this.textBox19.Width = 0.4637801F;
+            this.textBox19.Width = 0.4173231F;
             // 
             // textBox20
             // 
             this.textBox20.DataField = "ninzu";
             this.textBox20.Height = 0.146063F;
-            this.textBox20.Left = 8.861812F;
+            this.textBox20.Left = 9.288977F;
             this.textBox20.Name = "textBox20";
             this.textBox20.OutputFormat = resources.GetString("textBox20.OutputFormat");
             this.textBox20.Style = "font-size: 8.25pt; text-align: right";
@@ -638,23 +648,23 @@
             // 
             this.textBox21.DataField = "members";
             this.textBox21.Height = 0.146063F;
-            this.textBox21.Left = 9.179134F;
+            this.textBox21.Left = 9.596064F;
             this.textBox21.Name = "textBox21";
             this.textBox21.Style = "font-size: 8.25pt; text-align: left";
             this.textBox21.Text = null;
             this.textBox21.Top = 0F;
-            this.textBox21.Width = 0.7555113F;
+            this.textBox21.Width = 0.5574799F;
             // 
             // textBox22
             // 
             this.textBox22.DataField = "bikou";
             this.textBox22.Height = 0.146063F;
-            this.textBox22.Left = 9.953151F;
+            this.textBox22.Left = 10.18228F;
             this.textBox22.Name = "textBox22";
             this.textBox22.Style = "font-size: 8.25pt; text-align: left";
             this.textBox22.Text = null;
             this.textBox22.Top = 0F;
-            this.textBox22.Width = 0.9326763F;
+            this.textBox22.Width = 0.7035427F;
             // 
             // line1
             // 
@@ -688,40 +698,40 @@
             // 
             this.line3.AnchorBottom = true;
             this.line3.Height = 0.1665355F;
-            this.line3.Left = 1.187795F;
+            this.line3.Left = 1.114961F;
             this.line3.LineWeight = 1F;
             this.line3.Name = "line3";
             this.line3.Top = 0F;
             this.line3.Width = 0F;
-            this.line3.X1 = 1.187795F;
-            this.line3.X2 = 1.187795F;
+            this.line3.X1 = 1.114961F;
+            this.line3.X2 = 1.114961F;
             this.line3.Y1 = 0F;
             this.line3.Y2 = 0.1665355F;
             // 
             // line5
             // 
-            this.line5.Height = 0F;
+            this.line5.Height = 4.470348E-08F;
             this.line5.Left = 0F;
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
-            this.line5.Top = 0.1665355F;
-            this.line5.Width = 10.88583F;
+            this.line5.Top = 0.1669291F;
+            this.line5.Width = 10.89291F;
             this.line5.X1 = 0F;
-            this.line5.X2 = 10.88583F;
-            this.line5.Y1 = 0.1665355F;
-            this.line5.Y2 = 0.1665355F;
+            this.line5.X2 = 10.89291F;
+            this.line5.Y1 = 0.1669291F;
+            this.line5.Y2 = 0.1669291F;
             // 
             // line6
             // 
             this.line6.AnchorBottom = true;
             this.line6.Height = 0.1665355F;
-            this.line6.Left = 1.86811F;
+            this.line6.Left = 1.679528F;
             this.line6.LineWeight = 1F;
             this.line6.Name = "line6";
             this.line6.Top = 0F;
             this.line6.Width = 0F;
-            this.line6.X1 = 1.86811F;
-            this.line6.X2 = 1.86811F;
+            this.line6.X1 = 1.679528F;
+            this.line6.X2 = 1.679528F;
             this.line6.Y1 = 0F;
             this.line6.Y2 = 0.1665355F;
             // 
@@ -729,13 +739,13 @@
             // 
             this.line7.AnchorBottom = true;
             this.line7.Height = 0.1665355F;
-            this.line7.Left = 2.695276F;
+            this.line7.Left = 2.485827F;
             this.line7.LineWeight = 1F;
             this.line7.Name = "line7";
             this.line7.Top = 0F;
             this.line7.Width = 0F;
-            this.line7.X1 = 2.695276F;
-            this.line7.X2 = 2.695276F;
+            this.line7.X1 = 2.485827F;
+            this.line7.X2 = 2.485827F;
             this.line7.Y1 = 0F;
             this.line7.Y2 = 0.1665355F;
             // 
@@ -743,13 +753,13 @@
             // 
             this.line8.AnchorBottom = true;
             this.line8.Height = 0.1665355F;
-            this.line8.Left = 4.029134F;
+            this.line8.Left = 3.831103F;
             this.line8.LineWeight = 1F;
             this.line8.Name = "line8";
             this.line8.Top = 0F;
             this.line8.Width = 0F;
-            this.line8.X1 = 4.029134F;
-            this.line8.X2 = 4.029134F;
+            this.line8.X1 = 3.831103F;
+            this.line8.X2 = 3.831103F;
             this.line8.Y1 = 0F;
             this.line8.Y2 = 0.1665355F;
             // 
@@ -757,139 +767,125 @@
             // 
             this.line9.AnchorBottom = true;
             this.line9.Height = 0.1665355F;
-            this.line9.Left = 4.512992F;
+            this.line9.Left = 4.998425F;
             this.line9.LineWeight = 1F;
             this.line9.Name = "line9";
-            this.line9.Top = 0F;
+            this.line9.Top = 0.0003936589F;
             this.line9.Width = 0F;
-            this.line9.X1 = 4.512992F;
-            this.line9.X2 = 4.512992F;
-            this.line9.Y1 = 0F;
-            this.line9.Y2 = 0.1665355F;
+            this.line9.X1 = 4.998425F;
+            this.line9.X2 = 4.998425F;
+            this.line9.Y1 = 0.0003936589F;
+            this.line9.Y2 = 0.1669292F;
             // 
             // line10
             // 
             this.line10.AnchorBottom = true;
             this.line10.Height = 0.1665355F;
-            this.line10.Left = 4.985827F;
+            this.line10.Left = 5.47126F;
             this.line10.LineWeight = 1F;
             this.line10.Name = "line10";
-            this.line10.Top = 0F;
+            this.line10.Top = 0.0003936589F;
             this.line10.Width = 0F;
-            this.line10.X1 = 4.985827F;
-            this.line10.X2 = 4.985827F;
-            this.line10.Y1 = 0F;
-            this.line10.Y2 = 0.1665355F;
+            this.line10.X1 = 5.47126F;
+            this.line10.X2 = 5.47126F;
+            this.line10.Y1 = 0.0003936589F;
+            this.line10.Y2 = 0.1669292F;
             // 
             // line11
             // 
             this.line11.AnchorBottom = true;
             this.line11.Height = 0.1665355F;
-            this.line11.Left = 5.464961F;
+            this.line11.Left = 5.950394F;
             this.line11.LineWeight = 1F;
             this.line11.Name = "line11";
-            this.line11.Top = 0F;
+            this.line11.Top = 0.0003936589F;
             this.line11.Width = 0F;
-            this.line11.X1 = 5.464961F;
-            this.line11.X2 = 5.464961F;
-            this.line11.Y1 = 0F;
-            this.line11.Y2 = 0.1665355F;
+            this.line11.X1 = 5.950394F;
+            this.line11.X2 = 5.950394F;
+            this.line11.Y1 = 0.0003936589F;
+            this.line11.Y2 = 0.1669292F;
             // 
             // line12
             // 
             this.line12.AnchorBottom = true;
             this.line12.Height = 0.1665355F;
-            this.line12.Left = 5.944489F;
+            this.line12.Left = 6.429922F;
             this.line12.LineWeight = 1F;
             this.line12.Name = "line12";
-            this.line12.Top = 0F;
+            this.line12.Top = 0.0003936589F;
             this.line12.Width = 0F;
-            this.line12.X1 = 5.944489F;
-            this.line12.X2 = 5.944489F;
-            this.line12.Y1 = 0F;
-            this.line12.Y2 = 0.1665355F;
+            this.line12.X1 = 6.429922F;
+            this.line12.X2 = 6.429922F;
+            this.line12.Y1 = 0.0003936589F;
+            this.line12.Y2 = 0.1669292F;
             // 
             // line13
             // 
             this.line13.AnchorBottom = true;
             this.line13.Height = 0.1665355F;
-            this.line13.Left = 6.423229F;
+            this.line13.Left = 6.908662F;
             this.line13.LineWeight = 1F;
             this.line13.Name = "line13";
-            this.line13.Top = 0F;
+            this.line13.Top = 0.0003936589F;
             this.line13.Width = 0F;
-            this.line13.X1 = 6.423229F;
-            this.line13.X2 = 6.423229F;
-            this.line13.Y1 = 0F;
-            this.line13.Y2 = 0.1665355F;
+            this.line13.X1 = 6.908662F;
+            this.line13.X2 = 6.908662F;
+            this.line13.Y1 = 0.0003936589F;
+            this.line13.Y2 = 0.1669292F;
             // 
             // line14
             // 
             this.line14.AnchorBottom = true;
             this.line14.Height = 0.1665355F;
-            this.line14.Left = 6.912992F;
+            this.line14.Left = 7.398425F;
             this.line14.LineWeight = 1F;
             this.line14.Name = "line14";
-            this.line14.Top = 0F;
+            this.line14.Top = 0.0003936589F;
             this.line14.Width = 0F;
-            this.line14.X1 = 6.912992F;
-            this.line14.X2 = 6.912992F;
-            this.line14.Y1 = 0F;
-            this.line14.Y2 = 0.1665355F;
+            this.line14.X1 = 7.398425F;
+            this.line14.X2 = 7.398425F;
+            this.line14.Y1 = 0.0003936589F;
+            this.line14.Y2 = 0.1669292F;
             // 
             // line15
             // 
             this.line15.AnchorBottom = true;
             this.line15.Height = 0.1665355F;
-            this.line15.Left = 7.392127F;
+            this.line15.Left = 7.87756F;
             this.line15.LineWeight = 1F;
             this.line15.Name = "line15";
-            this.line15.Top = 0F;
+            this.line15.Top = 0.0003936589F;
             this.line15.Width = 0F;
-            this.line15.X1 = 7.392127F;
-            this.line15.X2 = 7.392127F;
-            this.line15.Y1 = 0F;
-            this.line15.Y2 = 0.1665355F;
+            this.line15.X1 = 7.87756F;
+            this.line15.X2 = 7.87756F;
+            this.line15.Y1 = 0.0003936589F;
+            this.line15.Y2 = 0.1669292F;
             // 
             // line16
             // 
             this.line16.AnchorBottom = true;
             this.line16.Height = 0.1665355F;
-            this.line16.Left = 7.88189F;
+            this.line16.Left = 8.367324F;
             this.line16.LineWeight = 1F;
             this.line16.Name = "line16";
-            this.line16.Top = 0F;
+            this.line16.Top = 0.0003937008F;
             this.line16.Width = 0F;
-            this.line16.X1 = 7.88189F;
-            this.line16.X2 = 7.88189F;
-            this.line16.Y1 = 0F;
-            this.line16.Y2 = 0.1665355F;
-            // 
-            // line17
-            // 
-            this.line17.AnchorBottom = true;
-            this.line17.Height = 0.1665355F;
-            this.line17.Left = 8.361024F;
-            this.line17.LineWeight = 1F;
-            this.line17.Name = "line17";
-            this.line17.Top = 0F;
-            this.line17.Width = 0F;
-            this.line17.X1 = 8.361024F;
-            this.line17.X2 = 8.361024F;
-            this.line17.Y1 = 0F;
-            this.line17.Y2 = 0.1665355F;
+            this.line16.X1 = 8.367324F;
+            this.line16.X2 = 8.367324F;
+            this.line16.Y1 = 0.0003937008F;
+            this.line16.Y2 = 0.1669292F;
             // 
             // line18
             // 
             this.line18.AnchorBottom = true;
             this.line18.Height = 0.1665355F;
-            this.line18.Left = 8.861812F;
+            this.line18.Left = 9.288977F;
             this.line18.LineWeight = 1F;
             this.line18.Name = "line18";
             this.line18.Top = 0F;
             this.line18.Width = 0F;
-            this.line18.X1 = 8.861812F;
-            this.line18.X2 = 8.861812F;
+            this.line18.X1 = 9.288977F;
+            this.line18.X2 = 9.288977F;
             this.line18.Y1 = 0F;
             this.line18.Y2 = 0.1665355F;
             // 
@@ -897,13 +893,13 @@
             // 
             this.line19.AnchorBottom = true;
             this.line19.Height = 0.1665355F;
-            this.line19.Left = 9.159056F;
+            this.line19.Left = 9.596064F;
             this.line19.LineWeight = 1F;
             this.line19.Name = "line19";
             this.line19.Top = 0F;
             this.line19.Width = 0F;
-            this.line19.X1 = 9.159056F;
-            this.line19.X2 = 9.159056F;
+            this.line19.X1 = 9.596064F;
+            this.line19.X2 = 9.596064F;
             this.line19.Y1 = 0F;
             this.line19.Y2 = 0.1665355F;
             // 
@@ -911,13 +907,13 @@
             // 
             this.line20.AnchorBottom = true;
             this.line20.Height = 0.1665355F;
-            this.line20.Left = 9.934647F;
+            this.line20.Left = 10.18228F;
             this.line20.LineWeight = 1F;
             this.line20.Name = "line20";
             this.line20.Top = 0F;
             this.line20.Width = 0F;
-            this.line20.X1 = 9.934647F;
-            this.line20.X2 = 9.934647F;
+            this.line20.X1 = 10.18228F;
+            this.line20.X2 = 10.18228F;
             this.line20.Y1 = 0F;
             this.line20.Y2 = 0.1665355F;
             // 
@@ -925,13 +921,13 @@
             // 
             this.line21.AnchorBottom = true;
             this.line21.Height = 0.1665355F;
-            this.line21.Left = 10.88583F;
+            this.line21.Left = 10.89291F;
             this.line21.LineWeight = 1F;
             this.line21.Name = "line21";
             this.line21.Top = 0F;
             this.line21.Width = 0F;
-            this.line21.X1 = 10.88583F;
-            this.line21.X2 = 10.88583F;
+            this.line21.X1 = 10.89291F;
+            this.line21.X2 = 10.89291F;
             this.line21.Y1 = 0F;
             this.line21.Y2 = 0.1665355F;
             // 
@@ -941,15 +937,42 @@
             this.line4.Left = 0F;
             this.line4.LineWeight = 1F;
             this.line4.Name = "line4";
-            this.line4.Top = 0F;
-            this.line4.Width = 10.88583F;
+            this.line4.Top = 0.0003937008F;
+            this.line4.Width = 10.89291F;
             this.line4.X1 = 0F;
-            this.line4.X2 = 10.88583F;
-            this.line4.Y1 = 0F;
-            this.line4.Y2 = 0F;
+            this.line4.X2 = 10.89291F;
+            this.line4.Y1 = 0.0003937008F;
+            this.line4.Y2 = 0.0003937008F;
+            // 
+            // textBox23
+            // 
+            this.textBox23.DataField = "seisankisyu";
+            this.textBox23.Height = 0.146063F;
+            this.textBox23.Left = 3.851969F;
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Style = "font-size: 8.25pt; text-align: left";
+            this.textBox23.Text = null;
+            this.textBox23.Top = 0.0003937008F;
+            this.textBox23.Width = 0.683465F;
+            // 
+            // line22
+            // 
+            this.line22.AnchorBottom = true;
+            this.line22.Height = 0.1665355F;
+            this.line22.Left = 4.577953F;
+            this.line22.LineWeight = 1F;
+            this.line22.Name = "line22";
+            this.line22.Top = 0.0003937008F;
+            this.line22.Width = 0F;
+            this.line22.X1 = 4.577953F;
+            this.line22.X2 = 4.577953F;
+            this.line22.Y1 = 0.0003937008F;
+            this.line22.Y2 = 0.1669292F;
             // 
             // pageFooter
             // 
+            this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
+            this.reportInfo1});
             this.pageFooter.Name = "pageFooter";
             // 
             // groupHeader1
@@ -958,7 +981,7 @@
             this.textBox6,
             this.textBox1});
             this.groupHeader1.DataField = "koutei_cd";
-            this.groupHeader1.Height = 0.2605643F;
+            this.groupHeader1.Height = 0.2188976F;
             this.groupHeader1.Name = "groupHeader1";
             // 
             // textBox6
@@ -1012,9 +1035,10 @@
             this.label39,
             this.label40,
             this.label41,
-            this.label42});
+            this.label42,
+            this.label4});
             this.groupHeader2.DataField = "line_cd";
-            this.groupHeader2.Height = 0.271063F;
+            this.groupHeader2.Height = 0.2712598F;
             this.groupHeader2.Name = "groupHeader2";
             // 
             // textBox2
@@ -1061,24 +1085,24 @@
             this.label26.Style = "font-size: 6pt";
             this.label26.Text = "受注コード1";
             this.label26.Top = 0.1771654F;
-            this.label26.Width = 0.6614174F;
+            this.label26.Width = 0.5468505F;
             // 
             // label27
             // 
             this.label27.Height = 0.09370076F;
             this.label27.HyperLink = null;
-            this.label27.Left = 1.216142F;
+            this.label27.Left = 1.114961F;
             this.label27.Name = "label27";
             this.label27.Style = "font-size: 6pt";
             this.label27.Text = "受注コード2";
             this.label27.Top = 0.1771654F;
-            this.label27.Width = 0.6425197F;
+            this.label27.Width = 0.5381891F;
             // 
             // label28
             // 
             this.label28.Height = 0.09370076F;
             this.label28.HyperLink = null;
-            this.label28.Left = 1.898425F;
+            this.label28.Left = 1.679528F;
             this.label28.Name = "label28";
             this.label28.Style = "font-size: 6pt";
             this.label28.Text = "製品コード";
@@ -1089,167 +1113,202 @@
             // 
             this.label29.Height = 0.09370076F;
             this.label29.HyperLink = null;
-            this.label29.Left = 2.711417F;
+            this.label29.Left = 2.485827F;
             this.label29.Name = "label29";
             this.label29.Style = "font-size: 6pt";
             this.label29.Text = "製品名";
-            this.label29.Top = 0.1771654F;
+            this.label29.Top = 0.1775591F;
             this.label29.Width = 1.317716F;
             // 
             // label30
             // 
             this.label30.Height = 0.09370076F;
             this.label30.HyperLink = null;
-            this.label30.Left = 4.122835F;
+            this.label30.Left = 4.608268F;
             this.label30.Name = "label30";
             this.label30.Style = "font-size: 6pt";
             this.label30.Text = "受注数";
-            this.label30.Top = 0.1771654F;
+            this.label30.Top = 0.1775591F;
             this.label30.Width = 0.370079F;
             // 
             // label31
             // 
             this.label31.Height = 0.09370076F;
             this.label31.HyperLink = null;
-            this.label31.Left = 4.596457F;
+            this.label31.Left = 5.08189F;
             this.label31.Name = "label31";
             this.label31.Style = "font-size: 6pt";
             this.label31.Text = "生産数";
-            this.label31.Top = 0.1771654F;
+            this.label31.Top = 0.1775591F;
             this.label31.Width = 0.3803153F;
             // 
             // label32
             // 
             this.label32.Height = 0.09370076F;
             this.label32.HyperLink = null;
-            this.label32.Left = 5.027559F;
+            this.label32.Left = 5.512991F;
             this.label32.Name = "label32";
             this.label32.Style = "font-size: 6pt";
             this.label32.Text = "タクトタイム";
-            this.label32.Top = 0.1771654F;
+            this.label32.Top = 0.1775591F;
             this.label32.Width = 0.4220471F;
             // 
             // label33
             // 
             this.label33.Height = 0.09370076F;
             this.label33.HyperLink = null;
-            this.label33.Left = 5.51693F;
+            this.label33.Left = 6.002363F;
             this.label33.Name = "label33";
             this.label33.Style = "font-size: 6pt";
             this.label33.Text = "段取工数";
-            this.label33.Top = 0.1771654F;
+            this.label33.Top = 0.1775591F;
             this.label33.Width = 0.4118114F;
             // 
             // label34
             // 
             this.label34.Height = 0.09370076F;
             this.label34.HyperLink = null;
-            this.label34.Left = 5.996457F;
+            this.label34.Left = 6.48189F;
             this.label34.Name = "label34";
             this.label34.Style = "font-size: 6pt";
             this.label34.Text = "追加工数";
-            this.label34.Top = 0.1771654F;
+            this.label34.Top = 0.1775591F;
             this.label34.Width = 0.4118114F;
             // 
             // label35
             // 
             this.label35.Height = 0.09370076F;
             this.label35.HyperLink = null;
-            this.label35.Left = 6.475197F;
+            this.label35.Left = 6.960629F;
             this.label35.Name = "label35";
             this.label35.Style = "font-size: 6pt";
             this.label35.Text = "補充工数";
-            this.label35.Top = 0.1771654F;
+            this.label35.Top = 0.1775591F;
             this.label35.Width = 0.4118114F;
             // 
             // label36
             // 
             this.label36.Height = 0.09370076F;
             this.label36.HyperLink = null;
-            this.label36.Left = 6.912992F;
+            this.label36.Left = 7.398425F;
             this.label36.Name = "label36";
             this.label36.Style = "font-size: 6pt";
             this.label36.Text = "生産時間(秒)";
-            this.label36.Top = 0.1771654F;
+            this.label36.Top = 0.1775591F;
             this.label36.Width = 0.5157481F;
             // 
             // label37
             // 
             this.label37.Height = 0.09370076F;
             this.label37.HyperLink = null;
-            this.label37.Left = 7.475591F;
+            this.label37.Left = 7.961024F;
             this.label37.Name = "label37";
             this.label37.Style = "font-size: 6pt";
             this.label37.Text = "開始時刻";
-            this.label37.Top = 0.1771654F;
+            this.label37.Top = 0.1775591F;
             this.label37.Width = 0.3803153F;
             // 
             // label38
             // 
             this.label38.Height = 0.09370076F;
             this.label38.HyperLink = null;
-            this.label38.Left = 7.965355F;
+            this.label38.Left = 8.450788F;
             this.label38.Name = "label38";
             this.label38.Style = "font-size: 6pt";
             this.label38.Text = "終了時刻";
-            this.label38.Top = 0.1771654F;
+            this.label38.Top = 0.1775591F;
             this.label38.Width = 0.3803148F;
             // 
             // label39
             // 
             this.label39.Height = 0.09370076F;
             this.label39.HyperLink = null;
-            this.label39.Left = 8.444489F;
+            this.label39.Left = 8.871655F;
             this.label39.Name = "label39";
             this.label39.Style = "font-size: 6pt";
             this.label39.Text = "生産済数";
-            this.label39.Top = 0.1771654F;
+            this.label39.Top = 0.1775591F;
             this.label39.Width = 0.3803148F;
             // 
             // label40
             // 
             this.label40.Height = 0.09370076F;
             this.label40.HyperLink = null;
-            this.label40.Left = 8.92441F;
+            this.label40.Left = 9.320473F;
             this.label40.Name = "label40";
             this.label40.Style = "font-size: 6pt";
             this.label40.Text = "人数";
-            this.label40.Top = 0.1771654F;
+            this.label40.Top = 0.1775591F;
             this.label40.Width = 0.2137794F;
             // 
             // label41
             // 
             this.label41.Height = 0.09370076F;
             this.label41.HyperLink = null;
-            this.label41.Left = 9.179134F;
+            this.label41.Left = 9.596064F;
             this.label41.Name = "label41";
             this.label41.Style = "font-size: 6pt";
             this.label41.Text = "メンバー";
             this.label41.Top = 0.1771654F;
-            this.label41.Width = 0.7555113F;
+            this.label41.Width = 0.5574799F;
             // 
             // label42
             // 
             this.label42.Height = 0.09370076F;
             this.label42.HyperLink = null;
-            this.label42.Left = 9.953151F;
+            this.label42.Left = 10.18228F;
             this.label42.Name = "label42";
             this.label42.Style = "font-size: 6pt";
             this.label42.Text = "備考";
             this.label42.Top = 0.1771654F;
-            this.label42.Width = 0.9326763F;
+            this.label42.Width = 0.7035427F;
+            // 
+            // label4
+            // 
+            this.label4.Height = 0.09370076F;
+            this.label4.HyperLink = null;
+            this.label4.Left = 3.831103F;
+            this.label4.Name = "label4";
+            this.label4.Style = "font-size: 6pt";
+            this.label4.Text = "生産機種";
+            this.label4.Top = 0.1771654F;
+            this.label4.Width = 0.7078742F;
             // 
             // groupFooter2
             // 
             this.groupFooter2.Height = 0.1734799F;
             this.groupFooter2.Name = "groupFooter2";
             // 
+            // line23
+            // 
+            this.line23.AnchorBottom = true;
+            this.line23.Height = 0.1665355F;
+            this.line23.Left = 8.871657F;
+            this.line23.LineWeight = 1F;
+            this.line23.Name = "line23";
+            this.line23.Top = 0F;
+            this.line23.Width = 0F;
+            this.line23.X1 = 8.871657F;
+            this.line23.X2 = 8.871657F;
+            this.line23.Y1 = 0F;
+            this.line23.Y2 = 0.1665355F;
+            // 
+            // reportInfo1
+            // 
+            this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
+            this.reportInfo1.Height = 0.1979167F;
+            this.reportInfo1.Left = 3.748032F;
+            this.reportInfo1.Name = "reportInfo1";
+            this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
+            this.reportInfo1.Top = 0.05196851F;
+            this.reportInfo1.Width = 2.489584F;
+            // 
             // rpt_seisan_schedule_03
             // 
             this.MasterReport = false;
             this.PageSettings.PaperHeight = 11F;
             this.PageSettings.PaperWidth = 8.5F;
-            this.PrintWidth = 10.89295F;
+            this.PrintWidth = 10.90251F;
             this.Sections.Add(this.pageHeader);
             this.Sections.Add(this.groupHeader1);
             this.Sections.Add(this.groupHeader2);
@@ -1302,6 +1361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
@@ -1324,6 +1384,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1383,7 +1445,6 @@
         private GrapeCity.ActiveReports.SectionReportModel.Line line14;
         private GrapeCity.ActiveReports.SectionReportModel.Line line15;
         private GrapeCity.ActiveReports.SectionReportModel.Line line16;
-        private GrapeCity.ActiveReports.SectionReportModel.Line line17;
         private GrapeCity.ActiveReports.SectionReportModel.Line line18;
         private GrapeCity.ActiveReports.SectionReportModel.Line line19;
         private GrapeCity.ActiveReports.SectionReportModel.Line line20;
@@ -1413,5 +1474,10 @@
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_create_datetime;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_update_datetime;
         private GrapeCity.ActiveReports.SectionReportModel.Label label3;
+        private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox23;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line22;
+        private GrapeCity.ActiveReports.SectionReportModel.Label label4;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line23;
+        private GrapeCity.ActiveReports.SectionReportModel.ReportInfo reportInfo1;
     }
 }
