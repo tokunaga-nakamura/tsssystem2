@@ -58,5 +58,10 @@ namespace TSS_SYSTEM
             tb_update_user_name.Text = w_hd50;
             tb_update_datetime.Text = w_hd51;
         }
+
+        private void pageHeader_Format(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -86,10 +86,12 @@
             this.line19 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line20 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line21 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.textBox23 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.line22 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line23 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
+            this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.groupHeader1 = new GrapeCity.ActiveReports.SectionReportModel.GroupHeader();
             this.textBox6 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox1 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -117,8 +119,6 @@
             this.label42 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.label4 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.groupFooter2 = new GrapeCity.ActiveReports.SectionReportModel.GroupFooter();
-            this.line23 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             ((System.ComponentModel.ISupportInitialize)(this.label8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_today)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
@@ -157,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
@@ -180,7 +181,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.label41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -205,9 +205,9 @@
             this.tb_create_datetime,
             this.tb_update_datetime,
             this.label3});
-            this.pageHeader.Height = 0.6251314F;
+            this.pageHeader.Height = 0.6563814F;
             this.pageHeader.Name = "pageHeader";
-            this.pageHeader.Visible = false;
+            this.pageHeader.Format += new System.EventHandler(this.pageHeader_Format);
             // 
             // label8
             // 
@@ -710,7 +710,7 @@
             // 
             // line5
             // 
-            this.line5.Height = 4.470348E-08F;
+            this.line5.Height = 0F;
             this.line5.Left = 0F;
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
@@ -931,19 +931,6 @@
             this.line21.Y1 = 0F;
             this.line21.Y2 = 0.1665355F;
             // 
-            // line4
-            // 
-            this.line4.Height = 0F;
-            this.line4.Left = 0F;
-            this.line4.LineWeight = 1F;
-            this.line4.Name = "line4";
-            this.line4.Top = 0.0003937008F;
-            this.line4.Width = 10.89291F;
-            this.line4.X1 = 0F;
-            this.line4.X2 = 10.89291F;
-            this.line4.Y1 = 0.0003937008F;
-            this.line4.Y2 = 0.0003937008F;
-            // 
             // textBox23
             // 
             this.textBox23.DataField = "seisankisyu";
@@ -969,11 +956,49 @@
             this.line22.Y1 = 0.0003937008F;
             this.line22.Y2 = 0.1669292F;
             // 
+            // line4
+            // 
+            this.line4.Height = 0F;
+            this.line4.Left = 0F;
+            this.line4.LineWeight = 1F;
+            this.line4.Name = "line4";
+            this.line4.Top = 0.0003937008F;
+            this.line4.Width = 10.89291F;
+            this.line4.X1 = 0F;
+            this.line4.X2 = 10.89291F;
+            this.line4.Y1 = 0.0003937008F;
+            this.line4.Y2 = 0.0003937008F;
+            // 
+            // line23
+            // 
+            this.line23.AnchorBottom = true;
+            this.line23.Height = 0.1665355F;
+            this.line23.Left = 8.871657F;
+            this.line23.LineWeight = 1F;
+            this.line23.Name = "line23";
+            this.line23.Top = 0F;
+            this.line23.Width = 0F;
+            this.line23.X1 = 8.871657F;
+            this.line23.X2 = 8.871657F;
+            this.line23.Y1 = 0F;
+            this.line23.Y2 = 0.1665355F;
+            // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.reportInfo1});
+            this.pageFooter.Height = 0.25F;
             this.pageFooter.Name = "pageFooter";
+            // 
+            // reportInfo1
+            // 
+            this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
+            this.reportInfo1.Height = 0.1979167F;
+            this.reportInfo1.Left = 3.940158F;
+            this.reportInfo1.Name = "reportInfo1";
+            this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
+            this.reportInfo1.Top = 0F;
+            this.reportInfo1.Width = 2.489584F;
             // 
             // groupHeader1
             // 
@@ -981,7 +1006,7 @@
             this.textBox6,
             this.textBox1});
             this.groupHeader1.DataField = "koutei_cd";
-            this.groupHeader1.Height = 0.2188976F;
+            this.groupHeader1.Height = 0.1980643F;
             this.groupHeader1.Name = "groupHeader1";
             // 
             // textBox6
@@ -992,7 +1017,6 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.OutputFormat = resources.GetString("textBox6.OutputFormat");
             this.textBox6.Style = "background-color: Black; color: White; font-size: 9.75pt; text-align: left";
-            this.textBox6.Text = null;
             this.textBox6.Top = 0F;
             this.textBox6.Width = 0.342126F;
             // 
@@ -1004,13 +1028,12 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.OutputFormat = resources.GetString("textBox1.OutputFormat");
             this.textBox1.Style = "background-color: Black; color: White; font-size: 9.75pt; text-align: left";
-            this.textBox1.Text = null;
             this.textBox1.Top = 0F;
             this.textBox1.Width = 10.56221F;
             // 
             // groupFooter1
             // 
-            this.groupFooter1.Height = 0.08333334F;
+            this.groupFooter1.Height = 0.05208335F;
             this.groupFooter1.Name = "groupFooter1";
             // 
             // groupHeader2
@@ -1038,7 +1061,7 @@
             this.label42,
             this.label4});
             this.groupHeader2.DataField = "line_cd";
-            this.groupHeader2.Height = 0.2712598F;
+            this.groupHeader2.Height = 0.2920931F;
             this.groupHeader2.Name = "groupHeader2";
             // 
             // textBox2
@@ -1048,9 +1071,9 @@
             this.textBox2.Left = 0F;
             this.textBox2.Name = "textBox2";
             this.textBox2.OutputFormat = resources.GetString("textBox2.OutputFormat");
-            this.textBox2.Style = "background-color: LightGrey; font-size: 8.25pt; text-align: left";
+            this.textBox2.Style = "background-color: PowderBlue; font-size: 8.25pt; text-align: left";
             this.textBox2.Text = null;
-            this.textBox2.Top = 0.03110236F;
+            this.textBox2.Top = 0F;
             this.textBox2.Width = 0.342126F;
             // 
             // textBox3
@@ -1060,9 +1083,9 @@
             this.textBox3.Left = 0.342126F;
             this.textBox3.Name = "textBox3";
             this.textBox3.OutputFormat = resources.GetString("textBox3.OutputFormat");
-            this.textBox3.Style = "background-color: LightGrey; font-size: 8.25pt; text-align: left";
+            this.textBox3.Style = "background-color: PowderBlue; font-size: 8.25pt; text-align: left";
             this.textBox3.Text = null;
-            this.textBox3.Top = 0.03110236F;
+            this.textBox3.Top = 0F;
             this.textBox3.Width = 1.008662F;
             // 
             // label25
@@ -1269,39 +1292,15 @@
             this.label4.HyperLink = null;
             this.label4.Left = 3.831103F;
             this.label4.Name = "label4";
-            this.label4.Style = "font-size: 6pt";
+            this.label4.Style = "background-color: Bisque; font-size: 6pt";
             this.label4.Text = "生産機種";
             this.label4.Top = 0.1771654F;
-            this.label4.Width = 0.7078742F;
+            this.label4.Width = 0.743307F;
             // 
             // groupFooter2
             // 
-            this.groupFooter2.Height = 0.1734799F;
+            this.groupFooter2.Height = 0.0797299F;
             this.groupFooter2.Name = "groupFooter2";
-            // 
-            // line23
-            // 
-            this.line23.AnchorBottom = true;
-            this.line23.Height = 0.1665355F;
-            this.line23.Left = 8.871657F;
-            this.line23.LineWeight = 1F;
-            this.line23.Name = "line23";
-            this.line23.Top = 0F;
-            this.line23.Width = 0F;
-            this.line23.X1 = 8.871657F;
-            this.line23.X2 = 8.871657F;
-            this.line23.Y1 = 0F;
-            this.line23.Y2 = 0.1665355F;
-            // 
-            // reportInfo1
-            // 
-            this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
-            this.reportInfo1.Height = 0.1979167F;
-            this.reportInfo1.Left = 3.748032F;
-            this.reportInfo1.Name = "reportInfo1";
-            this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
-            this.reportInfo1.Top = 0.05196851F;
-            this.reportInfo1.Width = 2.489584F;
             // 
             // rpt_seisan_schedule_03
             // 
@@ -1362,6 +1361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
@@ -1385,7 +1385,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.label41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
