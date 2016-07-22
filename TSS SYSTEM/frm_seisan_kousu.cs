@@ -14,6 +14,9 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_list = new DataTable();
+        DataTable w_dt_hh = new DataTable();
+        DataTable w_dt_mm = new DataTable();
+        DataTable w_dt_ss = new DataTable();
 
         public frm_seisan_kousu()
         {
@@ -176,8 +179,117 @@ namespace TSS_SYSTEM
             }
             //合計行の作成
             list_goukei();
-
+            //表示単位毎のdtの作成
+            list_copy();
+            //表示
             list_disp();
+        }
+
+        private void list_copy()
+        {
+            //w_dt_list をコピーし、各表示単位用のdtを作成する
+            decimal w_kousu;
+            //時
+            w_dt_hh = w_dt_list.Copy();
+            foreach (DataRow dr in w_dt_hh.Rows)
+            {
+                for (int i = 1; i <= 31; i++)
+                {
+                    //各日の数値の処理
+                    if (dr["seihin_cd"].ToString() != "" && dr["seihin_cd"].ToString() != null && dr[i.ToString("00")].ToString() != "" && dr[i.ToString("00")].ToString() != null)
+                    {
+                        if (decimal.TryParse(dr[i.ToString("00")].ToString(), out w_kousu))
+                        {
+                            w_kousu = w_kousu / 3600;
+                        }
+                        else
+                        {
+                            w_kousu = 0;
+                        }
+                        dr[i.ToString("00")] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+                    }
+                }
+                //合計行の持ち工数の処理
+                if (dr["seihin_cd"].ToString() == "" || dr["seihin_cd"].ToString() == null)
+                {
+                    if (decimal.TryParse(dr["seihin_name"].ToString(), out w_kousu))
+                    {
+                        w_kousu = w_kousu / 3600;
+                    }
+                    else
+                    {
+                        w_kousu = 0;
+                    }
+                    dr["seihin_name"] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+                }
+            }
+            //分
+            w_dt_mm = w_dt_list.Copy();
+            foreach (DataRow dr in w_dt_mm.Rows)
+            {
+                for (int i = 1; i <= 31; i++)
+                {
+                    if (dr["seihin_cd"].ToString() != "" && dr["seihin_cd"].ToString() != null && dr[i.ToString("00")].ToString() != "" && dr[i.ToString("00")].ToString() != null)
+                    {
+                        if (decimal.TryParse(dr[i.ToString("00")].ToString(), out w_kousu))
+                        {
+                            w_kousu = w_kousu / 60;
+                        }
+                        else
+                        {
+                            w_kousu = 0;
+                        }
+                        dr[i.ToString("00")] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+                    }
+                }
+                //合計行の持ち工数の処理
+                if (dr["seihin_cd"].ToString() == "" || dr["seihin_cd"].ToString() == null)
+                {
+                    if (decimal.TryParse(dr["seihin_name"].ToString(), out w_kousu))
+                    {
+                        w_kousu = w_kousu / 60;
+                    }
+                    else
+                    {
+                        w_kousu = 0;
+                    }
+                    dr["seihin_name"] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+                }
+            }
+            //秒
+            w_dt_ss = w_dt_list.Copy();
+            //秒表示は、w_dt_listをそのまま使うので、下記コードをコメントにしておきます。
+            //foreach (DataRow dr in w_dt_ss.Rows)
+            //{
+            //    for (int i = 1; i <= 31; i++)
+            //    {
+            //        if (dr["seihin_cd"].ToString() != "" && dr["seihin_cd"].ToString() != null && dr[i.ToString("00")].ToString() != "" && dr[i.ToString("00")].ToString() != null)
+            //        {
+            //            if (decimal.TryParse(dr[i.ToString("00")].ToString(), out w_kousu))
+            //            {
+            //                w_kousu = w_kousu / 1;
+            //            }
+            //            else
+            //            {
+            //                w_kousu = 0;
+            //            }
+            //            dr[i.ToString("00")] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+            //        }
+            //    }
+            //    //合計行の持ち工数の処理
+            //    if (dr["seihin_cd"].ToString() == "" || dr["seihin_cd"].ToString() == null)
+            //    {
+            //        if (decimal.TryParse(dr["seihin_name"].ToString(), out w_kousu))
+            //        {
+            //            w_kousu = w_kousu / 1;
+            //        }
+            //        else
+            //        {
+            //            w_kousu = 0;
+            //        }
+            //        dr["seihin_name"] = Math.Round(w_kousu, 2, MidpointRounding.AwayFromZero);
+            //    }
+            //}
         }
 
         private void list_column_make()
@@ -334,8 +446,6 @@ namespace TSS_SYSTEM
             string w_midasi;
             w_midasi = "";
             w_dt = tss.OracleSelect(in_sql);
-            //表示単位の取得
-
             //合計レコードがある場合（rows.countが０でない場合、合計見出し行を作成する
             if(w_dt.Rows.Count >= 1)
             {
@@ -545,7 +655,9 @@ namespace TSS_SYSTEM
 
             //データを表示
             dgv_list.DataSource = null;
-            dgv_list.DataSource = w_dt_list;
+            if (rb_hh.Checked) dgv_list.DataSource = w_dt_hh;
+            if (rb_mm.Checked) dgv_list.DataSource = w_dt_mm;
+            if (rb_ss.Checked) dgv_list.DataSource = w_dt_ss;
 
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_list.Columns["torihikisaki_cd"].HeaderText = "取引先";
@@ -661,11 +773,18 @@ namespace TSS_SYSTEM
 
         private void btn_csv_Click(object sender, EventArgs e)
         {
-            if (w_dt_list.Rows.Count != 0)
+            if (rb_hh.Checked) csv_export(w_dt_hh);
+            if (rb_mm.Checked) csv_export(w_dt_mm);
+            if (rb_ss.Checked) csv_export(w_dt_ss);
+        }
+
+        private void csv_export(DataTable in_dt)
+        {
+            if (in_dt.Rows.Count != 0)
             {
                 string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
                 string w_str_filename = nud_year.Value.ToString() + nud_month.Value.ToString("00") + "分 生産工数" + w_str_now + ".csv";
-                if (tss.DataTableCSV(w_dt_list, true, w_str_filename, "\"", true))
+                if (tss.DataTableCSV(in_dt, true, w_str_filename, "\"", true))
                 {
                     MessageBox.Show("保存されました。");
                 }
@@ -679,6 +798,11 @@ namespace TSS_SYSTEM
                 MessageBox.Show("出力するデータがありません。");
             }
 
+        }
+
+        private void rb_Changed(object sender, EventArgs e)
+        {
+            list_disp();
         }
     }
 }

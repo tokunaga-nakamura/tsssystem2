@@ -35,6 +35,10 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rb_hh = new System.Windows.Forms.RadioButton();
+            this.rb_ss = new System.Windows.Forms.RadioButton();
+            this.rb_mm = new System.Windows.Forms.RadioButton();
             this.cb_meisai = new System.Windows.Forms.CheckBox();
             this.btn_hyouji = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,10 +58,6 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rb_mm = new System.Windows.Forms.RadioButton();
-            this.rb_ss = new System.Windows.Forms.RadioButton();
-            this.rb_hh = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,6 +70,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_month)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_year)).BeginInit();
@@ -78,7 +79,6 @@
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -181,6 +181,53 @@
             this.splitContainer3.Size = new System.Drawing.Size(884, 436);
             this.splitContainer3.SplitterDistance = 80;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rb_hh);
+            this.groupBox2.Controls.Add(this.rb_ss);
+            this.groupBox2.Controls.Add(this.rb_mm);
+            this.groupBox2.Location = new System.Drawing.Point(10, 28);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(139, 44);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "表示単位";
+            // 
+            // rb_hh
+            // 
+            this.rb_hh.AutoSize = true;
+            this.rb_hh.Checked = true;
+            this.rb_hh.Location = new System.Drawing.Point(6, 18);
+            this.rb_hh.Name = "rb_hh";
+            this.rb_hh.Size = new System.Drawing.Size(35, 16);
+            this.rb_hh.TabIndex = 2;
+            this.rb_hh.TabStop = true;
+            this.rb_hh.Text = "時";
+            this.rb_hh.UseVisualStyleBackColor = true;
+            this.rb_hh.CheckedChanged += new System.EventHandler(this.rb_Changed);
+            // 
+            // rb_ss
+            // 
+            this.rb_ss.AutoSize = true;
+            this.rb_ss.Location = new System.Drawing.Point(88, 18);
+            this.rb_ss.Name = "rb_ss";
+            this.rb_ss.Size = new System.Drawing.Size(35, 16);
+            this.rb_ss.TabIndex = 1;
+            this.rb_ss.Text = "秒";
+            this.rb_ss.UseVisualStyleBackColor = true;
+            this.rb_ss.CheckedChanged += new System.EventHandler(this.rb_Changed);
+            // 
+            // rb_mm
+            // 
+            this.rb_mm.AutoSize = true;
+            this.rb_mm.Location = new System.Drawing.Point(47, 18);
+            this.rb_mm.Name = "rb_mm";
+            this.rb_mm.Size = new System.Drawing.Size(35, 16);
+            this.rb_mm.TabIndex = 0;
+            this.rb_mm.Text = "分";
+            this.rb_mm.UseVisualStyleBackColor = true;
+            this.rb_mm.CheckedChanged += new System.EventHandler(this.rb_Changed);
             // 
             // cb_meisai
             // 
@@ -418,50 +465,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rb_hh);
-            this.groupBox2.Controls.Add(this.rb_ss);
-            this.groupBox2.Controls.Add(this.rb_mm);
-            this.groupBox2.Location = new System.Drawing.Point(10, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(139, 44);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "表示単位";
-            // 
-            // rb_mm
-            // 
-            this.rb_mm.AutoSize = true;
-            this.rb_mm.Location = new System.Drawing.Point(47, 18);
-            this.rb_mm.Name = "rb_mm";
-            this.rb_mm.Size = new System.Drawing.Size(35, 16);
-            this.rb_mm.TabIndex = 0;
-            this.rb_mm.Text = "秒";
-            this.rb_mm.UseVisualStyleBackColor = true;
-            // 
-            // rb_ss
-            // 
-            this.rb_ss.AutoSize = true;
-            this.rb_ss.Location = new System.Drawing.Point(88, 18);
-            this.rb_ss.Name = "rb_ss";
-            this.rb_ss.Size = new System.Drawing.Size(35, 16);
-            this.rb_ss.TabIndex = 1;
-            this.rb_ss.Text = "分";
-            this.rb_ss.UseVisualStyleBackColor = true;
-            // 
-            // rb_hh
-            // 
-            this.rb_hh.AutoSize = true;
-            this.rb_hh.Checked = true;
-            this.rb_hh.Location = new System.Drawing.Point(6, 18);
-            this.rb_hh.Name = "rb_hh";
-            this.rb_hh.Size = new System.Drawing.Size(35, 16);
-            this.rb_hh.TabIndex = 2;
-            this.rb_hh.TabStop = true;
-            this.rb_hh.Text = "時";
-            this.rb_hh.UseVisualStyleBackColor = true;
-            // 
             // frm_seisan_kousu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -487,6 +490,8 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_month)).EndInit();
@@ -496,8 +501,6 @@
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
