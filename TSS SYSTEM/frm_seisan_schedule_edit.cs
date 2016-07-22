@@ -126,7 +126,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["end_time"].HeaderText = "終了時刻";
             w_dgv.Columns["ninzu"].HeaderText = "人数";
             w_dgv.Columns["members"].HeaderText = "メンバー";
-            w_dgv.Columns["hensyu_flg"].HeaderText = "編集フラグ";
+            w_dgv.Columns["hensyu_flg"].HeaderText = "編集";
             w_dgv.Columns["bikou"].HeaderText = "備考";
 
             //右詰
@@ -156,11 +156,11 @@ namespace TSS_SYSTEM
 
             w_dgv.Columns["juchu_su"].DefaultCellStyle.Format = "#,###,###,##0";
             w_dgv.Columns["seisan_su"].DefaultCellStyle.Format = "#,###,###,##0";
-            w_dgv.Columns["tact_time"].DefaultCellStyle.Format = "#,###,###,##0.00";
-            w_dgv.Columns["dandori_kousu"].DefaultCellStyle.Format = "#,###,###,##0.00";
-            w_dgv.Columns["tuika_kousu"].DefaultCellStyle.Format = "#,###,###,##0.00";
-            w_dgv.Columns["hoju_kousu"].DefaultCellStyle.Format = "#,###,###,##0.00";
-            w_dgv.Columns["seisan_time"].DefaultCellStyle.Format = "#,###,###,##0.00";
+            w_dgv.Columns["tact_time"].DefaultCellStyle.Format = "#,###,###,##0.0";
+            w_dgv.Columns["dandori_kousu"].DefaultCellStyle.Format = "#,###,###,##0.0";
+            w_dgv.Columns["tuika_kousu"].DefaultCellStyle.Format = "#,###,###,##0.0";
+            w_dgv.Columns["hoju_kousu"].DefaultCellStyle.Format = "#,###,###,##0.0";
+            w_dgv.Columns["seisan_time"].DefaultCellStyle.Format = "#,###,###,##0.0";
             w_dgv.Columns["ninzu"].DefaultCellStyle.Format = "#,###,###,##0";
 
             //セルを固定する
@@ -186,7 +186,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["dandori_kousu"].Width = 50;
             w_dgv.Columns["tuika_kousu"].Width = 50;
             w_dgv.Columns["hoju_kousu"].Width = 50;
-            w_dgv.Columns["seisan_time"].Width = 50;
+            w_dgv.Columns["seisan_time"].Width = 70;
             w_dgv.Columns["start_time"].Width = 50;
             w_dgv.Columns["end_time"].Width = 50;
             w_dgv.Columns["ninzu"].Width = 30;
@@ -1105,7 +1105,50 @@ namespace TSS_SYSTEM
 
                 if (str1 != str2)
                 {
-                    end_time_keisan(dgv_today.CurrentRow.Index);
+                    DateTime time1;
+                    DateTime time2;
+                    //int rowindex = int.Parse(in_rowindex);
+                    int result;
+                    int w_kyuukei_time;
+
+                    if (int.TryParse(dgv_today.Rows[e.RowIndex].Cells["seisan_time"].Value.ToString(), out result) == true)
+                    {
+                        TimeSpan ts = new TimeSpan(0, 0, result);
+                        if (dgv_today.Rows[e.RowIndex].Cells["start_time"].Value != DBNull.Value)
+                        {
+                            time1 = DateTime.Parse(e.FormattedValue.ToString());
+                            time2 = time1 + ts;
+
+                            //休憩時間の考慮
+                            //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
+                            w_kyuukei_time = 0;
+                            //10時休憩
+                            if (string.Compare(time1.ToShortTimeString(), "10:00") <= 0 && string.Compare(time2.ToShortTimeString(), "10:05") >= 0)
+                            {
+                                w_kyuukei_time = w_kyuukei_time + 5;
+                            }
+                            //12時休憩
+                            if (string.Compare(time1.ToShortTimeString(), "12:00") <= 0 && string.Compare(time2.ToShortTimeString(), "12:40") >= 0)
+                            {
+                                w_kyuukei_time = w_kyuukei_time + 40;
+                            }
+                            //15時休憩
+                            if (string.Compare(time1.ToShortTimeString(), "15:00") <= 0 && string.Compare(time2.ToShortTimeString(), "15:10") >= 0)
+                            {
+                                w_kyuukei_time = w_kyuukei_time + 10;
+                            }
+                            //もとまった休憩時間の合計を終了時間に加える
+                            TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
+                            time2 = time2 + w_ts_kyuukei_time;
+
+                            string str_time1 = time1.ToShortTimeString();
+                            string str_time2 = time2.ToShortTimeString();
+
+                            dgv_today.Rows[e.RowIndex].Cells["end_time"].Value = time2.ToShortTimeString();
+                        }
+                    }
+
+                   // end_time_keisan(dgv_today.CurrentRow.Index);
                 }
             }
 
@@ -1465,10 +1508,10 @@ namespace TSS_SYSTEM
 
         private void dgv_today_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            ////開始時間を変更したとき
+            //開始時間を変更したとき
             //if (e.ColumnIndex == 21)
             //{
-            //    end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            //    end_time_keisan(dgv_today.CurrentRow.Index);
             //}
 
             ////タクト～工数を変更したとき
@@ -2120,6 +2163,82 @@ namespace TSS_SYSTEM
                 //終了時刻が求まったら、終了時刻を次の行の開始時刻用に退避
                 w_time = DateTime.Parse(dgv_today.Rows[w_rowindex].Cells["end_time"].Value.ToString());
             }
+        }
+
+        private void btn_insatu_Click(object sender, EventArgs e)
+        {
+            frm_seisan_schedule_preview frm_rpt = new frm_seisan_schedule_preview();
+
+            //子画面のプロパティに値をセットする
+            frm_rpt.ppt_dt = w_dt_today;
+
+            string yyyymmdd = tb_seisan_yotei_date.Text.Substring(0, 4) + "年" + tb_seisan_yotei_date.Text.Substring(5, 2) + "月" + tb_seisan_yotei_date.Text.Substring(8, 2) + "日";
+
+            frm_rpt.w_hd10 = yyyymmdd;
+            //frm_rpt.w_hd10 = tb_seisan_yotei_date.Text;
+
+            if (cb_today_busyo.Text.ToString() == "")
+            {
+                frm_rpt.w_hd11 = "指定なし";
+                frm_rpt.w_hd12 = "指定なし";
+            }
+            else
+            {
+                //frm_rpt.w_hd11 = tb_busyo_cd.Text;
+                frm_rpt.w_hd12 = cb_today_busyo.Text;
+            }
+            //if (tb_koutei_cd.Text.ToString() == "")
+            //{
+            //    frm_rpt.w_hd20 = "指定なし";
+            //    frm_rpt.w_hd21 = "";
+            //}
+            //else
+            //{
+            //    frm_rpt.w_hd20 = tb_koutei_cd.Text;
+            //    frm_rpt.w_hd21 = tb_koutei_name.Text;
+            //}
+            //if (tb_line_cd.Text.ToString() == "")
+            //{
+            //    frm_rpt.w_hd30 = "指定なし";
+            //    frm_rpt.w_hd31 = "";
+            //}
+            //else
+            //{
+            //    frm_rpt.w_hd30 = tb_line_cd.Text;
+            //    frm_rpt.w_hd31 = tb_line_name.Text;
+            //}
+
+            if (tb_create_user_cd.Text.ToString() != "")
+            {
+                DataTable dt1 = new DataTable();
+                dt1 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_create_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd40 = dt1.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd41 = tb_create_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd40 = "";
+                frm_rpt.w_hd41 = "";
+            }
+            if (tb_update_user_cd.Text.ToString() != "")
+            {
+                DataTable dt2 = new DataTable();
+                dt2 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_update_user_cd.Text.ToString() + "'");
+
+                frm_rpt.w_hd50 = dt2.Rows[0]["user_name"].ToString();
+                frm_rpt.w_hd51 = tb_update_datetime.Text;
+            }
+            else
+            {
+                frm_rpt.w_hd50 = "";
+                frm_rpt.w_hd51 = "";
+            }
+
+
+            frm_rpt.ShowDialog();
+            //子画面から値を取得する
+            frm_rpt.Dispose();
         }
 
 
