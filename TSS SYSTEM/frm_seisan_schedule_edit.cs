@@ -1706,7 +1706,7 @@ namespace TSS_SYSTEM
                 lbl_seisan_yotei_date_today.Text = w_next_day.ToShortDateString();
                 get_schedule_data(cb_today_busyo, w_next_day.ToShortDateString());
                 disp_schedule_data(dgv_today, w_dt_today);
-                tb_seisan_yotei_date.Text = w_next_day.ToShortDateString();
+                //tb_seisan_yotei_date.Text = w_next_day.ToShortDateString();
                 if (w_dt_today.Rows.Count > 0)
                 {
                     tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
@@ -1740,7 +1740,7 @@ namespace TSS_SYSTEM
                 lbl_seisan_yotei_date_today.Text = w_before_day.ToShortDateString();
                 get_schedule_data(cb_today_busyo, w_before_day.ToShortDateString());
                 disp_schedule_data(dgv_today, w_dt_today);
-                tb_seisan_yotei_date.Text = w_before_day.ToShortDateString();
+                //tb_seisan_yotei_date.Text = w_before_day.ToShortDateString();
                 if (w_dt_today.Rows.Count > 0)
                 {
                     tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
