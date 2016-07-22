@@ -52,8 +52,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgv_list = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rb_mm = new System.Windows.Forms.RadioButton();
+            this.rb_ss = new System.Windows.Forms.RadioButton();
+            this.rb_hh = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,6 +78,7 @@
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -161,6 +166,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer3.Panel1.Controls.Add(this.cb_meisai);
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
@@ -392,6 +398,16 @@
             this.splitContainer4.SplitterDistance = 795;
             this.splitContainer4.TabIndex = 1;
             // 
+            // btn_csv
+            // 
+            this.btn_csv.Location = new System.Drawing.Point(10, 3);
+            this.btn_csv.Name = "btn_csv";
+            this.btn_csv.Size = new System.Drawing.Size(75, 23);
+            this.btn_csv.TabIndex = 0;
+            this.btn_csv.Text = "CSV出力";
+            this.btn_csv.UseVisualStyleBackColor = true;
+            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
+            // 
             // btn_syuuryou
             // 
             this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
@@ -402,15 +418,49 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_csv
+            // groupBox2
             // 
-            this.btn_csv.Location = new System.Drawing.Point(10, 3);
-            this.btn_csv.Name = "btn_csv";
-            this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 0;
-            this.btn_csv.Text = "CSV出力";
-            this.btn_csv.UseVisualStyleBackColor = true;
-            this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
+            this.groupBox2.Controls.Add(this.rb_hh);
+            this.groupBox2.Controls.Add(this.rb_ss);
+            this.groupBox2.Controls.Add(this.rb_mm);
+            this.groupBox2.Location = new System.Drawing.Point(10, 28);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(139, 44);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "表示単位";
+            // 
+            // rb_mm
+            // 
+            this.rb_mm.AutoSize = true;
+            this.rb_mm.Location = new System.Drawing.Point(47, 18);
+            this.rb_mm.Name = "rb_mm";
+            this.rb_mm.Size = new System.Drawing.Size(35, 16);
+            this.rb_mm.TabIndex = 0;
+            this.rb_mm.Text = "秒";
+            this.rb_mm.UseVisualStyleBackColor = true;
+            // 
+            // rb_ss
+            // 
+            this.rb_ss.AutoSize = true;
+            this.rb_ss.Location = new System.Drawing.Point(88, 18);
+            this.rb_ss.Name = "rb_ss";
+            this.rb_ss.Size = new System.Drawing.Size(35, 16);
+            this.rb_ss.TabIndex = 1;
+            this.rb_ss.Text = "分";
+            this.rb_ss.UseVisualStyleBackColor = true;
+            // 
+            // rb_hh
+            // 
+            this.rb_hh.AutoSize = true;
+            this.rb_hh.Checked = true;
+            this.rb_hh.Location = new System.Drawing.Point(6, 18);
+            this.rb_hh.Name = "rb_hh";
+            this.rb_hh.Size = new System.Drawing.Size(35, 16);
+            this.rb_hh.TabIndex = 2;
+            this.rb_hh.TabStop = true;
+            this.rb_hh.Text = "時";
+            this.rb_hh.UseVisualStyleBackColor = true;
             // 
             // frm_seisan_kousu
             // 
@@ -446,6 +496,8 @@
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,5 +530,9 @@
         private System.Windows.Forms.CheckBox cb_meisai;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_csv;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rb_hh;
+        private System.Windows.Forms.RadioButton rb_ss;
+        private System.Windows.Forms.RadioButton rb_mm;
     }
 }

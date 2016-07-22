@@ -334,6 +334,8 @@ namespace TSS_SYSTEM
             string w_midasi;
             w_midasi = "";
             w_dt = tss.OracleSelect(in_sql);
+            //表示単位の取得
+
             //合計レコードがある場合（rows.countが０でない場合、合計見出し行を作成する
             if(w_dt.Rows.Count >= 1)
             {
@@ -353,7 +355,7 @@ namespace TSS_SYSTEM
             
             foreach (DataRow dr in w_dt.Rows)
             {
-                //日の算出してその日に工数を足す
+                //日を算出してその日に工数を足す
                 w_day = tss.StringMidByte(dr["seisan_yotei_date"].ToString(), 8, 2);
                 if (save_cd == dr[1].ToString())    //dr[1]は部署か工程かラインの値が入ってくる
                 {

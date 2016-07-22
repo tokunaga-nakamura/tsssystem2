@@ -35,22 +35,23 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
-            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
             this.cb_today_busyo = new System.Windows.Forms.ComboBox();
-            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
-            this.tb_create_datetime = new System.Windows.Forms.TextBox();
-            this.btn_hyouji = new System.Windows.Forms.Button();
-            this.textBox35 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
-            this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
-            this.tb_update_datetime = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btn_hyouji = new System.Windows.Forms.Button();
+            this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
             this.btn_line_tuika_under = new System.Windows.Forms.Button();
-            this.btn_auto_time = new System.Windows.Forms.Button();
             this.btn_line_tuika = new System.Windows.Forms.Button();
             this.btn_seisan_jun_up = new System.Windows.Forms.Button();
+            this.btn_auto_time = new System.Windows.Forms.Button();
             this.btn_seisan_jun_down = new System.Windows.Forms.Button();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.tb_update_datetime = new System.Windows.Forms.TextBox();
+            this.tb_update_user_cd = new System.Windows.Forms.TextBox();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.tb_create_datetime = new System.Windows.Forms.TextBox();
+            this.tb_create_user_cd = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
             this.splitContainer11 = new System.Windows.Forms.SplitContainer();
@@ -79,7 +80,6 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +96,10 @@
             this.splitContainer9.Panel1.SuspendLayout();
             this.splitContainer9.Panel2.SuspendLayout();
             this.splitContainer9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
+            this.splitContainer12.Panel1.SuspendLayout();
+            this.splitContainer12.Panel2.SuspendLayout();
+            this.splitContainer12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
@@ -137,10 +141,6 @@
             this.splitContainer8.Panel1.SuspendLayout();
             this.splitContainer8.Panel2.SuspendLayout();
             this.splitContainer8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
-            this.splitContainer12.Panel1.SuspendLayout();
-            this.splitContainer12.Panel2.SuspendLayout();
-            this.splitContainer12.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -253,16 +253,33 @@
             this.splitContainer9.TabIndex = 0;
             this.splitContainer9.TabStop = false;
             // 
-            // textBox32
+            // splitContainer12
             // 
-            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox32.Location = new System.Drawing.Point(3, 3);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(45, 19);
-            this.textBox32.TabIndex = 111;
-            this.textBox32.TabStop = false;
-            this.textBox32.Text = "作成";
+            this.splitContainer12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer12.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer12.IsSplitterFixed = true;
+            this.splitContainer12.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer12.Name = "splitContainer12";
+            // 
+            // splitContainer12.Panel1
+            // 
+            this.splitContainer12.Panel1.Controls.Add(this.cb_today_busyo);
+            this.splitContainer12.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer12.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer12.Panel1.Controls.Add(this.btn_hyouji);
+            this.splitContainer12.Panel1.Controls.Add(this.tb_seisan_yotei_date);
+            // 
+            // splitContainer12.Panel2
+            // 
+            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika_under);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_up);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_auto_time);
+            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_down);
+            this.splitContainer12.Size = new System.Drawing.Size(852, 55);
+            this.splitContainer12.SplitterDistance = 593;
+            this.splitContainer12.TabIndex = 0;
+            this.splitContainer12.TabStop = false;
             // 
             // cb_today_busyo
             // 
@@ -272,47 +289,6 @@
             this.cb_today_busyo.Name = "cb_today_busyo";
             this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
             this.cb_today_busyo.TabIndex = 1;
-            // 
-            // tb_create_user_cd
-            // 
-            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_user_cd.Location = new System.Drawing.Point(48, 3);
-            this.tb_create_user_cd.Name = "tb_create_user_cd";
-            this.tb_create_user_cd.ReadOnly = true;
-            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
-            this.tb_create_user_cd.TabIndex = 112;
-            this.tb_create_user_cd.TabStop = false;
-            // 
-            // tb_create_datetime
-            // 
-            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_create_datetime.Location = new System.Drawing.Point(90, 3);
-            this.tb_create_datetime.Name = "tb_create_datetime";
-            this.tb_create_datetime.ReadOnly = true;
-            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
-            this.tb_create_datetime.TabIndex = 113;
-            this.tb_create_datetime.TabStop = false;
-            // 
-            // btn_hyouji
-            // 
-            this.btn_hyouji.Location = new System.Drawing.Point(208, 26);
-            this.btn_hyouji.Name = "btn_hyouji";
-            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
-            this.btn_hyouji.TabIndex = 2;
-            this.btn_hyouji.Text = "表示";
-            this.btn_hyouji.UseVisualStyleBackColor = true;
-            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
-            // 
-            // textBox35
-            // 
-            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox35.Location = new System.Drawing.Point(3, 22);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.ReadOnly = true;
-            this.textBox35.Size = new System.Drawing.Size(45, 19);
-            this.textBox35.TabIndex = 114;
-            this.textBox35.TabStop = false;
-            this.textBox35.Text = "更新";
             // 
             // textBox1
             // 
@@ -325,35 +301,6 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "生産予定日";
             // 
-            // tb_update_user_cd
-            // 
-            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_user_cd.Location = new System.Drawing.Point(48, 22);
-            this.tb_update_user_cd.Name = "tb_update_user_cd";
-            this.tb_update_user_cd.ReadOnly = true;
-            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
-            this.tb_update_user_cd.TabIndex = 115;
-            this.tb_update_user_cd.TabStop = false;
-            // 
-            // tb_seisan_yotei_date
-            // 
-            this.tb_seisan_yotei_date.Location = new System.Drawing.Point(81, 3);
-            this.tb_seisan_yotei_date.MaxLength = 10;
-            this.tb_seisan_yotei_date.Name = "tb_seisan_yotei_date";
-            this.tb_seisan_yotei_date.Size = new System.Drawing.Size(71, 19);
-            this.tb_seisan_yotei_date.TabIndex = 0;
-            this.tb_seisan_yotei_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_yotei_date_Validating);
-            // 
-            // tb_update_datetime
-            // 
-            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_update_datetime.Location = new System.Drawing.Point(90, 22);
-            this.tb_update_datetime.Name = "tb_update_datetime";
-            this.tb_update_datetime.ReadOnly = true;
-            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
-            this.tb_update_datetime.TabIndex = 116;
-            this.tb_update_datetime.TabStop = false;
-            // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
@@ -365,6 +312,25 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "部署コード";
             // 
+            // btn_hyouji
+            // 
+            this.btn_hyouji.Location = new System.Drawing.Point(208, 26);
+            this.btn_hyouji.Name = "btn_hyouji";
+            this.btn_hyouji.Size = new System.Drawing.Size(75, 23);
+            this.btn_hyouji.TabIndex = 2;
+            this.btn_hyouji.Text = "表示";
+            this.btn_hyouji.UseVisualStyleBackColor = true;
+            this.btn_hyouji.Click += new System.EventHandler(this.btn_hyouji_Click);
+            // 
+            // tb_seisan_yotei_date
+            // 
+            this.tb_seisan_yotei_date.Location = new System.Drawing.Point(81, 3);
+            this.tb_seisan_yotei_date.MaxLength = 10;
+            this.tb_seisan_yotei_date.Name = "tb_seisan_yotei_date";
+            this.tb_seisan_yotei_date.Size = new System.Drawing.Size(71, 19);
+            this.tb_seisan_yotei_date.TabIndex = 0;
+            this.tb_seisan_yotei_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_yotei_date_Validating);
+            // 
             // btn_line_tuika_under
             // 
             this.btn_line_tuika_under.Location = new System.Drawing.Point(3, 30);
@@ -375,17 +341,6 @@
             this.btn_line_tuika_under.Text = "下1行追加";
             this.btn_line_tuika_under.UseVisualStyleBackColor = true;
             this.btn_line_tuika_under.Click += new System.EventHandler(this.btn_line_tuika_under_Click);
-            // 
-            // btn_auto_time
-            // 
-            this.btn_auto_time.Location = new System.Drawing.Point(165, 3);
-            this.btn_auto_time.Name = "btn_auto_time";
-            this.btn_auto_time.Size = new System.Drawing.Size(88, 23);
-            this.btn_auto_time.TabIndex = 8;
-            this.btn_auto_time.TabStop = false;
-            this.btn_auto_time.Text = "自動時間調整";
-            this.btn_auto_time.UseVisualStyleBackColor = true;
-            this.btn_auto_time.Click += new System.EventHandler(this.btn_auto_time_Click);
             // 
             // btn_line_tuika
             // 
@@ -409,9 +364,20 @@
             this.btn_seisan_jun_up.UseVisualStyleBackColor = true;
             this.btn_seisan_jun_up.Click += new System.EventHandler(this.btn_seisan_jun_up_Click);
             // 
+            // btn_auto_time
+            // 
+            this.btn_auto_time.Location = new System.Drawing.Point(165, 3);
+            this.btn_auto_time.Name = "btn_auto_time";
+            this.btn_auto_time.Size = new System.Drawing.Size(88, 23);
+            this.btn_auto_time.TabIndex = 8;
+            this.btn_auto_time.TabStop = false;
+            this.btn_auto_time.Text = "自動時間調整";
+            this.btn_auto_time.UseVisualStyleBackColor = true;
+            this.btn_auto_time.Click += new System.EventHandler(this.btn_auto_time_Click);
+            // 
             // btn_seisan_jun_down
             // 
-            this.btn_seisan_jun_down.Location = new System.Drawing.Point(85, 30);
+            this.btn_seisan_jun_down.Location = new System.Drawing.Point(84, 30);
             this.btn_seisan_jun_down.Name = "btn_seisan_jun_down";
             this.btn_seisan_jun_down.Size = new System.Drawing.Size(75, 23);
             this.btn_seisan_jun_down.TabIndex = 7;
@@ -419,6 +385,68 @@
             this.btn_seisan_jun_down.Text = "行を下へ";
             this.btn_seisan_jun_down.UseVisualStyleBackColor = true;
             this.btn_seisan_jun_down.Click += new System.EventHandler(this.btn_seisan_jun_down_Click);
+            // 
+            // textBox32
+            // 
+            this.textBox32.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox32.Location = new System.Drawing.Point(3, 3);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.ReadOnly = true;
+            this.textBox32.Size = new System.Drawing.Size(45, 19);
+            this.textBox32.TabIndex = 111;
+            this.textBox32.TabStop = false;
+            this.textBox32.Text = "作成";
+            // 
+            // tb_update_datetime
+            // 
+            this.tb_update_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_datetime.Location = new System.Drawing.Point(90, 22);
+            this.tb_update_datetime.Name = "tb_update_datetime";
+            this.tb_update_datetime.ReadOnly = true;
+            this.tb_update_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_update_datetime.TabIndex = 116;
+            this.tb_update_datetime.TabStop = false;
+            // 
+            // tb_update_user_cd
+            // 
+            this.tb_update_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_update_user_cd.Location = new System.Drawing.Point(48, 22);
+            this.tb_update_user_cd.Name = "tb_update_user_cd";
+            this.tb_update_user_cd.ReadOnly = true;
+            this.tb_update_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_update_user_cd.TabIndex = 115;
+            this.tb_update_user_cd.TabStop = false;
+            // 
+            // textBox35
+            // 
+            this.textBox35.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox35.Location = new System.Drawing.Point(3, 22);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.ReadOnly = true;
+            this.textBox35.Size = new System.Drawing.Size(45, 19);
+            this.textBox35.TabIndex = 114;
+            this.textBox35.TabStop = false;
+            this.textBox35.Text = "更新";
+            // 
+            // tb_create_datetime
+            // 
+            this.tb_create_datetime.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_datetime.Location = new System.Drawing.Point(90, 3);
+            this.tb_create_datetime.Name = "tb_create_datetime";
+            this.tb_create_datetime.ReadOnly = true;
+            this.tb_create_datetime.Size = new System.Drawing.Size(130, 19);
+            this.tb_create_datetime.TabIndex = 113;
+            this.tb_create_datetime.TabStop = false;
+            // 
+            // tb_create_user_cd
+            // 
+            this.tb_create_user_cd.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_create_user_cd.Location = new System.Drawing.Point(48, 3);
+            this.tb_create_user_cd.Name = "tb_create_user_cd";
+            this.tb_create_user_cd.ReadOnly = true;
+            this.tb_create_user_cd.Size = new System.Drawing.Size(42, 19);
+            this.tb_create_user_cd.TabIndex = 112;
+            this.tb_create_user_cd.TabStop = false;
             // 
             // splitContainer4
             // 
@@ -810,34 +838,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // splitContainer12
-            // 
-            this.splitContainer12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer12.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer12.IsSplitterFixed = true;
-            this.splitContainer12.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer12.Name = "splitContainer12";
-            // 
-            // splitContainer12.Panel1
-            // 
-            this.splitContainer12.Panel1.Controls.Add(this.cb_today_busyo);
-            this.splitContainer12.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer12.Panel1.Controls.Add(this.textBox3);
-            this.splitContainer12.Panel1.Controls.Add(this.btn_hyouji);
-            this.splitContainer12.Panel1.Controls.Add(this.tb_seisan_yotei_date);
-            // 
-            // splitContainer12.Panel2
-            // 
-            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika_under);
-            this.splitContainer12.Panel2.Controls.Add(this.btn_line_tuika);
-            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_up);
-            this.splitContainer12.Panel2.Controls.Add(this.btn_auto_time);
-            this.splitContainer12.Panel2.Controls.Add(this.btn_seisan_jun_down);
-            this.splitContainer12.Size = new System.Drawing.Size(852, 55);
-            this.splitContainer12.SplitterDistance = 593;
-            this.splitContainer12.TabIndex = 0;
-            this.splitContainer12.TabStop = false;
-            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -866,6 +866,11 @@
             this.splitContainer9.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer9)).EndInit();
             this.splitContainer9.ResumeLayout(false);
+            this.splitContainer12.Panel1.ResumeLayout(false);
+            this.splitContainer12.Panel1.PerformLayout();
+            this.splitContainer12.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
+            this.splitContainer12.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
@@ -907,11 +912,6 @@
             this.splitContainer8.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
             this.splitContainer8.ResumeLayout(false);
-            this.splitContainer12.Panel1.ResumeLayout(false);
-            this.splitContainer12.Panel1.PerformLayout();
-            this.splitContainer12.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
-            this.splitContainer12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

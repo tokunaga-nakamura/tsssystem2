@@ -233,6 +233,8 @@ namespace TSS_SYSTEM
             {
                 //リードオンリーにする
                 w_dgv.ReadOnly = true;
+                //削除不可にする（コードからは削除可）
+                w_dgv.AllowUserToDeleteRows = false;
                 //全てグレー表示にする
                 //w_dgv.RowsDefaultCellStyle.BackColor = Color.LightGray; //ヘッダーを含まない
                 w_dgv.EnableHeadersVisualStyles = false;    //ヘッダーのvisualスタイルを無効にする
@@ -370,10 +372,20 @@ namespace TSS_SYSTEM
                 get_schedule_data(cb_today_busyo,tb_seisan_yotei_date.Text);
                 disp_schedule_data(dgv_today , w_dt_today);
                 lbl_seisan_yotei_date_today.Text = tb_seisan_yotei_date.Text;
-                tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
-                tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
-                tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
-                tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                if(dgv_today.Rows.Count >= 1)
+                {
+                    tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
+                    tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
+                    tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
+                    tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+                }
+                else
+                {
+                    tb_create_user_cd.Text = "";
+                    tb_create_datetime.Text = "";
+                    tb_update_user_cd.Text = "";
+                    tb_update_datetime.Text = "";
+                }
 
                 //-1
                 DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
@@ -1643,15 +1655,15 @@ namespace TSS_SYSTEM
         private void btn_day_up_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_today.Rows.Count <= 0) return;
+            if (dgv_today.DataSource == null) return;
 
             if (henkou_check() == true)
             {
-                DateTime w_next_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(1);
+                DateTime w_next_day = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString()).AddDays(1);
+                lbl_seisan_yotei_date_today.Text = w_next_day.ToShortDateString();
                 get_schedule_data(cb_today_busyo, w_next_day.ToShortDateString());
                 disp_schedule_data(dgv_today, w_dt_today);
                 tb_seisan_yotei_date.Text = w_next_day.ToShortDateString();
-                lbl_seisan_yotei_date_today.Text = w_next_day.ToShortDateString();
                 if (w_dt_today.Rows.Count > 0)
                 {
                     tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
@@ -1677,15 +1689,15 @@ namespace TSS_SYSTEM
         private void btn_day_down_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_today.Rows.Count <= 0) return;
+            if (dgv_today.DataSource == null) return;
 
             if(henkou_check() == true)
             {
-                DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString()).AddDays(-1);
+                DateTime w_before_day = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString()).AddDays(-1);
+                lbl_seisan_yotei_date_today.Text = w_before_day.ToShortDateString();
                 get_schedule_data(cb_today_busyo, w_before_day.ToShortDateString());
                 disp_schedule_data(dgv_today, w_dt_today);
                 tb_seisan_yotei_date.Text = w_before_day.ToShortDateString();
-                lbl_seisan_yotei_date_today.Text = w_before_day.ToShortDateString();
                 if (w_dt_today.Rows.Count > 0)
                 {
                     tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
@@ -1711,7 +1723,7 @@ namespace TSS_SYSTEM
         private void btn_before_day_up_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_before.Rows.Count <= 0) return;
+            if (dgv_before.DataSource == null) return;
 
             DateTime w_next_day = dtp_before.Value.AddDays(1);
             get_schedule_data(cb_before_busyo, w_next_day.ToShortDateString());
@@ -1722,7 +1734,7 @@ namespace TSS_SYSTEM
         private void btn_before_day_down_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_before.Rows.Count <= 0) return;
+            if (dgv_before.DataSource == null) return;
 
             DateTime w_before_day = dtp_before.Value.AddDays(-1);
             get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
@@ -1733,7 +1745,7 @@ namespace TSS_SYSTEM
         private void btn_next_day_up_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_next.Rows.Count <= 0) return;
+            if (dgv_next.DataSource == null) return;
 
             DateTime w_next_day = dtp_next.Value.AddDays(1);
             get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
@@ -1744,7 +1756,7 @@ namespace TSS_SYSTEM
         private void btn_next_day_down_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_next.Rows.Count <= 0) return;
+            if (dgv_next.DataSource == null) return;
 
             DateTime w_before_day = dtp_next.Value.AddDays(-1);
             get_schedule_data(cb_next_busyo, w_before_day.ToShortDateString());

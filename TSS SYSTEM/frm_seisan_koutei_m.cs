@@ -1331,7 +1331,7 @@ namespace TSS_SYSTEM
 
             string str_datetime = System.DateTime.Now.ToString();
 
-            if (tss.User_Kengen_Check(4, 6) == false)
+            if (tss.User_Kengen_Check(7, 5) == false)
             {
                 MessageBox.Show("権限がありません");
                 return;

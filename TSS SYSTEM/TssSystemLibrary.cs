@@ -42,6 +42,8 @@ using System.IO;                //StreamWriter
 //      2016/07/xx  -スケジュール調整画面大幅変更
 //                  -メニューのステータスにコードバージョンの表示を追加
 //                  code:2
+//      2016/07/22  -生産工程マスタメンテの登録権限バグ修正
+//                  code:3
 
 
 namespace TSS_SYSTEM
@@ -89,7 +91,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.03";
-            program_code_version = "1.03.2";
+            program_code_version = "1.03.3";
 
             fld_DataSource = null;
             fld_UserID = null;
