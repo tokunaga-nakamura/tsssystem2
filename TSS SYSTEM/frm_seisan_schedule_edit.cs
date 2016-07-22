@@ -2241,6 +2241,34 @@ namespace TSS_SYSTEM
             frm_rpt.Dispose();
         }
 
+        private void btn_csv_Click(object sender, EventArgs e)
+        {
+            if (w_dt_today.Rows.Count != 0)
+            {
+                string w_str_now = DateTime.Now.Year.ToString("0000") + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00") + DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00");
+                string yyyy = tb_seisan_yotei_date.Text.Substring(0, 4);
+                string mm = tb_seisan_yotei_date.Text.Substring(5, 2);
+                string dd = tb_seisan_yotei_date.Text.Substring(8, 2);
+                string yyyymmdd = yyyy + mm + dd;
+                string busyo = cb_today_busyo.Text;
+
+
+                string w_str_filename = "" + yyyymmdd + "" + busyo + "の生産スケジュール" + w_str_now + ".csv";
+                if (tss.DataTableCSV(w_dt_today, true, w_str_filename, "\"", true))
+                {
+                    MessageBox.Show("保存されました。");
+                }
+                else
+                {
+                    MessageBox.Show("キャンセルまたはエラー");
+                }
+            }
+            else
+            {
+                MessageBox.Show("出力するデータがありません。");
+            }
+        }
+
 
     }
 }
