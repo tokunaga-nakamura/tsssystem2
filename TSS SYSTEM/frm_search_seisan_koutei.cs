@@ -199,6 +199,8 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
 
+                sql = sql + " order by seihin_cd ";
+
                 //sql = sql + " and a1.delete_flg is null ";
 
             }

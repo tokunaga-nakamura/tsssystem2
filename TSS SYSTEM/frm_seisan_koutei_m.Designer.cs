@@ -34,6 +34,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btn_koutei_copy = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.lbl_seihin_cd = new System.Windows.Forms.Label();
             this.textBox32 = new System.Windows.Forms.TextBox();
@@ -83,7 +84,6 @@
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.btn_koutei_copy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -208,6 +208,17 @@
             this.splitContainer3.SplitterDistance = 51;
             this.splitContainer3.TabIndex = 91;
             this.splitContainer3.TabStop = false;
+            // 
+            // btn_koutei_copy
+            // 
+            this.btn_koutei_copy.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_koutei_copy.Location = new System.Drawing.Point(433, 21);
+            this.btn_koutei_copy.Name = "btn_koutei_copy";
+            this.btn_koutei_copy.Size = new System.Drawing.Size(168, 23);
+            this.btn_koutei_copy.TabIndex = 91;
+            this.btn_koutei_copy.Text = "他製品の生産工程をコピー";
+            this.btn_koutei_copy.UseVisualStyleBackColor = false;
+            this.btn_koutei_copy.Click += new System.EventHandler(this.btn_koutei_copy_Click);
             // 
             // textBox8
             // 
@@ -782,16 +793,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // btn_koutei_copy
-            // 
-            this.btn_koutei_copy.Location = new System.Drawing.Point(397, 21);
-            this.btn_koutei_copy.Name = "btn_koutei_copy";
-            this.btn_koutei_copy.Size = new System.Drawing.Size(104, 23);
-            this.btn_koutei_copy.TabIndex = 91;
-            this.btn_koutei_copy.Text = "工程コピー作成";
-            this.btn_koutei_copy.UseVisualStyleBackColor = true;
-            this.btn_koutei_copy.Click += new System.EventHandler(this.btn_koutei_copy_Click);
             // 
             // frm_seisan_koutei_m
             // 

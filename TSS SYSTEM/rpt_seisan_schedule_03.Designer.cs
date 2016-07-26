@@ -205,7 +205,7 @@
             this.tb_create_datetime,
             this.tb_update_datetime,
             this.label3});
-            this.pageHeader.Height = 0.6563814F;
+            this.pageHeader.Height = 0.6875F;
             this.pageHeader.Name = "pageHeader";
             this.pageHeader.Format += new System.EventHandler(this.pageHeader_Format);
             // 

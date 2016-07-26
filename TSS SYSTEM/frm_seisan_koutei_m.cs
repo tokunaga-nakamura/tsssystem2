@@ -1680,7 +1680,6 @@ namespace TSS_SYSTEM
                                           + rows[0][14].ToString() + "','"
                                           + rows[0][15].ToString() + "',"
                                           + "to_date('" + rows[0][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
-
                 }
             }
             else
@@ -2062,8 +2061,108 @@ namespace TSS_SYSTEM
             frm_s_seisan_kou.Dispose();
 
             //子画面から値を取得する
-            this.label1.Text = frm_s_seisan_kou.str_cd;
+            string str_seihin_cd = frm_s_seisan_kou.str_cd;
+            //this.label1.Text = frm_s_seisan_kou.str_cd;
             frm_s_seisan_kou.Dispose();
+
+            DataTable dt_t = tss.OracleSelect("Select * from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
+            if(dt_t.Rows.Count == 0)
+            {
+                label_sinki.Text = "新規";
+            }
+            else
+            {
+                label_sinki.Text = "";
+            }
+
+            //生産工程の画面に子画面から受け取った製品コードの生産工程を表示
+            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + str_seihin_cd + "' and A1.seihin_cd = '" + str_seihin_cd + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+            dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
+
+            //for文で行数分指定セルに値を入れる
+            int rc = dt_m.Rows.Count;
+            for (int i = 0; i <= rc - 1; i++)
+            {
+                //製品コード
+                dt_m.Rows[i]["seihin_cd"] = tb_seihin_cd.Text;
+                
+                //チェックボックス
+                if (dt_m.Rows[i]["select_kbn"].ToString() == "1")
+                {
+                    dt_m.Rows[i]["checkbox"] = true;
+                }
+                
+                if(label_sinki.Text == "新規")
+                {
+                    dt_m.Rows[i]["create_user_cd"] = null;
+                    dt_m.Rows[i]["create_datetime"] = DBNull.Value;
+                    dt_m.Rows[i]["update_user_cd"] = null;
+                    dt_m.Rows[i]["update_datetime"] = DBNull.Value;
+                    dt_m.Rows[i]["create_user_cd1"] = null;
+                    dt_m.Rows[i]["create_datetime1"] = DBNull.Value;
+                    dt_m.Rows[i]["update_user_cd1"] = null;
+                    dt_m.Rows[i]["update_datetime1"] = DBNull.Value;
+                }
+                else
+                {
+                    dt_m.Rows[i]["create_user_cd"] = dt_t.Rows[0]["create_user_cd"];
+                    dt_m.Rows[i]["create_datetime"] = dt_t.Rows[0]["create_datetime"];
+                    dt_m.Rows[i]["update_user_cd"] = dt_t.Rows[0]["update_user_cd"];
+                    dt_m.Rows[i]["update_datetime"] = dt_t.Rows[0]["update_datetime"];
+                    dt_m.Rows[i]["create_user_cd1"] = dt_t.Rows[0]["create_user_cd"];
+                    dt_m.Rows[i]["create_datetime1"] = dt_t.Rows[0]["create_datetime"];
+                    dt_m.Rows[i]["update_user_cd1"] = dt_t.Rows[0]["update_user_cd"];
+                    dt_m.Rows[i]["update_datetime1"] =dt_t.Rows[0]["update_datetime"];
+                }
+                
+            }
+            if (dt_m.Rows.Count <= 0)
+            {
+                dt_m.Rows.Clear();
+                dt_m.Rows.Add();
+
+                dt_m.Rows[0]["seihin_cd"] = tb_seihin_cd.Text.ToString();
+                dt_m.Rows[0]["seq_no"] = 1;
+                dt_m.Rows[0]["koutei_level"] = 1;
+                gamen_disp("1");
+
+                tb_seihin_name.Text = get_seihin_name(tb_seihin_cd.Text.ToString());
+                dgv_koutei_disp();
+                dgv_line_disp();
+            }
+            else
+            {
+                //既存データ有
+                //画面表示のため、データテーブルから条件を抽出（DataTable →　DataRow）
+                DataRow[] rows = dt_m.Select("seihin_cd = '" + tb_seihin_cd.Text + "'  and seq_no = '" + 1 + "'");
+
+                if (rows.Length > 0)
+                {
+                    tb_koutei_no.Text = rows[0]["seq_no"].ToString();
+                    tb_bikou.Text = rows[0]["bikou"].ToString();
+                    tb_busyo_cd.Text = rows[0]["busyo_cd"].ToString();
+                    tb_busyo_name.Text = get_busyo_name(rows[0]["busyo_cd"].ToString());
+                    tb_koutei_cd.Text = rows[0]["koutei_cd"].ToString();
+                    tb_koutei_name.Text = get_koutei_name(rows[0]["koutei_cd"].ToString());
+                    tb_line_select_kbn.Text = rows[0]["line_select_kbn"].ToString();
+                    tb_jisseki_kanri_kbn.Text = rows[0]["jisseki_kanri_kbn"].ToString();
+                    tb_seisan_start_day.Text = rows[0]["seisan_start_day"].ToString();
+                    tb_koutei_start_time.Text = rows[0]["koutei_start_time"].ToString();
+                    tb_bikou.Text = rows[0]["bikou"].ToString();
+                    tb_seisankisyu.Text = rows[0]["seisankisyu"].ToString();
+
+                    object create_datetime = dt_m.Compute("Min(create_datetime1)", null);
+                    object update_datetime = dt_m.Compute("Max(update_datetime1)", null);
+
+                    tb_create_user_cd.Text = dt_m.Rows[0]["create_user_cd"].ToString();
+                    tb_create_datetime.Text = create_datetime.ToString();
+                    tb_update_user_cd.Text = dt_m.Rows[0]["update_user_cd"].ToString();
+                    tb_update_datetime.Text = update_datetime.ToString();
+                }
+
+                dgv_koutei_disp();
+                dgv_line_disp();
+            }
 
         }
        
