@@ -1084,6 +1084,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="rpt_seisan_siji.rdlx">
+      <SubType>Component</SubType>
+    </None>
     <None Include="rpt_uriage_denpyou.rdlx">
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

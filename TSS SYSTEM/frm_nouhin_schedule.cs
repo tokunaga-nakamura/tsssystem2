@@ -521,7 +521,7 @@ namespace TSS_SYSTEM
                     dr["juchu_su"] = w_nouhin_su_ttl.ToString() + "/" + dr["juchu_su"].ToString();
                 }
                 //受注数と生産スケジュールの生産数のアンマッチ処理
-                dr["seisan_schedule_flg"] = seisan_schedule_ox(dr["torihikisaki_cd"].ToString(),dr["juchu_cd1"].ToString(),dr["juchu_cd2"].ToString(),dr["juchu_su"].ToString());
+                dr["seisan_schedule_flg"] = seisan_schedule_ox(dr["torihikisaki_cd"].ToString(),dr["juchu_cd1"].ToString(),dr["juchu_cd2"].ToString(),dr["juchu_su2"].ToString());
             }
         }
 
@@ -699,6 +699,7 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_nouhin_schedule.Columns["31"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_nouhin_schedule.Columns["seq"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_nouhin_schedule.Columns["juchu_su2"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             nouhin_jun_kengen_check();
 
@@ -1143,7 +1144,7 @@ namespace TSS_SYSTEM
                 frm_ssd.ShowDialog(this);
                 frm_ssd.Dispose();
                 //生産スケジュールが調整された場合を想定し、○×の再表示
-                dgv.Rows[e.RowIndex].Cells[41].Value = seisan_schedule_ox(dgv.Rows[e.RowIndex].Cells[1].Value.ToString(), dgv.Rows[e.RowIndex].Cells[2].Value.ToString(), dgv.Rows[e.RowIndex].Cells[3].Value.ToString(), dgv.Rows[e.RowIndex].Cells[42].Value.ToString());
+                dgv.Rows[e.RowIndex].Cells[41].Value = seisan_schedule_ox(dgv.Rows[e.RowIndex].Cells["torihikisaki_cd"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_cd1"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_cd2"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_su2"].Value.ToString());
             }
         }
     }
