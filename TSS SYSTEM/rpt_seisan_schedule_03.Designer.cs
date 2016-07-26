@@ -987,7 +987,6 @@
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.reportInfo1});
-            this.pageFooter.Height = 0.25F;
             this.pageFooter.Name = "pageFooter";
             // 
             // reportInfo1
@@ -1017,6 +1016,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.OutputFormat = resources.GetString("textBox6.OutputFormat");
             this.textBox6.Style = "background-color: Black; color: White; font-size: 9.75pt; text-align: left";
+            this.textBox6.Text = null;
             this.textBox6.Top = 0F;
             this.textBox6.Width = 0.342126F;
             // 
@@ -1028,6 +1028,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.OutputFormat = resources.GetString("textBox1.OutputFormat");
             this.textBox1.Style = "background-color: Black; color: White; font-size: 9.75pt; text-align: left";
+            this.textBox1.Text = null;
             this.textBox1.Top = 0F;
             this.textBox1.Width = 10.56221F;
             // 
@@ -1292,7 +1293,7 @@
             this.label4.HyperLink = null;
             this.label4.Left = 3.831103F;
             this.label4.Name = "label4";
-            this.label4.Style = "background-color: Bisque; font-size: 6pt";
+            this.label4.Style = "background-color: LightSalmon; font-size: 6pt";
             this.label4.Text = "生産機種";
             this.label4.Top = 0.1771654F;
             this.label4.Width = 0.743307F;
