@@ -392,7 +392,7 @@ namespace TSS_SYSTEM
                 w_before_day = w_before_day.AddDays(-1);
                 get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
                 disp_schedule_data(dgv_before , w_dt_before);
-                cb_before_busyo.SelectedValue = cb_today_busyo.SelectedValue.ToString();
+                cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
                 dtp_before.Value = w_before_day;
 
                 //+1
@@ -400,7 +400,7 @@ namespace TSS_SYSTEM
                 w_next_day = w_next_day.AddDays(1);
                 get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
                 disp_schedule_data(dgv_next , w_dt_next);
-                cb_before_busyo.SelectedValue = cb_today_busyo.SelectedValue.ToString();
+                cb_before_busyo.SelectedValue = cb_next_busyo.SelectedValue.ToString();
                 dtp_next.Value = w_next_day;
             }
             else
