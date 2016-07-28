@@ -76,11 +76,11 @@
             this.btn_next_day_down = new System.Windows.Forms.Button();
             this.dgv_next = new System.Windows.Forms.DataGridView();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.btn_sijisyo_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_sijisyo_insatu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -802,6 +802,16 @@
             this.splitContainer8.TabIndex = 0;
             this.splitContainer8.TabStop = false;
             // 
+            // btn_sijisyo_insatu
+            // 
+            this.btn_sijisyo_insatu.Location = new System.Drawing.Point(246, 3);
+            this.btn_sijisyo_insatu.Name = "btn_sijisyo_insatu";
+            this.btn_sijisyo_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_sijisyo_insatu.TabIndex = 3;
+            this.btn_sijisyo_insatu.Text = "指示書印刷";
+            this.btn_sijisyo_insatu.UseVisualStyleBackColor = true;
+            this.btn_sijisyo_insatu.Click += new System.EventHandler(this.btn_sijisyo_insatu_Click);
+            // 
             // btn_csv
             // 
             this.btn_csv.Location = new System.Drawing.Point(84, 3);
@@ -841,16 +851,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // btn_sijisyo_insatu
-            // 
-            this.btn_sijisyo_insatu.Location = new System.Drawing.Point(246, 3);
-            this.btn_sijisyo_insatu.Name = "btn_sijisyo_insatu";
-            this.btn_sijisyo_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_sijisyo_insatu.TabIndex = 3;
-            this.btn_sijisyo_insatu.Text = "指示書印刷";
-            this.btn_sijisyo_insatu.UseVisualStyleBackColor = true;
-            this.btn_sijisyo_insatu.Click += new System.EventHandler(this.btn_sijisyo_insatu_Click);
             // 
             // frm_seisan_schedule_edit
             // 
