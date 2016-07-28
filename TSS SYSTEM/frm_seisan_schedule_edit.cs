@@ -2269,6 +2269,13 @@ namespace TSS_SYSTEM
             }
         }
 
-
+        private void btn_sijisyo_insatu_Click(object sender, EventArgs e)
+        {
+            //指示書の印刷
+            frm_seisan_siji_preview frm_rpt = new frm_seisan_siji_preview();
+            //frm_rpt.w_uriage_no = tb_uriage_no.Text;
+            frm_rpt.ShowDialog(this);
+            frm_rpt.Dispose();
+        }
     }
 }
