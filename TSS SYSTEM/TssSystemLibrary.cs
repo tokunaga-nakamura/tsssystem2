@@ -69,6 +69,8 @@ namespace TSS_SYSTEM
         string fld_UserID;
         string fld_Password;
         string fld_ConnectionString;
+        string fld_BinPath;
+        string fld_SystemPath;
         string fld_CsvPath;
         string fld_dainichi_cd;
 
@@ -102,6 +104,8 @@ namespace TSS_SYSTEM
             fld_UserID = null;
             fld_Password = null;
             fld_ConnectionString = null;
+            fld_BinPath = null;
+            fld_SystemPath = null;
             fld_CsvPath = null;
             fld_dainichi_cd = null;
 
@@ -130,6 +134,8 @@ namespace TSS_SYSTEM
         public string UserID { get { return fld_UserID; } }
         public string Password { get { return fld_Password; } }
         public string ConnectionString { get { return fld_ConnectionString; } }
+        public string BinPath { get { return fld_BinPath; } }
+        public string SystemPath { get { return fld_SystemPath; } }
         public string CsvPath { get { return fld_CsvPath; } }
         public string Dainichi_cd { get { return fld_dainichi_cd; } }
 
@@ -1003,6 +1009,54 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region GetBinPath
+        /// <summary>
+        /// TSSシステムのBinのパスを取得する。</summary>
+        /// <returns>
+        /// string パスを返します。</returns>
+        public string GetBinPath()
+        {
+            //app.configから必要な情報を取得
+            string BinPath = ConfigurationManager.AppSettings["BinPath"];
+
+            if (BinPath.Length == 0)
+            {
+                MessageBox.Show("設定ファイル:BinPathを処理できません。");
+                return null;
+            }
+            else
+            {
+                fld_BinPath = BinPath;
+            }
+            //戻り値
+            return BinPath;
+        }
+        #endregion
+        
+        #region GetSystemPath
+        /// <summary>
+        /// TSSシステムのデフォルトのパスを取得する。</summary>
+        /// <returns>
+        /// string パスを返します。</returns>
+        public string GetSystemPath()
+        {
+            //app.configから必要な情報を取得
+            string SystemPath = ConfigurationManager.AppSettings["SystemPath"];
+
+            if (SystemPath.Length == 0)
+            {
+                MessageBox.Show("設定ファイル:SystemPathを処理できません。");
+                return null;
+            }
+            else
+            {
+                fld_SystemPath = SystemPath;
+            }
+            //戻り値
+            return SystemPath;
+        }
+        #endregion
+
         #region GetCsvPath
         /// <summary>
         /// TSSシステムのデフォルトのCSV出力先パスを取得する。</summary>
@@ -1348,6 +1402,56 @@ namespace TSS_SYSTEM
             else
             {
                 out_str = w_dt.Rows[0]["busyo_name"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_koutei_name メソッド
+        /// <summary>
+        /// 工程コードを受け取り工程名を返す</summary>
+        /// <param name="in_cd">
+        /// 工程名を取得する工程コード</param>
+        /// <returns>
+        /// string 工程名
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_koutei_name(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_koutei_m where koutei_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["koutei_name"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region get_line_name メソッド
+        /// <summary>
+        /// ラインコードを受け取りライン名を返す</summary>
+        /// <param name="in_cd">
+        /// ライン名を取得するラインコード</param>
+        /// <returns>
+        /// string ライン名
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_line_name(string in_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_line_m where line_cd = '" + in_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["line_name"].ToString();
             }
             return out_str;
         }

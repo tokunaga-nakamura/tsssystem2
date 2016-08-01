@@ -33,6 +33,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.btn_preview = new System.Windows.Forms.Button();
             this.tb_line_name = new System.Windows.Forms.TextBox();
             this.tb_koutei_name = new System.Windows.Forms.TextBox();
             this.tb_busyo_name = new System.Windows.Forms.TextBox();
@@ -44,11 +45,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
-            this.btn_preview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -151,6 +151,15 @@
             this.splitContainer4.SplitterDistance = 30;
             this.splitContainer4.TabIndex = 0;
             // 
+            // btn_preview
+            // 
+            this.btn_preview.Location = new System.Drawing.Point(692, 3);
+            this.btn_preview.Name = "btn_preview";
+            this.btn_preview.Size = new System.Drawing.Size(75, 23);
+            this.btn_preview.TabIndex = 11;
+            this.btn_preview.Text = "プレビュー";
+            this.btn_preview.UseVisualStyleBackColor = true;
+            // 
             // tb_line_name
             // 
             this.tb_line_name.BackColor = System.Drawing.Color.Gainsboro;
@@ -188,7 +197,6 @@
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(27, 19);
             this.tb_line_cd.TabIndex = 7;
-            this.tb_line_cd.Text = "999";
             // 
             // tb_koutei_cd
             // 
@@ -197,7 +205,6 @@
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(27, 19);
             this.tb_koutei_cd.TabIndex = 6;
-            this.tb_koutei_cd.Text = "999";
             // 
             // tb_busyo_cd
             // 
@@ -206,7 +213,6 @@
             this.tb_busyo_cd.Name = "tb_busyo_cd";
             this.tb_busyo_cd.Size = new System.Drawing.Size(37, 19);
             this.tb_busyo_cd.TabIndex = 5;
-            this.tb_busyo_cd.Text = "9999";
             // 
             // tb_seisanbi
             // 
@@ -215,7 +221,6 @@
             this.tb_seisanbi.Name = "tb_seisanbi";
             this.tb_seisanbi.Size = new System.Drawing.Size(75, 19);
             this.tb_seisanbi.TabIndex = 4;
-            this.tb_seisanbi.Text = "9999/99/99";
             // 
             // textBox4
             // 
@@ -261,43 +266,6 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "作業日";
             // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.btn_insatu);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer3.Size = new System.Drawing.Size(880, 30);
-            this.splitContainer3.SplitterDistance = 788;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // btn_insatu
-            // 
-            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
-            this.btn_insatu.Name = "btn_insatu";
-            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 0;
-            this.btn_insatu.Text = "印刷";
-            this.btn_insatu.UseVisualStyleBackColor = true;
-            // 
-            // btn_syuuryou
-            // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            // 
             // viewer1
             // 
             this.viewer1.CurrentPage = 0;
@@ -336,14 +304,43 @@
             this.viewer1.Size = new System.Drawing.Size(880, 419);
             this.viewer1.TabIndex = 0;
             // 
-            // btn_preview
+            // splitContainer3
             // 
-            this.btn_preview.Location = new System.Drawing.Point(692, 3);
-            this.btn_preview.Name = "btn_preview";
-            this.btn_preview.Size = new System.Drawing.Size(75, 23);
-            this.btn_preview.TabIndex = 11;
-            this.btn_preview.Text = "プレビュー";
-            this.btn_preview.UseVisualStyleBackColor = true;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.btn_insatu);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer3.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer3.SplitterDistance = 788;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // btn_insatu
+            // 
+            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
+            this.btn_insatu.Name = "btn_insatu";
+            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu.TabIndex = 0;
+            this.btn_insatu.Text = "印刷";
+            this.btn_insatu.UseVisualStyleBackColor = true;
+            // 
+            // btn_syuuryou
+            // 
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
             // frm_seisan_siji_preview
             // 

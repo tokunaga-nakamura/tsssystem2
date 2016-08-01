@@ -2273,7 +2273,17 @@ namespace TSS_SYSTEM
         {
             //指示書の印刷
             frm_seisan_siji_preview frm_rpt = new frm_seisan_siji_preview();
-            //frm_rpt.w_uriage_no = tb_uriage_no.Text;
+            //受け渡す値のセット
+            frm_rpt.arg_seisanbi = lbl_seisan_yotei_date_today.Text;
+            if(cb_today_busyo.SelectedValue.ToString() == "000000")
+            {
+                frm_rpt.arg_busyo_cd = "";
+            }
+            else
+            {
+                frm_rpt.arg_busyo_cd = cb_today_busyo.SelectedValue.ToString();
+            }
+
             frm_rpt.ShowDialog(this);
             frm_rpt.Dispose();
         }
