@@ -53,6 +53,7 @@ namespace TSS_SYSTEM
                 tb_koutei_name.Text = tss.get_koutei_name(tb_koutei_cd.Text);
                 tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
                 make_insatu_data();
+                tss.GetUser();
                 w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
                 make_insatu_table();
                 viewer_disp();
@@ -80,6 +81,7 @@ namespace TSS_SYSTEM
             w_dt_meisai.Columns.Add("juchu_cd2");
             w_dt_meisai.Columns.Add("juchu_su");
             w_dt_meisai.Columns.Add("torihikisaki_name");
+            w_dt_meisai.Columns.Add("seihin_cd");
             w_dt_meisai.Columns.Add("seihin_name");
             w_dt_meisai.Columns.Add("seisankisyu");
             w_dt_meisai.Columns.Add("member01");
@@ -186,15 +188,21 @@ namespace TSS_SYSTEM
                 MessageBox.Show("印刷データが抽出・作成できませんでした。\n処理を終了します。");
                 this.Close();
             }
-            //ページレポートの各定義（サンプルからのコピーなので詳細は不明）
-            PageReport rpt = new PageReport();
-            rpt.Load(new System.IO.FileInfo(tss.GetBinPath() + "rpt_seisan_siji.rdlx"));
-            rpt.ConfigurationProvider = new GrapeCity.ActiveReports.Configuration.DefaultConfigurationProvider();
-            doc = new PageDocument(rpt);
-            //データテーブル等をデータソースとして使用する場合は、コネクション情報やクエリなどを空白（？）にしておくとLocateDataSourceibenntoが発生するらしい。
-            //LocateDataSourceイベントでデータテーブル等をバインドすると良いらしい
-            doc.LocateDataSource += new LocateDataSourceEventHandler(doc_LocateDataSource);
-            viewer1.LoadDocument(doc);
+
+            //ページレポートに接続文字列とクエリ（sql）をセットして表示する
+            GrapeCity.ActiveReports.PageReport rpt = new GrapeCity.ActiveReports.PageReport();
+            // レポート定義のファイルをロードします。 
+            rpt.Load(new System.IO.FileInfo("rpt_seisan_siji.rdlx"));
+            // 接続文字列を変更します
+            rpt.Report.DataSources[0].ConnectionProperties.ConnectString = tss.GetConnectionString();
+            // 変更するSQL文を定義します
+            //String tmpQuery = "select * from " + w_trn_name + " order by seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1";
+            String tmpQuery = "select * from " + w_trn_name + " where koutei_cd = '020'";
+            // SQL文を変更します
+            //rpt.Report.DataSets[0].Query.CommandText = GrapeCity.ActiveReports.Expressions.ExpressionInfo.Parse(tmpQuery, GrapeCity.ActiveReports.Expressions.ExpressionResultType.String);
+            rpt.Report.DataSets[0].Query.CommandText = tmpQuery;
+            GrapeCity.ActiveReports.Document.PageDocument pageDocument = new GrapeCity.ActiveReports.Document.PageDocument(rpt);
+            viewer1.LoadDocument(pageDocument);
         }
 
         void doc_LocateDataSource(object sender, LocateDataSourceEventArgs args)
@@ -274,6 +282,8 @@ namespace TSS_SYSTEM
                 w_dr["juchu_su"] = loop_dr["juchu_su"].ToString();
                 //取引先名
                 w_dr["torihikisaki_name"] = tss.get_torihikisaki_name(loop_dr["torihikisaki_cd"].ToString());
+                //製品コード
+                w_dr["seihin_cd"] = loop_dr["seihin_cd"].ToString();
                 //製品名
                 w_dr["seihin_name"] = loop_dr["seihin_name"].ToString();
                 //生産機種
@@ -365,10 +375,15 @@ namespace TSS_SYSTEM
 
         private void make_insatu_table()
         {
+            DataTable w_dt_trn_count = new DataTable();
             string w_sql;
             //指示書の印刷データのテーブル書き込み
-            //トランファイルを削除
-            tss.OracleDelete("DROP TABLE " + w_trn_name  + " CASCADE CONSTRAINTS");
+            //トランファイルの存在を確認して、あったら削除
+            w_dt_trn_count = tss.OracleSelect("select * from user_tables where upper(table_name) = upper('" + w_trn_name + "')");
+            if(w_dt_trn_count.Rows.Count >= 1)
+            {
+                tss.OracleDelete("DROP TABLE " + w_trn_name + " CASCADE CONSTRAINTS purge");
+            }
             //トランファイルを作成
             w_sql = "create table " + w_trn_name + " ("
                   + "seisan_yotei_date VARCHAR2(10) not null"
@@ -385,6 +400,7 @@ namespace TSS_SYSTEM
                   + ",juchu_cd2 varchar2(16)"
                   + ",juchu_su number(12,2)"
                   + ",torihikisaki_name varchar2(40)"
+                  + ",seihin_cd varchar2(16)"
                   + ",seihin_name varchar2(40)"
                   + ",seisankisyu varchar2(128)"
                   + ",member01 varchar2(20)"
@@ -407,8 +423,8 @@ namespace TSS_SYSTEM
                   + ",seisan_sumi_su number(12,2)"
                   + ",seisan_su number(12,2)"
                   + ",seisan_time number(10,2)"
-                  + ",start_time date"
-                  + ",end_time date"
+                  + ",start_time varchar2(20)"
+                  + ",end_time varchar2(20)"
                   + ",hinsitu_zenkai_name1 varchar2(40)"
                   + ",hinsitu_zenkai_su1 number(12,2)"
                   + ",hinsitu_zenkai_name2 varchar2(40)"
@@ -455,6 +471,7 @@ namespace TSS_SYSTEM
                         + ",juchu_cd2"
                         + ",juchu_su"
                         + ",torihikisaki_name"
+                        + ",seihin_cd"
                         + ",seihin_name"
                         + ",seisankisyu"
                         + ",member01"
@@ -504,9 +521,71 @@ namespace TSS_SYSTEM
                         + ",hinsitu_kako_name6"
                         + ",hinsitu_kako_su6"
                         + ") values ("
-                        + "";
-
-
+                        + "'" + w_dr["seisan_yotei_date"].ToString() + "',"
+                        + "'" + w_dr["seq1"].ToString() + "',"
+                        + "'" + w_dr["seq2"].ToString() + "',"
+                        + "'" + w_dr["busyo_cd"].ToString() + "',"
+                        + "'" + w_dr["busyo_name"].ToString() + "',"
+                        + "'" + w_dr["koutei_cd"].ToString() + "',"
+                        + "'" + w_dr["koutei_name"].ToString() + "',"
+                        + "'" + w_dr["line_cd"].ToString() + "',"
+                        + "'" + w_dr["line_name"].ToString() + "',"
+                        + "'" + w_dr["torihikisaki_cd"].ToString() + "',"
+                        + "'" + w_dr["juchu_cd1"].ToString() + "',"
+                        + "'" + w_dr["juchu_cd2"].ToString() + "',"
+                        + "'" + w_dr["juchu_su"].ToString() + "',"
+                        + "'" + w_dr["torihikisaki_name"].ToString() + "',"
+                        + "'" + w_dr["seihin_cd"].ToString() + "',"
+                        + "'" + w_dr["seihin_name"].ToString() + "',"
+                        + "'" + w_dr["seisankisyu"].ToString() + "',"
+                        + "'" + w_dr["member01"].ToString() + "',"
+                        + "'" + w_dr["member02"].ToString() + "',"
+                        + "'" + w_dr["member03"].ToString() + "',"
+                        + "'" + w_dr["member04"].ToString() + "',"
+                        + "'" + w_dr["member05"].ToString() + "',"
+                        + "'" + w_dr["member06"].ToString() + "',"
+                        + "'" + w_dr["member07"].ToString() + "',"
+                        + "'" + w_dr["member08"].ToString() + "',"
+                        + "'" + w_dr["member09"].ToString() + "',"
+                        + "'" + w_dr["member10"].ToString() + "',"
+                        + "'" + w_dr["member11"].ToString() + "',"
+                        + "'" + w_dr["member12"].ToString() + "',"
+                        + "'" + w_dr["bikou"].ToString() + "',"
+                        + "'" + w_dr["tact_time"].ToString() + "',"
+                        + "'" + w_dr["dandori_kousu"].ToString() + "',"
+                        + "'" + w_dr["tuika_kousu"].ToString() + "',"
+                        + "'" + w_dr["hoju_kousu"].ToString() + "',"
+                        + "'" + w_dr["seisan_sumi_su"].ToString() + "',"
+                        + "'" + w_dr["seisan_su"].ToString() + "',"
+                        + "'" + w_dr["seisan_time"].ToString() + "',"
+                        + "'" + w_dr["start_time"].ToString() + "',"
+                        + "'" + w_dr["end_time"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name1"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su1"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name2"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su2"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name3"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su3"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name4"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su4"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name5"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su5"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_name6"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_zenkai_su6"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name1"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su1"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name2"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su2"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name3"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su3"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name4"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su4"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name5"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su5"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_name6"].ToString() + "',"
+                        + "'" + w_dr["hinsitu_kako_su6"].ToString() + "'"
+                        + ")";
+                tss.OracleInsert(w_sql2);
             }
         }
 
