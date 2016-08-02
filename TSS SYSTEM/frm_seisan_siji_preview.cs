@@ -18,7 +18,7 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_meisai = new DataTable();    //印刷するデータ
-        GrapeCity.ActiveReports.Document.PageDocument doc;
+        //GrapeCity.ActiveReports.Document.PageDocument doc;
         string w_trn_name;
 
         //引数用の変数
@@ -45,19 +45,24 @@ namespace TSS_SYSTEM
             //他のプログラムから呼ばれた場合（引数が入っていた場合）
             if (arg_seisanbi != "" && arg_seisanbi != null)
             {
-                tb_seisanbi.Text = arg_seisanbi;
+                tb_seisan_yotei_date.Text = arg_seisanbi;
                 tb_busyo_cd.Text = arg_busyo_cd;
                 tb_koutei_cd.Text = arg_koutei_cd;
                 tb_line_cd.Text = arg_line_cd;
                 tb_busyo_name.Text = tss.get_busyo_name(tb_busyo_cd.Text);
                 tb_koutei_name.Text = tss.get_koutei_name(tb_koutei_cd.Text);
                 tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
-                make_insatu_data();
-                tss.GetUser();
-                w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
-                make_insatu_table();
-                viewer_disp();
+                seisan_siji_preview();
             }
+        }
+
+        private void seisan_siji_preview()
+        {
+            make_insatu_data();
+            tss.GetUser();
+            w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
+            make_insatu_table();
+            viewer_disp();
         }
 
         private void w_dt_meisai_init()
@@ -137,7 +142,7 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             string out_name = "";   //戻り値用
             w_dt = tss.OracleSelect("select * from tss_busyo_m where busyo_cd = '" + in_cd + "'");
-            if(w_dt == null)
+            if(w_dt == null || w_dt.Rows.Count <= 0)
             {
                 out_name = "";
             }
@@ -153,7 +158,7 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             string out_name = "";   //戻り値用
             w_dt = tss.OracleSelect("select * from tss_koutei_m where koutei_cd = '" + in_cd + "'");
-            if (w_dt == null)
+            if (w_dt == null || w_dt.Rows.Count <= 0)
             {
                 out_name = "";
             }
@@ -169,7 +174,7 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             string out_name = "";   //戻り値用
             w_dt = tss.OracleSelect("select * from tss_line_m where line_cd = '" + in_cd + "'");
-            if (w_dt == null)
+            if (w_dt == null || w_dt.Rows.Count <= 0)
             {
                 out_name = "";
             }
@@ -196,8 +201,8 @@ namespace TSS_SYSTEM
             // 接続文字列を変更します
             rpt.Report.DataSources[0].ConnectionProperties.ConnectString = tss.GetConnectionString();
             // 変更するSQL文を定義します
-            //String tmpQuery = "select * from " + w_trn_name + " order by seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1";
-            String tmpQuery = "select * from " + w_trn_name + " where koutei_cd = '020'";
+            String tmpQuery = "select * from " + w_trn_name + " order by seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1";
+            //String tmpQuery = "select * from " + w_trn_name; // + " where koutei_cd = '020'";
             // SQL文を変更します
             //rpt.Report.DataSets[0].Query.CommandText = GrapeCity.ActiveReports.Expressions.ExpressionInfo.Parse(tmpQuery, GrapeCity.ActiveReports.Expressions.ExpressionResultType.String);
             rpt.Report.DataSets[0].Query.CommandText = tmpQuery;
@@ -236,7 +241,7 @@ namespace TSS_SYSTEM
                 sql_where[sql_cnt] = "line_cd = '" + tb_line_cd.Text.ToString() + "'";
                 sql_cnt++;
             }
-            string sql = "select * from tss_seisan_schedule_f where seisan_yotei_date = '" + tb_seisanbi.Text + "' ";
+            string sql = "select * from tss_seisan_schedule_f where seisan_yotei_date = '" + tb_seisan_yotei_date.Text + "' ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 1)
@@ -599,6 +604,88 @@ namespace TSS_SYSTEM
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_busyo_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select busyo_cd,busyo_name from TSS_BUSYO_M ORDER BY BUSYO_CD");
+            dt_work.Columns["busyo_cd"].ColumnName = "部署コード";
+            dt_work.Columns["busyo_name"].ColumnName = "部署名";
+            //選択画面へ
+            this.tb_busyo_cd.Text = tss.kubun_cd_select_dt("部署一覧", dt_work, tb_busyo_cd.Text);
+            tb_busyo_name.Text = get_busyo_name(tb_busyo_cd.Text.ToString());
+        }
+
+        private void tb_busyo_cd_Validating(object sender, CancelEventArgs e)
+        {
+            tb_busyo_name.Text = get_busyo_name(tb_busyo_cd.Text.ToString());
+        }
+
+        private void tb_koutei_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select koutei_cd,koutei_name from TSS_koutei_M ORDER BY koutei_CD");
+            dt_work.Columns["koutei_cd"].ColumnName = "工程コード";
+            dt_work.Columns["koutei_name"].ColumnName = "工程名";
+            //選択画面へ
+            this.tb_koutei_cd.Text = tss.kubun_cd_select_dt("工程一覧", dt_work, tb_koutei_cd.Text);
+            tb_koutei_name.Text = get_koutei_name(tb_koutei_cd.Text.ToString());
+        }
+
+        private void tb_koutei_cd_Validating(object sender, CancelEventArgs e)
+        {
+            tb_koutei_name.Text = get_koutei_name(tb_koutei_cd.Text.ToString());
+        }
+
+        private void tb_line_cd_DoubleClick(object sender, EventArgs e)
+        {
+            //選択用のdatatableの作成
+            DataTable dt_work = new DataTable();
+            dt_work = tss.OracleSelect("select line_cd,line_name from TSS_line_M ORDER BY line_CD");
+            dt_work.Columns["line_cd"].ColumnName = "ラインコード";
+            dt_work.Columns["line_name"].ColumnName = "ライン名";
+            //選択画面へ
+            this.tb_line_cd.Text = tss.kubun_cd_select_dt("ライン一覧", dt_work, tb_line_cd.Text);
+            tb_line_name.Text = get_line_name(tb_line_cd.Text.ToString());
+        }
+
+        private void tb_line_cd_Validating(object sender, CancelEventArgs e)
+        {
+            tb_line_name.Text = get_line_name(tb_line_cd.Text.ToString());
+        }
+
+        private void btn_preview_Click(object sender, EventArgs e)
+        {
+            seisan_siji_preview();
+        }
+
+        private void tb_seisan_yotei_date_Validating(object sender, CancelEventArgs e)
+        {
+            if (tb_seisan_yotei_date.Text != "")
+            {
+                if (chk_seisan_yotei_date())
+                {
+                    tb_seisan_yotei_date.Text = tss.out_datetime.ToShortDateString();
+                }
+                else
+                {
+                    MessageBox.Show("生産予定日に異常があります。");
+                    tb_seisan_yotei_date.Focus();
+                }
+            }
+        }
+
+        private bool chk_seisan_yotei_date()
+        {
+            bool bl = true; //戻り値
+            if (tss.try_string_to_date(tb_seisan_yotei_date.Text.ToString()) == false)
+            {
+                bl = false;
+            }
+            return bl;
         }
 
     }

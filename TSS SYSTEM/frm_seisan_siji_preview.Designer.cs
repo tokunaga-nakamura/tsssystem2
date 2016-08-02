@@ -40,7 +40,7 @@
             this.tb_line_cd = new System.Windows.Forms.TextBox();
             this.tb_koutei_cd = new System.Windows.Forms.TextBox();
             this.tb_busyo_cd = new System.Windows.Forms.TextBox();
-            this.tb_seisanbi = new System.Windows.Forms.TextBox();
+            this.tb_seisan_yotei_date = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -87,6 +87,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(884, 561);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.TabStop = false;
             // 
             // btn_hardcopy
             // 
@@ -95,6 +96,7 @@
             this.btn_hardcopy.Name = "btn_hardcopy";
             this.btn_hardcopy.Size = new System.Drawing.Size(36, 36);
             this.btn_hardcopy.TabIndex = 0;
+            this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
             // 
@@ -118,13 +120,13 @@
             this.splitContainer2.Size = new System.Drawing.Size(884, 495);
             this.splitContainer2.SplitterDistance = 457;
             this.splitContainer2.TabIndex = 0;
+            this.splitContainer2.TabStop = false;
             // 
             // splitContainer4
             // 
             this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -138,7 +140,7 @@
             this.splitContainer4.Panel1.Controls.Add(this.tb_line_cd);
             this.splitContainer4.Panel1.Controls.Add(this.tb_koutei_cd);
             this.splitContainer4.Panel1.Controls.Add(this.tb_busyo_cd);
-            this.splitContainer4.Panel1.Controls.Add(this.tb_seisanbi);
+            this.splitContainer4.Panel1.Controls.Add(this.tb_seisan_yotei_date);
             this.splitContainer4.Panel1.Controls.Add(this.textBox4);
             this.splitContainer4.Panel1.Controls.Add(this.textBox3);
             this.splitContainer4.Panel1.Controls.Add(this.textBox2);
@@ -148,22 +150,24 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.viewer1);
             this.splitContainer4.Size = new System.Drawing.Size(884, 457);
-            this.splitContainer4.SplitterDistance = 30;
+            this.splitContainer4.SplitterDistance = 32;
             this.splitContainer4.TabIndex = 0;
+            this.splitContainer4.TabStop = false;
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(692, 3);
+            this.btn_preview.Location = new System.Drawing.Point(719, 3);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 11;
             this.btn_preview.Text = "プレビュー";
             this.btn_preview.UseVisualStyleBackColor = true;
+            this.btn_preview.Click += new System.EventHandler(this.btn_preview_Click);
             // 
             // tb_line_name
             // 
             this.tb_line_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_line_name.Location = new System.Drawing.Point(586, 5);
+            this.tb_line_name.Location = new System.Drawing.Point(613, 5);
             this.tb_line_name.Name = "tb_line_name";
             this.tb_line_name.ReadOnly = true;
             this.tb_line_name.Size = new System.Drawing.Size(100, 19);
@@ -173,7 +177,7 @@
             // tb_koutei_name
             // 
             this.tb_koutei_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_koutei_name.Location = new System.Drawing.Point(405, 5);
+            this.tb_koutei_name.Location = new System.Drawing.Point(432, 5);
             this.tb_koutei_name.Name = "tb_koutei_name";
             this.tb_koutei_name.ReadOnly = true;
             this.tb_koutei_name.Size = new System.Drawing.Size(100, 19);
@@ -183,7 +187,7 @@
             // tb_busyo_name
             // 
             this.tb_busyo_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_busyo_name.Location = new System.Drawing.Point(224, 5);
+            this.tb_busyo_name.Location = new System.Drawing.Point(251, 5);
             this.tb_busyo_name.Name = "tb_busyo_name";
             this.tb_busyo_name.ReadOnly = true;
             this.tb_busyo_name.Size = new System.Drawing.Size(100, 19);
@@ -192,40 +196,50 @@
             // 
             // tb_line_cd
             // 
-            this.tb_line_cd.Location = new System.Drawing.Point(559, 5);
+            this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_line_cd.Location = new System.Drawing.Point(586, 5);
             this.tb_line_cd.MaxLength = 3;
             this.tb_line_cd.Name = "tb_line_cd";
             this.tb_line_cd.Size = new System.Drawing.Size(27, 19);
             this.tb_line_cd.TabIndex = 7;
+            this.tb_line_cd.DoubleClick += new System.EventHandler(this.tb_line_cd_DoubleClick);
+            this.tb_line_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_cd_Validating);
             // 
             // tb_koutei_cd
             // 
-            this.tb_koutei_cd.Location = new System.Drawing.Point(378, 5);
+            this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_koutei_cd.Location = new System.Drawing.Point(405, 5);
             this.tb_koutei_cd.MaxLength = 3;
             this.tb_koutei_cd.Name = "tb_koutei_cd";
             this.tb_koutei_cd.Size = new System.Drawing.Size(27, 19);
             this.tb_koutei_cd.TabIndex = 6;
+            this.tb_koutei_cd.DoubleClick += new System.EventHandler(this.tb_koutei_cd_DoubleClick);
+            this.tb_koutei_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_koutei_cd_Validating);
             // 
             // tb_busyo_cd
             // 
-            this.tb_busyo_cd.Location = new System.Drawing.Point(187, 5);
+            this.tb_busyo_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_busyo_cd.Location = new System.Drawing.Point(214, 5);
             this.tb_busyo_cd.MaxLength = 4;
             this.tb_busyo_cd.Name = "tb_busyo_cd";
             this.tb_busyo_cd.Size = new System.Drawing.Size(37, 19);
             this.tb_busyo_cd.TabIndex = 5;
+            this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
+            this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
             // 
-            // tb_seisanbi
+            // tb_seisan_yotei_date
             // 
-            this.tb_seisanbi.Location = new System.Drawing.Point(58, 5);
-            this.tb_seisanbi.MaxLength = 10;
-            this.tb_seisanbi.Name = "tb_seisanbi";
-            this.tb_seisanbi.Size = new System.Drawing.Size(75, 19);
-            this.tb_seisanbi.TabIndex = 4;
+            this.tb_seisan_yotei_date.Location = new System.Drawing.Point(85, 5);
+            this.tb_seisan_yotei_date.MaxLength = 10;
+            this.tb_seisan_yotei_date.Name = "tb_seisan_yotei_date";
+            this.tb_seisan_yotei_date.Size = new System.Drawing.Size(75, 19);
+            this.tb_seisan_yotei_date.TabIndex = 4;
+            this.tb_seisan_yotei_date.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisan_yotei_date_Validating);
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(511, 5);
+            this.textBox4.Location = new System.Drawing.Point(538, 5);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(48, 19);
@@ -236,7 +250,7 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox3.Location = new System.Drawing.Point(330, 5);
+            this.textBox3.Location = new System.Drawing.Point(357, 5);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(48, 19);
@@ -247,7 +261,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(139, 5);
+            this.textBox2.Location = new System.Drawing.Point(166, 5);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(48, 19);
@@ -261,10 +275,10 @@
             this.textBox1.Location = new System.Drawing.Point(10, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(48, 19);
+            this.textBox1.Size = new System.Drawing.Size(75, 19);
             this.textBox1.TabIndex = 0;
             this.textBox1.TabStop = false;
-            this.textBox1.Text = "作業日";
+            this.textBox1.Text = "生産予定日";
             // 
             // viewer1
             // 
@@ -301,7 +315,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 419);
+            this.viewer1.Size = new System.Drawing.Size(880, 417);
             this.viewer1.TabIndex = 0;
             // 
             // splitContainer3
@@ -322,6 +336,7 @@
             this.splitContainer3.Size = new System.Drawing.Size(880, 30);
             this.splitContainer3.SplitterDistance = 788;
             this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.TabStop = false;
             // 
             // btn_insatu
             // 
@@ -392,7 +407,7 @@
         private System.Windows.Forms.TextBox tb_line_cd;
         private System.Windows.Forms.TextBox tb_koutei_cd;
         private System.Windows.Forms.TextBox tb_busyo_cd;
-        private System.Windows.Forms.TextBox tb_seisanbi;
+        private System.Windows.Forms.TextBox tb_seisan_yotei_date;
         private System.Windows.Forms.Button btn_preview;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
     }

@@ -47,6 +47,12 @@ namespace TSS_SYSTEM
 
         private void frm_menu_Activated(object sender, EventArgs e)
         {
+            menu_init();
+        }
+
+        private void menu_init()
+        {
+            //メニュー画面の各種初期表示及び再表示
             tss.GetSystemSetting();
             //プログラムのバージョン確認
             if (tss.Version_Check() == false)
@@ -66,6 +72,7 @@ namespace TSS_SYSTEM
             message_log_check();
             kintai_disp();
         }
+
 
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
@@ -1089,6 +1096,18 @@ namespace TSS_SYSTEM
             frm_seisan_schedule_edit frm_sse = new frm_seisan_schedule_edit();
             frm_sse.ShowDialog(this);
             frm_sse.Dispose();
+        }
+
+        private void btn_gamen_kousin_Click(object sender, EventArgs e)
+        {
+            menu_init();
+        }
+
+        private void btn_seisan_siji_print_Click(object sender, EventArgs e)
+        {
+            frm_seisan_siji_preview frm_ssp = new frm_seisan_siji_preview();
+            frm_ssp.ShowDialog(this);
+            frm_ssp.Dispose();
         }
     }
 }

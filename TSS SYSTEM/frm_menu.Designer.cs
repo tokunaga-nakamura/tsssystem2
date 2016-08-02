@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_menu));
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_gamen_kousin = new System.Windows.Forms.Button();
             this.lbl_msg2 = new System.Windows.Forms.Label();
             this.lbl_msg1 = new System.Windows.Forms.Label();
             this.lbl_db = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_event = new System.Windows.Forms.DataGridView();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
+            this.btn_chat_hyouji_sentaku = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
             this.dgv_timereport = new System.Windows.Forms.DataGridView();
@@ -135,8 +137,8 @@
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_chat_hyouji_sentaku = new System.Windows.Forms.Button();
-            this.btn_gamen_kousin = new System.Windows.Forms.Button();
+            this.btn_seisan_schedule_print = new System.Windows.Forms.Button();
+            this.btn_seisan_siji_print = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -224,6 +226,16 @@
             this.splitContainer1.SplitterDistance = 86;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_gamen_kousin
+            // 
+            this.btn_gamen_kousin.Location = new System.Drawing.Point(891, 56);
+            this.btn_gamen_kousin.Name = "btn_gamen_kousin";
+            this.btn_gamen_kousin.Size = new System.Drawing.Size(75, 23);
+            this.btn_gamen_kousin.TabIndex = 5;
+            this.btn_gamen_kousin.Text = "画面更新";
+            this.btn_gamen_kousin.UseVisualStyleBackColor = true;
+            this.btn_gamen_kousin.Click += new System.EventHandler(this.btn_gamen_kousin_Click);
             // 
             // lbl_msg2
             // 
@@ -574,6 +586,15 @@
             this.splitContainer9.Size = new System.Drawing.Size(456, 406);
             this.splitContainer9.SplitterDistance = 25;
             this.splitContainer9.TabIndex = 0;
+            // 
+            // btn_chat_hyouji_sentaku
+            // 
+            this.btn_chat_hyouji_sentaku.Location = new System.Drawing.Point(378, 3);
+            this.btn_chat_hyouji_sentaku.Name = "btn_chat_hyouji_sentaku";
+            this.btn_chat_hyouji_sentaku.Size = new System.Drawing.Size(75, 23);
+            this.btn_chat_hyouji_sentaku.TabIndex = 1;
+            this.btn_chat_hyouji_sentaku.Text = "表示選択";
+            this.btn_chat_hyouji_sentaku.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -1112,6 +1133,8 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_seisan_siji_print);
+            this.tabPage5.Controls.Add(this.btn_seisan_schedule_print);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_edit);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_remake);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule);
@@ -1445,23 +1468,24 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_chat_hyouji_sentaku
+            // btn_seisan_schedule_print
             // 
-            this.btn_chat_hyouji_sentaku.Location = new System.Drawing.Point(378, 3);
-            this.btn_chat_hyouji_sentaku.Name = "btn_chat_hyouji_sentaku";
-            this.btn_chat_hyouji_sentaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_chat_hyouji_sentaku.TabIndex = 1;
-            this.btn_chat_hyouji_sentaku.Text = "表示選択";
-            this.btn_chat_hyouji_sentaku.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule_print.Location = new System.Drawing.Point(462, 204);
+            this.btn_seisan_schedule_print.Name = "btn_seisan_schedule_print";
+            this.btn_seisan_schedule_print.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule_print.TabIndex = 4;
+            this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
+            this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
             // 
-            // btn_gamen_kousin
+            // btn_seisan_siji_print
             // 
-            this.btn_gamen_kousin.Location = new System.Drawing.Point(891, 56);
-            this.btn_gamen_kousin.Name = "btn_gamen_kousin";
-            this.btn_gamen_kousin.Size = new System.Drawing.Size(75, 23);
-            this.btn_gamen_kousin.TabIndex = 5;
-            this.btn_gamen_kousin.Text = "画面更新";
-            this.btn_gamen_kousin.UseVisualStyleBackColor = true;
+            this.btn_seisan_siji_print.Location = new System.Drawing.Point(462, 233);
+            this.btn_seisan_siji_print.Name = "btn_seisan_siji_print";
+            this.btn_seisan_siji_print.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_siji_print.TabIndex = 5;
+            this.btn_seisan_siji_print.Text = "作業指示日報　印刷";
+            this.btn_seisan_siji_print.UseVisualStyleBackColor = true;
+            this.btn_seisan_siji_print.Click += new System.EventHandler(this.btn_seisan_siji_print_Click);
             // 
             // frm_menu
             // 
@@ -1647,6 +1671,8 @@
         private System.Windows.Forms.Button btn_seisan_schedule_edit;
         private System.Windows.Forms.Button btn_gamen_kousin;
         private System.Windows.Forms.Button btn_chat_hyouji_sentaku;
+        private System.Windows.Forms.Button btn_seisan_siji_print;
+        private System.Windows.Forms.Button btn_seisan_schedule_print;
     }
 }
 

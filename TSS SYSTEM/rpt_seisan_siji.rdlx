@@ -20,7 +20,7 @@
 								</Style>
 								<Value>作業日報</Value>
 								<Width>3.5cm</Width>
-								<ZIndex>14</ZIndex>
+								<ZIndex>30</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox2">
 								<DataElementName>TextBox1</DataElementName>
@@ -38,7 +38,7 @@
 								</Style>
 								<Value>作業日</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>17</ZIndex>
+								<ZIndex>33</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox3">
 								<Height>1cm</Height>
@@ -56,7 +56,7 @@
 								<Top>1cm</Top>
 								<Value>工程</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>16</ZIndex>
+								<ZIndex>32</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox4">
 								<Height>1cm</Height>
@@ -74,7 +74,7 @@
 								<Top>1cm</Top>
 								<Value>ライン</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>18</ZIndex>
+								<ZIndex>34</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox5">
 								<Height>1cm</Height>
@@ -91,7 +91,7 @@
 								<Top>1cm</Top>
 								<Value>部署</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>15</ZIndex>
+								<ZIndex>31</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox6">
 								<Height>1cm</Height>
@@ -108,7 +108,7 @@
 								</Style>
 								<Value>順番</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>17</ZIndex>
+								<ZIndex>33</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox7">
 								<Height>0.6cm</Height>
@@ -123,7 +123,7 @@
 								<Top>2.399998cm</Top>
 								<Value>受注コード</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>30</ZIndex>
+								<ZIndex>42</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox8">
 								<Height>0.6cm</Height>
@@ -138,7 +138,7 @@
 								<Top>2.999999cm</Top>
 								<Value>取引先名</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>31</ZIndex>
+								<ZIndex>43</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox9">
 								<Height>0.6cm</Height>
@@ -154,7 +154,7 @@
 								<Top>2.399999cm</Top>
 								<Value>受注数</Value>
 								<Width>0.9cm</Width>
-								<ZIndex>32</ZIndex>
+								<ZIndex>44</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox10">
 								<Height>0.6cm</Height>
@@ -169,7 +169,7 @@
 								<Top>3.599998cm</Top>
 								<Value>製品名</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>33</ZIndex>
+								<ZIndex>45</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox11">
 								<Height>0.6cm</Height>
@@ -184,7 +184,7 @@
 								<Top>4.199997cm</Top>
 								<Value>生産機種</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>34</ZIndex>
+								<ZIndex>46</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox12">
 								<Height>1.5cm</Height>
@@ -201,7 +201,7 @@
 								<Top>5.2cm</Top>
 								<Value>メンバー</Value>
 								<Width>0.4cm</Width>
-								<ZIndex>35</ZIndex>
+								<ZIndex>47</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox13">
 								<Height>1.1cm</Height>
@@ -218,7 +218,7 @@
 								<Value>備考
 連絡事項</Value>
 								<Width>1.4cm</Width>
-								<ZIndex>36</ZIndex>
+								<ZIndex>48</ZIndex>
 							</Textbox>
 							<CustomReportItem Name="Barcode1">
 								<Type>Barcode</Type>
@@ -226,7 +226,7 @@
 								<Left>10.4cm</Left>
 								<Width>1.8cm</Width>
 								<Height>1.8cm</Height>
-								<ZIndex>37</ZIndex>
+								<ZIndex>49</ZIndex>
 								<Style>
 									<FontFamily>Courier New</FontFamily>
 									<FontSize>8pt</FontSize>
@@ -257,7 +257,7 @@
 								<Top>15.7cm</Top>
 								<Value>入力</Value>
 								<Width>2cm</Width>
-								<ZIndex>8</ZIndex>
+								<ZIndex>24</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox15">
 								<Height>0.4cm</Height>
@@ -274,7 +274,7 @@
 								<Top>15.7cm</Top>
 								<Value>品質管理</Value>
 								<Width>1.999999cm</Width>
-								<ZIndex>9</ZIndex>
+								<ZIndex>25</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox16">
 								<Height>2.3cm</Height>
@@ -288,10 +288,10 @@
 								<Top>15.7cm</Top>
 								<Value>メモ・報告・連絡</Value>
 								<Width>8cm</Width>
-								<ZIndex>7</ZIndex>
+								<ZIndex>23</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox17">
-								<Height>0.9995cm</Height>
+								<Height>0.7cm</Height>
 								<Left>0.6cm</Left>
 								<Style>
 									<FontSize>12pt</FontSize>
@@ -301,13 +301,13 @@
 									<PaddingTop>2pt</PaddingTop>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>1.0005cm</Top>
+								<Top>1.3cm</Top>
 								<Value>=Fields!BUSYO_NAME.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>22</ZIndex>
+								<ZIndex>38</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox18">
-								<Height>1cm</Height>
+								<Height>0.7cm</Height>
 								<Left>4.2cm</Left>
 								<Style>
 									<FontSize>12pt</FontSize>
@@ -317,13 +317,13 @@
 									<PaddingTop>2pt</PaddingTop>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>1cm</Top>
+								<Top>1.3cm</Top>
 								<Value>=Fields!KOUTEI_NAME.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>21</ZIndex>
+								<ZIndex>37</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox19">
-								<Height>1cm</Height>
+								<Height>0.7cm</Height>
 								<Left>7.7cm</Left>
 								<Style>
 									<FontSize>12pt</FontSize>
@@ -333,10 +333,10 @@
 									<PaddingTop>2pt</PaddingTop>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>1cm</Top>
+								<Top>1.3cm</Top>
 								<Value>=Fields!LINE_NAME.Value</Value>
 								<Width>2.5cm</Width>
-								<ZIndex>19</ZIndex>
+								<ZIndex>35</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox20">
 								<Height>1cm</Height>
@@ -352,7 +352,7 @@
 								</Style>
 								<Value>=Fields!SEISAN_YOTEI_DATE.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>20</ZIndex>
+								<ZIndex>36</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox21">
 								<Height>1cm</Height>
@@ -363,12 +363,12 @@
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
-									<TextAlign>Center</TextAlign>
+									<TextAlign>Right</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Value>=Fields!SEQ1.Value</Value>
-								<Width>0.9cm</Width>
-								<ZIndex>4</ZIndex>
+								<Width>1.1cm</Width>
+								<ZIndex>20</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox22">
 								<Height>0.6cm</Height>
@@ -384,7 +384,7 @@
 								<Top>2.399998cm</Top>
 								<Value>=Fields!TORIHIKISAKI_CD.Value &amp; "-" &amp; Fields!JUCHU_CD1.Value &amp; "-" &amp; Fields!JUCHU_CD2.Value</Value>
 								<Width>7.8cm</Width>
-								<ZIndex>38</ZIndex>
+								<ZIndex>50</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox23">
 								<Height>0.6cm</Height>
@@ -400,7 +400,7 @@
 								<Top>2.999998cm</Top>
 								<Value>=Fields!TORIHIKISAKI_NAME.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>23</ZIndex>
+								<ZIndex>39</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox24">
 								<Height>0.6cm</Height>
@@ -417,7 +417,7 @@
 								<Top>2.399999cm</Top>
 								<Value>=Fields!JUCHU_SU.Value</Value>
 								<Width>1.8cm</Width>
-								<ZIndex>39</ZIndex>
+								<ZIndex>51</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox25">
 								<Height>0.6cm</Height>
@@ -432,8 +432,8 @@
 								</Style>
 								<Top>3.599998cm</Top>
 								<Value>=Fields!SEIHIN_NAME.Value</Value>
-								<Width>10.8cm</Width>
-								<ZIndex>40</ZIndex>
+								<Width>8.8cm</Width>
+								<ZIndex>52</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox26">
 								<Height>0.6cm</Height>
@@ -450,7 +450,7 @@
 								<Top>4.199998cm</Top>
 								<Value>=Fields!SEISANKISYU.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>41</ZIndex>
+								<ZIndex>53</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox27">
 								<Height>0.5cm</Height>
@@ -465,7 +465,7 @@
 								<Top>5.2cm</Top>
 								<Value>=Fields!MEMBER01.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>42</ZIndex>
+								<ZIndex>54</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox28">
 								<Height>0.5cm</Height>
@@ -480,7 +480,7 @@
 								<Top>5.7cm</Top>
 								<Value>=Fields!MEMBER05.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>43</ZIndex>
+								<ZIndex>55</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox29">
 								<Height>0.5cm</Height>
@@ -495,7 +495,7 @@
 								<Top>6.2cm</Top>
 								<Value>=Fields!MEMBER09.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>44</ZIndex>
+								<ZIndex>56</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox30">
 								<Height>0.5cm</Height>
@@ -510,7 +510,7 @@
 								<Top>5.2cm</Top>
 								<Value>=Fields!MEMBER02.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>45</ZIndex>
+								<ZIndex>57</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox31">
 								<Height>0.5cm</Height>
@@ -525,7 +525,7 @@
 								<Top>5.2cm</Top>
 								<Value>=Fields!MEMBER03.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>46</ZIndex>
+								<ZIndex>58</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox32">
 								<Height>0.5cm</Height>
@@ -540,7 +540,7 @@
 								<Top>5.2cm</Top>
 								<Value>=Fields!MEMBER04.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>47</ZIndex>
+								<ZIndex>59</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox33">
 								<Height>0.5cm</Height>
@@ -555,7 +555,7 @@
 								<Top>5.7cm</Top>
 								<Value>=Fields!MEMBER06.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>48</ZIndex>
+								<ZIndex>60</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox34">
 								<Height>0.5cm</Height>
@@ -570,7 +570,7 @@
 								<Top>6.2cm</Top>
 								<Value>=Fields!MEMBER10.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>49</ZIndex>
+								<ZIndex>61</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox35">
 								<Height>0.5cm</Height>
@@ -585,7 +585,7 @@
 								<Top>5.7cm</Top>
 								<Value>=Fields!MEMBER07.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>50</ZIndex>
+								<ZIndex>62</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox36">
 								<Height>0.5cm</Height>
@@ -600,7 +600,7 @@
 								<Top>5.7cm</Top>
 								<Value>=Fields!MEMBER08.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>51</ZIndex>
+								<ZIndex>63</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox37">
 								<Height>0.5cm</Height>
@@ -615,7 +615,7 @@
 								<Top>6.2cm</Top>
 								<Value>=Fields!MEMBER11.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>52</ZIndex>
+								<ZIndex>64</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox38">
 								<Height>0.5cm</Height>
@@ -630,7 +630,7 @@
 								<Top>6.2cm</Top>
 								<Value>=Fields!MEMBER12.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>53</ZIndex>
+								<ZIndex>65</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox39">
 								<Height>1.1cm</Height>
@@ -646,11 +646,11 @@
 								<Top>7.099997cm</Top>
 								<Value>=Fields!BIKOU.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>10</ZIndex>
+								<ZIndex>26</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox40">
 								<Height>0.4cm</Height>
-								<Left>3.400004cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
@@ -661,9 +661,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>8.6cm</Top>
-								<Value>指示数</Value>
+								<Value>生産指示数</Value>
 								<Width>2.3cm</Width>
-								<ZIndex>54</ZIndex>
+								<ZIndex>8</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox41">
 								<Height>0.4cm</Height>
@@ -679,9 +679,25 @@
 								<Top>8.600001cm</Top>
 								<Value>タクト</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>55</ZIndex>
+								<ZIndex>14</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox42">
+								<Height>0.4cm</Height>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Center</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>9.5cm</Top>
+								<Value>段取</Value>
+								<Width>0.8cm</Width>
+								<ZIndex>9</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox43">
 								<Height>0.4cm</Height>
 								<Left>0.8cm</Left>
 								<Style>
@@ -693,12 +709,12 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>8.600001cm</Top>
-								<Value>段取</Value>
+								<Top>9.5cm</Top>
+								<Value>追加</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>56</ZIndex>
+								<ZIndex>13</ZIndex>
 							</Textbox>
-							<Textbox Name="TextBox43">
+							<Textbox Name="TextBox44">
 								<Height>0.4cm</Height>
 								<Left>1.6cm</Left>
 								<Style>
@@ -710,31 +726,14 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>8.600001cm</Top>
-								<Value>追加</Value>
-								<Width>0.8cm</Width>
-								<ZIndex>57</ZIndex>
-							</Textbox>
-							<Textbox Name="TextBox44">
-								<Height>0.4cm</Height>
-								<Left>2.4cm</Left>
-								<Style>
-									<FontSize>6pt</FontSize>
-									<PaddingBottom>2pt</PaddingBottom>
-									<PaddingLeft>2pt</PaddingLeft>
-									<PaddingRight>2pt</PaddingRight>
-									<PaddingTop>2pt</PaddingTop>
-									<TextAlign>Center</TextAlign>
-									<VerticalAlign>Middle</VerticalAlign>
-								</Style>
-								<Top>8.600001cm</Top>
+								<Top>9.5cm</Top>
 								<Value>補充</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>58</ZIndex>
+								<ZIndex>12</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox45">
 								<Height>0.4cm</Height>
-								<Left>5.700004cm</Left>
+								<Left>5.1cm</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
@@ -745,9 +744,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>8.6cm</Top>
-								<Value>合計時間</Value>
-								<Width>1.2cm</Width>
-								<ZIndex>59</ZIndex>
+								<Value>合計時間（分）</Value>
+								<Width>1.8cm</Width>
+								<ZIndex>7</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox46">
 								<Height>0.4cm</Height>
@@ -764,7 +763,7 @@
 								<Top>8.600001cm</Top>
 								<Value>開始時刻</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>60</ZIndex>
+								<ZIndex>6</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox47">
 								<Height>0.4cm</Height>
@@ -781,7 +780,7 @@
 								<Top>8.600001cm</Top>
 								<Value>終了時刻</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>61</ZIndex>
+								<ZIndex>4</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox48">
 								<Height>0.4cm</Height>
@@ -796,12 +795,13 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>8.600001cm</Top>
-								<Value>実績数</Value>
+								<Value>生産実績数</Value>
 								<Width>1.6cm</Width>
-								<ZIndex>62</ZIndex>
+								<ZIndex>1</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox49">
 								<Height>0.4cm</Height>
+								<Left>0.314961in</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
@@ -811,10 +811,10 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>9.5cm</Top>
+								<Top>8.6cm</Top>
 								<Value>生産済み数</Value>
 								<Width>1.6cm</Width>
-								<ZIndex>63</ZIndex>
+								<ZIndex>15</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox54">
 								<Height>0.4cm</Height>
@@ -830,7 +830,7 @@
 								<Top>11.2cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME2.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox55">
 								<Height>0.75cm</Height>
@@ -844,7 +844,7 @@
 								<Top>10.8cm</Top>
 								<Value>前回の不適合</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>12</ZIndex>
+								<ZIndex>28</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox56">
 								<Height>0.75cm</Height>
@@ -858,7 +858,7 @@
 								<Top>12cm</Top>
 								<Value>過去の不適合</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>13</ZIndex>
+								<ZIndex>29</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox57">
 								<Height>0.75cm</Height>
@@ -872,7 +872,7 @@
 								<Top>13.2cm</Top>
 								<Value>不適合記入欄</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>11</ZIndex>
+								<ZIndex>27</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox58">
 								<Height>0.4cm</Height>
@@ -888,7 +888,7 @@
 								<Top>10.8cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME1.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Line Name="Line1">
 								<Height>0cm</Height>
@@ -902,7 +902,7 @@
 								</Style>
 								<Top>1cm</Top>
 								<Width>10.3cm</Width>
-								<ZIndex>68</ZIndex>
+								<ZIndex>69</ZIndex>
 							</Line>
 							<Line Name="Line2">
 								<Height>0cm</Height>
@@ -916,7 +916,7 @@
 								</Style>
 								<Top>2cm</Top>
 								<Width>10.3cm</Width>
-								<ZIndex>68</ZIndex>
+								<ZIndex>69</ZIndex>
 							</Line>
 							<Line Name="Line3">
 								<Height>2.010833cm</Height>
@@ -930,7 +930,7 @@
 									</BorderWidth>
 								</Style>
 								<Width>1E-06cm</Width>
-								<ZIndex>69</ZIndex>
+								<ZIndex>70</ZIndex>
 							</Line>
 							<Line Name="Line4">
 								<Height>2cm</Height>
@@ -944,7 +944,7 @@
 									</BorderWidth>
 								</Style>
 								<Width>0cm</Width>
-								<ZIndex>70</ZIndex>
+								<ZIndex>71</ZIndex>
 							</Line>
 							<Line Name="Line5">
 								<Height>1.99099cm</Height>
@@ -959,7 +959,7 @@
 								</Style>
 								<Top>0.006615cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>71</ZIndex>
+								<ZIndex>72</ZIndex>
 							</Line>
 							<Line Name="Line6">
 								<Height>0in</Height>
@@ -973,7 +973,7 @@
 									</BorderWidth>
 								</Style>
 								<Width>6.7cm</Width>
-								<ZIndex>72</ZIndex>
+								<ZIndex>73</ZIndex>
 							</Line>
 							<Line Name="Line7">
 								<Height>1cm</Height>
@@ -987,7 +987,7 @@
 									</BorderWidth>
 								</Style>
 								<Width>0cm</Width>
-								<ZIndex>73</ZIndex>
+								<ZIndex>74</ZIndex>
 							</Line>
 							<Line Name="Line8">
 								<Height>0.9839193cm</Height>
@@ -1002,7 +1002,7 @@
 								</Style>
 								<Top>1.000456cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>74</ZIndex>
+								<ZIndex>75</ZIndex>
 							</Line>
 							<Line Name="Line9">
 								<Height>2.000911cm</Height>
@@ -1016,7 +1016,7 @@
 									</BorderWidth>
 								</Style>
 								<Width>0cm</Width>
-								<ZIndex>75</ZIndex>
+								<ZIndex>76</ZIndex>
 							</Line>
 							<Line Name="Line10">
 								<Height>0.992187cm</Height>
@@ -1031,7 +1031,7 @@
 								</Style>
 								<Top>1.000456cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>76</ZIndex>
+								<ZIndex>77</ZIndex>
 							</Line>
 							<Line Name="Line11">
 								<Height>1.016992cm</Height>
@@ -1046,7 +1046,7 @@
 								</Style>
 								<Top>0.992187cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>77</ZIndex>
+								<ZIndex>78</ZIndex>
 							</Line>
 							<Line Name="Line12">
 								<Height>0cm</Height>
@@ -1060,7 +1060,7 @@
 								</Style>
 								<Top>2.399998cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>78</ZIndex>
+								<ZIndex>79</ZIndex>
 							</Line>
 							<Line Name="Line13">
 								<Height>2.4cm</Height>
@@ -1075,7 +1075,7 @@
 								</Style>
 								<Top>2.399998cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>79</ZIndex>
+								<ZIndex>80</ZIndex>
 							</Line>
 							<Line Name="Line14">
 								<Height>0.6cm</Height>
@@ -1090,7 +1090,7 @@
 								</Style>
 								<Top>2.399998cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>80</ZIndex>
+								<ZIndex>81</ZIndex>
 							</Line>
 							<Line Name="Line15">
 								<Height>0cm</Height>
@@ -1104,7 +1104,7 @@
 								</Style>
 								<Top>2.999998cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>81</ZIndex>
+								<ZIndex>82</ZIndex>
 							</Line>
 							<Line Name="Line16">
 								<Height>0cm</Height>
@@ -1118,7 +1118,7 @@
 								</Style>
 								<Top>3.599998cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>82</ZIndex>
+								<ZIndex>83</ZIndex>
 							</Line>
 							<Line Name="Line17">
 								<Height>0cm</Height>
@@ -1132,7 +1132,7 @@
 								</Style>
 								<Top>4.199997cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>83</ZIndex>
+								<ZIndex>84</ZIndex>
 							</Line>
 							<Line Name="Line18">
 								<Height>0cm</Height>
@@ -1146,7 +1146,7 @@
 								</Style>
 								<Top>4.799997cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>84</ZIndex>
+								<ZIndex>85</ZIndex>
 							</Line>
 							<Line Name="Line19">
 								<Height>0.6cm</Height>
@@ -1161,7 +1161,7 @@
 								</Style>
 								<Top>2.399998cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>85</ZIndex>
+								<ZIndex>86</ZIndex>
 							</Line>
 							<Line Name="Line20">
 								<Height>2.4cm</Height>
@@ -1176,7 +1176,7 @@
 								</Style>
 								<Top>2.399999cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>86</ZIndex>
+								<ZIndex>87</ZIndex>
 							</Line>
 							<Line Name="Line21">
 								<Height>2.4cm</Height>
@@ -1190,7 +1190,7 @@
 								</Style>
 								<Top>2.399999cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>87</ZIndex>
+								<ZIndex>88</ZIndex>
 							</Line>
 							<Line Name="Line22">
 								<Height>0cm</Height>
@@ -1204,7 +1204,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>88</ZIndex>
+								<ZIndex>89</ZIndex>
 							</Line>
 							<Line Name="Line23">
 								<Height>0cm</Height>
@@ -1219,7 +1219,7 @@
 								</Style>
 								<Top>5.7cm</Top>
 								<Width>11.9cm</Width>
-								<ZIndex>89</ZIndex>
+								<ZIndex>90</ZIndex>
 							</Line>
 							<Line Name="Line24">
 								<Height>1.5cm</Height>
@@ -1234,7 +1234,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>90</ZIndex>
+								<ZIndex>91</ZIndex>
 							</Line>
 							<Line Name="Line25">
 								<Height>0cm</Height>
@@ -1249,7 +1249,7 @@
 								</Style>
 								<Top>6.2cm</Top>
 								<Width>11.9cm</Width>
-								<ZIndex>91</ZIndex>
+								<ZIndex>92</ZIndex>
 							</Line>
 							<Line Name="Line26">
 								<Height>0cm</Height>
@@ -1263,7 +1263,7 @@
 								</Style>
 								<Top>6.7cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>92</ZIndex>
+								<ZIndex>93</ZIndex>
 							</Line>
 							<Line Name="Line27">
 								<Height>1.5cm</Height>
@@ -1277,7 +1277,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>93</ZIndex>
+								<ZIndex>94</ZIndex>
 							</Line>
 							<Line Name="Line28">
 								<Height>1.5cm</Height>
@@ -1292,7 +1292,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>94</ZIndex>
+								<ZIndex>95</ZIndex>
 							</Line>
 							<Line Name="Line29">
 								<Height>1.5cm</Height>
@@ -1307,7 +1307,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>95</ZIndex>
+								<ZIndex>96</ZIndex>
 							</Line>
 							<Line Name="Line30">
 								<Height>1.5cm</Height>
@@ -1322,7 +1322,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>96</ZIndex>
+								<ZIndex>97</ZIndex>
 							</Line>
 							<Line Name="Line31">
 								<Height>1.5cm</Height>
@@ -1337,7 +1337,7 @@
 								</Style>
 								<Top>5.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>97</ZIndex>
+								<ZIndex>98</ZIndex>
 							</Line>
 							<Line Name="Line32">
 								<Height>0cm</Height>
@@ -1351,7 +1351,7 @@
 								</Style>
 								<Top>7.099997cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>98</ZIndex>
+								<ZIndex>99</ZIndex>
 							</Line>
 							<Line Name="Line33">
 								<Height>1.1cm</Height>
@@ -1365,7 +1365,7 @@
 								</Style>
 								<Top>7.100002cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>99</ZIndex>
+								<ZIndex>100</ZIndex>
 							</Line>
 							<Line Name="Line34">
 								<Height>0cm</Height>
@@ -1379,7 +1379,7 @@
 								</Style>
 								<Top>8.199998cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>100</ZIndex>
+								<ZIndex>101</ZIndex>
 							</Line>
 							<Line Name="Line35">
 								<Height>-1.1cm</Height>
@@ -1394,7 +1394,7 @@
 								</Style>
 								<Top>8.199999cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>102</ZIndex>
+								<ZIndex>103</ZIndex>
 							</Line>
 							<Line Name="Line36">
 								<Height>1.1cm</Height>
@@ -1409,7 +1409,7 @@
 								</Style>
 								<Top>7.099997cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>103</ZIndex>
+								<ZIndex>104</ZIndex>
 							</Line>
 							<Line Name="Line37">
 								<Height>0cm</Height>
@@ -1422,8 +1422,8 @@
 									</BorderWidth>
 								</Style>
 								<Top>8.6cm</Top>
-								<Width>3.2cm</Width>
-								<ZIndex>104</ZIndex>
+								<Width>2.4cm</Width>
+								<ZIndex>105</ZIndex>
 							</Line>
 							<Line Name="Line39">
 								<Height>0cm</Height>
@@ -1436,7 +1436,7 @@
 									</BorderWidth>
 								</Style>
 								<Top>9cm</Top>
-								<Width>1.259843in</Width>
+								<Width>0.944882in</Width>
 								<ZIndex>148</ZIndex>
 							</Line>
 							<Line Name="Line42">
@@ -1451,10 +1451,10 @@
 								</Style>
 								<Top>8.600001cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>108</ZIndex>
+								<ZIndex>109</ZIndex>
 							</Line>
 							<Line Name="Line43">
-								<Height>0.9cm</Height>
+								<Height>1.8cm</Height>
 								<Left>0.8cm</Left>
 								<Style>
 									<BorderStyle>
@@ -1469,7 +1469,7 @@
 								<ZIndex>150</ZIndex>
 							</Line>
 							<Line Name="Line44">
-								<Height>1.8cm</Height>
+								<Height>0.9cm</Height>
 								<Left>1.608268cm</Left>
 								<Style>
 									<BorderStyle>
@@ -1479,13 +1479,13 @@
 										<Default>0.5pt</Default>
 									</BorderWidth>
 								</Style>
-								<Top>8.6cm</Top>
+								<Top>9.5cm</Top>
 								<Width>0cm</Width>
 								<ZIndex>149</ZIndex>
 							</Line>
 							<Line Name="Line45">
-								<Height>0.9cm</Height>
-								<Left>2.4cm</Left>
+								<Height>1.8cm</Height>
+								<Left>2.400001cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -1496,7 +1496,7 @@
 								</Style>
 								<Top>8.6cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>109</ZIndex>
+								<ZIndex>110</ZIndex>
 							</Line>
 							<Line Name="Line53">
 								<Height>0cm</Height>
@@ -1510,7 +1510,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>4.842519in</Width>
-								<ZIndex>116</ZIndex>
+								<ZIndex>117</ZIndex>
 							</Line>
 							<Line Name="Line54">
 								<Height>0cm</Height>
@@ -1525,7 +1525,7 @@
 								</Style>
 								<Top>11.2cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>117</ZIndex>
+								<ZIndex>118</ZIndex>
 							</Line>
 							<Line Name="Line55">
 								<Height>0cm</Height>
@@ -1540,7 +1540,7 @@
 								</Style>
 								<Top>11.6cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>118</ZIndex>
+								<ZIndex>119</ZIndex>
 							</Line>
 							<Line Name="Line58">
 								<Height>0cm</Height>
@@ -1554,7 +1554,7 @@
 								</Style>
 								<Top>12cm</Top>
 								<Width>4.842519in</Width>
-								<ZIndex>121</ZIndex>
+								<ZIndex>122</ZIndex>
 							</Line>
 							<Line Name="Line59">
 								<Height>4.4cm</Height>
@@ -1569,7 +1569,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>122</ZIndex>
+								<ZIndex>123</ZIndex>
 							</Line>
 							<Line Name="Line60">
 								<Height>4.4cm</Height>
@@ -1583,7 +1583,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0in</Width>
-								<ZIndex>123</ZIndex>
+								<ZIndex>124</ZIndex>
 							</Line>
 							<Line Name="Line63">
 								<Height>0cm</Height>
@@ -1598,7 +1598,7 @@
 								</Style>
 								<Top>12.4cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>126</ZIndex>
+								<ZIndex>127</ZIndex>
 							</Line>
 							<Line Name="Line64">
 								<Height>0cm</Height>
@@ -1613,7 +1613,7 @@
 								</Style>
 								<Top>12.8cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>127</ZIndex>
+								<ZIndex>128</ZIndex>
 							</Line>
 							<Line Name="Line65">
 								<Height>0cm</Height>
@@ -1627,7 +1627,7 @@
 								</Style>
 								<Top>13.2cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>128</ZIndex>
+								<ZIndex>129</ZIndex>
 							</Line>
 							<Line Name="Line66">
 								<Height>0cm</Height>
@@ -1642,7 +1642,7 @@
 								</Style>
 								<Top>13.6cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>129</ZIndex>
+								<ZIndex>130</ZIndex>
 							</Line>
 							<Line Name="Line67">
 								<Height>0cm</Height>
@@ -1657,7 +1657,7 @@
 								</Style>
 								<Top>14cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>130</ZIndex>
+								<ZIndex>131</ZIndex>
 							</Line>
 							<Line Name="Line68">
 								<Height>0cm</Height>
@@ -1672,7 +1672,7 @@
 								</Style>
 								<Top>14.4cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>131</ZIndex>
+								<ZIndex>132</ZIndex>
 							</Line>
 							<Line Name="Line69">
 								<Height>0cm</Height>
@@ -1687,7 +1687,7 @@
 								</Style>
 								<Top>14.8cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>132</ZIndex>
+								<ZIndex>133</ZIndex>
 							</Line>
 							<Line Name="Line70">
 								<Height>0cm</Height>
@@ -1701,7 +1701,7 @@
 								</Style>
 								<Top>15.2cm</Top>
 								<Width>12.3cm</Width>
-								<ZIndex>133</ZIndex>
+								<ZIndex>134</ZIndex>
 							</Line>
 							<Line Name="Line71">
 								<Height>4.4cm</Height>
@@ -1716,7 +1716,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>134</ZIndex>
+								<ZIndex>135</ZIndex>
 							</Line>
 							<Line Name="Line72">
 								<Height>2.3cm</Height>
@@ -1727,7 +1727,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>135</ZIndex>
+								<ZIndex>136</ZIndex>
 							</Line>
 							<Line Name="Line73">
 								<Height>0cm</Height>
@@ -1738,7 +1738,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>8cm</Width>
-								<ZIndex>136</ZIndex>
+								<ZIndex>137</ZIndex>
 							</Line>
 							<Line Name="Line74">
 								<Height>0cm</Height>
@@ -1750,7 +1750,7 @@
 								</Style>
 								<Top>18cm</Top>
 								<Width>4cm</Width>
-								<ZIndex>137</ZIndex>
+								<ZIndex>138</ZIndex>
 							</Line>
 							<Line Name="Line75">
 								<Height>2.3cm</Height>
@@ -1762,7 +1762,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>138</ZIndex>
+								<ZIndex>139</ZIndex>
 							</Line>
 							<Line Name="Line76">
 								<Height>0cm</Height>
@@ -1774,7 +1774,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>4cm</Width>
-								<ZIndex>139</ZIndex>
+								<ZIndex>140</ZIndex>
 							</Line>
 							<Line Name="Line77">
 								<Height>2.3cm</Height>
@@ -1786,7 +1786,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>140</ZIndex>
+								<ZIndex>141</ZIndex>
 							</Line>
 							<Line Name="Line78">
 								<Height>2.3cm</Height>
@@ -1798,7 +1798,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>141</ZIndex>
+								<ZIndex>142</ZIndex>
 							</Line>
 							<Line Name="Line79">
 								<Height>0cm</Height>
@@ -1810,7 +1810,7 @@
 								</Style>
 								<Top>16.1cm</Top>
 								<Width>4cm</Width>
-								<ZIndex>142</ZIndex>
+								<ZIndex>143</ZIndex>
 							</Line>
 							<Line Name="Line80">
 								<Height>2.3cm</Height>
@@ -1822,7 +1822,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>143</ZIndex>
+								<ZIndex>144</ZIndex>
 							</Line>
 							<Line Name="Line81">
 								<Height>0cm</Height>
@@ -1833,7 +1833,7 @@
 								</Style>
 								<Top>18cm</Top>
 								<Width>8cm</Width>
-								<ZIndex>144</ZIndex>
+								<ZIndex>145</ZIndex>
 							</Line>
 							<Line Name="Line88">
 								<Height>2cm</Height>
@@ -1848,7 +1848,7 @@
 								</Style>
 								<Top>13.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line89">
 								<Height>0cm</Height>
@@ -1863,7 +1863,7 @@
 								</Style>
 								<Top>13.2cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line90">
 								<Height>0cm</Height>
@@ -1878,7 +1878,7 @@
 								</Style>
 								<Top>15.2cm</Top>
 								<Width>10.6cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line91">
 								<Height>-2cm</Height>
@@ -1893,7 +1893,7 @@
 								</Style>
 								<Top>15.2cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line92">
 								<Height>2.3cm</Height>
@@ -1907,7 +1907,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line93">
 								<Height>0cm</Height>
@@ -1922,7 +1922,7 @@
 								</Style>
 								<Top>18cm</Top>
 								<Width>-8cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line94">
 								<Height>0cm</Height>
@@ -1937,7 +1937,7 @@
 								</Style>
 								<Top>15.7cm</Top>
 								<Width>-8cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Line Name="Line95">
 								<Height>-2.3cm</Height>
@@ -1952,12 +1952,14 @@
 								</Style>
 								<Top>18cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>145</ZIndex>
+								<ZIndex>146</ZIndex>
 							</Line>
 							<Textbox Name="TextBox65">
 								<Height>0.5cm</Height>
+								<Left>0.314961in</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -1965,26 +1967,11 @@
 									<TextAlign>Right</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>9.9cm</Top>
+								<Top>9cm</Top>
 								<Value>=Fields!SEISAN_SUMI_SU.Value</Value>
-								<Width>1.6cm</Width>
-								<ZIndex>24</ZIndex>
+								<Width>1.5cm</Width>
+								<ZIndex>40</ZIndex>
 							</Textbox>
-							<Line Name="Line97">
-								<Height>-0.9cm</Height>
-								<Left>3.2cm</Left>
-								<Style>
-									<BorderStyle>
-										<Default>Solid</Default>
-									</BorderStyle>
-									<BorderWidth>
-										<Default>0.5pt</Default>
-									</BorderWidth>
-								</Style>
-								<Top>9.5cm</Top>
-								<Width>0cm</Width>
-								<ZIndex>152</ZIndex>
-							</Line>
 							<Line Name="Line98">
 								<Height>0cm</Height>
 								<Style>
@@ -1996,15 +1983,15 @@
 									</BorderWidth>
 								</Style>
 								<Top>9.5cm</Top>
-								<Width>3.2cm</Width>
+								<Width>2.4cm</Width>
 								<ZIndex>152</ZIndex>
 							</Line>
 							<Textbox Name="TextBox66">
 								<DataElementName>TextBox59</DataElementName>
 								<Height>0.5cm</Height>
-								<Left>0.8cm</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2012,16 +1999,17 @@
 									<TextAlign>Right</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>9.000001cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=Fields!DANDORI_KOUSU.Value</Value>
-								<Width>0.8cm</Width>
-								<ZIndex>146</ZIndex>
+								<Width>0.7cm</Width>
+								<ZIndex>10</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox67">
 								<DataElementName>TextBox53</DataElementName>
 								<Height>0.5cm</Height>
 								<Style>
 									<FontSize>6pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2031,15 +2019,16 @@
 								</Style>
 								<Top>9.000001cm</Top>
 								<Value>=Fields!TACT_TIME.Value</Value>
-								<Width>0.8cm</Width>
-								<ZIndex>67</ZIndex>
+								<Width>0.7cm</Width>
+								<ZIndex>68</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox68">
 								<DataElementName>TextBox52</DataElementName>
 								<Height>1.4cm</Height>
-								<Left>3.400004cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<FontSize>16pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2049,15 +2038,16 @@
 								</Style>
 								<Top>9cm</Top>
 								<Value>=Fields!SEISAN_SU.Value</Value>
-								<Width>2.3cm</Width>
-								<ZIndex>66</ZIndex>
+								<Width>2.2cm</Width>
+								<ZIndex>2</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox69">
 								<DataElementName>TextBox60</DataElementName>
 								<Height>0.5cm</Height>
-								<Left>1.6cm</Left>
+								<Left>0.8cm</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2065,17 +2055,18 @@
 									<TextAlign>Right</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>9.000001cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=Fields!TUIKA_KOUSU.Value</Value>
-								<Width>0.8cm</Width>
-								<ZIndex>29</ZIndex>
+								<Width>0.7cm</Width>
+								<ZIndex>11</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox70">
 								<DataElementName>TextBox61</DataElementName>
 								<Height>0.5cm</Height>
-								<Left>2.4cm</Left>
+								<Left>1.6cm</Left>
 								<Style>
 									<FontSize>6pt</FontSize>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2083,16 +2074,17 @@
 									<TextAlign>Right</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Top>9.000001cm</Top>
+								<Top>9.900001cm</Top>
 								<Value>=Fields!HOJU_KOUSU.Value</Value>
-								<Width>0.8cm</Width>
-								<ZIndex>28</ZIndex>
+								<Width>0.7cm</Width>
+								<ZIndex>41</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox71">
 								<DataElementName>TextBox62</DataElementName>
 								<Height>1.4cm</Height>
-								<Left>5.700004cm</Left>
+								<Left>5.1cm</Left>
 								<Style>
+									<Format>n0</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2101,9 +2093,8 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9cm</Top>
-								<Value>=Fields!SEISAN_TIME.Value</Value>
-								<Width>1.2cm</Width>
-								<ZIndex>27</ZIndex>
+								<Value>=Floor (Fields!SEISAN_TIME.Value / 60)</Value>
+								<Width>1.7cm</Width>
 							</Textbox>
 							<Textbox Name="TextBox72">
 								<DataElementName>TextBox63</DataElementName>
@@ -2111,6 +2102,7 @@
 								<Left>6.900005cm</Left>
 								<Style>
 									<FontSize>16pt</FontSize>
+									<Format>t</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2121,7 +2113,7 @@
 								<Top>9.000001cm</Top>
 								<Value>=Fields!START_TIME.Value</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>26</ZIndex>
+								<ZIndex>5</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox73">
 								<DataElementName>TextBox64</DataElementName>
@@ -2129,6 +2121,7 @@
 								<Left>8.800004cm</Left>
 								<Style>
 									<FontSize>16pt</FontSize>
+									<Format>t</Format>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
@@ -2139,7 +2132,7 @@
 								<Top>9cm</Top>
 								<Value>=Fields!END_TIME.Value</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>25</ZIndex>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 							<Line Name="Line103">
 								<Height>4.4cm</Height>
@@ -2154,7 +2147,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>123</ZIndex>
+								<ZIndex>124</ZIndex>
 							</Line>
 							<Line Name="Line104">
 								<Height>4.4cm</Height>
@@ -2169,7 +2162,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>123</ZIndex>
+								<ZIndex>124</ZIndex>
 							</Line>
 							<Line Name="Line105">
 								<Height>4.4cm</Height>
@@ -2184,7 +2177,7 @@
 								</Style>
 								<Top>10.8cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>123</ZIndex>
+								<ZIndex>124</ZIndex>
 							</Line>
 							<Textbox Name="TextBox74">
 								<Height>0.4cm</Height>
@@ -2201,7 +2194,7 @@
 								<Top>10.8cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU1.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox75">
 								<Height>0.4cm</Height>
@@ -2218,11 +2211,11 @@
 								<Top>11.2cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU2.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Line Name="Line38">
 								<Height>0cm</Height>
-								<Left>3.399999cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2232,12 +2225,12 @@
 									</BorderWidth>
 								</Style>
 								<Top>10.4cm</Top>
-								<Width>8.9cm</Width>
+								<Width>9.5cm</Width>
 								<ZIndex>152</ZIndex>
 							</Line>
 							<Line Name="Line40">
 								<Height>0cm</Height>
-								<Left>3.399999cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2247,12 +2240,12 @@
 									</BorderWidth>
 								</Style>
 								<Top>8.6cm</Top>
-								<Width>8.9cm</Width>
+								<Width>9.5cm</Width>
 								<ZIndex>152</ZIndex>
 							</Line>
 							<Line Name="Line41">
 								<Height>0cm</Height>
-								<Left>3.399999cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2262,12 +2255,12 @@
 									</BorderWidth>
 								</Style>
 								<Top>9cm</Top>
-								<Width>8.9cm</Width>
-								<ZIndex>152</ZIndex>
+								<Width>9.5cm</Width>
+								<ZIndex>154</ZIndex>
 							</Line>
 							<Line Name="Line46">
 								<Height>-1.8cm</Height>
-								<Left>3.400004cm</Left>
+								<Left>2.8cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2282,7 +2275,7 @@
 							</Line>
 							<Line Name="Line47">
 								<Height>-1.8cm</Height>
-								<Left>5.700004cm</Left>
+								<Left>5.100004cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2293,7 +2286,7 @@
 								</Style>
 								<Top>10.4cm</Top>
 								<Width>0cm</Width>
-								<ZIndex>152</ZIndex>
+								<ZIndex>153</ZIndex>
 							</Line>
 							<Line Name="Line48">
 								<Height>-1.8cm</Height>
@@ -2372,7 +2365,7 @@
 							</Line>
 							<Line Name="Line56">
 								<Height>0cm</Height>
-								<Left>1.608268cm</Left>
+								<Left>2.4cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2382,12 +2375,12 @@
 									</BorderWidth>
 								</Style>
 								<Top>10.4cm</Top>
-								<Width>-1.6cm</Width>
+								<Width>-2.4cm</Width>
 								<ZIndex>149</ZIndex>
 							</Line>
 							<Line Name="Line57">
 								<Height>0cm</Height>
-								<Left>1.6cm</Left>
+								<Left>2.4cm</Left>
 								<Style>
 									<BorderStyle>
 										<Default>Solid</Default>
@@ -2396,8 +2389,8 @@
 										<Default>0.5pt</Default>
 									</BorderWidth>
 								</Style>
-								<Top>9.899999cm</Top>
-								<Width>-1.6cm</Width>
+								<Top>9.900001cm</Top>
+								<Width>-2.4cm</Width>
 								<ZIndex>149</ZIndex>
 							</Line>
 							<Line Name="Line61">
@@ -2507,23 +2500,23 @@
 							</Line>
 							<Textbox Name="TextBox50">
 								<Height>1cm</Height>
-								<Left>9.3cm</Left>
+								<Left>9.1cm</Left>
 								<Style>
 									<FontSize>12pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
 									<PaddingLeft>2pt</PaddingLeft>
 									<PaddingRight>2pt</PaddingRight>
 									<PaddingTop>2pt</PaddingTop>
-									<TextAlign>Center</TextAlign>
+									<TextAlign>Left</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Value>=Fields!SEQ2.Value</Value>
-								<Width>0.9cm</Width>
-								<ZIndex>6</ZIndex>
+								<Width>1.1cm</Width>
+								<ZIndex>22</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox51">
 								<Height>1cm</Height>
-								<Left>8.699999cm</Left>
+								<Left>8.8cm</Left>
 								<Style>
 									<FontSize>16pt</FontSize>
 									<PaddingBottom>2pt</PaddingBottom>
@@ -2534,8 +2527,8 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Value>/</Value>
-								<Width>0.5cm</Width>
-								<ZIndex>5</ZIndex>
+								<Width>0.3cm</Width>
+								<ZIndex>21</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox52">
 								<DataElementName>TextBox54</DataElementName>
@@ -2552,7 +2545,7 @@
 								<Top>11.6cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME3.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox53">
 								<DataElementName>TextBox54</DataElementName>
@@ -2569,7 +2562,7 @@
 								<Top>10.8cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME4.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox59">
 								<DataElementName>TextBox54</DataElementName>
@@ -2586,7 +2579,7 @@
 								<Top>11.2cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME5.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox60">
 								<DataElementName>TextBox54</DataElementName>
@@ -2603,7 +2596,7 @@
 								<Top>11.6cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_NAME6.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox61">
 								<DataElementName>TextBox54</DataElementName>
@@ -2620,7 +2613,7 @@
 								<Top>12cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME1.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox62">
 								<DataElementName>TextBox54</DataElementName>
@@ -2637,7 +2630,7 @@
 								<Top>12cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME4.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox63">
 								<DataElementName>TextBox54</DataElementName>
@@ -2654,7 +2647,7 @@
 								<Top>12.4cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME2.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox64">
 								<DataElementName>TextBox54</DataElementName>
@@ -2671,7 +2664,7 @@
 								<Top>12.4cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME5.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox76">
 								<DataElementName>TextBox54</DataElementName>
@@ -2688,7 +2681,7 @@
 								<Top>12.8cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME3.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox77">
 								<DataElementName>TextBox54</DataElementName>
@@ -2705,7 +2698,7 @@
 								<Top>12.8cm</Top>
 								<Value>=Fields!HINSITU_KAKO_NAME6.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox78">
 								<DataElementName>TextBox74</DataElementName>
@@ -2723,7 +2716,7 @@
 								<Top>10.8cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU4.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox79">
 								<DataElementName>TextBox74</DataElementName>
@@ -2741,7 +2734,7 @@
 								<Top>11.2cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU5.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox80">
 								<DataElementName>TextBox74</DataElementName>
@@ -2759,7 +2752,7 @@
 								<Top>11.6cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU3.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox81">
 								<DataElementName>TextBox74</DataElementName>
@@ -2777,7 +2770,7 @@
 								<Top>11.6cm</Top>
 								<Value>=Fields!HINSITU_ZENKAI_SU6.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox82">
 								<DataElementName>TextBox74</DataElementName>
@@ -2795,7 +2788,7 @@
 								<Top>12cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU1.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox83">
 								<DataElementName>TextBox74</DataElementName>
@@ -2813,7 +2806,7 @@
 								<Top>12cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU4.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox84">
 								<DataElementName>TextBox74</DataElementName>
@@ -2831,7 +2824,7 @@
 								<Top>12.4cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU2.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox85">
 								<DataElementName>TextBox74</DataElementName>
@@ -2849,7 +2842,7 @@
 								<Top>12.4cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU5.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>1</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox86">
 								<DataElementName>TextBox74</DataElementName>
@@ -2867,7 +2860,7 @@
 								<Top>12.8cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU3.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox87">
 								<DataElementName>TextBox74</DataElementName>
@@ -2885,6 +2878,74 @@
 								<Top>12.8cm</Top>
 								<Value>=Fields!HINSITU_KAKO_SU6.Value</Value>
 								<Width>1cm</Width>
+								<ZIndex>16</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox88">
+								<Height>0.3cm</Height>
+								<Left>0.6cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>1cm</Top>
+								<Value>=Fields!BUSYO_CD.Value</Value>
+								<Width>2.9cm</Width>
+								<ZIndex>155</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox89">
+								<DataElementName>TextBox88</DataElementName>
+								<Height>0.3cm</Height>
+								<Left>4.2cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>1cm</Top>
+								<Value>=Fields!KOUTEI_CD.Value</Value>
+								<Width>2.8cm</Width>
+								<ZIndex>155</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox90">
+								<DataElementName>TextBox88</DataElementName>
+								<Height>0.3cm</Height>
+								<Left>7.7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>1cm</Top>
+								<Value>=Fields!LINE_CD.Value</Value>
+								<Width>2.5cm</Width>
+								<ZIndex>155</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox91">
+								<DataElementName>TextBox88</DataElementName>
+								<Height>0.3cm</Height>
+								<Left>10.2cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>3.9cm</Top>
+								<Value>=Fields!SEIHIN_CD.Value</Value>
+								<Width>2.1cm</Width>
 							</Textbox>
 						</ReportItems>
 					</Page>

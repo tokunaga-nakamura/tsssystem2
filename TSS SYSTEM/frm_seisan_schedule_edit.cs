@@ -1989,13 +1989,10 @@ namespace TSS_SYSTEM
         private void touroku()
         {
             int rc = w_dt_today.Rows.Count;
-            
+            //登録前に既にある同一編集レコードを削除（部署を指定していなくても登録しちゃっていいのか？）
             tss.OracleDelete("delete from TSS_SEISAN_SCHEDULE_F WHERE seisan_yotei_date = '" + tb_seisan_yotei_date.Text.ToString() + "'");
-
             tss.GetUser();
-
-            //int rc = w_dt_today.Rows.Count;
-
+            //非表示項目等に必要な値をセット
             for (int i = 0; i < rc; i++)
             {
                 w_dt_today.Rows[i]["seq"] = (i + 1);
@@ -2035,7 +2032,7 @@ namespace TSS_SYSTEM
                     w_dt_today.Rows[i]["update_datetime"] = System.DateTime.Now;
                 }
             }
-
+            //画面上の全行を書き込み
             for (int i = 0; i < rc; i++)
             {
                 tss.OracleInsert("INSERT INTO tss_seisan_schedule_f (SEISAN_YOTEI_DATE,BUSYO_CD,KOUTEI_CD,LINE_CD,SEQ,TORIHIKISAKI_CD,JUCHU_CD1,JUCHU_CD2,SEIHIN_CD,SEIHIN_NAME,SEISANKISYU,JUCHU_SU,SEISAN_SU,TACT_TIME,DANDORI_KOUSU,TUIKA_KOUSU,HOJU_KOUSU,SEISAN_TIME,START_TIME,END_TIME,NINZU,MEMBERS,HENSYU_FLG,BIKOU,CREATE_USER_CD,CREATE_DATETIME,UPDATE_USER_CD,UPDATE_DATETIME)"
@@ -2045,12 +2042,12 @@ namespace TSS_SYSTEM
                                 + ",'" + w_dt_today.Rows[i]["koutei_cd"].ToString() + "'"    //工程コード
                                 + ",'" + w_dt_today.Rows[i]["line_cd"].ToString() + "'"      //ラインコード
                                 + ",'" + w_dt_today.Rows[i]["seq"] + "'"                     //seq
-                                + ",'" + w_dt_today.Rows[i]["torihikisaki_cd"].ToString() + "'"    //取引先コード
+                                + ",'" + w_dt_today.Rows[i]["torihikisaki_cd"].ToString() + "'"   //取引先コード
                                 + ",'" + w_dt_today.Rows[i]["juchu_cd1"].ToString() + "'"         //受注コード１
                                 + ",'" + w_dt_today.Rows[i]["juchu_cd2"].ToString() + "'"         //受注コード２
                                 + ",'" + w_dt_today.Rows[i]["seihin_cd"].ToString() + "'"         //製品コード
                                 + ",'" + w_dt_today.Rows[i]["seihin_name"].ToString() + "'"       //製品名
-                                + ",'" + w_dt_today.Rows[i]["seisankisyu"].ToString() + "'"       //製品名
+                                + ",'" + w_dt_today.Rows[i]["seisankisyu"].ToString() + "'"       //生産機種
                                 + ",'" + w_dt_today.Rows[i]["juchu_su"].ToString() + "'"          //受注数
                                 + ",'" + w_dt_today.Rows[i]["seisan_su"].ToString() + "'"         //生産指示数
                                 + ",'" + w_dt_today.Rows[i]["tact_time"].ToString() + "'"         //タクト
