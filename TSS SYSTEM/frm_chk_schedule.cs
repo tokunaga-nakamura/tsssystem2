@@ -104,12 +104,12 @@ namespace TSS_SYSTEM
             //検索条件が全て空白
             if (sql_cnt == 0)
             {
-                MessageBox.Show("検索条件を指定してください。");
-                tb_siire_no1.Focus();
-                return;
+                //MessageBox.Show("検索条件を指定してください。");
+                //tb_siire_no1.Focus();
+                //return;
             }
 
-            string sql = "select a1.torihikisaki_cd,a1.juchu_cd1,a1.juchu_cd2,a1.seihin_cd,b1.seihin_name,c1.koutei_cd,d1.koutei_name,e1.nouhin_yotei_date,e1.nouhin_yotei_su from tss_juchu_m a1,tss_seihin_m b1,tss_seisan_koutei_m c1,tss_koutei_m d1,tss_nouhin_schedule_m e1 where a1.seihin_cd  = b1.seihin_cd AND a1.seihin_cd = c1.seihin_cd AND c1.koutei_cd = d1.koutei_cd AND a1.torihikisaki_cd = e1.torihikisaki_cd AND a1.juchu_cd1 = e1.juchu_cd1 AND a1.juchu_cd2 = e1.juchu_cd2";
+            string sql = "select distinct a1.torihikisaki_cd,a1.juchu_cd1,a1.juchu_cd2,a1.seihin_cd,b1.seihin_name,c1.koutei_cd,d1.koutei_name,e1.nouhin_yotei_date,e1.nouhin_yotei_su from tss_juchu_m a1,tss_seihin_m b1,tss_seisan_koutei_m c1,tss_koutei_m d1,tss_nouhin_schedule_m e1 where a1.seihin_cd  = b1.seihin_cd AND a1.seihin_cd = c1.seihin_cd AND c1.koutei_cd = d1.koutei_cd AND a1.torihikisaki_cd = e1.torihikisaki_cd AND a1.juchu_cd1 = e1.juchu_cd1 AND a1.juchu_cd2 = e1.juchu_cd2 and e1.nouhin_yotei_date between '16-07-01' and '16-07-31' order by e1.nouhin_yotei_date";
             //for (int i = 1; i <= sql_cnt; i++)
             //{
             //    if (i >= 2)
@@ -122,6 +122,43 @@ namespace TSS_SYSTEM
             //sql = sql + " ORDER BY SIIRE_NO";
 
             dt_kensaku = tss.OracleSelect(sql);
+
+            //データテーブルにあたらしい行を追加
+            dt_kensaku.Columns.Add("seisan_start_day", Type.GetType("System.Int32"));
+            dt_kensaku.Columns.Add("seisan_yotei_date", Type.GetType("System.DateTime"));
+            dt_kensaku.Columns.Add("seisan_yotei_su", Type.GetType("System.Int32"));
+            dt_kensaku.Columns.Add("sai", Type.GetType("System.Int32"));
+
+            int rc = dt_kensaku.Rows.Count;
+            for (int i = 0; i < rc; i++)
+            {
+                DataTable dt_work = tss.OracleSelect("select seisan_start_day from tss_seisan_koutei_m where seihin_cd  = '" + dt_kensaku.Rows[i]["seihin_cd"].ToString() + "' and koutei_cd = '" + dt_kensaku.Rows[i]["koutei_cd"].ToString() + "'");
+                dt_kensaku.Rows[i]["seisan_start_day"] = dt_work.Rows[0]["seisan_start_day"].ToString();
+
+                DateTime dt1 = DateTime.Parse(dt_kensaku.Rows[i]["nouhin_yotei_date"].ToString());
+                DateTime dt2 = dt1.AddDays(-int.Parse(dt_kensaku.Rows[i]["seisan_start_day"].ToString()));
+                dt_kensaku.Rows[i]["seisan_yotei_date"] = dt2;
+
+                DataTable dt_work2 = tss.OracleSelect("select seisan_su from tss_seisan_schedule_f where seihin_cd  = '" + dt_kensaku.Rows[i]["seihin_cd"].ToString() + "' and  seisan_yotei_date  = '" + dt2.ToShortDateString() + "' and koutei_cd = '" + dt_kensaku.Rows[i]["koutei_cd"].ToString() + "'");
+                if (dt_work2.Rows.Count != 0)
+                {
+                    dt_kensaku.Rows[i]["seisan_yotei_su"] = dt_work2.Rows[0]["seisan_su"].ToString();
+                }
+                else
+                {
+                    dt_kensaku.Rows[i]["seisan_yotei_su"] = 0;
+                }
+
+                int seisan_su = int.Parse(dt_kensaku.Rows[i]["seisan_yotei_su"].ToString());
+                int nouhin_su = int.Parse(dt_kensaku.Rows[i]["nouhin_yotei_su"].ToString());
+                int sai = seisan_su - nouhin_su;
+
+                dt_kensaku.Rows[i]["sai"] = sai;
+            }
+
+
+
+
             list_disp(dt_kensaku);
         }
 

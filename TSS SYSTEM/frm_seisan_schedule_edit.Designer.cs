@@ -81,6 +81,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_chk_schedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -122,6 +123,7 @@
             this.splitContainer16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).BeginInit();
             this.splitContainer18.Panel1.SuspendLayout();
+            this.splitContainer18.Panel2.SuspendLayout();
             this.splitContainer18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_today)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
@@ -573,6 +575,10 @@
             // splitContainer18.Panel1
             // 
             this.splitContainer18.Panel1.Controls.Add(this.btn_day_up);
+            // 
+            // splitContainer18.Panel2
+            // 
+            this.splitContainer18.Panel2.Controls.Add(this.btn_chk_schedule);
             this.splitContainer18.Size = new System.Drawing.Size(464, 29);
             this.splitContainer18.SplitterDistance = 84;
             this.splitContainer18.TabIndex = 0;
@@ -852,6 +858,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_chk_schedule
+            // 
+            this.btn_chk_schedule.Location = new System.Drawing.Point(200, 4);
+            this.btn_chk_schedule.Name = "btn_chk_schedule";
+            this.btn_chk_schedule.Size = new System.Drawing.Size(166, 23);
+            this.btn_chk_schedule.TabIndex = 0;
+            this.btn_chk_schedule.Text = "スケジュールチェック";
+            this.btn_chk_schedule.UseVisualStyleBackColor = true;
+            this.btn_chk_schedule.Click += new System.EventHandler(this.btn_chk_schedule_Click);
+            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -905,6 +921,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer16)).EndInit();
             this.splitContainer16.ResumeLayout(false);
             this.splitContainer18.Panel1.ResumeLayout(false);
+            this.splitContainer18.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer18)).EndInit();
             this.splitContainer18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_today)).EndInit();
@@ -985,5 +1002,6 @@
         private System.Windows.Forms.DateTimePicker dtp_next;
         private System.Windows.Forms.SplitContainer splitContainer12;
         private System.Windows.Forms.Button btn_sijisyo_insatu;
+        private System.Windows.Forms.Button btn_chk_schedule;
     }
 }
