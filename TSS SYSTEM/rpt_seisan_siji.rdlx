@@ -20,7 +20,7 @@
 								</Style>
 								<Value>作業日報</Value>
 								<Width>3.5cm</Width>
-								<ZIndex>10</ZIndex>
+								<ZIndex>14</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox2">
 								<DataElementName>TextBox1</DataElementName>
@@ -38,7 +38,7 @@
 								</Style>
 								<Value>作業日</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>13</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox3">
 								<Height>1cm</Height>
@@ -56,7 +56,7 @@
 								<Top>1cm</Top>
 								<Value>工程</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>12</ZIndex>
+								<ZIndex>16</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox4">
 								<Height>1cm</Height>
@@ -74,7 +74,7 @@
 								<Top>1cm</Top>
 								<Value>ライン</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>14</ZIndex>
+								<ZIndex>18</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox5">
 								<Height>1cm</Height>
@@ -91,7 +91,7 @@
 								<Top>1cm</Top>
 								<Value>部署</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>11</ZIndex>
+								<ZIndex>15</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox6">
 								<Height>1cm</Height>
@@ -108,7 +108,7 @@
 								</Style>
 								<Value>順番</Value>
 								<Width>0.5cm</Width>
-								<ZIndex>13</ZIndex>
+								<ZIndex>17</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox7">
 								<Height>0.6cm</Height>
@@ -123,7 +123,7 @@
 								<Top>2.399998cm</Top>
 								<Value>受注コード</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>28</ZIndex>
+								<ZIndex>30</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox8">
 								<Height>0.6cm</Height>
@@ -138,7 +138,7 @@
 								<Top>2.999999cm</Top>
 								<Value>取引先名</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>29</ZIndex>
+								<ZIndex>31</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox9">
 								<Height>0.6cm</Height>
@@ -154,7 +154,7 @@
 								<Top>2.399999cm</Top>
 								<Value>受注数</Value>
 								<Width>0.9cm</Width>
-								<ZIndex>30</ZIndex>
+								<ZIndex>32</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox10">
 								<Height>0.6cm</Height>
@@ -169,7 +169,7 @@
 								<Top>3.599998cm</Top>
 								<Value>製品名</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>31</ZIndex>
+								<ZIndex>33</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox11">
 								<Height>0.6cm</Height>
@@ -184,7 +184,7 @@
 								<Top>4.199997cm</Top>
 								<Value>生産機種</Value>
 								<Width>1.3cm</Width>
-								<ZIndex>32</ZIndex>
+								<ZIndex>34</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox12">
 								<Height>1.5cm</Height>
@@ -201,7 +201,7 @@
 								<Top>5.2cm</Top>
 								<Value>メンバー</Value>
 								<Width>0.4cm</Width>
-								<ZIndex>33</ZIndex>
+								<ZIndex>35</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox13">
 								<Height>1.1cm</Height>
@@ -218,7 +218,7 @@
 								<Value>備考
 連絡事項</Value>
 								<Width>1.4cm</Width>
-								<ZIndex>34</ZIndex>
+								<ZIndex>36</ZIndex>
 							</Textbox>
 							<CustomReportItem Name="Barcode1">
 								<Type>Barcode</Type>
@@ -226,7 +226,7 @@
 								<Left>10.4cm</Left>
 								<Width>1.8cm</Width>
 								<Height>1.8cm</Height>
-								<ZIndex>35</ZIndex>
+								<ZIndex>37</ZIndex>
 								<Style>
 									<FontFamily>Courier New</FontFamily>
 									<FontSize>8pt</FontSize>
@@ -238,7 +238,7 @@
 									</CustomProperty>
 									<CustomProperty>
 										<Name>dd:Value</Name>
-										<Value>2016/01/23001001030112345612345678901234561234567890123456</Value>
+										<Value>=Fields!SEISAN_YOTEI_DATE.Value &amp; Fields!BUSYO_CD.Value &amp;  Fields!KOUTEI_CD.Value &amp; Fields!LINE_CD.Value &amp; Fields!TORIHIKISAKI_CD.Value &amp; Fields!TORIHIKISAKI_CD.Value &amp; Fields!JUCHU_CD1.Value &amp; Fields!JUCHU_CD2.Value &amp; Fields!SEIHIN_CD.Value</Value>
 									</CustomProperty>
 								</CustomProperties>
 							</CustomReportItem>
@@ -257,7 +257,7 @@
 								<Top>15.7cm</Top>
 								<Value>入力</Value>
 								<Width>2cm</Width>
-								<ZIndex>4</ZIndex>
+								<ZIndex>8</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox15">
 								<Height>0.4cm</Height>
@@ -274,7 +274,7 @@
 								<Top>15.7cm</Top>
 								<Value>品質管理</Value>
 								<Width>1.999999cm</Width>
-								<ZIndex>5</ZIndex>
+								<ZIndex>9</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox16">
 								<Height>2.3cm</Height>
@@ -288,7 +288,7 @@
 								<Top>15.7cm</Top>
 								<Value>メモ・報告・連絡</Value>
 								<Width>8cm</Width>
-								<ZIndex>3</ZIndex>
+								<ZIndex>7</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox17">
 								<Height>0.9995cm</Height>
@@ -302,9 +302,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>1.0005cm</Top>
-								<Value>第三生産課</Value>
+								<Value>=Fields!BUSYO_NAME.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>18</ZIndex>
+								<ZIndex>22</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox18">
 								<Height>1cm</Height>
@@ -318,9 +318,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>1cm</Top>
-								<Value>アキシャル</Value>
+								<Value>=Fields!KOUTEI_NAME.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>17</ZIndex>
+								<ZIndex>21</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox19">
 								<Height>1cm</Height>
@@ -334,9 +334,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>1cm</Top>
-								<Value>AV131</Value>
+								<Value>=Fields!LINE_NAME.Value</Value>
 								<Width>2.5cm</Width>
-								<ZIndex>15</ZIndex>
+								<ZIndex>19</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox20">
 								<Height>1cm</Height>
@@ -350,9 +350,9 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Value>2016/01/23</Value>
+								<Value>=Fields!SEISAN_YOTEI_DATE.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>16</ZIndex>
+								<ZIndex>20</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox21">
 								<Height>1cm</Height>
@@ -366,8 +366,9 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Value>99</Value>
+								<Value>=Fields!SEQ1.Value</Value>
 								<Width>0.9cm</Width>
+								<ZIndex>4</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox22">
 								<Height>0.6cm</Height>
@@ -381,9 +382,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>2.399998cm</Top>
-								<Value>123456-1234567890123456-1234567890123456</Value>
+								<Value>=Fields!TORIHIKISAKI_CD.Value &amp; "-" &amp; Fields!JUCHU_CD1.Value &amp; "-" &amp; Fields!JUCHU_CD2.Value</Value>
 								<Width>7.8cm</Width>
-								<ZIndex>36</ZIndex>
+								<ZIndex>38</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox23">
 								<Height>0.6cm</Height>
@@ -397,9 +398,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>2.999998cm</Top>
-								<Value>○×工業株式会社</Value>
+								<Value>=Fields!TORIHIKISAKI_NAME.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>21</ZIndex>
+								<ZIndex>23</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox24">
 								<Height>0.6cm</Height>
@@ -414,9 +415,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>2.399999cm</Top>
-								<Value>99999</Value>
+								<Value>=Fields!JUCHU_SU.Value</Value>
 								<Width>1.8cm</Width>
-								<ZIndex>37</ZIndex>
+								<ZIndex>39</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox25">
 								<Height>0.6cm</Height>
@@ -430,9 +431,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>3.599998cm</Top>
-								<Value>FW-3216S操作基板</Value>
+								<Value>=Fields!SEIHIN_NAME.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>38</ZIndex>
+								<ZIndex>40</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox26">
 								<Height>0.6cm</Height>
@@ -447,9 +448,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>4.199998cm</Top>
-								<Value>FW-3214S操作基板</Value>
+								<Value>=Fields!SEISANKISYU.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>39</ZIndex>
+								<ZIndex>41</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox27">
 								<Height>0.5cm</Height>
@@ -462,9 +463,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.2cm</Top>
-								<Value>阿井　上夫</Value>
+								<Value>=Fields!MEMBER01.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>40</ZIndex>
+								<ZIndex>42</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox28">
 								<Height>0.5cm</Height>
@@ -477,9 +478,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.7cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER05.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>41</ZIndex>
+								<ZIndex>43</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox29">
 								<Height>0.5cm</Height>
@@ -492,9 +493,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>6.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER09.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>42</ZIndex>
+								<ZIndex>44</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox30">
 								<Height>0.5cm</Height>
@@ -507,9 +508,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.2cm</Top>
-								<Value>加木　久家子</Value>
+								<Value>=Fields!MEMBER02.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>43</ZIndex>
+								<ZIndex>45</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox31">
 								<Height>0.5cm</Height>
@@ -522,9 +523,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER03.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>44</ZIndex>
+								<ZIndex>46</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox32">
 								<Height>0.5cm</Height>
@@ -537,9 +538,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER04.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>45</ZIndex>
+								<ZIndex>47</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox33">
 								<Height>0.5cm</Height>
@@ -552,9 +553,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.7cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER06.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>46</ZIndex>
+								<ZIndex>48</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox34">
 								<Height>0.5cm</Height>
@@ -567,9 +568,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>6.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER10.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>47</ZIndex>
+								<ZIndex>49</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox35">
 								<Height>0.5cm</Height>
@@ -582,9 +583,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.7cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER07.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>48</ZIndex>
+								<ZIndex>50</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox36">
 								<Height>0.5cm</Height>
@@ -597,9 +598,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>5.7cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER08.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>49</ZIndex>
+								<ZIndex>51</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox37">
 								<Height>0.5cm</Height>
@@ -612,9 +613,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>6.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER11.Value</Value>
 								<Width>2.9cm</Width>
-								<ZIndex>50</ZIndex>
+								<ZIndex>52</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox38">
 								<Height>0.5cm</Height>
@@ -627,9 +628,9 @@
 									<PaddingTop>2pt</PaddingTop>
 								</Style>
 								<Top>6.2cm</Top>
-								<Value />
+								<Value>=Fields!MEMBER12.Value</Value>
 								<Width>2.8cm</Width>
-								<ZIndex>51</ZIndex>
+								<ZIndex>53</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox39">
 								<Height>1.1cm</Height>
@@ -643,12 +644,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>7.099997cm</Top>
-								<Value>あああああ
-いいいいい
-ううううう
-</Value>
+								<Value>=Fields!BIKOU.Value</Value>
 								<Width>10.8cm</Width>
-								<ZIndex>6</ZIndex>
+								<ZIndex>10</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox40">
 								<Height>0.4cm</Height>
@@ -665,7 +663,7 @@
 								<Top>8.6cm</Top>
 								<Value>指示数</Value>
 								<Width>2.3cm</Width>
-								<ZIndex>52</ZIndex>
+								<ZIndex>54</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox41">
 								<Height>0.4cm</Height>
@@ -681,7 +679,7 @@
 								<Top>8.600001cm</Top>
 								<Value>タクト</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>53</ZIndex>
+								<ZIndex>55</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox42">
 								<Height>0.4cm</Height>
@@ -698,7 +696,7 @@
 								<Top>8.600001cm</Top>
 								<Value>段取</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>54</ZIndex>
+								<ZIndex>56</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox43">
 								<Height>0.4cm</Height>
@@ -715,7 +713,7 @@
 								<Top>8.600001cm</Top>
 								<Value>追加</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>55</ZIndex>
+								<ZIndex>57</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox44">
 								<Height>0.4cm</Height>
@@ -732,7 +730,7 @@
 								<Top>8.600001cm</Top>
 								<Value>補充</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>56</ZIndex>
+								<ZIndex>58</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox45">
 								<Height>0.4cm</Height>
@@ -749,7 +747,7 @@
 								<Top>8.6cm</Top>
 								<Value>合計時間</Value>
 								<Width>1.2cm</Width>
-								<ZIndex>57</ZIndex>
+								<ZIndex>59</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox46">
 								<Height>0.4cm</Height>
@@ -766,7 +764,7 @@
 								<Top>8.600001cm</Top>
 								<Value>開始時刻</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>58</ZIndex>
+								<ZIndex>60</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox47">
 								<Height>0.4cm</Height>
@@ -783,7 +781,7 @@
 								<Top>8.600001cm</Top>
 								<Value>終了時刻</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>59</ZIndex>
+								<ZIndex>61</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox48">
 								<Height>0.4cm</Height>
@@ -800,7 +798,7 @@
 								<Top>8.600001cm</Top>
 								<Value>実績数</Value>
 								<Width>1.6cm</Width>
-								<ZIndex>60</ZIndex>
+								<ZIndex>62</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox49">
 								<Height>0.4cm</Height>
@@ -816,7 +814,7 @@
 								<Top>9.5cm</Top>
 								<Value>生産済み数</Value>
 								<Width>1.6cm</Width>
-								<ZIndex>61</ZIndex>
+								<ZIndex>63</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox54">
 								<Height>0.4cm</Height>
@@ -830,9 +828,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>11.2cm</Top>
-								<Value>基板汚れ</Value>
+								<Value>=Fields!HINSITU_ZENKAI_NAME2.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>66</ZIndex>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox55">
 								<Height>0.75cm</Height>
@@ -846,7 +844,7 @@
 								<Top>10.8cm</Top>
 								<Value>前回の不適合</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>8</ZIndex>
+								<ZIndex>12</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox56">
 								<Height>0.75cm</Height>
@@ -860,7 +858,7 @@
 								<Top>12cm</Top>
 								<Value>過去の不適合</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>9</ZIndex>
+								<ZIndex>13</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox57">
 								<Height>0.75cm</Height>
@@ -874,7 +872,7 @@
 								<Top>13.2cm</Top>
 								<Value>不適合記入欄</Value>
 								<Width>1.7cm</Width>
-								<ZIndex>7</ZIndex>
+								<ZIndex>11</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox58">
 								<Height>0.4cm</Height>
@@ -888,9 +886,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>10.8cm</Top>
-								<Value>プレート表面キズ</Value>
+								<Value>=Fields!HINSITU_ZENKAI_NAME1.Value</Value>
 								<Width>4.2cm</Width>
-								<ZIndex>67</ZIndex>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 							<Line Name="Line1">
 								<Height>0cm</Height>
@@ -1968,9 +1966,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.9cm</Top>
-								<Value>0</Value>
+								<Value>=Fields!SEISAN_SUMI_SU.Value</Value>
 								<Width>1.6cm</Width>
-								<ZIndex>22</ZIndex>
+								<ZIndex>24</ZIndex>
 							</Textbox>
 							<Line Name="Line97">
 								<Height>-0.9cm</Height>
@@ -2015,7 +2013,7 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.000001cm</Top>
-								<Value>300</Value>
+								<Value>=Fields!DANDORI_KOUSU.Value</Value>
 								<Width>0.8cm</Width>
 								<ZIndex>146</ZIndex>
 							</Textbox>
@@ -2032,9 +2030,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.000001cm</Top>
-								<Value>12.5</Value>
+								<Value>=Fields!TACT_TIME.Value</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>65</ZIndex>
+								<ZIndex>67</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox68">
 								<DataElementName>TextBox52</DataElementName>
@@ -2050,9 +2048,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9cm</Top>
-								<Value>999999</Value>
+								<Value>=Fields!SEISAN_SU.Value</Value>
 								<Width>2.3cm</Width>
-								<ZIndex>64</ZIndex>
+								<ZIndex>66</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox69">
 								<DataElementName>TextBox60</DataElementName>
@@ -2068,9 +2066,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.000001cm</Top>
-								<Value>120</Value>
+								<Value>=Fields!TUIKA_KOUSU.Value</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>27</ZIndex>
+								<ZIndex>29</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox70">
 								<DataElementName>TextBox61</DataElementName>
@@ -2086,9 +2084,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.000001cm</Top>
-								<Value>0</Value>
+								<Value>=Fields!HOJU_KOUSU.Value</Value>
 								<Width>0.8cm</Width>
-								<ZIndex>26</ZIndex>
+								<ZIndex>28</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox71">
 								<DataElementName>TextBox62</DataElementName>
@@ -2103,9 +2101,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9cm</Top>
-								<Value>2920</Value>
+								<Value>=Fields!SEISAN_TIME.Value</Value>
 								<Width>1.2cm</Width>
-								<ZIndex>25</ZIndex>
+								<ZIndex>27</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox72">
 								<DataElementName>TextBox63</DataElementName>
@@ -2121,9 +2119,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9.000001cm</Top>
-								<Value>99:99</Value>
+								<Value>=Fields!START_TIME.Value</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>24</ZIndex>
+								<ZIndex>26</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox73">
 								<DataElementName>TextBox64</DataElementName>
@@ -2139,9 +2137,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>9cm</Top>
-								<Value>99:99</Value>
+								<Value>=Fields!END_TIME.Value</Value>
 								<Width>1.9cm</Width>
-								<ZIndex>23</ZIndex>
+								<ZIndex>25</ZIndex>
 							</Textbox>
 							<Line Name="Line103">
 								<Height>4.4cm</Height>
@@ -2201,9 +2199,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>10.8cm</Top>
-								<Value>35</Value>
+								<Value>=Fields!HINSITU_ZENKAI_SU1.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>20</ZIndex>
+								<ZIndex>3</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox75">
 								<Height>0.4cm</Height>
@@ -2218,9 +2216,9 @@
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
 								<Top>11.2cm</Top>
-								<Value>12</Value>
+								<Value>=Fields!HINSITU_ZENKAI_SU2.Value</Value>
 								<Width>1cm</Width>
-								<ZIndex>19</ZIndex>
+								<ZIndex>2</ZIndex>
 							</Textbox>
 							<Line Name="Line38">
 								<Height>0cm</Height>
@@ -2519,9 +2517,9 @@
 									<TextAlign>Center</TextAlign>
 									<VerticalAlign>Middle</VerticalAlign>
 								</Style>
-								<Value>99</Value>
+								<Value>=Fields!SEQ2.Value</Value>
 								<Width>0.9cm</Width>
-								<ZIndex>2</ZIndex>
+								<ZIndex>6</ZIndex>
 							</Textbox>
 							<Textbox Name="TextBox51">
 								<Height>1cm</Height>
@@ -2537,7 +2535,356 @@
 								</Style>
 								<Value>/</Value>
 								<Width>0.5cm</Width>
+								<ZIndex>5</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox52">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>1.7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.6cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_NAME3.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>3</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox53">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>10.8cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_NAME4.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox59">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.2cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_NAME5.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox60">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.6cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_NAME6.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox61">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>1.7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME1.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>3</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox62">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME4.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox63">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>1.7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.4cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME2.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>3</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox64">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.4cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME5.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox76">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>1.7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.8cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME3.Value</Value>
+								<Width>4.2cm</Width>
+								<ZIndex>3</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox77">
+								<DataElementName>TextBox54</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>7cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.8cm</Top>
+								<Value>=Fields!HINSITU_KAKO_NAME6.Value</Value>
+								<Width>4.2cm</Width>
 								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox78">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>10.8cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_SU4.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox79">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.2cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_SU5.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox80">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>6cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.6cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_SU3.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox81">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>11.6cm</Top>
+								<Value>=Fields!HINSITU_ZENKAI_SU6.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox82">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>6cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU1.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox83">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU4.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox84">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>6cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.4cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU2.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox85">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.4cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU5.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>1</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox86">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>6cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.8cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU3.Value</Value>
+								<Width>1cm</Width>
+								<ZIndex>2</ZIndex>
+							</Textbox>
+							<Textbox Name="TextBox87">
+								<DataElementName>TextBox74</DataElementName>
+								<Height>0.4cm</Height>
+								<Left>11.3cm</Left>
+								<Style>
+									<FontSize>6pt</FontSize>
+									<PaddingBottom>2pt</PaddingBottom>
+									<PaddingLeft>2pt</PaddingLeft>
+									<PaddingRight>2pt</PaddingRight>
+									<PaddingTop>2pt</PaddingTop>
+									<TextAlign>Right</TextAlign>
+									<VerticalAlign>Middle</VerticalAlign>
+								</Style>
+								<Top>12.8cm</Top>
+								<Value>=Fields!HINSITU_KAKO_SU6.Value</Value>
+								<Width>1cm</Width>
 							</Textbox>
 						</ReportItems>
 					</Page>
@@ -2552,4 +2899,211 @@
 	<RightMargin>1cm</RightMargin>
 	<TopMargin>1.5cm</TopMargin>
 	<Width>14.8cm</Width>
+	<DataSources>
+		<DataSource Name="DataSource1">
+			<ConnectionProperties>
+				<ConnectString>User Id=tss;Password=Tokunaga1;Data Source=pdb_kaihatu;</ConnectString>
+				<DataProvider>ORACLE</DataProvider>
+			</ConnectionProperties>
+		</DataSource>
+	</DataSources>
+	<DataSets>
+		<DataSet Name="DataSet1">
+			<Fields>
+				<Field Name="SEISAN_YOTEI_DATE">
+					<DataField>SEISAN_YOTEI_DATE</DataField>
+				</Field>
+				<Field Name="SEQ1">
+					<DataField>SEQ1</DataField>
+				</Field>
+				<Field Name="SEQ2">
+					<DataField>SEQ2</DataField>
+				</Field>
+				<Field Name="BUSYO_CD">
+					<DataField>BUSYO_CD</DataField>
+				</Field>
+				<Field Name="BUSYO_NAME">
+					<DataField>BUSYO_NAME</DataField>
+				</Field>
+				<Field Name="KOUTEI_CD">
+					<DataField>KOUTEI_CD</DataField>
+				</Field>
+				<Field Name="KOUTEI_NAME">
+					<DataField>KOUTEI_NAME</DataField>
+				</Field>
+				<Field Name="LINE_CD">
+					<DataField>LINE_CD</DataField>
+				</Field>
+				<Field Name="LINE_NAME">
+					<DataField>LINE_NAME</DataField>
+				</Field>
+				<Field Name="TORIHIKISAKI_CD">
+					<DataField>TORIHIKISAKI_CD</DataField>
+				</Field>
+				<Field Name="JUCHU_CD1">
+					<DataField>JUCHU_CD1</DataField>
+				</Field>
+				<Field Name="JUCHU_CD2">
+					<DataField>JUCHU_CD2</DataField>
+				</Field>
+				<Field Name="JUCHU_SU">
+					<DataField>JUCHU_SU</DataField>
+				</Field>
+				<Field Name="TORIHIKISAKI_NAME">
+					<DataField>TORIHIKISAKI_NAME</DataField>
+				</Field>
+				<Field Name="SEIHIN_CD">
+					<DataField>SEIHIN_CD</DataField>
+				</Field>
+				<Field Name="SEIHIN_NAME">
+					<DataField>SEIHIN_NAME</DataField>
+				</Field>
+				<Field Name="SEISANKISYU">
+					<DataField>SEISANKISYU</DataField>
+				</Field>
+				<Field Name="MEMBER01">
+					<DataField>MEMBER01</DataField>
+				</Field>
+				<Field Name="MEMBER02">
+					<DataField>MEMBER02</DataField>
+				</Field>
+				<Field Name="MEMBER03">
+					<DataField>MEMBER03</DataField>
+				</Field>
+				<Field Name="MEMBER04">
+					<DataField>MEMBER04</DataField>
+				</Field>
+				<Field Name="MEMBER05">
+					<DataField>MEMBER05</DataField>
+				</Field>
+				<Field Name="MEMBER06">
+					<DataField>MEMBER06</DataField>
+				</Field>
+				<Field Name="MEMBER07">
+					<DataField>MEMBER07</DataField>
+				</Field>
+				<Field Name="MEMBER08">
+					<DataField>MEMBER08</DataField>
+				</Field>
+				<Field Name="MEMBER09">
+					<DataField>MEMBER09</DataField>
+				</Field>
+				<Field Name="MEMBER10">
+					<DataField>MEMBER10</DataField>
+				</Field>
+				<Field Name="MEMBER11">
+					<DataField>MEMBER11</DataField>
+				</Field>
+				<Field Name="MEMBER12">
+					<DataField>MEMBER12</DataField>
+				</Field>
+				<Field Name="BIKOU">
+					<DataField>BIKOU</DataField>
+				</Field>
+				<Field Name="TACT_TIME">
+					<DataField>TACT_TIME</DataField>
+				</Field>
+				<Field Name="DANDORI_KOUSU">
+					<DataField>DANDORI_KOUSU</DataField>
+				</Field>
+				<Field Name="TUIKA_KOUSU">
+					<DataField>TUIKA_KOUSU</DataField>
+				</Field>
+				<Field Name="HOJU_KOUSU">
+					<DataField>HOJU_KOUSU</DataField>
+				</Field>
+				<Field Name="SEISAN_SUMI_SU">
+					<DataField>SEISAN_SUMI_SU</DataField>
+				</Field>
+				<Field Name="SEISAN_SU">
+					<DataField>SEISAN_SU</DataField>
+				</Field>
+				<Field Name="SEISAN_TIME">
+					<DataField>SEISAN_TIME</DataField>
+				</Field>
+				<Field Name="START_TIME">
+					<DataField>START_TIME</DataField>
+				</Field>
+				<Field Name="END_TIME">
+					<DataField>END_TIME</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME1">
+					<DataField>HINSITU_ZENKAI_NAME1</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU1">
+					<DataField>HINSITU_ZENKAI_SU1</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME2">
+					<DataField>HINSITU_ZENKAI_NAME2</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU2">
+					<DataField>HINSITU_ZENKAI_SU2</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME3">
+					<DataField>HINSITU_ZENKAI_NAME3</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU3">
+					<DataField>HINSITU_ZENKAI_SU3</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME4">
+					<DataField>HINSITU_ZENKAI_NAME4</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU4">
+					<DataField>HINSITU_ZENKAI_SU4</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME5">
+					<DataField>HINSITU_ZENKAI_NAME5</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU5">
+					<DataField>HINSITU_ZENKAI_SU5</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_NAME6">
+					<DataField>HINSITU_ZENKAI_NAME6</DataField>
+				</Field>
+				<Field Name="HINSITU_ZENKAI_SU6">
+					<DataField>HINSITU_ZENKAI_SU6</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME1">
+					<DataField>HINSITU_KAKO_NAME1</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU1">
+					<DataField>HINSITU_KAKO_SU1</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME2">
+					<DataField>HINSITU_KAKO_NAME2</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU2">
+					<DataField>HINSITU_KAKO_SU2</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME3">
+					<DataField>HINSITU_KAKO_NAME3</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU3">
+					<DataField>HINSITU_KAKO_SU3</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME4">
+					<DataField>HINSITU_KAKO_NAME4</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU4">
+					<DataField>HINSITU_KAKO_SU4</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME5">
+					<DataField>HINSITU_KAKO_NAME5</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU5">
+					<DataField>HINSITU_KAKO_SU5</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_NAME6">
+					<DataField>HINSITU_KAKO_NAME6</DataField>
+				</Field>
+				<Field Name="HINSITU_KAKO_SU6">
+					<DataField>HINSITU_KAKO_SU6</DataField>
+				</Field>
+			</Fields>
+			<Query>
+				<CommandText> Parameters!ReportParameter1.Value </CommandText>
+				<DataSourceName>DataSource1</DataSourceName>
+			</Query>
+		</DataSet>
+	</DataSets>
 </Report>

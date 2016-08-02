@@ -123,13 +123,18 @@ namespace TSS_SYSTEM
 
         private void make_uriage_denpyou_trn()
         {
+            DataTable w_dt_trn_count = new DataTable();
+            //トランファイルの存在を確認して、あったら削除
+            w_dt_trn_count = tss.OracleSelect("select * from user_tables where upper(table_name) = upper('tss_uriage_denpyou_trn')");
+            if (w_dt_trn_count.Rows.Count >= 1)
+            {
+                tss.OracleDelete("DROP TABLE tss_uriage_denpyou_trn CASCADE CONSTRAINTS");
+            }
             //伝票印刷用のトランファイルを削除
-            tss.OracleDelete("DROP TABLE tss_uriage_denpyou_trn CASCADE CONSTRAINTS");
+            //tss.OracleDelete("DROP TABLE tss_uriage_denpyou_trn CASCADE CONSTRAINTS");
             //印刷用のトランファイルを作成
             tss.OracleSelect("CREATE table tss_uriage_denpyou_trn AS SELECT * FROM tss_uriage_m where uriage_no = '" + tb_uriage_no.Text.ToString() + "'");
         }
-
-
 
         private void viewer_disp()
         {

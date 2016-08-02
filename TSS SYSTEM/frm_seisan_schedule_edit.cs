@@ -2272,6 +2272,12 @@ namespace TSS_SYSTEM
         private void btn_sijisyo_insatu_Click(object sender, EventArgs e)
         {
             //指示書の印刷
+            if(dgv_today.Rows.Count <= 0)
+            {
+                MessageBox.Show("印刷するデータがありません。");
+                return;
+            }
+
             frm_seisan_siji_preview frm_rpt = new frm_seisan_siji_preview();
             //受け渡す値のセット
             frm_rpt.arg_seisanbi = lbl_seisan_yotei_date_today.Text;
