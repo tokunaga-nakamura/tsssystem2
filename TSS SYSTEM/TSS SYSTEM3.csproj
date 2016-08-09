@@ -703,6 +703,12 @@
     <Compile Include="rpt_seisan_schedule_03.Designer.cs">
       <DependentUpon>rpt_seisan_schedule_03.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_seisan_siji_section.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_seisan_siji_section.Designer.cs">
+      <DependentUpon>rpt_seisan_siji_section.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_siharai_ichiran.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1064,6 +1070,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seisan_schedule_03.resx">
       <DependentUpon>rpt_seisan_schedule_03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_seisan_siji_section.resx">
+      <DependentUpon>rpt_seisan_siji_section.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_siharai_ichiran.resx">
       <DependentUpon>rpt_siharai_ichiran.cs</DependentUpon>

@@ -47,8 +47,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,7 +85,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(884, 561);
-            this.splitContainer1.SplitterDistance = 62;
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
@@ -117,8 +117,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 495);
-            this.splitContainer2.SplitterDistance = 457;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 497);
+            this.splitContainer2.SplitterDistance = 459;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -149,7 +149,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.viewer1);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 457);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 459);
             this.splitContainer4.SplitterDistance = 32;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -315,7 +315,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 417);
+            this.viewer1.Size = new System.Drawing.Size(880, 419);
             this.viewer1.TabIndex = 0;
             // 
             // splitContainer3
@@ -328,7 +328,7 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.btn_insatu);
+            this.splitContainer3.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer3.Panel2
             // 
@@ -337,15 +337,6 @@
             this.splitContainer3.SplitterDistance = 788;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
-            // 
-            // btn_insatu
-            // 
-            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
-            this.btn_insatu.Name = "btn_insatu";
-            this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 0;
-            this.btn_insatu.Text = "印刷";
-            this.btn_insatu.UseVisualStyleBackColor = true;
             // 
             // btn_syuuryou
             // 
@@ -356,6 +347,15 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(287, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "印刷はビュアー内の左上にある印刷ボタンから行ってください。";
             // 
             // frm_seisan_siji_preview
             // 
@@ -381,6 +381,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
@@ -399,7 +400,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.Button btn_insatu;
         private System.Windows.Forms.Button btn_syuuryou;
         private System.Windows.Forms.TextBox tb_line_name;
         private System.Windows.Forms.TextBox tb_koutei_name;
@@ -410,5 +410,6 @@
         private System.Windows.Forms.TextBox tb_seisan_yotei_date;
         private System.Windows.Forms.Button btn_preview;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
+        private System.Windows.Forms.Label label1;
     }
 }

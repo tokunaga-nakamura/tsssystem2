@@ -626,6 +626,39 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region StringRight メソッド
+        /// <summary>
+        /// 末尾から指定された文字列を取得します。</summary>
+        /// <param name="str">
+        /// 対象となる文字列。</param>
+        /// <param name="len">
+        /// 取得する文字数。</param>
+        /// <returns>
+        /// 文字列</returns>
+        public string StringRight(string str, int len)
+        {
+            if (len < 0)
+            {
+                return "";
+            }
+            if (str == null)
+            {
+                return "";
+            }
+            string w_space = "";
+            for (int i = 0; i < len;i++)
+            {
+                w_space = w_space + " ";
+            }
+            //if (str.Length <= len)
+            //{
+            //   return str;
+            //}
+            w_space = w_space + str;
+            return w_space.Substring(w_space.Length - len, len);
+        }
+        #endregion
+
         #region HardCopy メソッド
         /// <summary>
         /// 呼ばれた時点でのアクティブなウィンドゥのハードコピーをクリップボードに送ります。
