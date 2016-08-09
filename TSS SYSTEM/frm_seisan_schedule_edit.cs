@@ -21,6 +21,63 @@ namespace TSS_SYSTEM
         DataTable w_dt_cb_next = new DataTable();
         decimal result;
 
+        //string str_date;
+        //string str_busyo;
+
+        //親画面から参照できるプロパティを作成
+        public string str_mode = "0";    //画面モード
+        public string str_date;    //日付
+        public string str_busyo;   //部署
+        public bool fld_sentaku; //区分選択フラグ 選択:true エラーまたはキャンセル:false
+
+
+        public string mode
+        {
+            get
+            {
+                return str_mode;
+            }
+            set
+            {
+                str_mode = value;
+            }
+        }
+        public string datetime
+        {
+            get
+            {
+                return str_date;
+            }
+            set
+            {
+                str_date = value;
+            }
+        }
+        public string busyo_name
+        {
+            get
+            {
+                return str_busyo;
+            }
+            set
+            {
+                str_busyo = value;
+            }
+        }
+        public bool bl_sentaku
+        {
+            get
+            {
+                return fld_sentaku;
+            }
+            set
+            {
+                fld_sentaku = value;
+            }
+        }
+
+
+
         public frm_seisan_schedule_edit()
         {
             InitializeComponent();
@@ -33,7 +90,43 @@ namespace TSS_SYSTEM
 
         private void frm_seisan_schedule_edit_Load(object sender, EventArgs e)
         {
-            set_combobox(); //コンボボックスの初期化
+
+            if(str_mode == "0")
+            {
+                set_combobox(); //コンボボックスの初期化
+            }
+
+            if (str_mode == "1")
+            {
+                set_combobox(); //コンボボックスの初期化
+                tb_seisan_yotei_date.Text = this.str_date;
+                cb_today_busyo.Text = this.str_busyo;
+                cb_before_busyo.Text = this.str_busyo;
+                cb_next_busyo.Text = this.str_busyo;
+
+                lbl_seisan_yotei_date_today.Text = this.str_date;
+                get_schedule_data(cb_today_busyo, this.str_date);
+                disp_schedule_data(dgv_today, w_dt_today);
+
+                //-1
+                DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
+                w_before_day = w_before_day.AddDays(-1);
+                get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
+                disp_schedule_data(dgv_before, w_dt_before);
+                cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
+                dtp_before.Value = w_before_day;
+
+                //+1
+                DateTime w_next_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
+                w_next_day = w_next_day.AddDays(1);
+                get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
+                disp_schedule_data(dgv_next, w_dt_next);
+                cb_next_busyo.SelectedValue = cb_next_busyo.SelectedValue.ToString();
+                dtp_next.Value = w_next_day;
+
+
+            }
+           
         }
 
         private void get_schedule_data(ComboBox in_cb,string in_str)
@@ -769,21 +862,34 @@ namespace TSS_SYSTEM
         private void btn_line_tuika_Click(object sender, EventArgs e)
         {
             //データが無い場合は何もしない
-            if (dgv_today.Rows.Count <= 0) return;
+            if (dgv_today.Rows.Count <= 0)
+            {
+                DataTable w_dt_list = (DataTable)this.dgv_today.DataSource;
+                DataRow dr = w_dt_list.NewRow();
+                w_dt_list.Rows.Add(dr);
+                dgv_today.DataSource = w_dt_list;
+             
+                
+                //return;
+            
+            } 
+            else
+            {
+                DataTable w_dt_list = (DataTable)this.dgv_today.DataSource;
 
-            DataTable w_dt_list = (DataTable)this.dgv_today.DataSource;
-
-            DataRow dr = w_dt_list.NewRow();
-            int rn = dgv_today.CurrentRow.Index;
-            w_dt_list.Rows.InsertAt(w_dt_list.NewRow(), rn);　//rn・・・選択行のインデックス
-            w_dt_list.Rows[rn][0] = w_dt_list.Rows[rn - 1][0];
-            w_dt_list.Rows[rn][1] = w_dt_list.Rows[rn - 1][1];
-            w_dt_list.Rows[rn][2] = w_dt_list.Rows[rn - 1][2];
-            w_dt_list.Rows[rn][3] = w_dt_list.Rows[rn - 1][3];
-            w_dt_list.Rows[rn][4] = w_dt_list.Rows[rn - 1][4];
-            w_dt_list.Rows[rn][5] = w_dt_list.Rows[rn - 1][5];
-            w_dt_list.Rows[rn][6] = w_dt_list.Rows[rn - 1][6];
-            dgv_today.DataSource = w_dt_list;
+                DataRow dr = w_dt_list.NewRow();
+                int rn = dgv_today.CurrentRow.Index;
+                w_dt_list.Rows.InsertAt(w_dt_list.NewRow(), rn);　//rn・・・選択行のインデックス
+                w_dt_list.Rows[rn][0] = w_dt_list.Rows[rn - 1][0];
+                w_dt_list.Rows[rn][1] = w_dt_list.Rows[rn - 1][1];
+                w_dt_list.Rows[rn][2] = w_dt_list.Rows[rn - 1][2];
+                w_dt_list.Rows[rn][3] = w_dt_list.Rows[rn - 1][3];
+                w_dt_list.Rows[rn][4] = w_dt_list.Rows[rn - 1][4];
+                w_dt_list.Rows[rn][5] = w_dt_list.Rows[rn - 1][5];
+                w_dt_list.Rows[rn][6] = w_dt_list.Rows[rn - 1][6];
+                dgv_today.DataSource = w_dt_list;
+            }
+           
         }
 
         private void btn_line_tuika_under_Click(object sender, EventArgs e)
@@ -2293,9 +2399,21 @@ namespace TSS_SYSTEM
 
         private void btn_chk_schedule_Click(object sender, EventArgs e)
         {
+
             frm_chk_schedule frm_chk_sc = new frm_chk_schedule();
             frm_chk_sc.ShowDialog(this);
             frm_chk_sc.Dispose();
+
+            //子画面から値を取得する
+            
+            string str_date = frm_chk_sc.str_date;
+            string str_busyo = frm_chk_sc.str_busyo;
+
+            MessageBox.Show(str_date);
+            MessageBox.Show(str_busyo);
+            //this.label1.Text = frm_s_seisan_kou.str_cd;
+            frm_chk_sc.Dispose();
+                        
         }
 
     }

@@ -1109,5 +1109,12 @@ namespace TSS_SYSTEM
             frm_ssp.ShowDialog(this);
             frm_ssp.Dispose();
         }
+
+        private void btn_chk_schedule_Click(object sender, EventArgs e)
+        {
+            frm_chk_schedule frm_chk_sc = new frm_chk_schedule();
+            frm_chk_sc.ShowDialog(this);
+            frm_chk_sc.Dispose();
+        }
     }
 }

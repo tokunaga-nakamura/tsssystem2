@@ -107,6 +107,8 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_siji_print = new System.Windows.Forms.Button();
+            this.btn_seisan_schedule_print = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_edit = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_remake = new System.Windows.Forms.Button();
             this.btn_seisan_schedule = new System.Windows.Forms.Button();
@@ -137,8 +139,7 @@
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_seisan_schedule_print = new System.Windows.Forms.Button();
-            this.btn_seisan_siji_print = new System.Windows.Forms.Button();
+            this.btn_chk_schedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1133,6 +1134,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_chk_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_siji_print);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_print);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_edit);
@@ -1144,6 +1146,25 @@
             this.tabPage5.Size = new System.Drawing.Size(830, 416);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
+            // 
+            // btn_seisan_siji_print
+            // 
+            this.btn_seisan_siji_print.Location = new System.Drawing.Point(462, 233);
+            this.btn_seisan_siji_print.Name = "btn_seisan_siji_print";
+            this.btn_seisan_siji_print.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_siji_print.TabIndex = 5;
+            this.btn_seisan_siji_print.Text = "作業指示日報　印刷";
+            this.btn_seisan_siji_print.UseVisualStyleBackColor = true;
+            this.btn_seisan_siji_print.Click += new System.EventHandler(this.btn_seisan_siji_print_Click);
+            // 
+            // btn_seisan_schedule_print
+            // 
+            this.btn_seisan_schedule_print.Location = new System.Drawing.Point(462, 204);
+            this.btn_seisan_schedule_print.Name = "btn_seisan_schedule_print";
+            this.btn_seisan_schedule_print.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_schedule_print.TabIndex = 4;
+            this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
+            this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
             // 
             // btn_seisan_schedule_edit
             // 
@@ -1468,24 +1489,15 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_seisan_schedule_print
+            // btn_chk_schedule
             // 
-            this.btn_seisan_schedule_print.Location = new System.Drawing.Point(462, 204);
-            this.btn_seisan_schedule_print.Name = "btn_seisan_schedule_print";
-            this.btn_seisan_schedule_print.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_schedule_print.TabIndex = 4;
-            this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
-            this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
-            // 
-            // btn_seisan_siji_print
-            // 
-            this.btn_seisan_siji_print.Location = new System.Drawing.Point(462, 233);
-            this.btn_seisan_siji_print.Name = "btn_seisan_siji_print";
-            this.btn_seisan_siji_print.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_siji_print.TabIndex = 5;
-            this.btn_seisan_siji_print.Text = "作業指示日報　印刷";
-            this.btn_seisan_siji_print.UseVisualStyleBackColor = true;
-            this.btn_seisan_siji_print.Click += new System.EventHandler(this.btn_seisan_siji_print_Click);
+            this.btn_chk_schedule.Location = new System.Drawing.Point(236, 233);
+            this.btn_chk_schedule.Name = "btn_chk_schedule";
+            this.btn_chk_schedule.Size = new System.Drawing.Size(220, 23);
+            this.btn_chk_schedule.TabIndex = 6;
+            this.btn_chk_schedule.Text = "生産スケジュールチェック";
+            this.btn_chk_schedule.UseVisualStyleBackColor = true;
+            this.btn_chk_schedule.Click += new System.EventHandler(this.btn_chk_schedule_Click);
             // 
             // frm_menu
             // 
@@ -1673,6 +1685,7 @@
         private System.Windows.Forms.Button btn_chat_hyouji_sentaku;
         private System.Windows.Forms.Button btn_seisan_siji_print;
         private System.Windows.Forms.Button btn_seisan_schedule_print;
+        private System.Windows.Forms.Button btn_chk_schedule;
     }
 }
 
