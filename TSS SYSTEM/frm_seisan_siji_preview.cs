@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using GrapeCity.ActiveReports;
+//using GrapeCity.ActiveReports.Viewer.Win;
+//using GrapeCity.ActiveReports.Document;
+//using GrapeCity.ActiveReports.Configuration;
 using GrapeCity.ActiveReports;
-using GrapeCity.ActiveReports.Viewer.Win;
-using GrapeCity.ActiveReports.Document;
-using GrapeCity.ActiveReports.Configuration;
 
 namespace TSS_SYSTEM
 {
@@ -18,7 +19,6 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable w_dt_meisai = new DataTable();    //印刷するデータ
-        //GrapeCity.ActiveReports.Document.PageDocument doc;
         string w_trn_name;
 
         //引数用の変数
@@ -26,7 +26,6 @@ namespace TSS_SYSTEM
         public string arg_busyo_cd;
         public string arg_koutei_cd;
         public string arg_line_cd;
-
 
         public frm_seisan_siji_preview()
         {
@@ -54,6 +53,8 @@ namespace TSS_SYSTEM
                 tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
                 seisan_siji_preview();
             }
+            //Button1.Click += new EventHandler(Button1_Click);
+            //viewer1.LoadCompleted += new EventHandler(viewer1_LoadCompleted);
         }
 
         private void seisan_siji_preview()
@@ -135,6 +136,7 @@ namespace TSS_SYSTEM
             w_dt_meisai.Columns.Add("hinsitu_kako_su5");
             w_dt_meisai.Columns.Add("hinsitu_kako_name6");
             w_dt_meisai.Columns.Add("hinsitu_kako_su6");
+            w_dt_meisai.Columns.Add("barcode");
         }
 
         private string get_busyo_name(string in_cd)
@@ -194,25 +196,13 @@ namespace TSS_SYSTEM
                 this.Close();
             }
 
-            //ページレポートに接続文字列とクエリ（sql）をセットして表示する
-            GrapeCity.ActiveReports.PageReport rpt = new GrapeCity.ActiveReports.PageReport();
-            // レポート定義のファイルをロードします。 
-            rpt.Load(new System.IO.FileInfo("rpt_seisan_siji.rdlx"));
-            // 接続文字列を変更します
-            rpt.Report.DataSources[0].ConnectionProperties.ConnectString = tss.GetConnectionString();
-            // 変更するSQL文を定義します
-            String tmpQuery = "select * from " + w_trn_name + " order by seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1";
-            //String tmpQuery = "select * from " + w_trn_name; // + " where koutei_cd = '020'";
-            // SQL文を変更します
-            //rpt.Report.DataSets[0].Query.CommandText = GrapeCity.ActiveReports.Expressions.ExpressionInfo.Parse(tmpQuery, GrapeCity.ActiveReports.Expressions.ExpressionResultType.String);
-            rpt.Report.DataSets[0].Query.CommandText = tmpQuery;
-            GrapeCity.ActiveReports.Document.PageDocument pageDocument = new GrapeCity.ActiveReports.Document.PageDocument(rpt);
-            viewer1.LoadDocument(pageDocument);
-        }
-
-        void doc_LocateDataSource(object sender, LocateDataSourceEventArgs args)
-        {
-            args.Data = w_dt_meisai;
+            //セクションレポート
+            rpt_seisan_siji_section rpt = new rpt_seisan_siji_section();
+            DataTable w_rpt_dt = new DataTable();
+            w_rpt_dt = tss.OracleSelect("select * from " + w_trn_name + " order by seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1");
+            rpt.DataSource = w_rpt_dt;
+            rpt.Run();
+            this.viewer1.Document = rpt.Document;
         }
 
         private void make_insatu_data()
@@ -374,6 +364,8 @@ namespace TSS_SYSTEM
                 w_dr["hinsitu_kako_su5"] = "";
                 w_dr["hinsitu_kako_name6"] = "";
                 w_dr["hinsitu_kako_su6"] = "";
+                //バーコード（各項目をdbと同じ桁数の文字列にして連結させる）
+                w_dr["barcode"] = tss.StringRight(loop_dr["seisan_yotei_date"].ToString(),10) + tss.StringRight(loop_dr["busyo_cd"].ToString(),4) + tss.StringRight(loop_dr["koutei_cd"].ToString(),3) + tss.StringRight(loop_dr["line_cd"].ToString(),3) + tss.StringRight(loop_dr["seq"].ToString(),3) + tss.StringRight(loop_dr["torihikisaki_cd"].ToString(),6) + tss.StringRight(loop_dr["juchu_cd1"].ToString(),16) + tss.StringRight(loop_dr["juchu_cd2"].ToString(),16);
                 w_dt_meisai.Rows.Add(w_dr);
             }
         }
@@ -454,6 +446,7 @@ namespace TSS_SYSTEM
                   + ",hinsitu_kako_su5 number(12,2)"
                   + ",hinsitu_kako_name6 varchar2(40)"
                   + ",hinsitu_kako_su6 number(12,2)"
+                  + ",barcode varchar2(61)"
                   + ",constraint " + w_trn_name + "_pkc primary key (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1)"
                   + ")";
               tss.OracleSelect(w_sql);
@@ -525,6 +518,7 @@ namespace TSS_SYSTEM
                         + ",hinsitu_kako_su5"
                         + ",hinsitu_kako_name6"
                         + ",hinsitu_kako_su6"
+                        + ",barcode"
                         + ") values ("
                         + "'" + w_dr["seisan_yotei_date"].ToString() + "',"
                         + "'" + w_dr["seq1"].ToString() + "',"
@@ -588,7 +582,8 @@ namespace TSS_SYSTEM
                         + "'" + w_dr["hinsitu_kako_name5"].ToString() + "',"
                         + "'" + w_dr["hinsitu_kako_su5"].ToString() + "',"
                         + "'" + w_dr["hinsitu_kako_name6"].ToString() + "',"
-                        + "'" + w_dr["hinsitu_kako_su6"].ToString() + "'"
+                        + "'" + w_dr["hinsitu_kako_su6"].ToString() + "',"
+                        + "'" + w_dr["barcode"].ToString() + "'"
                         + ")";
                 tss.OracleInsert(w_sql2);
             }
@@ -687,6 +682,7 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
+
 
     }
 }
