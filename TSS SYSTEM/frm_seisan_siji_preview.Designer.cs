@@ -353,9 +353,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 12);
+            this.label1.Size = new System.Drawing.Size(287, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "印刷はビュアー右上の印刷ボタンから行ってください。";
+            this.label1.Text = "印刷はビュアー内の左上にある印刷ボタンから行ってください。";
             // 
             // frm_seisan_siji_preview
             // 
