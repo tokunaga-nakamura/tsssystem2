@@ -1461,7 +1461,7 @@ namespace TSS_SYSTEM
                 }
                 if (dt_m.Rows[i]["tact_time"].ToString() == "" &&  dt_m.Rows[i]["dandori_time"].ToString() == "" && dt_m.Rows[i]["tuika_time"].ToString() == "" && dt_m.Rows[i]["hoju_time"].ToString() == "")
                 {
-                    MessageBox.Show("時間登録されていないラインがあります 工程順 " + dt_m.Rows[i]["seq_no"].ToString() + "ラインコード　" + dt_m.Rows[i]["line_cd"].ToString() + "");
+                    MessageBox.Show("時間登録されていないラインがあります。\n工程順 " + dt_m.Rows[i]["seq_no"].ToString() + "ラインコード　" + dt_m.Rows[i]["line_cd"].ToString() + "");
                     return;
                 }
                 
@@ -1534,13 +1534,13 @@ namespace TSS_SYSTEM
                         //ライン選択区分が0で、複数のラインがあるとき
                         if (dr_count > 1)
                         {
-                            MessageBox.Show("ライン選択区分が0の時は、複数のラインを登録できません 工程順 " + seq + "");
+                            MessageBox.Show("工程順 " + seq + "\nライン選択区分が0の時は、複数のラインを登録できません。");
                             return;
                         }
                         //ライン選択区分が0で、ライン選択のチェックボックスが未チェックのとき
                         if (dr_count.ToString() == "1" && dr[j]["SELECT_KBN"].ToString() == "0")
                         {
-                            MessageBox.Show("ライン選択のチェックボックスエラー 工程順 " + seq + "");
+                            MessageBox.Show("工程順 " + seq + "\nライン選択のチェックボックスエラー");
                             return;
                         }
                     }
@@ -1550,13 +1550,13 @@ namespace TSS_SYSTEM
                         //ライン選択区分が1で、一つのラインしか無いとき
                         if (dr_count <= 1)
                         {
-                            MessageBox.Show("ライン選択区分が1の時は、複数のラインを登録してください。 工程順 " + seq + "");
+                            MessageBox.Show("工程順 " + seq + "\nライン選択区分が1の時は、複数のラインを登録してください。");
                             return;
                         }
                         //ライン選択区分が1で、ライン選択のチェックボックスが未チェックのとき
                         if (dr_count > 1 && dr[j]["SELECT_KBN"].ToString() == "0")
                         {
-                            MessageBox.Show("ライン選択のチェックボックスに未チェックがあります。 工程順 " + seq + "");
+                            MessageBox.Show("工程順 " + seq + "\nライン選択のチェックボックスに未チェックがあります。");
                             return;
                         }
                     }
@@ -1566,7 +1566,7 @@ namespace TSS_SYSTEM
                         //ライン選択区分が2で、一つのラインしか無いとき
                         if (dr_count <= 1)
                         {
-                            MessageBox.Show("ライン選択区分が2の時は、複数のラインを登録してください。 工程順 " + seq + "");
+                            MessageBox.Show("工程順 " + seq + "\nライン選択区分が2の時は、複数のラインを登録してください。");
                             return;
                         }
                         //ライン選択区分が2で、ライン選択のチェックボックスセルが2つ以上あるとき
@@ -1583,12 +1583,12 @@ namespace TSS_SYSTEM
 
                             if(sum > 1)
                             {
-                                MessageBox.Show("ライン選択区分が2の時は、ライン選択チェックは1つにしてください 工程順 " + seq + "");
+                                MessageBox.Show("工程順 " + seq + "\nライン選択区分が2の時は、ライン選択チェックは1つにしてください。");
                                 return;
                             }
                             if (sum == 0)
                             {
-                                MessageBox.Show("ライン選択のチェックボックスに未チェックがあります。　工程順 " + seq + "");
+                                MessageBox.Show("工程順 " + seq + "\nライン選択のチェックボックスに未チェックがあります。");
                                 return;
                             }
                         }

@@ -103,11 +103,11 @@ namespace TSS_SYSTEM
             tb_bikou.Text = in_dt_work.Rows[0]["bikou"].ToString();
             if (in_dt_work.Rows[0]["delete_flg"].ToString() == "1")
             {
-                cb_delete_flg.Checked = true;
+                cb_delete_flg.Checked = false;
             }
             else
             {
-                cb_delete_flg.Checked = false;
+                cb_delete_flg.Checked = true;
             }
             tb_create_user_cd.Text = in_dt_work.Rows[0]["create_user_cd"].ToString();
             tb_create_datetime.Text = in_dt_work.Rows[0]["create_datetime"].ToString();
@@ -439,11 +439,11 @@ namespace TSS_SYSTEM
             string w_delete_flg;
             if(cb_delete_flg.Checked)
             {
-                w_delete_flg = "1";
+                w_delete_flg = "0";
             }
             else
             {
-                w_delete_flg = "0";
+                w_delete_flg = "1";
             }
             bool bl_tss = true;
             bl_tss = tss.OracleInsert("INSERT INTO tss_syain_m (syain_cd,syain_name,syain_kbn,busyo_cd,kinmu_time1,kinmu_time2,bikou,delete_flg,create_user_cd,create_datetime)"
@@ -467,11 +467,11 @@ namespace TSS_SYSTEM
             string w_delete_flg;
             if (cb_delete_flg.Checked)
             {
-                w_delete_flg = "1";
+                w_delete_flg = "0";
             }
             else
             {
-                w_delete_flg = "0";
+                w_delete_flg = "1";
             }
             bool bl_tss = true;
             bl_tss = tss.OracleUpdate("UPDATE TSS_syain_m SET syain_name = '" + tb_syain_name.Text.ToString()

@@ -173,7 +173,7 @@ namespace TSS_SYSTEM
         {
             //受け取ったDataTableから表示用のw_dt_scheduleを作成する
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select nouhin_yotei_date,nouhin_schedule_kbn,torihikisaki_cd,seq,nouhin_seq,juchu_cd1,juchu_cd2,nouhin_bin,nouhin_tantou_cd,nouhin_yotei_su,bikou from tss_nouhin_schedule_m where to_char(nouhin_yotei_date,'yyyymm') = '" + nud_year.Value.ToString() + nud_month.Value.ToString("00") + "' and nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' order by nouhin_seq,seq asc");
+            w_dt = tss.OracleSelect("select A.nouhin_yotei_date,A.nouhin_schedule_kbn,A.torihikisaki_cd,A.seq,A.nouhin_seq,A.juchu_cd1,A.juchu_cd2,A.nouhin_bin,A.nouhin_tantou_cd,A.nouhin_yotei_su,A.bikou from tss_nouhin_schedule_m A inner join tss_juchu_m B on A.torihikisaki_cd = B.torihikisaki_cd and A.juchu_cd1 = B.juchu_cd1 and A.juchu_cd2 = B.juchu_cd2 where to_char(A.nouhin_yotei_date,'yyyymm') = '" + nud_year.Value.ToString() + nud_month.Value.ToString("00") + "' and A.nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "' and A.torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "' and B.nouhin_kbn = '1' and B.delete_flg <> '1' order by A.nouhin_seq,A.seq asc");
 
             //w_dt_scheduleの空枠の作成
             w_dt_schedule.Rows.Clear();
@@ -311,14 +311,14 @@ namespace TSS_SYSTEM
             //納品スケジュール区分
             if (tb_nouhin_schedule_kbn.Text != "")
             {
-                sql_where[sql_cnt] = "nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "'";
+                sql_where[sql_cnt] = "A.nouhin_schedule_kbn = '" + tb_nouhin_schedule_kbn.Text.ToString() + "'";
                 sql_cnt++;
             }
 
             //取引先コード
             if (tb_torihikisaki_cd.Text != "")
             {
-                sql_where[sql_cnt] = "torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
+                sql_where[sql_cnt] = "A.torihikisaki_cd = '" + tb_torihikisaki_cd.Text.ToString() + "'";
                 sql_cnt++;
             }
 
@@ -329,13 +329,15 @@ namespace TSS_SYSTEM
             //w_dt_scheduleは表示・印刷に使用する
 
             //１）画面の条件のnouhin_mを抽出
-            string sql = "select nouhin_yotei_date,nouhin_schedule_kbn,torihikisaki_cd,seq,nouhin_seq,juchu_cd1,juchu_cd2,nouhin_bin,nouhin_tantou_cd,nouhin_yotei_su,bikou from tss_nouhin_schedule_m where to_char(nouhin_yotei_date,'yyyymm') = '" + nud_year.Value.ToString() + nud_month.Value.ToString("00") + "'";
+            //string sql = "select nouhin_yotei_date,nouhin_schedule_kbn,torihikisaki_cd,seq,nouhin_seq,juchu_cd1,juchu_cd2,nouhin_bin,nouhin_tantou_cd,nouhin_yotei_su,bikou from tss_nouhin_schedule_m where to_char(nouhin_yotei_date,'yyyymm') = '" + nud_year.Value.ToString() + nud_month.Value.ToString("00") + "'";
+            string sql = "select A.nouhin_yotei_date,A.nouhin_schedule_kbn,A.torihikisaki_cd,A.seq,A.nouhin_seq,A.juchu_cd1,A.juchu_cd2,A.nouhin_bin,A.nouhin_tantou_cd,A.nouhin_yotei_su,A.bikou from tss_nouhin_schedule_m A inner join tss_juchu_m B on A.torihikisaki_cd = B.torihikisaki_cd and A.juchu_cd1 = B.juchu_cd1 and A.juchu_cd2 = B.juchu_cd2 where to_char(A.nouhin_yotei_date,'yyyymm') = '" + nud_year.Value.ToString() + nud_month.Value.ToString("00") + "' and B.nouhin_kbn = '1' and B.delete_flg <> '1'";
 
             for (int i = 1; i <= sql_cnt; i++)
             {
                 sql = sql + " and " + sql_where[i - 1];
             }
-            w_dt = tss.OracleSelect(sql + " order by torihikisaki_cd,nouhin_schedule_kbn,nouhin_seq,seq asc");
+            //w_dt = tss.OracleSelect(sql + " order by torihikisaki_cd,nouhin_schedule_kbn,nouhin_seq,seq asc");
+            w_dt = tss.OracleSelect(sql + " order by A.torihikisaki_cd,A.nouhin_schedule_kbn,A.nouhin_seq,A.seq asc");
 
             //２）抽出したnouhin_mをw_dt_scheduleに書き込んでいく
             //w_dt_scheduleの空枠の作成

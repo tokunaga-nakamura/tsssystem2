@@ -124,7 +124,9 @@ namespace TSS_SYSTEM
                     if (str_name != "")
                     {
                         DataTable w_dt = new DataTable();
-                        w_dt = tss.OracleSelect("select * from tss_seihin_m where seihin_cd like '" + str_name + "%' or seihin_name like '%" + str_name + "%'");
+                        //w_dt = tss.OracleSelect("select * from tss_seihin_m where seihin_cd like '" + str_name + "%' or seihin_name like '%" + str_name + "%'");
+                        w_dt = tss.OracleSelect("select A.seihin_cd,A.seihin_name,A.torihikisaki_cd,B.torihikisaki_name,A.nouhin_schedule_kbn,A.seihin_kousei_no,A.bikou from tss_seihin_m A left outer join tss_torihikisaki_m B on A.torihikisaki_cd = B.torihikisaki_cd where seihin_cd like '" + str_name + "%' or seihin_name like '%" + str_name + "%'");
+
                         list_disp(w_dt);
 
                         //tb_seihin_name.Text = str_name;

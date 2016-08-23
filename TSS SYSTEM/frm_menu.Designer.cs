@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_menu));
             this.ss_status = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbl_msg3 = new System.Windows.Forms.Label();
             this.btn_gamen_kousin = new System.Windows.Forms.Button();
             this.lbl_msg2 = new System.Windows.Forms.Label();
             this.lbl_msg1 = new System.Windows.Forms.Label();
@@ -81,7 +82,6 @@
             this.btn_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_juchuu_nyuuryoku = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             this.btn_tanaorosi = new System.Windows.Forms.Button();
             this.btn_zaiko_syoukai = new System.Windows.Forms.Button();
             this.tb_getumatu_zaiko = new System.Windows.Forms.Button();
@@ -107,6 +107,8 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
+            this.btn_chk_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_siji_print = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_print = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_edit = new System.Windows.Forms.Button();
@@ -139,7 +141,6 @@
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_chk_schedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -212,6 +213,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_msg3);
             this.splitContainer1.Panel1.Controls.Add(this.btn_gamen_kousin);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_msg2);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_msg1);
@@ -224,9 +226,18 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(994, 572);
-            this.splitContainer1.SplitterDistance = 86;
+            this.splitContainer1.SplitterDistance = 109;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
+            // 
+            // lbl_msg3
+            // 
+            this.lbl_msg3.AutoSize = true;
+            this.lbl_msg3.Location = new System.Drawing.Point(69, 61);
+            this.lbl_msg3.Name = "lbl_msg3";
+            this.lbl_msg3.Size = new System.Drawing.Size(32, 12);
+            this.lbl_msg3.TabIndex = 6;
+            this.lbl_msg3.Text = "msg3";
             // 
             // btn_gamen_kousin
             // 
@@ -270,7 +281,7 @@
             // 
             this.lbl_program_version.AutoSize = true;
             this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_program_version.Location = new System.Drawing.Point(69, 61);
+            this.lbl_program_version.Location = new System.Drawing.Point(69, 86);
             this.lbl_program_version.Name = "lbl_program_version";
             this.lbl_program_version.Size = new System.Drawing.Size(552, 12);
             this.lbl_program_version.TabIndex = 1;
@@ -317,8 +328,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_logout);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(994, 482);
-            this.splitContainer2.SplitterDistance = 446;
+            this.splitContainer2.Size = new System.Drawing.Size(994, 459);
+            this.splitContainer2.SplitterDistance = 423;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -340,7 +351,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_schedule);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_kousu);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_nouhin_schedule);
-            this.splitContainer3.Size = new System.Drawing.Size(994, 446);
+            this.splitContainer3.Size = new System.Drawing.Size(994, 423);
             this.splitContainer3.SplitterDistance = 842;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
@@ -358,7 +369,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(838, 442);
+            this.tabControl1.Size = new System.Drawing.Size(838, 419);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
@@ -368,7 +379,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(830, 416);
+            this.tabPage1.Size = new System.Drawing.Size(830, 393);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -388,7 +399,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer9);
-            this.splitContainer4.Size = new System.Drawing.Size(824, 410);
+            this.splitContainer4.Size = new System.Drawing.Size(824, 387);
             this.splitContainer4.SplitterDistance = 360;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -414,7 +425,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(360, 410);
+            this.splitContainer5.Size = new System.Drawing.Size(360, 387);
             this.splitContainer5.SplitterDistance = 74;
             this.splitContainer5.TabIndex = 4;
             // 
@@ -430,7 +441,7 @@
             // 
             // btn_day_down
             // 
-            this.btn_day_down.Location = new System.Drawing.Point(5, 28);
+            this.btn_day_down.Location = new System.Drawing.Point(5, 27);
             this.btn_day_down.Name = "btn_day_down";
             this.btn_day_down.Size = new System.Drawing.Size(51, 23);
             this.btn_day_down.TabIndex = 1;
@@ -481,8 +492,8 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer6.Size = new System.Drawing.Size(360, 332);
-            this.splitContainer6.SplitterDistance = 204;
+            this.splitContainer6.Size = new System.Drawing.Size(360, 309);
+            this.splitContainer6.SplitterDistance = 189;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
             // 
@@ -503,7 +514,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_kintai);
-            this.splitContainer7.Size = new System.Drawing.Size(356, 200);
+            this.splitContainer7.Size = new System.Drawing.Size(356, 185);
             this.splitContainer7.SplitterDistance = 25;
             this.splitContainer7.TabIndex = 0;
             // 
@@ -523,7 +534,7 @@
             this.dgv_kintai.Location = new System.Drawing.Point(0, 0);
             this.dgv_kintai.Name = "dgv_kintai";
             this.dgv_kintai.RowTemplate.Height = 21;
-            this.dgv_kintai.Size = new System.Drawing.Size(356, 171);
+            this.dgv_kintai.Size = new System.Drawing.Size(356, 156);
             this.dgv_kintai.TabIndex = 0;
             // 
             // splitContainer8
@@ -543,7 +554,7 @@
             // splitContainer8.Panel2
             // 
             this.splitContainer8.Panel2.Controls.Add(this.dgv_event);
-            this.splitContainer8.Size = new System.Drawing.Size(356, 120);
+            this.splitContainer8.Size = new System.Drawing.Size(356, 112);
             this.splitContainer8.SplitterDistance = 26;
             this.splitContainer8.TabIndex = 0;
             // 
@@ -563,7 +574,7 @@
             this.dgv_event.Location = new System.Drawing.Point(0, 0);
             this.dgv_event.Name = "dgv_event";
             this.dgv_event.RowTemplate.Height = 21;
-            this.dgv_event.Size = new System.Drawing.Size(356, 90);
+            this.dgv_event.Size = new System.Drawing.Size(356, 82);
             this.dgv_event.TabIndex = 0;
             // 
             // splitContainer9
@@ -584,7 +595,7 @@
             // splitContainer9.Panel2
             // 
             this.splitContainer9.Panel2.Controls.Add(this.splitContainer10);
-            this.splitContainer9.Size = new System.Drawing.Size(456, 406);
+            this.splitContainer9.Size = new System.Drawing.Size(456, 383);
             this.splitContainer9.SplitterDistance = 25;
             this.splitContainer9.TabIndex = 0;
             // 
@@ -622,8 +633,8 @@
             // splitContainer10.Panel2
             // 
             this.splitContainer10.Panel2.Controls.Add(this.btn_timereport);
-            this.splitContainer10.Size = new System.Drawing.Size(456, 377);
-            this.splitContainer10.SplitterDistance = 344;
+            this.splitContainer10.Size = new System.Drawing.Size(456, 354);
+            this.splitContainer10.SplitterDistance = 321;
             this.splitContainer10.TabIndex = 0;
             // 
             // dgv_timereport
@@ -633,7 +644,7 @@
             this.dgv_timereport.Location = new System.Drawing.Point(0, 0);
             this.dgv_timereport.Name = "dgv_timereport";
             this.dgv_timereport.RowTemplate.Height = 21;
-            this.dgv_timereport.Size = new System.Drawing.Size(456, 344);
+            this.dgv_timereport.Size = new System.Drawing.Size(456, 321);
             this.dgv_timereport.TabIndex = 0;
             // 
             // btn_timereport
@@ -668,7 +679,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(830, 416);
+            this.tabPage2.Size = new System.Drawing.Size(830, 393);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "受注・売上・請求";
             // 
@@ -847,7 +858,6 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.tabPage3.Controls.Add(this.btn_seisan_koutei_m);
             this.tabPage3.Controls.Add(this.btn_tanaorosi);
             this.tabPage3.Controls.Add(this.btn_zaiko_syoukai);
             this.tabPage3.Controls.Add(this.tb_getumatu_zaiko);
@@ -869,19 +879,9 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(830, 416);
+            this.tabPage3.Size = new System.Drawing.Size(830, 393);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "部品・製品";
-            // 
-            // btn_seisan_koutei_m
-            // 
-            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(236, 267);
-            this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
-            this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_koutei_m.TabIndex = 21;
-            this.btn_seisan_koutei_m.Text = "生産工程マスタ";
-            this.btn_seisan_koutei_m.UseVisualStyleBackColor = true;
-            this.btn_seisan_koutei_m.Click += new System.EventHandler(this.btn_seisan_koutei_m_Click);
             // 
             // btn_tanaorosi
             // 
@@ -1076,7 +1076,7 @@
             this.tabPage4.Controls.Add(this.btn_siire);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(830, 416);
+            this.tabPage4.Size = new System.Drawing.Size(830, 393);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仕入・支払";
             // 
@@ -1134,6 +1134,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_seisan_koutei_m);
             this.tabPage5.Controls.Add(this.btn_chk_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_siji_print);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_print);
@@ -1143,9 +1144,29 @@
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(830, 416);
+            this.tabPage5.Size = new System.Drawing.Size(830, 393);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
+            // 
+            // btn_seisan_koutei_m
+            // 
+            this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 311);
+            this.btn_seisan_koutei_m.Name = "btn_seisan_koutei_m";
+            this.btn_seisan_koutei_m.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_koutei_m.TabIndex = 22;
+            this.btn_seisan_koutei_m.Text = "生産工程マスタ";
+            this.btn_seisan_koutei_m.UseVisualStyleBackColor = true;
+            this.btn_seisan_koutei_m.Click += new System.EventHandler(this.btn_seisan_koutei_m_Click);
+            // 
+            // btn_chk_schedule
+            // 
+            this.btn_chk_schedule.Location = new System.Drawing.Point(234, 233);
+            this.btn_chk_schedule.Name = "btn_chk_schedule";
+            this.btn_chk_schedule.Size = new System.Drawing.Size(222, 23);
+            this.btn_chk_schedule.TabIndex = 6;
+            this.btn_chk_schedule.Text = "生産スケジュールチェック";
+            this.btn_chk_schedule.UseVisualStyleBackColor = true;
+            this.btn_chk_schedule.Click += new System.EventHandler(this.btn_chk_schedule_Click);
             // 
             // btn_seisan_siji_print
             // 
@@ -1231,7 +1252,7 @@
             this.tabPage6.Controls.Add(this.btn_kubun_meisyou_m);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(830, 416);
+            this.tabPage6.Size = new System.Drawing.Size(830, 393);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "システム保守";
             // 
@@ -1489,16 +1510,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_chk_schedule
-            // 
-            this.btn_chk_schedule.Location = new System.Drawing.Point(236, 233);
-            this.btn_chk_schedule.Name = "btn_chk_schedule";
-            this.btn_chk_schedule.Size = new System.Drawing.Size(220, 23);
-            this.btn_chk_schedule.TabIndex = 6;
-            this.btn_chk_schedule.Text = "生産スケジュールチェック";
-            this.btn_chk_schedule.UseVisualStyleBackColor = true;
-            this.btn_chk_schedule.Click += new System.EventHandler(this.btn_chk_schedule_Click);
-            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1667,7 +1678,6 @@
         private System.Windows.Forms.Button btn_koutei_m;
         private System.Windows.Forms.Button btn_busyo_m;
         private System.Windows.Forms.Button btn_system_administrator;
-        private System.Windows.Forms.Button btn_seisan_koutei_m;
         private System.Windows.Forms.Button btn_seisan_koutei;
         private System.Windows.Forms.Button btn_seisan_kousu;
         private System.Windows.Forms.Button btn_seisan_schedule;
@@ -1686,6 +1696,8 @@
         private System.Windows.Forms.Button btn_seisan_siji_print;
         private System.Windows.Forms.Button btn_seisan_schedule_print;
         private System.Windows.Forms.Button btn_chk_schedule;
+        private System.Windows.Forms.Button btn_seisan_koutei_m;
+        private System.Windows.Forms.Label lbl_msg3;
     }
 }
 

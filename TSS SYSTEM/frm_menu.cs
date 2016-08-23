@@ -57,7 +57,7 @@ namespace TSS_SYSTEM
             //プログラムのバージョン確認
             if (tss.Version_Check() == false)
             {
-                lbl_program_version.Text = "TSSシステムのバージョンが違います。TSSシステムを終了し、tss_system get_new を実行してください。";
+                lbl_program_version.Text = "プログラムのバージョンが違います。\nTSSシステムを終了し、tss_system_get_new を実行してから再度起動してください。";
                 lbl_program_version.ForeColor = Color.White;
                 lbl_program_version.BackColor = Color.Red;
             }
@@ -173,6 +173,7 @@ namespace TSS_SYSTEM
             }
             lbl_msg1.Text = w_dt_ctrl.Rows[0]["msg1"].ToString();
             lbl_msg2.Text = w_dt_ctrl.Rows[0]["msg2"].ToString();
+            lbl_msg3.Text = w_dt_ctrl.Rows[0]["msg3"].ToString();
         }
 
         private void btn_mst_table_Click(object sender, EventArgs e)

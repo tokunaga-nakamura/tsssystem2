@@ -177,66 +177,6 @@
   <data name="textBox101.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="textBox12.OutputFormat" xml:space="preserve">
-    <value>#,##0.00</value>
-  </data>
-  <data name="textBox44.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox45.OutputFormat" xml:space="preserve">
-    <value>0.#</value>
-  </data>
-  <data name="textBox49.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox50.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox52.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox53.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox56.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox58.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox60.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox77.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox78.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox79.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox80.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox81.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox97.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox98.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox99.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox100.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="textBox101.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
   <metadata name="$this.ScriptEditorPositionForUndo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>

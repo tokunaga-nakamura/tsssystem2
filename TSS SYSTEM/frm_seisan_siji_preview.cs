@@ -284,7 +284,7 @@ namespace TSS_SYSTEM
                 //生産機種
                 w_dr["seisankisyu"] = loop_dr["seisankisyu"].ToString();
                 //メンバー
-                //現時点ｍメンバーは未対応として、空白で印字
+                //現時点メンバーは未対応として、空白で印字
                 w_dr["member01"] = "";
                 w_dr["member02"] = "";
                 w_dr["member03"] = "";
@@ -364,8 +364,16 @@ namespace TSS_SYSTEM
                 w_dr["hinsitu_kako_su5"] = "";
                 w_dr["hinsitu_kako_name6"] = "";
                 w_dr["hinsitu_kako_su6"] = "";
-                //バーコード（各項目をdbと同じ桁数の文字列にして連結させる）
-                w_dr["barcode"] = tss.StringRight(loop_dr["seisan_yotei_date"].ToString(),10) + tss.StringRight(loop_dr["busyo_cd"].ToString(),4) + tss.StringRight(loop_dr["koutei_cd"].ToString(),3) + tss.StringRight(loop_dr["line_cd"].ToString(),3) + tss.StringRight(loop_dr["seq"].ToString(),3) + tss.StringRight(loop_dr["torihikisaki_cd"].ToString(),6) + tss.StringRight(loop_dr["juchu_cd1"].ToString(),16) + tss.StringRight(loop_dr["juchu_cd2"].ToString(),16);
+                //バーコード（各項目をdbと同じ桁数の文字列にして連結させる）（BC読込後に加工無しでdbへアクセスできるように考慮）
+                w_dr["barcode"] = tss.StringRight(loop_dr["seisan_yotei_date"].ToString(),10)
+                                + tss.StringRight(loop_dr["busyo_cd"].ToString(),4)
+                                + tss.StringRight(loop_dr["koutei_cd"].ToString(),3)
+                                + tss.StringRight(loop_dr["line_cd"].ToString(),3)
+                                + tss.StringRight(loop_dr["seq"].ToString(),3)
+                                + tss.StringRight(loop_dr["torihikisaki_cd"].ToString(),6)
+                                + tss.StringRight(loop_dr["juchu_cd1"].ToString(),16)
+                                + tss.StringRight(loop_dr["juchu_cd2"].ToString(),16)
+                                ;
                 w_dt_meisai.Rows.Add(w_dr);
             }
         }

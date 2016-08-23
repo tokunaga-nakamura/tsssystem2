@@ -89,7 +89,7 @@ namespace TSS_SYSTEM
             //プログラムのバージョン確認
             if (tss.Version_Check() == false)
             {
-                MessageBox.Show("プログラムのバージョンが違います。tss_system get_new を実行してください。");
+                MessageBox.Show("プログラムのバージョンが違います。\n最新のプログラムでない可能性があります。\nTSSシステムを終了し、tss_system_get_new を実行してから再度試してください。");
                 Application.Exit();
             }
             lbl_system.Text = tss.DataSource + " " + tss.system_version;
