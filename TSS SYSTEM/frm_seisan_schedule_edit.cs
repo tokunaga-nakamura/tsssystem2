@@ -17,10 +17,11 @@ namespace TSS_SYSTEM
         DataTable w_dt_before = new DataTable();
         DataTable w_dt_next = new DataTable();
         DataTable w_dt_member = new DataTable();
-        DataTable w_dt_cb_today = new DataTable();     //コンボボックス用
+        DataTable w_dt_cb_today = new DataTable();  //コンボボックス用
         DataTable w_dt_cb_before = new DataTable();
         DataTable w_dt_cb_next = new DataTable();
         DataTable w_dt_cb_member = new DataTable();
+        DataTable w_dt_dragdrop = new DataTable();  //ドラッグ＆ドロップ用
         decimal result;
 
         //string str_date;
@@ -294,28 +295,23 @@ namespace TSS_SYSTEM
             if(w_dgv.Name == "dgv_today")
             {
                 //指定列をリードオンリーにする
-                w_dgv.Columns["seisan_time"].ReadOnly = true;
-                //w_dgv.Columns["end_time"].ReadOnly = true;
-                //w_dgv.Columns["koutei_name"].ReadOnly = true;
-                //w_dgv.Columns["line_name"].ReadOnly = true;
-                w_dgv.Columns["seihin_cd"].ReadOnly = true;
-                w_dgv.Columns["seihin_name"].ReadOnly = true;
-                w_dgv.Columns["juchu_su"].ReadOnly = true;
+                w_dgv.Columns["busyo_cd"].ReadOnly = true;
+                w_dgv.Columns["busyo_name"].ReadOnly = true;
+                w_dgv.Columns["koutei_name"].ReadOnly = true;
+                w_dgv.Columns["line_name"].ReadOnly = true;
                 w_dgv.Columns["hensyu_flg"].ReadOnly = true;
 
                 //指定列の色を変える
+                w_dgv.Columns["busyo_cd"].DefaultCellStyle.BackColor = Color.LightGray;
+                w_dgv.Columns["busyo_name"].DefaultCellStyle.BackColor = Color.LightGray;
                 w_dgv.Columns["koutei_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
                 w_dgv.Columns["line_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
-                //w_dgv.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
-                //w_dgv.Columns["koutei_name"].DefaultCellStyle.BackColor = Color.LightGray;
+                w_dgv.Columns["line_name"].DefaultCellStyle.BackColor = Color.LightGray;
+                w_dgv.Columns["koutei_name"].DefaultCellStyle.BackColor = Color.LightGray;
                 w_dgv.Columns["torihikisaki_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
                 w_dgv.Columns["juchu_cd1"].DefaultCellStyle.BackColor = Color.PowderBlue;
                 w_dgv.Columns["juchu_cd2"].DefaultCellStyle.BackColor = Color.PowderBlue;
-                w_dgv.Columns["seisan_time"].DefaultCellStyle.BackColor = Color.LightGray;
-                //w_dgv.Columns["end_time"].DefaultCellStyle.BackColor = Color.LightGray;
-                w_dgv.Columns["seihin_cd"].DefaultCellStyle.BackColor = Color.LightGray;
-                w_dgv.Columns["seihin_name"].DefaultCellStyle.BackColor = Color.LightGray;
-                w_dgv.Columns["juchu_su"].DefaultCellStyle.BackColor = Color.LightGray;
+                w_dgv.Columns["seihin_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
                 w_dgv.Columns["hensyu_flg"].DefaultCellStyle.BackColor = Color.LightGray;
                 //部署が選択されている場合のみ編集可能とする（seqの振り直しの関係）
                 if (cb_today_busyo.SelectedValue.ToString() == "000000")
@@ -1059,10 +1055,6 @@ namespace TSS_SYSTEM
 
                     if (dt_work.Rows.Count == 0)
                     {
-                        //MessageBox.Show("この製品工程に、このラインは登録されていません");
-                        //e.Cancel = true;
-                        //return;
-
                         DialogResult result = MessageBox.Show("この製品工程に、このラインは登録されていませんが、よろしいですか？",
                            "質問",
                            MessageBoxButtons.OKCancel,
@@ -1083,7 +1075,6 @@ namespace TSS_SYSTEM
                             return;
                         }
                     }
-
                     else
                     {
                         dgv_today.CurrentCell.Value = e.FormattedValue.ToString();
@@ -1201,6 +1192,43 @@ namespace TSS_SYSTEM
                 seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
             }
 
+            //製品コード
+            if (e.ColumnIndex == 11)
+            {
+                //未入力は許容する
+                if (e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
+                {
+                    //受注コードが入力されている場合、製品コードは変更不可
+                    int w_juchu_cd1_flg = 0;    //0:未入力 1:入力済
+                    int w_juchu_cd2_flg = 0;    //0:未入力 1:入力済
+
+                    if (dgv_today.Rows[e.RowIndex].Cells["juchu_cd1"].Value.ToString() != null && dgv_today.Rows[e.RowIndex].Cells["juchu_cd1"].Value.ToString() != "")
+                    {
+                        w_juchu_cd1_flg = 1;
+                    }
+                    if (dgv_today.Rows[e.RowIndex].Cells["juchu_cd2"].Value.ToString() != null && dgv_today.Rows[e.RowIndex].Cells["juchu_cd2"].Value.ToString() != "")
+                    {
+                        w_juchu_cd2_flg = 1;
+                    }
+                    //受注コード1または受注コード2のどちらかが入力されていた
+                    if (w_juchu_cd1_flg == 1 || w_juchu_cd2_flg == 1)
+                    {
+                        if (dgv_today.Rows[e.RowIndex].Cells["seihin_cd"].Value.ToString() != e.FormattedValue.ToString())
+                        {
+                            MessageBox.Show("受注情報に登録されている製品コードは変更できません。");
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+                    //製品コードのセルを抜けるときは必ず製品名を読み込む（製品名の変更は保持しない）
+                    if (tss.get_seihin_name(e.FormattedValue.ToString()) == null)
+                    {
+                        MessageBox.Show("入力された製品コードは存在しません。");
+                        e.Cancel = true;
+                    }
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(e.FormattedValue.ToString());
+                }
+            }
             //生産数
             if (e.ColumnIndex == 15)
             {
@@ -1525,7 +1553,6 @@ namespace TSS_SYSTEM
                     MessageBox.Show("製品と工程・ラインの組み合わせが合っていません。\n調整してください。");
                     return;
                 }
-
                 //dgv_today.CurrentRow.Cells["tact_time"].Value = DBNull.Value;
                 //dgv_today.CurrentRow.Cells["dandori_kousu"].Value = DBNull.Value;
                 //dgv_today.CurrentRow.Cells["tuika_kousu"].Value = DBNull.Value;
@@ -1813,6 +1840,21 @@ namespace TSS_SYSTEM
                     //chk_juchu(e.RowIndex);
                 }
             }
+
+            //製品コード
+            if(ci == 11)
+            {
+                //選択画面へ
+                string w_cd;
+                w_cd = tss.search_seihin("2", dgv_today.Rows[e.RowIndex].Cells["seihin_cd"].Value.ToString());
+                if (w_cd != "")
+                {
+                    dgv_today.CurrentCell.Value = w_cd;
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(dgv_today.CurrentCell.Value.ToString());
+                    dgv_today.EndEdit();
+                    seihin_cd_change(w_cd);
+                }
+            }
         }
 
         private void btn_day_up_Click(object sender, EventArgs e)
@@ -1887,7 +1929,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_before.DataSource == null) return;
-
             DateTime w_next_day = dtp_before.Value.AddDays(1);
             get_schedule_data(cb_before_busyo, w_next_day.ToShortDateString());
             disp_schedule_data(dgv_before, w_dt_before);
@@ -1898,7 +1939,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_before.DataSource == null) return;
-
             DateTime w_before_day = dtp_before.Value.AddDays(-1);
             get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
             disp_schedule_data(dgv_before, w_dt_before);
@@ -1909,7 +1949,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_next.DataSource == null) return;
-
             DateTime w_next_day = dtp_next.Value.AddDays(1);
             get_schedule_data(cb_next_busyo, w_next_day.ToShortDateString());
             disp_schedule_data(dgv_next, w_dt_next);
@@ -1920,7 +1959,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_next.DataSource == null) return;
-
             DateTime w_before_day = dtp_next.Value.AddDays(-1);
             get_schedule_data(cb_next_busyo, w_before_day.ToShortDateString());
             disp_schedule_data(dgv_next, w_dt_next);
@@ -1941,9 +1979,7 @@ namespace TSS_SYSTEM
                 MessageBox.Show("権限がありません");
                 return;
             }
-
             int roc = w_dt_today.Rows.Count;
-
             if(roc != 0)
             {
                 for (int i = 0; i <= roc - 1; i++)
@@ -2090,7 +2126,7 @@ namespace TSS_SYSTEM
                             MessageBox.Show("生産時間の値が異常です　0～99999999.99");
                             return;
                         }
-                        if (result > decimal.Parse("99999.99") || result < decimal.Parse("0.00"))
+                        if (result > decimal.Parse("99999999.99") || result < decimal.Parse("0.00"))
                         {
                             MessageBox.Show("生産時間の値が異常です 0～99999999.99");
                             return;
@@ -2540,7 +2576,6 @@ namespace TSS_SYSTEM
             {
                 frm_rpt.arg_busyo_cd = cb_today_busyo.SelectedValue.ToString();
             }
-
             frm_rpt.ShowDialog(this);
             frm_rpt.Dispose();
         }
@@ -2552,7 +2587,6 @@ namespace TSS_SYSTEM
             frm_chk_sc.Dispose();
 
             //子画面から値を取得する
-            
             string str_date = frm_chk_sc.str_date;
             string str_busyo = frm_chk_sc.str_busyo;
 
@@ -2560,6 +2594,271 @@ namespace TSS_SYSTEM
             MessageBox.Show(str_busyo);
             //this.label1.Text = frm_s_seisan_kou.str_cd;
             frm_chk_sc.Dispose();
+        }
+
+        private void dgv_before_MouseDown(object sender, MouseEventArgs e)
+        {
+            //データが無い場合は、ドラッグ＆ドロップを許可しない
+            if (dgv_before.Rows.Count <= 0)
+            {
+                return;
+            }
+            //マウスの左ボタンが押されている場合
+            if (e.Button == MouseButtons.Left)
+            {
+                //MouseDownイベント発生時のX,Y座標を取得
+                DataGridView.HitTestInfo hit = dgv_before.HitTest(e.X, e.Y);
+                //複写元となる行データ
+                System.Windows.Forms.DataGridViewRow SourceRow;
+                //ドラッグ元としての指定位置が有効なセル上を選択している場合
+                if (hit.Type == DataGridViewHitTestType.Cell && (dgv_before.NewRowIndex == -1 || dgv_before.NewRowIndex != hit.RowIndex))
+                {
+                    //複写元となる行データ
+                    SourceRow = dgv_before.Rows[hit.RowIndex];
+                    //該当行を選択状態にする
+                    dgv_before.Rows[hit.RowIndex].Selected = true;
+                }
+                //ドラッグ元の指定位置が有効なセル上を選択していない場合
+                else
+                {
+                    //指定行はドラッグ&ドロップの対象ではないので処理を終了
+                    return;
+                }
+                //ドロップ先に送る行データの作成
+                //複写先となる行用オブジェクトを作成
+                System.Windows.Forms.DataGridViewRow DestinationRow;
+                DestinationRow = new System.Windows.Forms.DataGridViewRow();
+                DestinationRow.CreateCells(dgv_today);  // 複写先DataGridViewを指定
+                //受け渡すrowデータにデータをセット
+                DestinationRow.Cells[0].Value = lbl_seisan_yotei_date_today.Text;
+                DestinationRow.Cells[1].Value = SourceRow.Cells[1].Value.ToString();
+                DestinationRow.Cells[2].Value = SourceRow.Cells[2].Value.ToString();
+                DestinationRow.Cells[3].Value = SourceRow.Cells[3].Value.ToString();
+                DestinationRow.Cells[4].Value = SourceRow.Cells[4].Value.ToString();
+                DestinationRow.Cells[5].Value = SourceRow.Cells[5].Value.ToString();
+                DestinationRow.Cells[6].Value = SourceRow.Cells[6].Value.ToString();
+                DestinationRow.Cells[7].Value = "";
+                DestinationRow.Cells[8].Value = SourceRow.Cells[8].Value.ToString();
+                DestinationRow.Cells[9].Value = SourceRow.Cells[9].Value.ToString();
+                DestinationRow.Cells[10].Value = SourceRow.Cells[10].Value.ToString();
+                DestinationRow.Cells[11].Value = SourceRow.Cells[11].Value.ToString();
+                DestinationRow.Cells[12].Value = SourceRow.Cells[12].Value.ToString();
+                DestinationRow.Cells[13].Value = SourceRow.Cells[13].Value.ToString();
+                DestinationRow.Cells[14].Value = SourceRow.Cells[14].Value.ToString();
+                DestinationRow.Cells[15].Value = SourceRow.Cells[15].Value.ToString();
+                DestinationRow.Cells[16].Value = SourceRow.Cells[16].Value.ToString();
+                DestinationRow.Cells[17].Value = SourceRow.Cells[17].Value.ToString();
+                DestinationRow.Cells[18].Value = SourceRow.Cells[18].Value.ToString();
+                DestinationRow.Cells[19].Value = SourceRow.Cells[19].Value.ToString();
+                DestinationRow.Cells[20].Value = SourceRow.Cells[20].Value.ToString();
+                DestinationRow.Cells[21].Value = SourceRow.Cells[21].Value.ToString();
+                DestinationRow.Cells[22].Value = SourceRow.Cells[22].Value.ToString();
+                DestinationRow.Cells[23].Value = SourceRow.Cells[23].Value.ToString();
+                DestinationRow.Cells[24].Value = SourceRow.Cells[24].Value.ToString();
+                DestinationRow.Cells[25].Value = "";
+                DestinationRow.Cells[26].Value = SourceRow.Cells[26].Value.ToString();
+                DestinationRow.Cells[27].Value = tss.user_cd;
+                DestinationRow.Cells[28].Value = DateTime.Now.ToString();
+                DestinationRow.Cells[29].Value = "";
+                DestinationRow.Cells[30].Value = "";
+                //ドラッグ&ドロップを開始
+                //ドラッグソースのデータは行データDestinationRowとする
+                //また、ドラッグソースのデータはドロップ先に複写する
+                DoDragDrop(DestinationRow, DragDropEffects.Copy);
+            }
+        }
+
+        private void dgv_today_DragOver(object sender, DragEventArgs e)
+        {
+            //ドラッグソースのデータが行データ（DataGridViewRow型）で、かつ、
+            //ドラッグ元の指示では、ドラッグソースのデータをドロップ先に複写するよう指示されている場合（移動等の複写とは別の指示ではない場合）
+            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.DataGridViewRow)) && (e.AllowedEffect == DragDropEffects.Copy))
+            {
+                //ドロップ先に複写を許可するようにする。
+                e.Effect = DragDropEffects.Copy;
+            }
+            //ドラッグされているデーターが行データ（DataGridViewRow型）ではない場合、
+            //又は、ドラッグソースのデータはドロップ先に複写するよう指示されていない場合（複写ではなく移動等の別の指示の場合）
+            else
+            {
+                //ドロップ先にドロップを受け入れないようにする
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void dgv_today_DragDrop(object sender, DragEventArgs e)
+        {
+            //データが無い場合は、ドラッグ＆ドロップを許可しない
+            //if (w_hensyu_flg == 0)
+            //{
+            //    return;
+            //}
+
+            //DragDropイベント発生時のX,Y座標を取得
+            Point clientPoint = dgv_today.PointToClient(new Point(e.X, e.Y));
+            DataGridView.HitTestInfo hit = dgv_today.HitTest(clientPoint.X, clientPoint.Y);
+            //dataGridView2.Rows[hit.RowIndex].Selected = true;   //該当行を選択状態に
+
+            //ドラッグされているデータが行データ（DataGridViewRow型）で、かつ、
+            //ドラッグソースのデータはドロップ先に複写するよう指示されている場合（移動等の別の指示ではない場合）
+            if (e.Data.GetDataPresent(typeof(System.Windows.Forms.DataGridViewRow)) && (e.Effect == DragDropEffects.Copy))
+            {
+                //ドラッグソースの行データ（DataGridViewRow型データ）を取得
+                System.Windows.Forms.DataGridViewRow Row_Work = (System.Windows.Forms.DataGridViewRow)e.Data.GetData(typeof(System.Windows.Forms.DataGridViewRow));
+                //違う部署コードの場合は、ドラッグ＆ドロップを許可しない
+                if (cb_today_busyo.SelectedValue.ToString() != Row_Work.Cells[1].Value.ToString())
+                {
+                    MessageBox.Show("異なる部署のスケジュールはコピーできません。");
+                    return;
+                }
+                //ドロップ先としての指定位置が有効な場合（x,y座標値の取得に成功している場合）
+                if (hit.RowIndex != -1)
+                {
+                    //行データをdataGridView2の指定行の前に挿入
+                    DataRow w_dt_dragdrop_row = w_dt_today.NewRow();
+                    w_dt_today.Rows.InsertAt(dragdrop_copy_set(w_dt_dragdrop_row, Row_Work), hit.RowIndex);
+                    //追加した行を選択状態にする。
+                    dgv_today.Rows[hit.RowIndex].Selected = true;
+                }
+                //ドロップ先としての指定位置が有効でない場合（x,y座標値の取得に失敗した場合）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                else
+                {
+                    //行データをdataGridView2の末尾に追加
+                    DataRow w_dt_dragdrop_row = w_dt_today.NewRow();
+                    w_dt_today.Rows.Add(dragdrop_copy_set(w_dt_dragdrop_row,Row_Work));
+                }
+            }
+            //ドラッグされているデータが行データ（DataGridViewRow型）ではない場合、
+            //又はドラッグソースのデータはドロップ先に複写するよう指示されていない場合（複写ではなく移動等の別の指示の場合）
+            else
+            {
+                //特に処理はなし
+            }
+        }
+
+        private DataRow dragdrop_copy_set(DataRow in_datarow,DataGridViewRow in_dgv_row)
+        {
+            //ドロップ先のrowとドラッグ元のrowを受け取り、ドラッグ元のデータをドラッグ先のrowに入れて返す
+            tss.GetUser();
+            in_datarow["seisan_yotei_date"] = lbl_seisan_yotei_date_today.Text;
+            in_datarow["busyo_cd"] = in_dgv_row.Cells[1].Value.ToString();
+            in_datarow["busyo_name"] = in_dgv_row.Cells[2].Value.ToString();
+            in_datarow["koutei_cd"] = in_dgv_row.Cells[3].Value.ToString();
+            in_datarow["koutei_name"] = in_dgv_row.Cells[4].Value.ToString();
+            in_datarow["line_cd"] = in_dgv_row.Cells[5].Value.ToString();
+            in_datarow["line_name"] = in_dgv_row.Cells[6].Value.ToString();
+            in_datarow["seq"] = 0;
+            in_datarow["torihikisaki_cd"] = in_dgv_row.Cells[8].Value.ToString();
+            in_datarow["juchu_cd1"] = in_dgv_row.Cells[9].Value.ToString();
+            in_datarow["juchu_cd2"] = in_dgv_row.Cells[10].Value.ToString();
+            in_datarow["seihin_cd"] = in_dgv_row.Cells[11].Value.ToString();
+            in_datarow["seihin_name"] = in_dgv_row.Cells[12].Value.ToString();
+            in_datarow["seisankisyu"] = in_dgv_row.Cells[13].Value.ToString();
+            in_datarow["juchu_su"] = in_dgv_row.Cells[14].Value.ToString();
+            in_datarow["seisan_su"] = in_dgv_row.Cells[15].Value.ToString();
+            in_datarow["tact_time"] = in_dgv_row.Cells[16].Value.ToString();
+            in_datarow["dandori_kousu"] = in_dgv_row.Cells[17].Value.ToString();
+            in_datarow["tuika_kousu"] = in_dgv_row.Cells[18].Value.ToString();
+            in_datarow["hoju_kousu"] = in_dgv_row.Cells[19].Value.ToString();
+            in_datarow["seisan_time"] = in_dgv_row.Cells[20].Value.ToString();
+            in_datarow["start_time"] = in_dgv_row.Cells[21].Value.ToString();
+            in_datarow["end_time"] = in_dgv_row.Cells[22].Value.ToString();
+            in_datarow["ninzu"] = in_dgv_row.Cells[23].Value.ToString();
+            in_datarow["members"] = in_dgv_row.Cells[24].Value.ToString();
+            in_datarow["hensyu_flg"] = "";
+            in_datarow["bikou"] = in_dgv_row.Cells[26].Value.ToString();
+            in_datarow["create_user_cd"] = tss.user_cd;
+            in_datarow["create_datetime"] = DateTime.Now.ToString();
+            in_datarow["update_user_cd"] = "";
+            //in_datarow["update_datetime"] = "";
+            return in_datarow;
+        }
+
+        private void dgv_next_MouseDown(object sender, MouseEventArgs e)
+        {
+            //データが無い場合は、ドラッグ＆ドロップを許可しない
+            if (dgv_next.Rows.Count <= 0)
+            {
+                return;
+            }
+            //マウスの左ボタンが押されている場合
+            if (e.Button == MouseButtons.Left)
+            {
+                //MouseDownイベント発生時のX,Y座標を取得
+                DataGridView.HitTestInfo hit = dgv_next.HitTest(e.X, e.Y);
+                //複写元となる行データ
+                System.Windows.Forms.DataGridViewRow SourceRow;
+                //ドラッグ元としての指定位置が有効なセル上を選択している場合
+                if (hit.Type == DataGridViewHitTestType.Cell && (dgv_next.NewRowIndex == -1 || dgv_next.NewRowIndex != hit.RowIndex))
+                {
+                    //複写元となる行データ
+                    SourceRow = dgv_next.Rows[hit.RowIndex];
+                    //該当行を選択状態にする
+                    dgv_next.Rows[hit.RowIndex].Selected = true;
+                }
+                //ドラッグ元の指定位置が有効なセル上を選択していない場合
+                else
+                {
+                    //指定行はドラッグ&ドロップの対象ではないので処理を終了
+                    return;
+                }
+                //ドロップ先に送る行データの作成
+                //複写先となる行用オブジェクトを作成
+                System.Windows.Forms.DataGridViewRow DestinationRow;
+                DestinationRow = new System.Windows.Forms.DataGridViewRow();
+                DestinationRow.CreateCells(dgv_today);  // 複写先DataGridViewを指定
+                //受け渡すrowデータにデータをセット
+                DestinationRow.Cells[0].Value = lbl_seisan_yotei_date_today.Text;
+                DestinationRow.Cells[1].Value = SourceRow.Cells[1].Value.ToString();
+                DestinationRow.Cells[2].Value = SourceRow.Cells[2].Value.ToString();
+                DestinationRow.Cells[3].Value = SourceRow.Cells[3].Value.ToString();
+                DestinationRow.Cells[4].Value = SourceRow.Cells[4].Value.ToString();
+                DestinationRow.Cells[5].Value = SourceRow.Cells[5].Value.ToString();
+                DestinationRow.Cells[6].Value = SourceRow.Cells[6].Value.ToString();
+                DestinationRow.Cells[7].Value = "";
+                DestinationRow.Cells[8].Value = SourceRow.Cells[8].Value.ToString();
+                DestinationRow.Cells[9].Value = SourceRow.Cells[9].Value.ToString();
+                DestinationRow.Cells[10].Value = SourceRow.Cells[10].Value.ToString();
+                DestinationRow.Cells[11].Value = SourceRow.Cells[11].Value.ToString();
+                DestinationRow.Cells[12].Value = SourceRow.Cells[12].Value.ToString();
+                DestinationRow.Cells[13].Value = SourceRow.Cells[13].Value.ToString();
+                DestinationRow.Cells[14].Value = SourceRow.Cells[14].Value.ToString();
+                DestinationRow.Cells[15].Value = SourceRow.Cells[15].Value.ToString();
+                DestinationRow.Cells[16].Value = SourceRow.Cells[16].Value.ToString();
+                DestinationRow.Cells[17].Value = SourceRow.Cells[17].Value.ToString();
+                DestinationRow.Cells[18].Value = SourceRow.Cells[18].Value.ToString();
+                DestinationRow.Cells[19].Value = SourceRow.Cells[19].Value.ToString();
+                DestinationRow.Cells[20].Value = SourceRow.Cells[20].Value.ToString();
+                DestinationRow.Cells[21].Value = SourceRow.Cells[21].Value.ToString();
+                DestinationRow.Cells[22].Value = SourceRow.Cells[22].Value.ToString();
+                DestinationRow.Cells[23].Value = SourceRow.Cells[23].Value.ToString();
+                DestinationRow.Cells[24].Value = SourceRow.Cells[24].Value.ToString();
+                DestinationRow.Cells[25].Value = "";
+                DestinationRow.Cells[26].Value = SourceRow.Cells[26].Value.ToString();
+                DestinationRow.Cells[27].Value = tss.user_cd;
+                DestinationRow.Cells[28].Value = DateTime.Now.ToString();
+                DestinationRow.Cells[29].Value = "";
+                DestinationRow.Cells[30].Value = "";
+                //ドラッグ&ドロップを開始
+                //ドラッグソースのデータは行データDestinationRowとする
+                //また、ドラッグソースのデータはドロップ先に複写する
+                DoDragDrop(DestinationRow, DragDropEffects.Copy);
+            }
         }
 
     }

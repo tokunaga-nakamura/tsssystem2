@@ -28,6 +28,11 @@ namespace TSS_SYSTEM
 
         private void menu_Load(object sender, EventArgs e)
         {
+            //メニューに表示する日付の書式設定
+            dtp_1.Format = DateTimePickerFormat.Custom;
+            dtp_1.CustomFormat = "yyyy/MM/dd (ddd)";
+
+            //ログイン処理
             this.Opacity = 0;
             frm_login frm_login = new frm_login();
             frm_login.ShowDialog(this);

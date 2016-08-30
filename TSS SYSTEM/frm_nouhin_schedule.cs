@@ -970,7 +970,7 @@ namespace TSS_SYSTEM
 
         private void tb_nouhin_schedule_kbn_DoubleClick(object sender, EventArgs e)
         {
-            this.tb_nouhin_schedule_kbn.Text = tss.kubun_cd_select("09");
+            this.tb_nouhin_schedule_kbn.Text = tss.kubun_cd_select("09",tb_nouhin_schedule_kbn.Text);
             this.tb_nouhin_schedule_kbn_name.Text = tss.kubun_name_select("09", tb_nouhin_schedule_kbn.Text);
         }
 

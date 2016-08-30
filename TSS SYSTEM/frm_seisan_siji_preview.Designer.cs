@@ -47,8 +47,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
             // splitContainer1.Panel2
@@ -338,6 +340,15 @@
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(287, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "印刷はビュアー内の左上にある印刷ボタンから行ってください。";
+            // 
             // btn_syuuryou
             // 
             this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
@@ -348,14 +359,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "印刷はビュアー内の左上にある印刷ボタンから行ってください。";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(83, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(407, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "※「生産予定日」を未入力の状態でプレビューすると、白紙の指示書が印刷できます。";
             // 
             // frm_seisan_siji_preview
             // 
@@ -368,6 +379,7 @@
             this.Text = "生産指示書発行";
             this.Load += new System.EventHandler(this.frm_seisan_siji_preview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -411,5 +423,6 @@
         private System.Windows.Forms.Button btn_preview;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

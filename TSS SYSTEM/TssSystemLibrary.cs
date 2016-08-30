@@ -10,7 +10,7 @@ using Oracle.DataAccess.Client; //（参照設定にも追加）
 using System.Data;              //OracleのUPDATE文の実行の際にIsolationLevelを指定するのに必要らしい
 using System.IO;                //StreamWriter
 
-//プログラムのバージョン管理方法
+//プログラムのバージョン管理
 //----------------------------------------------------------------------------------------------------------------------------------
 //system_versionでシステム全体のバージョン管理をする
 //code_versionでプログラムのバージョン管理をする
@@ -47,15 +47,34 @@ using System.IO;                //StreamWriter
 //      5       2016/08/18  上記v4を変更モードにも対応
 //1.04  1       2016/08/23  メニューのメッセージを2行→3行へ変更
 //                          上記に伴いコントロールマスタにmsg3を追加
+//      2       2016/08/26  伊藤さんから報告：製品別在庫照会、製品構成が登録されていない製品を続けて表示させるとこけるbugfix
 //      x       2016/08/xx  -生産工数一覧、表示単位（時・分・秒）の対応とcsv出力も同様の対応
-//                          -生産スケジュール編集 v2リリース（メンバーや他の日の受注等のD&Dはまだ）
+//                          -生産スケジュール編集 v2リリース
+//                              ・前日、翌日のスケジュール（日付の変更可）を画面下に表示
+//                              ・別の日からのD&D（メンバーのD&Dはまだ）
+//                              ・空白状態からの新規行、及び空白行からの新規行の追加対応
+//                              ・自動時刻計算
+//                              ・部署、工程、ラインでのグループ化表示
+//                              ・納品スケジュールと生産スケジュールとの生産数チェック
 //                          -生産スケジュール一覧印刷
 //                          -製品検索子画面モード時に検索結果と見出しがずれているbugfix
 //                          -生産工程マスタ、登録時のエラー表示を「内容＋工程順」から「工程順\n内容」に修正
 //                          -生産工程マスタのメニューを製品・部品タブから生産タブへ移動
+//                          -作業指示書の印刷
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 namespace TSS_SYSTEM
@@ -105,7 +124,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.04";
-            program_code_version = "1";
+            program_code_version = "2";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -3427,7 +3446,6 @@ namespace TSS_SYSTEM
             }
             return true;
         }
-        #endregion
 
         private bool ssm_sakusei(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
         {
@@ -3681,6 +3699,62 @@ namespace TSS_SYSTEM
             }
             return true;
         }
+        #endregion
+
+        #region date_eigyou_calc メソッド
+        /// <summary>
+        /// 開始日と日数を受け取り、開始日から日数分をさかのぼった営業日を返す</summary>
+        /// <param name="DateTime in_datetime">
+        /// 開始日コード</param>
+        /// <param name="int in_day">
+        /// 日数</param>
+        /// <returns>
+        /// DateTime w_date_start
+        /// エラー等、取得できない場合は2000/01/01 00:00:00のDateTime型を返します。</returns>
+        public DateTime date_eigyou_calc(DateTime in_datetime,int in_day)
+        {
+            TimeSpan w_timespan;
+            DateTime w_date_start;
+            int w_kaisi_day;
+            w_timespan = TimeSpan.Parse("1");
+            w_date_start = in_datetime;
+            w_kaisi_day = in_day;
+
+            int w_loop_flg = 0;
+            DataTable w_dt_calendar;    //営業カレンダー読み込み用
+
+            for (int i = 0; i < w_kaisi_day; i++)
+            {
+                //営業日を見つけるまで－1日づつして繰り返す
+                w_loop_flg = 0;
+                while (w_loop_flg == 0)
+                {
+                    w_date_start = w_date_start - w_timespan;
+                    w_dt_calendar = OracleSelect("select * from tss_calendar_f where calendar_year = '" + w_date_start.Year.ToString("0000") + "' and calendar_month = '" + w_date_start.Month.ToString("00") + "' and calendar_day = '" + w_date_start.Day.ToString("00") + "'");
+                    if (w_dt_calendar.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("営業カレンダーに異常があります。\n" + w_date_start.ToShortDateString());
+                        w_date_start = DateTime.Parse("2000/01/01 00:00:00");
+                        return w_date_start;
+                    }
+                    else
+                    {
+                        if (w_dt_calendar.Rows[0]["eigyou_kbn"].ToString() != "1" && w_dt_calendar.Rows[0]["eigyou_kbn"].ToString() != "2")
+                        {
+                            //営業日の場合
+                            w_loop_flg = 1;
+                        }
+                        else
+                        {
+                            //休日の場合、更に一日前に進む
+                        }
+                    }
+                }
+            }
+            //ループを抜けるとw_date_startの中に生産日が入っている
+            return w_date_start;
+        }
+        #endregion
     }
     #endregion
 }

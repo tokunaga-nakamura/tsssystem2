@@ -59,11 +59,25 @@ namespace TSS_SYSTEM
 
         private void seisan_siji_preview()
         {
-            make_insatu_data();
-            tss.GetUser();
-            w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
-            make_insatu_table();
-            viewer_disp();
+            //何も入力されていない場合は、空の指示書を表示する（予備用の用紙を印刷する事を想定）
+            if (tb_seisan_yotei_date.Text == "")
+            {
+                //空の印刷
+                make_insatu_data_null();    //空白のデータ作成
+                tss.GetUser();
+                w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
+                make_insatu_table();
+                viewer_disp();
+            }
+            else
+            {
+                //通常の印刷
+                make_insatu_data();     //通常のデータ作成
+                tss.GetUser();
+                w_trn_name = "tss_seisan_siji_trn_" + tss.user_cd;
+                make_insatu_table();
+                viewer_disp();
+            }
         }
 
         private void w_dt_meisai_init()
@@ -144,7 +158,7 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             string out_name = "";   //戻り値用
             w_dt = tss.OracleSelect("select * from tss_busyo_m where busyo_cd = '" + in_cd + "'");
-            if(w_dt == null || w_dt.Rows.Count <= 0)
+            if (w_dt == null || w_dt.Rows.Count <= 0)
             {
                 out_name = "";
             }
@@ -246,7 +260,7 @@ namespace TSS_SYSTEM
             //画面条件分のデータの指示書印刷データを作成する
             DateTime w_datetime;
 
-            foreach(DataRow loop_dr in w_dt.Rows)
+            foreach (DataRow loop_dr in w_dt.Rows)
             {
                 w_dr = w_dt_meisai.NewRow();
                 //作業日
@@ -254,7 +268,7 @@ namespace TSS_SYSTEM
                 //順番（ページ数）
                 w_dr["seq1"] = loop_dr["seq"].ToString();
                 //順番（総ページ数）
-                w_dr["seq2"] = get_page_count(loop_dr["seisan_yotei_date"].ToString(),loop_dr["busyo_cd"].ToString(),loop_dr["koutei_cd"].ToString(),loop_dr["line_cd"].ToString());
+                w_dr["seq2"] = get_page_count(loop_dr["seisan_yotei_date"].ToString(), loop_dr["busyo_cd"].ToString(), loop_dr["koutei_cd"].ToString(), loop_dr["line_cd"].ToString());
                 //部署コード
                 w_dr["busyo_cd"] = loop_dr["busyo_cd"].ToString();
                 //部署名
@@ -365,17 +379,132 @@ namespace TSS_SYSTEM
                 w_dr["hinsitu_kako_name6"] = "";
                 w_dr["hinsitu_kako_su6"] = "";
                 //バーコード（各項目をdbと同じ桁数の文字列にして連結させる）（BC読込後に加工無しでdbへアクセスできるように考慮）
-                w_dr["barcode"] = tss.StringRight(loop_dr["seisan_yotei_date"].ToString(),10)
-                                + tss.StringRight(loop_dr["busyo_cd"].ToString(),4)
-                                + tss.StringRight(loop_dr["koutei_cd"].ToString(),3)
-                                + tss.StringRight(loop_dr["line_cd"].ToString(),3)
-                                + tss.StringRight(loop_dr["seq"].ToString(),3)
-                                + tss.StringRight(loop_dr["torihikisaki_cd"].ToString(),6)
-                                + tss.StringRight(loop_dr["juchu_cd1"].ToString(),16)
-                                + tss.StringRight(loop_dr["juchu_cd2"].ToString(),16)
+                w_dr["barcode"] = tss.StringRight(loop_dr["seisan_yotei_date"].ToString(), 10)
+                                + tss.StringRight(loop_dr["busyo_cd"].ToString(), 4)
+                                + tss.StringRight(loop_dr["koutei_cd"].ToString(), 3)
+                                + tss.StringRight(loop_dr["line_cd"].ToString(), 3)
+                                + tss.StringRight(loop_dr["seq"].ToString(), 3)
+                                + tss.StringRight(loop_dr["torihikisaki_cd"].ToString(), 6)
+                                + tss.StringRight(loop_dr["juchu_cd1"].ToString(), 16)
+                                + tss.StringRight(loop_dr["juchu_cd2"].ToString(), 16)
                                 ;
                 w_dt_meisai.Rows.Add(w_dr);
             }
+        }
+
+        private void make_insatu_data_null()
+        {
+            DataRow w_dr;   //書込み用
+
+            w_dr = w_dt_meisai.NewRow();
+            //作業日
+            w_dr["seisan_yotei_date"] = " ";
+            //順番（ページ数）
+            w_dr["seq1"] = " ";
+            //順番（総ページ数）
+            w_dr["seq2"] = "";
+            //部署コード
+            w_dr["busyo_cd"] = " ";
+            //部署名
+            w_dr["busyo_name"] = "";
+            //工程コード
+            w_dr["koutei_cd"] = " ";
+            //工程名
+            w_dr["koutei_name"] = "";
+            //ラインコード
+            w_dr["line_cd"] = " ";
+            //ライン名
+            w_dr["line_name"] = "";
+            //取引先コード
+            w_dr["torihikisaki_cd"] = " ";
+            //受注コード１
+            w_dr["juchu_cd1"] = "";
+            //受注コード２
+            w_dr["juchu_cd2"] = "";
+            //受注数
+            w_dr["juchu_su"] = "";
+            //取引先名
+            w_dr["torihikisaki_name"] = "";
+            //製品コード
+            w_dr["seihin_cd"] = "";
+            //製品名
+            w_dr["seihin_name"] = "";
+            //生産機種
+            w_dr["seisankisyu"] = "";
+            //メンバー
+            //現時点メンバーは未対応として、空白で印字
+            w_dr["member01"] = "";
+            w_dr["member02"] = "";
+            w_dr["member03"] = "";
+            w_dr["member04"] = "";
+            w_dr["member05"] = "";
+            w_dr["member06"] = "";
+            w_dr["member07"] = "";
+            w_dr["member08"] = "";
+            w_dr["member09"] = "";
+            w_dr["member10"] = "";
+            w_dr["member11"] = "";
+            w_dr["member12"] = "";
+            //備考
+            w_dr["bikou"] = "";
+            //タクトタイム
+            w_dr["tact_time"] = "";
+            //段取工数
+            w_dr["dandori_kousu"] = "";
+            //追加工数
+            w_dr["tuika_kousu"] = "";
+            //補充工数
+            w_dr["hoju_kousu"] = "";
+            //生産済み数
+            //生産済み数はまだ未対応なので空白にする
+            w_dr["seisan_sumi_su"] = "";
+            //生産数（指示数）
+            w_dr["seisan_su"] = "";
+            //生産時間
+            w_dr["seisan_time"] = "";
+            //開始時刻
+            w_dr["start_time"] = "";
+            //終了時刻
+            w_dr["end_time"] = "";
+            //前回の不適合
+            //現時点で未対応の為、空白にする
+            w_dr["hinsitu_zenkai_name1"] = "";
+            w_dr["hinsitu_zenkai_su1"] = "";
+            w_dr["hinsitu_zenkai_name2"] = "";
+            w_dr["hinsitu_zenkai_su2"] = "";
+            w_dr["hinsitu_zenkai_name3"] = "";
+            w_dr["hinsitu_zenkai_su3"] = "";
+            w_dr["hinsitu_zenkai_name4"] = "";
+            w_dr["hinsitu_zenkai_su4"] = "";
+            w_dr["hinsitu_zenkai_name5"] = "";
+            w_dr["hinsitu_zenkai_su5"] = "";
+            w_dr["hinsitu_zenkai_name6"] = "";
+            w_dr["hinsitu_zenkai_su6"] = "";
+            //過去の不適合
+            //現時点で未対応の為、空白にする
+            w_dr["hinsitu_kako_name1"] = "";
+            w_dr["hinsitu_kako_su1"] = "";
+            w_dr["hinsitu_kako_name2"] = "";
+            w_dr["hinsitu_kako_su2"] = "";
+            w_dr["hinsitu_kako_name3"] = "";
+            w_dr["hinsitu_kako_su3"] = "";
+            w_dr["hinsitu_kako_name4"] = "";
+            w_dr["hinsitu_kako_su4"] = "";
+            w_dr["hinsitu_kako_name5"] = "";
+            w_dr["hinsitu_kako_su5"] = "";
+            w_dr["hinsitu_kako_name6"] = "";
+            w_dr["hinsitu_kako_su6"] = "";
+            //バーコード（各項目をdbと同じ桁数の文字列にして連結させる）（BC読込後に加工無しでdbへアクセスできるように考慮）
+            w_dr["barcode"] = "          "
+                            + "    "
+                            + "   "
+                            + "   "
+                            + "   "
+                            + "      "
+                            + "                "
+                            + "                "
+                            ;
+            w_dt_meisai.Rows.Add(w_dr);
         }
 
         private void make_insatu_table()
@@ -385,15 +514,82 @@ namespace TSS_SYSTEM
             //指示書の印刷データのテーブル書き込み
             //トランファイルの存在を確認して、あったら削除
             w_dt_trn_count = tss.OracleSelect("select * from user_tables where upper(table_name) = upper('" + w_trn_name + "')");
-            if(w_dt_trn_count.Rows.Count >= 1)
+            if (w_dt_trn_count.Rows.Count >= 1)
             {
                 tss.OracleDelete("DROP TABLE " + w_trn_name + " CASCADE CONSTRAINTS purge");
             }
             //トランファイルを作成
+            //w_sql = "create table " + w_trn_name + " ("
+            //      + "seisan_yotei_date VARCHAR2(10) not null"
+            //      + ",seq1 number(3)"
+            //      + ",seq2 number(3)"
+            //      + ",busyo_cd varchar2(4)"
+            //      + ",busyo_name varchar2(20)"
+            //      + ",koutei_cd varchar2(3)"
+            //      + ",koutei_name varchar(40)"
+            //      + ",line_cd varchar2(3)"
+            //      + ",line_name varchar2(40)"
+            //      + ",torihikisaki_cd varchar2(6)"
+            //      + ",juchu_cd1 varchar2(16)"
+            //      + ",juchu_cd2 varchar2(16)"
+            //      + ",juchu_su number(12,2)"
+            //      + ",torihikisaki_name varchar2(40)"
+            //      + ",seihin_cd varchar2(16)"
+            //      + ",seihin_name varchar2(40)"
+            //      + ",seisankisyu varchar2(128)"
+            //      + ",member01 varchar2(20)"
+            //      + ",member02 varchar2(20)"
+            //      + ",member03 varchar2(20)"
+            //      + ",member04 varchar2(20)"
+            //      + ",member05 varchar2(20)"
+            //      + ",member06 varchar2(20)"
+            //      + ",member07 varchar2(20)"
+            //      + ",member08 varchar2(20)"
+            //      + ",member09 varchar2(20)"
+            //      + ",member10 varchar2(20)"
+            //      + ",member11 varchar2(20)"
+            //      + ",member12 varchar2(20)"
+            //      + ",bikou varchar2(128)"
+            //      + ",tact_time number(7,2)"
+            //      + ",dandori_kousu number(7,2)"
+            //      + ",tuika_kousu number(7,2)"
+            //      + ",hoju_kousu number(7,2)"
+            //      + ",seisan_sumi_su number(12,2)"
+            //      + ",seisan_su number(12,2)"
+            //      + ",seisan_time number(10,2)"
+            //      + ",start_time varchar2(20)"
+            //      + ",end_time varchar2(20)"
+            //      + ",hinsitu_zenkai_name1 varchar2(40)"
+            //      + ",hinsitu_zenkai_su1 number(12,2)"
+            //      + ",hinsitu_zenkai_name2 varchar2(40)"
+            //      + ",hinsitu_zenkai_su2 number(12,2)"
+            //      + ",hinsitu_zenkai_name3 varchar2(40)"
+            //      + ",hinsitu_zenkai_su3 number(12,2)"
+            //      + ",hinsitu_zenkai_name4 varchar2(40)"
+            //      + ",hinsitu_zenkai_su4 number(12,2)"
+            //      + ",hinsitu_zenkai_name5 varchar2(40)"
+            //      + ",hinsitu_zenkai_su5 number(12,2)"
+            //      + ",hinsitu_zenkai_name6 varchar2(40)"
+            //      + ",hinsitu_zenkai_su6 number(12,2)"
+            //      + ",hinsitu_kako_name1 varchar2(40)"
+            //      + ",hinsitu_kako_su1 number(12,2)"
+            //      + ",hinsitu_kako_name2 varchar2(40)"
+            //      + ",hinsitu_kako_su2 number(12,2)"
+            //      + ",hinsitu_kako_name3 varchar2(40)"
+            //      + ",hinsitu_kako_su3 number(12,2)"
+            //      + ",hinsitu_kako_name4 varchar2(40)"
+            //      + ",hinsitu_kako_su4 number(12,2)"
+            //      + ",hinsitu_kako_name5 varchar2(40)"
+            //      + ",hinsitu_kako_su5 number(12,2)"
+            //      + ",hinsitu_kako_name6 varchar2(40)"
+            //      + ",hinsitu_kako_su6 number(12,2)"
+            //      + ",barcode varchar2(61)"
+            //      + ",constraint " + w_trn_name + "_pkc primary key (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1)"
+            //      + ")";
             w_sql = "create table " + w_trn_name + " ("
                   + "seisan_yotei_date VARCHAR2(10) not null"
-                  + ",seq1 number(3)"
-                  + ",seq2 number(3)"
+                  + ",seq1 VARCHAR2(3)"
+                  + ",seq2 VARCHAR2(3)"
                   + ",busyo_cd varchar2(4)"
                   + ",busyo_name varchar2(20)"
                   + ",koutei_cd varchar2(3)"
@@ -457,10 +653,10 @@ namespace TSS_SYSTEM
                   + ",barcode varchar2(61)"
                   + ",constraint " + w_trn_name + "_pkc primary key (seisan_yotei_date,busyo_cd,koutei_cd,line_cd,seq1)"
                   + ")";
-              tss.OracleSelect(w_sql);
+            tss.OracleSelect(w_sql);
             //トランファイルへ書き込み
             string w_sql2;
-            foreach(DataRow w_dr in w_dt_meisai.Rows)
+            foreach (DataRow w_dr in w_dt_meisai.Rows)
             {
                 w_sql2 = "insert into " + w_trn_name + " ("
                         + "seisan_yotei_date"
@@ -597,7 +793,7 @@ namespace TSS_SYSTEM
             }
         }
 
-        private string get_page_count(string in_seisan_yotei_date,string in_busyo_cd,string in_koutei_cd,string in_line_cd)
+        private string get_page_count(string in_seisan_yotei_date, string in_busyo_cd, string in_koutei_cd, string in_line_cd)
         {
             DataTable w_dt = new DataTable();
             w_dt = tss.OracleSelect("select * from tss_seisan_schedule_f where seisan_yotei_date = '" + in_seisan_yotei_date + "' and busyo_cd = '" + in_busyo_cd + "' and koutei_cd = '" + in_koutei_cd + "' and line_cd = '" + in_line_cd + "'");

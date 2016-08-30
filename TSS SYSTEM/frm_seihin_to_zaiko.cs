@@ -587,8 +587,10 @@ namespace TSS_SYSTEM
             if (tb_seihin_kousei_no.Text == null || tb_seihin_kousei_no.Text =="")
             {
                 MessageBox.Show("入力した製品コードの製品は、製品構成が登録されていません。");
+                //w_dt_m.Clear();
                 dgv_m.DataSource = null;
-                dgv_m = null;
+                //dgv_m = null;
+                
                 tb_seihin_cd.Focus();
             }
             else

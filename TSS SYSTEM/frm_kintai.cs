@@ -150,7 +150,7 @@ namespace TSS_SYSTEM
             {
                 w_sql = " busyo_cd = '" + cb_busyo.SelectedValue.ToString() + "' and ";
             }
-            w_dt_syain = tss.OracleSelect("select syain_cd,syain_name,syain_kbn,'' syain_kbn_name,busyo_cd,bikou from tss_syain_m where " + w_sql + "delete_flg = '1' order by syain_name asc");
+            w_dt_syain = tss.OracleSelect("select syain_cd,syain_name,syain_kbn,'' syain_kbn_name,busyo_cd,bikou from tss_syain_m where " + w_sql + "delete_flg <> '1' order by syain_name asc");
             //社員一覧の社員区分名称をセットする
             foreach(DataRow dr in w_dt_syain.Rows)
             {
