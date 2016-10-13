@@ -1060,7 +1060,6 @@ namespace TSS_SYSTEM
                            MessageBoxButtons.OKCancel,
                            MessageBoxIcon.Exclamation,
                            MessageBoxDefaultButton.Button1);
-
                         //何が選択されたか調べる
                         if (result == DialogResult.OK)
                         {
@@ -2721,21 +2720,6 @@ namespace TSS_SYSTEM
                     dgv_today.Rows[hit.RowIndex].Selected = true;
                 }
                 //ドロップ先としての指定位置が有効でない場合（x,y座標値の取得に失敗した場合）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 else
                 {
                     //行データをdataGridView2の末尾に追加
