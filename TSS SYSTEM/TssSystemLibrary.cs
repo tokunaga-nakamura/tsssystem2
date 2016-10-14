@@ -3755,6 +3755,94 @@ namespace TSS_SYSTEM
             return w_date_start;
         }
         #endregion
+
+        #region Juchu_Schedule_Check_dt メソッド
+        /// <summary>
+        /// 受注コードを受け取り、その受注の納品数、生産数、実績数を日付毎にまとめデータテーブルで返す</summary>
+        /// <param name="String in_torihikisaki_cd">
+        /// 取引先コード</param>
+        /// <param name="String in_juchu_cd1">
+        /// 受注コード１</param>
+        /// <param name="String in_juchu_cd2">
+        /// 受注コード２</param>
+        /// <param name="String in_busyo_cd">
+        /// 部署コード</param>
+        /// <param name="String in_koutei_cd">
+        /// 工程コード</param>
+        /// <returns>
+        /// DataTable out_dt
+        /// エラー等、取得できない場合は null を返します。</returns>
+        public DataTable Juchu_Schedule_Check_dt(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2,string in_busyo_cd,string in_koutei_cd)
+        {
+            DataTable out_dt = new DataTable();
+
+            DataTable w_dt_nouhin = new DataTable();
+            DataTable w_dt_seisan = new DataTable();
+            DataTable w_dt_jisseki = new DataTable();
+            
+            //各dtの抽出
+            string w_sql;
+            //納品スケジュール
+            w_sql = "select to_char(nouhin_yotei_date,'yyyymmdd'),sum(nouhin_yotei_su) nouhin_su from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' group by nouhin_yotei_date order by nouhin_yotei_date";
+            w_dt_nouhin = OracleSelect(w_sql);
+            //生産スケジュール
+            w_sql = "select seisan_yotei_date,sum(seisan_su) seisan_su from tss_seisan_schedule_f where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' and busyo_cd = '" + in_busyo_cd + "' and koutei_cd = '" + in_koutei_cd + "' group by seisan_yotei_date order by seisan_yotei_date";
+            w_dt_seisan = OracleSelect(w_sql);
+            //生産実績（生産実績はまだ未対応だが、コードだけは記述しておきます）
+            //
+            //
+
+            //各dtを１つのdtにまとめる
+            int w_nouhin_max;
+            int w_seisan_max;
+            int w_jisseki_max;
+            int w_nouhin_cnt;
+            int w_seisan_cnt;
+            int w_jisseki_cnt;
+            w_nouhin_max = w_dt_nouhin.Rows.Count;
+            w_seisan_max = w_dt_seisan.Rows.Count;
+            w_jisseki_max = 0;
+            w_nouhin_cnt = 0;
+            w_seisan_cnt = 0;
+            w_jisseki_cnt = 0;
+            decimal w_dc_nouhin;
+            decimal w_dc_seisan;
+            decimal w_dc_jisseki;
+            if(w_nouhin_cnt < w_nouhin_max)
+            {
+                if(w_seisan_cnt < w_seisan_max)
+                {
+                    if(w_jisseki_cnt < w_jisseki_max)
+                    {
+                        //３つの日付を比較し、一番古い日付のデータを書き込む
+
+
+
+
+
+                        if (decimal.TryParse(w_dt_nouhin.Rows[w_nouhin_cnt]["nouhin_su"].ToString(), out w_dc_nouhin) == false)
+                        {
+                            w_dc_nouhin = 0;
+                        }
+                        if (decimal.TryParse(w_dt_seisan.Rows[w_seisan_cnt]["seisan_su"].ToString(), out w_dc_seisan) == false)
+                        {
+                            w_dc_seisan = 0;
+                        }
+                        if (decimal.TryParse(w_dt_jisseki.Rows[w_jisseki_cnt]["jisseki_su"].ToString(), out w_dc_jisseki) == false)
+                        {
+                            w_dc_jisseki = 0;
+                        }
+                        //
+
+
+                    }
+                }
+            }
+
+            return out_dt;
+        }
+        #endregion
+
     }
     #endregion
 }
