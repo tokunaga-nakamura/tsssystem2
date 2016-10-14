@@ -2589,10 +2589,6 @@ namespace TSS_SYSTEM
             //子画面から値を取得する
             string str_date = frm_chk_sc.str_date;
             string str_busyo = frm_chk_sc.str_busyo;
-
-            MessageBox.Show(str_date);
-            MessageBox.Show(str_busyo);
-            //this.label1.Text = frm_s_seisan_kou.str_cd;
             frm_chk_sc.Dispose();
         }
 

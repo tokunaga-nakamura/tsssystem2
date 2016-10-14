@@ -528,21 +528,21 @@ namespace TSS_SYSTEM
                 //データテーブルdtTmpに、データグリッドビューのデータを格納
                 DataTable dtTmp = (DataTable)this.dgv_m.DataSource;
 
-                //if (dgv_m.CurrentRow.Cells[2].Value.ToString() == "")
-                //{
-                //    //tb_gessyo_kei.Text = "0";
+                if (dgv_m.CurrentRow.Cells[2].Value.ToString() == "")
+                {
+                    tb_gessyo_kei.Text = "0";
 
-                //}
+                }
 
-                //if (dgv_m.CurrentRow.Cells[3].Value.ToString() == "")
-                //{
+                if (dgv_m.CurrentRow.Cells[3].Value.ToString() == "")
+                {
 
-                //    //tb_tyuukan_kei.Text = "0";
-                //}
+                    tb_tyuukan_kei.Text = "0";
+                }
 
 
-                //else
-                //{
+                else
+                {
 
                 object obj = dtTmp.Compute("SUM(uriage_yotei_1)", null);
                 tb_gessyo_kei.Text = decimal.Parse(obj.ToString()).ToString();
@@ -550,7 +550,7 @@ namespace TSS_SYSTEM
                 object obj2 = dtTmp.Compute("SUM(uriage_yotei_2)", null);
                 tb_tyuukan_kei.Text = decimal.Parse(obj2.ToString()).ToString();
 
-                //}
+                }
 
 
                 //集計後、カンマ区切り数にする
