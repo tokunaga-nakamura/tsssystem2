@@ -1205,6 +1205,8 @@ namespace TSS_SYSTEM
 
         private DateTime get_uriage_simebi()
         {
+            chk_torihikisaki_simebi();  //取引先の締日をw_seikyu_sime_ddに抽出
+
             DateTime out_datetime;  //戻り値用
             int w_gamen_sime_dd;
             DateTime w_gamen_sime_date;
