@@ -24,6 +24,7 @@ namespace TSS_SYSTEM
         DataTable w_dt_dragdrop = new DataTable();  //ドラッグ＆ドロップ用
         decimal result;
 
+        decimal dc_kabusoku;
         //string str_date;
         //string str_busyo;
 
@@ -152,6 +153,7 @@ namespace TSS_SYSTEM
             {
                 case "cb_today_busyo":
                     w_dt_today = tss.OracleSelect(w_sql);
+                    //w_dt_today.Columns.Add("kabusoku", Type.GetType("System.String")); //当日のdtに過不足カラム追加
                     break;
                 case "cb_before_busyo":
                     w_dt_before = tss.OracleSelect(w_sql);
@@ -160,7 +162,36 @@ namespace TSS_SYSTEM
                     w_dt_next = tss.OracleSelect(w_sql);
                     break;
             }
+
+            
         }
+
+        public  void kabusoku()
+        {
+           DataTable w_dt = new DataTable();
+
+           int rc = dgv_today.Rows.Count;
+           if(rc > 0)
+           {
+               for (int i = 0; i <= rc - 1; i++)
+               {
+                   w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
+               
+                   if(w_dt.Rows[0][0] == DBNull.Value)
+                   {
+                       dc_kabusoku = 0;
+                   }
+                   else
+                   {
+
+                       dc_kabusoku = decimal.Parse(w_dt.Rows[0][0].ToString()) - decimal.Parse(dgv_today.Rows[i].Cells[14].Value.ToString());
+                       dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
+
+                   }
+               }
+           }     
+        }
+
 
         private void disp_schedule_data(DataGridView w_dgv , DataTable in_dt)
         {
@@ -218,6 +249,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["members"].HeaderText = "メンバー";
             w_dgv.Columns["hensyu_flg"].HeaderText = "編集";
             w_dgv.Columns["bikou"].HeaderText = "備考";
+            
 
             //右詰
             w_dgv.Columns["seq"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -231,6 +263,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["start_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["end_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["ninzu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            
 
             //指定列を非表示にする
             w_dgv.Columns["seisan_yotei_date"].Visible = false;
@@ -283,6 +316,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["members"].Width = 50;
             w_dgv.Columns["hensyu_flg"].Width = 30;
             w_dgv.Columns["bikou"].Width = 80;
+            
 
             //ヘッダーのwrapmodeをオフにする（余白をなくす）
             w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -294,6 +328,24 @@ namespace TSS_SYSTEM
 
             if(w_dgv.Name == "dgv_today")
             {
+                //データグリッドビューに過不足カラムの追加
+                if(w_dgv.ColumnCount == 31)
+                {
+                    //列が自動的に作成されないようにする
+                    w_dgv.AutoGenerateColumns = false;
+
+                    //DataGridViewTextBoxColumn列を作成する
+                    DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
+                    //名前とヘッダーを設定する
+                    textColumn.Name = "kabusoku";
+                    textColumn.HeaderText = "過不足";
+                    //列を追加する
+                    w_dgv.Columns.Add(textColumn);
+                    w_dgv.Columns["kabusoku"].Width = 80;
+                    w_dgv.Columns["kabusoku"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+               
+                
                 //指定列をリードオンリーにする
                 w_dgv.Columns["busyo_cd"].ReadOnly = true;
                 w_dgv.Columns["busyo_name"].ReadOnly = true;
@@ -474,7 +526,7 @@ namespace TSS_SYSTEM
             {
                 //変更されていない、または変更されているが無視する
                 //0
-                get_schedule_data(cb_today_busyo,tb_seisan_yotei_date.Text);
+                get_schedule_data(cb_today_busyo, tb_seisan_yotei_date.Text);
                 disp_schedule_data(dgv_today , w_dt_today);
                 lbl_seisan_yotei_date_today.Text = tb_seisan_yotei_date.Text;
                 if(dgv_today.Rows.Count >= 1)
@@ -491,6 +543,9 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Text = "";
                     tb_update_datetime.Text = "";
                 }
+
+
+                kabusoku();
 
                 //-1
                 DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
@@ -1247,6 +1302,14 @@ namespace TSS_SYSTEM
                     }
                     MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
                     end_time_keisan(dgv_today.CurrentRow.Index);
+
+                    if(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value != null)
+                    {
+                        decimal kabusoku = decimal.Parse(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value.ToString());
+                        decimal henkou = decimal.Parse(str1) - decimal.Parse(str2);
+                        kabusoku = kabusoku + henkou;
+                        dgv_today.CurrentRow.Cells["kabusoku"].Value = kabusoku.ToString();
+                    }
                 }
             }
 
@@ -1882,6 +1945,8 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Text = "";
                     tb_update_datetime.Text = "";
                 }
+
+                kabusoku();
             }
             else
             {
@@ -1916,6 +1981,8 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Text = "";
                     tb_update_datetime.Text = "";
                 }
+
+                kabusoku();
             }
             else
             {
@@ -2296,6 +2363,7 @@ namespace TSS_SYSTEM
             //登録後、w_dt_todayの変更履歴をクリアするために、読み込みし直す
             get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
             disp_schedule_data(dgv_today, w_dt_today);
+            kabusoku();
             //lbl_seisan_yotei_date_today.Text = tb_seisan_yotei_date.Text;
         }
 
@@ -2315,6 +2383,7 @@ namespace TSS_SYSTEM
         {
             get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
             disp_schedule_data(dgv_today, w_dt_today);
+            kabusoku();
         }
 
         private void cb_before_busyo_SelectedValueChanged(object sender, EventArgs e)
@@ -2839,6 +2908,11 @@ namespace TSS_SYSTEM
                 //また、ドラッグソースのデータはドロップ先に複写する
                 DoDragDrop(DestinationRow, DragDropEffects.Copy);
             }
+        }
+
+        private void cb_today_busyo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+          
         }
 
     }
