@@ -328,6 +328,7 @@
             this.cb_today_busyo.Name = "cb_today_busyo";
             this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
             this.cb_today_busyo.TabIndex = 1;
+            this.cb_today_busyo.SelectionChangeCommitted += new System.EventHandler(this.cb_today_busyo_SelectionChangeCommitted);
             // 
             // textBox1
             // 
