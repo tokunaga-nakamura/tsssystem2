@@ -43,7 +43,7 @@ namespace TSS_SYSTEM
         private void btn_touroku_Click(object sender, EventArgs e)
         {
             string w_sql;
-            w_sql = "update tss_control_m set hyoujun_kousu = '" + tb_hyoujun_kousu.Text + "',msg1 = '" + tb_msg1.Text + "',msg2 = '" + tb_msg2.Text + "',msg3 = '" + tb_msg3.Text + "' where system_cd = '0101'";
+            w_sql = "update tss_control_m set hyoujun_kousu = '" + tb_hyoujun_kousu.Text + "',msg1 = '" + tb_msg1.Text + "',msg2 = '" + tb_msg2.Text + "',msg3 = '" + tb_msg3.Text + "',color1 = '" + tb_color1.Text + "',color2 = '" + tb_color2.Text + "',color3 = '" + tb_color3.Text + "' where system_cd = '0101'";
             if(tss.OracleUpdate(w_sql))
             {
                 MessageBox.Show("登録しました。");

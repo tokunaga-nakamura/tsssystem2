@@ -91,6 +91,7 @@ namespace TSS_SYSTEM
             tb_kengen9.Text = "";
             tb_login_flg.Text = "";
             tb_login_datetime.Text = "";
+            tb_login_version.Text = "";
             tb_logout_datetime.Text = "";
             tb_bikou.Text = "";
             tb_create_user_cd.Text = "";
@@ -133,6 +134,7 @@ namespace TSS_SYSTEM
             tb_kengen9_name.Text = get_kengen9(tb_kengen9.Text);
             tb_login_flg.Text = in_dt_work.Rows[0]["login_flg"].ToString();
             tb_login_datetime.Text = in_dt_work.Rows[0]["login_datetime"].ToString();
+            tb_login_version.Text = in_dt_work.Rows[0]["login_version"].ToString();
             tb_logout_datetime.Text = in_dt_work.Rows[0]["logout_datetime"].ToString();
             tb_bikou.Text = in_dt_work.Rows[0]["bikou"].ToString();
             tb_create_user_cd.Text = in_dt_work.Rows[0]["create_user_cd"].ToString();

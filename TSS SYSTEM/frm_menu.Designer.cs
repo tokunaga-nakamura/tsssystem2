@@ -286,6 +286,7 @@
             this.lbl_db.TabIndex = 2;
             this.lbl_db.Text = "接続DB表示";
             this.lbl_db.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_db.DoubleClick += new System.EventHandler(this.lbl_db_DoubleClick);
             // 
             // lbl_program_version
             // 

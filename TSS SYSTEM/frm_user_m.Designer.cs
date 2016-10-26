@@ -101,6 +101,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_login_version = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -164,6 +166,8 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.tb_login_version);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox6);
             this.splitContainer2.Panel1.Controls.Add(this.tb_kengen9_name);
             this.splitContainer2.Panel1.Controls.Add(this.tb_kengen8_name);
             this.splitContainer2.Panel1.Controls.Add(this.tb_kengen7_name);
@@ -936,6 +940,27 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(244, 378);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(118, 19);
+            this.textBox6.TabIndex = 75;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "ログイン時バージョン";
+            // 
+            // tb_login_version
+            // 
+            this.tb_login_version.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_login_version.Location = new System.Drawing.Point(362, 378);
+            this.tb_login_version.Name = "tb_login_version";
+            this.tb_login_version.ReadOnly = true;
+            this.tb_login_version.Size = new System.Drawing.Size(253, 19);
+            this.tb_login_version.TabIndex = 76;
+            this.tb_login_version.TabStop = false;
+            // 
             // frm_user_m
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1035,5 +1060,7 @@
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox tb_kengen7;
         private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox tb_login_version;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

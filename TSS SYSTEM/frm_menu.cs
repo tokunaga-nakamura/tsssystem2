@@ -103,6 +103,7 @@ namespace TSS_SYSTEM
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
+            status_disp();
             //ユーザーコードの取得
             string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
             //まずログアウト情報更新
@@ -138,22 +139,17 @@ namespace TSS_SYSTEM
             TssSystemLibrary tss = new TssSystemLibrary();
             tss.GetSystemSetting();
             tss.GetUser();
+            //tss.GetConnectionString();
             ss_status.Items.Clear();    //追加する前にクリアする
             ss_status.Items.Add(tss.system_name);
             ss_status.Items.Add(tss.system_version);
+            ss_status.Items.Add("CODE:" + tss.code_version);
             ss_status.Items.Add(tss.user_name);
             ss_status.Items.Add(tss.kengen1+tss.kengen2+tss.kengen3+"-"+tss.kengen4+tss.kengen5+tss.kengen6+"-"+tss.kengen7+tss.kengen8+tss.kengen9);
-            ss_status.Items.Add("CODE:" + tss.code_version);
-
-            switch(tss.DataSource)
+            switch (tss.DataSource)
             {
-                case "pdb":
-                    lbl_db.Text = "TSS SYSTEM pdb Connect";
-                    lbl_db.BackColor = Color.RoyalBlue;
-                    lbl_db.ForeColor = Color.White;
-                    break;
                 case "pdb2a":
-                    lbl_db.Text = "TSS SYSTEM pdb2a Connect";
+                    lbl_db.Text = "TSS SYSTEM PRODUCTION Connect";
                     lbl_db.BackColor = Color.RoyalBlue;
                     lbl_db.ForeColor = Color.White;
                     break;
@@ -176,9 +172,74 @@ namespace TSS_SYSTEM
                 MessageBox.Show("コントロールマスタに異常があります。\nシステムを終了します。");
                 Application.Exit();
             }
+            //メッセージの表示
             lbl_msg1.Text = w_dt_ctrl.Rows[0]["msg1"].ToString();
             lbl_msg2.Text = w_dt_ctrl.Rows[0]["msg2"].ToString();
             lbl_msg3.Text = w_dt_ctrl.Rows[0]["msg3"].ToString();
+            //メッセージの色の設定
+            switch (w_dt_ctrl.Rows[0]["color1"].ToString())
+            {
+                case "1":
+                    lbl_msg1.ForeColor = Color.Red;
+                    break;
+                case "2":
+                    lbl_msg1.ForeColor = Color.Blue;
+                    break;
+                case "3":
+                    lbl_msg1.ForeColor = Color.Green;
+                    break;
+                case "4":
+                    lbl_msg1.ForeColor = Color.Orange;
+                    break;
+                case "5":
+                    lbl_msg1.ForeColor = Color.Gray;
+                    break;
+                default:
+                    lbl_msg1.ForeColor = Color.Black;
+                    break;
+            }
+            switch (w_dt_ctrl.Rows[0]["color2"].ToString())
+            {
+                case "1":
+                    lbl_msg2.ForeColor = Color.Red;
+                    break;
+                case "2":
+                    lbl_msg2.ForeColor = Color.Blue;
+                    break;
+                case "3":
+                    lbl_msg2.ForeColor = Color.Green;
+                    break;
+                case "4":
+                    lbl_msg2.ForeColor = Color.Orange;
+                    break;
+                case "5":
+                    lbl_msg2.ForeColor = Color.Gray;
+                    break;
+                default:
+                    lbl_msg2.ForeColor = Color.Black;
+                    break;
+            }
+            switch (w_dt_ctrl.Rows[0]["color3"].ToString())
+            {
+                case "1":
+                    lbl_msg3.ForeColor = Color.Red;
+                    break;
+                case "2":
+                    lbl_msg3.ForeColor = Color.Blue;
+                    break;
+                case "3":
+                    lbl_msg3.ForeColor = Color.Green;
+                    break;
+                case "4":
+                    lbl_msg3.ForeColor = Color.Orange;
+                    break;
+                case "5":
+                    lbl_msg3.ForeColor = Color.Gray;
+                    break;
+                default:
+                    lbl_msg3.ForeColor = Color.Black;
+                    break;
+            }
         }
 
         private void btn_mst_table_Click(object sender, EventArgs e)
@@ -1121,6 +1182,19 @@ namespace TSS_SYSTEM
             frm_chk_schedule frm_chk_sc = new frm_chk_schedule();
             frm_chk_sc.ShowDialog(this);
             frm_chk_sc.Dispose();
+        }
+
+        private void lbl_db_DoubleClick(object sender, EventArgs e)
+        {
+            //接続DBの変更
+            if (tss.User_Kengen_Check(1, 9) == false || tss.User_Kengen_Check(2, 9) == false || tss.User_Kengen_Check(3, 9) == false || tss.User_Kengen_Check(4, 9) == false || tss.User_Kengen_Check(5, 9) == false || tss.User_Kengen_Check(6, 9) == false)
+            {
+                //権限無し
+                return;
+            }
+
+        
+        
         }
     }
 }

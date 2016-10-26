@@ -43,6 +43,7 @@ namespace TSS_SYSTEM
             {
                 TssSystemLibrary tsslib = new TssSystemLibrary();
                 string connStr = tsslib.GetConnectionString();
+                tsslib.GetSystemSetting();
                 OracleConnection conn = new OracleConnection();
                 OracleCommand cmd = new OracleCommand();
                 OracleDataAdapter da = new OracleDataAdapter();
@@ -68,7 +69,7 @@ namespace TSS_SYSTEM
                         sw.Write(tb_user_cd.Text);   //ユーザー名を書き込む
                     }
                     //ログイン情報更新
-                    string sql = "UPDATE tss_user_m SET login_flg = '1',login_datetime = sysdate WHERE user_cd = '" + tb_user_cd.Text.ToString() + "'";
+                    string sql = "UPDATE tss_user_m SET login_flg = '1',login_datetime = sysdate,login_version = 'v" + tsslib.system_version + " CODE:" + tsslib.code_version + "' WHERE user_cd = '" + tb_user_cd.Text.ToString() + "'";
                     tsslib.OracleUpdate(sql);
                     //ログイン記録の更新
                     tss.Login_Rireki("1");
