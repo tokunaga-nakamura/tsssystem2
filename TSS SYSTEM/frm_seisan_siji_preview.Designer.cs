@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_siji_preview));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -49,7 +50,7 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,6 +92,15 @@
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(83, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(407, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "※「生産予定日」を未入力の状態でプレビューすると、白紙の指示書が印刷できます。";
+            // 
             // btn_hardcopy
             // 
             this.btn_hardcopy.Image = ((System.Drawing.Image)(resources.GetObject("btn_hardcopy.Image")));
@@ -129,12 +139,14 @@
             this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer4.Panel1
             // 
+            this.splitContainer4.Panel1.Controls.Add(this.label3);
             this.splitContainer4.Panel1.Controls.Add(this.btn_preview);
             this.splitContainer4.Panel1.Controls.Add(this.tb_line_name);
             this.splitContainer4.Panel1.Controls.Add(this.tb_koutei_name);
@@ -152,7 +164,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.viewer1);
             this.splitContainer4.Size = new System.Drawing.Size(884, 459);
-            this.splitContainer4.SplitterDistance = 32;
+            this.splitContainer4.SplitterDistance = 51;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
@@ -317,7 +329,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 419);
+            this.viewer1.Size = new System.Drawing.Size(880, 400);
             this.viewer1.TabIndex = 0;
             // 
             // splitContainer3
@@ -359,14 +371,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(407, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "※「生産予定日」を未入力の状態でプレビューすると、白紙の指示書が印刷できます。";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(365, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "※印刷時、A5サイズに対応したプリンターを選択する事を忘れないでください。";
             // 
             // frm_seisan_siji_preview
             // 
@@ -424,5 +436,6 @@
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

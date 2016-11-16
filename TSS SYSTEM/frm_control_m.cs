@@ -38,6 +38,9 @@ namespace TSS_SYSTEM
             tb_msg1.Text = w_dt_control.Rows[0]["msg1"].ToString();
             tb_msg2.Text = w_dt_control.Rows[0]["msg2"].ToString();
             tb_msg3.Text = w_dt_control.Rows[0]["msg3"].ToString();
+            tb_color1.Text = w_dt_control.Rows[0]["color1"].ToString();
+            tb_color2.Text = w_dt_control.Rows[0]["color2"].ToString();
+            tb_color3.Text = w_dt_control.Rows[0]["color3"].ToString();
         }
 
         private void btn_touroku_Click(object sender, EventArgs e)

@@ -33,6 +33,13 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_color3 = new System.Windows.Forms.TextBox();
+            this.tb_color2 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tb_color1 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tb_msg3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_system_cd = new System.Windows.Forms.TextBox();
@@ -45,13 +52,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.tb_color1 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.tb_color2 = new System.Windows.Forms.TextBox();
-            this.tb_color3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -137,12 +137,78 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(705, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 12);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "色:0:黒 1:赤 2:青 3:緑 4:橙 5:灰";
+            // 
+            // tb_color3
+            // 
+            this.tb_color3.Location = new System.Drawing.Point(841, 103);
+            this.tb_color3.MaxLength = 1;
+            this.tb_color3.Name = "tb_color3";
+            this.tb_color3.Size = new System.Drawing.Size(23, 19);
+            this.tb_color3.TabIndex = 6;
+            // 
+            // tb_color2
+            // 
+            this.tb_color2.Location = new System.Drawing.Point(841, 78);
+            this.tb_color2.MaxLength = 1;
+            this.tb_color2.Name = "tb_color2";
+            this.tb_color2.Size = new System.Drawing.Size(23, 19);
+            this.tb_color2.TabIndex = 4;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox9.Location = new System.Drawing.Point(817, 103);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(24, 19);
+            this.textBox9.TabIndex = 13;
+            this.textBox9.TabStop = false;
+            this.textBox9.Text = "色";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox8.Location = new System.Drawing.Point(817, 78);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(24, 19);
+            this.textBox8.TabIndex = 12;
+            this.textBox8.TabStop = false;
+            this.textBox8.Text = "色";
+            // 
+            // tb_color1
+            // 
+            this.tb_color1.Location = new System.Drawing.Point(841, 53);
+            this.tb_color1.MaxLength = 1;
+            this.tb_color1.Name = "tb_color1";
+            this.tb_color1.Size = new System.Drawing.Size(23, 19);
+            this.tb_color1.TabIndex = 2;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox4.Location = new System.Drawing.Point(817, 53);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(24, 19);
+            this.textBox4.TabIndex = 10;
+            this.textBox4.TabStop = false;
+            this.textBox4.Text = "色";
+            // 
             // tb_msg3
             // 
             this.tb_msg3.Location = new System.Drawing.Point(136, 103);
             this.tb_msg3.Name = "tb_msg3";
             this.tb_msg3.Size = new System.Drawing.Size(675, 19);
-            this.tb_msg3.TabIndex = 9;
+            this.tb_msg3.TabIndex = 5;
             // 
             // textBox2
             // 
@@ -182,7 +248,7 @@
             this.tb_msg2.Location = new System.Drawing.Point(136, 78);
             this.tb_msg2.Name = "tb_msg2";
             this.tb_msg2.Size = new System.Drawing.Size(675, 19);
-            this.tb_msg2.TabIndex = 5;
+            this.tb_msg2.TabIndex = 3;
             // 
             // textBox5
             // 
@@ -200,7 +266,7 @@
             this.tb_msg1.Location = new System.Drawing.Point(136, 53);
             this.tb_msg1.Name = "tb_msg1";
             this.tb_msg1.Size = new System.Drawing.Size(675, 19);
-            this.tb_msg1.TabIndex = 3;
+            this.tb_msg1.TabIndex = 1;
             // 
             // textBox3
             // 
@@ -218,7 +284,7 @@
             this.tb_hyoujun_kousu.Location = new System.Drawing.Point(136, 28);
             this.tb_hyoujun_kousu.Name = "tb_hyoujun_kousu";
             this.tb_hyoujun_kousu.Size = new System.Drawing.Size(53, 19);
-            this.tb_hyoujun_kousu.TabIndex = 1;
+            this.tb_hyoujun_kousu.TabIndex = 0;
             this.tb_hyoujun_kousu.Text = "27900";
             this.tb_hyoujun_kousu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -238,7 +304,7 @@
             this.btn_touroku.Location = new System.Drawing.Point(10, 3);
             this.btn_touroku.Name = "btn_touroku";
             this.btn_touroku.Size = new System.Drawing.Size(75, 23);
-            this.btn_touroku.TabIndex = 1;
+            this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
             this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
@@ -248,76 +314,10 @@
             this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.TabIndex = 1;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(817, 53);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(24, 19);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.TabStop = false;
-            this.textBox4.Text = "色";
-            // 
-            // tb_color1
-            // 
-            this.tb_color1.Location = new System.Drawing.Point(841, 53);
-            this.tb_color1.MaxLength = 1;
-            this.tb_color1.Name = "tb_color1";
-            this.tb_color1.Size = new System.Drawing.Size(23, 19);
-            this.tb_color1.TabIndex = 11;
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox8.Location = new System.Drawing.Point(817, 78);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(24, 19);
-            this.textBox8.TabIndex = 12;
-            this.textBox8.TabStop = false;
-            this.textBox8.Text = "色";
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox9.Location = new System.Drawing.Point(817, 103);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(24, 19);
-            this.textBox9.TabIndex = 13;
-            this.textBox9.TabStop = false;
-            this.textBox9.Text = "色";
-            // 
-            // tb_color2
-            // 
-            this.tb_color2.Location = new System.Drawing.Point(841, 78);
-            this.tb_color2.MaxLength = 1;
-            this.tb_color2.Name = "tb_color2";
-            this.tb_color2.Size = new System.Drawing.Size(23, 19);
-            this.tb_color2.TabIndex = 14;
-            // 
-            // tb_color3
-            // 
-            this.tb_color3.Location = new System.Drawing.Point(841, 103);
-            this.tb_color3.MaxLength = 1;
-            this.tb_color3.Name = "tb_color3";
-            this.tb_color3.Size = new System.Drawing.Size(23, 19);
-            this.tb_color3.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(705, 134);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 12);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "色:0:黒 1:赤 2:青 3:緑 4:橙 5:灰";
             // 
             // frm_control_m
             // 

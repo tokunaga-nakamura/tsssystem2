@@ -63,21 +63,24 @@ namespace TSS_SYSTEM
                 if (w_int_hikaku == 0)
                 {
                     //左右同じコード
-                    sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                    //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                    sql_where[sql_cnt] = "tss_buhin_m.torihikisaki_cd = '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                     sql_cnt++;
                 }
                 else
                     if (w_int_hikaku < 0)
                     {
                         //左辺＜右辺
-                        sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
+                        //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
+                        sql_where[sql_cnt] = "tss_buhin_m.torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and tss_buhin_m.torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "'";
                         sql_cnt++;
                     }
                     else
                         if (w_int_hikaku > 0)
                         {
                             //左辺＞右辺
-                            sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                            //sql_where[sql_cnt] = "tss_buhin_nyusyukko_m.torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and tss_buhin_nyusyukko_m.torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
+                            sql_where[sql_cnt] = "tss_buhin_m.torihikisaki_cd >= '" + tb_torihikisaki_cd2.Text.ToString() + "' and tss_buhin_m.torihikisaki_cd <= '" + tb_torihikisaki_cd1.Text.ToString() + "'";
                             sql_cnt++;
                         }
             }

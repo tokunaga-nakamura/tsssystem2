@@ -78,7 +78,6 @@ namespace TSS_SYSTEM
             kintai_disp();
         }
 
-
         private void btn_hardcopy_Click(object sender, EventArgs e)
         {
             tss.HardCopy();
@@ -86,38 +85,29 @@ namespace TSS_SYSTEM
 
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
-            string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
-            //ログアウト情報更新
-            string usercd;
-            using (StreamReader sr = new StreamReader(TempPath + "user.txt"))
-            {
-                usercd = sr.ReadToEnd();
-            }
-            TssSystemLibrary tsslib = new TssSystemLibrary();
-            string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
-            tsslib.OracleUpdate(sql);
-            //ログイン履歴の更新
-            tss.Login_Rireki("2");
-            Application.Exit();
+            menu_exit();
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
             status_disp();
-            //ユーザーコードの取得
-            string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
-            //まずログアウト情報更新
-            string usercd;
-            using (StreamReader sr = new StreamReader(TempPath + "user.txt"))
-            {
-                usercd = sr.ReadToEnd();
-            }
-            TssSystemLibrary tsslib = new TssSystemLibrary();
-            string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
-            tsslib.OracleUpdate(sql);
-            //ログイン履歴の更新
-            tss.Login_Rireki("2");
+            logout_write();
+            ////ユーザーコードの取得
+            //string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
+            ////まずログアウト情報更新
+            //string usercd;
+            //using (StreamReader sr = new StreamReader(TempPath + "user.txt"))
+            //{
+            //    usercd = sr.ReadToEnd();
+            //}
+            //TssSystemLibrary tsslib = new TssSystemLibrary();
+            //string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
+            //tsslib.OracleUpdate(sql);
+            ////ログイン履歴の更新
+            //tss.Login_Rireki("2");
             //ログイン画面へ
+            string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
+            string usercd;
             this.Opacity = 0;
             frm_login frm_login = new frm_login();
             frm_login.ShowDialog(this);
@@ -1192,9 +1182,42 @@ namespace TSS_SYSTEM
                 //権限無し
                 return;
             }
+        }
 
-        
-        
+        private void menu_exit()
+        {
+            logout_write();
+            Application.Exit();
+        }
+
+        private void frm_menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //×ボタンで閉じられた場合もこのイベントが発生する
+            //2度処理が実行されてしまうが、今のところ解決方法わからず
+            menu_exit();
+        }
+
+        private void logout_write()
+        {
+            string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
+            //ログアウト情報更新
+            string usercd;
+            using (StreamReader sr = new StreamReader(TempPath + "user.txt"))
+            {
+                usercd = sr.ReadToEnd();
+            }
+            TssSystemLibrary tsslib = new TssSystemLibrary();
+            string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
+            tsslib.OracleUpdate(sql);
+            //ログイン履歴の更新
+            tss.Login_Rireki("2");
+        }
+
+        private void btn_seisan_jisseki_Click(object sender, EventArgs e)
+        {
+            frm_seisan_jisseki_nyuuryoku frm_sjn = new frm_seisan_jisseki_nyuuryoku();
+            frm_sjn.ShowDialog(this);
+            frm_sjn.Dispose();
         }
     }
 }

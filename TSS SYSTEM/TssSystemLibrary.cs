@@ -53,6 +53,9 @@ using System.IO;                //StreamWriter
 //      4       2016/10/25  上記CODE:4にて見つかったマイナス処理のバグ対応
 //                          ユーザーマスタにログイン時のバージョンを追加し、ログイン時にユーザー毎のバージョンを記録するように機能追加
 //                          コントロールマスタのメッセージの色を指定できるように機能追加
+//                          ×ボタンによる終了時にもログアウト処理が実行されるように修正
+//      5       2016/11/02  部品入出庫履歴の取引先コードを指定した場合、部品入出庫履歴マスタの取引先コードを参照していたが、それだとフリー在庫（999999）がうまく抽出できないので
+//                          joinしている部品ましたの取引先コードを参照するように修正
 //      x       2016/08/xx  -生産工数一覧、表示単位（時・分・秒）の対応とcsv出力も同様の対応
 //                          -生産スケジュール編集 v2リリース
 //                              ・前日、翌日のスケジュール（日付の変更可）を画面下に表示
@@ -66,7 +69,7 @@ using System.IO;                //StreamWriter
 //                          -生産工程マスタ、登録時のエラー表示を「内容＋工程順」から「工程順\n内容」に修正
 //                          -生産工程マスタのメニューを製品・部品タブから生産タブへ移動
 //                          -作業指示書の印刷
-//
+//                          -生産実績入力の追加
 //
 //
 //
@@ -129,7 +132,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.04";
-            program_code_version = "4";
+            program_code_version = "5";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -807,7 +810,7 @@ namespace TSS_SYSTEM
             return out_kubun_cd;
         }
         #endregion
-
+        
         #region 区分選択画面（DataTable版＋初期選択機能付き）
         //区分コード選択画面（DataTable版）の呼び出し　初期値あり版
         public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun, string in_initial_cd)
@@ -1766,6 +1769,62 @@ namespace TSS_SYSTEM
                 out_str = w_dt.Rows[0]["seihin_cd"].ToString();
             }
             return out_str;
+        }
+        #endregion
+
+        #region get_seisankisyu メソッド
+        /// <summary>
+        /// 製品コードと工程コードを受け取り製品工程マスタの生産機種を返す</summary>
+        /// <param name="in_seihin_cd">
+        /// 製品コード</param>
+        /// <param name="in_koutei_cd">
+        /// 工程コード</param>
+        /// <returns>
+        /// string 生産機種
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_seisankisyu(string in_seihin_cd, string in_koutei_cd)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_seisan_jisseki_f where seihin_cd = '" + in_seihin_cd + "' and koutei_cd = '" + in_koutei_cd + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["seisankisyu"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
+        #region check_juchu メソッド
+        /// <summary>
+        /// 受注番号を受け取り受注マスタにあるか確認し、boolを返す</summary>
+        /// <param name="in_torihikisaki_cd">
+        /// 受注番号の取引先コード</param>
+        /// <param name="in_juchu_cd1">
+        /// 受注番号の受注コード1</param>
+        /// <param name="in_juchu_cd2">
+        /// 受注番号の受注コード2</param>
+        /// <returns>
+        /// bool
+        /// エラー等、取得できない場合はfalse</returns>
+        public bool check_juchu(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            bool out_bl = true;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_bl = false;
+            }
+            else
+            {
+                out_bl = true;
+            }
+            return out_bl;
         }
         #endregion
 

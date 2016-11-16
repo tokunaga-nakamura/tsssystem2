@@ -110,6 +110,7 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_seisan_jisseki = new System.Windows.Forms.Button();
             this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             this.btn_chk_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_siji_print = new System.Windows.Forms.Button();
@@ -1191,6 +1192,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_seisan_jisseki);
             this.tabPage5.Controls.Add(this.btn_seisan_koutei_m);
             this.tabPage5.Controls.Add(this.btn_chk_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_siji_print);
@@ -1205,6 +1207,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
             // 
+            // btn_seisan_jisseki
+            // 
+            this.btn_seisan_jisseki.Location = new System.Drawing.Point(6, 177);
+            this.btn_seisan_jisseki.Name = "btn_seisan_jisseki";
+            this.btn_seisan_jisseki.Size = new System.Drawing.Size(222, 23);
+            this.btn_seisan_jisseki.TabIndex = 23;
+            this.btn_seisan_jisseki.Text = "生産実績入力";
+            this.btn_seisan_jisseki.UseVisualStyleBackColor = true;
+            this.btn_seisan_jisseki.Click += new System.EventHandler(this.btn_seisan_jisseki_Click);
+            // 
             // btn_seisan_koutei_m
             // 
             this.btn_seisan_koutei_m.Location = new System.Drawing.Point(234, 311);
@@ -1217,7 +1229,7 @@
             // 
             // btn_chk_schedule
             // 
-            this.btn_chk_schedule.Location = new System.Drawing.Point(234, 233);
+            this.btn_chk_schedule.Location = new System.Drawing.Point(234, 119);
             this.btn_chk_schedule.Name = "btn_chk_schedule";
             this.btn_chk_schedule.Size = new System.Drawing.Size(222, 23);
             this.btn_chk_schedule.TabIndex = 6;
@@ -1227,7 +1239,7 @@
             // 
             // btn_seisan_siji_print
             // 
-            this.btn_seisan_siji_print.Location = new System.Drawing.Point(462, 233);
+            this.btn_seisan_siji_print.Location = new System.Drawing.Point(462, 119);
             this.btn_seisan_siji_print.Name = "btn_seisan_siji_print";
             this.btn_seisan_siji_print.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_siji_print.TabIndex = 5;
@@ -1237,7 +1249,7 @@
             // 
             // btn_seisan_schedule_print
             // 
-            this.btn_seisan_schedule_print.Location = new System.Drawing.Point(462, 204);
+            this.btn_seisan_schedule_print.Location = new System.Drawing.Point(462, 90);
             this.btn_seisan_schedule_print.Name = "btn_seisan_schedule_print";
             this.btn_seisan_schedule_print.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_schedule_print.TabIndex = 4;
@@ -1246,7 +1258,7 @@
             // 
             // btn_seisan_schedule_edit
             // 
-            this.btn_seisan_schedule_edit.Location = new System.Drawing.Point(234, 204);
+            this.btn_seisan_schedule_edit.Location = new System.Drawing.Point(234, 90);
             this.btn_seisan_schedule_edit.Name = "btn_seisan_schedule_edit";
             this.btn_seisan_schedule_edit.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_schedule_edit.TabIndex = 3;
@@ -1266,7 +1278,7 @@
             // 
             // btn_seisan_schedule
             // 
-            this.btn_seisan_schedule.Location = new System.Drawing.Point(6, 204);
+            this.btn_seisan_schedule.Location = new System.Drawing.Point(6, 90);
             this.btn_seisan_schedule.Name = "btn_seisan_schedule";
             this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_schedule.TabIndex = 1;
@@ -1580,6 +1592,7 @@
             this.Name = "frm_menu";
             this.Text = "TSS SYSTEM メニュー";
             this.Activated += new System.EventHandler(this.frm_menu_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_menu_FormClosing);
             this.Load += new System.EventHandler(this.menu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -1765,6 +1778,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SplitContainer splitContainer11;
         private System.Windows.Forms.SplitContainer splitContainer12;
+        private System.Windows.Forms.Button btn_seisan_jisseki;
     }
 }
 
