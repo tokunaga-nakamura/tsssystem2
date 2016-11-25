@@ -446,6 +446,8 @@
             this.dgv_koutei.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellClick);
             this.dgv_koutei.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellDoubleClick);
             this.dgv_koutei.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_koutei_CellValidating);
+            this.dgv_koutei.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellValueChanged_1);
+            this.dgv_koutei.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_koutei_CurrentCellDirtyStateChanged_1);
             this.dgv_koutei.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_RowEnter);
             this.dgv_koutei.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_koutei_UserDeletedRow);
             this.dgv_koutei.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_koutei_UserDeletingRow);
