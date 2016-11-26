@@ -110,6 +110,7 @@
             this.btn_siire_sime = new System.Windows.Forms.Button();
             this.btn_siire = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_jisseki_kensaku = new System.Windows.Forms.Button();
             this.btn_seisan_jisseki = new System.Windows.Forms.Button();
             this.btn_seisan_koutei_m = new System.Windows.Forms.Button();
             this.btn_chk_schedule = new System.Windows.Forms.Button();
@@ -244,7 +245,7 @@
             // lbl_msg3
             // 
             this.lbl_msg3.AutoSize = true;
-            this.lbl_msg3.Location = new System.Drawing.Point(69, 61);
+            this.lbl_msg3.Location = new System.Drawing.Point(69, 56);
             this.lbl_msg3.Name = "lbl_msg3";
             this.lbl_msg3.Size = new System.Drawing.Size(32, 12);
             this.lbl_msg3.TabIndex = 6;
@@ -263,7 +264,7 @@
             // lbl_msg2
             // 
             this.lbl_msg2.AutoSize = true;
-            this.lbl_msg2.Location = new System.Drawing.Point(69, 36);
+            this.lbl_msg2.Location = new System.Drawing.Point(69, 32);
             this.lbl_msg2.Name = "lbl_msg2";
             this.lbl_msg2.Size = new System.Drawing.Size(32, 12);
             this.lbl_msg2.TabIndex = 4;
@@ -272,7 +273,7 @@
             // lbl_msg1
             // 
             this.lbl_msg1.AutoSize = true;
-            this.lbl_msg1.Location = new System.Drawing.Point(69, 12);
+            this.lbl_msg1.Location = new System.Drawing.Point(69, 9);
             this.lbl_msg1.Name = "lbl_msg1";
             this.lbl_msg1.Size = new System.Drawing.Size(32, 12);
             this.lbl_msg1.TabIndex = 3;
@@ -293,7 +294,7 @@
             // 
             this.lbl_program_version.AutoSize = true;
             this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_program_version.Location = new System.Drawing.Point(69, 86);
+            this.lbl_program_version.Location = new System.Drawing.Point(69, 75);
             this.lbl_program_version.Name = "lbl_program_version";
             this.lbl_program_version.Size = new System.Drawing.Size(552, 12);
             this.lbl_program_version.TabIndex = 1;
@@ -1192,6 +1193,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.YellowGreen;
+            this.tabPage5.Controls.Add(this.btn_jisseki_kensaku);
             this.tabPage5.Controls.Add(this.btn_seisan_jisseki);
             this.tabPage5.Controls.Add(this.btn_seisan_koutei_m);
             this.tabPage5.Controls.Add(this.btn_chk_schedule);
@@ -1206,6 +1208,17 @@
             this.tabPage5.Size = new System.Drawing.Size(830, 393);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "生産";
+            // 
+            // btn_jisseki_kensaku
+            // 
+            this.btn_jisseki_kensaku.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_jisseki_kensaku.Location = new System.Drawing.Point(234, 177);
+            this.btn_jisseki_kensaku.Name = "btn_jisseki_kensaku";
+            this.btn_jisseki_kensaku.Size = new System.Drawing.Size(222, 23);
+            this.btn_jisseki_kensaku.TabIndex = 24;
+            this.btn_jisseki_kensaku.Text = "実績検索";
+            this.btn_jisseki_kensaku.UseVisualStyleBackColor = false;
+            this.btn_jisseki_kensaku.Click += new System.EventHandler(this.btn_jisseki_kensaku_Click);
             // 
             // btn_seisan_jisseki
             // 
@@ -1779,6 +1792,7 @@
         private System.Windows.Forms.SplitContainer splitContainer11;
         private System.Windows.Forms.SplitContainer splitContainer12;
         private System.Windows.Forms.Button btn_seisan_jisseki;
+        private System.Windows.Forms.Button btn_jisseki_kensaku;
     }
 }
 

@@ -33,7 +33,7 @@ namespace TSS_SYSTEM
                 sw.Write("notlogin");   //ユーザー名を書き込む
             }
             //ログイン履歴の更新
-            tss.Login_Rireki("2");
+            //tss.Login_Rireki("2");
             Application.Exit();
         }
 
@@ -87,12 +87,13 @@ namespace TSS_SYSTEM
         private void frm_login_Load(object sender, EventArgs e)
         {
             tss.GetSystemSetting();
-            //プログラムのバージョン確認
-            if (tss.Version_Check() == false)
+            //システムのバージョン確認
+            if (tss.System_Version_Check() == false)
             {
-                MessageBox.Show("プログラムのバージョンが違います。\n最新のプログラムでない可能性があります。\nTSSシステムを終了し、tss_system_get_new を実行してから再度試してください。");
+                MessageBox.Show("プログラムのバージョンが違います。\n最新のプログラムでない可能性があります。\nTSSシステムを終了し、tss_system_get_new を実行してから再度試してください。", "システムのバージョンエラー");
                 Application.Exit();
             }
+
             lbl_system.Text = tss.DataSource + " " + tss.system_version;
 
             this.ActiveControl = this.tb_user_cd;
@@ -105,7 +106,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_password_Validating(object sender, CancelEventArgs e)

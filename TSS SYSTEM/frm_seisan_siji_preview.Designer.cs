@@ -34,6 +34,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_preview = new System.Windows.Forms.Button();
             this.tb_line_name = new System.Windows.Forms.TextBox();
             this.tb_koutei_name = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -167,6 +167,16 @@
             this.splitContainer4.SplitterDistance = 51;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(11, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(365, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "※印刷時、A5サイズに対応したプリンターを選択する事を忘れないでください。";
             // 
             // btn_preview
             // 
@@ -370,15 +380,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(365, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "※印刷時、A5サイズに対応したプリンターを選択する事を忘れないでください。";
             // 
             // frm_seisan_siji_preview
             // 

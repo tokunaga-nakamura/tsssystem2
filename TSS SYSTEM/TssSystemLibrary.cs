@@ -70,7 +70,7 @@ using System.IO;                //StreamWriter
 //                          -生産工程マスタのメニューを製品・部品タブから生産タブへ移動
 //                          -作業指示書の印刷
 //                          -生産実績入力の追加
-//
+//                          -生産実績検索の追加
 //
 //
 //
@@ -195,7 +195,7 @@ namespace TSS_SYSTEM
         public string kengen9 { get { return fld_kengen9; } }
         #endregion
 
-        #region GetConnectionString メソッド
+        #region GetConnectionString
         /// <summary>
         /// App.Configから情報を取得し、暗号・マスク処理を行い、DB接続に必要なConnectionStringを生成し文字列を返す
         /// 戻り値 エラー:null 正常:ConnectionString文字列を作成して返す
@@ -251,7 +251,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region GetSystemSetting メソッド
+        #region GetSystemSetting
         /// <summary>
         /// テーブル TSS_SYSTEM のシステム情報を読み込み、フィールドに格納し、プロパティとして参照可能にする
         /// 引数：無し　戻り値：無し
@@ -269,7 +269,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region GetUser メソッド
+        #region GetUser
         /// <summary>
         /// テーブル TSS_USER_M を読み込み、フィールドに格納し、プロパティとして参照可能にする
         /// 引数：無し　戻り値：無し
@@ -304,7 +304,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region Login_Rireki メソッド
+        #region Login_Rireki
         /// <summary>
         /// ログイン、ログアウトの記録を更新する
         /// 引数：区分 1:ログイン 2:ログアウト
@@ -322,7 +322,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region GetCOM メソッド
+        #region GetCOM
         /// <summary>
         /// BCRのCOMポートを取得する
         /// 引数：無し　戻り値：string out_com
@@ -339,7 +339,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region OracleUpdate メソッド
+        #region OracleUpdate
         /// <summary>
         /// OracleへUPDATE文を実行します。
         /// 戻り値 boolean型 正常=true 異常=false
@@ -383,7 +383,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region OracleDelete メソッド
+        #region OracleDelete
         /// <summary>
         /// OracleへDELETE文を実行します。
         /// 戻り値 boolean型 正常=true 異常=false
@@ -427,7 +427,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region OracleInsert メソッド
+        #region OracleInsert
         /// <summary>
         /// OracleへINSERT文を実行します。
         /// 戻り値 boolean型 正常=true 異常=false
@@ -471,7 +471,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region OracleSelect メソッド
+        #region OracleSelect
         /// <summary>
         /// OracleへSELECT文を実行します。
         /// 戻り値 DataTable型 エラー時:null
@@ -510,7 +510,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region MessageLogWrite メソッド
+        #region MessageLogWrite
         /// <summary>
         /// 受け取った文字列をテーブル TSS_MESSAGE_LOG_F に書き込む
         /// 引数：送信先ユーザーコード、発生処理名、メッセージ内容、送信元ユーザーコード　戻り値：bool型
@@ -523,7 +523,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region ErrorLogWrite メソッド
+        #region ErrorLogWrite
         /// <summary>
         /// 受け取った文字列をテーブル TSS_ERROR_LOG_F に書き込む
         /// 引数：送信先ユーザーコード、発生処理名、メッセージ内容　戻り値：bool型
@@ -536,7 +536,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region DataTableCSV メソッド
+        #region DataTableCSV
         /// <summary>
         /// DataTableをCSVファイルに出力します。
         /// <param name="dt">出力するDataTable名</param>
@@ -647,7 +647,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region StringByte メソッド
+        #region StringByte
         /// <summary>
         /// 半角 1 バイト、全角 2 バイトとして、指定された文字列のバイト数を返します。</summary>
         /// <param name="str">
@@ -660,7 +660,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region StringRight メソッド
+        #region StringRight
         /// <summary>
         /// 末尾から指定された文字列を取得します。</summary>
         /// <param name="str">
@@ -693,7 +693,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region HardCopy メソッド
+        #region HardCopy
         /// <summary>
         /// 呼ばれた時点でのアクティブなウィンドゥのハードコピーをクリップボードに送ります。
         /// 正確にはAlt+PrtScが押された事をOSに送信します。
@@ -709,7 +709,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 区分コード選択画面
+        #region kubun_cd_select
         //区分コード選択画面の呼び出し
         public string kubun_cd_select(string in_kubun_cd)
         {
@@ -736,7 +736,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 区分コード選択画面（初期選択機能付き）
+        #region kubun_cd_select（初期選択機能付き）
         //区分コード選択画面の呼び出し 初期値あり版
         public string kubun_cd_select(string in_kubun_cd, string in_initial_cd)
         {
@@ -764,7 +764,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 区分名取得
+        #region kubun_name_select
         //区分コードから区分名を取得
         public string kubun_name_select(string in_kubun_meisyou_cd, string in_kubun_cd)
         {
@@ -783,7 +783,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 区分選択画面（DataTable版）
+        #region kubun_cd_select_dt（DataTable版）
         //区分コード選択画面（DataTable版）の呼び出し
         public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun)
         {
@@ -810,8 +810,8 @@ namespace TSS_SYSTEM
             return out_kubun_cd;
         }
         #endregion
-        
-        #region 区分選択画面（DataTable版＋初期選択機能付き）
+
+        #region kubun_cd_select_dt（DataTable版＋初期選択機能付き）
         //区分コード選択画面（DataTable版）の呼び出し　初期値あり版
         public string kubun_cd_select_dt(string in_kubun_name, DataTable in_dt_kubun, string in_initial_cd)
         {
@@ -840,7 +840,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 製品構成番号選択画面
+        #region seihin_kousei_select_dt
         //製品構成番号選択画面（DataTable版）の呼び出し
         public string seihin_kousei_select_dt(string in_seihin_cd, DataTable in_dt_seihin_kousei_name)
         {
@@ -872,7 +872,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 製品構成番号選択画面（製品コードの受け渡しなし）
+        #region seihin_kousei_select_dt2（製品コードの受け渡しなし）
         //製品構成番号選択画面（製品コードの受け渡しなし）の呼び出し
         public string seihin_kousei_select_dt2(string in_seihin_cd, DataTable in_dt_seihin_kousei_name)
         {
@@ -904,7 +904,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 部品検索画面
+        #region search_buhin
         //部品検索画面の呼び出し
         public string search_buhin(string in_mode, string in_cd)
         {
@@ -932,7 +932,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 取引先検索画面
+        #region search_torihikisaki
         //取引先検索画面の呼び出し
         public string search_torihikisaki(string in_mode, string in_cd)
         {
@@ -960,7 +960,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 受注検索画面
+        #region search_juchu
         //受注検索画面の呼び出し
         public string search_juchu(string in_mode, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, string in_seihin_cd)
         {
@@ -1049,7 +1049,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 受注コード２選択画面
+        #region select_juchu_cd
         public string select_juchu_cd(DataTable in_dt)
         {
             //マウスのX座標を取得する
@@ -1172,7 +1172,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region GetSeq メソッド
+        #region GetSeq
         /// <summary>
         /// 連番マスタから必要な連番を取得し、取得後連番を＋１する。</summary>
         /// <param name="string in_cd">
@@ -1237,7 +1237,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 部品入出庫呼び出し
+        #region buhin_nyusyukkoidou
         //部品入出庫画面の呼び出し
         public string buhin_nyusyukkoidou(string in_mode)
         {
@@ -1255,7 +1255,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region try_string_to_date メソッド
+        #region try_string_to_date
         /// <summary>
         /// 文字列を受け取りdate型に変換できるか（適切な日付か）を調べ、bool型を返す</summary>
         /// <param name="in_str">
@@ -1292,7 +1292,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region try_string_to_time メソッド
+        #region try_string_to_time
         /// <summary>
         /// 文字列を受け取りtime型に変換できるか（適切な時刻か）を調べ、bool型を返す</summary>
         /// <param name="in_str">
@@ -1329,7 +1329,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region try_string_to_yyyymm メソッド
+        #region try_string_to_yyyymm
         /// <summary>
         /// 文字列を受け取りdate型に変換できるか（適切な日付か）を調べ、bool型を返す</summary>
         /// <param name="in_str">
@@ -1366,7 +1366,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region string_to_yyyymm メソッド
+        #region string_to_yyyymm
         /// <summary>
         /// 文字列を受け取り、yyyy/mm型にした文字列を返す</summary>
         /// <param name="in_str">
@@ -1407,7 +1407,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region try_string_to_decimal メソッド
+        #region try_string_to_decimal
         /// <summary>
         /// 文字列を受け取りdecimal型に変換し返す</summary>
         /// <param name="in_str">変換前の文字列</param>
@@ -1424,7 +1424,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_torihikisaki_name メソッド
+        #region get_torihikisaki_name
         /// <summary>
         /// 取引先コードを受け取り取引先名を返す</summary>
         /// <param name="in_cd">
@@ -1449,7 +1449,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_busyo_name メソッド
+        #region get_busyo_name
         /// <summary>
         /// 部署コードを受け取り部署名を返す</summary>
         /// <param name="in_cd">
@@ -1474,7 +1474,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_koutei_name メソッド
+        #region get_koutei_name
         /// <summary>
         /// 工程コードを受け取り工程名を返す</summary>
         /// <param name="in_cd">
@@ -1499,7 +1499,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_line_name メソッド
+        #region get_line_name
         /// <summary>
         /// ラインコードを受け取りライン名を返す</summary>
         /// <param name="in_cd">
@@ -1524,7 +1524,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seihin_name メソッド
+        #region get_seihin_name
         /// <summary>
         /// 製品コードを受け取り製品名を返す</summary>
         /// <param name="in_cd">
@@ -1549,7 +1549,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seihin_kousei_no メソッド
+        #region get_seihin_kousei_no
         /// <summary>
         /// 製品コードを受け取り製品構成番号を返す</summary>
         /// <param name="in_cd">
@@ -1574,7 +1574,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seihin_kousei_name メソッド
+        #region get_seihin_kousei_name
         /// <summary>
         /// 製品コードを受け取り製品構成名称を返す</summary>
         /// <param name="in_cd">
@@ -1608,7 +1608,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_buhin_name メソッド
+        #region get_buhin_name
         /// <summary>
         /// 部品コードを受け取り部品名を返す</summary>
         /// <param name="in_cd">
@@ -1633,7 +1633,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_zaiko メソッド
+        #region get_zaiko
         /// <summary>
         /// 部品コードと在庫区分を受け取り在庫数を返す</summary>
         /// <param name="string in_cd">
@@ -1677,7 +1677,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_zaiko メソッド
+        #region get_zaiko
         /// <summary>
         /// 部品コードと在庫区分"02"と受注Noを受け取り在庫数を返す</summary>
         /// <param name="string in_cd">
@@ -1710,7 +1710,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seihin_tanka メソッド
+        #region get_seihin_tanka
         /// <summary>
         /// 製品コードを受け取り販売単価を返す</summary>
         /// <param name="in_cd">
@@ -1743,7 +1743,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_juchu_to_seihin_cd メソッド
+        #region get_juchu_to_seihin_cd
         /// <summary>
         /// 受注番号を受け取り製品コードを返す</summary>
         /// <param name="in_torihikisaki_cd">
@@ -1772,7 +1772,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seisankisyu メソッド
+        #region get_seisankisyu
         /// <summary>
         /// 製品コードと工程コードを受け取り製品工程マスタの生産機種を返す</summary>
         /// <param name="in_seihin_cd">
@@ -1799,7 +1799,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region check_juchu メソッド
+        #region check_juchu
         /// <summary>
         /// 受注番号を受け取り受注マスタにあるか確認し、boolを返す</summary>
         /// <param name="in_torihikisaki_cd">
@@ -1828,7 +1828,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region zaiko_proc メソッド
+        #region zaiko_proc
         /// <summary>
         /// 部品コード、在庫区分、受注番号の3項目、在庫の加減数を受け取り、在庫の加減算を行い書き込む
         /// ロット在庫の消し込みの場合、ロット在庫が足りない場合、不足分はフリー在庫で処理する
@@ -3088,7 +3088,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region hasu_keisan メソッド
+        #region hasu_keisan
         /// <summary>
         /// 取引先コードと数値を受け取り端数処理して返す</summary>
         /// <param name="in_cd">
@@ -3161,7 +3161,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region 支払番号選択画面
+        #region siharai_no_select_dt
         //祖払い番号選択画面（DataTable版）の呼び出し
         public string siharai_no_select_dt(string in_torihikisaki_cd, DataTable in_dt_siharai_no)
         {
@@ -3190,7 +3190,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_seihin_kousei_mattan メソッド
+        #region get_seihin_kousei_mattan
         /// <summary>
         /// 製品コードと製品構成番号を受け取り製品構成の末端部品を返す</summary>
         /// <param name="string in_cd">
@@ -3297,7 +3297,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_juchu_uriage_su メソッド
+        #region get_juchu_uriage_su
         /// <summary>
         /// 受注番号を受け取り売上数を返す</summary>
         /// <param name="string in_torihikisaki_cd">
@@ -3334,7 +3334,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_juchu_juchu_su メソッド
+        #region get_juchu_juchu_su
         /// <summary>
         /// 受注番号を受け取り受注数を返す</summary>
         /// <param name="string in_torihikisaki_cd">
@@ -3364,7 +3364,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region Check_String_Escape メソッド
+        #region Check_String_Escape
         /// <summary>
         /// 文字列に使用不可の文字（エスケープシーケンス）等が無いかチェックする</summary>
         /// <param name="string in_str">チェックする文字列</param>
@@ -3386,7 +3386,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region get_syouhizeiritu メソッド
+        #region get_syouhizeiritu
         /// <summary>
         /// 日付を受け取り、消費税率を返す</summary>
         /// <param name="datetime in_datetime">消費税率算出日</param>
@@ -3630,17 +3630,17 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region Version_Check
+        #region System_Version_Check
         /// -----------------------------------------------------------------------------------------
         /// <summary>
-        /// tss_system_mの'0101'レコードのバージョンと、tss_system_libraryのバージョンをチェックし、
+        /// tss_system_mの'0101'レコードのシステムバージョンと、tss_system_libraryのシステムバージョンをチェックし、
         /// 違ったらfalseを返す。</summary>
         /// -----------------------------------------------------------------------------------------
-        public bool Version_Check()
+        public bool System_Version_Check()
         {
             bool bl;    //戻り値用
             bl = true;
-            //プログラムのバージョン確認
+            //システムのバージョン確認
             DataTable dt_system = new DataTable();
             dt_system = OracleSelect("select * from tss_system_m where system_cd = '0101'");
             //システムレコードのチェック
@@ -4004,7 +4004,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region date_eigyou_calc メソッド
+        #region date_eigyou_calc
         /// <summary>
         /// 開始日と日数を受け取り、開始日から日数分をさかのぼった営業日を返す</summary>
         /// <param name="DateTime in_datetime">
@@ -4059,7 +4059,7 @@ namespace TSS_SYSTEM
         }
         #endregion
 
-        #region Juchu_Schedule_Check_dt メソッド
+        #region Juchu_Schedule_Check_dt
         /// <summary>
         /// 受注コードを受け取り、その受注の納品数、生産数、実績数を日付毎にまとめデータテーブルで返す</summary>
         /// <param name="String in_torihikisaki_cd">
@@ -4145,6 +4145,65 @@ namespace TSS_SYSTEM
             return out_dt;
         }
         #endregion
+
+        #region check_HHMM
+        /// <summary>
+        /// 時刻文字列を受け取り、HH:MM形式の文字列を返す</summary>
+        /// <param name="String in_hhmm">
+        /// HH:MM形式に変換する文字列</param>
+        /// <returns>
+        /// DataTable out_str
+        /// エラー等、変換できない場合は null を返します。</returns>
+        public string check_HHMM(string in_hhmm)
+        {
+            //3文字以下はNG
+            if (in_hhmm.Length < 3)
+            {
+                return null;
+            }
+            //コロン（:）が先頭または末尾にあるとNG
+            if (in_hhmm.Substring(0, 1) == ":" || in_hhmm.Substring(in_hhmm.Length - 1, 1) == ":")
+            {
+                return null;
+            }
+            //コロン（:）が無ければNG
+            int idx;
+            idx = in_hhmm.IndexOf(":");
+            if (idx <= 0)
+            {
+                return null;
+            }
+            //00～23以外の時間はNG
+            double dHH;
+            if (double.TryParse(in_hhmm.Substring(0, idx), out dHH) == false)
+            {
+                //変換出来なかったら（false）NG
+                return null;
+            }
+            if (dHH < 00 || dHH > 23)
+            {
+                return null;
+            }
+            //00～59以外の分はNG
+            double dMM;
+            if (double.TryParse(in_hhmm.Substring(idx + 1), out dMM) == false)
+            {
+                //変換出来なかったら（false）NG
+                return null;
+            }
+            if (dMM < 00 || dMM > 59)
+            {
+                return null;
+            }
+            //正常時にはHH:MMの書式にした文字列を返す
+            return dHH.ToString("00") + ":" + dMM.ToString("00");
+        }
+        #endregion
+
+
+
+
+
 
     }
     #endregion

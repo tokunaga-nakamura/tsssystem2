@@ -31,13 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_jisseki_nyuuryoku));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_kensaku = new System.Windows.Forms.Button();
             this.btn_barcode = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.tb_koutei_cd = new System.Windows.Forms.TextBox();
-            this.tb_seq = new System.Windows.Forms.TextBox();
+            this.tb_jisseki_seq = new System.Windows.Forms.TextBox();
             this.textBox53 = new System.Windows.Forms.TextBox();
             this.btn_hyouji = new System.Windows.Forms.Button();
             this.textBox22 = new System.Windows.Forms.TextBox();
@@ -51,6 +52,8 @@
             this.tb_koutei_name = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
             this.tb_seisanbi = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_schedule_seq = new System.Windows.Forms.TextBox();
             this.tb_bcr = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
@@ -109,10 +112,12 @@
             this.dgv_futekigou = new System.Windows.Forms.DataGridView();
             this.splitContainer14 = new System.Windows.Forms.SplitContainer();
             this.label4 = new System.Windows.Forms.Label();
-            this.tb_houkoku = new System.Windows.Forms.TextBox();
+            this.tb_memo = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +198,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_kensaku);
             this.splitContainer1.Panel1.Controls.Add(this.btn_barcode);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -203,6 +210,16 @@
             this.splitContainer1.SplitterDistance = 59;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
+            // 
+            // btn_kensaku
+            // 
+            this.btn_kensaku.Location = new System.Drawing.Point(795, 29);
+            this.btn_kensaku.Name = "btn_kensaku";
+            this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
+            this.btn_kensaku.TabIndex = 1;
+            this.btn_kensaku.Text = "検索";
+            this.btn_kensaku.UseVisualStyleBackColor = true;
+            this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
             // 
             // btn_barcode
             // 
@@ -282,7 +299,7 @@
             // splitContainer5.Panel1
             // 
             this.splitContainer5.Panel1.Controls.Add(this.tb_koutei_cd);
-            this.splitContainer5.Panel1.Controls.Add(this.tb_seq);
+            this.splitContainer5.Panel1.Controls.Add(this.tb_jisseki_seq);
             this.splitContainer5.Panel1.Controls.Add(this.textBox53);
             this.splitContainer5.Panel1.Controls.Add(this.btn_hyouji);
             this.splitContainer5.Panel1.Controls.Add(this.textBox22);
@@ -299,6 +316,8 @@
             // 
             // splitContainer5.Panel2
             // 
+            this.splitContainer5.Panel2.Controls.Add(this.textBox3);
+            this.splitContainer5.Panel2.Controls.Add(this.tb_schedule_seq);
             this.splitContainer5.Panel2.Controls.Add(this.tb_bcr);
             this.splitContainer5.Panel2.Controls.Add(this.textBox2);
             this.splitContainer5.Panel2.Controls.Add(this.textBox23);
@@ -325,15 +344,15 @@
             this.tb_koutei_cd.DoubleClick += new System.EventHandler(this.tb_koutei_cd_DoubleClick);
             this.tb_koutei_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_koutei_cd_Validating);
             // 
-            // tb_seq
+            // tb_jisseki_seq
             // 
-            this.tb_seq.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_seq.Location = new System.Drawing.Point(799, 3);
-            this.tb_seq.Name = "tb_seq";
-            this.tb_seq.ReadOnly = true;
-            this.tb_seq.Size = new System.Drawing.Size(71, 19);
-            this.tb_seq.TabIndex = 23;
-            this.tb_seq.TabStop = false;
+            this.tb_jisseki_seq.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_jisseki_seq.Location = new System.Drawing.Point(799, 3);
+            this.tb_jisseki_seq.Name = "tb_jisseki_seq";
+            this.tb_jisseki_seq.ReadOnly = true;
+            this.tb_jisseki_seq.Size = new System.Drawing.Size(71, 19);
+            this.tb_jisseki_seq.TabIndex = 23;
+            this.tb_jisseki_seq.TabStop = false;
             // 
             // textBox53
             // 
@@ -469,6 +488,27 @@
             this.tb_seisanbi.Size = new System.Drawing.Size(74, 19);
             this.tb_seisanbi.TabIndex = 0;
             this.tb_seisanbi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisanbi_Validating);
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox3.Location = new System.Drawing.Point(705, 28);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(94, 19);
+            this.textBox3.TabIndex = 25;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "スケジュールSEQ";
+            // 
+            // tb_schedule_seq
+            // 
+            this.tb_schedule_seq.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_schedule_seq.Location = new System.Drawing.Point(799, 28);
+            this.tb_schedule_seq.Name = "tb_schedule_seq";
+            this.tb_schedule_seq.ReadOnly = true;
+            this.tb_schedule_seq.Size = new System.Drawing.Size(70, 19);
+            this.tb_schedule_seq.TabIndex = 24;
+            this.tb_schedule_seq.TabStop = false;
             // 
             // tb_bcr
             // 
@@ -798,6 +838,7 @@
             // 
             // splitContainer11.Panel1
             // 
+            this.splitContainer11.Panel1.Controls.Add(this.label5);
             this.splitContainer11.Panel1.Controls.Add(this.tb_jisseki_seisan_su);
             this.splitContainer11.Panel1.Controls.Add(this.tb_jisseki_end_time);
             this.splitContainer11.Panel1.Controls.Add(this.tb_jisseki_start_time);
@@ -1108,8 +1149,10 @@
             this.tb_seisan_zumi_su.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_seisan_zumi_su.Location = new System.Drawing.Point(85, 3);
             this.tb_seisan_zumi_su.Name = "tb_seisan_zumi_su";
+            this.tb_seisan_zumi_su.ReadOnly = true;
             this.tb_seisan_zumi_su.Size = new System.Drawing.Size(100, 19);
             this.tb_seisan_zumi_su.TabIndex = 2;
+            this.tb_seisan_zumi_su.TabStop = false;
             // 
             // textBox19
             // 
@@ -1196,7 +1239,7 @@
             // 
             // splitContainer14.Panel2
             // 
-            this.splitContainer14.Panel2.Controls.Add(this.tb_houkoku);
+            this.splitContainer14.Panel2.Controls.Add(this.tb_memo);
             this.splitContainer14.Size = new System.Drawing.Size(476, 85);
             this.splitContainer14.SplitterDistance = 88;
             this.splitContainer14.TabIndex = 0;
@@ -1211,15 +1254,15 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "メモ・報告・連絡";
             // 
-            // tb_houkoku
+            // tb_memo
             // 
-            this.tb_houkoku.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_houkoku.Location = new System.Drawing.Point(0, 0);
-            this.tb_houkoku.MaxLength = 256;
-            this.tb_houkoku.Multiline = true;
-            this.tb_houkoku.Name = "tb_houkoku";
-            this.tb_houkoku.Size = new System.Drawing.Size(384, 85);
-            this.tb_houkoku.TabIndex = 0;
+            this.tb_memo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_memo.Location = new System.Drawing.Point(0, 0);
+            this.tb_memo.MaxLength = 256;
+            this.tb_memo.Multiline = true;
+            this.tb_memo.Name = "tb_memo";
+            this.tb_memo.Size = new System.Drawing.Size(384, 85);
+            this.tb_memo.TabIndex = 0;
             // 
             // splitContainer3
             // 
@@ -1249,6 +1292,7 @@
             this.btn_touroku.TabIndex = 0;
             this.btn_touroku.Text = "登録";
             this.btn_touroku.UseVisualStyleBackColor = true;
+            this.btn_touroku.Click += new System.EventHandler(this.btn_touroku_Click);
             // 
             // btn_syuuryou
             // 
@@ -1259,6 +1303,24 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(662, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 24);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "※生産に関わる時刻\r\n8:30～8:29を1日とみなされます。";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(223, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(522, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "※生産スケジュールと生産実績では一日の開始時刻は8:30として処理されます。（深夜の0:00ではありません。）";
             // 
             // frm_seisan_jisseki_nyuuryoku
             // 
@@ -1272,6 +1334,7 @@
             this.Text = "生産実績入力";
             this.Load += new System.EventHandler(this.frm_seisan_jisseki_nyuuryoku_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -1424,11 +1487,16 @@
         private System.Windows.Forms.SplitContainer splitContainer14;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox52;
-        private System.Windows.Forms.TextBox tb_seq;
+        private System.Windows.Forms.TextBox tb_jisseki_seq;
         private System.Windows.Forms.TextBox textBox53;
         private System.Windows.Forms.TextBox tb_bikou;
-        private System.Windows.Forms.TextBox tb_houkoku;
+        private System.Windows.Forms.TextBox tb_memo;
         private System.Windows.Forms.TextBox tb_bcr;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_schedule_seq;
+        private System.Windows.Forms.Button btn_kensaku;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }

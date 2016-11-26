@@ -52,7 +52,7 @@ namespace TSS_SYSTEM
             }
             catch
             {
-                MessageBox.Show("バーコードリーダがOPENができません。設定ファイル、接続、ポート番号等を確認してください。");
+                MessageBox.Show("バーコードリーダをOPENできません。設定ファイル、接続、ポート番号等を確認してください。");
                 this.Close();
             }
             tb_syori_date.Text = DateTime.Now.ToShortDateString();
@@ -382,8 +382,6 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("テストモードでは登録できません。");
             }
-
-
 
             if(dgv_m.Rows.Count == 0)
             {

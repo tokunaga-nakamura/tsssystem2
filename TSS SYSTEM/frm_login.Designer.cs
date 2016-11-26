@@ -51,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 28);
+            this.label1.Location = new System.Drawing.Point(18, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(231, 12);
             this.label1.TabIndex = 0;
@@ -60,7 +60,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox1.Location = new System.Drawing.Point(33, 5);
+            this.textBox1.Location = new System.Drawing.Point(30, 28);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(68, 19);
@@ -71,7 +71,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(33, 30);
+            this.textBox2.Location = new System.Drawing.Point(30, 53);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(68, 19);
@@ -81,7 +81,7 @@
             // 
             // tb_user_cd
             // 
-            this.tb_user_cd.Location = new System.Drawing.Point(101, 5);
+            this.tb_user_cd.Location = new System.Drawing.Point(98, 28);
             this.tb_user_cd.MaxLength = 6;
             this.tb_user_cd.Name = "tb_user_cd";
             this.tb_user_cd.Size = new System.Drawing.Size(49, 19);
@@ -90,7 +90,7 @@
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(101, 30);
+            this.tb_password.Location = new System.Drawing.Point(98, 53);
             this.tb_password.MaxLength = 20;
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
@@ -110,13 +110,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lbl_system);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(263, 139);
-            this.splitContainer1.SplitterDistance = 47;
+            this.splitContainer1.Size = new System.Drawing.Size(263, 145);
+            this.splitContainer1.SplitterDistance = 29;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
@@ -142,6 +141,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.tb_password);
+            this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.textBox2);
             this.splitContainer2.Panel1.Controls.Add(this.tb_user_cd);
@@ -150,8 +150,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer2.Panel2.Controls.Add(this.btn_login);
-            this.splitContainer2.Size = new System.Drawing.Size(263, 88);
-            this.splitContainer2.SplitterDistance = 54;
+            this.splitContainer2.Size = new System.Drawing.Size(263, 112);
+            this.splitContainer2.SplitterDistance = 78;
             this.splitContainer2.TabIndex = 6;
             this.splitContainer2.TabStop = false;
             // 
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 139);
+            this.ClientSize = new System.Drawing.Size(263, 145);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -189,7 +189,6 @@
             this.Text = "TSS SYSTEM ユーザー認証";
             this.Load += new System.EventHandler(this.frm_login_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

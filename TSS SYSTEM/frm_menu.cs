@@ -60,7 +60,7 @@ namespace TSS_SYSTEM
             //メニュー画面の各種初期表示及び再表示
             tss.GetSystemSetting();
             //プログラムのバージョン確認
-            if (tss.Version_Check() == false)
+            if (tss.System_Version_Check() == false)
             {
                 lbl_program_version.Text = "プログラムのバージョンが違います。\nTSSシステムを終了し、tss_system_get_new を実行してから再度起動してください。";
                 lbl_program_version.ForeColor = Color.White;
@@ -1218,6 +1218,14 @@ namespace TSS_SYSTEM
             frm_seisan_jisseki_nyuuryoku frm_sjn = new frm_seisan_jisseki_nyuuryoku();
             frm_sjn.ShowDialog(this);
             frm_sjn.Dispose();
+        }
+
+        private void btn_jisseki_kensaku_Click(object sender, EventArgs e)
+        {
+            frm_search_jisseki frm_sj = new frm_search_jisseki();
+            frm_sj.pub_mode = "0";
+            frm_sj.ShowDialog(this);
+            frm_sj.Dispose();
         }
     }
 }

@@ -154,5 +154,11 @@ namespace TSS_SYSTEM
             //「選択」ボタン
             form_close_sentaku();
         }
+
+        private void dgv_dt_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //セルをダブルクリック
+            form_close_sentaku();
+        }
     }
 }

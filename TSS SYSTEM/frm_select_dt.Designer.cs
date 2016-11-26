@@ -152,6 +152,7 @@
             this.dgv_dt.RowTemplate.Height = 21;
             this.dgv_dt.Size = new System.Drawing.Size(534, 139);
             this.dgv_dt.TabIndex = 0;
+            this.dgv_dt.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_dt_CellMouseDoubleClick);
             // 
             // btn_cansel
             // 
