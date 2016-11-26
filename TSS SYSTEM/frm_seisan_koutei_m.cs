@@ -68,10 +68,14 @@ namespace TSS_SYSTEM
         private bool chk_seihin_cd()
         {
             bool bl = true; //戻り値
-            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + tb_seihin_cd.Text + "' and A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
-            dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
+            //生産工程マスタと生産工程ラインマスタ、工程マスタからテーブルを作成
+            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.SEISAN_COUNT_FLG,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + tb_seihin_cd.Text + "' and A1.seihin_cd = '" + tb_seihin_cd.Text + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+            
+            //データテーブルにチェックボックスを2列追加
+            dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);//ラインセレクト区分用チェックボックス
+            dt_m.Columns.Add("checkbox2", Type.GetType("System.Boolean")).SetOrdinal(1);//生産数カウントフラグ用チェックボックス
 
-            //for文で行数分f
+            //for文で行数分チェックボックスに値を入れる
             int rc = dt_m.Rows.Count;
             for (int i = 0; i <= rc - 1; i++)
             {
@@ -80,10 +84,20 @@ namespace TSS_SYSTEM
                 {
                     dt_m.Rows[i]["checkbox"] = true;
                 }
+                //チェックボックス
+                if (dt_m.Rows[i]["seisan_count_flg"].ToString() != "1")
+                {
+                    dt_m.Rows[i]["checkbox2"] = false;
+                }
+                //チェックボックス
+                if (dt_m.Rows[i]["seisan_count_flg"].ToString() == "1")
+                {
+                    dt_m.Rows[i]["checkbox2"] = true;
+                }
             }
             if (dt_m.Rows.Count <= 0)
             {
-                //新規
+                //生産工程の新規登録
                 label_sinki.Text = "新規";
                 
 
@@ -220,7 +234,7 @@ namespace TSS_SYSTEM
             //vw = dt_m.DefaultView;
 
             //Distinct（集計）をかける
-            DataTable resultDt = vw.ToTable("dt_koutei", true, "SEQ_NO", "KOUTEI_CD", "KOUTEI_NAME");
+            DataTable resultDt = vw.ToTable("dt_koutei", true, "SEQ_NO", "KOUTEI_CD", "KOUTEI_NAME","CHECKBOX2");
 
             dgv_koutei.DataSource = resultDt;
 
@@ -240,13 +254,18 @@ namespace TSS_SYSTEM
             //dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_koutei.RowHeadersWidth = 20;
-            dgv_koutei.Columns["SEQ_NO"].Width = 55;
-            dgv_koutei.Columns["koutei_cd"].Width = 60;
-            dgv_koutei.Columns["koutei_name"].Width = 80;
+            dgv_koutei.Columns["CHECKBOX2"].Width = 40;
+            dgv_koutei.Columns["SEQ_NO"].Width = 40;
+            dgv_koutei.Columns["koutei_cd"].Width = 40;
+            dgv_koutei.Columns["koutei_name"].Width = 75;
 
+            dgv_koutei.Columns["CHECKBOX2"].HeaderText = "生産ｶｳﾝﾄ";
             dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
             dgv_koutei.Columns["koutei_cd"].HeaderText = "工程ｺｰﾄﾞ";
             dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
+
+            //カラムヘッダーの高さ設定
+            dgv_koutei.ColumnHeadersHeight = 40;
 
             //セルの書式設定
             dgv_koutei.Columns["koutei_cd"].DefaultCellStyle.BackColor = Color.PowderBlue;
@@ -286,6 +305,7 @@ namespace TSS_SYSTEM
             //セルを選択すると行全体が選択されるようにする
             //dgv_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            dgv_line.Columns["checkbox2"].Visible = false;
             dgv_line.Columns["seihin_cd"].Visible = false;
             dgv_line.Columns["SEQ_NO"].Visible = false;
             dgv_line.Columns["busyo_cd"].Visible = false;
@@ -294,6 +314,7 @@ namespace TSS_SYSTEM
             dgv_line.Columns["koutei_name"].Visible = false;
             dgv_line.Columns["oya_koutei_seq"].Visible = false;
             dgv_line.Columns["oya_koutei_cd"].Visible = false;
+            dgv_line.Columns["seisan_count_flg"].Visible = false;
             dgv_line.Columns["jisseki_kanri_kbn"].Visible = false;
             dgv_line.Columns["line_select_kbn"].Visible = false;
             dgv_line.Columns["seisan_start_day"].Visible = false;
@@ -428,12 +449,9 @@ namespace TSS_SYSTEM
 
         private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int rc = dgv_koutei.CurrentRow.Index;
-
             string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
             gamen_disp(str);
             tb_koutei_no.Text = str;
-            //dgv_line_disp();
         }
 
         private void tb_koutei_cd_Validating(object sender, CancelEventArgs e)
@@ -565,7 +583,7 @@ namespace TSS_SYSTEM
              }
 
              //ラインコードが入力されたときの処理
-            if (e.ColumnIndex == 21)
+            if (e.ColumnIndex == 23)
             {
                 //ラインコードがnullや空白の場合
                 if (dgv.Rows[e.RowIndex].Cells[21].Value.ToString() == "")
@@ -652,7 +670,7 @@ namespace TSS_SYSTEM
                 }
 
                 //工程コードとラインコードの組み合わせで、重複がないかチェック
-                if (e.ColumnIndex == 21)
+                if (e.ColumnIndex == 23)
                 {
                     int j = e.ColumnIndex;
                     int rc = dgv_line.Rows.Count;
@@ -705,7 +723,7 @@ namespace TSS_SYSTEM
          }
 
         //タクトタイム変更時の処理
-        if (e.ColumnIndex == 24)
+        if (e.ColumnIndex == 26)
         {
             if (e.FormattedValue.ToString() != "" && decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
             {
@@ -723,7 +741,7 @@ namespace TSS_SYSTEM
 
         }
         //段取時間変更時の処理
-        if (e.ColumnIndex == 25)
+        if (e.ColumnIndex == 27)
         {
             if (e.FormattedValue.ToString() != "" && decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
             {
@@ -740,7 +758,7 @@ namespace TSS_SYSTEM
             }
         }
         //追加時間変更時の処理
-        if (e.ColumnIndex == 26)
+        if (e.ColumnIndex == 28)
         {
             if (e.FormattedValue.ToString() != "" && decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
             {
@@ -757,7 +775,7 @@ namespace TSS_SYSTEM
             }
         }
         //補充時間変更時の処理
-        if (e.ColumnIndex == 27)
+        if (e.ColumnIndex == 29)
         {
             if (e.FormattedValue.ToString() != "" && decimal.TryParse(e.FormattedValue.ToString(), out result) == false)
             {
@@ -798,8 +816,6 @@ namespace TSS_SYSTEM
                     }
                 }
             }
-            
-           
         }
 
         private void tb_line_select_kbn_Validating(object sender, CancelEventArgs e)
@@ -826,8 +842,6 @@ namespace TSS_SYSTEM
                     }
                 }
             }
-            
-            
         }
 
         private void tb_seisan_start_day_Validating(object sender, CancelEventArgs e)
@@ -877,8 +891,7 @@ namespace TSS_SYSTEM
                     {
                         rows[i]["seisan_start_day"] = DBNull.Value;
                     }
-                }
-                
+                }   
             }
         }
 
@@ -928,9 +941,7 @@ namespace TSS_SYSTEM
                      {
                          rows[i]["koutei_start_time"] = DBNull.Value;
                      }
-                 }
-                
-               
+                 }            
             }
         }
 
@@ -1169,21 +1180,7 @@ namespace TSS_SYSTEM
 
             if(rc > 0)
             {
-                //dt_m.Rows[0]["seq_no"] = 1;
-
-                //for (int i = 0; i <= rc - 2; i++)
-                //{
-                //    int we = int.Parse(dt_m.Rows[i]["seq_no"].ToString());
-                //    if (dt_m.Rows[i]["koutei_cd"].ToString() != dt_m.Rows[i + 1]["koutei_cd"].ToString())
-                //    {
-                //        dt_m.Rows[i + 1]["seq_no"] = we + 1;
-                //    }
-                //    else
-                //    {
-                //        dt_m.Rows[i + 1]["seq_no"] = we;
-                //    }
-                //}
-
+               
                 dt_m.AcceptChanges();
 
                 dgv_koutei.DataSource = dt_m;
@@ -1608,19 +1605,16 @@ namespace TSS_SYSTEM
             
 
             //①生産工程マスタ更新
-            //既存のデータの削除
-            tss.OracleDelete("delete from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
-            
-            //作成、編集した内容で生産工程テーブルにインサート  
+            //生産カウントフラグのチェック
+
             DataTable dt_seisan_koutei_m = new DataTable();
 
             //重複を除去するため DataView を使う
             DataView vw = new DataView(dt_m);
 
             //Distinct（集計）をかける
-            dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei", true, "SEIHIN_CD","SEQ_NO","BUSYO_CD","KOUTEI_LEVEL", "KOUTEI_CD","OYA_KOUTEI_SEQ","OYA_KOUTEI_CD","JISSEKI_KANRI_KBN","LINE_SELECT_KBN","SEISAN_START_DAY","MAE_KOUTEI_SEQ","KOUTEI_START_TIME","SEISANKISYU","BIKOU","DELETE_FLG","CREATE_USER_CD","CREATE_DATETIME","UPDATE_USER_CD","UPDATE_DATETIME");
-            //dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei2", true, "SEIHIN_CD", "SEQ_NO", "BUSYO_CD", "KOUTEI_LEVEL", "KOUTEI_CD", "OYA_KOUTEI_SEQ", "OYA_KOUTEI_CD", "JISSEKI_KANRI_KBN", "LINE_SELECT_KBN", "SEISAN_START_DAY", "MAE_KOUTEI_SEQ", "KOUTEI_START_TIME", "SEISANKISYU");
-
+            dt_seisan_koutei_m = vw.ToTable("dt_seisan_koutei", true, "SEIHIN_CD","SEQ_NO","BUSYO_CD","KOUTEI_LEVEL", "KOUTEI_CD","OYA_KOUTEI_SEQ","OYA_KOUTEI_CD","SEISAN_COUNT_FLG","JISSEKI_KANRI_KBN","LINE_SELECT_KBN","SEISAN_START_DAY","MAE_KOUTEI_SEQ","KOUTEI_START_TIME","SEISANKISYU","BIKOU","DELETE_FLG","CREATE_USER_CD","CREATE_DATETIME","UPDATE_USER_CD","UPDATE_DATETIME");
+           
             int rc = dt_seisan_koutei_m.Rows.Count;
 
             for (int i = 0; i < rc; i++)
@@ -1637,6 +1631,30 @@ namespace TSS_SYSTEM
                 }
             }
 
+            //生産カウントフラグの個数チェック
+            DataRow[] foundRows;
+            foundRows = dt_seisan_koutei_m.Select("seisan_count_flg = 1");
+
+            int find_row_count = foundRows.Length;
+
+            //生産カウントフラグがどの工程にも付いていない場合
+            if(find_row_count == 0)
+            {
+                DialogResult bRet = MessageBox.Show("生産数カウント工程にチェックがありませんが、このまま登録しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (bRet == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            //生産カウントフラグが2つ以上の工程に付いている場合
+            if (find_row_count > 1)
+            {
+                MessageBox.Show("生産数カウント工程に2つ以上チェックがあります");
+                return;
+            }
+
             DataTable dt_seisan_koutei_m2 = new DataTable();
             
             //重複を除去するため DataView を使う
@@ -1645,6 +1663,11 @@ namespace TSS_SYSTEM
             dt_seisan_koutei_m2 = vw_2.ToTable("dt_seisan_koutei2", true, "SEIHIN_CD", "SEQ_NO");
 
             int rc5 = dt_seisan_koutei_m2.Rows.Count;
+
+
+            //既存のデータの削除
+            tss.OracleDelete("delete from TSS_SEISAN_KOUTEI_M WHERE seihin_cd = '" + tb_seihin_cd.Text.ToString() + "'");
+
 
             //作成、編集した内容で生産工程テーブルにインサート  
 
@@ -1661,7 +1684,7 @@ namespace TSS_SYSTEM
                     DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
 
                     //1行ずつ生産工程マスタテーブルに挿入
-                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
+                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,seisan_count_flg,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime)"
                                           + " VALUES ('"
                                           + rows[0][0].ToString() + "','"
                                           + rows[0][1].ToString() + "','"
@@ -1678,8 +1701,9 @@ namespace TSS_SYSTEM
                                           + rows[0][12].ToString() + "','"
                                           + rows[0][13].ToString() + "','"
                                           + rows[0][14].ToString() + "','"
-                                          + rows[0][15].ToString() + "',"
-                                          + "to_date('" + rows[0][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
+                                          + rows[0][15].ToString() + "','"
+                                          + rows[0][16].ToString() + "',"
+                                          + "to_date('" + rows[0][17].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
                 }
             }
             else
@@ -1692,7 +1716,7 @@ namespace TSS_SYSTEM
                     DataRow[] rows = dt_seisan_koutei_m.Select("seq_no = '" + str_seq + "'");
 
                     //1行ずつ生産工程マスタテーブルに挿入
-                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,update_user_cd,update_datetime)"
+                    tss.OracleInsert("INSERT INTO tss_seisan_koutei_m (seihin_cd,seq_no,busyo_cd,koutei_level,koutei_cd,oya_koutei_seq,oya_koutei_cd,seisan_count_flg,jisseki_kanri_kbn,line_select_kbn,seisan_start_day,mae_koutei_seq,koutei_start_time,seisankisyu,bikou,delete_flg,create_user_cd,create_datetime,update_user_cd,update_datetime)"
                                           + " VALUES ('"
                                           + rows[0][0].ToString() + "','"
                                           + rows[0][1].ToString() + "','"
@@ -1709,8 +1733,9 @@ namespace TSS_SYSTEM
                                           + rows[0][12].ToString() + "','"
                                           + rows[0][13].ToString() + "','"
                                           + rows[0][14].ToString() + "','"
-                                          + rows[0][15].ToString() + "',"
-                                          + "to_date('" + rows[0][16].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
+                                          + rows[0][15].ToString() + "','"
+                                          + rows[0][16].ToString() + "',"
+                                          + "to_date('" + rows[0][17].ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                                           + tss.user_cd + "',SYSDATE)");
 
                 }
@@ -1889,7 +1914,6 @@ namespace TSS_SYSTEM
 
             if (i == 1)
             {
-
                 //選択用のdatatableの作成
                 DataTable dt_work = new DataTable();
 
@@ -1907,8 +1931,6 @@ namespace TSS_SYSTEM
 
                 tb_koutei_cd.Text = dgv_koutei.CurrentRow.Cells["koutei_cd"].Value.ToString();
                 tb_koutei_name.Text = get_koutei_name(dgv_koutei.CurrentCell.Value.ToString());
-
-
             }
         }
 
@@ -1918,7 +1940,7 @@ namespace TSS_SYSTEM
             int i = e.RowIndex;
             int ci = e.ColumnIndex;
 
-              if (ci == 21)
+              if (ci == 23)
               {
 
                   //選択用のdatatableの作成
@@ -2076,9 +2098,9 @@ namespace TSS_SYSTEM
             }
 
             //生産工程の画面に子画面から受け取った製品コードの生産工程を表示
-            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + str_seihin_cd + "' and A1.seihin_cd = '" + str_seihin_cd + "' ORDER BY a1.SEQ_NO,b1.line_cd");
+            dt_m = tss.OracleSelect("Select B1.SEIHIN_CD,B1.SEQ_NO,A1.BUSYO_CD,A1.KOUTEI_LEVEL,A1.KOUTEI_CD,C1.KOUTEI_NAME,A1.OYA_KOUTEI_SEQ,A1.OYA_KOUTEI_CD,A1.SEISAN_COUNT_FLG,A1.JISSEKI_KANRI_KBN,A1.LINE_SELECT_KBN,A1.SEISAN_START_DAY,A1.MAE_KOUTEI_SEQ,A1.KOUTEI_START_TIME,A1.SEISANKISYU,A1.BIKOU,A1.DELETE_FLG,A1.CREATE_USER_CD,A1.CREATE_DATETIME,A1.UPDATE_USER_CD,A1.UPDATE_DATETIME,B1.LINE_CD,D1.LINE_NAME,B1.SELECT_KBN,B1.TACT_TIME,B1.DANDORI_TIME,B1.TUIKA_TIME,B1.HOJU_TIME,B1.BIKOU,B1.DELETE_FLG,B1.CREATE_USER_CD,B1.CREATE_DATETIME,B1.UPDATE_USER_CD,B1.UPDATE_DATETIME From Tss_Seisan_Koutei_M A1 right Join TSS_SEISAN_KOUTEI_LINE_M B1 On A1.seq_no = B1.seq_no right Join TSS_KOUTEI_M C1 On A1.koutei_Cd = C1.koutei_Cd right Join TSS_LINE_M D1 On B1.line_Cd = D1.line_Cd where B1.seihin_cd = '" + str_seihin_cd + "' and A1.seihin_cd = '" + str_seihin_cd + "' ORDER BY a1.SEQ_NO,b1.line_cd");
             dt_m.Columns.Add("checkbox", Type.GetType("System.Boolean")).SetOrdinal(0);
-
+            dt_m.Columns.Add("checkbox2", Type.GetType("System.Boolean")).SetOrdinal(1);
             //for文で行数分指定セルに値を入れる
             int rc = dt_m.Rows.Count;
             for (int i = 0; i <= rc - 1; i++)
@@ -2091,7 +2113,16 @@ namespace TSS_SYSTEM
                 {
                     dt_m.Rows[i]["checkbox"] = true;
                 }
-                
+                //チェックボックス
+                if (dt_m.Rows[i]["seisan_count_flg"].ToString() != "1")
+                {
+                    dt_m.Rows[i]["checkbox2"] = false;
+                }
+                //チェックボックス
+                if (dt_m.Rows[i]["seisan_count_flg"].ToString() == "1")
+                {
+                    dt_m.Rows[i]["checkbox2"] = true;
+                }
                 if(label_sinki.Text == "新規")
                 {
                     dt_m.Rows[i]["create_user_cd"] = null;
@@ -2159,11 +2190,82 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Text = dt_m.Rows[0]["update_user_cd"].ToString();
                     tb_update_datetime.Text = update_datetime.ToString();
                 }
-
                 dgv_koutei_disp();
                 dgv_line_disp();
             }
+        }
 
+        //生産数カウント工程のチェックボックスのチェック（2つ以上チェックがつかないようにする）
+        private void dgv_koutei_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv_koutei = (DataGridView)sender;
+
+            string seq;
+            int rc = dt_m.Rows.Count;
+
+            // 選択列の場合
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0)
+            {
+                // 今回チェック設定したチェックボックスがtrueのとき
+                if ((bool)dgv_koutei[e.ColumnIndex, e.RowIndex].Value == true)
+                {
+                    seq = dgv_koutei.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    //データテーブルdt_mの生産数カウントフラグを変更する
+                    for (int i = 0; i < rc; i++)
+                    {
+                        //MessageBox.Show(dt_m.Rows[i]["seq_no"].ToString());
+                        if (dt_m.Rows[i]["seq_no"].ToString() == seq)
+                        {
+                            dt_m.Rows[i]["checkbox2"] = "true";
+                            dt_m.Rows[i]["seisan_count_flg"] = "1";
+                        }
+                        else
+                        {
+                            dt_m.Rows[i]["checkbox2"] = "false";
+                            dt_m.Rows[i]["seisan_count_flg"] = "0";
+                        }
+                    }
+
+                    // 他にチェックされている項目がある場合はそのチェックを解除（デーグリッドビュー上の見た目）
+
+                    for (int rowIndex = 0; rowIndex < dgv_koutei.Rows.Count; rowIndex++)
+                    {
+                        if ((rowIndex != e.RowIndex) && ((bool)dgv_koutei[3, rowIndex].Value == true))
+                        {
+                            // チェックを解除
+                            dgv_koutei[3, rowIndex].Value = false;
+                            // ReadOnlyを解除
+                            dgv_koutei[3, rowIndex].ReadOnly = false;
+                        }
+                    }
+                }
+                else
+                {
+                    // 今回チェック設定したチェックボックスがfalseのとき
+                    seq = dgv_koutei.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    //データテーブルdt_mの生産数カウントフラグを変更する
+                    for (int i = 0; i < rc; i++)
+                    {
+                        if (dt_m.Rows[i]["seq_no"].ToString() == seq)
+                        {
+                            dt_m.Rows[i]["checkbox2"] = "false";
+                            dt_m.Rows[i]["seisan_count_flg"] = "0";
+                        }
+                    }
+                }
+            }
+        }
+
+        //工程dgvの実績カウントチェックボックスを変更したらすぐコミットする（この処理をしないと、見た目で2つのチェックがついてしまう）
+        private void dgv_koutei_CurrentCellDirtyStateChanged_1(object sender, EventArgs e)
+        {
+            if (dgv_koutei.CurrentCellAddress.X == 3 && dgv_koutei.IsCurrentCellDirty)
+            {
+                //コミットする
+                dgv_koutei.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
        
     }
