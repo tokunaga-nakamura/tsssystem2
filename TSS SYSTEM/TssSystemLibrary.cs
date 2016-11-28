@@ -19,7 +19,7 @@ using System.IO;                //StreamWriter
 //・プログラムの機能の追加やバグ修正など、現状バージョンのまま使用できる場合は、プログラムバージョンのみ上げる
 //※尚、system_versionが上がると、get_newしないと起動できなくなるので、新規プログラムの確実な配信に役立てることも可能
 //----------------------------------------------------------------------------------------------------------------------------------
-//プログラムの配布手順
+//プログラムの配布手順（システムのバージョンを上げる場合）
 //①tss system libraryのコンストラクタ（このライブラリのもう少し下）に宣言してある変数 program_version の値を変更する
 //②上記同様にプログラムコードバージョンも変更する
 //③コンパイルしたexeを\\TSSSVR\tss_share\tsssystem\tss\tsssystem\binの中にコピーする
@@ -56,7 +56,7 @@ using System.IO;                //StreamWriter
 //                          ×ボタンによる終了時にもログアウト処理が実行されるように修正
 //      5       2016/11/02  部品入出庫履歴の取引先コードを指定した場合、部品入出庫履歴マスタの取引先コードを参照していたが、それだとフリー在庫（999999）がうまく抽出できないので
 //                          joinしている部品ましたの取引先コードを参照するように修正
-//      x       2016/08/xx  -生産工数一覧、表示単位（時・分・秒）の対応とcsv出力も同様の対応
+//1.05  0       2016/11/28  -生産工数一覧、表示単位（時・分・秒）の対応とcsv出力も同様の対応
 //                          -生産スケジュール編集 v2リリース
 //                              ・前日、翌日のスケジュール（日付の変更可）を画面下に表示
 //                              ・別の日からのD&D（メンバーのD&Dはまだ）
@@ -71,8 +71,9 @@ using System.IO;                //StreamWriter
 //                          -作業指示書の印刷
 //                          -生産実績入力の追加
 //                          -生産実績検索の追加
-//
-//
+//                          -生産実績入力のバーコード入力
+//                          -生産工程マスタに完成品をカウントする工程を判断するためのフラグを追加
+//                          -複数行ある売上の訂正時に、1行目の売上数を引いていたバグを修正（累計が狂ってくる＆売上数＝受注数にならなくなる）
 //
 //
 //
@@ -131,8 +132,8 @@ namespace TSS_SYSTEM
         public TssSystemLibrary()
         {
             //コンストラクタ
-            program_version = "1.04";
-            program_code_version = "5";
+            program_version = "1.05";
+            program_code_version = "0";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -1786,7 +1787,7 @@ namespace TSS_SYSTEM
         {
             string out_str = null;  //戻り値用
             DataTable w_dt = new DataTable();
-            w_dt = OracleSelect("select * from tss_seisan_jisseki_f where seihin_cd = '" + in_seihin_cd + "' and koutei_cd = '" + in_koutei_cd + "'");
+            w_dt = OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + in_seihin_cd + "' and koutei_cd = '" + in_koutei_cd + "'");
             if (w_dt.Rows.Count == 0)
             {
                 out_str = null;
