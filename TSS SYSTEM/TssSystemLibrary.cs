@@ -131,7 +131,7 @@ namespace TSS_SYSTEM
         public TssSystemLibrary()
         {
             //コンストラクタ
-            program_version = "1.04";
+            program_version = "1.05";
             program_code_version = "5";
 
             fld_DataSource = null;

@@ -27,6 +27,8 @@ namespace TSS_SYSTEM
         decimal dc_kabusoku;
         decimal dc_seisanzumi;
         decimal dc_seisan_yotei;
+        decimal dc_seisan_yotei2;
+        decimal dc_today_seisan;
         //string str_date;
         //string str_busyo;
 
@@ -172,11 +174,14 @@ namespace TSS_SYSTEM
         public void kabusoku()
         {
             DateTime keisan_day = new DateTime(); //生産実績のある直近の日付
+            DateTime today = new DateTime(); //dgv_todayの日付
+            today = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString());
 
             DataTable w_dt_jisseki = new DataTable();
             DataTable w_dt = new DataTable();
-
-           int rc = dgv_today.Rows.Count;
+            DataTable w_dt2 = new DataTable();
+           
+            int rc = dgv_today.Rows.Count;
            if(rc > 0)
            {
                for (int i = 0; i <= rc - 1; i++)
@@ -197,22 +202,57 @@ namespace TSS_SYSTEM
                    //生産済み数をdgv_todayに表示
                    dgv_today.Rows[i].Cells["seisanzumi"].Value = dc_seisanzumi.ToString();
 
-                   //直近の生産実績日以降の生産計画数を出す
-                   w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date > '" + keisan_day + "'  and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
-               
+                   //直近の生産実績日からtodayまでの生産計画数を出す
+                   w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date > '" + keisan_day + "' and seisan_yotei_date < '" + today + "'  and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
+                   w_dt2 = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date >= '" + today + "' and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
+
                    if(w_dt.Rows[0][0] == DBNull.Value)
                    {
                        dc_seisan_yotei = 0;
-                       //dc_kabusoku = 0;
+                       //dgv_today.Rows[i].Cells["seisan_yotei"].Value = dc_seisan_yotei.ToString();
+                       //dgv_today.Rows[i].Cells["kabusoku"].Value = 0;
                    }
                    else
                    {
                        dc_seisan_yotei = decimal.Parse(w_dt.Rows[0][0].ToString());
-                       dgv_today.Rows[i].Cells["seisan_yotei"].Value = dc_seisan_yotei.ToString();
-                       dc_kabusoku = dc_seisanzumi + decimal.Parse(w_dt.Rows[0][0].ToString()) - decimal.Parse(dgv_today.Rows[i].Cells[14].Value.ToString());
-                       dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
-
                    }
+                   
+                   if (w_dt2.Rows[0][0] == DBNull.Value)
+                   {
+                       dc_seisan_yotei2 = 0;
+                       //dgv_today.Rows[i].Cells["seisan_yotei"].Value = dc_seisan_yotei.ToString();
+                       //dgv_today.Rows[i].Cells["kabusoku"].Value = 0;
+                   } 
+                   else
+                   {
+                       dc_seisan_yotei2 = decimal.Parse(w_dt2.Rows[0][0].ToString());
+                   }
+
+                   if (dgv_today.Rows[i].Cells["seisan_su"].Value == DBNull.Value)
+                   {
+                       dc_today_seisan = 0;
+                   }
+                   else
+                   {
+                       dc_today_seisan = decimal.Parse(dgv_today.Rows[i].Cells["seisan_su"].Value.ToString());
+                   }
+
+                   //else
+                   //{
+                   //dc_seisan_yotei = decimal.Parse(w_dt.Rows[0][0].ToString());
+                   //dc_seisan_yotei2 = decimal.Parse(w_dt2.Rows[0][0].ToString());
+                   //dgv_today.Rows[i].Cells["seisan_yotei"].Value = dc_seisan_yotei.ToString();
+                   dgv_today.Rows[i].Cells["seisan_yotei"].Value = (dc_seisan_yotei + dc_seisan_yotei2).ToString();
+                   //dc_kabusoku = dc_seisanzumi + decimal.Parse(w_dt.Rows[0][0].ToString()) - decimal.Parse(dgv_today.Rows[i].Cells[14].Value.ToString());
+                   dc_kabusoku = dc_seisan_yotei + dc_seisan_yotei2 - dc_today_seisan;
+                   //dc_kabusoku = dc_seisanzumi + dc_seisan_yotei + dc_seisan_yotei2 - decimal.Parse(dgv_today.Rows[i].Cells[14].Value.ToString());
+                   dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
+                   dgv_today.EndEdit();
+                   //}
+
+
+                   
+
                }
            }     
         }
@@ -1274,6 +1314,7 @@ namespace TSS_SYSTEM
 
                 }
                 seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                kabusoku();
                 //chk_juchu(e.RowIndex);
             }
 
@@ -1305,6 +1346,7 @@ namespace TSS_SYSTEM
 
                 }
                 seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
+                kabusoku();
             }
 
             //製品コード
@@ -1341,7 +1383,9 @@ namespace TSS_SYSTEM
                         MessageBox.Show("入力された製品コードは存在しません。");
                         e.Cancel = true;
                     }
+                    
                     dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(e.FormattedValue.ToString());
+                    kabusoku();
                 }
             }
             //生産数
@@ -1832,6 +1876,7 @@ namespace TSS_SYSTEM
         {
             w_dt_today.AcceptChanges();
             disp_schedule_data(dgv_today, w_dt_today);
+            kabusoku();
         }
 
         private void dgv_today_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -2870,6 +2915,7 @@ namespace TSS_SYSTEM
             {
                 //特に処理はなし
             }
+            kabusoku();
         }
 
         private DataRow dragdrop_copy_set(DataRow in_datarow,DataGridViewRow in_dgv_row)
