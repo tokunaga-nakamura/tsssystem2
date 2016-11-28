@@ -245,7 +245,7 @@
             // lbl_msg3
             // 
             this.lbl_msg3.AutoSize = true;
-            this.lbl_msg3.Location = new System.Drawing.Point(69, 56);
+            this.lbl_msg3.Location = new System.Drawing.Point(69, 51);
             this.lbl_msg3.Name = "lbl_msg3";
             this.lbl_msg3.Size = new System.Drawing.Size(32, 12);
             this.lbl_msg3.TabIndex = 6;
@@ -264,7 +264,7 @@
             // lbl_msg2
             // 
             this.lbl_msg2.AutoSize = true;
-            this.lbl_msg2.Location = new System.Drawing.Point(69, 32);
+            this.lbl_msg2.Location = new System.Drawing.Point(69, 29);
             this.lbl_msg2.Name = "lbl_msg2";
             this.lbl_msg2.Size = new System.Drawing.Size(32, 12);
             this.lbl_msg2.TabIndex = 4;
@@ -294,7 +294,7 @@
             // 
             this.lbl_program_version.AutoSize = true;
             this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_program_version.Location = new System.Drawing.Point(69, 75);
+            this.lbl_program_version.Location = new System.Drawing.Point(69, 72);
             this.lbl_program_version.Name = "lbl_program_version";
             this.lbl_program_version.Size = new System.Drawing.Size(552, 12);
             this.lbl_program_version.TabIndex = 1;

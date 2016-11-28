@@ -264,7 +264,6 @@ namespace TSS_SYSTEM
                 else
                 {
                     //生産スケジュールに同一のレコードが有る場合
-
                     //生産スケジュール選択画面の表示
                     int w_sentaku;   //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
                     w_sentaku = schedule_select(w_dt);
@@ -294,7 +293,6 @@ namespace TSS_SYSTEM
                     else
                     {
                         //生産スケジュールに同一のレコードが有る場合
-
                         //生産スケジュール選択画面の表示
                         w_sentaku = schedule_select(w_dt);
                     }
@@ -623,10 +621,10 @@ namespace TSS_SYSTEM
 
         private void disp_seisan_jisseki_no()
         {
-                DataTable w_dt = new DataTable();
-                w_dt = tss.OracleSelect("select * from tss_seisan_jisseki_f where seisan_jisseki_no = '" + w_seisan_jisseki_no + "'");
-                disp_jisseki(w_dt.Rows[0]["seisan_jisseki_no"].ToString());
-                tb_busyo_cd.Focus();
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select * from tss_seisan_jisseki_f where seisan_jisseki_no = '" + w_seisan_jisseki_no + "'");
+            disp_jisseki(w_dt.Rows[0]["seisan_jisseki_no"].ToString());
+            tb_busyo_cd.Focus();
         }
 
         private void tb_seihin_cd_Validating(object sender, CancelEventArgs e)
@@ -880,7 +878,7 @@ namespace TSS_SYSTEM
                     //実績データ更新
                     jisseki_update();
                     //受注の生産数更新
-                    //qweqweqweqweqweqweqweqweqweqwe
+                    juchu_kousin();
                 }
             }
             else
@@ -897,7 +895,7 @@ namespace TSS_SYSTEM
                     //実績データ新規書込み
                     jisseki_insert();
                     //受注の生産数更新
-                    //qweqweqweqweqweqweqweqweqweqwe
+                    juchu_kousin();
                 }
             }
             //MessageBox.Show("登録しました。");
@@ -1063,6 +1061,35 @@ namespace TSS_SYSTEM
                 return;
             }
             disp_seisan_jisseki_no();
+        }
+
+        private void juchu_kousin()
+        {
+            tss.GetUser();
+            DataTable w_dt = new DataTable();
+            //生産工程を調べ、生産カウント工程だった場合は、受注マスタの生産数を更新する
+
+            //生産工程マスタの確認
+            w_dt = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "' and busyo_cd = '" + tb_busyo_cd.Text + "' and koutei_cd = '" + tb_koutei_cd.Text + "'");
+            if(w_dt == null || w_dt.Rows.Count <= 0 || w_dt.Rows.Count >= 2)
+            {
+                MessageBox.Show("生産工程マスタから一致するデータを抽出できませんでした。\n受注マスタを更新せずに終了します。");
+                return;
+            }
+            if(w_dt.Rows[0]["seisan_count_flg"].ToString() == "1")
+            {
+                //受注の更新
+                DataTable w_dt_sum = new DataTable();
+                w_dt_sum = tss.OracleSelect("select sum(seisan_su) seisan_su_ttl from tss_seisan_jisseki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "' and busyo_cd = '" + tb_busyo_cd.Text + "' and koutei_cd = '" + tb_koutei_cd.Text + "'");
+                DataTable w_dt_juchu = new DataTable();
+                bool w_bl;
+                w_bl = tss.OracleUpdate("update tss_juchu_m set seisan_su = '" + w_dt_sum.Rows[0]["seisan_su_ttl"].ToString() + "',update_user_cd = '" + tss.user_cd + "',update_tatetime = sysdate");
+                if(w_bl == false)
+                {
+                    MessageBox.Show("受注マスタの更新でエラーが発生しました。\n受注マスタを更新せずに終了します。");
+                    return;
+                }
+            }
         }
     }
 }

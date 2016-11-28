@@ -846,7 +846,8 @@ namespace TSS_SYSTEM
             w_dt = tss.OracleSelect("select * from tss_uriage_m where uriage_no = '" + in_cd + "'");
             foreach(DataRow dr in w_dt.Rows)
             {
-                decimal.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_uriage_su);
+                //decimal.TryParse(w_dt.Rows[0]["uriage_su"].ToString(), out w_uriage_su);
+                decimal.TryParse(dr["uriage_su"].ToString(), out w_uriage_su);  //20161128バグ修正
                 juchu_write(dr["torihikisaki_cd"].ToString(), dr["juchu_cd1"].ToString(), dr["juchu_cd2"].ToString(), in_sign, w_uriage_su);
             }
         }
