@@ -309,12 +309,12 @@ namespace TSS_SYSTEM
             dgv_nounyuu_schedule.AllowUserToResizeRows = false;
             //カラムヘッダーの高さ変更不可
             dgv_nounyuu_schedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            //削除可能にする（コードからは削除可）
+            //行削除可能にする
             dgv_nounyuu_schedule.AllowUserToDeleteRows = true;
             //１行のみ選択可能（複数行の選択不可）
             dgv_nounyuu_schedule.MultiSelect = true;
             //セルを選択するとセルが選択されるようにする
-            dgv_nounyuu_schedule.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            //dgv_nounyuu_schedule.SelectionMode = DataGridViewSelectionMode.CellSelect;
             //新しい行を追加できるようにする
             dgv_nounyuu_schedule.AllowUserToAddRows = true;
 

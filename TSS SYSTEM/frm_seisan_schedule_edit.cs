@@ -602,6 +602,8 @@ namespace TSS_SYSTEM
                 if (chk_seisan_yotei_date())
                 {
                     tb_seisan_yotei_date.Text = tss.out_datetime.ToShortDateString();
+                    //dgv_todayの日付が空白だったら（画面を表示したばかりの状態）、同じ日付をセットする
+                    lbl_seisan_yotei_date_today.Text = tb_seisan_yotei_date.Text;
                 }
                 else
                 {
@@ -1164,6 +1166,7 @@ namespace TSS_SYSTEM
                 {
                     MessageBox.Show("入力した値が正しくありません。00:00から23:59の形式で入力してください");
                     e.Cancel = true;
+                    return;
                 }
                 //dgv.CurrentCell.Value = st;
             }
@@ -1944,6 +1947,12 @@ namespace TSS_SYSTEM
                             return;
                         }
                     }
+                    else
+                    {
+                        //dgv_today.CurrentCell.Value = e.FormattedValue.ToString();
+                        dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
+                    }
+                    seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
                 }
                 else
                 {

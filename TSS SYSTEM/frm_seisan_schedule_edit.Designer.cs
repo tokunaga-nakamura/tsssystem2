@@ -629,7 +629,6 @@
             this.lbl_seisan_yotei_date_today.Name = "lbl_seisan_yotei_date_today";
             this.lbl_seisan_yotei_date_today.Size = new System.Drawing.Size(109, 29);
             this.lbl_seisan_yotei_date_today.TabIndex = 0;
-            this.lbl_seisan_yotei_date_today.Text = "9999/99/99";
             this.lbl_seisan_yotei_date_today.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // splitContainer18

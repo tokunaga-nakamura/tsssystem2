@@ -29,6 +29,7 @@
         {
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(rpt_nouhin_schedule));
             this.pageHeader = new GrapeCity.ActiveReports.SectionReportModel.PageHeader();
+            this.tb_hd41 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.lbl_31 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.lbl_30 = new GrapeCity.ActiveReports.SectionReportModel.Label();
             this.lbl_29 = new GrapeCity.ActiveReports.SectionReportModel.Label();
@@ -114,7 +115,8 @@
             this.tb_hd11 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_hd21 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_hd31 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.tb_hd41 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.tb_hd_torihikisaki_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.detail = new GrapeCity.ActiveReports.SectionReportModel.Detail();
             this.tb_day_01 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.textBox2 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
@@ -153,14 +155,12 @@
             this.tb_day_29 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_day_30 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.tb_day_31 = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
-            this.line1 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.tb_bikou = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
             this.line5 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.pageFooter = new GrapeCity.ActiveReports.SectionReportModel.PageFooter();
-            this.line4 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.reportInfo1 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
             this.reportInfo2 = new GrapeCity.ActiveReports.SectionReportModel.ReportInfo();
-            this.tb_hd_torihikisaki_cd = new GrapeCity.ActiveReports.SectionReportModel.TextBox();
+            this.line1 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).BeginInit();
@@ -209,7 +209,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_hd41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_01)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_torihikisaki_cd)).BeginInit();
@@ -248,9 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeader
@@ -344,276 +343,286 @@
             this.tb_hd31,
             this.tb_hd_torihikisaki_cd,
             this.reportInfo1});
-            this.pageHeader.Height = 0.8125004F;
+            this.pageHeader.Height = 0.8045823F;
             this.pageHeader.Name = "pageHeader";
+            // 
+            // tb_hd41
+            // 
+            this.tb_hd41.Height = 0.1448819F;
+            this.tb_hd41.Left = 7.261024F;
+            this.tb_hd41.Name = "tb_hd41";
+            this.tb_hd41.Style = "font-size: 8.25pt";
+            this.tb_hd41.Text = null;
+            this.tb_hd41.Top = 0.438189F;
+            this.tb_hd41.Width = 0.7811028F;
             // 
             // lbl_31
             // 
-            this.lbl_31.Height = 0.2062993F;
+            this.lbl_31.Height = 0.2074803F;
             this.lbl_31.HyperLink = null;
             this.lbl_31.Left = 8.961812F;
             this.lbl_31.Name = "lbl_31";
             this.lbl_31.Style = "font-size: 6pt; text-align: center";
             this.lbl_31.Text = "31";
-            this.lbl_31.Top = 0.5889764F;
+            this.lbl_31.Top = 0.584252F;
             this.lbl_31.Width = 0.2125974F;
             // 
             // lbl_30
             // 
-            this.lbl_30.Height = 0.2051182F;
+            this.lbl_30.Height = 0.2074803F;
             this.lbl_30.HyperLink = null;
             this.lbl_30.Left = 8.749213F;
             this.lbl_30.Name = "lbl_30";
             this.lbl_30.Style = "font-size: 6pt; text-align: center";
             this.lbl_30.Text = "30";
-            this.lbl_30.Top = 0.5901575F;
+            this.lbl_30.Top = 0.584252F;
             this.lbl_30.Width = 0.2125984F;
             // 
             // lbl_29
             // 
-            this.lbl_29.Height = 0.2062993F;
+            this.lbl_29.Height = 0.2074803F;
             this.lbl_29.HyperLink = null;
             this.lbl_29.Left = 8.536614F;
             this.lbl_29.Name = "lbl_29";
             this.lbl_29.Style = "font-size: 6pt; text-align: center";
             this.lbl_29.Text = "29";
-            this.lbl_29.Top = 0.5901575F;
+            this.lbl_29.Top = 0.584252F;
             this.lbl_29.Width = 0.2125984F;
             // 
             // lbl_28
             // 
-            this.lbl_28.Height = 0.2062993F;
+            this.lbl_28.Height = 0.2074803F;
             this.lbl_28.HyperLink = null;
             this.lbl_28.Left = 8.324017F;
             this.lbl_28.Name = "lbl_28";
             this.lbl_28.Style = "font-size: 6pt; text-align: center";
             this.lbl_28.Text = "28";
-            this.lbl_28.Top = 0.5901575F;
+            this.lbl_28.Top = 0.584252F;
             this.lbl_28.Width = 0.2125984F;
             // 
             // lbl_27
             // 
-            this.lbl_27.Height = 0.2062993F;
+            this.lbl_27.Height = 0.2074803F;
             this.lbl_27.HyperLink = null;
             this.lbl_27.Left = 8.111418F;
             this.lbl_27.Name = "lbl_27";
             this.lbl_27.Style = "font-size: 6pt; text-align: center";
             this.lbl_27.Text = "27";
-            this.lbl_27.Top = 0.5901575F;
+            this.lbl_27.Top = 0.584252F;
             this.lbl_27.Width = 0.2125984F;
             // 
             // lbl_26
             // 
-            this.lbl_26.Height = 0.2062993F;
+            this.lbl_26.Height = 0.2074803F;
             this.lbl_26.HyperLink = null;
             this.lbl_26.Left = 7.898819F;
             this.lbl_26.Name = "lbl_26";
             this.lbl_26.Style = "font-size: 6pt; text-align: center";
             this.lbl_26.Text = "26";
-            this.lbl_26.Top = 0.5901575F;
+            this.lbl_26.Top = 0.584252F;
             this.lbl_26.Width = 0.2125984F;
             // 
             // lbl_25
             // 
-            this.lbl_25.Height = 0.2062993F;
+            this.lbl_25.Height = 0.2074803F;
             this.lbl_25.HyperLink = null;
             this.lbl_25.Left = 7.686221F;
             this.lbl_25.Name = "lbl_25";
             this.lbl_25.Style = "font-size: 6pt; text-align: center";
             this.lbl_25.Text = "25";
-            this.lbl_25.Top = 0.5901575F;
+            this.lbl_25.Top = 0.584252F;
             this.lbl_25.Width = 0.2125984F;
             // 
             // lbl_24
             // 
-            this.lbl_24.Height = 0.2062993F;
+            this.lbl_24.Height = 0.2074803F;
             this.lbl_24.HyperLink = null;
             this.lbl_24.Left = 7.473623F;
             this.lbl_24.Name = "lbl_24";
             this.lbl_24.Style = "font-size: 6pt; text-align: center";
             this.lbl_24.Text = "24";
-            this.lbl_24.Top = 0.5901575F;
+            this.lbl_24.Top = 0.584252F;
             this.lbl_24.Width = 0.2125984F;
             // 
             // lbl_23
             // 
-            this.lbl_23.Height = 0.2062993F;
+            this.lbl_23.Height = 0.2074803F;
             this.lbl_23.HyperLink = null;
             this.lbl_23.Left = 7.261024F;
             this.lbl_23.Name = "lbl_23";
             this.lbl_23.Style = "font-size: 6pt; text-align: center";
             this.lbl_23.Text = "23";
-            this.lbl_23.Top = 0.5901575F;
+            this.lbl_23.Top = 0.584252F;
             this.lbl_23.Width = 0.2125984F;
             // 
             // lbl_22
             // 
-            this.lbl_22.Height = 0.2062993F;
+            this.lbl_22.Height = 0.2074803F;
             this.lbl_22.HyperLink = null;
             this.lbl_22.Left = 7.048426F;
             this.lbl_22.Name = "lbl_22";
             this.lbl_22.Style = "font-size: 6pt; text-align: center";
             this.lbl_22.Text = "22";
-            this.lbl_22.Top = 0.5901575F;
+            this.lbl_22.Top = 0.584252F;
             this.lbl_22.Width = 0.2125984F;
             // 
             // lbl_21
             // 
-            this.lbl_21.Height = 0.2062993F;
+            this.lbl_21.Height = 0.2074803F;
             this.lbl_21.HyperLink = null;
             this.lbl_21.Left = 6.835827F;
             this.lbl_21.Name = "lbl_21";
             this.lbl_21.Style = "font-size: 6pt; text-align: center";
             this.lbl_21.Text = "21";
-            this.lbl_21.Top = 0.5901575F;
+            this.lbl_21.Top = 0.584252F;
             this.lbl_21.Width = 0.2125984F;
             // 
             // lbl_20
             // 
-            this.lbl_20.Height = 0.2051182F;
+            this.lbl_20.Height = 0.2074803F;
             this.lbl_20.HyperLink = null;
             this.lbl_20.Left = 6.623229F;
             this.lbl_20.Name = "lbl_20";
             this.lbl_20.Style = "font-size: 6pt; text-align: center";
             this.lbl_20.Text = "20";
-            this.lbl_20.Top = 0.5913386F;
+            this.lbl_20.Top = 0.584252F;
             this.lbl_20.Width = 0.2125984F;
             // 
             // lbl_19
             // 
-            this.lbl_19.Height = 0.2062993F;
+            this.lbl_19.Height = 0.2074803F;
             this.lbl_19.HyperLink = null;
             this.lbl_19.Left = 6.41063F;
             this.lbl_19.Name = "lbl_19";
             this.lbl_19.Style = "font-size: 6pt; text-align: center";
             this.lbl_19.Text = "19";
-            this.lbl_19.Top = 0.5913386F;
+            this.lbl_19.Top = 0.584252F;
             this.lbl_19.Width = 0.2125984F;
             // 
             // lbl_18
             // 
-            this.lbl_18.Height = 0.2051182F;
+            this.lbl_18.Height = 0.2074803F;
             this.lbl_18.HyperLink = null;
             this.lbl_18.Left = 6.198032F;
             this.lbl_18.Name = "lbl_18";
             this.lbl_18.Style = "font-size: 6pt; text-align: center";
             this.lbl_18.Text = "18";
-            this.lbl_18.Top = 0.5925197F;
+            this.lbl_18.Top = 0.584252F;
             this.lbl_18.Width = 0.2125984F;
             // 
             // lbl_17
             // 
-            this.lbl_17.Height = 0.2062993F;
+            this.lbl_17.Height = 0.2074803F;
             this.lbl_17.HyperLink = null;
             this.lbl_17.Left = 5.985434F;
             this.lbl_17.Name = "lbl_17";
             this.lbl_17.Style = "font-size: 6pt; text-align: center";
             this.lbl_17.Text = "17";
-            this.lbl_17.Top = 0.5913386F;
+            this.lbl_17.Top = 0.584252F;
             this.lbl_17.Width = 0.2125984F;
             // 
             // lbl_16
             // 
-            this.lbl_16.Height = 0.2062993F;
+            this.lbl_16.Height = 0.2074803F;
             this.lbl_16.HyperLink = null;
             this.lbl_16.Left = 5.772835F;
             this.lbl_16.Name = "lbl_16";
             this.lbl_16.Style = "font-size: 6pt; text-align: center";
             this.lbl_16.Text = "16";
-            this.lbl_16.Top = 0.5925197F;
+            this.lbl_16.Top = 0.584252F;
             this.lbl_16.Width = 0.2125984F;
             // 
             // lbl_15
             // 
-            this.lbl_15.Height = 0.2062993F;
+            this.lbl_15.Height = 0.2074803F;
             this.lbl_15.HyperLink = null;
             this.lbl_15.Left = 5.560236F;
             this.lbl_15.Name = "lbl_15";
             this.lbl_15.Style = "font-size: 6pt; text-align: center";
             this.lbl_15.Text = "15";
-            this.lbl_15.Top = 0.5925197F;
+            this.lbl_15.Top = 0.584252F;
             this.lbl_15.Width = 0.2125984F;
             // 
             // lbl_14
             // 
-            this.lbl_14.Height = 0.2062993F;
+            this.lbl_14.Height = 0.2074803F;
             this.lbl_14.HyperLink = null;
             this.lbl_14.Left = 5.347638F;
             this.lbl_14.Name = "lbl_14";
             this.lbl_14.Style = "font-size: 6pt; text-align: center";
             this.lbl_14.Text = "14";
-            this.lbl_14.Top = 0.5925197F;
+            this.lbl_14.Top = 0.584252F;
             this.lbl_14.Width = 0.2125984F;
             // 
             // lbl_13
             // 
-            this.lbl_13.Height = 0.2051182F;
+            this.lbl_13.Height = 0.2074803F;
             this.lbl_13.HyperLink = null;
             this.lbl_13.Left = 5.13504F;
             this.lbl_13.Name = "lbl_13";
             this.lbl_13.Style = "font-size: 6pt; text-align: center";
             this.lbl_13.Text = "13";
-            this.lbl_13.Top = 0.5889764F;
+            this.lbl_13.Top = 0.584252F;
             this.lbl_13.Width = 0.2125984F;
             // 
             // lbl_12
             // 
-            this.lbl_12.Height = 0.2062993F;
+            this.lbl_12.Height = 0.2074803F;
             this.lbl_12.HyperLink = null;
             this.lbl_12.Left = 4.922441F;
             this.lbl_12.Name = "lbl_12";
             this.lbl_12.Style = "font-size: 6pt; text-align: center";
             this.lbl_12.Text = "12";
-            this.lbl_12.Top = 0.5877953F;
+            this.lbl_12.Top = 0.584252F;
             this.lbl_12.Width = 0.2125984F;
             // 
             // lbl_11
             // 
-            this.lbl_11.Height = 0.2062993F;
+            this.lbl_11.Height = 0.2074803F;
             this.lbl_11.HyperLink = null;
             this.lbl_11.Left = 4.709843F;
             this.lbl_11.Name = "lbl_11";
             this.lbl_11.Style = "font-size: 6pt; text-align: center";
             this.lbl_11.Text = "11";
-            this.lbl_11.Top = 0.5877953F;
+            this.lbl_11.Top = 0.584252F;
             this.lbl_11.Width = 0.2125984F;
             // 
             // lbl_10
             // 
-            this.lbl_10.Height = 0.2062993F;
+            this.lbl_10.Height = 0.2074803F;
             this.lbl_10.HyperLink = null;
             this.lbl_10.Left = 4.497244F;
             this.lbl_10.Name = "lbl_10";
             this.lbl_10.Style = "font-size: 6pt; text-align: center";
             this.lbl_10.Text = "10";
-            this.lbl_10.Top = 0.5877953F;
+            this.lbl_10.Top = 0.584252F;
             this.lbl_10.Width = 0.2125984F;
             // 
             // lbl_09
             // 
-            this.lbl_09.Height = 0.2074802F;
+            this.lbl_09.Height = 0.2074803F;
             this.lbl_09.HyperLink = null;
             this.lbl_09.Left = 4.284646F;
             this.lbl_09.Name = "lbl_09";
             this.lbl_09.Style = "font-size: 6pt; text-align: center";
             this.lbl_09.Text = "9";
-            this.lbl_09.Top = 0.5866142F;
+            this.lbl_09.Top = 0.584252F;
             this.lbl_09.Width = 0.2125984F;
             // 
             // lbl_08
             // 
-            this.lbl_08.Height = 0.2062993F;
+            this.lbl_08.Height = 0.2074803F;
             this.lbl_08.HyperLink = null;
             this.lbl_08.Left = 4.072048F;
             this.lbl_08.Name = "lbl_08";
             this.lbl_08.Style = "font-size: 6pt; text-align: center";
             this.lbl_08.Text = "8";
-            this.lbl_08.Top = 0.5866142F;
+            this.lbl_08.Top = 0.584252F;
             this.lbl_08.Width = 0.2125984F;
             // 
             // lbl_07
             // 
-            this.lbl_07.Height = 0.2086614F;
+            this.lbl_07.Height = 0.2074803F;
             this.lbl_07.HyperLink = null;
             this.lbl_07.Left = 3.859449F;
             this.lbl_07.Name = "lbl_07";
@@ -624,7 +633,7 @@
             // 
             // lbl_06
             // 
-            this.lbl_06.Height = 0.2086614F;
+            this.lbl_06.Height = 0.2074803F;
             this.lbl_06.HyperLink = null;
             this.lbl_06.Left = 3.646851F;
             this.lbl_06.Name = "lbl_06";
@@ -635,7 +644,7 @@
             // 
             // lbl_05
             // 
-            this.lbl_05.Height = 0.2086614F;
+            this.lbl_05.Height = 0.2074803F;
             this.lbl_05.HyperLink = null;
             this.lbl_05.Left = 3.434252F;
             this.lbl_05.Name = "lbl_05";
@@ -646,18 +655,18 @@
             // 
             // lbl_04
             // 
-            this.lbl_04.Height = 0.2086614F;
+            this.lbl_04.Height = 0.2074803F;
             this.lbl_04.HyperLink = null;
             this.lbl_04.Left = 3.221654F;
             this.lbl_04.Name = "lbl_04";
             this.lbl_04.Style = "font-size: 6pt; text-align: center";
             this.lbl_04.Text = "4";
-            this.lbl_04.Top = 0.5830709F;
+            this.lbl_04.Top = 0.584252F;
             this.lbl_04.Width = 0.2125984F;
             // 
             // lbl_03
             // 
-            this.lbl_03.Height = 0.2086614F;
+            this.lbl_03.Height = 0.2074803F;
             this.lbl_03.HyperLink = null;
             this.lbl_03.Left = 3.009055F;
             this.lbl_03.Name = "lbl_03";
@@ -668,7 +677,7 @@
             // 
             // lbl_02
             // 
-            this.lbl_02.Height = 0.2086614F;
+            this.lbl_02.Height = 0.2074803F;
             this.lbl_02.HyperLink = null;
             this.lbl_02.Left = 2.796457F;
             this.lbl_02.Name = "lbl_02";
@@ -851,11 +860,11 @@
             // 
             // crossSectionLine11
             // 
-            this.crossSectionLine11.Bottom = 4.768372E-07F;
+            this.crossSectionLine11.Bottom = 0F;
             this.crossSectionLine11.Left = 7.261024F;
             this.crossSectionLine11.LineWeight = 1F;
             this.crossSectionLine11.Name = "crossSectionLine11";
-            this.crossSectionLine11.Top = 0.5889764F;
+            this.crossSectionLine11.Top = 0.5830709F;
             // 
             // crossSectionLine12
             // 
@@ -1135,8 +1144,8 @@
             // 
             // crossSectionLine33
             // 
-            this.crossSectionLine33.Bottom = 0F;
-            this.crossSectionLine33.Left = 2.052362F;
+            this.crossSectionLine33.Bottom = 7.450581E-09F;
+            this.crossSectionLine33.Left = 2.047244F;
             this.crossSectionLine33.LineWeight = 1F;
             this.crossSectionLine33.Name = "crossSectionLine33";
             this.crossSectionLine33.Top = 0.584252F;
@@ -1171,15 +1180,25 @@
             this.tb_hd31.Top = 0.292126F;
             this.tb_hd31.Width = 0.7811028F;
             // 
-            // tb_hd41
+            // tb_hd_torihikisaki_cd
             // 
-            this.tb_hd41.Height = 0.1448819F;
-            this.tb_hd41.Left = 7.261024F;
-            this.tb_hd41.Name = "tb_hd41";
-            this.tb_hd41.Style = "font-size: 8.25pt";
-            this.tb_hd41.Text = null;
-            this.tb_hd41.Top = 0.438189F;
-            this.tb_hd41.Width = 0.7811028F;
+            this.tb_hd_torihikisaki_cd.Height = 0.146063F;
+            this.tb_hd_torihikisaki_cd.Left = 2.760237F;
+            this.tb_hd_torihikisaki_cd.Name = "tb_hd_torihikisaki_cd";
+            this.tb_hd_torihikisaki_cd.Style = "font-size: 9pt";
+            this.tb_hd_torihikisaki_cd.Text = "999999";
+            this.tb_hd_torihikisaki_cd.Top = 0F;
+            this.tb_hd_torihikisaki_cd.Width = 1F;
+            // 
+            // reportInfo1
+            // 
+            this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
+            this.reportInfo1.Height = 0.146063F;
+            this.reportInfo1.Left = 8.961812F;
+            this.reportInfo1.Name = "reportInfo1";
+            this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
+            this.reportInfo1.Top = 0F;
+            this.reportInfo1.Width = 1.89234F;
             // 
             // detail
             // 
@@ -1221,10 +1240,9 @@
             this.tb_day_29,
             this.tb_day_30,
             this.tb_day_31,
-            this.line1,
             this.tb_bikou,
             this.line5});
-            this.detail.Height = 0.2297408F;
+            this.detail.Height = 0.2299213F;
             this.detail.Name = "detail";
             // 
             // tb_day_01
@@ -1634,19 +1652,6 @@
             this.tb_day_31.Top = 0F;
             this.tb_day_31.Width = 0.2125984F;
             // 
-            // line1
-            // 
-            this.line1.Height = 0F;
-            this.line1.Left = 0.02047244F;
-            this.line1.LineWeight = 1F;
-            this.line1.Name = "line1";
-            this.line1.Top = 0.2299213F;
-            this.line1.Width = 10.82559F;
-            this.line1.X1 = 0.02047244F;
-            this.line1.X2 = 10.84606F;
-            this.line1.Y1 = 0.2299213F;
-            this.line1.Y2 = 0.2299213F;
-            // 
             // tb_bikou
             // 
             this.tb_bikou.DataField = "bikou";
@@ -1665,67 +1670,49 @@
             this.line5.Left = 0.02047244F;
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
-            this.line5.Top = 0F;
+            this.line5.Top = 0.2299213F;
             this.line5.Width = 10.83386F;
             this.line5.X1 = 0.02047244F;
             this.line5.X2 = 10.85433F;
-            this.line5.Y1 = 0F;
-            this.line5.Y2 = 0F;
+            this.line5.Y1 = 0.2299213F;
+            this.line5.Y2 = 0.2299213F;
             // 
             // pageFooter
             // 
             this.pageFooter.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
-            this.line4,
-            this.reportInfo2});
-            this.pageFooter.Height = 0.2604167F;
+            this.reportInfo2,
+            this.line1});
+            this.pageFooter.Height = 0.1458334F;
             this.pageFooter.Name = "pageFooter";
-            // 
-            // line4
-            // 
-            this.line4.Height = 0.001181103F;
-            this.line4.Left = 0.02559054F;
-            this.line4.LineWeight = 1F;
-            this.line4.Name = "line4";
-            this.line4.Top = 0F;
-            this.line4.Width = 10.82874F;
-            this.line4.X1 = 0.02559054F;
-            this.line4.X2 = 10.85433F;
-            this.line4.Y1 = 0.001181103F;
-            this.line4.Y2 = 0F;
-            // 
-            // reportInfo1
-            // 
-            this.reportInfo1.FormatString = "{PageNumber} / {PageCount} ページ";
-            this.reportInfo1.Height = 0.146063F;
-            this.reportInfo1.Left = 8.961812F;
-            this.reportInfo1.Name = "reportInfo1";
-            this.reportInfo1.Style = "font-size: 8.25pt; text-align: center";
-            this.reportInfo1.Top = 0F;
-            this.reportInfo1.Width = 1.89234F;
             // 
             // reportInfo2
             // 
             this.reportInfo2.FormatString = "{RunDateTime:}";
-            this.reportInfo2.Height = 0.1665354F;
-            this.reportInfo2.Left = 8.749213F;
+            this.reportInfo2.Height = 0.1145669F;
+            this.reportInfo2.Left = 8.769686F;
             this.reportInfo2.Name = "reportInfo2";
-            this.reportInfo2.Style = "font-size: 8.25pt; text-align: right";
-            this.reportInfo2.Top = 0.04173229F;
+            this.reportInfo2.Style = "font-size: 6pt; text-align: right; ddo-char-set: 1";
+            this.reportInfo2.Top = 0.02086614F;
             this.reportInfo2.Width = 2.076378F;
             // 
-            // tb_hd_torihikisaki_cd
+            // line1
             // 
-            this.tb_hd_torihikisaki_cd.Height = 0.146063F;
-            this.tb_hd_torihikisaki_cd.Left = 2.760237F;
-            this.tb_hd_torihikisaki_cd.Name = "tb_hd_torihikisaki_cd";
-            this.tb_hd_torihikisaki_cd.Style = "font-size: 9pt";
-            this.tb_hd_torihikisaki_cd.Text = "999999";
-            this.tb_hd_torihikisaki_cd.Top = 0F;
-            this.tb_hd_torihikisaki_cd.Width = 1F;
+            this.line1.Height = 0F;
+            this.line1.Left = 0.02047244F;
+            this.line1.LineWeight = 1F;
+            this.line1.Name = "line1";
+            this.line1.Top = 0F;
+            this.line1.Width = 10.83386F;
+            this.line1.X1 = 0.02047244F;
+            this.line1.X2 = 10.85433F;
+            this.line1.Y1 = 0F;
+            this.line1.Y2 = 0F;
             // 
             // rpt_nouhin_schedule
             // 
             this.MasterReport = false;
+            this.PageSettings.Margins.Bottom = 1.181102F;
+            this.PageSettings.Margins.Top = 1.574803F;
             this.PageSettings.PaperHeight = 11F;
             this.PageSettings.PaperWidth = 8.5F;
             this.PrintWidth = 10.85433F;
@@ -1742,6 +1729,7 @@
             "ic\"; ddo-char-set: 128", "Heading2", "Normal"));
             this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold; ddo-char-set: 128", "Heading3", "Normal"));
             this.ReportStart += new System.EventHandler(this.rpt_nouhin_schedule_ReportStart);
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbl_29)).EndInit();
@@ -1790,7 +1778,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_hd31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_hd41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_01)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_torihikisaki_cd)).EndInit();
@@ -1829,9 +1818,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_day_31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_bikou)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportInfo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportInfo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_hd_torihikisaki_cd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1954,8 +1941,6 @@
         private GrapeCity.ActiveReports.SectionReportModel.Label lbl_30;
         private GrapeCity.ActiveReports.SectionReportModel.Label lbl_31;
         private GrapeCity.ActiveReports.SectionReportModel.Line line3;
-        private GrapeCity.ActiveReports.SectionReportModel.Line line1;
-        private GrapeCity.ActiveReports.SectionReportModel.Line line4;
         private GrapeCity.ActiveReports.SectionReportModel.Label label39;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_bikou;
         private GrapeCity.ActiveReports.SectionReportModel.CrossSectionLine crossSectionLine33;
@@ -1967,5 +1952,6 @@
         private GrapeCity.ActiveReports.SectionReportModel.ReportInfo reportInfo2;
         private GrapeCity.ActiveReports.SectionReportModel.Line line5;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox tb_hd_torihikisaki_cd;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line1;
     }
 }

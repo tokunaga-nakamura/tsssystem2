@@ -74,7 +74,7 @@ using System.IO;                //StreamWriter
 //                          -生産実績入力のバーコード入力
 //                          -生産工程マスタに完成品をカウントする工程を判断するためのフラグを追加
 //                          -複数行ある売上の訂正時に、1行目の売上数を引いていたバグを修正（累計が狂ってくる＆売上数＝受注数にならなくなる）
-//
+//      1       2016/11/29  生産スケジュール調整、新規行にて編集中に落ちる現象を修正
 //
 //
 //
@@ -133,7 +133,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.05";
-            program_code_version = "0";
+            program_code_version = "1";
 
             fld_DataSource = null;
             fld_UserID = null;
