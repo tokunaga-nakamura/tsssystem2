@@ -75,9 +75,9 @@ using System.IO;                //StreamWriter
 //                          -生産工程マスタに完成品をカウントする工程を判断するためのフラグを追加
 //                          -複数行ある売上の訂正時に、1行目の売上数を引いていたバグを修正（累計が狂ってくる＆売上数＝受注数にならなくなる）
 //      1       2016/11/29  生産スケジュール調整、新規行にて編集中に落ちる現象を修正
-//
-//
-//
+//      2       2016/11/30  生産スケジュール作成メソッド（ライブラリ）、同一日に複数の納品スケジュールが有る場合、まとめて１つの生産スケジュールを作成するように修正
+//                          生産スケジュール調整、行毎の実績・予定・受注数チェックを実装
+//                          生産スケジュール一覧、時刻がPM表記だったものを24時間表記に修正
 //
 //
 //
@@ -133,7 +133,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.05";
-            program_code_version = "1";
+            program_code_version = "2";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -3773,7 +3773,9 @@ namespace TSS_SYSTEM
                 return false;
             }
             //納品スケジュールマスタの取得
-            w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
+            //w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
+            //納品スケジュールは同一日に複数行のレコードが存在する可能性があるので、それらを同じ日なら１つにまとめて処理する
+            w_dt_nouhin_schedule = OracleSelect("select nouhin_yotei_date,torihikisaki_cd,juchu_cd1,juchu_cd2,sum(nouhin_yotei_su) nouhin_yotei_su from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' group by nouhin_yotei_date,torihikisaki_cd,juchu_cd1,juchu_cd2 order by nouhin_yotei_date asc");
 
             DateTime w_date;            //納品日
             TimeSpan w_timespan;        //○日前からの生産

@@ -84,6 +84,8 @@
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -347,6 +349,8 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.label7);
+            this.splitContainer4.Panel2.Controls.Add(this.label4);
             this.splitContainer4.Panel2.Controls.Add(this.btn_line_tuika);
             this.splitContainer4.Panel2.Controls.Add(this.textBox12);
             this.splitContainer4.Panel2.Controls.Add(this.tb_seisankisyu);
@@ -508,7 +512,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(153, 283);
+            this.label6.Location = new System.Drawing.Point(182, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 12);
             this.label6.TabIndex = 100;
@@ -573,11 +577,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(153, 333);
+            this.label3.Location = new System.Drawing.Point(182, 333);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 12);
             this.label3.TabIndex = 95;
-            this.label3.Text = "※前工程開始から●秒後にスタート可";
+            this.label3.Text = "※前工程開始から○秒後にスタート可";
             // 
             // textBox6
             // 
@@ -657,11 +661,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 308);
+            this.label2.Location = new System.Drawing.Point(182, 308);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 12);
             this.label2.TabIndex = 94;
-            this.label2.Text = "※納品日の●日前生産";
+            this.label2.Text = "※納品日の○日前生産";
             // 
             // tb_koutei_name
             // 
@@ -796,6 +800,24 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(131, 308);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 104;
+            this.label4.Text = "日前";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(147, 333);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 105;
+            this.label7.Text = "秒後";
+            // 
             // frm_seisan_koutei_m
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -897,5 +919,7 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.Label label_sinki;
         private System.Windows.Forms.Button btn_koutei_copy;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
     }
 }
