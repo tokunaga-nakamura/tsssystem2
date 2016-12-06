@@ -52,6 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_koutei_tuika = new System.Windows.Forms.Button();
             this.dgv_koutei = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_line_tuika = new System.Windows.Forms.Button();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.tb_seisankisyu = new System.Windows.Forms.TextBox();
@@ -84,8 +86,6 @@
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -183,6 +183,7 @@
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -455,6 +456,24 @@
             this.dgv_koutei.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_RowEnter);
             this.dgv_koutei.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_koutei_UserDeletedRow);
             this.dgv_koutei.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_koutei_UserDeletingRow);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(147, 333);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 105;
+            this.label7.Text = "秒後";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(131, 308);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 104;
+            this.label4.Text = "日前";
             // 
             // btn_line_tuika
             // 
@@ -799,24 +818,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 308);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 104;
-            this.label4.Text = "日前";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(147, 333);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 105;
-            this.label7.Text = "秒後";
             // 
             // frm_seisan_koutei_m
             // 

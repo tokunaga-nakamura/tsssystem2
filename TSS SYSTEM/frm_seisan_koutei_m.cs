@@ -259,7 +259,7 @@ namespace TSS_SYSTEM
             dgv_koutei.Columns["koutei_cd"].Width = 40;
             dgv_koutei.Columns["koutei_name"].Width = 75;
 
-            dgv_koutei.Columns["CHECKBOX2"].HeaderText = "生産ｶｳﾝﾄ";
+            dgv_koutei.Columns["CHECKBOX2"].HeaderText = "実績ｶｳﾝﾄ";
             dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
             dgv_koutei.Columns["koutei_cd"].HeaderText = "工程ｺｰﾄﾞ";
             dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";
@@ -1640,7 +1640,7 @@ namespace TSS_SYSTEM
             //生産カウントフラグがどの工程にも付いていない場合
             if(find_row_count == 0)
             {
-                DialogResult bRet = MessageBox.Show("生産数カウント工程にチェックがありませんが、このまま登録しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult bRet = MessageBox.Show("実績数カウント工程にチェックがありませんが、このまま登録しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (bRet == DialogResult.Cancel)
                 {
@@ -1651,7 +1651,7 @@ namespace TSS_SYSTEM
             //生産カウントフラグが2つ以上の工程に付いている場合
             if (find_row_count > 1)
             {
-                MessageBox.Show("生産数カウント工程に2つ以上チェックがあります");
+                MessageBox.Show("実績数カウント工程に2つ以上チェックがあります");
                 return;
             }
 
