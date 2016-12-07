@@ -1266,7 +1266,7 @@ namespace TSS_SYSTEM
                 }
                 //この行がここにある意味がわからない。一応コメントにしておきます。20160817   seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
                 //編集確定
-                dgv_today.EndEdit();
+                //dgv_today.EndEdit();
             }
 
             //取引先コード
@@ -1888,6 +1888,13 @@ namespace TSS_SYSTEM
 
         private void dgv_today_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
+            ////開始時間を変更したとき
+            //if (e.ColumnIndex == 5)
+            //{
+            //    dgv_today.EndEdit();
+            //}
+            
+            
             //開始時間を変更したとき
             //if (e.ColumnIndex == 21)
             //{
