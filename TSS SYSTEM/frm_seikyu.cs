@@ -427,9 +427,32 @@ namespace TSS_SYSTEM
             decimal out_decimal;  //戻り値用
             DataTable w_dt = new DataTable();
             //画面の請求締日から、1か月前の締日の翌日を求める
+            //20161202 取引先マスタの請求締日が99だったら同月の初日を、99で無ければ前月+1日を求めるように修正
+            DataTable w_dt_torihikisaki = new DataTable();
+            w_dt_torihikisaki = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + in_cd + "'");
+            if(w_dt_torihikisaki.Rows.Count <= 0)
+            {
+                MessageBox.Show("取引先マスタの読込でエラーが発生しました。\n処理を中止します。");
+                this.Close();
+            }
+            //前月締日の翌日を求める
             DateTime w_datetime;
-            tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
-            w_datetime = tss.out_datetime.AddMonths(-1).AddDays(+1);
+            if (w_dt_torihikisaki.Rows[0]["seikyu_sime_date"].ToString() == "99")
+            {
+                //請求締日 = 99
+                tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+                w_datetime = tss.FirstMonth(tss.out_datetime);
+            }
+            else
+            {
+                //請求締日 != 99
+                tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+                w_datetime = tss.out_datetime.AddMonths(-1).AddDays(+1);
+            }
+            //20161202下記3行コメント
+            //DateTime w_datetime;
+            //tss.try_string_to_date(tb_seikyu_simebi.Text.ToString());
+            //w_datetime = tss.out_datetime.AddMonths(-1).AddDays(+1);
 
             w_dt = tss.OracleSelect("select sum(nyukingaku) from tss_nyukin_m where torihikisaki_cd = '" + in_cd + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') <= '" + tb_seikyu_simebi.Text + "' and TO_CHAR(nyukin_date,'YYYY/MM/DD') >= '" + w_datetime.ToShortDateString() + "'");
             if (w_dt.Rows.Count == 0)

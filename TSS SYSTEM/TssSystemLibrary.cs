@@ -74,6 +74,19 @@ using System.IO;                //StreamWriter
 //                          -生産実績入力のバーコード入力
 //                          -生産工程マスタに完成品をカウントする工程を判断するためのフラグを追加
 //                          -複数行ある売上の訂正時に、1行目の売上数を引いていたバグを修正（累計が狂ってくる＆売上数＝受注数にならなくなる）
+//      1       2016/11/29  生産スケジュール調整、新規行にて編集中に落ちる現象を修正
+//      2       2016/11/30  生産スケジュール作成メソッド（ライブラリ）、同一日に複数の納品スケジュールが有る場合、まとめて１つの生産スケジュールを作成するように修正
+//                          生産スケジュール調整、行毎の実績・予定・受注数チェックを実装
+//                          生産スケジュール一覧、時刻がPM表記だったものを24時間表記に修正
+//      3       2016/12/02  月初日を求めるライブラリ追加
+//                          請求締めにて、末締め（取引先マスタの締日が99）の場合かつ今月が31日まであり先月が30日までしかないような場合に、先月末の日付が間違って求められていた不具合修正
+//                          取引先マスタ、データ更新時に支払月が更新されていないバグ修正
+//      4       2016/12/05  生産実績入力の正式公開（タブオーダーの不具合あり・・・原因不明）
+//                          生産スケジュール調整画面の右下に現在編集中の行の受注情報の納品、生産、実績情報を表示
+//                          仮受注to本受注に生産実績Fを追加
+//      5       2016/12/06  生産スケジュール調整画面の右下の表示を、編集行の「工程」のみから編集行の「受注の工程全て」の表示に変更
+//      x       xxxx/xx/xx  生産工程マスタ画面、splitcontainer設定ミス、生産カウント→実績カウントなど、細々修正
+//
 //
 //
 //
@@ -133,7 +146,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.05";
-            program_code_version = "0";
+            program_code_version = "5";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -1364,6 +1377,19 @@ namespace TSS_SYSTEM
                 bl = false;
             }
             return bl;
+        }
+        #endregion
+
+        #region FirstMonth
+        /// <summary>
+        /// datetime型を受け取り月初を求めて返す</summary>
+        /// <param name="in_datetime">
+        /// 月初を求めるdatetime</param>
+        /// <returns>
+        /// datetime</returns>
+        public DateTime FirstMonth(DateTime in_datetime)
+        {
+            return new DateTime(in_datetime.Year,in_datetime.Month, 1);
         }
         #endregion
 
@@ -3773,7 +3799,9 @@ namespace TSS_SYSTEM
                 return false;
             }
             //納品スケジュールマスタの取得
-            w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
+            //w_dt_nouhin_schedule = OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' order by nouhin_yotei_date,seq asc");
+            //納品スケジュールは同一日に複数行のレコードが存在する可能性があるので、それらを同じ日なら１つにまとめて処理する
+            w_dt_nouhin_schedule = OracleSelect("select nouhin_yotei_date,torihikisaki_cd,juchu_cd1,juchu_cd2,sum(nouhin_yotei_su) nouhin_yotei_su from tss_nouhin_schedule_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' group by nouhin_yotei_date,torihikisaki_cd,juchu_cd1,juchu_cd2 order by nouhin_yotei_date asc");
 
             DateTime w_date;            //納品日
             TimeSpan w_timespan;        //○日前からの生産

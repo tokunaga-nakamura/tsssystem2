@@ -1227,5 +1227,12 @@ namespace TSS_SYSTEM
             frm_sj.ShowDialog(this);
             frm_sj.Dispose();
         }
+
+        private void btn_quick_seisan_jisseki_Click(object sender, EventArgs e)
+        {
+            frm_seisan_jisseki_nyuuryoku frm_sjn = new frm_seisan_jisseki_nyuuryoku();
+            frm_sjn.ShowDialog(this);
+            frm_sjn.Dispose();
+        }
     }
 }

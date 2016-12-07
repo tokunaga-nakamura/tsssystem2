@@ -78,11 +78,12 @@
             this.cb_before_busyo = new System.Windows.Forms.ComboBox();
             this.dgv_before = new System.Windows.Forms.DataGridView();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.dtp_next = new System.Windows.Forms.DateTimePicker();
-            this.btn_next_day_up = new System.Windows.Forms.Button();
-            this.cb_next_busyo = new System.Windows.Forms.ComboBox();
-            this.btn_next_day_down = new System.Windows.Forms.Button();
-            this.dgv_next = new System.Windows.Forms.DataGridView();
+            this.lbl_row_koutei = new System.Windows.Forms.Label();
+            this.lbl_row_seihin = new System.Windows.Forms.Label();
+            this.lbl_row_juchu_cd = new System.Windows.Forms.Label();
+            this.lbl_row_juchu_su = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgv_row_info = new System.Windows.Forms.DataGridView();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.btn_sijisyo_insatu = new System.Windows.Forms.Button();
             this.btn_csv = new System.Windows.Forms.Button();
@@ -154,7 +155,7 @@
             this.splitContainer7.Panel1.SuspendLayout();
             this.splitContainer7.Panel2.SuspendLayout();
             this.splitContainer7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_next)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_row_info)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).BeginInit();
             this.splitContainer8.Panel1.SuspendLayout();
             this.splitContainer8.Panel2.SuspendLayout();
@@ -328,7 +329,6 @@
             this.cb_today_busyo.Name = "cb_today_busyo";
             this.cb_today_busyo.Size = new System.Drawing.Size(121, 20);
             this.cb_today_busyo.TabIndex = 1;
-            this.cb_today_busyo.SelectionChangeCommitted += new System.EventHandler(this.cb_today_busyo_SelectionChangeCommitted);
             // 
             // textBox1
             // 
@@ -629,7 +629,6 @@
             this.lbl_seisan_yotei_date_today.Name = "lbl_seisan_yotei_date_today";
             this.lbl_seisan_yotei_date_today.Size = new System.Drawing.Size(109, 29);
             this.lbl_seisan_yotei_date_today.TabIndex = 0;
-            this.lbl_seisan_yotei_date_today.Text = "9999/99/99";
             this.lbl_seisan_yotei_date_today.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // splitContainer18
@@ -671,8 +670,8 @@
             this.dgv_today.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellDoubleClick);
             this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
             this.dgv_today.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_today_CellPainting);
-            this.dgv_today.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellValidated);
             this.dgv_today.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_today_CellValidating);
+            this.dgv_today.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_RowEnter);
             this.dgv_today.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_today_UserDeletedRow);
             this.dgv_today.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_today_UserDeletingRow);
             this.dgv_today.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgv_today_DragDrop);
@@ -836,72 +835,74 @@
             // 
             // splitContainer7.Panel1
             // 
-            this.splitContainer7.Panel1.Controls.Add(this.dtp_next);
-            this.splitContainer7.Panel1.Controls.Add(this.btn_next_day_up);
-            this.splitContainer7.Panel1.Controls.Add(this.cb_next_busyo);
-            this.splitContainer7.Panel1.Controls.Add(this.btn_next_day_down);
+            this.splitContainer7.Panel1.Controls.Add(this.lbl_row_koutei);
+            this.splitContainer7.Panel1.Controls.Add(this.lbl_row_seihin);
+            this.splitContainer7.Panel1.Controls.Add(this.lbl_row_juchu_cd);
+            this.splitContainer7.Panel1.Controls.Add(this.lbl_row_juchu_su);
+            this.splitContainer7.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer7.Panel2
             // 
-            this.splitContainer7.Panel2.Controls.Add(this.dgv_next);
+            this.splitContainer7.Panel2.Controls.Add(this.dgv_row_info);
             this.splitContainer7.Size = new System.Drawing.Size(536, 131);
-            this.splitContainer7.SplitterDistance = 25;
+            this.splitContainer7.SplitterDistance = 42;
             this.splitContainer7.TabIndex = 0;
             this.splitContainer7.TabStop = false;
             // 
-            // dtp_next
+            // lbl_row_koutei
             // 
-            this.dtp_next.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_next.Location = new System.Drawing.Point(219, 3);
-            this.dtp_next.Name = "dtp_next";
-            this.dtp_next.Size = new System.Drawing.Size(97, 19);
-            this.dtp_next.TabIndex = 4;
-            this.dtp_next.ValueChanged += new System.EventHandler(this.dtp_next_ValueChanged);
+            this.lbl_row_koutei.AutoSize = true;
+            this.lbl_row_koutei.Location = new System.Drawing.Point(358, 26);
+            this.lbl_row_koutei.Name = "lbl_row_koutei";
+            this.lbl_row_koutei.Size = new System.Drawing.Size(83, 12);
+            this.lbl_row_koutei.TabIndex = 4;
+            this.lbl_row_koutei.Text = "工程CD:工程名";
             // 
-            // btn_next_day_up
+            // lbl_row_seihin
             // 
-            this.btn_next_day_up.Location = new System.Drawing.Point(322, 1);
-            this.btn_next_day_up.Name = "btn_next_day_up";
-            this.btn_next_day_up.Size = new System.Drawing.Size(75, 23);
-            this.btn_next_day_up.TabIndex = 0;
-            this.btn_next_day_up.TabStop = false;
-            this.btn_next_day_up.Text = "+1日";
-            this.btn_next_day_up.UseVisualStyleBackColor = true;
-            this.btn_next_day_up.Click += new System.EventHandler(this.btn_next_day_up_Click);
+            this.lbl_row_seihin.AutoSize = true;
+            this.lbl_row_seihin.Location = new System.Drawing.Point(3, 26);
+            this.lbl_row_seihin.Name = "lbl_row_seihin";
+            this.lbl_row_seihin.Size = new System.Drawing.Size(83, 12);
+            this.lbl_row_seihin.TabIndex = 3;
+            this.lbl_row_seihin.Text = "製品CD:製品名";
             // 
-            // cb_next_busyo
+            // lbl_row_juchu_cd
             // 
-            this.cb_next_busyo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_next_busyo.FormattingEnabled = true;
-            this.cb_next_busyo.Location = new System.Drawing.Point(12, 2);
-            this.cb_next_busyo.Name = "cb_next_busyo";
-            this.cb_next_busyo.Size = new System.Drawing.Size(120, 20);
-            this.cb_next_busyo.TabIndex = 1;
+            this.lbl_row_juchu_cd.AutoSize = true;
+            this.lbl_row_juchu_cd.Location = new System.Drawing.Point(122, 6);
+            this.lbl_row_juchu_cd.Name = "lbl_row_juchu_cd";
+            this.lbl_row_juchu_cd.Size = new System.Drawing.Size(161, 12);
+            this.lbl_row_juchu_cd.TabIndex = 2;
+            this.lbl_row_juchu_cd.Text = "取引先CD-受注CD1-受注CD2";
             // 
-            // btn_next_day_down
+            // lbl_row_juchu_su
             // 
-            this.btn_next_day_down.Location = new System.Drawing.Point(138, 2);
-            this.btn_next_day_down.Name = "btn_next_day_down";
-            this.btn_next_day_down.Size = new System.Drawing.Size(75, 23);
-            this.btn_next_day_down.TabIndex = 0;
-            this.btn_next_day_down.TabStop = false;
-            this.btn_next_day_down.Text = "-1日";
-            this.btn_next_day_down.UseVisualStyleBackColor = true;
-            this.btn_next_day_down.Click += new System.EventHandler(this.btn_next_day_down_Click);
+            this.lbl_row_juchu_su.AutoSize = true;
+            this.lbl_row_juchu_su.Location = new System.Drawing.Point(358, 6);
+            this.lbl_row_juchu_su.Name = "lbl_row_juchu_su";
+            this.lbl_row_juchu_su.Size = new System.Drawing.Size(41, 12);
+            this.lbl_row_juchu_su.TabIndex = 1;
+            this.lbl_row_juchu_su.Text = "受注数";
             // 
-            // dgv_next
+            // label3
             // 
-            this.dgv_next.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_next.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_next.Location = new System.Drawing.Point(0, 0);
-            this.dgv_next.Name = "dgv_next";
-            this.dgv_next.RowTemplate.Height = 21;
-            this.dgv_next.Size = new System.Drawing.Size(536, 102);
-            this.dgv_next.TabIndex = 0;
-            this.dgv_next.TabStop = false;
-            this.dgv_next.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_next_CellFormatting);
-            this.dgv_next.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_next_CellPainting);
-            this.dgv_next.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgv_next_MouseDown);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "カーソル行の受注情報";
+            // 
+            // dgv_row_info
+            // 
+            this.dgv_row_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_row_info.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_row_info.Location = new System.Drawing.Point(0, 0);
+            this.dgv_row_info.Name = "dgv_row_info";
+            this.dgv_row_info.RowTemplate.Height = 21;
+            this.dgv_row_info.Size = new System.Drawing.Size(536, 85);
+            this.dgv_row_info.TabIndex = 0;
             // 
             // splitContainer8
             // 
@@ -1053,10 +1054,11 @@
             this.splitContainer6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_before)).EndInit();
             this.splitContainer7.Panel1.ResumeLayout(false);
+            this.splitContainer7.Panel1.PerformLayout();
             this.splitContainer7.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
             this.splitContainer7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_next)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_row_info)).EndInit();
             this.splitContainer8.Panel1.ResumeLayout(false);
             this.splitContainer8.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer8)).EndInit();
@@ -1095,13 +1097,9 @@
         private System.Windows.Forms.Button btn_touroku;
         private System.Windows.Forms.DataGridView dgv_today;
         private System.Windows.Forms.DataGridView dgv_before;
-        private System.Windows.Forms.DataGridView dgv_next;
         private System.Windows.Forms.Button btn_before_day_down;
         private System.Windows.Forms.Button btn_before_day_up;
-        private System.Windows.Forms.Button btn_next_day_down;
-        private System.Windows.Forms.Button btn_next_day_up;
         private System.Windows.Forms.ComboBox cb_before_busyo;
-        private System.Windows.Forms.ComboBox cb_next_busyo;
         private System.Windows.Forms.Button btn_line_tuika_under;
         private System.Windows.Forms.SplitContainer splitContainer10;
         private System.Windows.Forms.SplitContainer splitContainer11;
@@ -1117,7 +1115,6 @@
         private System.Windows.Forms.TextBox tb_update_user_cd;
         private System.Windows.Forms.TextBox tb_update_datetime;
         private System.Windows.Forms.DateTimePicker dtp_before;
-        private System.Windows.Forms.DateTimePicker dtp_next;
         private System.Windows.Forms.SplitContainer splitContainer12;
         private System.Windows.Forms.Button btn_sijisyo_insatu;
         private System.Windows.Forms.Button btn_chk_schedule;
@@ -1128,5 +1125,11 @@
         private System.Windows.Forms.DataGridView dgv_member;
         private System.Windows.Forms.ComboBox cb_member_busyo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgv_row_info;
+        private System.Windows.Forms.Label lbl_row_juchu_su;
+        private System.Windows.Forms.Label lbl_row_koutei;
+        private System.Windows.Forms.Label lbl_row_seihin;
+        private System.Windows.Forms.Label lbl_row_juchu_cd;
     }
 }

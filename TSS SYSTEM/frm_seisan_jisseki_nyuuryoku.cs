@@ -559,6 +559,7 @@ namespace TSS_SYSTEM
                 tb_jisseki_end_time.Text = "00:00";
             }
             tb_jisseki_seisan_su.Text = w_dt.Rows[0]["seisan_su"].ToString();
+            tb_memo.Text = w_dt.Rows[0]["memo"].ToString();
             seisan_jikan_calc();
         }
 
@@ -593,6 +594,7 @@ namespace TSS_SYSTEM
             tb_jisseki_seisan_su.Text = "";
             tb_jisseki_seisan_time.Text = "";
             tb_jisseki_tact_time.Text = "";
+            tb_memo.Text = "";
         }
 
         private void gamen_clear()
@@ -1083,7 +1085,7 @@ namespace TSS_SYSTEM
                 w_dt_sum = tss.OracleSelect("select sum(seisan_su) seisan_su_ttl from tss_seisan_jisseki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "' and busyo_cd = '" + tb_busyo_cd.Text + "' and koutei_cd = '" + tb_koutei_cd.Text + "'");
                 DataTable w_dt_juchu = new DataTable();
                 bool w_bl;
-                w_bl = tss.OracleUpdate("update tss_juchu_m set seisan_su = '" + w_dt_sum.Rows[0]["seisan_su_ttl"].ToString() + "',update_user_cd = '" + tss.user_cd + "',update_tatetime = sysdate");
+                w_bl = tss.OracleUpdate("update tss_juchu_m set seisan_su = '" + w_dt_sum.Rows[0]["seisan_su_ttl"].ToString() + "',update_user_cd = '" + tss.user_cd + "',update_datetime = sysdate");
                 if(w_bl == false)
                 {
                     MessageBox.Show("受注マスタの更新でエラーが発生しました。\n受注マスタを更新せずに終了します。");

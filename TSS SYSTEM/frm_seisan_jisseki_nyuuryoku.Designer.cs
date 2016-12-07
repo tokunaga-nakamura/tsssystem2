@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_jisseki_nyuuryoku));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label6 = new System.Windows.Forms.Label();
             this.btn_kensaku = new System.Windows.Forms.Button();
             this.btn_barcode = new System.Windows.Forms.Button();
             this.btn_hardcopy = new System.Windows.Forms.Button();
@@ -80,6 +81,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_bikou = new System.Windows.Forms.TextBox();
             this.splitContainer11 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
             this.tb_jisseki_seisan_su = new System.Windows.Forms.TextBox();
             this.tb_jisseki_end_time = new System.Windows.Forms.TextBox();
             this.tb_jisseki_start_time = new System.Windows.Forms.TextBox();
@@ -116,8 +118,6 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -211,12 +211,22 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(223, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(522, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "※生産スケジュールと生産実績では一日の開始時刻は8:30として処理されます。（深夜の0:00ではありません。）";
+            // 
             // btn_kensaku
             // 
             this.btn_kensaku.Location = new System.Drawing.Point(795, 29);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
             this.btn_kensaku.TabIndex = 1;
+            this.btn_kensaku.TabStop = false;
             this.btn_kensaku.Text = "検索";
             this.btn_kensaku.UseVisualStyleBackColor = true;
             this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
@@ -227,6 +237,7 @@
             this.btn_barcode.Name = "btn_barcode";
             this.btn_barcode.Size = new System.Drawing.Size(113, 36);
             this.btn_barcode.TabIndex = 0;
+            this.btn_barcode.TabStop = false;
             this.btn_barcode.Text = "バーコードスキャン";
             this.btn_barcode.UseVisualStyleBackColor = true;
             this.btn_barcode.Click += new System.EventHandler(this.btn_barcode_Click);
@@ -640,7 +651,6 @@
             this.splitContainer6.Size = new System.Drawing.Size(880, 292);
             this.splitContainer6.SplitterDistance = 26;
             this.splitContainer6.TabIndex = 9;
-            this.splitContainer6.TabStop = false;
             // 
             // tb_line_cd
             // 
@@ -872,7 +882,15 @@
             this.splitContainer11.Size = new System.Drawing.Size(876, 162);
             this.splitContainer11.SplitterDistance = 71;
             this.splitContainer11.TabIndex = 0;
-            this.splitContainer11.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(662, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 24);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "※生産に関わる時刻\r\n8:30～8:29を1日とみなされます。";
             // 
             // tb_jisseki_seisan_su
             // 
@@ -1303,24 +1321,6 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(662, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 24);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "※生産に関わる時刻\r\n8:30～8:29を1日とみなされます。";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(223, 34);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(522, 12);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "※生産スケジュールと生産実績では一日の開始時刻は8:30として処理されます。（深夜の0:00ではありません。）";
             // 
             // frm_seisan_jisseki_nyuuryoku
             // 

@@ -52,6 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_koutei_tuika = new System.Windows.Forms.Button();
             this.dgv_koutei = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_line_tuika = new System.Windows.Forms.Button();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.tb_seisankisyu = new System.Windows.Forms.TextBox();
@@ -181,6 +183,7 @@
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -347,6 +350,8 @@
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.label7);
+            this.splitContainer4.Panel2.Controls.Add(this.label4);
             this.splitContainer4.Panel2.Controls.Add(this.btn_line_tuika);
             this.splitContainer4.Panel2.Controls.Add(this.textBox12);
             this.splitContainer4.Panel2.Controls.Add(this.tb_seisankisyu);
@@ -452,6 +457,24 @@
             this.dgv_koutei.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_koutei_UserDeletedRow);
             this.dgv_koutei.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgv_koutei_UserDeletingRow);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(147, 333);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 105;
+            this.label7.Text = "秒後";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(131, 308);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 104;
+            this.label4.Text = "日前";
+            // 
             // btn_line_tuika
             // 
             this.btn_line_tuika.Location = new System.Drawing.Point(577, 100);
@@ -508,7 +531,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(153, 283);
+            this.label6.Location = new System.Drawing.Point(182, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 12);
             this.label6.TabIndex = 100;
@@ -573,11 +596,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(153, 333);
+            this.label3.Location = new System.Drawing.Point(182, 333);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 12);
             this.label3.TabIndex = 95;
-            this.label3.Text = "※前工程開始から●秒後にスタート可";
+            this.label3.Text = "※前工程開始から○秒後にスタート可";
             // 
             // textBox6
             // 
@@ -657,11 +680,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 308);
+            this.label2.Location = new System.Drawing.Point(182, 308);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 12);
             this.label2.TabIndex = 94;
-            this.label2.Text = "※納品日の●日前生産";
+            this.label2.Text = "※納品日の○日前生産";
             // 
             // tb_koutei_name
             // 
@@ -897,5 +920,7 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.Label label_sinki;
         private System.Windows.Forms.Button btn_koutei_copy;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
     }
 }

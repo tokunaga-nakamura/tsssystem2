@@ -210,8 +210,6 @@ namespace TSS_SYSTEM
                 tb_syouhizei_sansyutu_kbn.Focus();
                 return;
             }
-            
-   
             else
             //エラーがなければ書込み
             {
@@ -234,6 +232,7 @@ namespace TSS_SYSTEM
                         + "',FAX_NO = '" + tb_fax_no.Text + "',DAIHYOUSYA_NAME = '" + tb_daihyousya_name.Text + "',URL = '" + tb_url.Text
                         + "',EIGYOU_START_TIME = '" + tb_eigyou_start_time.Text + "',EIGYOU_END_TIME = '" + tb_eigyou_end_time.Text + "',SEIKYU_SIME_DATE = '" + tb_seikyu_sime_date.Text
                         + "',KAISYU_TUKI = '" + tb_kaisyu_tuki.Text + "',KAISYU_HI = '" + tb_kaisyu_hi.Text + "',SIHARAI_SIME_DATE = '" + tb_siharai_sime_date.Text
+                        + "',siharai_tuki = '" + tb_siharai_tuki.Text
                         + "',SIHARAI_HI = '" + tb_siharai_hi.Text + "',KESSAN_START_MMDD = '" + tb_kessan_start_mmdd.Text + "',KESSAN_END_MMDD = '" + tb_kessan_end_mmdd.Text
                         + "',SYOUHIZEI_SANSYUTU_KBN = '" + tb_syouhizei_sansyutu_kbn.Text + "',HASU_KBN = '" + tb_hasu_kbn.Text + "',HASU_SYORI_TANI = '" + tb_hasu_syori_tani.Text + "',JISYADEN_KBN = '" + tb_jisyaden_kbn.Text
                         + "',UPDATE_USER_CD = '" + tss.user_cd + "',UPDATE_DATETIME = SYSDATE WHERE torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'");
