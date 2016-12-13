@@ -168,7 +168,10 @@ namespace TSS_SYSTEM
                      column2.DefaultValue = nouhin_yotei_ruikei;
                      w_dt_chk.Columns.Add(column2);
                      w_dt_chk.Columns.Add("seisan_kaisibi", Type.GetType("System.DateTime"));　//生産開始日・・納品予定日から、tss_date_eigyou_calcで求めた日数を引いた年月日
+                     
+                     w_dt_chk.Columns.Add("seisan_jisseki_ruikei", Type.GetType("System.Int32"));//納品日までの、累計生産実績数（次のステップで計算する）
                      w_dt_chk.Columns.Add("seisan_yotei_ruikei", Type.GetType("System.Int32"));//生産開始日までの、累計生産予定数（次のステップで計算する）
+                    
                      w_dt_chk.Columns.Add("chk", Type.GetType("System.String"));//累計納品予定数と、累計生産予定数の差異を計算する
 
                      int rc3 = w_dt_chk.Rows.Count;
@@ -182,6 +185,24 @@ namespace TSS_SYSTEM
                          seisan_yotei_date = tss.date_eigyou_calc(nouhin_yotei_date, seisan_start_day);///納品予定日と、生産開始日（●日前生産)の数字を渡して営業日ベースでの生産予定日を計算）
 
                          w_dt_chk.Rows[k]["seisan_kaisibi"] = seisan_yotei_date;
+
+                         //生産実績累計取得
+                         DataTable w_dt_jisseki_ruikei_keisan = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_jisseki_Ruikei from tss_seisan_jisseki_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_date <= '" + seisan_yotei_date + "'");
+
+                         if (w_dt_jisseki_ruikei_keisan.Rows.Count == 0)
+                         {
+                             w_dt_chk.Rows[k]["seisan_jisseki_ruikei"] = 0;
+                         }
+                         else
+                         {
+                             w_dt_chk.Rows[k]["seisan_jisseki_ruikei"] = w_dt_jisseki_ruikei_keisan.Rows[0][1]; //生産実績累計数がnullだとエラーになる
+                         }
+
+
+
+
+
+
 
                          //生産予定累計取得
                          DataTable w_dt_seisan_ruikei_keisan = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_yotei_Ruikei from tss_seisan_schedule_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_yotei_date <= '" + seisan_yotei_date + "'");
@@ -383,6 +404,7 @@ namespace TSS_SYSTEM
             dgv_m.Columns["nouhin_yotei_date"].HeaderText = "納品予定日";
             dgv_m.Columns["nouhin_yotei_ruikei"].HeaderText = "納品予定累計";
             dgv_m.Columns["seisan_kaisibi"].HeaderText = "生産開始日";
+            dgv_m.Columns["seisan_jisseki_ruikei"].HeaderText = "生産実績累計";
             dgv_m.Columns["seisan_yotei_ruikei"].HeaderText = "生産予定累計";
             dgv_m.Columns["chk"].HeaderText = "チェック内容";
 
@@ -391,6 +413,7 @@ namespace TSS_SYSTEM
 
             //右詰
             dgv_m.Columns["nouhin_yotei_ruikei"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_m.Columns["seisan_jisseki_ruikei"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns["seisan_yotei_ruikei"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             int dgv_rc = dgv_m.Rows.Count;
