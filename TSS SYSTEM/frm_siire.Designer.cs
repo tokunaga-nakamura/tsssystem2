@@ -195,7 +195,7 @@
             this.dgv_siire.Name = "dgv_siire";
             this.dgv_siire.RowHeadersVisible = false;
             this.dgv_siire.RowTemplate.Height = 21;
-            this.dgv_siire.Size = new System.Drawing.Size(880, 287);
+            this.dgv_siire.Size = new System.Drawing.Size(880, 283);
             this.dgv_siire.TabIndex = 5;
             this.dgv_siire.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellDoubleClick);
             this.dgv_siire.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_siire_CellEndEdit);
@@ -254,7 +254,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_siire);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 411);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 407);
             this.splitContainer3.SplitterDistance = 116;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -325,6 +325,7 @@
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -337,7 +338,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(884, 497);
-            this.splitContainer2.SplitterDistance = 411;
+            this.splitContainer2.SplitterDistance = 407;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -360,8 +361,8 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer4.Panel2.Controls.Add(this.btn_touroku);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 82);
-            this.splitContainer4.SplitterDistance = 25;
+            this.splitContainer4.Size = new System.Drawing.Size(884, 86);
+            this.splitContainer4.SplitterDistance = 28;
             this.splitContainer4.TabIndex = 6;
             // 
             // textBox5

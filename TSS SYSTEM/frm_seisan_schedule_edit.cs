@@ -31,9 +31,9 @@ namespace TSS_SYSTEM
 
         //親画面から参照できるプロパティを作成
         public string str_mode = "0";    //画面モード
-        public string str_date;    //日付
-        public string str_busyo;   //部署
-        public bool fld_sentaku; //区分選択フラグ 選択:true エラーまたはキャンセル:false
+        public string str_date;     //日付
+        public string str_busyo;    //部署
+        public bool fld_sentaku;    //区分選択フラグ 選択:true エラーまたはキャンセル:false
 
         public string mode
         {
@@ -972,11 +972,20 @@ namespace TSS_SYSTEM
                 return;
             }
             DataGridView dgv = (DataGridView)sender;
-            string st = null;
+            //string st = null;
+            //if (dgv.Columns[e.ColumnIndex].Name == "START_TIME" || dgv.Columns[e.ColumnIndex].Name == "END_TIME")
+            //{
+            //    st = HHMMcheck(e.FormattedValue.ToString());
+            //    if (st == null)
+            //    {
+            //        MessageBox.Show("入力した値が正しくありません。00:00から23:59の形式で入力してください");
+            //        e.Cancel = true;
+            //        return;
+            //    }
+            //}
             if (dgv.Columns[e.ColumnIndex].Name == "START_TIME" || dgv.Columns[e.ColumnIndex].Name == "END_TIME")
             {
-                st = HHMMcheck(e.FormattedValue.ToString());
-                if (st == null)
+                if(tss.try_string_to_time(e.FormattedValue.ToString()) == false)
                 {
                     MessageBox.Show("入力した値が正しくありません。00:00から23:59の形式で入力してください");
                     e.Cancel = true;
@@ -1198,7 +1207,7 @@ namespace TSS_SYSTEM
                 str1 = e.FormattedValue.ToString();
                 //変更前の値
                 str2 = ((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                if(str2 =="")
+                if(str2 == "")
                 {
                     str2 = "0";
                 }
@@ -1224,89 +1233,89 @@ namespace TSS_SYSTEM
             }
 
             //開始時間を変更したとき
-            if (e.ColumnIndex == 21)
-            {
-                //変更後の値
-                str1 = e.FormattedValue.ToString();
-                //変更前の値
-                str2 = ((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                if (str1 != str2)
-                {
-                    DateTime time1;
-                    DateTime time2;
-                    //int rowindex = int.Parse(in_rowindex);
-                    int result;
-                    int w_kyuukei_time;
+            //if (e.ColumnIndex == 21)
+            //{
+            //    //変更後の値
+            //    str1 = e.FormattedValue.ToString();
+            //    //変更前の値
+            //    str2 = ((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            //    if (str1 != str2)
+            //    {
+            //        DateTime time1;
+            //        DateTime time2;
+            //        //int rowindex = int.Parse(in_rowindex);
+            //        int result;
+            //        int w_kyuukei_time;
 
-                    if (int.TryParse(dgv_today.Rows[e.RowIndex].Cells["seisan_time"].Value.ToString(), out result) == true)
-                    {
-                        TimeSpan ts = new TimeSpan(0, 0, result);
-                        if (dgv_today.Rows[e.RowIndex].Cells["start_time"].Value != DBNull.Value)
-                        {
-                            time1 = DateTime.Parse(e.FormattedValue.ToString());
-                            time2 = time1 + ts;
-                            //休憩時間の考慮
-                            //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
-                            w_kyuukei_time = 0;
-                            //10時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "10:00") <= 0 && string.Compare(time2.ToShortTimeString(), "10:05") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 5;
-                            }
-                            //12時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "12:00") <= 0 && string.Compare(time2.ToShortTimeString(), "12:40") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 40;
-                            }
-                            //15時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "15:00") <= 0 && string.Compare(time2.ToShortTimeString(), "15:10") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 10;
-                            }
-                            //もとまった休憩時間の合計を終了時間に加える
-                            TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
-                            time2 = time2 + w_ts_kyuukei_time;
+            //        if (int.TryParse(dgv_today.Rows[e.RowIndex].Cells["seisan_time"].Value.ToString(), out result) == true)
+            //        {
+            //            TimeSpan ts = new TimeSpan(0, 0, result);
+            //            if (dgv_today.Rows[e.RowIndex].Cells["start_time"].Value != DBNull.Value)
+            //            {
+            //                time1 = DateTime.Parse(e.FormattedValue.ToString());
+            //                time2 = time1 + ts;
+            //                //休憩時間の考慮
+            //                //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
+            //                w_kyuukei_time = 0;
+            //                //10時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "10:00") <= 0 && string.Compare(time2.ToShortTimeString(), "10:05") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 5;
+            //                }
+            //                //12時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "12:00") <= 0 && string.Compare(time2.ToShortTimeString(), "12:40") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 40;
+            //                }
+            //                //15時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "15:00") <= 0 && string.Compare(time2.ToShortTimeString(), "15:10") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 10;
+            //                }
+            //                //もとまった休憩時間の合計を終了時間に加える
+            //                TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
+            //                time2 = time2 + w_ts_kyuukei_time;
 
-                            string str_time1 = time1.ToShortTimeString();
-                            string str_time2 = time2.ToShortTimeString();
+            //                string str_time1 = time1.ToShortTimeString();
+            //                string str_time2 = time2.ToShortTimeString();
 
-                            dgv_today.Rows[e.RowIndex].Cells["end_time"].Value = time2.ToShortTimeString();
-                        }
-                        else
-                        {
-                            time1 = DateTime.Parse(e.FormattedValue.ToString());
-                            time2 = time1 + ts;
-                            //休憩時間の考慮
-                            //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
-                            w_kyuukei_time = 0;
-                            //10時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "10:00") <= 0 && string.Compare(time2.ToShortTimeString(), "10:05") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 5;
-                            }
-                            //12時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "12:00") <= 0 && string.Compare(time2.ToShortTimeString(), "12:40") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 40;
-                            }
-                            //15時休憩
-                            if (string.Compare(time1.ToShortTimeString(), "15:00") <= 0 && string.Compare(time2.ToShortTimeString(), "15:10") >= 0)
-                            {
-                                w_kyuukei_time = w_kyuukei_time + 10;
-                            }
-                            //もとまった休憩時間の合計を終了時間に加える
-                            TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
-                            time2 = time2 + w_ts_kyuukei_time;
+            //                dgv_today.Rows[e.RowIndex].Cells["end_time"].Value = time2.ToShortTimeString();
+            //            }
+            //            else
+            //            {
+            //                time1 = DateTime.Parse(e.FormattedValue.ToString());
+            //                time2 = time1 + ts;
+            //                //休憩時間の考慮
+            //                //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
+            //                w_kyuukei_time = 0;
+            //                //10時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "10:00") <= 0 && string.Compare(time2.ToShortTimeString(), "10:05") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 5;
+            //                }
+            //                //12時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "12:00") <= 0 && string.Compare(time2.ToShortTimeString(), "12:40") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 40;
+            //                }
+            //                //15時休憩
+            //                if (string.Compare(time1.ToShortTimeString(), "15:00") <= 0 && string.Compare(time2.ToShortTimeString(), "15:10") >= 0)
+            //                {
+            //                    w_kyuukei_time = w_kyuukei_time + 10;
+            //                }
+            //                //もとまった休憩時間の合計を終了時間に加える
+            //                TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
+            //                time2 = time2 + w_ts_kyuukei_time;
 
-                            string str_time1 = time1.ToShortTimeString();
-                            string str_time2 = time2.ToShortTimeString();
+            //                string str_time1 = time1.ToShortTimeString();
+            //                string str_time2 = time2.ToShortTimeString();
 
-                            dgv_today.Rows[e.RowIndex].Cells["end_time"].Value = time2.ToShortTimeString();
-                        }
-                    }
-                    end_time_keisan(dgv_today.CurrentRow.Index);
-                }
-            }
+            //                dgv_today.Rows[e.RowIndex].Cells["end_time"].Value = time2.ToShortTimeString();
+            //            }
+            //        }
+            //        end_time_keisan(dgv_today.CurrentRow.Index);
+            //    }
+            //}
 
             //タクトタイムを変更したとき
             if (e.ColumnIndex == 16)
@@ -2523,11 +2532,15 @@ namespace TSS_SYSTEM
             {
                 //ドラッグソースの行データ（DataGridViewRow型データ）を取得
                 System.Windows.Forms.DataGridViewRow Row_Work = (System.Windows.Forms.DataGridViewRow)e.Data.GetData(typeof(System.Windows.Forms.DataGridViewRow));
-                //違う部署コードの場合は、ドラッグ＆ドロップを許可しない
+                //違う部署コードの場合は、確認をする
                 if (cb_today_busyo.SelectedValue.ToString() != Row_Work.Cells[1].Value.ToString())
                 {
-                    MessageBox.Show("異なる部署のスケジュールはコピーできません。");
-                    return;
+                    DialogResult result = MessageBox.Show("異なる部署のスケジュールをコピーしようとしています。\nコピーしますか？", "確認", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No)
+                    {
+                        //「キャンセル」が選択された時
+                        return;
+                    }
                 }
                 //ドロップ先としての指定位置が有効な場合（x,y座標値の取得に成功している場合）
                 if (hit.RowIndex != -1)
@@ -2560,8 +2573,8 @@ namespace TSS_SYSTEM
             //ドロップ先のrowとドラッグ元のrowを受け取り、ドラッグ元のデータをドラッグ先のrowに入れて返す
             tss.GetUser();
             in_datarow["seisan_yotei_date"] = lbl_seisan_yotei_date_today.Text;
-            in_datarow["busyo_cd"] = in_dgv_row.Cells[1].Value.ToString();
-            in_datarow["busyo_name"] = in_dgv_row.Cells[2].Value.ToString();
+            in_datarow["busyo_cd"] = cb_today_busyo.SelectedValue.ToString();  // in_dgv_row.Cells[1].Value.ToString();
+            in_datarow["busyo_name"] = cb_today_busyo.Text; //in_dgv_row.Cells[2].Value.ToString();
             in_datarow["koutei_cd"] = in_dgv_row.Cells[3].Value.ToString();
             in_datarow["koutei_name"] = in_dgv_row.Cells[4].Value.ToString();
             in_datarow["line_cd"] = in_dgv_row.Cells[5].Value.ToString();
@@ -2644,7 +2657,7 @@ namespace TSS_SYSTEM
             lbl_row_seihin.Text = w_dt_juchu.Rows[0]["seihin_cd"].ToString() + ":" + tss.get_seihin_name(w_dt_juchu.Rows[0]["seihin_cd"].ToString());
             lbl_row_koutei.Text = dgv_today.Rows[in_row_index].Cells["koutei_cd"].Value.ToString() + ":" + tss.get_koutei_name(dgv_today.Rows[in_row_index].Cells["koutei_cd"].Value.ToString());
 
-            //納品スケジュールと、生産工程毎に生産スケジュールと生産実績を取得し１つのdtにする（生産工程のseqが必要な為、このような処理にする）
+            //納品スケジュールと、生産工程毎に生産スケジュールと生産実績を取得し１つのdtにする（工程順に表示するためにseqが必要な為、このような処理にする）
             DataTable w_dt_nouhin = new DataTable();
             DataTable w_dt_seisan = new DataTable();
             DataTable w_dt_jisseki = new DataTable();
@@ -2828,6 +2841,60 @@ namespace TSS_SYSTEM
             //dgv_row_info.FirstDisplayedScrollingRowIndex = 0;
 
             return;
+        }
+
+        private void dgv_today_CellParsing_1(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            //開始時刻
+            if (e.ColumnIndex == 21)
+            {
+                if (e != null)
+                {
+                    if (e.Value != null)
+                    {
+                        if (e.Value.ToString() != "")
+                        {
+                            if (tss.try_string_to_time(e.Value.ToString()))
+                            {
+                                e.Value = tss.out_time;
+                                e.ParsingApplied = true;
+                                dgv[e.ColumnIndex, e.RowIndex].ErrorText = null;
+                            }
+                            else
+                            {
+                                e.ParsingApplied = false;
+                                dgv[e.ColumnIndex, e.RowIndex].ErrorText = "時刻として認識できない値です。";
+                            }
+                        }
+                    }
+                }
+            }
+            //終了時刻
+            if (e.ColumnIndex == 22)
+            {
+                if (e != null)
+                {
+                    if (e.Value != null)
+                    {
+                        if (e.Value.ToString() != "")
+                        {
+                            if (tss.try_string_to_time(e.Value.ToString()))
+                            {
+                                e.Value = tss.out_time;
+                                e.ParsingApplied = true;
+                                dgv[e.ColumnIndex, e.RowIndex].ErrorText = null;
+                            }
+                            else
+                            {
+                                e.ParsingApplied = false;
+                                dgv[e.ColumnIndex, e.RowIndex].ErrorText = "時刻として認識できない値です。";
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

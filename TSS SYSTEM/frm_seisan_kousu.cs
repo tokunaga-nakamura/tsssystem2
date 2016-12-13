@@ -706,6 +706,9 @@ namespace TSS_SYSTEM
             dgv_list.Columns["29"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_list.Columns["30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_list.Columns["31"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //並び替えができないようにする
+            foreach (DataGridViewColumn c in dgv_list.Columns) c.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void horiday_color()
@@ -797,7 +800,6 @@ namespace TSS_SYSTEM
             {
                 MessageBox.Show("出力するデータがありません。");
             }
-
         }
 
         private void rb_Changed(object sender, EventArgs e)

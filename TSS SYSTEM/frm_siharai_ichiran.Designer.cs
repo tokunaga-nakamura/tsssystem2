@@ -107,7 +107,7 @@
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
@@ -199,6 +199,8 @@
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -213,7 +215,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer3.Panel2.Controls.Add(this.btn_syuuryou);
             this.splitContainer3.Size = new System.Drawing.Size(884, 407);
-            this.splitContainer3.SplitterDistance = 357;
+            this.splitContainer3.SplitterDistance = 371;
             this.splitContainer3.TabIndex = 0;
             // 
             // dgv_m
@@ -223,12 +225,12 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 353);
+            this.dgv_m.Size = new System.Drawing.Size(880, 367);
             this.dgv_m.TabIndex = 0;
             // 
             // btn_csv
             // 
-            this.btn_csv.Location = new System.Drawing.Point(103, 12);
+            this.btn_csv.Location = new System.Drawing.Point(91, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
             this.btn_csv.TabIndex = 4;
@@ -238,7 +240,7 @@
             // 
             // btn_insatu
             // 
-            this.btn_insatu.Location = new System.Drawing.Point(12, 12);
+            this.btn_insatu.Location = new System.Drawing.Point(10, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
             this.btn_insatu.TabIndex = 1;
@@ -248,7 +250,7 @@
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 12);
+            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
