@@ -89,6 +89,8 @@ namespace TSS_SYSTEM
             w_dt_meisai.Columns.Add("koutei_cd");
             w_dt_meisai.Columns.Add("koutei_name");
             w_dt_meisai.Columns.Add("line_cd");
+            w_dt_meisai.Columns.Add("seq_no1");
+            w_dt_meisai.Columns.Add("seq_no2");
             w_dt_meisai.Columns.Add("line_name");
             w_dt_meisai.Columns.Add("torihikisaki_cd");
             w_dt_meisai.Columns.Add("juchu_cd1");
@@ -274,6 +276,10 @@ namespace TSS_SYSTEM
                 w_dr["line_cd"] = loop_dr["line_cd"].ToString();
                 //ライン名
                 w_dr["line_name"] = tss.get_line_name(loop_dr["line_cd"].ToString());
+                //生産工程のseq_no
+                w_dr["seq_no1"] = get_seq_no1(loop_dr["seihin_cd"].ToString(), loop_dr["busyo_cd"].ToString(), loop_dr["koutei_cd"].ToString());
+                //生産工程のseq_noのmax
+                w_dr["seq_no2"] = get_seq_no2(loop_dr["seihin_cd"].ToString());
                 //取引先コード
                 w_dr["torihikisaki_cd"] = loop_dr["torihikisaki_cd"].ToString();
                 //受注コード１
@@ -315,8 +321,7 @@ namespace TSS_SYSTEM
                 //補充工数
                 w_dr["hoju_kousu"] = loop_dr["hoju_kousu"].ToString();
                 //生産済み数
-                //生産済み数はまだ未対応なので空白にする
-                w_dr["seisan_sumi_su"] = "";
+                w_dr["seisan_sumi_su"] = get_seisan_sumi_su(loop_dr["torihikisaki_cd"].ToString(), loop_dr["juchu_cd1"].ToString(), loop_dr["juchu_cd2"].ToString(), loop_dr["koutei_cd"].ToString());
                 //生産数（指示数）
                 w_dr["seisan_su"] = loop_dr["seisan_su"].ToString();
                 //生産時間
@@ -408,6 +413,10 @@ namespace TSS_SYSTEM
             w_dr["line_cd"] = " ";
             //ライン名
             w_dr["line_name"] = "";
+            //生産工程のseq_no
+            w_dr["seq_no1"] = "";
+            //生産工程のseq_noのmax
+            w_dr["seq_no2"] = "";
             //取引先コード
             w_dr["torihikisaki_cd"] = " ";
             //受注コード１
@@ -522,6 +531,8 @@ namespace TSS_SYSTEM
                   + ",koutei_name varchar(40)"
                   + ",line_cd varchar2(3)"
                   + ",line_name varchar2(40)"
+                  + ",seq_no1 varchar2(3)"
+                  + ",seq_no2 varchar2(3)"
                   + ",torihikisaki_cd varchar2(6)"
                   + ",juchu_cd1 varchar2(16)"
                   + ",juchu_cd2 varchar2(16)"
@@ -594,6 +605,8 @@ namespace TSS_SYSTEM
                         + ",koutei_name"
                         + ",line_cd"
                         + ",line_name"
+                        + ",seq_no1"
+                        + ",seq_no2"
                         + ",torihikisaki_cd"
                         + ",juchu_cd1"
                         + ",juchu_cd2"
@@ -659,6 +672,8 @@ namespace TSS_SYSTEM
                         + "'" + w_dr["koutei_name"].ToString() + "',"
                         + "'" + w_dr["line_cd"].ToString() + "',"
                         + "'" + w_dr["line_name"].ToString() + "',"
+                        + "'" + w_dr["seq_no1"].ToString() + "',"
+                        + "'" + w_dr["seq_no2"].ToString() + "',"
                         + "'" + w_dr["torihikisaki_cd"].ToString() + "',"
                         + "'" + w_dr["juchu_cd1"].ToString() + "',"
                         + "'" + w_dr["juchu_cd2"].ToString() + "',"
@@ -724,6 +739,58 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             w_dt = tss.OracleSelect("select * from tss_seisan_schedule_f where seisan_yotei_date = '" + in_seisan_yotei_date + "' and busyo_cd = '" + in_busyo_cd + "' and koutei_cd = '" + in_koutei_cd + "' and line_cd = '" + in_line_cd + "'");
             return w_dt.Rows.Count.ToString();
+        }
+
+        private string get_seq_no1(string in_seihin_cd, string in_busyo_cd, string in_koutei_cd)
+        {
+            //生産工程マスタのseq_noを返す
+            string out_cd;
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + in_seihin_cd + "' and busyo_cd = '" + in_busyo_cd + "' and koutei_cd = '" + in_koutei_cd + "'");
+            if (w_dt.Rows.Count <= 0)
+            {
+                out_cd = "";
+            }
+            else
+            {
+                out_cd = w_dt.Rows[0]["seq_no"].ToString();
+            }
+            return out_cd;
+        }
+
+        private string get_seq_no2(string in_seihin_cd)
+        {
+            //生産工程マスタのseq_noのmaxを返す
+            string out_cd;
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select max(seq_no) seq_no_max from tss_seisan_koutei_m where seihin_cd = '" + in_seihin_cd + "'");
+            if (w_dt.Rows.Count <= 0)
+            {
+                out_cd = "";
+            }
+            else
+            {
+                out_cd = w_dt.Rows[0]["seq_no_max"].ToString();
+            }
+            return out_cd;
+        }
+
+        private string get_seisan_sumi_su(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_koutei_cd)
+        {
+            //生産済み数の返す
+            string out_su;
+            out_su = "";
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select sum(seisan_su) seisan_sumi_su from tss_seisan_jisseki_f where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "' and koutei_cd = '" + in_koutei_cd + "'");
+            if (w_dt.Rows.Count <= 0)
+            {
+                out_su = "0";
+            }
+            else
+            {
+                out_su = w_dt.Rows[0]["seisan_sumi_su"].ToString();
+            }
+            return out_su;
         }
 
         private void btn_syuuryou_Click(object sender, EventArgs e)

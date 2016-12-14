@@ -670,6 +670,7 @@
             this.dgv_today.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_CellDoubleClick);
             this.dgv_today.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_today_CellFormatting);
             this.dgv_today.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_today_CellPainting);
+            this.dgv_today.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgv_today_CellParsing_1);
             this.dgv_today.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_today_CellValidating);
             this.dgv_today.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_today_RowEnter);
             this.dgv_today.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgv_today_UserDeletedRow);

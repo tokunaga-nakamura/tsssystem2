@@ -143,7 +143,7 @@ namespace TSS_SYSTEM
                     lbl_db.BackColor = Color.RoyalBlue;
                     lbl_db.ForeColor = Color.White;
                     break;
-                case "pdb_kaihatu":
+                case "pdb2a_dev":
                     lbl_db.Text = "開発用DBに接続中！";
                     lbl_db.BackColor = Color.Red;
                     lbl_db.ForeColor = Color.White;

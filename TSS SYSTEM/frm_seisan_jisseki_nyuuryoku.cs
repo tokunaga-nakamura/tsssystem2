@@ -648,11 +648,13 @@ namespace TSS_SYSTEM
         {
             if(tb_jisseki_start_time.Text != "" && tb_jisseki_start_time.Text != null)
             {
-                string w_hhmm;
-                w_hhmm = tss.check_HHMM(tb_jisseki_start_time.Text);
-                if (w_hhmm != null)
+                //string w_hhmm;
+                //w_hhmm = tss.check_HHMM(tb_jisseki_start_time.Text);
+                //if (w_hhmm != null)
+                if(tss.try_string_to_time(tb_jisseki_start_time.Text))
                 {
-                    tb_jisseki_start_time.Text = w_hhmm;
+                    //tb_jisseki_start_time.Text = w_hhmm;
+                    tb_jisseki_start_time.Text = tss.out_time.ToShortTimeString();
                     seisan_jikan_calc();
                 }
                 else
@@ -668,11 +670,13 @@ namespace TSS_SYSTEM
         {
             if (tb_jisseki_end_time.Text != "" && tb_jisseki_end_time.Text != null)
             {
-                string w_hhmm;
-                w_hhmm = tss.check_HHMM(tb_jisseki_end_time.Text);
-                if (w_hhmm != null)
+                //string w_hhmm;
+                //w_hhmm = tss.check_HHMM(tb_jisseki_end_time.Text);
+                //if (w_hhmm != null)
+                if (tss.try_string_to_time(tb_jisseki_end_time.Text))
                 {
-                    tb_jisseki_end_time.Text = w_hhmm;
+                    //tb_jisseki_end_time.Text = w_hhmm;
+                    tb_jisseki_end_time.Text = tss.out_time.ToShortTimeString();
                     seisan_jikan_calc();
                 }
                 else

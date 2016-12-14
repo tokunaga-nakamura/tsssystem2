@@ -227,6 +227,12 @@
     <Compile Include="frm_nyukin_ichiran_preview.Designer.cs">
       <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_oracle_sql_execute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_oracle_sql_execute.Designer.cs">
+      <DependentUpon>frm_oracle_sql_execute.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_search_jisseki.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -848,6 +854,9 @@
     <EmbeddedResource Include="frm_nyukin_ichiran_preview.resx">
       <DependentUpon>frm_nyukin_ichiran_preview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_oracle_sql_execute.resx">
+      <DependentUpon>frm_oracle_sql_execute.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_search_jisseki.resx">
       <DependentUpon>frm_search_jisseki.cs</DependentUpon>
     </EmbeddedResource>
@@ -1159,7 +1168,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">

@@ -259,7 +259,7 @@ namespace TSS_SYSTEM
             dgv_koutei.Columns["koutei_cd"].Width = 40;
             dgv_koutei.Columns["koutei_name"].Width = 75;
 
-            dgv_koutei.Columns["CHECKBOX2"].HeaderText = "実績ｶｳﾝﾄ";
+            dgv_koutei.Columns["CHECKBOX2"].HeaderText = "生産ｶｳﾝﾄ";
             dgv_koutei.Columns["SEQ_NO"].HeaderText = "工程順";
             dgv_koutei.Columns["koutei_cd"].HeaderText = "工程ｺｰﾄﾞ";
             dgv_koutei.Columns["koutei_name"].HeaderText = "工程名";

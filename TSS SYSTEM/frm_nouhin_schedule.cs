@@ -707,7 +707,8 @@ namespace TSS_SYSTEM
 
             //セルを固定する
             dgv_nouhin_schedule.Columns["juchu_su"].Frozen = true;
-
+            //並び替えができないようにする
+            foreach (DataGridViewColumn c in dgv_nouhin_schedule.Columns) c.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void horiday_color()
