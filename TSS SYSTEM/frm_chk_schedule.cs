@@ -748,7 +748,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        MessageBox.Show("生産予定日に異常があります。");
+                        MessageBox.Show("納品予定日に異常があります。");
                         tb_nouhin_yotei1.Focus();
                     }
                 }
@@ -760,7 +760,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        MessageBox.Show("生産予定日に異常があります。");
+                        MessageBox.Show("納品予定日に異常があります。");
                         tb_nouhin_yotei2.Focus();
                     }
                 }
@@ -858,10 +858,11 @@ namespace TSS_SYSTEM
 
         private void btn_kensaku3_Click(object sender, EventArgs e)
         {
-            //納品スケジュールにあって生産スケジュールにないもの
+            //納品スケジュールにあって、生産スケジュールもあるが、工程抜け
 
             DataTable dt_nouhin_s;//納品スケジュールのレコード
             DataTable dt_seisan_s;//生産スケジュールのレコード
+            DataTable dt_seisan_j;//生産実績のレコード
 
             DataTable dt_chk;//チェック用dt
 
@@ -885,7 +886,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        MessageBox.Show("生産予定日に異常があります。");
+                        MessageBox.Show("納品予定日に異常があります。");
                         tb_nouhin_yotei1.Focus();
                     }
                 }
@@ -897,7 +898,7 @@ namespace TSS_SYSTEM
                     }
                     else
                     {
-                        MessageBox.Show("生産予定日に異常があります。");
+                        MessageBox.Show("納品予定日に異常があります。");
                         tb_nouhin_yotei2.Focus();
                     }
                 }
@@ -932,9 +933,9 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            //①日付範囲に納品日がある受注データを持ってくる（売上完了フラグが立っていないもの） w_dt_juchu 　
+            //①日付範囲に納品日がある受注データと生産工程マスタをＪＯＩＮして持ってくる（売上完了フラグが立っていないもの） w_dt_juchu 　
 
-            string sql = "Select A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,Max(B1.Juchu_Su) From Tss_Nouhin_Schedule_M A1,Tss_Juchu_M B1,tss_seihin_m c1 Where A1.Torihikisaki_Cd = B1.Torihikisaki_Cd And A1.Juchu_Cd1 = B1.Juchu_Cd1 And A1.Juchu_Cd2 = B1.Juchu_Cd2 and b1.seihin_cd = c1.seihin_cd and";
+            string sql = "Select A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,Max(B1.Juchu_Su),d1.busyo_cd,d1.koutei_cd From Tss_Nouhin_Schedule_M A1,Tss_Juchu_M B1,tss_seihin_m c1,tss_seisan_koutei_m d1 Where A1.Torihikisaki_Cd = B1.Torihikisaki_Cd And A1.Juchu_Cd1 = B1.Juchu_Cd1 And A1.Juchu_Cd2 = B1.Juchu_Cd2 and b1.seihin_cd = c1.seihin_cd and";
 
 
             for (int i = 1; i <= sql_cnt; i++)
@@ -950,42 +951,66 @@ namespace TSS_SYSTEM
             sql = sql + "  and B1.uriage_kanryou_flg = 0";
 
             //SQLに条件追加
-            sql = sql + "  group by A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name";
+            sql = sql + "  group by A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,d1.busyo_cd,d1.koutei_cd";
+
+            sql = sql + "  order by A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,d1.busyo_cd,d1.koutei_cd";
 
             w_dt_juchu = tss.OracleSelect(sql);
 
             int rrr = w_dt_juchu.Rows.Count;
             MessageBox.Show(rrr.ToString());
 
-            //②w_dt_juchuの受注コードをキーに、その受注の生産スケジュールを生産スケジュールマスタから持ってくる w_dt_seisan_s
+            //②w_dt_juchuの受注コードと工程コードをキーに、工程ごとに生産実績または生産スケジュールがあるかどうかチェックする dt_seisan_j & dt_seisan_s
 
+            w_dt_juchu.Columns.Add("jisseki_chk", Type.GetType("System.String"));//生産実績チェック用カラム追加
+            w_dt_juchu.Columns.Add("schedule_chk", Type.GetType("System.String"));//生産スケジュールチェック用カラム追加
             w_dt_juchu.Columns.Add("chk", Type.GetType("System.String"));//チェック用カラム追加
 
             int rc = w_dt_juchu.Rows.Count;
 
             for (int i = 0; i < rc; i++)
             {
+                
+                //①生産実績データの取得
+                dt_seisan_j = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_jisseki from tss_seisan_jisseki_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_juchu.Rows[i]["koutei_cd"].ToString() + "'");
 
+                //生産実績にレコードがなかったら
+                if (dt_seisan_j.Rows.Count == 0 || dt_seisan_j.Rows[0][0].ToString() == "")
+                {
+                    w_dt_juchu.Rows[i]["jisseki_chk"] = 0;
+                }
+                else
+                {
+                    w_dt_juchu.Rows[i]["jisseki_chk"] = 1;
+                }
+
+                //②生産スケジュールデータの取得
                 dt_seisan_s = tss.OracleSelect("select Distinct Busyo_Cd,Sum(Seisan_Su) Over(Partition By Busyo_Cd) Seisan_yotei_Ruikei from tss_seisan_schedule_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "'");
 
                 //生産スケジュールにレコードがなかったら
                 if (dt_seisan_s.Rows.Count == 0 || dt_seisan_s.Rows[0][0].ToString() == "")
                 {
-                    w_dt_juchu.Rows[i]["chk"] = 1;
+                    w_dt_juchu.Rows[i]["schedule_chk"] = 0;
                 }
                 else
                 {
-                    w_dt_juchu.Rows[i]["chk"] = 0;
+                    w_dt_juchu.Rows[i]["schedule_chk"] = 1;
                 }
 
-                if (w_dt_juchu.Rows[i]["chk"].ToString() == "1")
+                if (w_dt_juchu.Rows[i]["jisseki_chk"].ToString() != "0" || w_dt_juchu.Rows[i]["schedule_chk"].ToString() != "0")
                 {
-                    w_dt_juchu.Rows[i]["chk"] = "生産スケジュール無し";
+                    w_dt_juchu.Rows[i]["chk"] = "1";
                 }
+                else
+                {
+                    w_dt_juchu.Rows[i]["chk"] = "この工程に実績及びスケジュールが作成されていません";
+                }
+
+
             }
 
-            //生産スケジュールのレコードがある場合はデータテーブルから削除
-            DataSetController.DeleteSelectRows(w_dt_juchu, "chk = '0'");
+            //生産スケジュールのレコードがない場合はデータテーブルから削除
+            DataSetController.DeleteSelectRows(w_dt_juchu, "chk = '1'");
 
             dgv_no_koutei.DataSource = w_dt_juchu;
 
