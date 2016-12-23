@@ -165,78 +165,78 @@ namespace TSS_SYSTEM
             DataTable w_dt2 = new DataTable();
            
             int rc = dgv_today.Rows.Count;
-            if(rc > 0)
-            {
-                for (int i = 0; i <= rc - 1; i++)
-                {
+           if(rc > 0)
+           {
+               for (int i = 0; i <= rc - 1; i++)
+               {
 
-                    if(dgv_today.Rows[i].Cells["juchu_su"].Value != DBNull.Value)
-                    {
-                        dc_juchu_su = decimal.Parse(dgv_today.Rows[i].Cells["juchu_su"].Value.ToString()); 
-                    }
-                    else
-                    {
-                        dc_juchu_su = 0;
-                    }
+                   if(dgv_today.Rows[i].Cells["juchu_su"].Value != DBNull.Value)
+                   {
+                       dc_juchu_su = decimal.Parse(dgv_today.Rows[i].Cells["juchu_su"].Value.ToString()); 
+                   }
+                   else
+                   {
+                       dc_juchu_su = 0;
+                   }
                    
-                    w_dt_jisseki = tss.OracleSelect("select seisan_date,torihikisaki_cd,juchu_cd1,juchu_cd2,koutei_cd,seisan_su from tss_seisan_jisseki_f where koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "' order by seisan_date desc");
+                   w_dt_jisseki = tss.OracleSelect("select seisan_date,torihikisaki_cd,juchu_cd1,juchu_cd2,koutei_cd,seisan_su from tss_seisan_jisseki_f where koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "' order by seisan_date desc");
                    
-                    if (w_dt_jisseki.Rows.Count == 0)
-                    {
-                        dc_seisanzumi = 0;
-                    }
-                    else
-                    {
-                        Object obj = w_dt_jisseki.Compute("Sum(seisan_su)", null);
-                        dc_seisanzumi = decimal.Parse(obj.ToString());
-                        keisan_day = DateTime.Parse(w_dt_jisseki.Rows[0][0].ToString());
-                    }
-                    //生産済み数をdgv_todayに表示
-                    dgv_today.Rows[i].Cells["seisanzumi"].Value = dc_seisanzumi.ToString();
+                   if (w_dt_jisseki.Rows.Count == 0)
+                   {
+                       dc_seisanzumi = 0;
+                   }
+                   else
+                   {
+                       Object obj = w_dt_jisseki.Compute("Sum(seisan_su)", null);
+                       dc_seisanzumi = decimal.Parse(obj.ToString());
+                       keisan_day = DateTime.Parse(w_dt_jisseki.Rows[0][0].ToString());
+                   }
+                   //生産済み数をdgv_todayに表示
+                   dgv_today.Rows[i].Cells["seisanzumi"].Value = dc_seisanzumi.ToString();
 
-                    //直近の生産実績日からtodayまでの生産計画数を出す
-                    w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date > '" + keisan_day + "' and seisan_yotei_date < '" + today_1 + "'  and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
+                   //直近の生産実績日からtodayまでの生産計画数を出す
+                   w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date > '" + keisan_day + "' and seisan_yotei_date < '" + today_1 + "'  and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
                    
-                    //today以降の生産計画数を出す
-                    w_dt2 = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date >= '" + today + "' and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
+                   //today以降の生産計画数を出す
+                   w_dt2 = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date >= '" + today + "' and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
 
-                    //直近の生産実績日からtodayまでの生産計画数
-                    if(w_dt.Rows[0][0] == DBNull.Value)
-                    {
-                        dc_seisan_yotei = 0;
-                    }
-                    else
-                    {
-                        dc_seisan_yotei = decimal.Parse(w_dt.Rows[0][0].ToString());
-                    }
+                   //直近の生産実績日からtodayまでの生産計画数
+                   if(w_dt.Rows[0][0] == DBNull.Value)
+                   {
+                       dc_seisan_yotei = 0;
+                   }
+                   else
+                   {
+                       dc_seisan_yotei = decimal.Parse(w_dt.Rows[0][0].ToString());
+                   }
                    
-                    //today以降の生産計画数
-                    if (w_dt2.Rows[0][0] == DBNull.Value)
-                    {
-                        dc_seisan_yotei2 = 0;
-                    } 
-                    else
-                    {
-                        dc_seisan_yotei2 = decimal.Parse(w_dt2.Rows[0][0].ToString());
-                    }
+                   //today以降の生産計画数
+                   if (w_dt2.Rows[0][0] == DBNull.Value)
+                   {
+                       dc_seisan_yotei2 = 0;
+                   } 
+                   else
+                   {
+                       dc_seisan_yotei2 = decimal.Parse(w_dt2.Rows[0][0].ToString());
+                   }
 
-                    //todayの生産計画数
-                    if (dgv_today.Rows[i].Cells["seisan_su"].Value == DBNull.Value)
-                    {
-                        dc_today_seisan = 0;
-                    }
-                    else
-                    {
-                        dc_today_seisan = decimal.Parse(dgv_today.Rows[i].Cells["seisan_su"].Value.ToString());
-                    }
+                   //todayの生産計画数
+                   if (dgv_today.Rows[i].Cells["seisan_su"].Value == DBNull.Value)
+                   {
+                       dc_today_seisan = 0;
+                   }
+                   else
+                   {
+                       dc_today_seisan = decimal.Parse(dgv_today.Rows[i].Cells["seisan_su"].Value.ToString());
+                   }
 
-                    //データグリッドビューに生産予定数、過不足を計算して表示
-                    dgv_today.Rows[i].Cells["seisan_yotei"].Value = (dc_seisan_yotei + dc_seisan_yotei2 + dc_today_seisan).ToString();
-                    dc_kabusoku = (dc_juchu_su - dc_seisanzumi - dc_seisan_yotei - dc_seisan_yotei2 - dc_today_seisan)*-1;
-                    dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
-                    dgv_today.EndEdit();                   
-                }
-            }     
+                   //データグリッドビューに生産予定数、過不足を計算して表示
+                   dgv_today.Rows[i].Cells["seisan_yotei"].Value = (dc_seisan_yotei + dc_seisan_yotei2 + dc_today_seisan).ToString();
+                   dc_kabusoku = (dc_juchu_su - dc_seisanzumi - dc_seisan_yotei - dc_seisan_yotei2 - dc_today_seisan)*-1;
+                   dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
+                   dgv_today.EndEdit();                   
+               }
+           }     
         }
 
         private void disp_schedule_data(DataGridView w_dgv , DataTable in_dt)
@@ -295,7 +295,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["members"].HeaderText = "メンバー";
             w_dgv.Columns["hensyu_flg"].HeaderText = "編集";
             w_dgv.Columns["bikou"].HeaderText = "備考";
-
+            
             //右詰
             w_dgv.Columns["seq"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["juchu_su"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -308,7 +308,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["start_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["end_time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["ninzu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            
             //指定列を非表示にする
             w_dgv.Columns["seisan_yotei_date"].Visible = false;
             w_dgv.Columns["seq"].Visible = false;
@@ -360,7 +360,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["members"].Width = 50;
             w_dgv.Columns["hensyu_flg"].Width = 30;
             w_dgv.Columns["bikou"].Width = 80;
-
+            
             //ヘッダーのwrapmodeをオフにする（余白をなくす）
             w_dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
@@ -1061,7 +1061,7 @@ namespace TSS_SYSTEM
                 }
                 //この行がここにある意味がわからない。一応コメントにしておきます。20160817   seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
                 //編集確定
-                dgv_today.EndEdit();
+                //dgv_today.EndEdit();
             }
 
             //取引先コード
@@ -1187,14 +1187,14 @@ namespace TSS_SYSTEM
                     //製品コードのセルを抜けるときは必ず製品名を読み込む（製品名の変更は保持しない）
                     if (e.FormattedValue.ToString() != null || e.FormattedValue.ToString() != "")
                     {
-                        if (tss.get_seihin_name(e.FormattedValue.ToString()) == null)
-                        {
-                            MessageBox.Show("入力された製品コードは存在しません。");
-                            e.Cancel = true;
-                        }
-                        dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(e.FormattedValue.ToString());
-                        kabusoku();
+                    if (tss.get_seihin_name(e.FormattedValue.ToString()) == null)
+                    {
+                        MessageBox.Show("入力された製品コードは存在しません。");
+                        e.Cancel = true;
                     }
+                    dgv_today.CurrentRow.Cells["seihin_name"].Value = tss.get_seihin_name(e.FormattedValue.ToString());
+                    kabusoku();
+                }
                 //}
             }
             //生産数
@@ -1210,23 +1210,23 @@ namespace TSS_SYSTEM
                 }
                 //生産予定数の値
                 string str3 = dgv_today.CurrentRow.Cells["seisan_yotei"].Value.ToString();
-                if (dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value != null)
-                {
-                    //過不足計算
-                    decimal kabusoku = decimal.Parse(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value.ToString());
-                    decimal henkou = decimal.Parse(str1) - decimal.Parse(str2);
-                    kabusoku = kabusoku + henkou;
-                    dgv_today.CurrentRow.Cells["kabusoku"].Value = kabusoku.ToString();
+                   if (dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value != null)
+                   {
+                     //過不足計算
+                     decimal kabusoku = decimal.Parse(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value.ToString());
+                     decimal henkou = decimal.Parse(str1) - decimal.Parse(str2);
+                     kabusoku = kabusoku + henkou;
+                     dgv_today.CurrentRow.Cells["kabusoku"].Value = kabusoku.ToString();
                     //生産予定数再計算
                     decimal seisan_yotei_su = henkou + decimal.Parse(str3);
                     dgv_today.CurrentRow.Cells["seisan_yotei"].Value = seisan_yotei_su.ToString();
-                }
-                MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
-                end_time_keisan(dgv_today.CurrentRow.Index);
-                if (seisan_time_keisan(e.RowIndex.ToString(), e.FormattedValue.ToString(), dgv_today.Rows[e.RowIndex].Cells["tact_time"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["dandori_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["tuika_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["hoju_kousu"].Value.ToString()) == false)
-                {
-                    return;
-                }
+                    }
+                   MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
+                   end_time_keisan(dgv_today.CurrentRow.Index);
+                    if (seisan_time_keisan(e.RowIndex.ToString(), e.FormattedValue.ToString(), dgv_today.Rows[e.RowIndex].Cells["tact_time"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["dandori_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["tuika_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["hoju_kousu"].Value.ToString()) == false)
+                    {
+                        return;
+                    }
             }
 
             //開始時間を変更したとき
@@ -1596,6 +1596,38 @@ namespace TSS_SYSTEM
             return w_bl;
         }
 
+        private void dgv_today_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            //開始時間を変更したとき
+            //if (e.ColumnIndex == 21)
+            //{
+            //    end_time_keisan(dgv_today.CurrentRow.Index);
+            //}
+
+            ////タクト～工数を変更したとき
+            //if (e.ColumnIndex >= 16 && e.ColumnIndex <= 19)
+            //{
+            //    seisan_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            //    end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            //}
+
+            ////生産数を変更したとき
+            //if (e.ColumnIndex == 15)
+            //{
+            //    seisan_time_keisan(dgv_today.CurrentRow.Index.ToString());
+            //    end_time_keisan(dgv_today.CurrentRow.Index.ToString());
+
+            //    //MessageBox.Show("生産数を変更しました。翌日以降の生産数は自動で変更されませんので、ご注意ください。");
+            //}
+
+            //string busyo = dgv_today.CurrentRow.Cells["busyo_cd"].Value.ToString();
+            //string koutei = dgv_today.CurrentRow.Cells["koutei_cd"].Value.ToString();
+            //string line = dgv_today.CurrentRow.Cells["line_cd"].Value.ToString();
+            //string seihin = dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString();
+
+            //DataTable dt_work = new DataTable();
+        }
+
         private void dgv_today_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             DialogResult bRet = MessageBox.Show("この行を削除しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -1670,7 +1702,7 @@ namespace TSS_SYSTEM
                     else
                     {
                         dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
-                    }
+                }
                     seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
                 }
                 else
@@ -2587,18 +2619,18 @@ namespace TSS_SYSTEM
             DataTable w_dt_juchu = new DataTable();
             w_dt_juchu = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + dgv_today.Rows[in_row_index].Cells["torihikisaki_cd"].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[in_row_index].Cells["juchu_cd1"].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[in_row_index].Cells["juchu_cd2"].Value.ToString() + "'");
             if(w_dt_juchu.Rows.Count <= 0 || w_dt_juchu.Rows.Count > 1)
-            {
+                {
                 lbl_row_juchu_su.Text = "受注情報を取得できません。";
                 return;
-            }
+                }
             //生産工程マスタを取得
             DataTable w_dt_seisan_koutei = new DataTable();
             w_dt_seisan_koutei = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + dgv_today.Rows[in_row_index].Cells["seihin_cd"].Value.ToString() + "' order by seq_no asc");
             if (w_dt_seisan_koutei.Rows.Count <= 0)
-            {
+                {
                 lbl_row_juchu_su.Text = "生産工程情報を取得できません。";
-                return;
-            }
+                    return;
+                }
             //見出しの各ラベルに情報表示
             lbl_row_juchu_cd.Text = w_dt_juchu.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu.Rows[0]["juchu_cd1"].ToString() + "-" + w_dt_juchu.Rows[0]["juchu_cd2"].ToString();
             lbl_row_juchu_su.Text = "受注数:" + w_dt_juchu.Rows[0]["juchu_su"].ToString();
@@ -2713,7 +2745,7 @@ namespace TSS_SYSTEM
             for (int w_row_cnt = 0;w_row_cnt < w_dt_info_disp.Rows.Count;w_row_cnt++)
             {
                 w_dt_info_disp.Rows[w_row_cnt]["goukei"] = w_ttl[w_row_cnt].ToString();
-            }
+        }
 
             //データを表示
             //リードオンリーにする
@@ -2747,7 +2779,7 @@ namespace TSS_SYSTEM
 
             //"Column1"列のセルのテキストの配置を設定する（右詰とか）
             for (int x = 3; x < dgv_row_info.Columns.Count;x++)
-            {
+        {
                 dgv_row_info.Columns[x].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             }
             //並び替えができないようにする
@@ -2755,7 +2787,7 @@ namespace TSS_SYSTEM
             //全てグレー表示にする
             dgv_row_info.EnableHeadersVisualStyles = false;    //ヘッダーのvisualスタイルを無効にする
             //dgv_row_info.DefaultCellStyle.BackColor = Color.LightGray;     //ヘッダーを含むすべてのセル
-
+          
             //全ての行の背景色
             dgv_row_info.RowsDefaultCellStyle.BackColor = Color.LightGreen;
             //１行目（納品スケジュール）の色
@@ -2783,7 +2815,7 @@ namespace TSS_SYSTEM
                     dgv_row_info[1, i + 1].Style.BackColor = Color.LightBlue;
                     w_flg = 0;
                 }
-            }
+        }
 
             //指定行までスクロールする
             //dgv_row_info.FirstDisplayedScrollingRowIndex = 0;
