@@ -35,7 +35,7 @@ namespace TSS_SYSTEM
         private void message_log_list_disp()
         {
             tss.GetUser();
-            w_dt_message_log = tss.OracleSelect("SELECT A.message_datetime,A.user_cd_from,A.user_cd_to,B.user_name,A.message_syori_name,A.message_log_naiyou,A.kidoku_datetime from tss_message_log_f A LEFT OUTER JOIN tss_user_m B ON A.user_cd_to = B.user_cd WHERE A.user_cd_from = '" + tss.user_cd + "' order by A.message_datetime desc");
+            w_dt_message_log = tss.OracleSelect("SELECT A.message_datetime,A.user_cd_from,A.user_cd_to,B.user_name,A.message_syori_name,A.message_log_naiyou,A.kidoku_datetime from tss_message_log_f A LEFT OUTER JOIN tss_user_m B ON A.user_cd_to = B.user_cd WHERE A.user_cd_to = '" + tss.user_cd + "' order by A.message_datetime desc");
             dgv_message_log.DataSource = w_dt_message_log;
             //リードオンリーにする
             dgv_message_log.ReadOnly = true;
@@ -57,8 +57,8 @@ namespace TSS_SYSTEM
             dgv_message_log.AllowUserToAddRows = false;
             //DataGridViewのカラムヘッダーテキストを変更する
             dgv_message_log.Columns[0].HeaderText = "発生日時";
-            dgv_message_log.Columns[1].HeaderText = "宛先";
-            dgv_message_log.Columns[2].HeaderText = "作成者";
+            dgv_message_log.Columns[1].HeaderText = "作成者";
+            dgv_message_log.Columns[2].HeaderText = "宛先";
             dgv_message_log.Columns[3].HeaderText = "作成者名";
             dgv_message_log.Columns[4].HeaderText = "処理・タイトル";
             dgv_message_log.Columns[5].HeaderText = "内容";
@@ -93,6 +93,7 @@ namespace TSS_SYSTEM
             {
                 tb_message_datetime.Text = w_dt_message_log.Rows[dgv_message_log.CurrentRow.Index][0].ToString();
                 tb_user_cd_from.Text = w_dt_message_log.Rows[dgv_message_log.CurrentRow.Index][1].ToString();
+                tb_user_cd_from_name.Text = tss.get_user_name(dgv_message_log.CurrentRow.Cells[1].Value.ToString());
                 tb_user_cd_to.Text = w_dt_message_log.Rows[dgv_message_log.CurrentRow.Index][2].ToString();
                 tb_user_cd_to_name.Text = w_dt_message_log.Rows[dgv_message_log.CurrentRow.Index][3].ToString();
                 tb_message_syori_name.Text = w_dt_message_log.Rows[dgv_message_log.CurrentRow.Index][4].ToString();
@@ -113,6 +114,7 @@ namespace TSS_SYSTEM
         {
             tb_message_datetime.Text = "";
             tb_user_cd_from.Text = "";
+            tb_user_cd_from_name.Text = "";
             tb_user_cd_to.Text = "";
             tb_user_cd_to_name.Text = "";
             tb_message_syori_name.Text = "";

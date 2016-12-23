@@ -170,7 +170,6 @@
             this.dgv_m.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellEndEdit);
             this.dgv_m.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_m_CellValidated);
             this.dgv_m.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_m_CellValidating);
-            this.dgv_m.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_m_DataError);
             // 
             // splitContainer4
             // 

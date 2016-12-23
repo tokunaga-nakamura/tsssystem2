@@ -116,7 +116,6 @@
             this.btn_chk_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_siji_print = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_print = new System.Windows.Forms.Button();
-            this.btn_seisan_schedule_edit = new System.Windows.Forms.Button();
             this.btn_seisan_schedule_remake = new System.Windows.Forms.Button();
             this.btn_seisan_schedule = new System.Windows.Forms.Button();
             this.btn_seisan_kousu = new System.Windows.Forms.Button();
@@ -1201,7 +1200,6 @@
             this.tabPage5.Controls.Add(this.btn_chk_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_siji_print);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_print);
-            this.tabPage5.Controls.Add(this.btn_seisan_schedule_edit);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule_remake);
             this.tabPage5.Controls.Add(this.btn_seisan_schedule);
             this.tabPage5.Controls.Add(this.btn_seisan_kousu);
@@ -1244,7 +1242,7 @@
             // 
             // btn_chk_schedule
             // 
-            this.btn_chk_schedule.Location = new System.Drawing.Point(234, 119);
+            this.btn_chk_schedule.Location = new System.Drawing.Point(234, 90);
             this.btn_chk_schedule.Name = "btn_chk_schedule";
             this.btn_chk_schedule.Size = new System.Drawing.Size(222, 23);
             this.btn_chk_schedule.TabIndex = 6;
@@ -1270,16 +1268,6 @@
             this.btn_seisan_schedule_print.TabIndex = 4;
             this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
             this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
-            // 
-            // btn_seisan_schedule_edit
-            // 
-            this.btn_seisan_schedule_edit.Location = new System.Drawing.Point(234, 90);
-            this.btn_seisan_schedule_edit.Name = "btn_seisan_schedule_edit";
-            this.btn_seisan_schedule_edit.Size = new System.Drawing.Size(222, 23);
-            this.btn_seisan_schedule_edit.TabIndex = 3;
-            this.btn_seisan_schedule_edit.Text = "生産スケジュール編集";
-            this.btn_seisan_schedule_edit.UseVisualStyleBackColor = true;
-            this.btn_seisan_schedule_edit.Click += new System.EventHandler(this.btn_seisan_schedule_edit_Click);
             // 
             // btn_seisan_schedule_remake
             // 
@@ -1792,7 +1780,6 @@
         private System.Windows.Forms.Button btn_quick_seisan_schedule;
         private System.Windows.Forms.Button btn_quick_seisan_kousu;
         private System.Windows.Forms.Button btn_quick_nouhin_schedule;
-        private System.Windows.Forms.Button btn_seisan_schedule_edit;
         private System.Windows.Forms.Button btn_gamen_kousin;
         private System.Windows.Forms.Button btn_chat_hyouji_sentaku;
         private System.Windows.Forms.Button btn_seisan_siji_print;

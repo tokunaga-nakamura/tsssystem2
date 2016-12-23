@@ -267,7 +267,6 @@ namespace TSS_SYSTEM
                         }
                     }
 
-
                     dgv_m.DataSource = dt_work;
                     decimal goukei = decimal.Parse(dt_work.Compute("SUM(nyukingaku)", null).ToString());
                     tb_nyukin_goukei.Text = goukei.ToString("#,0##");
@@ -399,21 +398,21 @@ namespace TSS_SYSTEM
             //データグリッドビューの入力内容チェック
             for (int i = 0; i < dgvrc - 1; i++)
             {
-                if (dgv_m.Rows[i].Cells[0].Value == null)
+                if (dgv_m.Rows[i].Cells[0].Value.ToString() == null || dgv_m.Rows[i].Cells[0].Value.ToString() == "")
                 {
-                    MessageBox.Show("部品コードを入力してください");
+                    MessageBox.Show("入金区分を入力してください");
                     dgv_m.Focus();
                     dgv_m.CurrentCell = dgv_m[0, i];
                     return;
                 }
 
-                if (dgv_m.Rows[i].Cells[2].Value == null)
+                if (dgv_m.Rows[i].Cells[2].Value.ToString() == null || dgv_m.Rows[i].Cells[2].Value.ToString() == "")
                 {
                     MessageBox.Show("入金額を入力してください");
                     return;
                 }
                 
-                //備考が空白の場合、""を代入  空欄だとnull扱いされ、SQエラー回避
+                //備考が空白の場合、""を代入  空欄だとnull扱いされ、SQLエラー回避
                 if (dgv_m.Rows[i].Cells[3].Value == null)
                 {
                     dgv_m.Rows[i].Cells[3].Value = "";
@@ -441,7 +440,6 @@ namespace TSS_SYSTEM
                                        + decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString()) + "','"
                                        + dgv_m.Rows[i].Cells[3].Value.ToString() + "','"
                                        + tss.user_cd + "',SYSDATE)");
-
                     if (bl6 != true)
                     {
                         tss.ErrorLogWrite(tss.user_cd, "入金／登録", "登録ボタン押下時のOracleInsert");
@@ -453,7 +451,6 @@ namespace TSS_SYSTEM
                 tb_create_user_cd.Text = tss.user_cd;
                 tb_create_datetime.Text = DateTime.Now.ToString();
                 MessageBox.Show("入金処理が完了しました");
-
                 
                 //取引先マスタの未処理入金額の更新
                 decimal misyori_nyukingaku;
@@ -564,9 +561,6 @@ namespace TSS_SYSTEM
             dgv_m.Rows.Clear();
         }
 
-
-
-
         private void dgv_m_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
 
@@ -577,7 +571,6 @@ namespace TSS_SYSTEM
             }
 
             int j = e.ColumnIndex;
-
             
             if (j == 0)
             {
@@ -595,10 +588,8 @@ namespace TSS_SYSTEM
                         MessageBox.Show("入金区分は1～5で入力してください");
                         e.Cancel = true;
                     }
-
                     dgv_m.Rows[e.RowIndex].Cells[j + 1].Value = tss.kubun_name_select("12", e.FormattedValue.ToString());
                     dgv_m.EndEdit();
-                    
                 }
             }
         }
@@ -618,10 +609,8 @@ namespace TSS_SYSTEM
                     dt_w2.Rows.Add();
                     dt_w2.Rows[i][0] = decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
                 }
-
                 decimal goukei = decimal.Parse(dt_w2.Compute("SUM(nyukingoukei)", null).ToString());
                 tb_nyukin_goukei.Text = goukei.ToString("#,0##");
-                
             }
         }
 
@@ -637,17 +626,12 @@ namespace TSS_SYSTEM
                     dgv_m.CurrentCell.Value = str;
                     return;
                 }
-                
                 else
                 {
                     dgv_m.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = tss.kubun_name_select("12", dgv_m.CurrentCell.Value.ToString());
                 }
-                
                 dgv_m.EndEdit();
             }
-            
-            
-
         }
 
         private void dgv_m_CellValidated(object sender, DataGridViewCellEventArgs e)
@@ -659,7 +643,6 @@ namespace TSS_SYSTEM
                 {
                     dgv_m.Rows[e.RowIndex].Cells[2].Value = tss.try_string_to_decimal(dgv_m.Rows[e.RowIndex].Cells[2].Value.ToString()).ToString("#,0");
                 }
-
             }
         }
 
@@ -691,12 +674,6 @@ namespace TSS_SYSTEM
             //並べ替え不可
             foreach (DataGridViewColumn c in dgv_m.Columns)
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
-
-        }
-
-        private void dgv_m_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
         }
 
      }

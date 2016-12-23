@@ -37,20 +37,20 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tb_sql = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rb_insert = new System.Windows.Forms.RadioButton();
+            this.rb_delete = new System.Windows.Forms.RadioButton();
+            this.rb_update = new System.Windows.Forms.RadioButton();
+            this.rb_select = new System.Windows.Forms.RadioButton();
             this.btn_execute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.dgv_result = new System.Windows.Forms.DataGridView();
+            this.lbl_result = new System.Windows.Forms.Label();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rb_select = new System.Windows.Forms.RadioButton();
-            this.rb_update = new System.Windows.Forms.RadioButton();
-            this.rb_delete = new System.Windows.Forms.RadioButton();
-            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.lbl_result = new System.Windows.Forms.Label();
-            this.rb_insert = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,20 +63,20 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_result)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
-            this.splitContainer6.Panel1.SuspendLayout();
-            this.splitContainer6.Panel2.SuspendLayout();
-            this.splitContainer6.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -114,16 +114,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 34);
+            this.label3.Location = new System.Drawing.Point(75, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(368, 12);
+            this.label3.Size = new System.Drawing.Size(722, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "select,update,deleteをきちんと選択してから実行しないとエラーが発生します。";
+            this.label3.Text = "TSS System Liblary のOracleメソッドを使用していますので、適切なselect,update,insert,deleteをきちんと選択してか" +
+    "ら実行しないとエラーが発生します。";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 10);
+            this.label2.Location = new System.Drawing.Point(75, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(259, 12);
             this.label2.TabIndex = 1;
@@ -194,6 +195,64 @@
             this.tb_sql.Size = new System.Drawing.Size(880, 25);
             this.tb_sql.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rb_insert);
+            this.groupBox1.Controls.Add(this.rb_delete);
+            this.groupBox1.Controls.Add(this.rb_update);
+            this.groupBox1.Controls.Add(this.rb_select);
+            this.groupBox1.Location = new System.Drawing.Point(10, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 46);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Select commands.";
+            // 
+            // rb_insert
+            // 
+            this.rb_insert.AutoSize = true;
+            this.rb_insert.Location = new System.Drawing.Point(132, 18);
+            this.rb_insert.Name = "rb_insert";
+            this.rb_insert.Size = new System.Drawing.Size(52, 16);
+            this.rb_insert.TabIndex = 2;
+            this.rb_insert.TabStop = true;
+            this.rb_insert.Text = "Insert";
+            this.rb_insert.UseVisualStyleBackColor = true;
+            // 
+            // rb_delete
+            // 
+            this.rb_delete.AutoSize = true;
+            this.rb_delete.Location = new System.Drawing.Point(190, 18);
+            this.rb_delete.Name = "rb_delete";
+            this.rb_delete.Size = new System.Drawing.Size(56, 16);
+            this.rb_delete.TabIndex = 3;
+            this.rb_delete.TabStop = true;
+            this.rb_delete.Text = "Delete";
+            this.rb_delete.UseVisualStyleBackColor = true;
+            // 
+            // rb_update
+            // 
+            this.rb_update.AutoSize = true;
+            this.rb_update.Location = new System.Drawing.Point(67, 18);
+            this.rb_update.Name = "rb_update";
+            this.rb_update.Size = new System.Drawing.Size(59, 16);
+            this.rb_update.TabIndex = 1;
+            this.rb_update.TabStop = true;
+            this.rb_update.Text = "Update";
+            this.rb_update.UseVisualStyleBackColor = true;
+            // 
+            // rb_select
+            // 
+            this.rb_select.AutoSize = true;
+            this.rb_select.Checked = true;
+            this.rb_select.Location = new System.Drawing.Point(6, 18);
+            this.rb_select.Name = "rb_select";
+            this.rb_select.Size = new System.Drawing.Size(55, 16);
+            this.rb_select.TabIndex = 0;
+            this.rb_select.TabStop = true;
+            this.rb_select.Text = "Select";
+            this.rb_select.UseVisualStyleBackColor = true;
+            // 
             // btn_execute
             // 
             this.btn_execute.Location = new System.Drawing.Point(797, 41);
@@ -209,10 +268,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(652, 12);
+            this.label1.Size = new System.Drawing.Size(702, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Please enter the SQL to be executed.   Errors will occur without selecting, updat" +
-    "ing, or deleting properly and do not execute it.";
+    "ing, inserting, or deleting properly and do not execute it.";
             // 
             // splitContainer4
             // 
@@ -236,6 +295,27 @@
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
+            // splitContainer6
+            // 
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer6.IsSplitterFixed = true;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.dgv_result);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.lbl_result);
+            this.splitContainer6.Size = new System.Drawing.Size(880, 331);
+            this.splitContainer6.SplitterDistance = 302;
+            this.splitContainer6.TabIndex = 1;
+            this.splitContainer6.TabStop = false;
+            // 
             // dgv_result
             // 
             this.dgv_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -246,6 +326,15 @@
             this.dgv_result.Size = new System.Drawing.Size(880, 302);
             this.dgv_result.TabIndex = 0;
             this.dgv_result.TabStop = false;
+            // 
+            // lbl_result
+            // 
+            this.lbl_result.AutoSize = true;
+            this.lbl_result.Location = new System.Drawing.Point(8, 6);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Size = new System.Drawing.Size(82, 12);
+            this.lbl_result.TabIndex = 0;
+            this.lbl_result.Text = "Display results";
             // 
             // splitContainer5
             // 
@@ -286,94 +375,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rb_insert);
-            this.groupBox1.Controls.Add(this.rb_delete);
-            this.groupBox1.Controls.Add(this.rb_update);
-            this.groupBox1.Controls.Add(this.rb_select);
-            this.groupBox1.Location = new System.Drawing.Point(10, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 46);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Select commands.";
-            // 
-            // rb_select
-            // 
-            this.rb_select.AutoSize = true;
-            this.rb_select.Checked = true;
-            this.rb_select.Location = new System.Drawing.Point(6, 18);
-            this.rb_select.Name = "rb_select";
-            this.rb_select.Size = new System.Drawing.Size(55, 16);
-            this.rb_select.TabIndex = 0;
-            this.rb_select.TabStop = true;
-            this.rb_select.Text = "Select";
-            this.rb_select.UseVisualStyleBackColor = true;
-            // 
-            // rb_update
-            // 
-            this.rb_update.AutoSize = true;
-            this.rb_update.Location = new System.Drawing.Point(67, 18);
-            this.rb_update.Name = "rb_update";
-            this.rb_update.Size = new System.Drawing.Size(59, 16);
-            this.rb_update.TabIndex = 1;
-            this.rb_update.TabStop = true;
-            this.rb_update.Text = "Update";
-            this.rb_update.UseVisualStyleBackColor = true;
-            // 
-            // rb_delete
-            // 
-            this.rb_delete.AutoSize = true;
-            this.rb_delete.Location = new System.Drawing.Point(190, 18);
-            this.rb_delete.Name = "rb_delete";
-            this.rb_delete.Size = new System.Drawing.Size(56, 16);
-            this.rb_delete.TabIndex = 3;
-            this.rb_delete.TabStop = true;
-            this.rb_delete.Text = "Delete";
-            this.rb_delete.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer6
-            // 
-            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer6.IsSplitterFixed = true;
-            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer6.Name = "splitContainer6";
-            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer6.Panel1
-            // 
-            this.splitContainer6.Panel1.Controls.Add(this.dgv_result);
-            // 
-            // splitContainer6.Panel2
-            // 
-            this.splitContainer6.Panel2.Controls.Add(this.lbl_result);
-            this.splitContainer6.Size = new System.Drawing.Size(880, 331);
-            this.splitContainer6.SplitterDistance = 302;
-            this.splitContainer6.TabIndex = 1;
-            this.splitContainer6.TabStop = false;
-            // 
-            // lbl_result
-            // 
-            this.lbl_result.AutoSize = true;
-            this.lbl_result.Location = new System.Drawing.Point(8, 6);
-            this.lbl_result.Name = "lbl_result";
-            this.lbl_result.Size = new System.Drawing.Size(82, 12);
-            this.lbl_result.TabIndex = 0;
-            this.lbl_result.Text = "Display results";
-            // 
-            // rb_insert
-            // 
-            this.rb_insert.AutoSize = true;
-            this.rb_insert.Location = new System.Drawing.Point(132, 18);
-            this.rb_insert.Name = "rb_insert";
-            this.rb_insert.Size = new System.Drawing.Size(52, 16);
-            this.rb_insert.TabIndex = 2;
-            this.rb_insert.TabStop = true;
-            this.rb_insert.Text = "Insert";
-            this.rb_insert.UseVisualStyleBackColor = true;
-            // 
             // frm_oracle_sql_execute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -398,22 +399,22 @@
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_result)).EndInit();
-            this.splitContainer5.Panel1.ResumeLayout(false);
-            this.splitContainer5.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
-            this.splitContainer5.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.splitContainer6.Panel1.ResumeLayout(false);
             this.splitContainer6.Panel2.ResumeLayout(false);
             this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_result)).EndInit();
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

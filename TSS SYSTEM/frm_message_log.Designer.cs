@@ -55,8 +55,9 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.btn_kidoku = new System.Windows.Forms.Button();
             this.tb_kidoku_datetime = new System.Windows.Forms.TextBox();
-            this.btn_syuuryou = new System.Windows.Forms.Button();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.tb_user_cd_from_name = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -254,6 +255,7 @@
             // 
             // splitContainer6.Panel1
             // 
+            this.splitContainer6.Panel1.Controls.Add(this.tb_user_cd_from_name);
             this.splitContainer6.Panel1.Controls.Add(this.textBox8);
             this.splitContainer6.Panel1.Controls.Add(this.textBox6);
             this.splitContainer6.Panel1.Controls.Add(this.tb_message_syori_name);
@@ -313,7 +315,7 @@
             this.textBox10.Size = new System.Drawing.Size(100, 19);
             this.textBox10.TabIndex = 9;
             this.textBox10.TabStop = false;
-            this.textBox10.Text = "作成者";
+            this.textBox10.Text = "送信先";
             // 
             // tb_message_datetime
             // 
@@ -365,7 +367,7 @@
             this.textBox3.Size = new System.Drawing.Size(100, 19);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
-            this.textBox3.Text = "送信先ユーザー";
+            this.textBox3.Text = "作成者";
             // 
             // tb_user_cd_to
             // 
@@ -442,16 +444,6 @@
             this.tb_kidoku_datetime.TabIndex = 12;
             this.tb_kidoku_datetime.TabStop = false;
             // 
-            // btn_syuuryou
-            // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
-            this.btn_syuuryou.Name = "btn_syuuryou";
-            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
-            this.btn_syuuryou.TabIndex = 0;
-            this.btn_syuuryou.Text = "終了";
-            this.btn_syuuryou.UseVisualStyleBackColor = true;
-            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
-            // 
             // splitContainer8
             // 
             this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -466,6 +458,26 @@
             this.splitContainer8.Size = new System.Drawing.Size(880, 29);
             this.splitContainer8.SplitterDistance = 792;
             this.splitContainer8.TabIndex = 1;
+            // 
+            // btn_syuuryou
+            // 
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
+            this.btn_syuuryou.Name = "btn_syuuryou";
+            this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
+            this.btn_syuuryou.TabIndex = 0;
+            this.btn_syuuryou.Text = "終了";
+            this.btn_syuuryou.UseVisualStyleBackColor = true;
+            this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // tb_user_cd_from_name
+            // 
+            this.tb_user_cd_from_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_user_cd_from_name.Location = new System.Drawing.Point(159, 28);
+            this.tb_user_cd_from_name.Name = "tb_user_cd_from_name";
+            this.tb_user_cd_from_name.ReadOnly = true;
+            this.tb_user_cd_from_name.Size = new System.Drawing.Size(189, 19);
+            this.tb_user_cd_from_name.TabIndex = 11;
+            this.tb_user_cd_from_name.TabStop = false;
             // 
             // frm_message_log
             // 
@@ -550,5 +562,6 @@
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer8;
+        private System.Windows.Forms.TextBox tb_user_cd_from_name;
     }
 }

@@ -158,181 +158,223 @@ namespace TSS_SYSTEM
 
         private void button7_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("処理済みです。");
+            return;
+            //今後のことも考えて、部署コンバートのコードはコメントにして取っておく
+            //if (tss.User_Kengen_Check(6, 9) == false)
+            //{
+            //    MessageBox.Show("権限がありません");
+            //    return;
+            //}
+            //DialogResult result = MessageBox.Show("第一・第二生産の統合に伴う部署コードのコンバートを行います。\nよろしいですか？", "確認", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.Yes)
+            //{
+            //    string w_busyo_cd;
+            //    w_busyo_cd = "";
+            //    DataTable w_dt_m = new DataTable();
+            //    //部署マスタ
+            //    w_dt_m = tss.OracleSelect("select * from tss_busyo_m");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_busyo_m set busyo_cd = '" + w_busyo_cd + "' where busyo_cd = '" + w_dr["busyo_cd"].ToString() + "'");
+            //    }
+            //    //生産工程マスタ
+            //    w_dt_m = tss.OracleSelect("select * from tss_seisan_koutei_m");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_seisan_koutei_m set busyo_cd = '" + w_busyo_cd + "' where seihin_cd = '" + w_dr["seihin_cd"].ToString() + "' and seq_no = '" + w_dr["seq_no"].ToString() + "'");
+            //    }
+            //    //生産スケジュールファイル
+            //    w_dt_m = tss.OracleSelect("select * from tss_seisan_schedule_f");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_seisan_schedule_f set busyo_cd = '" + w_busyo_cd + "' where seisan_yotei_date = '" + w_dr["seisan_yotei_date"].ToString() + "' and busyo_cd = '" + w_dr["busyo_cd"].ToString() + "' and koutei_cd = '" + w_dr["koutei_cd"].ToString() + "' and line_cd = '" + w_dr["line_cd"].ToString() + "' and seq = '" + w_dr["seq"].ToString() + "'");
+            //    }
+            //    //生産実績ファイル
+            //    w_dt_m = tss.OracleSelect("select * from tss_seisan_jisseki_f");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_seisan_jisseki_f set busyo_cd = '" + w_busyo_cd + "' where seisan_jisseki_no = '" + w_dr["seisan_jisseki_no"].ToString() + "'");
+            //    }
+            //    //社員マスタ
+            //    w_dt_m = tss.OracleSelect("select * from tss_syain_m");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_syain_m set busyo_cd = '" + w_busyo_cd + "' where syain_cd = '" + w_dr["syain_cd"].ToString() + "'");
+            //    }
+            //    //ユーザーマスタ
+            //    w_dt_m = tss.OracleSelect("select * from tss_user_m");
+            //    foreach (DataRow w_dr in w_dt_m.Rows)
+            //    {
+            //        switch (w_dr["busyo_cd"].ToString())
+            //        {
+            //            case "0010":
+            //                w_busyo_cd = "0101";
+            //                break;
+            //            case "0020":
+            //                w_busyo_cd = "0102";
+            //                break;
+            //            case "0030":
+            //                w_busyo_cd = "0201";
+            //                break;
+            //            case "0090":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            case "9000":
+            //                w_busyo_cd = "0900";
+            //                break;
+            //            default:
+            //                w_busyo_cd = "0900";
+            //                break;
+            //        }
+            //        tss.OracleUpdate("update tss_user_m set busyo_cd = '" + w_busyo_cd + "' where user_cd = '" + w_dr["user_cd"].ToString() + "'");
+            //    }
+            //}
+            //MessageBox.Show("終了しました。");
+        }
+
+        private void btn_send_system_message_Click(object sender, EventArgs e)
+        {
+            //システムメッセージ送信
             if (tss.User_Kengen_Check(6, 9) == false)
             {
                 MessageBox.Show("権限がありません");
                 return;
             }
-            DialogResult result = MessageBox.Show("第一・第二生産の統合に伴う部署コードのコンバートを行います。\nよろしいですか？", "確認", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                string w_busyo_cd;
-                w_busyo_cd = "";
-                DataTable w_dt_m = new DataTable();
-                //部署マスタ
-                w_dt_m = tss.OracleSelect("select * from tss_busyo_m");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_busyo_m set busyo_cd = '" + w_busyo_cd + "' where busyo_cd = '" + w_dr["busyo_cd"].ToString() + "'");
-                }
-                //生産工程マスタ
-                w_dt_m = tss.OracleSelect("select * from tss_seisan_koutei_m");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_seisan_koutei_m set busyo_cd = '" + w_busyo_cd + "' where seihin_cd = '" + w_dr["seihin_cd"].ToString() + "' and seq_no = '" + w_dr["seq_no"].ToString() + "'");
-                }
-                //生産スケジュールファイル
-                w_dt_m = tss.OracleSelect("select * from tss_seisan_schedule_f");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_seisan_schedule_f set busyo_cd = '" + w_busyo_cd + "' where seisan_yotei_date = '" + w_dr["seisan_yotei_date"].ToString() + "' and busyo_cd = '" + w_dr["busyo_cd"].ToString() + "' and koutei_cd = '" + w_dr["koutei_cd"].ToString() + "' and line_cd = '" + w_dr["line_cd"].ToString() + "' and seq = '" + w_dr["seq"].ToString() + "'");
-                }
-                //生産実績ファイル
-                w_dt_m = tss.OracleSelect("select * from tss_seisan_jisseki_f");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_seisan_jisseki_f set busyo_cd = '" + w_busyo_cd + "' where seisan_jisseki_no = '" + w_dr["seisan_jisseki_no"].ToString() + "'");
-                }
-                //社員マスタ
-                w_dt_m = tss.OracleSelect("select * from tss_syain_m");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_syain_m set busyo_cd = '" + w_busyo_cd + "' where syain_cd = '" + w_dr["syain_cd"].ToString() + "'");
-                }
-                //ユーザーマスタ
-                w_dt_m = tss.OracleSelect("select * from tss_user_m");
-                foreach (DataRow w_dr in w_dt_m.Rows)
-                {
-                    switch (w_dr["busyo_cd"].ToString())
-                    {
-                        case "0010":
-                            w_busyo_cd = "0101";
-                            break;
-                        case "0020":
-                            w_busyo_cd = "0102";
-                            break;
-                        case "0030":
-                            w_busyo_cd = "0201";
-                            break;
-                        case "0090":
-                            w_busyo_cd = "0900";
-                            break;
-                        case "9000":
-                            w_busyo_cd = "0900";
-                            break;
-                        default:
-                            w_busyo_cd = "0900";
-                            break;
-                    }
-                    tss.OracleUpdate("update tss_user_m set busyo_cd = '" + w_busyo_cd + "' where user_cd = '" + w_dr["user_cd"].ToString() + "'");
-                }
-            }
-            MessageBox.Show("終了しました。");
+            frm_send_system_message frm_ssm = new frm_send_system_message();
+            frm_ssm.ShowDialog(this);
+            frm_ssm.Dispose();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //Oracleのtssからテーブルの一覧を取得し、
+            //create_user_cdとupdate_user_cdを検索して、無ければ削除しても良いか？
+            //ただし、user_cdが0001**の場合は削除しない（処理を飛ばす）
+            //000000と0とqも削除しない
+            //
+            //いや、待て。
+            //テーブルの一覧を取得し、
+            //削除するuser_cdの配列を用意し、
+            //変換後のuser_cdの配列を用意し、
+            //１．create_user_cdとupdate_user_cdを検索
+            //２．その他のuser_cdを検索
+            //上記１．２．で見つからなければ、そのユーザーコードを削除
+            //見つけた場合は変換後のuser_cdにupdateです
+            //・・・でどうだ？
+
+
+            //その他にユーザーコードの項目を持っているテーブルは
+            //tss_error_log_f
+            //tss_message_log_f
+            //tss_login_f
+            //tss_thread_f（たぶん未使用）
+            //tss_chat_f（たぶん未使用）
         }
     }
 }

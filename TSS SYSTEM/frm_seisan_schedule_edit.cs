@@ -394,13 +394,12 @@ namespace TSS_SYSTEM
                     DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
                     //名前とヘッダーを設定する
                     textColumn.Name = "seisan_yotei";
-                    textColumn.HeaderText = "生産予定";
+                    textColumn.HeaderText = "生産予定合計";
                     //列を追加する
                     w_dgv.Columns.Add(textColumn);
                     w_dgv.Columns["seisan_yotei"].Width = 60;
                     w_dgv.Columns["seisan_yotei"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
-
                 //データグリッドビューに過不足カラムの追加
                 if (w_dgv.ColumnCount == 33)
                 {
@@ -690,9 +689,7 @@ namespace TSS_SYSTEM
         private void dgv_today_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             // 1行目については何もしない
-            if (e.RowIndex == 0)
-                return;
-
+            if (e.RowIndex == 0) return;
             if (e.ColumnIndex < 7)
             {
                 if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex))
@@ -975,7 +972,7 @@ namespace TSS_SYSTEM
             //string st = null;
             //if (dgv.Columns[e.ColumnIndex].Name == "START_TIME" || dgv.Columns[e.ColumnIndex].Name == "END_TIME")
             //{
-            //    st = HHMMcheck(e.FormattedValue.ToString());
+            //    st = tss.HHMMcheck(e.FormattedValue.ToString());
             //    if (st == null)
             //    {
             //        MessageBox.Show("入力した値が正しくありません。00:00から23:59の形式で入力してください");
@@ -1438,51 +1435,6 @@ namespace TSS_SYSTEM
             return out_str;
         }
 
-        private string HHMMcheck(string hhmm)
-        {
-            //3文字以下はNG
-            if (hhmm.Length < 3)
-            {
-                return null;
-            }
-            //コロン（:）が先頭または末尾にあるとNG
-            if (hhmm.Substring(0, 1) == ":" || hhmm.Substring(hhmm.Length - 1, 1) == ":")
-            {
-                return null;
-            }
-            //コロン（:）が無ければNG
-            int idx;
-            idx = hhmm.IndexOf(":");
-            if (idx <= 0)
-            {
-                return null;
-            }
-            //00～23以外の時間はNG
-            double dHH;
-            if (double.TryParse(hhmm.Substring(0, idx), out dHH) == false)
-            {
-                //変換出来なかったら（false）NG
-                return null;
-            }
-            if (dHH < 00 || dHH > 23)
-            {
-                return null;
-            }
-            //00～59以外の分はNG
-            double dMM;
-            if (double.TryParse(hhmm.Substring(idx + 1), out dMM) == false)
-            {
-                //変換出来なかったら（false）NG
-                return null;
-            }
-            if (dMM < 00 || dMM > 59)
-            {
-                return null;
-            }
-            //正常時にはHH:MMの書式にした文字列を返す
-            return dHH.ToString("00") + ":" + dMM.ToString("00");
-        }
-
         //製品コード変更時のメソッド
         private void seihin_cd_change(string in_cd)
         {
@@ -1789,7 +1741,6 @@ namespace TSS_SYSTEM
                         dgv_today.Rows[e.RowIndex].Cells["seihin_name"].Value = dt_work.Rows[0][1].ToString();
                         dgv_today.Rows[e.RowIndex].Cells["juchu_su"].Value = dt_work.Rows[0][2].ToString();
                     }
-
                     seihin_cd_change(dt_work.Rows[0][0].ToString());
                     kabusoku();
                     dgv_today.EndEdit();
@@ -1817,7 +1768,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_today.DataSource == null) return;
-
             if (henkou_check() == true)
             {
                 DateTime w_next_day = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString()).AddDays(1);
@@ -1851,7 +1801,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_today.DataSource == null) return;
-
             if(henkou_check() == true)
             {
                 DateTime w_before_day = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString()).AddDays(-1);
@@ -2260,7 +2209,6 @@ namespace TSS_SYSTEM
         {
             //データが無い場合は何もしない
             if (dgv_today.Rows.Count <= 0) return;
-
             DialogResult result = MessageBox.Show("各ラインの先頭の開始時刻を起点とし、\n画面に表示されている順で生産開始時刻と終了時刻を自動で計算します。\n（実行すると自動計算前に戻すことはできません。）\nよろしいですか？", "確認", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
@@ -2839,7 +2787,6 @@ namespace TSS_SYSTEM
 
             //指定行までスクロールする
             //dgv_row_info.FirstDisplayedScrollingRowIndex = 0;
-
             return;
         }
 

@@ -38,6 +38,8 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.btn_send_system_message = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,12 +144,34 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // btn_send_system_message
+            // 
+            this.btn_send_system_message.Location = new System.Drawing.Point(587, 99);
+            this.btn_send_system_message.Name = "btn_send_system_message";
+            this.btn_send_system_message.Size = new System.Drawing.Size(281, 23);
+            this.btn_send_system_message.TabIndex = 9;
+            this.btn_send_system_message.Text = "システムメッセージ送信";
+            this.btn_send_system_message.UseVisualStyleBackColor = true;
+            this.btn_send_system_message.Click += new System.EventHandler(this.btn_send_system_message_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(499, 402);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(368, 23);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "不要ユーザーコード削除（まだ構想中）";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // frm_system_administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Purple;
             this.ClientSize = new System.Drawing.Size(880, 557);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btn_send_system_message);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -176,5 +200,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btn_send_system_message;
+        private System.Windows.Forms.Button button8;
     }
 }

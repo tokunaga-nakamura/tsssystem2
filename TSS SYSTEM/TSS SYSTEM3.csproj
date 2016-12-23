@@ -209,6 +209,12 @@
     <Compile Include="frm_koutei_m.Designer.cs">
       <DependentUpon>frm_koutei_m.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_multi_select_dt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_multi_select_dt.Designer.cs">
+      <DependentUpon>frm_multi_select_dt.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_nyukin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,6 +376,12 @@
     </Compile>
     <Compile Include="frm_select_dt.Designer.cs">
       <DependentUpon>frm_select_dt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_send_system_message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_send_system_message.Designer.cs">
+      <DependentUpon>frm_send_system_message.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_siharai_ichiran.cs">
       <SubType>Form</SubType>
@@ -845,6 +857,9 @@
     <EmbeddedResource Include="frm_koutei_m.resx">
       <DependentUpon>frm_koutei_m.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_multi_select_dt.resx">
+      <DependentUpon>frm_multi_select_dt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_nyukin.resx">
       <DependentUpon>frm_nyukin.cs</DependentUpon>
     </EmbeddedResource>
@@ -925,6 +940,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_select_dt.resx">
       <DependentUpon>frm_select_dt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_send_system_message.resx">
+      <DependentUpon>frm_send_system_message.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_siharai_ichiran.resx">
       <DependentUpon>frm_siharai_ichiran.cs</DependentUpon>

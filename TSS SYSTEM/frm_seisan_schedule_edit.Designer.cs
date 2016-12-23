@@ -196,11 +196,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 10);
+            this.label2.Location = new System.Drawing.Point(163, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(679, 12);
+            this.label2.Size = new System.Drawing.Size(704, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "同一の部署のスケジュールであれば、ドラッグ＆ドロップで別の日のスケジュール（行）をコピーできます（※移動ではなくコピーです。注意してください）";
+            this.label2.Text = "画面右下のスケジュールから画面中央の編集中のスケジュールへ、ドラッグ＆ドロップで行をコピーできます（※移動ではなくコピーです。注意してください）";
             // 
             // btn_hardcopy
             // 
