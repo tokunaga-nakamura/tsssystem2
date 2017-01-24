@@ -400,7 +400,7 @@ namespace TSS_SYSTEM
             {
                 if (dgv_m.Rows[i].Cells[0].Value.ToString() == null || dgv_m.Rows[i].Cells[0].Value.ToString() == "")
                 {
-                    MessageBox.Show("入金区分を入力してください");
+                    MessageBox.Show("入金区分に未入力があります");
                     dgv_m.Focus();
                     dgv_m.CurrentCell = dgv_m[0, i];
                     return;
@@ -408,7 +408,7 @@ namespace TSS_SYSTEM
 
                 if (dgv_m.Rows[i].Cells[2].Value.ToString() == null || dgv_m.Rows[i].Cells[2].Value.ToString() == "")
                 {
-                    MessageBox.Show("入金額を入力してください");
+                    MessageBox.Show("入金額に未入力があります");
                     return;
                 }
                 
@@ -607,11 +607,28 @@ namespace TSS_SYSTEM
                 for (int i = 0; i < dgvrc - 1; i++)
                 {
                     dt_w2.Rows.Add();
-                    dt_w2.Rows[i][0] = decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
+
+                    string str = dgv_m.Rows[i].Cells[2].Value.ToString();
+
+                    //decimalに変換できるか確かめる
+                    decimal dc;
+                    if (decimal.TryParse(str, out dc))
+                    {
+                        //変換出来たら、dcにその数値が入る
+                        dt_w2.Rows[i][0] = decimal.Parse(str);
+                    }
+                    else
+                    {
+                        dt_w2.Rows[i][0] = 0;
+                    }
+
+
+                    //dt_w2.Rows[i][0] = decimal.Parse(dgv_m.Rows[i].Cells[2].Value.ToString());
                 }
                 decimal goukei = decimal.Parse(dt_w2.Compute("SUM(nyukingoukei)", null).ToString());
                 tb_nyukin_goukei.Text = goukei.ToString("#,0##");
             }
+
         }
 
         private void dgv_m_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

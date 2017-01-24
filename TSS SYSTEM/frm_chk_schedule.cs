@@ -22,10 +22,6 @@ namespace TSS_SYSTEM
         public string str_date; //
         public string str_busyo;   //選択されたコード
         public bool bl_sentaku; //選択フラグ 選択:true エラーまたはキャンセル:false
-
-        int nouhin_yotei_ttl;
-        int seisan_yotei_ttl;
-
         
         public frm_chk_schedule()
         {
@@ -35,6 +31,8 @@ namespace TSS_SYSTEM
         private void btn_kensaku_Click(object sender, EventArgs e)
         {
             kensaku();
+            kensaku2();
+            kensaku3();
         }
 
         private void kensaku()
@@ -120,6 +118,7 @@ namespace TSS_SYSTEM
                 sql = sql + sql_where[i - 1];
             }
 
+
             //SQLに条件追加（売上完了フラグがついているものは除外）
             sql = sql + "  and B1.uriage_kanryou_flg = 0";
 
@@ -188,69 +187,11 @@ namespace TSS_SYSTEM
 
                          int seisan_yotei_ruikei;
                          int nouhin_yotei_ruikei2;
-                         int seisan_jisseki_ruikei;
                          
                          seisan_start_day = int.Parse(w_dt_chk.Rows[k]["seisan_start_day"].ToString());
                          seisan_yotei_date = tss.date_eigyou_calc(nouhin_yotei_date, seisan_start_day);///納品予定日と、生産開始日（●日前生産)の数字を渡して営業日ベースでの生産予定日を計算）
 
-                         w_dt_chk.Rows[k]["seisan_kaisibi"] = seisan_yotei_date;
-
-                         //w_dt_jisseki = tss.OracleSelect("select seisan_date,torihikisaki_cd,juchu_cd1,juchu_cd2,koutei_cd,seisan_su from tss_seisan_jisseki_f where koutei_cd = '" + w_dt_chk.Rows[k]["seisan_su"].ToString() + "'and torihikisaki_cd = '" + w_dt_chk.Rows[k]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_chk.Rows[k]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "' order by seisan_date desc");
-
-                         //if (w_dt_jisseki.Rows.Count == 0)
-                         //{
-                         //    dc_seisanzumi = 0;
-                         //}
-                         //else
-                         //{
-                         //    Object obj = w_dt_jisseki.Compute("Sum(seisan_su)", null);
-                         //    dc_seisanzumi = decimal.Parse(obj.ToString());
-                         //    keisan_day = DateTime.Parse(w_dt_jisseki.Rows[0][0].ToString());
-                         //}
-                         ////生産済み数をdgv_todayに表示
-                         //dgv_today.Rows[i].Cells["seisanzumi"].Value = dc_seisanzumi.ToString();
-
-                         ////直近の生産実績日からtodayまでの生産計画数を出す
-                         //w_dt = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date > '" + keisan_day + "' and seisan_yotei_date < '" + today_1 + "'  and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
-
-                         ////today以降の生産計画数を出す
-                         //w_dt2 = tss.OracleSelect("select sum(seisan_su) from tss_seisan_schedule_f where seisan_yotei_date >= '" + today + "' and koutei_cd = '" + dgv_today.Rows[i].Cells[3].Value.ToString() + "'and torihikisaki_cd = '" + dgv_today.Rows[i].Cells[8].Value.ToString() + "' and juchu_cd1 = '" + dgv_today.Rows[i].Cells[9].Value.ToString() + "' and juchu_cd2 = '" + dgv_today.Rows[i].Cells[10].Value.ToString() + "'");
-
-                         ////直近の生産実績日からtodayまでの生産計画数
-                         //if (w_dt.Rows[0][0] == DBNull.Value)
-                         //{
-                         //    dc_seisan_yotei = 0;
-                         //}
-                         //else
-                         //{
-                         //    dc_seisan_yotei = decimal.Parse(w_dt.Rows[0][0].ToString());
-                         //}
-
-                         ////today以降の生産計画数
-                         //if (w_dt2.Rows[0][0] == DBNull.Value)
-                         //{
-                         //    dc_seisan_yotei2 = 0;
-                         //}
-                         //else
-                         //{
-                         //    dc_seisan_yotei2 = decimal.Parse(w_dt2.Rows[0][0].ToString());
-                         //}
-
-                         ////todayの生産計画数
-                         //if (dgv_today.Rows[i].Cells["seisan_su"].Value == DBNull.Value)
-                         //{
-                         //    dc_today_seisan = 0;
-                         //}
-                         //else
-                         //{
-                         //    dc_today_seisan = decimal.Parse(dgv_today.Rows[i].Cells["seisan_su"].Value.ToString());
-                         //}
-
-                         ////データグリッドビューに生産予定数、過不足を計算して表示
-                         //dgv_today.Rows[i].Cells["seisan_yotei"].Value = (dc_seisan_yotei + dc_seisan_yotei2 + dc_today_seisan).ToString();
-                         //dc_kabusoku = (dc_juchu_su - dc_seisanzumi - dc_seisan_yotei - dc_seisan_yotei2 - dc_today_seisan) * -1;
-                         //dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
-                         //dgv_today.EndEdit();                   
+                         w_dt_chk.Rows[k]["seisan_kaisibi"] = seisan_yotei_date;          
 
 
                          //生産開始予定日までの直近の実績日取得
@@ -309,32 +250,7 @@ namespace TSS_SYSTEM
 
                              nouhin_yotei_ruikei2 = int.Parse(w_dt_chk.Rows[k]["nouhin_yotei_ruikei"].ToString());
 
-                         }
-                         
-
-                         //生産開始予定日までの生産実績取得
-                         //DataTable w_dt_jisseki_keisan = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_jisseki_Ruikei from tss_seisan_jisseki_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_date <= '" + seisan_yotei_date + "'");
-                         
-
-                         //DataTable w_dt_jisseki = tss.OracleSelect("select seisan_date,Koutei_Cd,Seisan_Su from tss_seisan_jisseki_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_date <= '" + seisan_yotei_date + "'");
-
-                        
-
-                         ////生産予定累計取得
-                         //DataTable w_dt_seisan_ruikei_keisan = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_yotei_Ruikei from tss_seisan_schedule_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_yotei_date <= '" + seisan_yotei_date + "'");
-
-                         //if (w_dt_seisan_ruikei_keisan.Rows.Count == 0)
-                         //{
-                         //    w_dt_chk.Rows[k]["seisan_yotei_ruikei"] = 0;
-                         //}
-                         //else
-                         //{
-                         //    w_dt_chk.Rows[k]["seisan_yotei_ruikei"] = w_dt_seisan_ruikei_keisan.Rows[0][1]; //生産予定累計数がnullだとエラーになる
-                         //}
-                     
-                         //int seisan_yotei_ruikei = int.Parse(w_dt_chk.Rows[k]["seisan_yotei_ruikei"].ToString());
-
-                         //int nouhin_yotei_ruikei2 = int.Parse(w_dt_chk.Rows[k]["nouhin_yotei_ruikei"].ToString());
+                         }                      
 
                          if(seisan_yotei_ruikei == nouhin_yotei_ruikei2)
                          {
@@ -408,42 +324,31 @@ namespace TSS_SYSTEM
             }
 
             //部署リストボックスから、部署でフィルタリング
-            string busyo = cb_busyo.Text;
+            string busyo = cb_busyo.SelectedValue.ToString();
 
-            if (busyo == "全ての部署")
+            if (busyo != "000000")
             {
+                selectedRows = dt_kensaku.Select("busyo_cd = '" + busyo + "'");
+
+                if (selectedRows != null && selectedRows.Length > 0)
+                {
+                    dt_kensaku = selectedRows.CopyToDataTable();
+                }
+
+                if (selectedRows == null || selectedRows.Length == 0)
+                {
+                    dt_kensaku.Rows.Clear();
+                }
                 
+                list_disp(dt_kensaku);
             }
-            else if(busyo == "第一生産")
+            
+            else
             {
-                selectedRows = dt_kensaku.Select("busyo_cd = 0010");
+                list_disp(dt_kensaku);
             }
-            else if (busyo == "第二生産")
-            {
-                selectedRows = dt_kensaku.Select("busyo_cd = 0020");
-            }
-            else if (busyo == "第三生産")
-            {
-                selectedRows = dt_kensaku.Select("busyo_cd = 0030");
-            }
-
-            if (selectedRows != null && selectedRows.Length > 0)
-            {
-                dt_kensaku = selectedRows.CopyToDataTable();
-            }
-
-            //sort();
-            ////DataGridView1にバインドされているDataTableを取得
-            //DataTable dt_kensaku = (DataTable)DataGridView1.DataSource;
-
-            ////DataViewを取得
-            //DataView dv = dt_kensaku.DefaultView;
-            ////Column1とColumn2で昇順に並び替える
-            //dv.Sort = "seisan_kaisibi ASC";
-
-            //dt_kensaku.AcceptChanges();
-
-            list_disp(dt_kensaku);
+            
+           
         }
 
         private void sort()
@@ -629,6 +534,8 @@ namespace TSS_SYSTEM
         private void cb_busyo_SelectedValueChanged(object sender, EventArgs e)
         {
             kensaku();
+            kensaku2();
+            kensaku3();
         }
 
         private void frm_chk_schedule_Load(object sender, EventArgs e)
@@ -719,9 +626,9 @@ namespace TSS_SYSTEM
             this.Close();
         }
 
-        private void btn_kensaku2_Click(object sender, EventArgs e)
+        private void kensaku2()
         {
-            //納品スケジュールにあって生産スケジュールにないもの
+          　 //納品スケジュールにあって生産スケジュールにないもの
             
             DataTable dt_nouhin_s;//納品スケジュールのレコード
             DataTable dt_seisan_s;//生産スケジュールのレコード
@@ -809,6 +716,8 @@ namespace TSS_SYSTEM
                 sql = sql + sql_where[i - 1];
             }
 
+          
+            
             //SQLに条件追加（売上完了フラグがついているものは除外）
             sql = sql + "  and B1.uriage_kanryou_flg = 0";
 
@@ -817,9 +726,7 @@ namespace TSS_SYSTEM
 
             w_dt_juchu = tss.OracleSelect(sql);
 
-            int rrr = w_dt_juchu.Rows.Count;
-            MessageBox.Show(rrr.ToString());
-
+     
             //②w_dt_juchuの受注コードをキーに、その受注の生産スケジュールを生産スケジュールマスタから持ってくる w_dt_seisan_s
 
             w_dt_juchu.Columns.Add("chk", Type.GetType("System.String"));//チェック用カラム追加
@@ -852,11 +759,44 @@ namespace TSS_SYSTEM
 
               dgv_no_schedule.DataSource = w_dt_juchu;
 
-              int rii = dgv_no_schedule.Rows.Count;
-              MessageBox.Show(rii.ToString());
+              //int rii = dgv_no_schedule.Rows.Count;
+              //MessageBox.Show(rii.ToString());
+
+
+              //リードオンリーにする
+              dgv_no_schedule.ReadOnly = true;
+              //行ヘッダーを非表示にする
+              dgv_no_schedule.RowHeadersVisible = false;
+              //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+              dgv_no_schedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+              //セルの高さ変更不可
+              dgv_no_schedule.AllowUserToResizeRows = false;
+              //カラムヘッダーの高さ変更不可
+              dgv_no_schedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+              //削除不可にする（コードからは削除可）
+              dgv_no_schedule.AllowUserToDeleteRows = false;
+              //１行のみ選択可能（複数行の選択不可）
+              dgv_no_schedule.MultiSelect = false;
+              //セルを選択すると行全体が選択されるようにする
+              dgv_no_schedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+              //DataGridView1にユーザーが新しい行を追加できないようにする
+              dgv_no_schedule.AllowUserToAddRows = false;
+
+              //DataGridViewのカラムヘッダーテキストを変更する
+              dgv_no_schedule.Columns["torihikisaki_cd"].HeaderText = "取引先CD";
+              dgv_no_schedule.Columns["juchu_cd1"].HeaderText = "受注CD1";
+              dgv_no_schedule.Columns["juchu_cd2"].HeaderText = "受注CD2";
+              dgv_no_schedule.Columns["seihin_cd"].HeaderText = "製品CD";
+              dgv_no_schedule.Columns["seihin_name"].HeaderText = "製品名";
+              dgv_no_schedule.Columns["max(B1.juchu_su)"].HeaderText = "受注数";
+              dgv_no_schedule.Columns["chk"].HeaderText = "チェック内容";
+
+              //右詰
+              dgv_no_schedule.Columns["max(B1.juchu_su)"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
-        private void btn_kensaku3_Click(object sender, EventArgs e)
+        private void kensaku3()
         {
             //納品スケジュールにあって、生産スケジュールもあるが、工程抜け
 
@@ -935,7 +875,7 @@ namespace TSS_SYSTEM
 
             //①日付範囲に納品日がある受注データと生産工程マスタをＪＯＩＮして持ってくる（売上完了フラグが立っていないもの） w_dt_juchu 　
 
-            string sql = "Select A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,Max(B1.Juchu_Su),d1.busyo_cd,d1.koutei_cd From Tss_Nouhin_Schedule_M A1,Tss_Juchu_M B1,tss_seihin_m c1,tss_seisan_koutei_m d1 Where A1.Torihikisaki_Cd = B1.Torihikisaki_Cd And A1.Juchu_Cd1 = B1.Juchu_Cd1 And A1.Juchu_Cd2 = B1.Juchu_Cd2 and b1.seihin_cd = c1.seihin_cd and";
+            string sql = "Select A1.Torihikisaki_Cd,A1.Juchu_Cd1,A1.Juchu_Cd2,B1.Seihin_Cd,c1.seihin_name,Max(B1.Juchu_Su),d1.busyo_cd,d1.koutei_cd From Tss_Nouhin_Schedule_M A1,Tss_Juchu_M B1,tss_seihin_m c1,tss_seisan_koutei_m d1 Where A1.Torihikisaki_Cd = B1.Torihikisaki_Cd And A1.Juchu_Cd1 = B1.Juchu_Cd1 And A1.Juchu_Cd2 = B1.Juchu_Cd2 and b1.seihin_cd = c1.seihin_cd and b1.seihin_cd = d1.seihin_cd and";
 
 
             for (int i = 1; i <= sql_cnt; i++)
@@ -945,6 +885,24 @@ namespace TSS_SYSTEM
                     sql = sql + " and ";
                 }
                 sql = sql + sql_where[i - 1];
+            }
+
+            //SQLに条件追加（部署指定）
+            if (cb_busyo.SelectedValue.ToString() == "0101")
+            {
+                sql = sql + "  and d1.busyo_cd = 0101";
+            }
+            if (cb_busyo.SelectedValue.ToString() == "0102")
+            {
+                sql = sql + "  and d1.busyo_cd = 0102";
+            }
+            if (cb_busyo.SelectedValue.ToString() == "0201")
+            {
+                sql = sql + "  and d1.busyo_cd = 0201";
+            }
+            if (cb_busyo.SelectedValue.ToString() == "0900")
+            {
+                sql = sql + "  and d1.busyo_cd = 0900";
             }
 
             //SQLに条件追加（売上完了フラグがついているものは除外）
@@ -957,9 +915,6 @@ namespace TSS_SYSTEM
 
             w_dt_juchu = tss.OracleSelect(sql);
 
-            int rrr = w_dt_juchu.Rows.Count;
-            MessageBox.Show(rrr.ToString());
-
             //②w_dt_juchuの受注コードと工程コードをキーに、工程ごとに生産実績または生産スケジュールがあるかどうかチェックする dt_seisan_j & dt_seisan_s
 
             w_dt_juchu.Columns.Add("jisseki_chk", Type.GetType("System.String"));//生産実績チェック用カラム追加
@@ -970,7 +925,7 @@ namespace TSS_SYSTEM
 
             for (int i = 0; i < rc; i++)
             {
-                
+
                 //①生産実績データの取得
                 dt_seisan_j = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_jisseki from tss_seisan_jisseki_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_juchu.Rows[i]["koutei_cd"].ToString() + "'");
 
@@ -1003,10 +958,28 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    w_dt_juchu.Rows[i]["chk"] = "この工程に実績及びスケジュールが作成されていません";
+                    w_dt_juchu.Rows[i]["chk"] = "実績及びスケジュール無し";
                 }
+            }
 
+            //カラム追加
+            w_dt_juchu.Columns.Add("部署名", Type.GetType("System.String")).SetOrdinal(7);
+            w_dt_juchu.Columns.Add("工程名", Type.GetType("System.String")).SetOrdinal(9);
 
+            int krc = w_dt_juchu.Rows.Count;
+
+            for (int l = 0; l < krc; l++)
+            {
+                //追加したカラムに製品名等を入れる
+
+                DataTable dt_busyo_name = tss.OracleSelect("select busyo_name from tss_busyo_m where busyo_Cd = '" + w_dt_juchu.Rows[l]["busyo_cd"].ToString() + "'");
+                DataTable dt_koutei_name = tss.OracleSelect("select koutei_name from tss_koutei_m where koutei_Cd = '" + w_dt_juchu.Rows[l]["koutei_cd"].ToString() + "'");
+
+                string busyo_name = dt_busyo_name.Rows[0]["busyo_name"].ToString();
+                string koutei_name = dt_koutei_name.Rows[0]["koutei_name"].ToString();
+
+                w_dt_juchu.Rows[l]["部署名"] = busyo_name;
+                w_dt_juchu.Rows[l]["工程名"] = koutei_name;
             }
 
             //生産スケジュールのレコードがない場合はデータテーブルから削除
@@ -1014,8 +987,43 @@ namespace TSS_SYSTEM
 
             dgv_no_koutei.DataSource = w_dt_juchu;
 
-            int rii = dgv_no_koutei.Rows.Count;
-            MessageBox.Show(rii.ToString());
+            //リードオンリーにする
+            dgv_no_koutei.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_no_koutei.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_no_koutei.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_no_koutei.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_no_koutei.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_no_koutei.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_no_koutei.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_no_koutei.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_no_koutei.AllowUserToAddRows = false;
+
+            //DataGridViewのカラムヘッダーテキストを変更する
+            dgv_no_koutei.Columns["torihikisaki_cd"].HeaderText = "取引先CD";
+            dgv_no_koutei.Columns["juchu_cd1"].HeaderText = "受注CD1";
+            dgv_no_koutei.Columns["juchu_cd2"].HeaderText = "受注CD2";
+            dgv_no_koutei.Columns["seihin_cd"].HeaderText = "製品CD";
+            dgv_no_koutei.Columns["seihin_name"].HeaderText = "製品名";
+            dgv_no_koutei.Columns["max(B1.juchu_su)"].HeaderText = "受注数";
+            dgv_no_koutei.Columns["busyo_cd"].HeaderText = "部署CD";
+            dgv_no_koutei.Columns["koutei_cd"].HeaderText = "工程CD";
+            dgv_no_koutei.Columns["jisseki_chk"].HeaderText = "実績数";
+            dgv_no_koutei.Columns["schedule_chk"].HeaderText = "計画数";
+            dgv_no_koutei.Columns["chk"].HeaderText = "チェック内容";
+
+            //右詰
+            dgv_no_koutei.Columns["max(B1.juchu_su)"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_no_koutei.Columns["jisseki_chk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv_no_koutei.Columns["schedule_chk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            
         }
 
     }
