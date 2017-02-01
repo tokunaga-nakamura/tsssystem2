@@ -168,6 +168,12 @@
     <Compile Include="frm_chk_schedule.Designer.cs">
       <DependentUpon>frm_chk_schedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_chk_schedule_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_chk_schedule_preview.Designer.cs">
+      <DependentUpon>frm_chk_schedule_preview.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_control_m.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -704,6 +710,18 @@
     <Compile Include="rpt_buhin_to_seihin.Designer.cs">
       <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_chk_schedule_2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_chk_schedule_2.Designer.cs">
+      <DependentUpon>rpt_chk_schedule_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_chk_schedule_3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_chk_schedule_3.Designer.cs">
+      <DependentUpon>rpt_chk_schedule_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_nouhin_schedule.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -788,6 +806,12 @@
     <Compile Include="rpt_zaiko_syoukai.Designer.cs">
       <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_chk_schedule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_chk_schedule.Designer.cs">
+      <DependentUpon>rpt_chk_schedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="TssSystemLibrary.cs" />
     <Compile Include="ZAIKO_CHOUSEI.cs">
       <SubType>Form</SubType>
@@ -836,6 +860,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_chk_schedule.resx">
       <DependentUpon>frm_chk_schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_chk_schedule_preview.resx">
+      <DependentUpon>frm_chk_schedule_preview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_control_m.resx">
       <DependentUpon>frm_control_m.cs</DependentUpon>
@@ -1114,6 +1141,12 @@
     <EmbeddedResource Include="rpt_buhin_to_seihin.resx">
       <DependentUpon>rpt_buhin_to_seihin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rpt_chk_schedule_2.resx">
+      <DependentUpon>rpt_chk_schedule_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_chk_schedule_3.resx">
+      <DependentUpon>rpt_chk_schedule_3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rpt_nouhin_schedule.resx">
       <DependentUpon>rpt_nouhin_schedule.cs</DependentUpon>
     </EmbeddedResource>
@@ -1155,6 +1188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_zaiko_syoukai.resx">
       <DependentUpon>rpt_zaiko_syoukai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_chk_schedule.resx">
+      <DependentUpon>rpt_chk_schedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZAIKO_CHOUSEI.resx">
       <DependentUpon>ZAIKO_CHOUSEI.cs</DependentUpon>

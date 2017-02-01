@@ -514,8 +514,8 @@ namespace TSS_SYSTEM
 
                 decimal siirekingaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[1].Value.ToString());
                 decimal syouhizeigaku = decimal.Parse(dgv_siire_simebi.Rows[0].Cells[2].Value.ToString());
-                    
 
+                decimal kaikake_zandaka =  siirekingaku + syouhizeigaku;
 
                     bool bl = tss.OracleInsert("insert into tss_kaikake_m (torihikisaki_cd,siire_simebi,kurikosigaku,siharaigaku,siire_kingaku,syouhizeigaku,kaikake_zandaka,siharai_kanryou_flg,create_user_cd,create_datetime) values ('"
 
@@ -523,9 +523,9 @@ namespace TSS_SYSTEM
                               + tb_siire_simebi.Text.ToString() + "','"
                               + 0 + "','"
                               + 0 + "','"
-                              + dgv_siire_simebi.Rows[0].Cells[1].Value.ToString() + "','"
-                              + dgv_siire_simebi.Rows[0].Cells[2].Value.ToString() + "','"
-                              + 0 + "','"
+                              + siirekingaku.ToString() + "','"
+                              + syouhizeigaku.ToString() + "','"
+                              + kaikake_zandaka.ToString() + "','"
                               + 0 + "','"
                               + tss.user_cd + "',SYSDATE)");
 
