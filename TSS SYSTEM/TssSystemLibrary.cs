@@ -97,10 +97,10 @@ using System.IO;                //StreamWriter
 //                          同様にtss_error_log_fの主キーも36桁に修正し、ミリ秒まで記録するように変更
 //                          RDBは本番環境、開発環境ともに変更済み
 //                          入金画面において、入金区分・入金額が未入力でも登録できてしまうバグ修正（プログラム見てみたら明らかな未検証状態でした（検証してれば確実に発見できる））
-//
-//
-//
-//
+//      8       2017/01/20  請求締め処理、１カ月前の売掛レコードが無い場合に、前回売掛残高が０になるバグを修正（１カ月前が無かったら直近のレコードを抽出するように修正）
+//      9       2017/02/01  支払締め処理において、新規の締め（同月の再締めではない）の場合に、新規レコード作成する処理で支払残高に無条件で０を入れていたバグを修正
+//                          その際に、同プログラム及び支払一覧のプログラムで、select * で抽出した項目（カラム）を使っているコードを発見したが、未修正。
+//1.06  0       2017/03/01  売上において、訂正した場合のマイナス＆プラス処理で、部品入出庫履歴の書き込み数値がおかしい件、修正
 //
 //
 //
@@ -169,8 +169,8 @@ namespace TSS_SYSTEM
         public TssSystemLibrary()
         {
             //コンストラクタ
-            program_version = "1.05";
-            program_code_version = "7";
+            program_version = "1.06";
+            program_code_version = "0";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -1879,11 +1879,14 @@ namespace TSS_SYSTEM
         /// <param name="decimal in_gyou">履歴行</param>
         /// <param name="string in_bikou">備考（伝票番号等）</param>
         /// <param name="string in_syori_kbn">処理した画面（01:入出庫 02:売上 03:製品構成一括</param>
+        /// <param name="string in_seisiki_torihikisaki_cd">受注マスタ参照用の取引先コード</param>
+        /// <param name="string in_seisiki_juchu_cd1">受注マスタ参照用の受注コード１</param>
+        /// <param name="string in_seisiki_juchu_cd2">受注マスタ参照用の受注コード２</param>
         /// <returns>
         /// bool true:正常終了 false:異常終了
         /// エラー等、取得できない場合はnull</returns>
         public int ppt_gyou;   //履歴に書き込んだ行番号
-        public bool zaiko_proc(string in_buhin_cd, string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, decimal in_su, decimal in_rireki_no, int in_gyou, string in_bikou, string in_syori_kbn)
+        public bool zaiko_proc(string in_buhin_cd, string in_zaiko_kbn, string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2, decimal in_su, decimal in_rireki_no, int in_gyou, string in_bikou, string in_syori_kbn,string in_seisiki_torihikisaki_cd,string in_seisiki_juchu_cd1, string in_seisiki_juchu_cd2)
         {
             bool bl = true;  //戻り値用
             string w_sql;
@@ -1929,7 +1932,7 @@ namespace TSS_SYSTEM
                     if (w_zaiko_su >= 0)
                     {
                         DataTable w_dt_flg = new DataTable();
-                        w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "'");
+                        w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_seisiki_torihikisaki_cd + "' and juchu_cd1 = '" + in_seisiki_juchu_cd1 + "'");
                         int rc = w_dt_flg.Rows.Count;
                         //未完のフラグがあった場合、フリーには移動しない。
                         int[] a = new int[rc]; // フラグ確認データテーブルの行数分の整数型配列を用意。
@@ -1969,7 +1972,16 @@ namespace TSS_SYSTEM
                                 bl = false;
                             }
                             //在庫履歴へ書き込み
-                            w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('02','" + in_rireki_no.ToString("0000000000") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + w_dt.Rows[0]["torihikisaki_cd"].ToString() + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + w_dou_su.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "の消し込み','" + user_cd + "',sysdate)");
+                            if (in_su >= 0)
+                            {
+                                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('02','" + in_rireki_no.ToString("0000000000") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + w_dt.Rows[0]["torihikisaki_cd"].ToString() + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + w_dou_su.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "の消し込み','" + user_cd + "',sysdate)");
+                            }
+                            else
+                            {
+                                decimal w_zettaichi;
+                                w_zettaichi = w_dou_su * -1;
+                                w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('01','" + in_rireki_no.ToString("0000000000") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + w_dt.Rows[0]["zaiko_kbn"].ToString() + "','" + w_dt.Rows[0]["torihikisaki_cd"].ToString() + "','" + w_dt.Rows[0]["juchu_cd1"].ToString() + "','" + w_dt.Rows[0]["juchu_cd2"].ToString() + "','" + w_zettaichi.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "の消し込み','" + user_cd + "',sysdate)");
+                            }
                             ppt_gyou++;
                         }
                         if (kakezan == 1) //すべて売上完了フラグが立っている場合
@@ -2113,7 +2125,7 @@ namespace TSS_SYSTEM
                     {
                         string w_uriage_kanryou_flg;
                         DataTable w_dt_flg = new DataTable();
-                        w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+                        w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_seisiki_torihikisaki_cd + "' and juchu_cd1 = '" + in_seisiki_juchu_cd1 + "' and juchu_cd2 = '" + in_seisiki_juchu_cd2 + "'");
                         w_uriage_kanryou_flg = w_dt_flg.Rows[0]["uriage_kanryou_flg"].ToString();
                         //売上完了フラグが立っていれば、残りの在庫をフリーに移動する
                         if (w_uriage_kanryou_flg == "1")
@@ -2176,7 +2188,7 @@ namespace TSS_SYSTEM
                                 //在庫が残る場合、売上完了フラグを見に行くが、得意先コード+受注コード1　で受注マスタを検索し、すべてのレコードでフラグが立っていないと消しこまないようにする
                                 if (w_zaiko_su >= 0)
                                 {
-                                    w_dt_flg = OracleSelect("select torihikisaki_cd,juchu_cd1,juchu_cd2,uriage_kanryou_flg from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "'");
+                                    w_dt_flg = OracleSelect("select torihikisaki_cd,juchu_cd1,juchu_cd2,uriage_kanryou_flg from tss_juchu_m where torihikisaki_cd = '" + in_seisiki_torihikisaki_cd + "' and juchu_cd1 = '" + in_seisiki_juchu_cd1 + "'");
                                     int rc = w_dt_flg.Rows.Count;
                                     //未完のフラグがあった場合、フリーには移動しない。
                                     int[] a = new int[rc]; // フラグ確認データテーブルの行数分の整数型配列を用意。
@@ -2307,7 +2319,7 @@ namespace TSS_SYSTEM
                             if (w_zaiko_su >= 0)
                             {
                                 DataTable w_dt_flg = new DataTable();
-                                w_dt_flg = OracleSelect("select torihikisaki_cd,juchu_cd1,juchu_cd2,uriage_kanryou_flg from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "'");
+                                w_dt_flg = OracleSelect("select torihikisaki_cd,juchu_cd1,juchu_cd2,uriage_kanryou_flg from tss_juchu_m where torihikisaki_cd = '" + in_seisiki_torihikisaki_cd + "' and juchu_cd1 = '" + in_seisiki_juchu_cd1 + "'");
                                 int rc = w_dt_flg.Rows.Count;
                                 //未完のフラグがあった場合、フリーには移動しない。
                                 int[] a = new int[rc]; // フラグ確認データテーブルの行数分の整数型配列を用意。
@@ -2459,7 +2471,7 @@ namespace TSS_SYSTEM
                            if (w_zaiko_su >= 0)
                            {
                                DataTable w_dt_flg = new DataTable();
-                               w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "'");
+                               w_dt_flg = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_seisiki_torihikisaki_cd + "' and juchu_cd1 = '" + in_seisiki_juchu_cd1 + "'");
                                int rc = w_dt_flg.Rows.Count;
                                //未完のフラグがあった場合、フリーには移動しない。
                                int[] a = new int[rc]; // フラグ確認データテーブルの行数分の整数型配列を用意。
@@ -2547,7 +2559,7 @@ namespace TSS_SYSTEM
                                            bl = false;
                                        }
                                        //フリー在庫の入出庫履歴へ書き込み
-                                       w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('01','" + in_rireki_no.ToString("0000000000") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + w_zaiko_su.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "分のロット在庫の余剰分をフリー在庫に振替7','" + user_cd + "',sysdate)");
+                                       w_rireki_bl = OracleInsert("insert into tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,syori_kbn,bikou,create_user_cd,create_datetime) values ('01','" + in_rireki_no.ToString("0000000000") + "','" + ppt_gyou.ToString() + "',sysdate,'" + in_buhin_cd + "','" + "01" + "','999999','" + "9999999999999999" + "','" + "9999999999999999" + "','" + w_zaiko_su.ToString("0.00") + "','" + in_syori_kbn + "','" + in_bikou + "分のロット在庫の余剰分をフリー在庫に振替8','" + user_cd + "',sysdate)");
                                        ppt_gyou++;
                                    }
                                }

@@ -307,14 +307,15 @@ namespace TSS_SYSTEM
             {
                 //1カ月前のレコードが無かった場合
                 //画面の締日以前のレコードの入金未完了の金額を求めて繰越額にする
-                w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
+                //w_dt = tss.OracleSelect("select sum(uriage_kingaku) + sum(syouhizeigaku) - sum(nyukingaku) from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' and nyukin_kanryou_flg <> '1'");
+                w_dt = tss.OracleSelect("select urikake_zandaka from tss_urikake_m where torihikisaki_cd = '" + in_cd + "' and uriage_simebi < '" + tb_seikyu_simebi.Text + "' order by uriage_simebi desc");
                 if (w_dt.Rows.Count == 0)
                 {
                     out_decimal = 0;
                 }
                 else
                 {
-                    out_decimal = tss.try_string_to_decimal(w_dt.Rows[0][0].ToString());
+                    out_decimal = tss.try_string_to_decimal(w_dt.Rows[0]["urikake_zandaka"].ToString());
                     //sqlのsum分の場合、必ず1レコードできてしまい、該当データなかった場合の値がnullの為double型に変換できないので、その為の処理
                     if (out_decimal == -999999999)
                     {

@@ -463,7 +463,7 @@ namespace TSS_SYSTEM
                 w_rireki_gyou = i + 1;
                 w_suryo = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[7].Value.ToString()) * w_sign;
                 w_bikou = "製品構成を使用した一括" + w_nyusyukko + " 製品CD:" + tb_seihin_cd.Text.ToString() + " 製品構成NO:" + tb_seihin_kousei_no.Text.ToString() + " 処理数:" + tb_suuryo.Text.ToString() + " 使用数:" + dgv_m.Rows[i].Cells[2].Value.ToString();
-                w_bl = tss.zaiko_proc(dgv_m.Rows[i].Cells[0].Value.ToString(),"01","999999","9999999999999999","9999999999999999",w_suryo,w_rireki_no,w_rireki_gyou,w_bikou,"03");
+                w_bl = tss.zaiko_proc(dgv_m.Rows[i].Cells[0].Value.ToString(),"01","999999","9999999999999999","9999999999999999",w_suryo,w_rireki_no,w_rireki_gyou,w_bikou,"03","999999","9999999999999999","9999999999999999");
                 if(w_bl == false)
                 {
                     MessageBox.Show("在庫の更新中にエラーが発生しました。データの整合性が崩れた可能性があります。確認してください。");
