@@ -45,6 +45,8 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_syuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -60,7 +62,7 @@
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox4.Location = new System.Drawing.Point(10, 48);
+            this.textBox4.Location = new System.Drawing.Point(10, 43);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(75, 19);
@@ -70,8 +72,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_nengetu);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -82,14 +84,14 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(880, 85);
+            this.groupBox1.Size = new System.Drawing.Size(880, 70);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索条件";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(428, 40);
+            this.button2.Location = new System.Drawing.Point(342, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 20;
@@ -100,7 +102,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(543, 40);
+            this.button1.Location = new System.Drawing.Point(459, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -112,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 51);
+            this.label2.Location = new System.Drawing.Point(193, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 12);
             this.label2.TabIndex = 18;
@@ -120,7 +122,7 @@
             // 
             // tb_nengetu
             // 
-            this.tb_nengetu.Location = new System.Drawing.Point(85, 23);
+            this.tb_nengetu.Location = new System.Drawing.Point(85, 18);
             this.tb_nengetu.Name = "tb_nengetu";
             this.tb_nengetu.Size = new System.Drawing.Size(68, 19);
             this.tb_nengetu.TabIndex = 1;
@@ -129,7 +131,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox2.Location = new System.Drawing.Point(10, 23);
+            this.textBox2.Location = new System.Drawing.Point(10, 18);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(75, 19);
@@ -139,7 +141,7 @@
             // 
             // btn_kensaku
             // 
-            this.btn_kensaku.Location = new System.Drawing.Point(795, 53);
+            this.btn_kensaku.Location = new System.Drawing.Point(795, 39);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
             this.btn_kensaku.TabIndex = 14;
@@ -149,7 +151,7 @@
             // 
             // tb_buhin_cd2
             // 
-            this.tb_buhin_cd2.Location = new System.Drawing.Point(210, 48);
+            this.tb_buhin_cd2.Location = new System.Drawing.Point(210, 43);
             this.tb_buhin_cd2.MaxLength = 16;
             this.tb_buhin_cd2.Name = "tb_buhin_cd2";
             this.tb_buhin_cd2.Size = new System.Drawing.Size(108, 19);
@@ -157,7 +159,7 @@
             // 
             // tb_buhin_cd1
             // 
-            this.tb_buhin_cd1.Location = new System.Drawing.Point(85, 48);
+            this.tb_buhin_cd1.Location = new System.Drawing.Point(85, 43);
             this.tb_buhin_cd1.MaxLength = 16;
             this.tb_buhin_cd1.Name = "tb_buhin_cd1";
             this.tb_buhin_cd1.Size = new System.Drawing.Size(108, 19);
@@ -181,7 +183,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(884, 539);
-            this.splitContainer1.SplitterDistance = 89;
+            this.splitContainer1.SplitterDistance = 74;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
@@ -201,11 +203,13 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button1);
+            this.splitContainer2.Panel2.Controls.Add(this.button2);
             this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 446);
-            this.splitContainer2.SplitterDistance = 384;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 461);
+            this.splitContainer2.SplitterDistance = 425;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -216,7 +220,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 380);
+            this.dgv_m.Size = new System.Drawing.Size(880, 421);
             this.dgv_m.TabIndex = 0;
             // 
             // btn_csv
@@ -256,6 +260,24 @@
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(326, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(442, 12);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "表示される「入庫数」及び「出庫数」は、部品入出庫履歴のそれぞれの合計が表示されます。";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(326, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(463, 12);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "売上の訂正等が行われた場合、入出庫数は多く表示されます。（入出庫の合計は合っています。）";
             // 
             // frm_buhin_zaiko_syoukai
             // 
@@ -302,5 +324,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

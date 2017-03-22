@@ -92,8 +92,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(880, 492);
-            this.splitContainer2.SplitterDistance = 455;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 496);
+            this.splitContainer2.SplitterDistance = 459;
             this.splitContainer2.TabIndex = 0;
             // 
             // vwr
@@ -127,7 +127,7 @@
             this.vwr.Sidebar.TocPanel.ContextMenu = null;
             this.vwr.Sidebar.TocPanel.Width = 200;
             this.vwr.Sidebar.Width = 200;
-            this.vwr.Size = new System.Drawing.Size(876, 451);
+            this.vwr.Size = new System.Drawing.Size(880, 455);
             this.vwr.TabIndex = 0;
             // 
             // btn_syuuryou
@@ -148,7 +148,7 @@
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seisan_schedule_preview";
-            this.Text = "frm_seisan_schedule_preview";
+            this.Text = "生産スケジュール印刷";
             this.Load += new System.EventHandler(this.frm_seisan_schedule_preview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

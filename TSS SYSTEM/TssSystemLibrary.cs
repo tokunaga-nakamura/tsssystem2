@@ -101,12 +101,13 @@ using System.IO;                //StreamWriter
 //      9       2017/02/01  支払締め処理において、新規の締め（同月の再締めではない）の場合に、新規レコード作成する処理で支払残高に無条件で０を入れていたバグを修正
 //                          その際に、同プログラム及び支払一覧のプログラムで、select * で抽出した項目（カラム）を使っているコードを発見したが、未修正。
 //1.06  0       2017/03/01  売上において、訂正した場合のマイナス＆プラス処理で、部品入出庫履歴の書き込み数値がおかしい件、修正
-//
-//
-//
-//
-//
-//
+//      1       2017/03/15  生産工程マスタ画面、一部レイアウト変更、及び検索画面にてダブルクリックで選択できるコードが無かったので追加
+//                          生産実績入力、生産指示日報レイアウト等、稼働前のデバッグ修正
+//      x       xxxx/xx/xx  生産スケジュール調整画面、新規行等で受注番号を入力すると、タクト等の情報は表示されるが、生産機種が表示されないバグ修正
+//                          生産スケジュール調整画面、受注や製品コードのValidating等のほとんどに、生産機種を表示するコードが記述されていないバグ修正orz
+//                          生産実績入力及び生産指示書、入力しやすく、見やすい並びに調整
+//                          生産実績入力、生産スケジュールとの連動をやめ、同一日の同一受注があったら参考表示するように仕様変更
+//                          
 //
 //
 //
@@ -170,7 +171,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.06";
-            program_code_version = "0";
+            program_code_version = "1";
 
             fld_DataSource = null;
             fld_UserID = null;
@@ -1808,6 +1809,35 @@ namespace TSS_SYSTEM
         }
         #endregion
 
+        #region get_seisan_su
+        /// <summary>
+        /// 受注番号を受け取り生産数を返す</summary>
+        /// <param name="in_torihikisaki_cd">
+        /// 取引先コード</param>
+        /// <param name="in_juchu_cd1">
+        /// 受注コード1</param>
+        /// <param name="in_juchu_cd2">
+        /// 受注コード2</param>
+        /// <returns>
+        /// string 生産数
+        /// エラー等、取得できない場合はnull</returns>
+        public string get_seisan_su(string in_torihikisaki_cd, string in_juchu_cd1, string in_juchu_cd2)
+        {
+            string out_str = null;  //戻り値用
+            DataTable w_dt = new DataTable();
+            w_dt = OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + in_torihikisaki_cd + "' and juchu_cd1 = '" + in_juchu_cd1 + "' and juchu_cd2 = '" + in_juchu_cd2 + "'");
+            if (w_dt.Rows.Count == 0)
+            {
+                out_str = null;
+            }
+            else
+            {
+                out_str = w_dt.Rows[0]["seisan_su"].ToString();
+            }
+            return out_str;
+        }
+        #endregion
+
         #region get_seisankisyu
         /// <summary>
         /// 製品コードと工程コードを受け取り製品工程マスタの生産機種を返す</summary>
@@ -1879,9 +1909,9 @@ namespace TSS_SYSTEM
         /// <param name="decimal in_gyou">履歴行</param>
         /// <param name="string in_bikou">備考（伝票番号等）</param>
         /// <param name="string in_syori_kbn">処理した画面（01:入出庫 02:売上 03:製品構成一括</param>
-        /// <param name="string in_seisiki_torihikisaki_cd">受注マスタ参照用の取引先コード</param>
-        /// <param name="string in_seisiki_juchu_cd1">受注マスタ参照用の受注コード１</param>
-        /// <param name="string in_seisiki_juchu_cd2">受注マスタ参照用の受注コード２</param>
+        /// <param name="string in_seisiki_torihikisaki_cd">受注マスタ参照用の正式な取引先コード</param>
+        /// <param name="string in_seisiki_juchu_cd1">受注マスタ参照用の正式な受注コード１</param>
+        /// <param name="string in_seisiki_juchu_cd2">受注マスタ参照用の正式な受注コード２</param>
         /// <returns>
         /// bool true:正常終了 false:異常終了
         /// エラー等、取得できない場合はnull</returns>

@@ -777,7 +777,10 @@ namespace TSS_SYSTEM
 
         private string get_seisan_sumi_su(string in_torihikisaki_cd,string in_juchu_cd1,string in_juchu_cd2,string in_koutei_cd)
         {
-            //生産済み数の返す
+            //生産済み数を返す
+            //周知の問題：過去の指示書を印刷した場合、現時点で登録されている全ての実績から生産済み数を求めているので、当時の値と異なる
+            //では、画面に入力された生産予定日未満の実績だけで集計したらどうか？→良さそうな気がするが今のところ未対応
+            //sqlのwhere文に seisan_date < '" + tb_seisan_yotei_date.Text.ToString() + "'" を追記するだけで行けると思われる（未検証）
             string out_su;
             out_su = "";
             DataTable w_dt = new DataTable();

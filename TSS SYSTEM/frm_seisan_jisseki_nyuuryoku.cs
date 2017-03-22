@@ -133,31 +133,36 @@ namespace TSS_SYSTEM
             tb_bcr.Text = w_bcr_moji;
             tb_seisanbi.Text = tss.StringMidByte(w_bcr_moji, 3,10).TrimEnd();
             tb_busyo_cd.Text = tss.StringMidByte(w_bcr_moji, 13, 4).TrimEnd();
+            tb_busyo_name.Text = tss.get_busyo_name(tb_busyo_cd.Text);
             tb_koutei_cd.Text = tss.StringMidByte(w_bcr_moji, 17, 3).TrimEnd();
             tb_line_cd.Text = tss.StringMidByte(w_bcr_moji, 20, 3).TrimEnd();
+            tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
             tb_schedule_seq.Text = tss.StringMidByte(w_bcr_moji, 23, 3).TrimEnd();
             tb_torihikisaki_cd.Text = tss.StringMidByte(w_bcr_moji, 26, 6).TrimEnd();
             tb_juchu_cd1.Text = tss.StringMidByte(w_bcr_moji, 32, 16).TrimEnd();
             tb_juchu_cd2.Text = tss.StringMidByte(w_bcr_moji, 48, 16).TrimEnd();
+            tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text, tb_koutei_cd.Text);
             //同一バーコードの生産実績があるか確認
-            w_dt = tss.OracleSelect("select * from tss_seisan_jisseki_f where barcode = '" + w_bcr_moji + "'");
+            //w_dt = tss.OracleSelect("select * from tss_seisan_jisseki_f where barcode = '" + w_bcr_moji + "'");
+            w_dt = read_seisan_jisseki();
             if (w_dt.Rows.Count >= 1)
             {
                 //同一のバーコードが生産実績に存在する場合
-                MessageBox.Show("既に読み込み済です。");
-                return;
+                //「既に入力済み」であることを表示し、選択画面で選択させる（選択＝修正、選択しない＝新規（別の行として）入力、戻る＝キャンセル）
+                //選択画面へ
+                jisseki_select(w_dt);
             }
-            //表示させるスケジュールの読み込み
-            w_dt = tss.OracleSelect("select * from tss_seisan_schedule_f where seisan_yotei_date = '" + tb_seisanbi.Text + "' and busyo_cd = '" + tb_busyo_cd.Text + "' and  koutei_cd = '" + tb_koutei_cd.Text + "' and line_cd = '" + tb_line_cd.Text + "' and seq = '" + tb_schedule_seq.Text + "'");
-            if(w_dt == null || w_dt.Rows.Count <= 0)
+            else
             {
-                MessageBox.Show("読み込んだバーコードと一致する生産スケジュールがありません。");
-                return;
+                //同一バーコードが生産実績に存在しない場合
+                //新規に入力
+                tb_seihin_cd.Text = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+                tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
+                tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text, tb_koutei_cd.Text);
+                disp_schedule();
+                clear_seisan_jisseki();
+                tb_busyo_cd.Focus();
             }
-            disp_schedule(w_dt);
-            //その他必要な項目を表示
-            tb_koutei_name.Text = tss.get_koutei_name(tb_koutei_cd.Text);
-            tb_torihikisaki_name.Text = tss.get_torihikisaki_name(tb_torihikisaki_cd.Text);
         }
 
         private void tb_juchu_cd2_DoubleClick(object sender, EventArgs e)
@@ -225,83 +230,81 @@ namespace TSS_SYSTEM
 
             //実績レコードチェック
             DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select "
-                                        + "seisan_jisseki_no,"
-                                        + "seisan_date,"
-                                        + "busyo_cd,"
-                                        + "koutei_cd,"
-                                        + "line_cd,"
-                                        + "torihikisaki_cd,"
-                                        + "juchu_cd1,"
-                                        + "juchu_cd2,"
-                                        + "seihin_cd,"
-                                        + "seihin_name,"
-                                        + "seisan_su,"
-                                        + "start_time,"
-                                        + "end_time,"
-                                        + "seisan_time,"
-                                        + "tact_time,"
-                                        + "memo,"
-                                        + "nyuryoku_kbn,"
-                                        + "create_datetime,"
-                                        + "update_datetime"
-                                        + " from tss_seisan_jisseki_f where seisan_date = '" + tb_seisanbi.Text + "' and koutei_cd = '" + tb_koutei_cd.Text + "' and torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
-            if(w_dt.Rows.Count <= 0)
+            w_dt = read_seisan_jisseki();
+            if (w_dt.Rows.Count <= 0)
             {
                 //実績に同一のレコードが無い場合
-                //生産スケジュールレコードチェック
-                w_dt = seisan_schedule_read();
-                if(w_dt.Rows.Count <= 0)
-                {
-                    //生産スケジュールに同一のレコードが無い場合
-                    disp_schedule_clear();
-                    disp_jisseki_clear();
-                    tb_seihin_cd.Text = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
-                    tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
-                    tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text,tb_koutei_cd.Text);
-                    tb_busyo_cd.Focus();
-                }
-                else
-                {
-                    //生産スケジュールに同一のレコードが有る場合
-                    //生産スケジュール選択画面の表示
-                    int w_sentaku;   //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
-                    w_sentaku = schedule_select(w_dt);
-                }
+                //新規入力
+                disp_juchu();
+                disp_schedule();
+                clear_seisan_jisseki();
+                tb_busyo_cd.Focus();
             }
             else
             {
                 //実績に同一のレコードがある場合
                 //選択画面の表示
-                int w_sentaku;   //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
-                w_sentaku = jisseki_select(w_dt);
-                if(w_sentaku == 1)
-                {
-                    //「新規」を押された場合は、生産スケジュールがあるかチェック
-                    //生産スケジュールレコードチェック
-                    w_dt = seisan_schedule_read();
-                    if (w_dt.Rows.Count <= 0)
-                    {
-                        //生産スケジュールに同一のレコードが無い場合
-                        disp_schedule_clear();
-                        disp_jisseki_clear();
-                        tb_seihin_cd.Text = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
-                        tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
-                        tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text, tb_koutei_cd.Text);
-                        tb_busyo_cd.Focus();
-                    }
-                    else
-                    {
-                        //生産スケジュールに同一のレコードが有る場合
-                        //生産スケジュール選択画面の表示
-                        w_sentaku = schedule_select(w_dt);
-                    }
-                }
+                jisseki_select(w_dt);
             }
         }
 
-        private DataTable seisan_schedule_read()
+        private void disp_juchu()
         {
+            tb_seihin_cd.Text = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+            tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
+            tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text, tb_koutei_cd.Text);
+            tb_juchu_su.Text = tss.get_juchu_juchu_su(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+            tb_seisan_zumi_su.Text = tss.get_seisan_su(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+        }
+
+        private void disp_schedule()
+        {
+            //リードオンリーにする
+            dgv_schedule.ReadOnly = true;
+            //行ヘッダーを非表示にする
+            dgv_schedule.RowHeadersVisible = false;
+            //カラム幅の自動調整（ヘッダーとセルの両方の最長幅に調整する）
+            dgv_schedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //セルの高さ変更不可
+            dgv_schedule.AllowUserToResizeRows = false;
+            //カラムヘッダーの高さ変更不可
+            dgv_schedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //削除不可にする（コードからは削除可）
+            dgv_schedule.AllowUserToDeleteRows = false;
+            //１行のみ選択可能（複数行の選択不可）
+            dgv_schedule.MultiSelect = false;
+            //セルを選択すると行全体が選択されるようにする
+            dgv_schedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //DataGridView1にユーザーが新しい行を追加できないようにする
+            dgv_schedule.AllowUserToAddRows = false;
+
+            dgv_schedule.DataSource = null;
+            dgv_schedule.DataSource = read_seisan_schedule();
+
+            dgv_schedule.Columns["seisan_yotei_date"].HeaderText = "生産予定日";
+            dgv_schedule.Columns["busyo_cd"].HeaderText = "部署CD";
+            dgv_schedule.Columns["busyo_name"].HeaderText = "部署名";
+            dgv_schedule.Columns["koutei_cd"].HeaderText = "工程CD";
+            dgv_schedule.Columns["koutei_name"].HeaderText = "工程名";
+            dgv_schedule.Columns["line_cd"].HeaderText = "ラインCD";
+            dgv_schedule.Columns["line_name"].HeaderText = "ライン名";
+            dgv_schedule.Columns["seq"].HeaderText = "SEQ";
+            dgv_schedule.Columns["torihikisaki_cd"].HeaderText = "取引先CD";
+            dgv_schedule.Columns["torihikisaki_name"].HeaderText = "取引先名";
+            dgv_schedule.Columns["juchu_cd1"].HeaderText = "受注CD1";
+            dgv_schedule.Columns["juchu_cd2"].HeaderText = "受注CD2";
+            dgv_schedule.Columns["seihin_cd"].HeaderText = "製品CD";
+            dgv_schedule.Columns["seihin_name"].HeaderText = "製品名";
+            dgv_schedule.Columns["seisankisyu"].HeaderText = "生産機種";
+            dgv_schedule.Columns["seisan_su"].HeaderText = "生産数";
+            dgv_schedule.Columns["start_time"].HeaderText = "開始時刻";
+            dgv_schedule.Columns["end_time"].HeaderText = "終了時刻";
+        }
+
+        private DataTable read_seisan_schedule()
+        {
+            //画面のキー項目を元に生産スケジュールを読み込む
+            //部署やラインをキー項目にしていない理由は、変更可能な項目な為（予定では第二生産だったが、第一生産で行った・・・等）
             DataTable w_dt = new DataTable();
             w_dt = tss.OracleSelect("select A.seisan_yotei_date seisan_yotei_date,"
                         + "a.busyo_cd busyo_cd,"
@@ -335,74 +338,50 @@ namespace TSS_SYSTEM
             return w_dt;
         }
 
-        private int schedule_select(DataTable in_dt)
+        private DataTable read_seisan_jisseki()
         {
-            int w_sentaku;   //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
-            DataTable w_sentaku_dt = new DataTable();   //選択された行を取得するためのデータテーブル
-            frm_select_dt frm_sd = new frm_select_dt();
-            //子画面のプロパティに値をセットする
-            frm_sd.w_form_text = "生産スケジュール選択";
-            frm_sd.w_lbl1_text = "生産スケジュールに同一の受注の生産予定が見つかりました。";
-            frm_sd.w_lbl2_text = "下記のリストから表示させたいスケジュールを選択してください。";
-            frm_sd.w_lbl3_text = "  「選択」：選択されたデータを表示して入力します。";
-            frm_sd.w_lbl4_text = "  「選択しない」：空白の状態で入力します。";
-            frm_sd.w_lbl4_text = "  「戻る」：入力し直します。";
-            frm_sd.w_select_dt = in_dt.Copy();
-            frm_sd.w_select_dt.Columns["seisan_yotei_date"].ColumnName = "生産予定日";
-            frm_sd.w_select_dt.Columns["busyo_cd"].ColumnName = "部署CD";
-            frm_sd.w_select_dt.Columns["busyo_name"].ColumnName = "部署名";
-            frm_sd.w_select_dt.Columns["koutei_cd"].ColumnName = "工程CD";
-            frm_sd.w_select_dt.Columns["koutei_name"].ColumnName = "工程名";
-            frm_sd.w_select_dt.Columns["line_cd"].ColumnName = "ラインCD";
-            frm_sd.w_select_dt.Columns["line_name"].ColumnName = "ライン名";
-            frm_sd.w_select_dt.Columns["seq"].ColumnName = "SEQ";
-            frm_sd.w_select_dt.Columns["torihikisaki_cd"].ColumnName = "取引先CD";
-            frm_sd.w_select_dt.Columns["torihikisaki_name"].ColumnName = "取引先名";
-            frm_sd.w_select_dt.Columns["juchu_cd1"].ColumnName = "受注CD1";
-            frm_sd.w_select_dt.Columns["juchu_cd2"].ColumnName = "受注CD2";
-            frm_sd.w_select_dt.Columns["seihin_cd"].ColumnName = "製品CD";
-            frm_sd.w_select_dt.Columns["seihin_name"].ColumnName = "製品名";
-            frm_sd.w_select_dt.Columns["seisankisyu"].ColumnName = "生産機種";
-            frm_sd.w_select_dt.Columns["seisan_su"].ColumnName = "生産数";
-            frm_sd.w_select_dt.Columns["start_time"].ColumnName = "開始時刻";
-            frm_sd.w_select_dt.Columns["end_time"].ColumnName = "終了時刻";
-            frm_sd.w_initial_row = 0;
-            frm_sd.w_btn1_text = "選択";
-            frm_sd.w_btn1_visible = true;
-            frm_sd.w_btn2_text = "選択しない";
-            frm_sd.w_btn2_visible = true;
-            frm_sd.w_btn3_text = "戻る";
-            frm_sd.w_btn3_visible = true;
-            //制御を子画面へ
-            frm_sd.ShowDialog();
-            //子画面から値を取得する
-            w_sentaku = frm_sd.w_select;
-            frm_sd.Dispose();
-            if (w_sentaku == 0)
-            {
-                //生産スケジュールを選択された場合
-                w_sentaku_dt = in_dt.Copy();
-                w_sentaku_dt.ImportRow(in_dt.Rows[frm_sd.w_select_row]);
-                disp_schedule_clear();
-                disp_jisseki_clear();
-                disp_schedule(w_sentaku_dt);
-                tb_busyo_cd.Focus();
-            }
-            if (w_sentaku == 1)
-            {
-                //選択しない
-                disp_seihin();
-            }
-            if (w_sentaku == 2)
-            {
-                //戻る
-            }
-            return w_sentaku;
+            DataTable w_dt = new DataTable();
+            w_dt = tss.OracleSelect("select a.seisan_jisseki_no seisan_jisseki_no,"
+                                    + "a.seisan_date seisan_date,"
+                                    + "a.busyo_cd busyo_cd,"
+                                    + "b.busyo_name busyo_name,"
+                                    + "a.koutei_cd koutei_cd,"
+                                    + "c.koutei_name koutei_name,"
+                                    + "a.line_cd line_cd,"
+                                    + "d.line_name line_name,"
+                                    + "a.torihikisaki_cd torihikisaki_cd,"
+                                    + "e.torihikisaki_name torihikisaki_name,"
+                                    + "a.juchu_cd1 juchu_cd1,"
+                                    + "a.juchu_cd2 juchu_cd2,"
+                                    + "a.seihin_cd seihin_cd,"
+                                    + "a.seihin_name seihin_name,"
+                                    + "a.seisan_su seisan_su,"
+                                    + "a.start_time start_time,"
+                                    + "a.end_time end_time,"
+                                    + "a.seisan_time seisan_time,"
+                                    + "a.tact_time tact_time,"
+                                    + "a.memo memo,"
+                                    + "a.nyuryoku_kbn nyuryoku_kbn,"
+                                    + "a.create_datetime create_datetime,"
+                                    + "a.update_datetime update_datetime"
+                                    + " from tss_seisan_jisseki_f a"
+                                    + " left outer join tss_busyo_m b on a.busyo_cd = b.busyo_cd"
+                                    + " left outer join tss_koutei_m c on a.koutei_cd = c.koutei_cd"
+                                    + " left outer join tss_line_m d on a.line_cd = d.line_cd"
+                                    + " left outer join tss_torihikisaki_m e on a.torihikisaki_cd = e.torihikisaki_cd"
+                                    + " where a.seisan_date = '" + tb_seisanbi.Text + "'"
+                                    + " and a.koutei_cd = '" + tb_koutei_cd.Text + "'"
+                                    + " and a.torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "'"
+                                    + " and a.juchu_cd1 = '" + tb_juchu_cd1.Text + "'"
+                                    + " and a.juchu_cd2 = '" + tb_juchu_cd2.Text + "'"
+                                    + " order by a.line_cd,a.start_time asc");
+            return w_dt;
         }
 
-        private int jisseki_select(DataTable in_dt)
+        private void jisseki_select(DataTable in_dt)
         {
-            int w_sentaku;   //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
+            int w_sentaku;      //押されたボタンのフラグ 0:選択 1:選択しない 2:戻る 
+            int w_select_row;   //選択された行
             DataTable w_sentaku_dt = new DataTable();   //選択された行を取得するためのデータテーブル
             frm_select_dt frm_sd = new frm_select_dt();
             //子画面のプロパティに値をセットする
@@ -416,9 +395,13 @@ namespace TSS_SYSTEM
             frm_sd.w_select_dt.Columns["seisan_jisseki_no"].ColumnName = "実績番号";
             frm_sd.w_select_dt.Columns["seisan_date"].ColumnName = "生産日";
             frm_sd.w_select_dt.Columns["busyo_cd"].ColumnName = "部署CD";
+            frm_sd.w_select_dt.Columns["busyo_name"].ColumnName = "部署名";
             frm_sd.w_select_dt.Columns["koutei_cd"].ColumnName = "工程CD";
+            frm_sd.w_select_dt.Columns["koutei_name"].ColumnName = "工程名";
             frm_sd.w_select_dt.Columns["line_cd"].ColumnName = "ラインCD";
+            frm_sd.w_select_dt.Columns["line_name"].ColumnName = "ライン名";
             frm_sd.w_select_dt.Columns["torihikisaki_cd"].ColumnName = "取引先CD";
+            frm_sd.w_select_dt.Columns["torihikisaki_name"].ColumnName = "取引先名";
             frm_sd.w_select_dt.Columns["juchu_cd1"].ColumnName = "受注CD1";
             frm_sd.w_select_dt.Columns["juchu_cd2"].ColumnName = "受注CD2";
             frm_sd.w_select_dt.Columns["seihin_cd"].ColumnName = "製品CD";
@@ -443,80 +426,32 @@ namespace TSS_SYSTEM
             frm_sd.ShowDialog();
             //子画面から値を取得する
             w_sentaku = frm_sd.w_select;
+            w_select_row = frm_sd.w_select_row;
 
             frm_sd.Dispose();
             if (w_sentaku == 0)
             {
-                //生産スケジュールを選択された場合
-                w_sentaku_dt = in_dt.Copy();
-                w_sentaku_dt.ImportRow(in_dt.Rows[frm_sd.w_select_row]);
-                disp_schedule_clear();
-                disp_jisseki_clear();
+                //選択された場合
+                w_sentaku_dt = in_dt.Clone();
+                w_sentaku_dt.ImportRow(in_dt.Rows[w_select_row]);
+                clear_seisan_jisseki();
                 disp_jisseki(w_sentaku_dt.Rows[0]["seisan_jisseki_no"].ToString());
+                disp_juchu();
+                disp_schedule();
                 tb_busyo_cd.Focus();
             }
             if (w_sentaku == 1)
             {
                 //選択しない
-                disp_seihin();
+                disp_juchu();
+                disp_schedule();
+                clear_seisan_jisseki();
+                tb_busyo_cd.Focus();
             }
             if (w_sentaku == 2)
             {
                 //戻る
             }
-            return w_sentaku;
-        }
-
-        private void disp_seihin()
-        {
-            tb_seihin_cd.Text = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
-            tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
-            tb_busyo_cd.Focus();
-        }
-
-        private void disp_schedule(DataTable in_dt)
-        {
-            if(in_dt == null || in_dt.Rows.Count <= 0)
-            {
-                return;
-            }
-            DataTable w_dt = new DataTable();
-            w_dt = tss.OracleSelect("select * from tss_seisan_schedule_f where seisan_yotei_date = '" + in_dt.Rows[0]["seisan_yotei_date"].ToString() + "' and busyo_cd = '" + in_dt.Rows[0]["busyo_cd"].ToString() + "' and  koutei_cd = '" +  in_dt.Rows[0]["koutei_cd"].ToString() + "' and line_cd = '" + in_dt.Rows[0]["line_cd"].ToString() + "' and seq = '" + in_dt.Rows[0]["seq"].ToString() + "'");
-            tb_seihin_cd.Text = w_dt.Rows[0]["seihin_cd"].ToString();
-            tb_seihin_name.Text = tss.get_seihin_name(tb_seihin_cd.Text);
-            tb_seisankisyu.Text = w_dt.Rows[0]["seisankisyu"].ToString();
-            tb_juchu_su.Text = w_dt.Rows[0]["juchu_su"].ToString();
-            tb_busyo_cd.Text = w_dt.Rows[0]["busyo_cd"].ToString();
-            tb_busyo_name.Text = tss.get_busyo_name(tb_busyo_cd.Text);
-            tb_line_cd.Text = w_dt.Rows[0]["line_cd"].ToString();
-            tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
-            tb_schedule_seq.Text = w_dt.Rows[0]["seq"].ToString();
-            tb_bikou.Text = w_dt.Rows[0]["bikou"].ToString();
-            tb_seisan_zumi_su.Text = w_dt.Rows[0]["seisan_zumi_su"].ToString();
-            tb_tact_time.Text = w_dt.Rows[0]["tact_time"].ToString();
-            tb_dandori_kousu.Text = w_dt.Rows[0]["dandori_kousu"].ToString();
-            tb_tuika_kousu.Text = w_dt.Rows[0]["tuika_kousu"].ToString();
-            tb_hoju_kousu.Text = w_dt.Rows[0]["hoju_kousu"].ToString();
-            DateTime w_start_time;
-            if (DateTime.TryParse(w_dt.Rows[0]["start_time"].ToString(), out w_start_time))
-            {
-                tb_start_time.Text = w_start_time.ToShortTimeString();
-            }
-            else
-            {
-                tb_start_time.Text = "00:00";
-            }
-            DateTime w_end_time;
-            if (DateTime.TryParse(w_dt.Rows[0]["end_time"].ToString(), out w_end_time))
-            {
-                tb_end_time.Text = w_end_time.ToShortTimeString();
-            }
-            else
-            {
-                tb_end_time.Text = "00:00";
-            }
-            tb_seisan_su.Text = w_dt.Rows[0]["seisan_su"].ToString();
-            tb_seisan_time.Text = w_dt.Rows[0]["seisan_time"].ToString();
         }
 
         private void disp_jisseki(string in_cd)
@@ -561,34 +496,12 @@ namespace TSS_SYSTEM
             tb_jisseki_seisan_su.Text = w_dt.Rows[0]["seisan_su"].ToString();
             tb_memo.Text = w_dt.Rows[0]["memo"].ToString();
             seisan_jikan_calc();
+            disp_schedule();
         }
 
-        private void disp_schedule_clear()
+        private void clear_seisan_jisseki()
         {
-            tb_seihin_cd.Text = "";
-            tb_seihin_name.Text = "";
-            tb_seisankisyu.Text = "";
-            tb_juchu_su.Text = "";
-            tb_busyo_cd.Text = "";
-            tb_busyo_name.Text = "";
-            tb_line_cd.Text = "";
-            tb_line_name.Text = "";
-            tb_schedule_seq.Text = "";
-            tb_bikou.Text = "";
-            tb_seisan_zumi_su.Text = "";
-            tb_tact_time.Text = "";
-            tb_dandori_kousu.Text = "";
-            tb_tuika_kousu.Text = "";
-            tb_hoju_kousu.Text = "";
-            tb_start_time.Text = "";
-            tb_end_time.Text = "";
-            tb_seisan_su.Text = "";
-            tb_seisan_time.Text = "";
-            tb_bcr.Text = "";
-        }
-
-        private void disp_jisseki_clear()
-        {
+            tb_jisseki_seq.Text = "";
             tb_jisseki_start_time.Text = "";
             tb_jisseki_end_time.Text = "";
             tb_jisseki_seisan_su.Text = "";
@@ -607,8 +520,20 @@ namespace TSS_SYSTEM
             tb_juchu_cd1.Text = "";
             tb_juchu_cd2.Text = "";
             tb_jisseki_seq.Text = "";
-            disp_jisseki_clear();
-            disp_schedule_clear();
+            tb_seihin_cd.Text = "";
+            tb_seihin_name.Text = "";
+            tb_seisankisyu.Text = "";
+            tb_juchu_su.Text = "";
+            tb_seisan_zumi_su.Text = "";
+            tb_bcr.Text = "";
+            tb_busyo_cd.Text = "";
+            tb_busyo_name.Text = "";
+            tb_line_cd.Text = "";
+            tb_line_name.Text = "";
+            tb_schedule_seq.Text = "";
+            clear_seisan_jisseki();
+            tb_seisanbi.Focus();
+            dgv_schedule.DataSource = null;
         }
 
         private void frm_seisan_jisseki_nyuuryoku_Load(object sender, EventArgs e)
@@ -648,12 +573,8 @@ namespace TSS_SYSTEM
         {
             if(tb_jisseki_start_time.Text != "" && tb_jisseki_start_time.Text != null)
             {
-                //string w_hhmm;
-                //w_hhmm = tss.check_HHMM(tb_jisseki_start_time.Text);
-                //if (w_hhmm != null)
                 if(tss.try_string_to_time(tb_jisseki_start_time.Text))
                 {
-                    //tb_jisseki_start_time.Text = w_hhmm;
                     tb_jisseki_start_time.Text = tss.out_time.ToShortTimeString();
                     seisan_jikan_calc();
                 }
@@ -670,12 +591,8 @@ namespace TSS_SYSTEM
         {
             if (tb_jisseki_end_time.Text != "" && tb_jisseki_end_time.Text != null)
             {
-                //string w_hhmm;
-                //w_hhmm = tss.check_HHMM(tb_jisseki_end_time.Text);
-                //if (w_hhmm != null)
                 if (tss.try_string_to_time(tb_jisseki_end_time.Text))
                 {
-                    //tb_jisseki_end_time.Text = w_hhmm;
                     tb_jisseki_end_time.Text = tss.out_time.ToShortTimeString();
                     seisan_jikan_calc();
                 }
@@ -779,17 +696,17 @@ namespace TSS_SYSTEM
             //10時休憩
             if (string.Compare(w_start_time.ToShortTimeString(), "10:00") <= 0 && string.Compare(w_end_time.ToShortTimeString(), "10:05") >= 0)
             {
-                w_kyuukei_time = w_kyuukei_time + 5;
+                w_kyuukei_time = w_kyuukei_time + 300;
             }
             //12時休憩
             if (string.Compare(w_start_time.ToShortTimeString(), "12:00") <= 0 && string.Compare(w_end_time.ToShortTimeString(), "12:40") >= 0)
             {
-                w_kyuukei_time = w_kyuukei_time + 40;
+                w_kyuukei_time = w_kyuukei_time + 2400;
             }
             //15時休憩
             if (string.Compare(w_start_time.ToShortTimeString(), "15:00") <= 0 && string.Compare(w_end_time.ToShortTimeString(), "15:10") >= 0)
             {
-                w_kyuukei_time = w_kyuukei_time + 10;
+                w_kyuukei_time = w_kyuukei_time + 600;
             }
             //生産時間から、求まった休憩時間の合計を引く
             TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
@@ -798,7 +715,7 @@ namespace TSS_SYSTEM
             w_dou_seisan_jikan = w_ts_seisan_jikan.TotalSeconds;    //生産時間を秒に変換
             w_dou_tact_time = w_dou_seisan_jikan / w_seisan_su;
             //生産時間の表示
-            tb_jisseki_seisan_time.Text = w_ts_seisan_jikan.TotalMinutes.ToString();
+            tb_jisseki_seisan_time.Text = w_ts_seisan_jikan.TotalMinutes.ToString("#.##");
             //タクトタイムの表示
             tb_jisseki_tact_time.Text = w_dou_tact_time.ToString("#.##");
         }
@@ -899,17 +816,25 @@ namespace TSS_SYSTEM
                 else
                 {
                     //実績データ新規書込み
-                    jisseki_insert();
-                    //受注の生産数更新
-                    juchu_kousin();
+                    if(jisseki_insert())
+                    {
+                        //受注の生産数更新
+                        juchu_kousin();
+                    }
+                    else
+                    {
+                        MessageBox.Show("実績の登録でエラーが発生しました。\n実績の登録、及び受注の更新は行われません。");
+                    }
                 }
             }
             //MessageBox.Show("登録しました。");
             gamen_clear();
         }
 
-        private void jisseki_insert()
+        private bool jisseki_insert()
         {
+            bool w_bl;
+            w_bl = true;
             decimal w_dou_seq;
             w_dou_seq = tss.GetSeq("12");
             if(w_dou_seq == 0)
@@ -993,7 +918,13 @@ namespace TSS_SYSTEM
             if(tss.OracleInsert(w_sql) == true)
             {
                 MessageBox.Show("登録しました。");
+                w_bl = true;
             }
+            else
+            {
+                w_bl = false;
+            }
+            return w_bl;
         }
 
         private void jisseki_update()
@@ -1005,7 +936,7 @@ namespace TSS_SYSTEM
             DateTime.TryParse(tb_seisanbi.Text + " " + tb_jisseki_start_time.Text, out w_start_time);
             DateTime.TryParse(tb_seisanbi.Text + " " + tb_jisseki_end_time.Text, out w_end_time);
             //時刻が8:30より前（00:00～08:29）の場合、翌日の時刻とする
-            if(string.Compare(tb_jisseki_start_time.Text,"08:30") < 0) 
+            if(string.Compare(tb_jisseki_start_time.Text,"08:30") < 0)
             {
                 w_start_time = w_start_time.AddDays(1);
                 w_end_time = w_end_time.AddDays(1);
@@ -1075,6 +1006,10 @@ namespace TSS_SYSTEM
             DataTable w_dt = new DataTable();
             //生産工程を調べ、生産カウント工程だった場合は、受注マスタの生産数を更新する
 
+            //受注マスタの生産数の更新について
+            //同一受注の同一部署、同一工程の実績数の合計を毎回求めて書き込んでいるので、
+            //生産実績の「新規入力」であろうと「更新」であろうと関係なく更新する
+
             //生産工程マスタの確認
             w_dt = tss.OracleSelect("select * from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "' and busyo_cd = '" + tb_busyo_cd.Text + "' and koutei_cd = '" + tb_koutei_cd.Text + "'");
             if(w_dt == null || w_dt.Rows.Count <= 0 || w_dt.Rows.Count >= 2)
@@ -1096,6 +1031,11 @@ namespace TSS_SYSTEM
                     return;
                 }
             }
+        }
+
+        private void btn_gamen_clear_Click(object sender, EventArgs e)
+        {
+            gamen_clear();
         }
     }
 }

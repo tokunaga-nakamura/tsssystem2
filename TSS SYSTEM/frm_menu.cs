@@ -1363,5 +1363,10 @@ namespace TSS_SYSTEM
             frm_sjn.ShowDialog(this);
             frm_sjn.Dispose();
         }
+
+        private void btn_seisan_schedule_print_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

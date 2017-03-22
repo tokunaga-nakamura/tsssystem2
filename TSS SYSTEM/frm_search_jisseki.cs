@@ -344,6 +344,7 @@ namespace TSS_SYSTEM
                 }
                 sql = sql + sql_where[i - 1];
             }
+            sql = sql + " order by a.seisan_date,a.busyo_cd,a.koutei_cd,a.line_cd,start_time asc";
             w_dt_kensaku = tss.OracleSelect(sql);
             list_disp(w_dt_kensaku);
         }

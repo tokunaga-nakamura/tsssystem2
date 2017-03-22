@@ -244,6 +244,10 @@ namespace TSS_SYSTEM
             dgv_m.Columns[1].HeaderText = "製品名";
             dgv_m.Columns[2].HeaderText = "削除フラグ";
         }
-      
+
+        private void dgv_m_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            form_close_true();
+        }
     }
 }

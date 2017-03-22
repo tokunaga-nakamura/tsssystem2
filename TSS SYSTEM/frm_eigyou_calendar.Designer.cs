@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_eigyou_calendar));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -43,8 +45,7 @@
             this.dgv_calendar = new System.Windows.Forms.DataGridView();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -94,6 +96,24 @@
             this.splitContainer1.SplitterDistance = 63;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(93, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(370, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "土日・祝日、及び生産を行わない日（運動会や旅行等）も休日としてください。";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(93, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(241, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "生産スケジュールの自動生成などに使用されます。";
             // 
             // label1
             // 
@@ -271,23 +291,14 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(241, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "生産スケジュールの自動生成などに使用されます。";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(93, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(274, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "生産を行わない（運動会や旅行等）も休日としてください。";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(423, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(319, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "システム内では、営業区分が1や2でない日は営業日と判断します。";
             // 
             // frm_eigyou_calendar
             // 
@@ -340,5 +351,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }

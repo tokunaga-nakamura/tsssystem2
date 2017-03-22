@@ -58,6 +58,8 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -166,6 +168,8 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.label3);
+            this.splitContainer3.Panel1.Controls.Add(this.label2);
             this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer3.Panel1.Controls.Add(this.cb_meisai);
             this.splitContainer3.Panel1.Controls.Add(this.btn_hyouji);
@@ -465,6 +469,24 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(672, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "上段：生産時間（単位は画面左の設定）";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(672, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "下段：ライン負荷率";
+            // 
             // frm_seisan_kousu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -537,5 +559,7 @@
         private System.Windows.Forms.RadioButton rb_hh;
         private System.Windows.Forms.RadioButton rb_ss;
         private System.Windows.Forms.RadioButton rb_mm;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

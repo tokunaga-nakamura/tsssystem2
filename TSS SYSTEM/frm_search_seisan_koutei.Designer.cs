@@ -65,7 +65,7 @@
             // 
             // btn_kensaku
             // 
-            this.btn_kensaku.Location = new System.Drawing.Point(326, 44);
+            this.btn_kensaku.Location = new System.Drawing.Point(495, 48);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
             this.btn_kensaku.TabIndex = 12;
@@ -75,7 +75,7 @@
             // 
             // tb_seihin_name
             // 
-            this.tb_seihin_name.Location = new System.Drawing.Point(88, 48);
+            this.tb_seihin_name.Location = new System.Drawing.Point(87, 48);
             this.tb_seihin_name.MaxLength = 40;
             this.tb_seihin_name.Name = "tb_seihin_name";
             this.tb_seihin_name.Size = new System.Drawing.Size(204, 19);
@@ -84,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(174, 26);
+            this.label1.Location = new System.Drawing.Point(202, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 6;
@@ -92,10 +92,10 @@
             // 
             // tb_seihin_cd2
             // 
-            this.tb_seihin_cd2.Location = new System.Drawing.Point(197, 23);
-            this.tb_seihin_cd2.MaxLength = 6;
+            this.tb_seihin_cd2.Location = new System.Drawing.Point(225, 23);
+            this.tb_seihin_cd2.MaxLength = 16;
             this.tb_seihin_cd2.Name = "tb_seihin_cd2";
-            this.tb_seihin_cd2.Size = new System.Drawing.Size(95, 19);
+            this.tb_seihin_cd2.Size = new System.Drawing.Size(109, 19);
             this.tb_seihin_cd2.TabIndex = 5;
             // 
             // btn_cancel
@@ -117,6 +117,7 @@
             this.dgv_m.RowTemplate.Height = 21;
             this.dgv_m.Size = new System.Drawing.Size(580, 431);
             this.dgv_m.TabIndex = 0;
+            this.dgv_m.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_m_CellMouseDoubleClick);
             // 
             // splitContainer2
             // 
@@ -144,10 +145,10 @@
             // 
             // tb_seihin_cd1
             // 
-            this.tb_seihin_cd1.Location = new System.Drawing.Point(88, 23);
-            this.tb_seihin_cd1.MaxLength = 6;
+            this.tb_seihin_cd1.Location = new System.Drawing.Point(87, 23);
+            this.tb_seihin_cd1.MaxLength = 16;
             this.tb_seihin_cd1.Name = "tb_seihin_cd1";
-            this.tb_seihin_cd1.Size = new System.Drawing.Size(80, 19);
+            this.tb_seihin_cd1.Size = new System.Drawing.Size(109, 19);
             this.tb_seihin_cd1.TabIndex = 4;
             // 
             // textBox1

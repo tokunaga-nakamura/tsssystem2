@@ -173,8 +173,6 @@
             this.line53 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line54 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line55 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line57 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line65 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line77 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line78 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line79 = new GrapeCity.ActiveReports.SectionReportModel.Line();
@@ -217,7 +215,6 @@
             this.line72 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line73 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line86 = new GrapeCity.ActiveReports.SectionReportModel.Line();
-            this.line76 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line69 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line75 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line74 = new GrapeCity.ActiveReports.SectionReportModel.Line();
@@ -242,6 +239,32 @@
             this.line62 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line105 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             this.line61 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line76 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line57 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line65 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line60 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line64 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line87 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line108 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line109 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line114 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line115 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line116 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line117 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line118 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line119 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line120 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line121 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line122 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line123 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line124 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line125 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line126 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line127 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line128 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line129 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line130 = new GrapeCity.ActiveReports.SectionReportModel.Line();
+            this.line131 = new GrapeCity.ActiveReports.SectionReportModel.Line();
             ((System.ComponentModel.ISupportInitialize)(this.textBox102)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox96)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox63)).BeginInit();
@@ -499,8 +522,6 @@
             this.line53,
             this.line54,
             this.line55,
-            this.line57,
-            this.line65,
             this.line77,
             this.line78,
             this.line79,
@@ -543,7 +564,6 @@
             this.line72,
             this.line73,
             this.line86,
-            this.line76,
             this.line69,
             this.line75,
             this.line74,
@@ -567,7 +587,33 @@
             this.line63,
             this.line62,
             this.line105,
-            this.line61});
+            this.line61,
+            this.line76,
+            this.line57,
+            this.line65,
+            this.line60,
+            this.line64,
+            this.line87,
+            this.line108,
+            this.line109,
+            this.line114,
+            this.line115,
+            this.line116,
+            this.line117,
+            this.line118,
+            this.line119,
+            this.line120,
+            this.line121,
+            this.line122,
+            this.line123,
+            this.line124,
+            this.line125,
+            this.line126,
+            this.line127,
+            this.line128,
+            this.line129,
+            this.line130,
+            this.line131});
             this.detail.Height = 7.082173F;
             this.detail.Name = "detail";
             // 
@@ -575,281 +621,283 @@
             // 
             this.textBox102.DataField = "= (seq_no1 != \" \")?seq_no1 + \"/\" + seq_no2:\"\"";
             this.textBox102.Height = 0.1562992F;
-            this.textBox102.Left = 4.266142F;
+            this.textBox102.Left = 3.698819F;
             this.textBox102.Name = "textBox102";
             this.textBox102.OutputFormat = resources.GetString("textBox102.OutputFormat");
             this.textBox102.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
             this.textBox102.Style = "font-size: 8pt; text-align: center; vertical-align: middle; ddo-char-set: 1";
             this.textBox102.Text = null;
-            this.textBox102.Top = 1.364961F;
-            this.textBox102.Width = 0.3661418F;
+            this.textBox102.Top = 0.3232284F;
+            this.textBox102.Width = 0.4909449F;
             // 
             // textBox96
             // 
             this.textBox96.Height = 0.1562992F;
-            this.textBox96.Left = 3.637402F;
+            this.textBox96.Left = 3.299213F;
             this.textBox96.Name = "textBox96";
             this.textBox96.Style = "font-size: 8pt; text-align: center; vertical-align: middle; ddo-char-set: 1";
-            this.textBox96.Text = "生産工程順";
-            this.textBox96.Top = 1.364961F;
-            this.textBox96.Width = 0.6287398F;
+            this.textBox96.Text = "工程順";
+            this.textBox96.Top = 0.3232284F;
+            this.textBox96.Width = 0.3996062F;
             // 
             // textBox63
             // 
             this.textBox63.DataField = "= (seq1 != \" \")?seq1 + \"/\" + seq2:\"\"";
-            this.textBox63.Height = 0.3125983F;
-            this.textBox63.Left = 4.037008F;
+            this.textBox63.Height = 0.2503937F;
+            this.textBox63.Left = 3.698819F;
             this.textBox63.Name = "textBox63";
-            this.textBox63.Style = "font-size: 14.25pt; text-align: center; vertical-align: middle";
+            this.textBox63.Style = "font-size: 12pt; text-align: center; vertical-align: middle";
             this.textBox63.Text = null;
-            this.textBox63.Top = 1.052362F;
-            this.textBox63.Width = 0.5952759F;
+            this.textBox63.Top = 0.07283467F;
+            this.textBox63.Width = 0.4909449F;
             // 
             // textBox55
             // 
-            this.textBox55.Height = 0.3125983F;
-            this.textBox55.Left = 3.637402F;
+            this.textBox55.Height = 0.2503937F;
+            this.textBox55.Left = 3.299213F;
             this.textBox55.Name = "textBox55";
             this.textBox55.Style = "font-size: 8.25pt; text-align: center; vertical-align: middle";
             this.textBox55.Text = "生産順";
-            this.textBox55.Top = 1.052362F;
+            this.textBox55.Top = 0.07283467F;
             this.textBox55.Width = 0.399606F;
             // 
             // textBox95
             // 
             this.textBox95.Height = 0.1562992F;
-            this.textBox95.Left = 1.834252F;
+            this.textBox95.Left = 3.022441F;
             this.textBox95.Name = "textBox95";
-            this.textBox95.Style = "background-color: Gainsboro; font-size: 8.25pt; vertical-align: middle";
+            this.textBox95.Style = "background-color: DimGray; color: White; font-size: 8.25pt; vertical-align: middl" +
+    "e";
             this.textBox95.Text = "受注コード2";
-            this.textBox95.Top = 1.208662F;
-            this.textBox95.Width = 0.6665357F;
+            this.textBox95.Top = 0.7086615F;
+            this.textBox95.Width = 0.5830708F;
             // 
             // textBox16
             // 
             this.textBox16.DataField = "seihin_name";
             this.textBox16.Height = 0.1562992F;
-            this.textBox16.Left = 0.6976379F;
+            this.textBox16.Left = 2.251181F;
             this.textBox16.Name = "textBox16";
             this.textBox16.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
-            this.textBox16.Style = "background-color: NavajoWhite; font-size: 9pt; vertical-align: middle";
+            this.textBox16.Style = "background-color: NavajoWhite; font-size: 9pt; font-weight: normal; vertical-alig" +
+    "n: middle";
             this.textBox16.Text = null;
-            this.textBox16.Top = 1.52126F;
-            this.textBox16.Width = 3.93504F;
+            this.textBox16.Top = 1.520473F;
+            this.textBox16.Width = 2.338583F;
             // 
             // textBox86
             // 
             this.textBox86.Height = 0.4165354F;
-            this.textBox86.Left = 2.659449F;
+            this.textBox86.Left = 1.73189F;
             this.textBox86.Name = "textBox86";
             this.textBox86.Style = "font-size: 7pt; text-align: center; vertical-align: middle; ddo-char-set: 1; ddo-" +
     "font-vertical: true";
             this.textBox86.Text = "ラ\r\nイ\r\nン\r\n名";
-            this.textBox86.Top = 0.5523623F;
+            this.textBox86.Top = 1.031102F;
             this.textBox86.Width = 0.1866143F;
             // 
             // textBox8
             // 
             this.textBox8.Height = 0.103937F;
-            this.textBox8.Left = 0.697638F;
+            this.textBox8.Left = 2.251181F;
             this.textBox8.Name = "textBox8";
             this.textBox8.Style = "font-size: 5pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
             this.textBox8.Text = "※「生産機種」は、製品名と異なる名称の製品を生産する場合に表示されます";
-            this.textBox8.Top = 1.833858F;
-            this.textBox8.Width = 2.438189F;
+            this.textBox8.Top = 1.833071F;
+            this.textBox8.Width = 2.338583F;
             // 
             // textBox74
             // 
             this.textBox74.DataField = "member09";
             this.textBox74.Height = 0.1979167F;
-            this.textBox74.Left = 0.2149606F;
+            this.textBox74.Left = 0.2488189F;
             this.textBox74.Name = "textBox74";
             this.textBox74.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox74.Style = "vertical-align: middle";
             this.textBox74.Text = null;
-            this.textBox74.Top = 2.416929F;
+            this.textBox74.Top = 2.385827F;
             this.textBox74.Width = 1.104331F;
             // 
             // textBox76
             // 
             this.textBox76.DataField = "member10";
             this.textBox76.Height = 0.1979167F;
-            this.textBox76.Left = 1.319291F;
+            this.textBox76.Left = 1.35315F;
             this.textBox76.Name = "textBox76";
             this.textBox76.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox76.Style = "vertical-align: middle";
             this.textBox76.Text = null;
-            this.textBox76.Top = 2.416929F;
+            this.textBox76.Top = 2.385827F;
             this.textBox76.Width = 1.104331F;
             // 
             // textBox83
             // 
             this.textBox83.DataField = "member11";
             this.textBox83.Height = 0.1979167F;
-            this.textBox83.Left = 2.423621F;
+            this.textBox83.Left = 2.457479F;
             this.textBox83.Name = "textBox83";
             this.textBox83.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox83.Style = "vertical-align: middle";
             this.textBox83.Text = null;
-            this.textBox83.Top = 2.416929F;
+            this.textBox83.Top = 2.385827F;
             this.textBox83.Width = 1.104331F;
             // 
             // textBox30
             // 
             this.textBox30.DataField = "member12";
             this.textBox30.Height = 0.1979167F;
-            this.textBox30.Left = 3.527952F;
+            this.textBox30.Left = 3.56181F;
             this.textBox30.Name = "textBox30";
             this.textBox30.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox30.Style = "vertical-align: middle";
             this.textBox30.Text = null;
-            this.textBox30.Top = 2.416929F;
-            this.textBox30.Width = 1.104331F;
+            this.textBox30.Top = 2.385827F;
+            this.textBox30.Width = 1.027954F;
             // 
             // textBox29
             // 
             this.textBox29.DataField = "member08";
             this.textBox29.Height = 0.1979167F;
-            this.textBox29.Left = 3.527952F;
+            this.textBox29.Left = 3.56181F;
             this.textBox29.Name = "textBox29";
             this.textBox29.Style = "vertical-align: middle";
             this.textBox29.Text = null;
-            this.textBox29.Top = 2.218897F;
-            this.textBox29.Width = 1.104331F;
+            this.textBox29.Top = 2.187795F;
+            this.textBox29.Width = 1.027954F;
             // 
             // textBox27
             // 
             this.textBox27.DataField = "member07";
             this.textBox27.Height = 0.1979167F;
-            this.textBox27.Left = 2.423621F;
+            this.textBox27.Left = 2.457479F;
             this.textBox27.Name = "textBox27";
             this.textBox27.Style = "vertical-align: middle";
             this.textBox27.Text = null;
-            this.textBox27.Top = 2.218897F;
+            this.textBox27.Top = 2.187795F;
             this.textBox27.Width = 1.104331F;
             // 
             // textBox25
             // 
             this.textBox25.DataField = "member06";
             this.textBox25.Height = 0.1979167F;
-            this.textBox25.Left = 1.319291F;
+            this.textBox25.Left = 1.35315F;
             this.textBox25.Name = "textBox25";
             this.textBox25.Style = "vertical-align: middle";
             this.textBox25.Text = null;
-            this.textBox25.Top = 2.218897F;
+            this.textBox25.Top = 2.187795F;
             this.textBox25.Width = 1.104331F;
             // 
             // textBox31
             // 
             this.textBox31.DataField = "member05";
             this.textBox31.Height = 0.1979167F;
-            this.textBox31.Left = 0.2149606F;
+            this.textBox31.Left = 0.2488189F;
             this.textBox31.Name = "textBox31";
             this.textBox31.Style = "vertical-align: middle";
             this.textBox31.Text = null;
-            this.textBox31.Top = 2.218897F;
+            this.textBox31.Top = 2.187795F;
             this.textBox31.Width = 1.104331F;
             // 
             // textBox20
             // 
             this.textBox20.DataField = "member01";
             this.textBox20.Height = 0.1979167F;
-            this.textBox20.Left = 0.2149606F;
+            this.textBox20.Left = 0.2488189F;
             this.textBox20.Name = "textBox20";
             this.textBox20.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox20.Style = "vertical-align: middle";
             this.textBox20.Text = null;
-            this.textBox20.Top = 2.020866F;
+            this.textBox20.Top = 1.989764F;
             this.textBox20.Width = 1.104331F;
             // 
             // textBox22
             // 
             this.textBox22.DataField = "member02";
             this.textBox22.Height = 0.1979167F;
-            this.textBox22.Left = 1.319291F;
+            this.textBox22.Left = 1.35315F;
             this.textBox22.Name = "textBox22";
             this.textBox22.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox22.Style = "vertical-align: middle";
             this.textBox22.Text = null;
-            this.textBox22.Top = 2.020866F;
+            this.textBox22.Top = 1.989764F;
             this.textBox22.Width = 1.104331F;
             // 
             // textBox72
             // 
             this.textBox72.DataField = "member04";
             this.textBox72.Height = 0.1979167F;
-            this.textBox72.Left = 3.528347F;
+            this.textBox72.Left = 3.562206F;
             this.textBox72.Name = "textBox72";
             this.textBox72.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox72.Style = "vertical-align: middle";
             this.textBox72.Text = null;
-            this.textBox72.Top = 2.020866F;
-            this.textBox72.Width = 1.104331F;
+            this.textBox72.Top = 1.989764F;
+            this.textBox72.Width = 1.027558F;
             // 
             // textBox73
             // 
             this.textBox73.DataField = "member03";
             this.textBox73.Height = 0.1979167F;
-            this.textBox73.Left = 2.423621F;
+            this.textBox73.Left = 2.457479F;
             this.textBox73.Name = "textBox73";
             this.textBox73.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox73.Style = "vertical-align: middle";
             this.textBox73.Text = null;
-            this.textBox73.Top = 2.020866F;
+            this.textBox73.Top = 1.989764F;
             this.textBox73.Width = 1.104331F;
             // 
             // textBox84
             // 
             this.textBox84.DataField = "member08";
             this.textBox84.Height = 0.1979167F;
-            this.textBox84.Left = 3.528347F;
+            this.textBox84.Left = 3.562206F;
             this.textBox84.Name = "textBox84";
             this.textBox84.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox84.Style = "vertical-align: middle";
             this.textBox84.Text = null;
-            this.textBox84.Top = 2.218897F;
-            this.textBox84.Width = 1.104331F;
+            this.textBox84.Top = 2.187795F;
+            this.textBox84.Width = 1.027558F;
             // 
             // textBox82
             // 
             this.textBox82.DataField = "member07";
             this.textBox82.Height = 0.1979167F;
-            this.textBox82.Left = 2.424016F;
+            this.textBox82.Left = 2.457875F;
             this.textBox82.Name = "textBox82";
             this.textBox82.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox82.Style = "vertical-align: middle";
             this.textBox82.Text = null;
-            this.textBox82.Top = 2.218897F;
+            this.textBox82.Top = 2.187795F;
             this.textBox82.Width = 1.104331F;
             // 
             // textBox75
             // 
             this.textBox75.DataField = "member06";
             this.textBox75.Height = 0.1979167F;
-            this.textBox75.Left = 1.319291F;
+            this.textBox75.Left = 1.35315F;
             this.textBox75.Name = "textBox75";
             this.textBox75.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox75.Style = "vertical-align: middle";
             this.textBox75.Text = null;
-            this.textBox75.Top = 2.218897F;
+            this.textBox75.Top = 2.187795F;
             this.textBox75.Width = 1.104331F;
             // 
             // textBox85
             // 
             this.textBox85.DataField = "member05";
             this.textBox85.Height = 0.1979167F;
-            this.textBox85.Left = 0.2149606F;
+            this.textBox85.Left = 0.2488189F;
             this.textBox85.Name = "textBox85";
             this.textBox85.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox85.Style = "vertical-align: middle";
             this.textBox85.Text = null;
-            this.textBox85.Top = 2.218897F;
+            this.textBox85.Top = 2.187795F;
             this.textBox85.Width = 1.104331F;
             // 
             // textBox105
             // 
             this.textBox105.Height = 0.1251969F;
-            this.textBox105.Left = 3.812599F;
+            this.textBox105.Left = 3.753937F;
             this.textBox105.Name = "textBox105";
             this.textBox105.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.textBox105.Text = "品質管理";
@@ -859,214 +907,216 @@
             // textBox9
             // 
             this.textBox9.Height = 0.1562992F;
-            this.textBox9.Left = 0.03110236F;
+            this.textBox9.Left = 1.354725F;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Style = "background-color: Gainsboro; font-size: 8.25pt; vertical-align: middle";
+            this.textBox9.Style = "background-color: DimGray; color: White; font-size: 8.25pt; vertical-align: middl" +
+    "e";
             this.textBox9.Text = "取引先コード";
-            this.textBox9.Top = 1.052362F;
+            this.textBox9.Top = 0.5523623F;
             this.textBox9.Width = 0.6665354F;
             // 
             // textBox10
             // 
             this.textBox10.DataField = "torihikisaki_cd";
             this.textBox10.Height = 0.1562992F;
-            this.textBox10.Left = 0.6976379F;
+            this.textBox10.Left = 2.02126F;
             this.textBox10.Name = "textBox10";
             this.textBox10.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox10.Style = "font-size: 9pt; vertical-align: middle";
             this.textBox10.Text = null;
-            this.textBox10.Top = 1.052362F;
+            this.textBox10.Top = 0.5523623F;
             this.textBox10.Width = 0.4775589F;
             // 
             // textBox11
             // 
             this.textBox11.Height = 0.1562992F;
-            this.textBox11.Left = 1.834252F;
+            this.textBox11.Left = 3.059056F;
             this.textBox11.Name = "textBox11";
             this.textBox11.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox11.Text = "受注数";
-            this.textBox11.Top = 1.364961F;
-            this.textBox11.Width = 0.6665354F;
+            this.textBox11.Top = 1.029922F;
+            this.textBox11.Width = 0.3850396F;
             // 
             // textBox12
             // 
             this.textBox12.DataField = "juchu_su";
             this.textBox12.Height = 0.1562992F;
-            this.textBox12.Left = 2.500787F;
+            this.textBox12.Left = 3.444095F;
             this.textBox12.Name = "textBox12";
             this.textBox12.OutputFormat = resources.GetString("textBox12.OutputFormat");
             this.textBox12.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
             this.textBox12.Style = "font-size: 9pt; text-align: right; vertical-align: middle";
             this.textBox12.Text = null;
-            this.textBox12.Top = 1.364961F;
+            this.textBox12.Top = 1.030315F;
             this.textBox12.Width = 1.136614F;
             // 
             // textBox13
             // 
             this.textBox13.Height = 0.1562992F;
-            this.textBox13.Left = 0.03110236F;
+            this.textBox13.Left = 1.354725F;
             this.textBox13.Name = "textBox13";
-            this.textBox13.Style = "background-color: Gainsboro; font-size: 8.25pt; vertical-align: middle";
+            this.textBox13.Style = "background-color: DimGray; color: White; font-size: 8.25pt; vertical-align: middl" +
+    "e";
             this.textBox13.Text = "受注コード1";
-            this.textBox13.Top = 1.208662F;
-            this.textBox13.Width = 0.6665357F;
+            this.textBox13.Top = 0.7086615F;
+            this.textBox13.Width = 0.5830708F;
             // 
             // textBox14
             // 
             this.textBox14.DataField = "torihikisaki_name";
             this.textBox14.Height = 0.1562992F;
-            this.textBox14.Left = 1.175197F;
+            this.textBox14.Left = 2.498819F;
             this.textBox14.Name = "textBox14";
             this.textBox14.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox14.Style = "font-size: 9pt; vertical-align: middle";
             this.textBox14.Text = null;
-            this.textBox14.Top = 1.052362F;
-            this.textBox14.Width = 2.462205F;
+            this.textBox14.Top = 0.5523623F;
+            this.textBox14.Width = 2.090945F;
             // 
             // textBox15
             // 
             this.textBox15.Height = 0.1562992F;
-            this.textBox15.Left = 0.03110236F;
+            this.textBox15.Left = 1.751181F;
             this.textBox15.Name = "textBox15";
             this.textBox15.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox15.Text = "製品名";
-            this.textBox15.Top = 1.52126F;
-            this.textBox15.Width = 0.6665355F;
+            this.textBox15.Top = 1.520473F;
+            this.textBox15.Width = 0.4999999F;
             // 
             // textBox17
             // 
             this.textBox17.Height = 0.1562992F;
-            this.textBox17.Left = 0.03110236F;
+            this.textBox17.Left = 1.751181F;
             this.textBox17.Name = "textBox17";
             this.textBox17.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox17.Text = "生産機種";
-            this.textBox17.Top = 1.677559F;
-            this.textBox17.Width = 0.6665355F;
+            this.textBox17.Top = 1.676772F;
+            this.textBox17.Width = 0.4999999F;
             // 
             // textBox18
             // 
             this.textBox18.DataField = "seisankisyu";
             this.textBox18.Height = 0.1562992F;
-            this.textBox18.Left = 0.6976379F;
+            this.textBox18.Left = 2.251181F;
             this.textBox18.Name = "textBox18";
             this.textBox18.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox18.Style = "background-color: NavajoWhite; font-size: 9pt; font-weight: bold; vertical-align:" +
     " middle";
             this.textBox18.Text = null;
-            this.textBox18.Top = 1.677559F;
-            this.textBox18.Width = 3.941733F;
+            this.textBox18.Top = 1.676772F;
+            this.textBox18.Width = 2.338583F;
             // 
             // textBox19
             // 
             this.textBox19.Height = 0.5940945F;
-            this.textBox19.Left = 0.02795276F;
+            this.textBox19.Left = 0.07795237F;
             this.textBox19.Name = "textBox19";
             this.textBox19.Style = "font-size: 8.25pt; text-align: center; vertical-align: middle; ddo-font-vertical:" +
     " true";
             this.textBox19.Text = "作業者";
-            this.textBox19.Top = 2.020866F;
+            this.textBox19.Top = 1.989764F;
             this.textBox19.Width = 0.1870079F;
             // 
             // textBox21
             // 
             this.textBox21.DataField = "member04";
             this.textBox21.Height = 0.1979167F;
-            this.textBox21.Left = 3.527952F;
+            this.textBox21.Left = 3.56181F;
             this.textBox21.Name = "textBox21";
             this.textBox21.Style = "vertical-align: middle";
             this.textBox21.Text = null;
-            this.textBox21.Top = 2.020866F;
-            this.textBox21.Width = 1.104331F;
+            this.textBox21.Top = 1.989764F;
+            this.textBox21.Width = 1.027954F;
             // 
             // textBox23
             // 
             this.textBox23.DataField = "member03";
             this.textBox23.Height = 0.1979167F;
-            this.textBox23.Left = 2.423621F;
+            this.textBox23.Left = 2.457479F;
             this.textBox23.Name = "textBox23";
             this.textBox23.Style = "vertical-align: middle";
             this.textBox23.Text = null;
-            this.textBox23.Top = 2.020866F;
+            this.textBox23.Top = 1.989764F;
             this.textBox23.Width = 1.104331F;
             // 
             // textBox24
             // 
             this.textBox24.DataField = "member09";
             this.textBox24.Height = 0.1979167F;
-            this.textBox24.Left = 0.2149606F;
+            this.textBox24.Left = 0.2488189F;
             this.textBox24.Name = "textBox24";
             this.textBox24.Style = "vertical-align: middle";
             this.textBox24.Text = null;
-            this.textBox24.Top = 2.416929F;
+            this.textBox24.Top = 2.385827F;
             this.textBox24.Width = 1.104331F;
             // 
             // textBox26
             // 
             this.textBox26.DataField = "member10";
             this.textBox26.Height = 0.1979167F;
-            this.textBox26.Left = 1.319291F;
+            this.textBox26.Left = 1.35315F;
             this.textBox26.Name = "textBox26";
             this.textBox26.Style = "vertical-align: middle";
             this.textBox26.Text = null;
-            this.textBox26.Top = 2.416929F;
+            this.textBox26.Top = 2.385827F;
             this.textBox26.Width = 1.104331F;
             // 
             // textBox28
             // 
             this.textBox28.DataField = "member11";
             this.textBox28.Height = 0.1979167F;
-            this.textBox28.Left = 2.423621F;
+            this.textBox28.Left = 2.457479F;
             this.textBox28.Name = "textBox28";
             this.textBox28.Style = "vertical-align: middle";
             this.textBox28.Text = null;
-            this.textBox28.Top = 2.416929F;
+            this.textBox28.Top = 2.385827F;
             this.textBox28.Width = 1.104331F;
             // 
             // textBox32
             // 
-            this.textBox32.Height = 0.5208662F;
-            this.textBox32.Left = 0.03110236F;
+            this.textBox32.Height = 0.5208666F;
+            this.textBox32.Left = 0.07559056F;
             this.textBox32.Name = "textBox32";
             this.textBox32.Style = "font-size: 8.25pt; text-align: center; vertical-align: middle";
             this.textBox32.Text = "連絡事項\r\n備考";
-            this.textBox32.Top = 2.698425F;
+            this.textBox32.Top = 2.677559F;
             this.textBox32.Width = 0.5625985F;
             // 
             // textBox33
             // 
             this.textBox33.DataField = "bikou";
-            this.textBox33.Height = 0.5208662F;
-            this.textBox33.Left = 0.5937009F;
+            this.textBox33.Height = 0.5208666F;
+            this.textBox33.Left = 0.6385827F;
             this.textBox33.Name = "textBox33";
             this.textBox33.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox33.Text = null;
-            this.textBox33.Top = 2.698425F;
-            this.textBox33.Width = 4.041732F;
+            this.textBox33.Top = 2.677559F;
+            this.textBox33.Width = 3.951181F;
             // 
             // textBox34
             // 
             this.textBox34.Height = 0.1251969F;
-            this.textBox34.Left = 0.03188977F;
+            this.textBox34.Left = 0.07559056F;
             this.textBox34.Name = "textBox34";
             this.textBox34.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.textBox34.Text = "タクト(S)";
-            this.textBox34.Top = 3.29134F;
+            this.textBox34.Top = 3.291339F;
             this.textBox34.Width = 0.3846457F;
             // 
             // textBox35
             // 
             this.textBox35.Height = 0.1251969F;
-            this.textBox35.Left = 0.4165355F;
+            this.textBox35.Left = 0.4602363F;
             this.textBox35.Name = "textBox35";
             this.textBox35.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.textBox35.Text = "生産済数";
             this.textBox35.Top = 3.29134F;
-            this.textBox35.Width = 0.7708663F;
+            this.textBox35.Width = 0.7708662F;
             // 
             // textBox36
             // 
             this.textBox36.Height = 0.1251969F;
-            this.textBox36.Left = 0.03188977F;
+            this.textBox36.Left = 0.07795276F;
             this.textBox36.Name = "textBox36";
             this.textBox36.Style = "font-size: 6pt; text-align: center; vertical-align: middle; ddo-char-set: 1";
             this.textBox36.Text = "段取(S)";
@@ -1076,7 +1126,7 @@
             // textBox37
             // 
             this.textBox37.Height = 0.1251969F;
-            this.textBox37.Left = 0.4165355F;
+            this.textBox37.Left = 0.4602363F;
             this.textBox37.Name = "textBox37";
             this.textBox37.Style = "font-size: 6pt; text-align: center; vertical-align: middle; ddo-char-set: 1";
             this.textBox37.Text = "追加(S)";
@@ -1086,7 +1136,7 @@
             // textBox38
             // 
             this.textBox38.Height = 0.1251969F;
-            this.textBox38.Left = 0.8019686F;
+            this.textBox38.Left = 0.8456693F;
             this.textBox38.Name = "textBox38";
             this.textBox38.Style = "font-size: 6pt; text-align: center; vertical-align: middle; ddo-char-set: 1";
             this.textBox38.Text = "補充(S)";
@@ -1136,12 +1186,12 @@
             // textBox43
             // 
             this.textBox43.Height = 0.1251969F;
-            this.textBox43.Left = 3.916536F;
+            this.textBox43.Left = 3.927559F;
             this.textBox43.Name = "textBox43";
             this.textBox43.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.textBox43.Text = "生産実績数";
-            this.textBox43.Top = 3.29134F;
-            this.textBox43.Width = 0.7185043F;
+            this.textBox43.Top = 3.291339F;
+            this.textBox43.Width = 0.6661415F;
             // 
             // textBox44
             // 
@@ -1209,13 +1259,13 @@
             this.textBox48.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox48.Text = null;
             this.textBox48.Top = 3.416536F;
-            this.textBox48.Width = 0.7185043F;
+            this.textBox48.Width = 0.6732281F;
             // 
             // textBox49
             // 
             this.textBox49.DataField = "tact_time";
             this.textBox49.Height = 0.146063F;
-            this.textBox49.Left = 0.03188977F;
+            this.textBox49.Left = 0.07795276F;
             this.textBox49.Name = "textBox49";
             this.textBox49.OutputFormat = resources.GetString("textBox49.OutputFormat");
             this.textBox49.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
@@ -1228,7 +1278,7 @@
             // 
             this.textBox50.DataField = "dandori_kousu";
             this.textBox50.Height = 0.1566929F;
-            this.textBox50.Left = 0.03188977F;
+            this.textBox50.Left = 0.07795276F;
             this.textBox50.Name = "textBox50";
             this.textBox50.OutputFormat = resources.GetString("textBox50.OutputFormat");
             this.textBox50.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
@@ -1241,19 +1291,19 @@
             // 
             this.textBox51.DataField = "hinsitu_zenkai_name1";
             this.textBox51.Height = 0.1877953F;
-            this.textBox51.Left = 0.638189F;
+            this.textBox51.Left = 0.6818898F;
             this.textBox51.Name = "textBox51";
             this.textBox51.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox51.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox51.Text = null;
             this.textBox51.Top = 3.917717F;
-            this.textBox51.Width = 1.612992F;
+            this.textBox51.Width = 1.569291F;
             // 
             // textBox52
             // 
             this.textBox52.DataField = "tuika_kousu";
             this.textBox52.Height = 0.1566929F;
-            this.textBox52.Left = 0.4165355F;
+            this.textBox52.Left = 0.4602363F;
             this.textBox52.Name = "textBox52";
             this.textBox52.OutputFormat = resources.GetString("textBox52.OutputFormat");
             this.textBox52.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
@@ -1266,7 +1316,7 @@
             // 
             this.textBox53.DataField = "hoju_kousu";
             this.textBox53.Height = 0.1566929F;
-            this.textBox53.Left = 0.8019686F;
+            this.textBox53.Left = 0.8456693F;
             this.textBox53.Name = "textBox53";
             this.textBox53.OutputFormat = resources.GetString("textBox53.OutputFormat");
             this.textBox53.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
@@ -1291,7 +1341,7 @@
             // textBox57
             // 
             this.textBox57.Height = 0.5633857F;
-            this.textBox57.Left = 0.03188977F;
+            this.textBox57.Left = 0.07559056F;
             this.textBox57.Name = "textBox57";
             this.textBox57.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 2, 0, 0);
             this.textBox57.Style = "font-size: 6pt; text-align: center; vertical-align: top; ddo-char-set: 1";
@@ -1303,7 +1353,7 @@
             // 
             this.textBox58.DataField = "seisan_sumi_su";
             this.textBox58.Height = 0.1460631F;
-            this.textBox58.Left = 0.4165355F;
+            this.textBox58.Left = 0.4602363F;
             this.textBox58.Name = "textBox58";
             this.textBox58.OutputFormat = resources.GetString("textBox58.OutputFormat");
             this.textBox58.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 0, 2, 0);
@@ -1335,12 +1385,12 @@
             this.textBox60.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox60.Text = null;
             this.textBox60.Top = 3.917717F;
-            this.textBox60.Width = 0.3854331F;
+            this.textBox60.Width = 0.3401579F;
             // 
             // textBox61
             // 
             this.textBox61.Height = 0.5633859F;
-            this.textBox61.Left = 0.03110236F;
+            this.textBox61.Left = 0.07795276F;
             this.textBox61.Name = "textBox61";
             this.textBox61.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 2, 0, 0);
             this.textBox61.Style = "font-size: 6pt; text-align: center; vertical-align: top; ddo-char-set: 1";
@@ -1351,7 +1401,7 @@
             // textBox62
             // 
             this.textBox62.Height = 0.9389763F;
-            this.textBox62.Left = 0.03188977F;
+            this.textBox62.Left = 0.07559056F;
             this.textBox62.Name = "textBox62";
             this.textBox62.Padding = new GrapeCity.ActiveReports.PaddingEx(0, 2, 0, 0);
             this.textBox62.Style = "font-size: 6pt; text-align: center; vertical-align: top; ddo-char-set: 1";
@@ -1363,61 +1413,61 @@
             // 
             this.textBox67.DataField = "hinsitu_kako_name3";
             this.textBox67.Height = 0.1877953F;
-            this.textBox67.Left = 0.638189F;
+            this.textBox67.Left = 0.6818898F;
             this.textBox67.Name = "textBox67";
             this.textBox67.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox67.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox67.Text = null;
             this.textBox67.Top = 4.856694F;
-            this.textBox67.Width = 1.612992F;
+            this.textBox67.Width = 1.569291F;
             // 
             // textBox68
             // 
             this.textBox68.DataField = "hinsitu_kako_name2";
             this.textBox68.Height = 0.1877953F;
-            this.textBox68.Left = 0.638189F;
+            this.textBox68.Left = 0.6818898F;
             this.textBox68.Name = "textBox68";
             this.textBox68.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox68.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox68.Text = null;
             this.textBox68.Top = 4.668897F;
-            this.textBox68.Width = 1.612992F;
+            this.textBox68.Width = 1.569291F;
             // 
             // textBox69
             // 
             this.textBox69.DataField = "hinsitu_kako_name1";
             this.textBox69.Height = 0.1877953F;
-            this.textBox69.Left = 0.638189F;
+            this.textBox69.Left = 0.6818898F;
             this.textBox69.Name = "textBox69";
             this.textBox69.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox69.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox69.Text = null;
             this.textBox69.Top = 4.481102F;
-            this.textBox69.Width = 1.612992F;
+            this.textBox69.Width = 1.569291F;
             // 
             // textBox70
             // 
             this.textBox70.DataField = "hinsitu_zenkai_name3";
             this.textBox70.Height = 0.1877953F;
-            this.textBox70.Left = 0.638189F;
+            this.textBox70.Left = 0.6818898F;
             this.textBox70.Name = "textBox70";
             this.textBox70.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox70.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox70.Text = null;
             this.textBox70.Top = 4.293309F;
-            this.textBox70.Width = 1.612992F;
+            this.textBox70.Width = 1.569291F;
             // 
             // textBox71
             // 
             this.textBox71.DataField = "hinsitu_zenkai_name2";
             this.textBox71.Height = 0.1877953F;
-            this.textBox71.Left = 0.638189F;
+            this.textBox71.Left = 0.6818898F;
             this.textBox71.Name = "textBox71";
             this.textBox71.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox71.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox71.Text = null;
             this.textBox71.Top = 4.105511F;
-            this.textBox71.Width = 1.612992F;
+            this.textBox71.Width = 1.569291F;
             // 
             // textBox77
             // 
@@ -1555,7 +1605,7 @@
             this.textBox97.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox97.Text = null;
             this.textBox97.Top = 4.668897F;
-            this.textBox97.Width = 0.3854331F;
+            this.textBox97.Width = 0.3456697F;
             // 
             // textBox98
             // 
@@ -1568,7 +1618,7 @@
             this.textBox98.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox98.Text = null;
             this.textBox98.Top = 4.293309F;
-            this.textBox98.Width = 0.3854331F;
+            this.textBox98.Width = 0.3440947F;
             // 
             // textBox99
             // 
@@ -1581,7 +1631,7 @@
             this.textBox99.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox99.Text = null;
             this.textBox99.Top = 4.856694F;
-            this.textBox99.Width = 0.3854331F;
+            this.textBox99.Width = 0.3440947F;
             // 
             // textBox100
             // 
@@ -1594,7 +1644,7 @@
             this.textBox100.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox100.Text = null;
             this.textBox100.Top = 4.481102F;
-            this.textBox100.Width = 0.3854331F;
+            this.textBox100.Width = 0.3401579F;
             // 
             // textBox101
             // 
@@ -1607,159 +1657,159 @@
             this.textBox101.Style = "font-size: 8.25pt; text-align: right; vertical-align: middle";
             this.textBox101.Text = null;
             this.textBox101.Top = 4.105511F;
-            this.textBox101.Width = 0.3854331F;
+            this.textBox101.Width = 0.3440947F;
             // 
             // textBox103
             // 
-            this.textBox103.Height = 0.9519687F;
-            this.textBox103.Left = 0.03188977F;
+            this.textBox103.Height = 0.9204727F;
+            this.textBox103.Left = 0.07795276F;
             this.textBox103.Name = "textBox103";
             this.textBox103.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 2, 2, 2);
             this.textBox103.Style = "font-size: 8.25pt";
             this.textBox103.Text = "メモ・報告・連絡";
-            this.textBox103.Top = 6.099607F;
-            this.textBox103.Width = 2.750394F;
+            this.textBox103.Top = 6.088977F;
+            this.textBox103.Width = 2.704331F;
             // 
             // line1
             // 
             this.line1.Height = 0F;
-            this.line1.Left = 3.798032F;
+            this.line1.Left = 3.753937F;
             this.line1.LineWeight = 1F;
             this.line1.Name = "line1";
             this.line1.Top = 6.088977F;
             this.line1.Width = 0.8415029F;
-            this.line1.X1 = 3.798032F;
-            this.line1.X2 = 4.639535F;
+            this.line1.X1 = 3.753937F;
+            this.line1.X2 = 4.59544F;
             this.line1.Y1 = 6.088977F;
             this.line1.Y2 = 6.088977F;
             // 
             // line2
             // 
-            this.line2.Height = 0.9519682F;
-            this.line2.Left = 3.798032F;
+            this.line2.Height = 0.920866F;
+            this.line2.Left = 3.753937F;
             this.line2.LineWeight = 1F;
             this.line2.Name = "line2";
             this.line2.Top = 6.088977F;
             this.line2.Width = 0F;
-            this.line2.X1 = 3.798032F;
-            this.line2.X2 = 3.798032F;
+            this.line2.X1 = 3.753937F;
+            this.line2.X2 = 3.753937F;
             this.line2.Y1 = 6.088977F;
-            this.line2.Y2 = 7.040945F;
+            this.line2.Y2 = 7.009843F;
             // 
             // line3
             // 
             this.line3.Height = 0F;
-            this.line3.Left = 2.956693F;
+            this.line3.Left = 2.912599F;
             this.line3.LineWeight = 1F;
             this.line3.Name = "line3";
-            this.line3.Top = 7.040945F;
-            this.line3.Width = 1.682792F;
-            this.line3.X1 = 2.956693F;
-            this.line3.X2 = 4.639485F;
-            this.line3.Y1 = 7.040945F;
-            this.line3.Y2 = 7.040945F;
+            this.line3.Top = 7.009843F;
+            this.line3.Width = 1.682791F;
+            this.line3.X1 = 2.912599F;
+            this.line3.X2 = 4.59539F;
+            this.line3.Y1 = 7.009843F;
+            this.line3.Y2 = 7.009843F;
             // 
             // line4
             // 
-            this.line4.Height = 0.9519682F;
-            this.line4.Left = 4.63937F;
+            this.line4.Height = 0.920866F;
+            this.line4.Left = 4.595275F;
             this.line4.LineWeight = 1F;
             this.line4.Name = "line4";
             this.line4.Top = 6.088977F;
-            this.line4.Width = 0F;
-            this.line4.X1 = 4.63937F;
-            this.line4.X2 = 4.63937F;
+            this.line4.Width = 9.536743E-07F;
+            this.line4.X1 = 4.595275F;
+            this.line4.X2 = 4.595276F;
             this.line4.Y1 = 6.088977F;
-            this.line4.Y2 = 7.040945F;
+            this.line4.Y2 = 7.009843F;
             // 
             // line5
             // 
             this.line5.Height = 0F;
-            this.line5.Left = 3.798032F;
+            this.line5.Left = 3.753937F;
             this.line5.LineWeight = 1F;
             this.line5.Name = "line5";
             this.line5.Top = 6.214174F;
             this.line5.Width = 0.8415029F;
-            this.line5.X1 = 3.798032F;
-            this.line5.X2 = 4.639535F;
+            this.line5.X1 = 3.753937F;
+            this.line5.X2 = 4.59544F;
             this.line5.Y1 = 6.214174F;
             this.line5.Y2 = 6.214174F;
             // 
             // line6
             // 
             this.line6.Height = 0F;
-            this.line6.Left = 0.03149607F;
+            this.line6.Left = 0.07559056F;
             this.line6.LineWeight = 1F;
             this.line6.Name = "line6";
             this.line6.Top = 3.917717F;
-            this.line6.Width = 4.603544F;
-            this.line6.X1 = 0.03149607F;
-            this.line6.X2 = 4.63504F;
+            this.line6.Width = 4.51811F;
+            this.line6.X1 = 0.07559056F;
+            this.line6.X2 = 4.593701F;
             this.line6.Y1 = 3.917717F;
             this.line6.Y2 = 3.917717F;
             // 
             // line7
             // 
             this.line7.Height = 0F;
-            this.line7.Left = 0.03149607F;
+            this.line7.Left = 0.07559056F;
             this.line7.LineWeight = 1F;
             this.line7.Name = "line7";
             this.line7.Top = 4.481102F;
-            this.line7.Width = 4.603937F;
-            this.line7.X1 = 0.03149607F;
-            this.line7.X2 = 4.635433F;
+            this.line7.Width = 4.51811F;
+            this.line7.X1 = 0.07559056F;
+            this.line7.X2 = 4.593701F;
             this.line7.Y1 = 4.481102F;
             this.line7.Y2 = 4.481102F;
             // 
             // line8
             // 
             this.line8.Height = 0F;
-            this.line8.Left = 0.03149607F;
+            this.line8.Left = 0.07559056F;
             this.line8.LineWeight = 1F;
             this.line8.Name = "line8";
             this.line8.Top = 5.044488F;
-            this.line8.Width = 4.603937F;
-            this.line8.X1 = 0.03149607F;
-            this.line8.X2 = 4.635433F;
+            this.line8.Width = 4.51811F;
+            this.line8.X1 = 0.07559056F;
+            this.line8.X2 = 4.593701F;
             this.line8.Y1 = 5.044488F;
             this.line8.Y2 = 5.044488F;
             // 
             // line9
             // 
             this.line9.Height = 0F;
-            this.line9.Left = 0.03149607F;
+            this.line9.Left = 0.07559056F;
             this.line9.LineWeight = 1F;
             this.line9.Name = "line9";
             this.line9.Top = 5.983465F;
-            this.line9.Width = 4.603544F;
-            this.line9.X1 = 0.03149607F;
-            this.line9.X2 = 4.63504F;
+            this.line9.Width = 4.51811F;
+            this.line9.X1 = 0.07559056F;
+            this.line9.X2 = 4.593701F;
             this.line9.Y1 = 5.983465F;
             this.line9.Y2 = 5.983465F;
             // 
             // line10
             // 
             this.line10.Height = 2.065748F;
-            this.line10.Left = 0.638189F;
+            this.line10.Left = 0.6814961F;
             this.line10.LineWeight = 1F;
             this.line10.Name = "line10";
             this.line10.Top = 3.917717F;
             this.line10.Width = 0F;
-            this.line10.X1 = 0.638189F;
-            this.line10.X2 = 0.638189F;
+            this.line10.X1 = 0.6814961F;
+            this.line10.X2 = 0.6814961F;
             this.line10.Y1 = 5.983465F;
             this.line10.Y2 = 3.917717F;
             // 
             // line11
             // 
             this.line11.Height = 2.065748F;
-            this.line11.Left = 0.03110236F;
+            this.line11.Left = 0.07559056F;
             this.line11.LineWeight = 1F;
             this.line11.Name = "line11";
             this.line11.Top = 3.917717F;
             this.line11.Width = 0F;
-            this.line11.X1 = 0.03110236F;
-            this.line11.X2 = 0.03110236F;
+            this.line11.X1 = 0.07559056F;
+            this.line11.X2 = 0.07559056F;
             this.line11.Y1 = 5.983465F;
             this.line11.Y2 = 3.917717F;
             // 
@@ -1805,25 +1855,25 @@
             // line15
             // 
             this.line15.Height = 2.065748F;
-            this.line15.Left = 4.63504F;
+            this.line15.Left = 4.593701F;
             this.line15.LineWeight = 1F;
             this.line15.Name = "line15";
             this.line15.Top = 3.917717F;
             this.line15.Width = 0F;
-            this.line15.X1 = 4.63504F;
-            this.line15.X2 = 4.63504F;
+            this.line15.X1 = 4.593701F;
+            this.line15.X2 = 4.593701F;
             this.line15.Y1 = 5.983465F;
             this.line15.Y2 = 3.917717F;
             // 
             // line16
             // 
             this.line16.Height = 0.01063013F;
-            this.line16.Left = 0.03188977F;
+            this.line16.Left = 0.07519685F;
             this.line16.LineWeight = 1F;
             this.line16.Name = "line16";
             this.line16.Top = 6.088977F;
-            this.line16.Width = 2.750394F;
-            this.line16.X1 = 0.03188977F;
+            this.line16.Width = 2.707087F;
+            this.line16.X1 = 0.07519685F;
             this.line16.X2 = 2.782284F;
             this.line16.Y1 = 6.099607F;
             this.line16.Y2 = 6.088977F;
@@ -1831,7 +1881,7 @@
             // textBox106
             // 
             this.textBox106.Height = 0.1251969F;
-            this.textBox106.Left = 2.97126F;
+            this.textBox106.Left = 2.912599F;
             this.textBox106.Name = "textBox106";
             this.textBox106.Style = "font-size: 6pt; text-align: center; vertical-align: middle";
             this.textBox106.Text = "入力";
@@ -1841,45 +1891,45 @@
             // line17
             // 
             this.line17.Height = 0F;
-            this.line17.Left = 2.956693F;
+            this.line17.Left = 2.912598F;
             this.line17.LineWeight = 1F;
             this.line17.Name = "line17";
             this.line17.Top = 6.088977F;
-            this.line17.Width = 0.8415031F;
-            this.line17.X1 = 2.956693F;
-            this.line17.X2 = 3.798196F;
+            this.line17.Width = 0.8415041F;
+            this.line17.X1 = 2.912598F;
+            this.line17.X2 = 3.754102F;
             this.line17.Y1 = 6.088977F;
             this.line17.Y2 = 6.088977F;
             // 
             // line18
             // 
-            this.line18.Height = 0.9519682F;
-            this.line18.Left = 2.956693F;
+            this.line18.Height = 0.920866F;
+            this.line18.Left = 2.912598F;
             this.line18.LineWeight = 1F;
             this.line18.Name = "line18";
             this.line18.Top = 6.088977F;
-            this.line18.Width = 0F;
-            this.line18.X1 = 2.956693F;
-            this.line18.X2 = 2.956693F;
+            this.line18.Width = 1.192093E-06F;
+            this.line18.X1 = 2.912598F;
+            this.line18.X2 = 2.912599F;
             this.line18.Y1 = 6.088977F;
-            this.line18.Y2 = 7.040945F;
+            this.line18.Y2 = 7.009843F;
             // 
             // line20
             // 
             this.line20.Height = 0F;
-            this.line20.Left = 2.956693F;
+            this.line20.Left = 2.912598F;
             this.line20.LineWeight = 1F;
             this.line20.Name = "line20";
             this.line20.Top = 6.214173F;
-            this.line20.Width = 0.8415031F;
-            this.line20.X1 = 2.956693F;
-            this.line20.X2 = 3.798196F;
+            this.line20.Width = 0.8415041F;
+            this.line20.X1 = 2.912598F;
+            this.line20.X2 = 3.754102F;
             this.line20.Y1 = 6.214173F;
             this.line20.Y2 = 6.214173F;
             // 
             // line19
             // 
-            this.line19.Height = 0.9519682F;
+            this.line19.Height = 0.920866F;
             this.line19.Left = 2.78189F;
             this.line19.LineWeight = 1F;
             this.line19.Name = "line19";
@@ -1888,137 +1938,137 @@
             this.line19.X1 = 2.78189F;
             this.line19.X2 = 2.78189F;
             this.line19.Y1 = 6.088977F;
-            this.line19.Y2 = 7.040945F;
+            this.line19.Y2 = 7.009843F;
             // 
             // line21
             // 
-            this.line21.Height = 0F;
-            this.line21.Left = 0.03188977F;
+            this.line21.Height = 0.0003938675F;
+            this.line21.Left = 0.07519685F;
             this.line21.LineWeight = 1F;
             this.line21.Name = "line21";
-            this.line21.Top = 7.040946F;
-            this.line21.Width = 2.749606F;
-            this.line21.X1 = 0.03188977F;
-            this.line21.X2 = 2.781496F;
-            this.line21.Y1 = 7.040946F;
-            this.line21.Y2 = 7.040946F;
+            this.line21.Top = 7.009449F;
+            this.line21.Width = 2.703543F;
+            this.line21.X1 = 0.07519685F;
+            this.line21.X2 = 2.77874F;
+            this.line21.Y1 = 7.009843F;
+            this.line21.Y2 = 7.009449F;
             // 
             // line22
             // 
-            this.line22.Height = 0.9519691F;
-            this.line22.Left = 0.03149606F;
+            this.line22.Height = 0.9102359F;
+            this.line22.Left = 0.07519685F;
             this.line22.LineWeight = 1F;
             this.line22.Name = "line22";
-            this.line22.Top = 6.088977F;
-            this.line22.Width = 0.000393711F;
-            this.line22.X1 = 0.03149606F;
-            this.line22.X2 = 0.03188977F;
-            this.line22.Y1 = 6.088977F;
-            this.line22.Y2 = 7.040946F;
+            this.line22.Top = 6.099607F;
+            this.line22.Width = 0.0003937259F;
+            this.line22.X1 = 0.07519685F;
+            this.line22.X2 = 0.07559057F;
+            this.line22.Y1 = 6.099607F;
+            this.line22.Y2 = 7.009843F;
             // 
             // line23
             // 
             this.line23.Height = 0F;
-            this.line23.Left = 0.03110236F;
+            this.line23.Left = 0.07795276F;
             this.line23.LineWeight = 1F;
             this.line23.Name = "line23";
-            this.line23.Top = 3.29134F;
-            this.line23.Width = 1.156299F;
-            this.line23.X1 = 0.03110236F;
-            this.line23.X2 = 1.187401F;
-            this.line23.Y1 = 3.29134F;
-            this.line23.Y2 = 3.29134F;
+            this.line23.Top = 3.291339F;
+            this.line23.Width = 1.156298F;
+            this.line23.X1 = 0.07795276F;
+            this.line23.X2 = 1.234251F;
+            this.line23.Y1 = 3.291339F;
+            this.line23.Y2 = 3.291339F;
             // 
             // line24
             // 
             this.line24.Height = 0F;
-            this.line24.Left = 0.03110236F;
+            this.line24.Left = 0.07795276F;
             this.line24.LineWeight = 1F;
             this.line24.Name = "line24";
-            this.line24.Top = 3.844489F;
-            this.line24.Width = 1.156299F;
-            this.line24.X1 = 0.03110236F;
-            this.line24.X2 = 1.187401F;
-            this.line24.Y1 = 3.844489F;
-            this.line24.Y2 = 3.844489F;
+            this.line24.Top = 3.844488F;
+            this.line24.Width = 1.156298F;
+            this.line24.X1 = 0.07795276F;
+            this.line24.X2 = 1.234251F;
+            this.line24.Y1 = 3.844488F;
+            this.line24.Y2 = 3.844488F;
             // 
             // line25
             // 
             this.line25.Height = 0F;
-            this.line25.Left = 0.03110236F;
+            this.line25.Left = 0.07795276F;
             this.line25.LineWeight = 1F;
             this.line25.Name = "line25";
             this.line25.Top = 3.416536F;
-            this.line25.Width = 1.156299F;
-            this.line25.X1 = 0.03110236F;
-            this.line25.X2 = 1.187401F;
+            this.line25.Width = 1.156298F;
+            this.line25.X1 = 0.07795276F;
+            this.line25.X2 = 1.234251F;
             this.line25.Y1 = 3.416536F;
             this.line25.Y2 = 3.416536F;
             // 
             // line26
             // 
             this.line26.Height = 0F;
-            this.line26.Left = 0.03149611F;
+            this.line26.Left = 0.07795276F;
             this.line26.LineWeight = 1F;
             this.line26.Name = "line26";
-            this.line26.Top = 3.562598F;
+            this.line26.Top = 3.562599F;
             this.line26.Width = 1.156299F;
-            this.line26.X1 = 0.03149611F;
-            this.line26.X2 = 1.187795F;
-            this.line26.Y1 = 3.562598F;
-            this.line26.Y2 = 3.562598F;
+            this.line26.X1 = 0.07795276F;
+            this.line26.X2 = 1.234252F;
+            this.line26.Y1 = 3.562599F;
+            this.line26.Y2 = 3.562599F;
             // 
             // line27
             // 
             this.line27.Height = 0F;
-            this.line27.Left = 0.03149611F;
+            this.line27.Left = 0.07795276F;
             this.line27.LineWeight = 1F;
             this.line27.Name = "line27";
             this.line27.Top = 3.687796F;
             this.line27.Width = 1.156299F;
-            this.line27.X1 = 0.03149611F;
-            this.line27.X2 = 1.187795F;
+            this.line27.X1 = 0.07795276F;
+            this.line27.X2 = 1.234252F;
             this.line27.Y1 = 3.687796F;
             this.line27.Y2 = 3.687796F;
             // 
             // line28
             // 
             this.line28.Height = 0.553149F;
-            this.line28.Left = 0.4165355F;
+            this.line28.Left = 0.4602363F;
             this.line28.LineWeight = 1F;
             this.line28.Name = "line28";
-            this.line28.Top = 3.29134F;
+            this.line28.Top = 3.291339F;
             this.line28.Width = 0F;
-            this.line28.X1 = 0.4165355F;
-            this.line28.X2 = 0.4165355F;
-            this.line28.Y1 = 3.29134F;
-            this.line28.Y2 = 3.844489F;
+            this.line28.X1 = 0.4602363F;
+            this.line28.X2 = 0.4602363F;
+            this.line28.Y1 = 3.291339F;
+            this.line28.Y2 = 3.844488F;
             // 
             // line29
             // 
             this.line29.Height = 0.2818911F;
-            this.line29.Left = 0.8019686F;
+            this.line29.Left = 0.8456693F;
             this.line29.LineWeight = 1F;
             this.line29.Name = "line29";
-            this.line29.Top = 3.562598F;
+            this.line29.Top = 3.562599F;
             this.line29.Width = 0F;
-            this.line29.X1 = 0.8019686F;
-            this.line29.X2 = 0.8019686F;
-            this.line29.Y1 = 3.562598F;
-            this.line29.Y2 = 3.844489F;
+            this.line29.X1 = 0.8456693F;
+            this.line29.X2 = 0.8456693F;
+            this.line29.Y1 = 3.562599F;
+            this.line29.Y2 = 3.84449F;
             // 
             // line30
             // 
             this.line30.Height = 0.553149F;
-            this.line30.Left = 1.187795F;
+            this.line30.Left = 1.231102F;
             this.line30.LineWeight = 1F;
             this.line30.Name = "line30";
-            this.line30.Top = 3.29134F;
+            this.line30.Top = 3.291339F;
             this.line30.Width = 0F;
-            this.line30.X1 = 1.187795F;
-            this.line30.X2 = 1.187795F;
-            this.line30.Y1 = 3.29134F;
-            this.line30.Y2 = 3.844489F;
+            this.line30.X1 = 1.231102F;
+            this.line30.X2 = 1.231102F;
+            this.line30.Y1 = 3.291339F;
+            this.line30.Y2 = 3.844488F;
             // 
             // line31
             // 
@@ -2088,28 +2138,28 @@
             // line36
             // 
             this.line36.Height = 0.553149F;
-            this.line36.Left = 4.63504F;
+            this.line36.Left = 4.593701F;
             this.line36.LineWeight = 1F;
             this.line36.Name = "line36";
-            this.line36.Top = 3.29134F;
+            this.line36.Top = 3.291339F;
             this.line36.Width = 0F;
-            this.line36.X1 = 4.63504F;
-            this.line36.X2 = 4.63504F;
-            this.line36.Y1 = 3.29134F;
-            this.line36.Y2 = 3.844489F;
+            this.line36.X1 = 4.593701F;
+            this.line36.X2 = 4.593701F;
+            this.line36.Y1 = 3.291339F;
+            this.line36.Y2 = 3.844488F;
             // 
             // line37
             // 
-            this.line37.Height = 0F;
+            this.line37.Height = 1.192093E-06F;
             this.line37.Left = 1.301575F;
             this.line37.LineWeight = 1F;
             this.line37.Name = "line37";
-            this.line37.Top = 3.29134F;
-            this.line37.Width = 3.333465F;
+            this.line37.Top = 3.291339F;
+            this.line37.Width = 3.292126F;
             this.line37.X1 = 1.301575F;
-            this.line37.X2 = 4.63504F;
+            this.line37.X2 = 4.593701F;
             this.line37.Y1 = 3.29134F;
-            this.line37.Y2 = 3.29134F;
+            this.line37.Y2 = 3.291339F;
             // 
             // line38
             // 
@@ -2118,24 +2168,24 @@
             this.line38.LineWeight = 1F;
             this.line38.Name = "line38";
             this.line38.Top = 3.416536F;
-            this.line38.Width = 3.333465F;
+            this.line38.Width = 3.288189F;
             this.line38.X1 = 1.301575F;
-            this.line38.X2 = 4.63504F;
+            this.line38.X2 = 4.589764F;
             this.line38.Y1 = 3.416536F;
             this.line38.Y2 = 3.416536F;
             // 
             // line39
             // 
-            this.line39.Height = 0F;
+            this.line39.Height = 1.192093E-06F;
             this.line39.Left = 1.301575F;
             this.line39.LineWeight = 1F;
             this.line39.Name = "line39";
-            this.line39.Top = 3.844489F;
-            this.line39.Width = 3.333465F;
+            this.line39.Top = 3.844488F;
+            this.line39.Width = 3.292126F;
             this.line39.X1 = 1.301575F;
-            this.line39.X2 = 4.63504F;
+            this.line39.X2 = 4.593701F;
             this.line39.Y1 = 3.844489F;
-            this.line39.Y2 = 3.844489F;
+            this.line39.Y2 = 3.844488F;
             // 
             // line40
             // 
@@ -2153,340 +2203,314 @@
             // line41
             // 
             this.line41.Height = 0F;
-            this.line41.Left = 0.03110236F;
+            this.line41.Left = 0.07559056F;
             this.line41.LineWeight = 1F;
             this.line41.Name = "line41";
-            this.line41.Top = 2.698425F;
-            this.line41.Width = 4.603938F;
-            this.line41.X1 = 0.03110236F;
-            this.line41.X2 = 4.63504F;
-            this.line41.Y1 = 2.698425F;
-            this.line41.Y2 = 2.698425F;
+            this.line41.Top = 2.677559F;
+            this.line41.Width = 4.51811F;
+            this.line41.X1 = 0.07559056F;
+            this.line41.X2 = 4.593701F;
+            this.line41.Y1 = 2.677559F;
+            this.line41.Y2 = 2.677559F;
             // 
             // line42
             // 
             this.line42.Height = 0F;
-            this.line42.Left = 0.03149609F;
+            this.line42.Left = 0.07559056F;
             this.line42.LineWeight = 1F;
             this.line42.Name = "line42";
-            this.line42.Top = 3.219291F;
-            this.line42.Width = 4.603937F;
-            this.line42.X1 = 0.03149609F;
-            this.line42.X2 = 4.635433F;
-            this.line42.Y1 = 3.219291F;
-            this.line42.Y2 = 3.219291F;
+            this.line42.Top = 3.198426F;
+            this.line42.Width = 4.51811F;
+            this.line42.X1 = 0.07559056F;
+            this.line42.X2 = 4.593701F;
+            this.line42.Y1 = 3.198426F;
+            this.line42.Y2 = 3.198426F;
             // 
             // line43
             // 
-            this.line43.Height = 0.5208659F;
-            this.line43.Left = 0.5937009F;
+            this.line43.Height = 0.5208671F;
+            this.line43.Left = 0.6385827F;
             this.line43.LineWeight = 1F;
             this.line43.Name = "line43";
-            this.line43.Top = 2.698425F;
+            this.line43.Top = 2.677559F;
             this.line43.Width = 0F;
-            this.line43.X1 = 0.5937009F;
-            this.line43.X2 = 0.5937009F;
-            this.line43.Y1 = 2.698425F;
-            this.line43.Y2 = 3.219291F;
+            this.line43.X1 = 0.6385827F;
+            this.line43.X2 = 0.6385827F;
+            this.line43.Y1 = 2.677559F;
+            this.line43.Y2 = 3.198426F;
             // 
             // line44
             // 
-            this.line44.Height = 0.5208669F;
-            this.line44.Left = 0.03149609F;
+            this.line44.Height = 0.5208671F;
+            this.line44.Left = 0.07598425F;
             this.line44.LineWeight = 1F;
             this.line44.Name = "line44";
-            this.line44.Top = 2.698425F;
-            this.line44.Width = 0F;
-            this.line44.X1 = 0.03149609F;
-            this.line44.X2 = 0.03149609F;
-            this.line44.Y1 = 2.698425F;
-            this.line44.Y2 = 3.219292F;
+            this.line44.Top = 2.677559F;
+            this.line44.Width = 0.000393711F;
+            this.line44.X1 = 0.07637796F;
+            this.line44.X2 = 0.07598425F;
+            this.line44.Y1 = 2.677559F;
+            this.line44.Y2 = 3.198426F;
             // 
             // line45
             // 
-            this.line45.Height = 0.520865F;
-            this.line45.Left = 4.635827F;
+            this.line45.Height = 0.5208671F;
+            this.line45.Left = 4.589764F;
             this.line45.LineWeight = 1F;
             this.line45.Name = "line45";
-            this.line45.Top = 2.698425F;
-            this.line45.Width = 0F;
-            this.line45.X1 = 4.635827F;
-            this.line45.X2 = 4.635827F;
-            this.line45.Y1 = 2.698425F;
-            this.line45.Y2 = 3.21929F;
+            this.line45.Top = 2.677559F;
+            this.line45.Width = 0.005511761F;
+            this.line45.X1 = 4.589764F;
+            this.line45.X2 = 4.595276F;
+            this.line45.Y1 = 2.677559F;
+            this.line45.Y2 = 3.198426F;
             // 
             // line46
             // 
             this.line46.Height = 0.594094F;
-            this.line46.Left = 0.02795278F;
+            this.line46.Left = 0.07795237F;
             this.line46.LineWeight = 1F;
             this.line46.Name = "line46";
-            this.line46.Top = 2.020866F;
-            this.line46.Width = 8.009374E-08F;
-            this.line46.X1 = 0.02795278F;
-            this.line46.X2 = 0.02795286F;
-            this.line46.Y1 = 2.020866F;
-            this.line46.Y2 = 2.61496F;
+            this.line46.Top = 1.989764F;
+            this.line46.Width = 8.940697E-08F;
+            this.line46.X1 = 0.07795237F;
+            this.line46.X2 = 0.07795246F;
+            this.line46.Y1 = 1.989764F;
+            this.line46.Y2 = 2.583858F;
             // 
             // line47
             // 
             this.line47.Height = 0.594095F;
-            this.line47.Left = 0.2149606F;
+            this.line47.Left = 0.2649602F;
             this.line47.LineWeight = 1F;
             this.line47.Name = "line47";
-            this.line47.Top = 2.020866F;
+            this.line47.Top = 1.989764F;
             this.line47.Width = 0F;
-            this.line47.X1 = 0.2149606F;
-            this.line47.X2 = 0.2149606F;
-            this.line47.Y1 = 2.020866F;
-            this.line47.Y2 = 2.614961F;
+            this.line47.X1 = 0.2649602F;
+            this.line47.X2 = 0.2649602F;
+            this.line47.Y1 = 1.989764F;
+            this.line47.Y2 = 2.583859F;
             // 
             // line48
             // 
             this.line48.Height = 0.5940971F;
-            this.line48.Left = 1.319291F;
+            this.line48.Left = 1.35315F;
             this.line48.LineWeight = 1F;
             this.line48.Name = "line48";
-            this.line48.Top = 2.020866F;
+            this.line48.Top = 1.989764F;
             this.line48.Width = 0F;
-            this.line48.X1 = 1.319291F;
-            this.line48.X2 = 1.319291F;
-            this.line48.Y1 = 2.020866F;
-            this.line48.Y2 = 2.614963F;
+            this.line48.X1 = 1.35315F;
+            this.line48.X2 = 1.35315F;
+            this.line48.Y1 = 1.989764F;
+            this.line48.Y2 = 2.583861F;
             // 
             // line49
             // 
             this.line49.Height = 0.5940971F;
-            this.line49.Left = 2.423621F;
+            this.line49.Left = 2.457479F;
             this.line49.LineWeight = 1F;
             this.line49.Name = "line49";
-            this.line49.Top = 2.020866F;
+            this.line49.Top = 1.989764F;
             this.line49.Width = 0F;
-            this.line49.X1 = 2.423621F;
-            this.line49.X2 = 2.423621F;
-            this.line49.Y1 = 2.020866F;
-            this.line49.Y2 = 2.614963F;
+            this.line49.X1 = 2.457479F;
+            this.line49.X2 = 2.457479F;
+            this.line49.Y1 = 1.989764F;
+            this.line49.Y2 = 2.583861F;
             // 
             // line50
             // 
             this.line50.Height = 0.5940971F;
-            this.line50.Left = 3.527952F;
+            this.line50.Left = 3.56181F;
             this.line50.LineWeight = 1F;
             this.line50.Name = "line50";
-            this.line50.Top = 2.020866F;
+            this.line50.Top = 1.989764F;
             this.line50.Width = 0F;
-            this.line50.X1 = 3.527952F;
-            this.line50.X2 = 3.527952F;
-            this.line50.Y1 = 2.020866F;
-            this.line50.Y2 = 2.614963F;
+            this.line50.X1 = 3.56181F;
+            this.line50.X2 = 3.56181F;
+            this.line50.Y1 = 1.989764F;
+            this.line50.Y2 = 2.583861F;
             // 
             // line51
             // 
-            this.line51.Height = 0.5940971F;
-            this.line51.Left = 4.632283F;
+            this.line51.Height = 0.5940981F;
+            this.line51.Left = 4.589764F;
             this.line51.LineWeight = 1F;
             this.line51.Name = "line51";
-            this.line51.Top = 2.020866F;
+            this.line51.Top = 1.989764F;
             this.line51.Width = 0F;
-            this.line51.X1 = 4.632283F;
-            this.line51.X2 = 4.632283F;
-            this.line51.Y1 = 2.020866F;
-            this.line51.Y2 = 2.614963F;
+            this.line51.X1 = 4.589764F;
+            this.line51.X2 = 4.589764F;
+            this.line51.Y1 = 1.989764F;
+            this.line51.Y2 = 2.583862F;
             // 
             // line52
             // 
             this.line52.Height = 0F;
-            this.line52.Left = 0.02795276F;
+            this.line52.Left = 0.07795237F;
             this.line52.LineWeight = 1F;
             this.line52.Name = "line52";
-            this.line52.Top = 2.020866F;
-            this.line52.Width = 4.604331F;
-            this.line52.X1 = 0.02795276F;
-            this.line52.X2 = 4.632283F;
-            this.line52.Y1 = 2.020866F;
-            this.line52.Y2 = 2.020866F;
+            this.line52.Top = 1.989764F;
+            this.line52.Width = 4.511811F;
+            this.line52.X1 = 0.07795237F;
+            this.line52.X2 = 4.589764F;
+            this.line52.Y1 = 1.989764F;
+            this.line52.Y2 = 1.989764F;
             // 
             // line53
             // 
             this.line53.Height = 0F;
-            this.line53.Left = 0.02795276F;
+            this.line53.Left = 0.07795237F;
             this.line53.LineWeight = 1F;
             this.line53.Name = "line53";
-            this.line53.Top = 2.61496F;
-            this.line53.Width = 4.604331F;
-            this.line53.X1 = 0.02795276F;
-            this.line53.X2 = 4.632283F;
-            this.line53.Y1 = 2.61496F;
-            this.line53.Y2 = 2.61496F;
+            this.line53.Top = 2.583859F;
+            this.line53.Width = 4.511811F;
+            this.line53.X1 = 0.07795237F;
+            this.line53.X2 = 4.589764F;
+            this.line53.Y1 = 2.583859F;
+            this.line53.Y2 = 2.583859F;
             // 
             // line54
             // 
             this.line54.Height = 0F;
-            this.line54.Left = 0.2149606F;
+            this.line54.Left = 0.2649602F;
             this.line54.LineWeight = 1F;
             this.line54.Name = "line54";
-            this.line54.Top = 2.218897F;
-            this.line54.Width = 4.417717F;
-            this.line54.X1 = 0.2149606F;
-            this.line54.X2 = 4.632677F;
-            this.line54.Y1 = 2.218897F;
-            this.line54.Y2 = 2.218897F;
+            this.line54.Top = 2.187796F;
+            this.line54.Width = 4.324803F;
+            this.line54.X1 = 0.2649602F;
+            this.line54.X2 = 4.589764F;
+            this.line54.Y1 = 2.187796F;
+            this.line54.Y2 = 2.187796F;
             // 
             // line55
             // 
             this.line55.Height = 0F;
-            this.line55.Left = 0.2145669F;
+            this.line55.Left = 0.2649602F;
             this.line55.LineWeight = 1F;
             this.line55.Name = "line55";
-            this.line55.Top = 2.416929F;
-            this.line55.Width = 4.417717F;
-            this.line55.X1 = 0.2145669F;
-            this.line55.X2 = 4.632283F;
-            this.line55.Y1 = 2.416929F;
-            this.line55.Y2 = 2.416929F;
-            // 
-            // line57
-            // 
-            this.line57.Height = 0F;
-            this.line57.Left = 0.03110218F;
-            this.line57.LineWeight = 1F;
-            this.line57.Name = "line57";
-            this.line57.Top = 1.052362F;
-            this.line57.Width = 4.604725F;
-            this.line57.X1 = 0.03110218F;
-            this.line57.X2 = 4.635827F;
-            this.line57.Y1 = 1.052362F;
-            this.line57.Y2 = 1.052362F;
-            // 
-            // line65
-            // 
-            this.line65.Height = 0.781496F;
-            this.line65.Left = 4.632284F;
-            this.line65.LineWeight = 1F;
-            this.line65.Name = "line65";
-            this.line65.Top = 1.052362F;
-            this.line65.Width = 0F;
-            this.line65.X1 = 4.632284F;
-            this.line65.X2 = 4.632284F;
-            this.line65.Y1 = 1.052362F;
-            this.line65.Y2 = 1.833858F;
+            this.line55.Top = 2.385827F;
+            this.line55.Width = 4.324803F;
+            this.line55.X1 = 0.2649602F;
+            this.line55.X2 = 4.589764F;
+            this.line55.Y1 = 2.385827F;
+            this.line55.Y2 = 2.385827F;
             // 
             // line77
             // 
             this.line77.Height = 0.553149F;
-            this.line77.Left = 0.03110242F;
+            this.line77.Left = 0.07795276F;
             this.line77.LineWeight = 1F;
             this.line77.Name = "line77";
-            this.line77.Top = 3.29134F;
+            this.line77.Top = 3.291339F;
             this.line77.Width = 0F;
-            this.line77.X1 = 0.03110242F;
-            this.line77.X2 = 0.03110242F;
-            this.line77.Y1 = 3.29134F;
-            this.line77.Y2 = 3.844489F;
+            this.line77.X1 = 0.07795276F;
+            this.line77.X2 = 0.07795276F;
+            this.line77.Y1 = 3.291339F;
+            this.line77.Y2 = 3.844488F;
             // 
             // line78
             // 
             this.line78.Height = 0F;
-            this.line78.Left = 0.638189F;
+            this.line78.Left = 0.6814961F;
             this.line78.LineWeight = 1F;
             this.line78.Name = "line78";
-            this.line78.Top = 4.105511F;
-            this.line78.Width = 3.996851F;
-            this.line78.X1 = 0.638189F;
-            this.line78.X2 = 4.63504F;
-            this.line78.Y1 = 4.105511F;
-            this.line78.Y2 = 4.105511F;
+            this.line78.Top = 4.105512F;
+            this.line78.Width = 3.912205F;
+            this.line78.X1 = 0.6814961F;
+            this.line78.X2 = 4.593701F;
+            this.line78.Y1 = 4.105512F;
+            this.line78.Y2 = 4.105512F;
             // 
             // line79
             // 
             this.line79.Height = 0F;
-            this.line79.Left = 0.638189F;
+            this.line79.Left = 0.6814961F;
             this.line79.LineWeight = 1F;
             this.line79.Name = "line79";
             this.line79.Top = 4.293307F;
-            this.line79.Width = 3.996851F;
-            this.line79.X1 = 0.638189F;
-            this.line79.X2 = 4.63504F;
+            this.line79.Width = 3.912205F;
+            this.line79.X1 = 0.6814961F;
+            this.line79.X2 = 4.593701F;
             this.line79.Y1 = 4.293307F;
             this.line79.Y2 = 4.293307F;
             // 
             // line80
             // 
             this.line80.Height = 0F;
-            this.line80.Left = 0.638189F;
+            this.line80.Left = 0.6814961F;
             this.line80.LineWeight = 1F;
             this.line80.Name = "line80";
-            this.line80.Top = 4.668897F;
-            this.line80.Width = 3.996851F;
-            this.line80.X1 = 0.638189F;
-            this.line80.X2 = 4.63504F;
-            this.line80.Y1 = 4.668897F;
-            this.line80.Y2 = 4.668897F;
+            this.line80.Top = 4.668898F;
+            this.line80.Width = 3.908268F;
+            this.line80.X1 = 0.6814961F;
+            this.line80.X2 = 4.589764F;
+            this.line80.Y1 = 4.668898F;
+            this.line80.Y2 = 4.668898F;
             // 
             // line81
             // 
             this.line81.Height = 0F;
-            this.line81.Left = 0.6385827F;
+            this.line81.Left = 0.6814961F;
             this.line81.LineWeight = 1F;
             this.line81.Name = "line81";
-            this.line81.Top = 4.856694F;
-            this.line81.Width = 3.99685F;
-            this.line81.X1 = 0.6385827F;
-            this.line81.X2 = 4.635433F;
-            this.line81.Y1 = 4.856694F;
-            this.line81.Y2 = 4.856694F;
+            this.line81.Top = 4.856693F;
+            this.line81.Width = 3.912205F;
+            this.line81.X1 = 0.6814961F;
+            this.line81.X2 = 4.593701F;
+            this.line81.Y1 = 4.856693F;
+            this.line81.Y2 = 4.856693F;
             // 
             // line82
             // 
             this.line82.Height = 0F;
-            this.line82.Left = 0.638189F;
+            this.line82.Left = 0.6814961F;
             this.line82.LineWeight = 1F;
             this.line82.Name = "line82";
-            this.line82.Top = 5.232282F;
-            this.line82.Width = 3.996851F;
-            this.line82.X1 = 0.638189F;
-            this.line82.X2 = 4.63504F;
-            this.line82.Y1 = 5.232282F;
-            this.line82.Y2 = 5.232282F;
+            this.line82.Top = 5.232284F;
+            this.line82.Width = 3.912205F;
+            this.line82.X1 = 0.6814961F;
+            this.line82.X2 = 4.593701F;
+            this.line82.Y1 = 5.232284F;
+            this.line82.Y2 = 5.232284F;
             // 
             // line83
             // 
             this.line83.Height = 0F;
-            this.line83.Left = 0.638189F;
+            this.line83.Left = 0.6814961F;
             this.line83.LineWeight = 1F;
             this.line83.Name = "line83";
             this.line83.Top = 5.420079F;
-            this.line83.Width = 3.996851F;
-            this.line83.X1 = 0.638189F;
-            this.line83.X2 = 4.63504F;
+            this.line83.Width = 3.91378F;
+            this.line83.X1 = 0.6814961F;
+            this.line83.X2 = 4.595276F;
             this.line83.Y1 = 5.420079F;
             this.line83.Y2 = 5.420079F;
             // 
             // line84
             // 
             this.line84.Height = 0F;
-            this.line84.Left = 0.6385827F;
+            this.line84.Left = 0.6814961F;
             this.line84.LineWeight = 1F;
             this.line84.Name = "line84";
             this.line84.Top = 5.607874F;
-            this.line84.Width = 3.99685F;
-            this.line84.X1 = 0.6385827F;
-            this.line84.X2 = 4.635433F;
+            this.line84.Width = 3.908268F;
+            this.line84.X1 = 0.6814961F;
+            this.line84.X2 = 4.589764F;
             this.line84.Y1 = 5.607874F;
             this.line84.Y2 = 5.607874F;
             // 
             // line85
             // 
             this.line85.Height = 0F;
-            this.line85.Left = 0.638189F;
+            this.line85.Left = 0.6814961F;
             this.line85.LineWeight = 1F;
             this.line85.Name = "line85";
-            this.line85.Top = 5.795667F;
-            this.line85.Width = 3.996851F;
-            this.line85.X1 = 0.638189F;
-            this.line85.X2 = 4.63504F;
-            this.line85.Y1 = 5.795667F;
-            this.line85.Y2 = 5.795667F;
+            this.line85.Top = 5.79567F;
+            this.line85.Width = 3.908268F;
+            this.line85.X1 = 0.6814961F;
+            this.line85.X2 = 4.589764F;
+            this.line85.Y1 = 5.79567F;
+            this.line85.Y2 = 5.79567F;
             // 
             // line88
             // 
@@ -2503,16 +2527,16 @@
             // 
             // line89
             // 
-            this.line89.Height = 0F;
+            this.line89.Height = 1.192093E-06F;
             this.line89.Left = 2.695276F;
             this.line89.LineWeight = 4F;
             this.line89.Name = "line89";
-            this.line89.Top = 3.844489F;
-            this.line89.Width = 1.940551F;
+            this.line89.Top = 3.844488F;
+            this.line89.Width = 1.898425F;
             this.line89.X1 = 2.695276F;
-            this.line89.X2 = 4.635827F;
+            this.line89.X2 = 4.593701F;
             this.line89.Y1 = 3.844489F;
-            this.line89.Y2 = 3.844489F;
+            this.line89.Y2 = 3.844488F;
             // 
             // line90
             // 
@@ -2556,13 +2580,13 @@
             // line93
             // 
             this.line93.Height = 0.427953F;
-            this.line93.Left = 4.635827F;
+            this.line93.Left = 4.593701F;
             this.line93.LineWeight = 4F;
             this.line93.Name = "line93";
             this.line93.Top = 3.416536F;
             this.line93.Width = 0F;
-            this.line93.X1 = 4.635827F;
-            this.line93.X2 = 4.635827F;
+            this.line93.X1 = 4.593701F;
+            this.line93.X2 = 4.593701F;
             this.line93.Y1 = 3.416536F;
             this.line93.Y2 = 3.844489F;
             // 
@@ -2573,106 +2597,106 @@
             this.line94.LineWeight = 4F;
             this.line94.Name = "line94";
             this.line94.Top = 3.416536F;
-            this.line94.Width = 0.7066932F;
+            this.line94.Width = 0.6622052F;
             this.line94.X1 = 3.927559F;
-            this.line94.X2 = 4.634252F;
+            this.line94.X2 = 4.589764F;
             this.line94.Y1 = 3.416536F;
             this.line94.Y2 = 3.416536F;
             // 
             // line95
             // 
             this.line95.Height = 0F;
-            this.line95.Left = 0.6385827F;
+            this.line95.Left = 0.6814961F;
             this.line95.LineWeight = 4F;
             this.line95.Name = "line95";
             this.line95.Top = 5.044488F;
-            this.line95.Width = 3.995669F;
-            this.line95.X1 = 0.6385827F;
-            this.line95.X2 = 4.634252F;
+            this.line95.Width = 3.908268F;
+            this.line95.X1 = 0.6814961F;
+            this.line95.X2 = 4.589764F;
             this.line95.Y1 = 5.044488F;
             this.line95.Y2 = 5.044488F;
             // 
             // line96
             // 
             this.line96.Height = 0F;
-            this.line96.Left = 0.6385827F;
+            this.line96.Left = 0.6814961F;
             this.line96.LineWeight = 4F;
             this.line96.Name = "line96";
             this.line96.Top = 5.983465F;
-            this.line96.Width = 3.997244F;
-            this.line96.X1 = 0.6385827F;
-            this.line96.X2 = 4.635827F;
+            this.line96.Width = 3.912205F;
+            this.line96.X1 = 0.6814961F;
+            this.line96.X2 = 4.593701F;
             this.line96.Y1 = 5.983465F;
             this.line96.Y2 = 5.983465F;
             // 
             // line97
             // 
             this.line97.Height = 0.9389772F;
-            this.line97.Left = 0.638189F;
+            this.line97.Left = 0.6814961F;
             this.line97.LineWeight = 4F;
             this.line97.Name = "line97";
             this.line97.Top = 5.044488F;
             this.line97.Width = 0.0003936887F;
-            this.line97.X1 = 0.6385827F;
-            this.line97.X2 = 0.638189F;
+            this.line97.X1 = 0.6818898F;
+            this.line97.X2 = 0.6814961F;
             this.line97.Y1 = 5.983465F;
             this.line97.Y2 = 5.044488F;
             // 
             // line98
             // 
             this.line98.Height = 0.9389772F;
-            this.line98.Left = 4.634252F;
+            this.line98.Left = 4.593701F;
             this.line98.LineWeight = 4F;
             this.line98.Name = "line98";
             this.line98.Top = 5.044488F;
             this.line98.Width = 0.001574993F;
-            this.line98.X1 = 4.634252F;
-            this.line98.X2 = 4.635827F;
+            this.line98.X1 = 4.593701F;
+            this.line98.X2 = 4.595276F;
             this.line98.Y1 = 5.983465F;
             this.line98.Y2 = 5.044488F;
             // 
             // line99
             // 
-            this.line99.Height = 0.941339F;
-            this.line99.Left = 0.03188977F;
+            this.line99.Height = 0.9102359F;
+            this.line99.Left = 0.07795277F;
             this.line99.LineWeight = 4F;
             this.line99.Name = "line99";
-            this.line99.Top = 6.099607F;
+            this.line99.Top = 6.099213F;
             this.line99.Width = 0F;
-            this.line99.X1 = 0.03188977F;
-            this.line99.X2 = 0.03188977F;
-            this.line99.Y1 = 7.040946F;
-            this.line99.Y2 = 6.099607F;
+            this.line99.X1 = 0.07795277F;
+            this.line99.X2 = 0.07795277F;
+            this.line99.Y1 = 7.009449F;
+            this.line99.Y2 = 6.099213F;
             // 
             // line100
             // 
-            this.line100.Height = 9.536743E-07F;
-            this.line100.Left = 0.03188905F;
+            this.line100.Height = 0F;
+            this.line100.Left = 0.07519685F;
             this.line100.LineWeight = 4F;
             this.line100.Name = "line100";
-            this.line100.Top = 6.099606F;
-            this.line100.Width = 2.750395F;
+            this.line100.Top = 6.099607F;
+            this.line100.Width = 2.707087F;
             this.line100.X1 = 2.782284F;
-            this.line100.X2 = 0.03188905F;
+            this.line100.X2 = 0.07519685F;
             this.line100.Y1 = 6.099607F;
-            this.line100.Y2 = 6.099606F;
+            this.line100.Y2 = 6.099607F;
             // 
             // line101
             // 
             this.line101.Height = 0F;
-            this.line101.Left = 0.03188977F;
+            this.line101.Left = 0.07519685F;
             this.line101.LineWeight = 4F;
             this.line101.Name = "line101";
-            this.line101.Top = 7.040946F;
-            this.line101.Width = 2.749606F;
-            this.line101.X1 = 0.03188977F;
+            this.line101.Top = 7.009843F;
+            this.line101.Width = 2.706299F;
+            this.line101.X1 = 0.07519685F;
             this.line101.X2 = 2.781496F;
-            this.line101.Y1 = 7.040946F;
-            this.line101.Y2 = 7.040946F;
+            this.line101.Y1 = 7.009843F;
+            this.line101.Y2 = 7.009843F;
             // 
             // line102
             // 
-            this.line102.Height = 0.9413381F;
+            this.line102.Height = 0.9102359F;
             this.line102.Left = 2.781497F;
             this.line102.LineWeight = 4F;
             this.line102.Name = "line102";
@@ -2680,38 +2704,38 @@
             this.line102.Width = 0.0003929138F;
             this.line102.X1 = 2.78189F;
             this.line102.X2 = 2.781497F;
-            this.line102.Y1 = 7.040945F;
+            this.line102.Y1 = 7.009843F;
             this.line102.Y2 = 6.099607F;
             // 
             // textBox66
             // 
             this.textBox66.DataField = "line_cd";
             this.textBox66.Height = 0.1354331F;
-            this.textBox66.Left = 2.846063F;
+            this.textBox66.Left = 1.918504F;
             this.textBox66.Name = "textBox66";
             this.textBox66.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox66.Style = "font-size: 6pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
             this.textBox66.Text = null;
-            this.textBox66.Top = 0.5523623F;
+            this.textBox66.Top = 1.030709F;
             this.textBox66.Width = 1.007086F;
             // 
             // textBox65
             // 
             this.textBox65.DataField = "busyo_cd";
             this.textBox65.Height = 0.1354331F;
-            this.textBox65.Left = 2.371654F;
+            this.textBox65.Left = 0.2625985F;
             this.textBox65.Name = "textBox65";
             this.textBox65.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox65.Style = "font-size: 6pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
             this.textBox65.Text = null;
-            this.textBox65.Top = 0.07283467F;
+            this.textBox65.Top = 1.031102F;
             this.textBox65.Width = 1.469291F;
             // 
             // textBox64
             // 
             this.textBox64.DataField = "koutei_cd";
             this.textBox64.Height = 0.1354331F;
-            this.textBox64.Left = 1.568504F;
+            this.textBox64.Left = 0.2625985F;
             this.textBox64.Name = "textBox64";
             this.textBox64.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox64.Style = "font-size: 6pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
@@ -2723,43 +2747,43 @@
             // 
             this.textBox3.DataField = "koutei_name";
             this.textBox3.Height = 0.2811024F;
-            this.textBox3.Left = 1.567716F;
+            this.textBox3.Left = 0.2649606F;
             this.textBox3.Name = "textBox3";
             this.textBox3.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox3.ShrinkToFit = true;
             this.textBox3.Style = "font-size: 14.25pt; vertical-align: middle; ddo-shrink-to-fit: true";
             this.textBox3.Text = null;
-            this.textBox3.Top = 0.6877958F;
+            this.textBox3.Top = 0.6877953F;
             this.textBox3.Width = 1.091732F;
             // 
             // label1
             // 
             this.label1.Height = 0.4165355F;
             this.label1.HyperLink = null;
-            this.label1.Left = 0.03110218F;
+            this.label1.Left = 1.48937F;
             this.label1.Name = "label1";
             this.label1.Style = "font-size: 20.25pt; vertical-align: middle";
             this.label1.Text = "作業指示日報";
-            this.label1.Top = 0.07283467F;
-            this.label1.Width = 1.947244F;
+            this.label1.Top = 0.07283465F;
+            this.label1.Width = 1.72874F;
             // 
             // textBox1
             // 
             this.textBox1.DataField = "seisan_yotei_date";
             this.textBox1.Height = 0.2811023F;
-            this.textBox1.Left = 0.2145667F;
+            this.textBox1.Left = 0.2625985F;
             this.textBox1.Name = "textBox1";
             this.textBox1.Style = "font-size: 14.25pt; text-align: center; vertical-align: middle";
             this.textBox1.Text = null;
-            this.textBox1.Top = 0.6877958F;
+            this.textBox1.Top = 0.2082677F;
             this.textBox1.Width = 1.166535F;
             // 
             // barcode1
             // 
             this.barcode1.DataField = "barcode";
             this.barcode1.Font = new System.Drawing.Font("Courier New", 8F);
-            this.barcode1.Height = 0.7086614F;
-            this.barcode1.Left = 3.923622F;
+            this.barcode1.Height = 0.3330709F;
+            this.barcode1.Left = 4.249607F;
             this.barcode1.Name = "barcode1";
             this.barcode1.QuietZoneBottom = 0F;
             this.barcode1.QuietZoneLeft = 0F;
@@ -2767,38 +2791,38 @@
             this.barcode1.QuietZoneTop = 0F;
             this.barcode1.Style = GrapeCity.ActiveReports.SectionReportModel.BarCodeStyle.QRCode;
             this.barcode1.Top = 0.07283465F;
-            this.barcode1.Width = 0.7086614F;
+            this.barcode1.Width = 0.3401575F;
             this.barcode1.QRCode.Encoding = System.Text.Encoding.GetEncoding(932);
             // 
             // textBox5
             // 
             this.textBox5.Height = 0.4165354F;
-            this.textBox5.Left = 0.02755881F;
+            this.textBox5.Left = 0.07795276F;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Style = "background-color: Gainsboro; font-size: 8.25pt; text-align: center; vertical-alig" +
-    "n: middle; ddo-font-vertical: true";
+            this.textBox5.Style = "background-color: DimGray; color: White; font-size: 8.25pt; text-align: center; v" +
+    "ertical-align: middle; ddo-font-vertical: true";
             this.textBox5.Text = "生\r\n産\r\n日";
-            this.textBox5.Top = 0.5523623F;
+            this.textBox5.Top = 0.07283465F;
             this.textBox5.Width = 0.1870079F;
             // 
             // textBox6
             // 
             this.textBox6.Height = 0.4165354F;
-            this.textBox6.Left = 2.184252F;
+            this.textBox6.Left = 0.07598425F;
             this.textBox6.Name = "textBox6";
             this.textBox6.Style = "font-size: 8.25pt; text-align: center; vertical-align: middle; ddo-font-vertical:" +
     " true";
             this.textBox6.Text = "部署";
-            this.textBox6.Top = 0.07283467F;
+            this.textBox6.Top = 1.031102F;
             this.textBox6.Width = 0.1874017F;
             // 
             // textBox7
             // 
             this.textBox7.Height = 0.4165354F;
-            this.textBox7.Left = 1.381102F;
+            this.textBox7.Left = 0.07598425F;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Style = "background-color: Gainsboro; font-size: 8.25pt; text-align: center; vertical-alig" +
-    "n: middle; ddo-font-vertical: true";
+            this.textBox7.Style = "background-color: DimGray; color: White; font-size: 8.25pt; text-align: center; v" +
+    "ertical-align: middle; ddo-font-vertical: true";
             this.textBox7.Text = "工\r\n程\r\n名";
             this.textBox7.Top = 0.5523623F;
             this.textBox7.Width = 0.1866142F;
@@ -2807,155 +2831,142 @@
             // 
             this.textBox2.DataField = "busyo_name";
             this.textBox2.Height = 0.2814961F;
-            this.textBox2.Left = 2.371654F;
+            this.textBox2.Left = 0.2622047F;
             this.textBox2.Name = "textBox2";
             this.textBox2.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox2.ShrinkToFit = true;
             this.textBox2.Style = "font-size: 14.25pt; vertical-align: middle; ddo-shrink-to-fit: true";
             this.textBox2.Text = null;
-            this.textBox2.Top = 0.2078741F;
+            this.textBox2.Top = 1.166142F;
             this.textBox2.Width = 1.469685F;
             // 
             // textBox4
             // 
             this.textBox4.DataField = "line_name";
             this.textBox4.Height = 0.2811024F;
-            this.textBox4.Left = 2.846063F;
+            this.textBox4.Left = 1.918504F;
             this.textBox4.Name = "textBox4";
             this.textBox4.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox4.ShrinkToFit = true;
             this.textBox4.Style = "font-size: 14.25pt; vertical-align: middle; ddo-shrink-to-fit: true";
             this.textBox4.Text = null;
-            this.textBox4.Top = 0.6877958F;
+            this.textBox4.Top = 1.166142F;
             this.textBox4.Width = 1.007087F;
             // 
             // line67
             // 
             this.line67.Height = 0F;
-            this.line67.Left = 0.02755896F;
+            this.line67.Left = 0.07598425F;
             this.line67.LineWeight = 1F;
             this.line67.Name = "line67";
             this.line67.Top = 0.5523623F;
-            this.line67.Width = 3.825591F;
-            this.line67.X1 = 0.02755896F;
-            this.line67.X2 = 3.85315F;
+            this.line67.Width = 4.51378F;
+            this.line67.X1 = 0.07598425F;
+            this.line67.X2 = 4.589764F;
             this.line67.Y1 = 0.5523623F;
             this.line67.Y2 = 0.5523623F;
             // 
             // line68
             // 
             this.line68.Height = 0F;
-            this.line68.Left = 0.02401558F;
+            this.line68.Left = 0.07598425F;
             this.line68.LineWeight = 1F;
             this.line68.Name = "line68";
-            this.line68.Top = 0.9688978F;
-            this.line68.Width = 3.829134F;
-            this.line68.X1 = 0.02401558F;
-            this.line68.X2 = 3.85315F;
-            this.line68.Y1 = 0.9688978F;
-            this.line68.Y2 = 0.9688978F;
+            this.line68.Top = 0.9688977F;
+            this.line68.Width = 1.278741F;
+            this.line68.X1 = 0.07598425F;
+            this.line68.X2 = 1.354725F;
+            this.line68.Y1 = 0.9688977F;
+            this.line68.Y2 = 0.9688977F;
             // 
             // line71
             // 
             this.line71.Height = 0.4165355F;
-            this.line71.Left = 0.214173F;
+            this.line71.Left = 0.2625985F;
             this.line71.LineWeight = 1F;
             this.line71.Name = "line71";
             this.line71.Top = 0.5523623F;
             this.line71.Width = 0F;
-            this.line71.X1 = 0.214173F;
-            this.line71.X2 = 0.214173F;
+            this.line71.X1 = 0.2625985F;
+            this.line71.X2 = 0.2625985F;
             this.line71.Y1 = 0.5523623F;
             this.line71.Y2 = 0.9688978F;
             // 
             // line72
             // 
             this.line72.Height = 0.4165355F;
-            this.line72.Left = 0.02755881F;
+            this.line72.Left = 0.07598411F;
             this.line72.LineWeight = 1F;
             this.line72.Name = "line72";
             this.line72.Top = 0.5523623F;
-            this.line72.Width = 1.508743E-07F;
-            this.line72.X1 = 0.02755896F;
-            this.line72.X2 = 0.02755881F;
+            this.line72.Width = 1.341105E-07F;
+            this.line72.X1 = 0.07598425F;
+            this.line72.X2 = 0.07598411F;
             this.line72.Y1 = 0.5523623F;
             this.line72.Y2 = 0.9688978F;
             // 
             // line73
             // 
-            this.line73.Height = 0.4165355F;
-            this.line73.Left = 1.567716F;
+            this.line73.Height = 0.1562992F;
+            this.line73.Left = 2.02126F;
             this.line73.LineWeight = 1F;
             this.line73.Name = "line73";
             this.line73.Top = 0.5523623F;
             this.line73.Width = 0F;
-            this.line73.X1 = 1.567716F;
-            this.line73.X2 = 1.567716F;
+            this.line73.X1 = 2.02126F;
+            this.line73.X2 = 2.02126F;
             this.line73.Y1 = 0.5523623F;
-            this.line73.Y2 = 0.9688978F;
+            this.line73.Y2 = 0.7086615F;
             // 
             // line86
             // 
             this.line86.Height = 0F;
-            this.line86.Left = 2.184252F;
+            this.line86.Left = 0.07598425F;
             this.line86.LineWeight = 1F;
             this.line86.Name = "line86";
-            this.line86.Top = 0.4893702F;
-            this.line86.Width = 1.656693F;
-            this.line86.X1 = 2.184252F;
-            this.line86.X2 = 3.840945F;
-            this.line86.Y1 = 0.4893702F;
-            this.line86.Y2 = 0.4893702F;
-            // 
-            // line76
-            // 
-            this.line76.Height = 0.4165365F;
-            this.line76.Left = 2.659448F;
-            this.line76.LineWeight = 1F;
-            this.line76.Name = "line76";
-            this.line76.Top = 0.5523623F;
-            this.line76.Width = 1.192093E-06F;
-            this.line76.X1 = 2.659449F;
-            this.line76.X2 = 2.659448F;
-            this.line76.Y1 = 0.5523623F;
-            this.line76.Y2 = 0.9688988F;
+            this.line86.Top = 0.4893701F;
+            this.line86.Width = 1.35315F;
+            this.line86.X1 = 0.07598425F;
+            this.line86.X2 = 1.429134F;
+            this.line86.Y1 = 0.4893701F;
+            this.line86.Y2 = 0.4893701F;
             // 
             // line69
             // 
-            this.line69.Height = 0F;
-            this.line69.Left = 2.184252F;
+            this.line69.Height = 1.490116E-08F;
+            this.line69.Left = 0.07598425F;
             this.line69.LineWeight = 1F;
             this.line69.Name = "line69";
-            this.line69.Top = 0.07283467F;
-            this.line69.Width = 1.657087F;
-            this.line69.X1 = 2.184252F;
-            this.line69.X2 = 3.841339F;
-            this.line69.Y1 = 0.07283467F;
-            this.line69.Y2 = 0.07283467F;
+            this.line69.Top = 0.07283465F;
+            this.line69.Width = 1.35315F;
+            this.line69.X1 = 0.07598425F;
+            this.line69.X2 = 1.429134F;
+            this.line69.Y1 = 0.07283465F;
+            this.line69.Y2 = 0.07283466F;
             // 
             // line75
             // 
             this.line75.Height = 0.4165365F;
-            this.line75.Left = 2.846063F;
+            this.line75.Left = 0.07559056F;
             this.line75.LineWeight = 1F;
             this.line75.Name = "line75";
-            this.line75.Top = 0.5523623F;
+            this.line75.Top = 0.07283465F;
             this.line75.Width = 0F;
-            this.line75.X1 = 2.846063F;
-            this.line75.X2 = 2.846063F;
-            this.line75.Y1 = 0.5523623F;
-            this.line75.Y2 = 0.9688988F;
+            this.line75.X1 = 0.07559056F;
+            this.line75.X2 = 0.07559056F;
+            this.line75.Y1 = 0.07283465F;
+            this.line75.Y2 = 0.4893711F;
             // 
             // line74
             // 
             this.line74.Height = 0.4165355F;
-            this.line74.Left = 1.381102F;
+            this.line74.Left = 1.354725F;
             this.line74.LineWeight = 1F;
             this.line74.Name = "line74";
             this.line74.Top = 0.5523623F;
             this.line74.Width = 0F;
-            this.line74.X1 = 1.381102F;
-            this.line74.X2 = 1.381102F;
+            this.line74.X1 = 1.354725F;
+            this.line74.X2 = 1.354725F;
             this.line74.Y1 = 0.5523623F;
             this.line74.Y2 = 0.9688978F;
             // 
@@ -2963,268 +2974,606 @@
             // 
             this.textBox54.DataField = "seihin_cd";
             this.textBox54.Height = 0.1562992F;
-            this.textBox54.Left = 0.6976379F;
+            this.textBox54.Left = 0.6059055F;
             this.textBox54.Name = "textBox54";
             this.textBox54.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox54.Style = "font-size: 9pt; text-align: left; vertical-align: middle; ddo-char-set: 1";
             this.textBox54.Text = null;
-            this.textBox54.Top = 1.364961F;
-            this.textBox54.Width = 1.136614F;
+            this.textBox54.Top = 1.520473F;
+            this.textBox54.Width = 1.145276F;
             // 
             // textBox92
             // 
             this.textBox92.Height = 0.1562992F;
-            this.textBox92.Left = 0.03188977F;
+            this.textBox92.Left = 0.07559056F;
             this.textBox92.Name = "textBox92";
-            this.textBox92.Style = "background-color: Gainsboro; font-size: 8.25pt; vertical-align: middle";
+            this.textBox92.Style = "font-size: 8.25pt; vertical-align: middle";
             this.textBox92.Text = "製品コード";
-            this.textBox92.Top = 1.364961F;
-            this.textBox92.Width = 0.6657481F;
+            this.textBox92.Top = 1.520473F;
+            this.textBox92.Width = 0.530315F;
             // 
             // textBox93
             // 
             this.textBox93.DataField = "juchu_cd1";
             this.textBox93.Height = 0.1562992F;
-            this.textBox93.Left = 0.6976379F;
+            this.textBox93.Left = 1.937795F;
             this.textBox93.Name = "textBox93";
             this.textBox93.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox93.Style = "font-size: 9pt; vertical-align: middle";
             this.textBox93.Text = null;
-            this.textBox93.Top = 1.208662F;
-            this.textBox93.Width = 1.136614F;
+            this.textBox93.Top = 0.7086615F;
+            this.textBox93.Width = 1.084646F;
             // 
             // textBox94
             // 
             this.textBox94.DataField = "juchu_cd2";
             this.textBox94.Height = 0.1562992F;
-            this.textBox94.Left = 2.500787F;
+            this.textBox94.Left = 3.605512F;
             this.textBox94.Name = "textBox94";
             this.textBox94.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox94.Style = "font-size: 9pt; vertical-align: middle";
             this.textBox94.Text = null;
-            this.textBox94.Top = 1.208662F;
-            this.textBox94.Width = 1.136614F;
+            this.textBox94.Top = 0.7086615F;
+            this.textBox94.Width = 0.9842521F;
             // 
             // line56
             // 
-            this.line56.Height = 0.4165355F;
-            this.line56.Left = 2.184251F;
+            this.line56.Height = 0.4165356F;
+            this.line56.Left = 1.429133F;
             this.line56.LineWeight = 1F;
             this.line56.Name = "line56";
-            this.line56.Top = 0.07283467F;
+            this.line56.Top = 0.07283465F;
             this.line56.Width = 9.536743E-07F;
-            this.line56.X1 = 2.184252F;
-            this.line56.X2 = 2.184251F;
-            this.line56.Y1 = 0.07283467F;
+            this.line56.X1 = 1.429134F;
+            this.line56.X2 = 1.429133F;
+            this.line56.Y1 = 0.07283465F;
             this.line56.Y2 = 0.4893702F;
             // 
             // line66
             // 
-            this.line66.Height = 0.4165357F;
-            this.line66.Left = 2.371653F;
+            this.line66.Height = 0.4165355F;
+            this.line66.Left = 0.2625985F;
             this.line66.LineWeight = 1F;
             this.line66.Name = "line66";
-            this.line66.Top = 0.07283467F;
-            this.line66.Width = 9.536743E-07F;
-            this.line66.X1 = 2.371654F;
-            this.line66.X2 = 2.371653F;
-            this.line66.Y1 = 0.07283467F;
-            this.line66.Y2 = 0.4893704F;
+            this.line66.Top = 0.07283465F;
+            this.line66.Width = 0F;
+            this.line66.X1 = 0.2625985F;
+            this.line66.X2 = 0.2625985F;
+            this.line66.Y1 = 0.07283465F;
+            this.line66.Y2 = 0.4893701F;
             // 
             // line70
             // 
-            this.line70.Height = 0.4165359F;
-            this.line70.Left = 3.841338F;
+            this.line70.Height = 0.3125983F;
+            this.line70.Left = 4.589764F;
             this.line70.LineWeight = 1F;
             this.line70.Name = "line70";
-            this.line70.Top = 0.07283467F;
-            this.line70.Width = 1.192093E-06F;
-            this.line70.X1 = 3.841339F;
-            this.line70.X2 = 3.841338F;
-            this.line70.Y1 = 0.07283467F;
-            this.line70.Y2 = 0.4893706F;
+            this.line70.Top = 0.5523623F;
+            this.line70.Width = 0F;
+            this.line70.X1 = 4.589764F;
+            this.line70.X2 = 4.589764F;
+            this.line70.Y1 = 0.5523623F;
+            this.line70.Y2 = 0.8649607F;
             // 
             // line103
             // 
-            this.line103.Height = 0.4165355F;
-            this.line103.Left = 3.85315F;
+            this.line103.Height = 0.1562992F;
+            this.line103.Left = 3.022441F;
             this.line103.LineWeight = 1F;
             this.line103.Name = "line103";
-            this.line103.Top = 0.5523623F;
+            this.line103.Top = 0.7086615F;
             this.line103.Width = 0F;
-            this.line103.X1 = 3.85315F;
-            this.line103.X2 = 3.85315F;
-            this.line103.Y1 = 0.5523623F;
-            this.line103.Y2 = 0.9688978F;
+            this.line103.X1 = 3.022441F;
+            this.line103.X2 = 3.022441F;
+            this.line103.Y1 = 0.7086615F;
+            this.line103.Y2 = 0.8649607F;
             // 
             // line104
             // 
-            this.line104.Height = 0.3125991F;
-            this.line104.Left = 4.037008F;
+            this.line104.Height = 0.4165354F;
+            this.line104.Left = 3.299213F;
             this.line104.LineWeight = 1F;
             this.line104.Name = "line104";
-            this.line104.Top = 1.052362F;
+            this.line104.Top = 0.07283467F;
             this.line104.Width = 0F;
-            this.line104.X1 = 4.037008F;
-            this.line104.X2 = 4.037008F;
-            this.line104.Y1 = 1.052362F;
-            this.line104.Y2 = 1.364961F;
+            this.line104.X1 = 3.299213F;
+            this.line104.X2 = 3.299213F;
+            this.line104.Y1 = 0.07283467F;
+            this.line104.Y2 = 0.4893701F;
             // 
             // line106
             // 
-            this.line106.Height = 0.1563001F;
-            this.line106.Left = 1.175197F;
+            this.line106.Height = 0.1562999F;
+            this.line106.Left = 2.498819F;
             this.line106.LineWeight = 1F;
             this.line106.Name = "line106";
-            this.line106.Top = 1.052362F;
+            this.line106.Top = 0.5523623F;
             this.line106.Width = 0F;
-            this.line106.X1 = 1.175197F;
-            this.line106.X2 = 1.175197F;
-            this.line106.Y1 = 1.052362F;
-            this.line106.Y2 = 1.208662F;
+            this.line106.X1 = 2.498819F;
+            this.line106.X2 = 2.498819F;
+            this.line106.Y1 = 0.5523623F;
+            this.line106.Y2 = 0.7086623F;
             // 
             // line107
             // 
-            this.line107.Height = 0.312598F;
-            this.line107.Left = 2.500787F;
+            this.line107.Height = 0.1562992F;
+            this.line107.Left = 3.605512F;
             this.line107.LineWeight = 1F;
             this.line107.Name = "line107";
-            this.line107.Top = 1.208662F;
+            this.line107.Top = 0.7086615F;
             this.line107.Width = 0F;
-            this.line107.X1 = 2.500787F;
-            this.line107.X2 = 2.500787F;
-            this.line107.Y1 = 1.208662F;
-            this.line107.Y2 = 1.52126F;
+            this.line107.X1 = 3.605512F;
+            this.line107.X2 = 3.605512F;
+            this.line107.Y1 = 0.7086615F;
+            this.line107.Y2 = 0.8649607F;
             // 
             // line110
             // 
-            this.line110.Height = 0.156299F;
-            this.line110.Left = 4.266142F;
+            this.line110.Height = 0.406693F;
+            this.line110.Left = 3.698819F;
             this.line110.LineWeight = 1F;
             this.line110.Name = "line110";
-            this.line110.Top = 1.364961F;
+            this.line110.Top = 0.07283461F;
             this.line110.Width = 0F;
-            this.line110.X1 = 4.266142F;
-            this.line110.X2 = 4.266142F;
-            this.line110.Y1 = 1.364961F;
-            this.line110.Y2 = 1.52126F;
+            this.line110.X1 = 3.698819F;
+            this.line110.X2 = 3.698819F;
+            this.line110.Y1 = 0.07283461F;
+            this.line110.Y2 = 0.4795276F;
             // 
             // line111
             // 
             this.line111.Height = 0F;
-            this.line111.Left = 0.03188992F;
+            this.line111.Left = 3.299213F;
             this.line111.LineWeight = 1F;
             this.line111.Name = "line111";
-            this.line111.Top = 1.677559F;
-            this.line111.Width = 4.600394F;
-            this.line111.X1 = 0.03188992F;
-            this.line111.X2 = 4.632284F;
-            this.line111.Y1 = 1.677559F;
-            this.line111.Y2 = 1.677559F;
+            this.line111.Top = 0.3232284F;
+            this.line111.Width = 0.8905511F;
+            this.line111.X1 = 3.299213F;
+            this.line111.X2 = 4.189764F;
+            this.line111.Y1 = 0.3232284F;
+            this.line111.Y2 = 0.3232284F;
             // 
             // line112
             // 
             this.line112.Height = 0F;
-            this.line112.Left = 0.03188992F;
+            this.line112.Left = 3.299213F;
             this.line112.LineWeight = 1F;
             this.line112.Name = "line112";
-            this.line112.Top = 1.833858F;
-            this.line112.Width = 4.600394F;
-            this.line112.X1 = 0.03188992F;
-            this.line112.X2 = 4.632284F;
-            this.line112.Y1 = 1.833858F;
-            this.line112.Y2 = 1.833858F;
+            this.line112.Top = 0.4795276F;
+            this.line112.Width = 0.8905511F;
+            this.line112.X1 = 3.299213F;
+            this.line112.X2 = 4.189764F;
+            this.line112.Y1 = 0.4795276F;
+            this.line112.Y2 = 0.4795276F;
             // 
             // line113
             // 
-            this.line113.Height = 0F;
-            this.line113.Left = 0.03188992F;
+            this.line113.Height = 0.001574874F;
+            this.line113.Left = 0.07795277F;
             this.line113.LineWeight = 1F;
             this.line113.Name = "line113";
-            this.line113.Top = 1.52126F;
-            this.line113.Width = 4.600788F;
-            this.line113.X1 = 0.03188992F;
-            this.line113.X2 = 4.632678F;
-            this.line113.Y1 = 1.52126F;
-            this.line113.Y2 = 1.52126F;
+            this.line113.Top = 1.029921F;
+            this.line113.Width = 2.847638F;
+            this.line113.X1 = 0.07795277F;
+            this.line113.X2 = 2.925591F;
+            this.line113.Y1 = 1.029921F;
+            this.line113.Y2 = 1.031496F;
             // 
             // line58
             // 
             this.line58.Height = 0F;
-            this.line58.Left = 0.03110218F;
+            this.line58.Left = 1.354725F;
             this.line58.LineWeight = 1F;
             this.line58.Name = "line58";
-            this.line58.Top = 1.208662F;
-            this.line58.Width = 3.6063F;
-            this.line58.X1 = 0.03110218F;
-            this.line58.X2 = 3.637402F;
-            this.line58.Y1 = 1.208662F;
-            this.line58.Y2 = 1.208662F;
+            this.line58.Top = 0.8649607F;
+            this.line58.Width = 3.235039F;
+            this.line58.X1 = 1.354725F;
+            this.line58.X2 = 4.589764F;
+            this.line58.Y1 = 0.8649607F;
+            this.line58.Y2 = 0.8649607F;
             // 
             // line59
             // 
             this.line59.Height = 0F;
-            this.line59.Left = 0.03110218F;
+            this.line59.Left = 3.299213F;
             this.line59.LineWeight = 1F;
             this.line59.Name = "line59";
-            this.line59.Top = 1.364961F;
-            this.line59.Width = 4.601182F;
-            this.line59.X1 = 0.03110218F;
-            this.line59.X2 = 4.632284F;
-            this.line59.Y1 = 1.364961F;
-            this.line59.Y2 = 1.364961F;
+            this.line59.Top = 0.07283465F;
+            this.line59.Width = 0.8905511F;
+            this.line59.X1 = 3.299213F;
+            this.line59.X2 = 4.189764F;
+            this.line59.Y1 = 0.07283465F;
+            this.line59.Y2 = 0.07283465F;
             // 
             // line63
             // 
-            this.line63.Height = 0.781496F;
-            this.line63.Left = 0.03110218F;
+            this.line63.Height = 0.4165361F;
+            this.line63.Left = 0.07598425F;
             this.line63.LineWeight = 1F;
             this.line63.Name = "line63";
-            this.line63.Top = 1.052362F;
-            this.line63.Width = 1.788139E-07F;
-            this.line63.X1 = 0.03110218F;
-            this.line63.X2 = 0.03110236F;
-            this.line63.Y1 = 1.052362F;
-            this.line63.Y2 = 1.833858F;
+            this.line63.Top = 1.031102F;
+            this.line63.Width = 0F;
+            this.line63.X1 = 0.07598425F;
+            this.line63.X2 = 0.07598425F;
+            this.line63.Y1 = 1.031102F;
+            this.line63.Y2 = 1.447638F;
             // 
             // line62
             // 
-            this.line62.Height = 0.781496F;
-            this.line62.Left = 0.6976379F;
+            this.line62.Height = 0.416142F;
+            this.line62.Left = 1.73189F;
             this.line62.LineWeight = 1F;
             this.line62.Name = "line62";
-            this.line62.Top = 1.052362F;
-            this.line62.Width = 5.960464E-08F;
-            this.line62.X1 = 0.697638F;
-            this.line62.X2 = 0.6976379F;
-            this.line62.Y1 = 1.052362F;
-            this.line62.Y2 = 1.833858F;
+            this.line62.Top = 1.031496F;
+            this.line62.Width = 0.001574993F;
+            this.line62.X1 = 1.733465F;
+            this.line62.X2 = 1.73189F;
+            this.line62.Y1 = 1.031496F;
+            this.line62.Y2 = 1.447638F;
             // 
             // line105
             // 
-            this.line105.Height = 0.312598F;
-            this.line105.Left = 1.834252F;
+            this.line105.Height = 0.1563001F;
+            this.line105.Left = 3.444095F;
             this.line105.LineWeight = 1F;
             this.line105.Name = "line105";
-            this.line105.Top = 1.208662F;
+            this.line105.Top = 1.030315F;
             this.line105.Width = 0F;
-            this.line105.X1 = 1.834252F;
-            this.line105.X2 = 1.834252F;
-            this.line105.Y1 = 1.208662F;
-            this.line105.Y2 = 1.52126F;
+            this.line105.X1 = 3.444095F;
+            this.line105.X2 = 3.444095F;
+            this.line105.Y1 = 1.030315F;
+            this.line105.Y2 = 1.186615F;
             // 
             // line61
             // 
-            this.line61.Height = 0.4688981F;
-            this.line61.Left = 3.637402F;
+            this.line61.Height = 0.4066929F;
+            this.line61.Left = 4.189764F;
             this.line61.LineWeight = 1F;
             this.line61.Name = "line61";
-            this.line61.Top = 1.052362F;
+            this.line61.Top = 0.07283467F;
             this.line61.Width = 0F;
-            this.line61.X1 = 3.637402F;
-            this.line61.X2 = 3.637402F;
-            this.line61.Y1 = 1.052362F;
-            this.line61.Y2 = 1.52126F;
+            this.line61.X1 = 4.189764F;
+            this.line61.X2 = 4.189764F;
+            this.line61.Y1 = 0.07283467F;
+            this.line61.Y2 = 0.4795276F;
+            // 
+            // line76
+            // 
+            this.line76.Height = 0.1562992F;
+            this.line76.Left = 1.937795F;
+            this.line76.LineWeight = 1F;
+            this.line76.Name = "line76";
+            this.line76.Top = 0.7086615F;
+            this.line76.Width = 0F;
+            this.line76.X1 = 1.937795F;
+            this.line76.X2 = 1.937795F;
+            this.line76.Y1 = 0.7086615F;
+            this.line76.Y2 = 0.8649607F;
+            // 
+            // line57
+            // 
+            this.line57.Height = 0F;
+            this.line57.Left = 1.354725F;
+            this.line57.LineWeight = 1F;
+            this.line57.Name = "line57";
+            this.line57.Top = 0.7086615F;
+            this.line57.Width = 3.235039F;
+            this.line57.X1 = 1.354725F;
+            this.line57.X2 = 4.589764F;
+            this.line57.Y1 = 0.7086615F;
+            this.line57.Y2 = 0.7086615F;
+            // 
+            // line65
+            // 
+            this.line65.Height = 0.4165361F;
+            this.line65.Left = 1.918504F;
+            this.line65.LineWeight = 1F;
+            this.line65.Name = "line65";
+            this.line65.Top = 1.031102F;
+            this.line65.Width = 0F;
+            this.line65.X1 = 1.918504F;
+            this.line65.X2 = 1.918504F;
+            this.line65.Y1 = 1.031102F;
+            this.line65.Y2 = 1.447638F;
+            // 
+            // line60
+            // 
+            this.line60.Height = 0F;
+            this.line60.Left = 0.07637799F;
+            this.line60.LineWeight = 1F;
+            this.line60.Name = "line60";
+            this.line60.Top = 1.520473F;
+            this.line60.Width = 4.513386F;
+            this.line60.X1 = 0.07637799F;
+            this.line60.X2 = 4.589764F;
+            this.line60.Y1 = 1.520473F;
+            this.line60.Y2 = 1.520473F;
+            // 
+            // line64
+            // 
+            this.line64.Height = 0F;
+            this.line64.Left = 0.07559061F;
+            this.line64.LineWeight = 1F;
+            this.line64.Name = "line64";
+            this.line64.Top = 1.676772F;
+            this.line64.Width = 4.514174F;
+            this.line64.X1 = 0.07559061F;
+            this.line64.X2 = 4.589764F;
+            this.line64.Y1 = 1.676772F;
+            this.line64.Y2 = 1.676772F;
+            // 
+            // line87
+            // 
+            this.line87.Height = 0.156299F;
+            this.line87.Left = 0.07637796F;
+            this.line87.LineWeight = 1F;
+            this.line87.Name = "line87";
+            this.line87.Top = 1.520473F;
+            this.line87.Width = 0.001574904F;
+            this.line87.X1 = 0.07795286F;
+            this.line87.X2 = 0.07637796F;
+            this.line87.Y1 = 1.520473F;
+            this.line87.Y2 = 1.676772F;
+            // 
+            // line108
+            // 
+            this.line108.Height = 0.156299F;
+            this.line108.Left = 0.6059053F;
+            this.line108.LineWeight = 1F;
+            this.line108.Name = "line108";
+            this.line108.Top = 1.520473F;
+            this.line108.Width = 0.001574993F;
+            this.line108.X1 = 0.6074803F;
+            this.line108.X2 = 0.6059053F;
+            this.line108.Y1 = 1.520473F;
+            this.line108.Y2 = 1.676772F;
+            // 
+            // line109
+            // 
+            this.line109.Height = 0.312598F;
+            this.line109.Left = 1.751181F;
+            this.line109.LineWeight = 1F;
+            this.line109.Name = "line109";
+            this.line109.Top = 1.520473F;
+            this.line109.Width = 0.001574993F;
+            this.line109.X1 = 1.752756F;
+            this.line109.X2 = 1.751181F;
+            this.line109.Y1 = 1.520473F;
+            this.line109.Y2 = 1.833071F;
+            // 
+            // line114
+            // 
+            this.line114.Height = 0.312598F;
+            this.line114.Left = 2.249606F;
+            this.line114.LineWeight = 1F;
+            this.line114.Name = "line114";
+            this.line114.Top = 1.520473F;
+            this.line114.Width = 0.001574993F;
+            this.line114.X1 = 2.251181F;
+            this.line114.X2 = 2.249606F;
+            this.line114.Y1 = 1.520473F;
+            this.line114.Y2 = 1.833071F;
+            // 
+            // line115
+            // 
+            this.line115.Height = 0.312598F;
+            this.line115.Left = 4.589764F;
+            this.line115.LineWeight = 1F;
+            this.line115.Name = "line115";
+            this.line115.Top = 1.520473F;
+            this.line115.Width = 0F;
+            this.line115.X1 = 4.589764F;
+            this.line115.X2 = 4.589764F;
+            this.line115.Y1 = 1.520473F;
+            this.line115.Y2 = 1.833071F;
+            // 
+            // line116
+            // 
+            this.line116.Height = 0F;
+            this.line116.Left = 1.751181F;
+            this.line116.LineWeight = 1F;
+            this.line116.Name = "line116";
+            this.line116.Top = 1.833071F;
+            this.line116.Width = 2.838583F;
+            this.line116.X1 = 1.751181F;
+            this.line116.X2 = 4.589764F;
+            this.line116.Y1 = 1.833071F;
+            this.line116.Y2 = 1.833071F;
+            // 
+            // line117
+            // 
+            this.line117.Height = 0F;
+            this.line117.Left = 0.07795276F;
+            this.line117.LineWeight = 1F;
+            this.line117.Name = "line117";
+            this.line117.Top = 1.447244F;
+            this.line117.Width = 2.847638F;
+            this.line117.X1 = 0.07795276F;
+            this.line117.X2 = 2.925591F;
+            this.line117.Y1 = 1.447244F;
+            this.line117.Y2 = 1.447244F;
+            // 
+            // line118
+            // 
+            this.line118.Height = 0.0003939867F;
+            this.line118.Left = 3.059056F;
+            this.line118.LineWeight = 1F;
+            this.line118.Name = "line118";
+            this.line118.Top = 1.186221F;
+            this.line118.Width = 1.521654F;
+            this.line118.X1 = 3.059056F;
+            this.line118.X2 = 4.580709F;
+            this.line118.Y1 = 1.186615F;
+            this.line118.Y2 = 1.186221F;
+            // 
+            // line119
+            // 
+            this.line119.Height = 0.416535F;
+            this.line119.Left = 2.925591F;
+            this.line119.LineWeight = 1F;
+            this.line119.Name = "line119";
+            this.line119.Top = 1.030709F;
+            this.line119.Width = 0F;
+            this.line119.X1 = 2.925591F;
+            this.line119.X2 = 2.925591F;
+            this.line119.Y1 = 1.030709F;
+            this.line119.Y2 = 1.447244F;
+            // 
+            // line120
+            // 
+            this.line120.Height = 0.156299F;
+            this.line120.Left = 4.580709F;
+            this.line120.LineWeight = 1F;
+            this.line120.Name = "line120";
+            this.line120.Top = 1.030709F;
+            this.line120.Width = 0F;
+            this.line120.X1 = 4.580709F;
+            this.line120.X2 = 4.580709F;
+            this.line120.Y1 = 1.030709F;
+            this.line120.Y2 = 1.187008F;
+            // 
+            // line121
+            // 
+            this.line121.Height = 0.416142F;
+            this.line121.Left = 0.2633858F;
+            this.line121.LineWeight = 1F;
+            this.line121.Name = "line121";
+            this.line121.Top = 1.031496F;
+            this.line121.Width = 0F;
+            this.line121.X1 = 0.2633858F;
+            this.line121.X2 = 0.2633858F;
+            this.line121.Y1 = 1.031496F;
+            this.line121.Y2 = 1.447638F;
+            // 
+            // line122
+            // 
+            this.line122.Height = 0.416142F;
+            this.line122.Left = 0.2649606F;
+            this.line122.LineWeight = 4F;
+            this.line122.Name = "line122";
+            this.line122.Top = 1.031496F;
+            this.line122.Width = 0F;
+            this.line122.X1 = 0.2649606F;
+            this.line122.X2 = 0.2649606F;
+            this.line122.Y1 = 1.031496F;
+            this.line122.Y2 = 1.447638F;
+            // 
+            // line123
+            // 
+            this.line123.Height = 0.4161429F;
+            this.line123.Left = 1.73189F;
+            this.line123.LineWeight = 4F;
+            this.line123.Name = "line123";
+            this.line123.Top = 1.031496F;
+            this.line123.Width = 0F;
+            this.line123.X1 = 1.73189F;
+            this.line123.X2 = 1.73189F;
+            this.line123.Y1 = 1.031496F;
+            this.line123.Y2 = 1.447639F;
+            // 
+            // line124
+            // 
+            this.line124.Height = 0.4161429F;
+            this.line124.Left = 2.925591F;
+            this.line124.LineWeight = 4F;
+            this.line124.Name = "line124";
+            this.line124.Top = 1.031496F;
+            this.line124.Width = 0F;
+            this.line124.X1 = 2.925591F;
+            this.line124.X2 = 2.925591F;
+            this.line124.Y1 = 1.031496F;
+            this.line124.Y2 = 1.447639F;
+            // 
+            // line125
+            // 
+            this.line125.Height = 0.0007870197F;
+            this.line125.Left = 0.2649606F;
+            this.line125.LineWeight = 4F;
+            this.line125.Name = "line125";
+            this.line125.Top = 1.030709F;
+            this.line125.Width = 1.466929F;
+            this.line125.X1 = 0.2649606F;
+            this.line125.X2 = 1.73189F;
+            this.line125.Y1 = 1.030709F;
+            this.line125.Y2 = 1.031496F;
+            // 
+            // line126
+            // 
+            this.line126.Height = 0.0007859468F;
+            this.line126.Left = 0.2622048F;
+            this.line126.LineWeight = 4F;
+            this.line126.Name = "line126";
+            this.line126.Top = 1.446851F;
+            this.line126.Width = 1.466929F;
+            this.line126.X1 = 0.2622048F;
+            this.line126.X2 = 1.729134F;
+            this.line126.Y1 = 1.446851F;
+            this.line126.Y2 = 1.447637F;
+            // 
+            // line127
+            // 
+            this.line127.Height = 0F;
+            this.line127.Left = 1.918504F;
+            this.line127.LineWeight = 4F;
+            this.line127.Name = "line127";
+            this.line127.Top = 1.031496F;
+            this.line127.Width = 1.007087F;
+            this.line127.X1 = 1.918504F;
+            this.line127.X2 = 2.925591F;
+            this.line127.Y1 = 1.031496F;
+            this.line127.Y2 = 1.031496F;
+            // 
+            // line128
+            // 
+            this.line128.Height = 1.072884E-06F;
+            this.line128.Left = 1.918504F;
+            this.line128.LineWeight = 4F;
+            this.line128.Name = "line128";
+            this.line128.Top = 1.44685F;
+            this.line128.Width = 1.007087F;
+            this.line128.X1 = 1.918504F;
+            this.line128.X2 = 2.925591F;
+            this.line128.Y1 = 1.446851F;
+            this.line128.Y2 = 1.44685F;
+            // 
+            // line129
+            // 
+            this.line129.Height = 0.416144F;
+            this.line129.Left = 1.918504F;
+            this.line129.LineWeight = 4F;
+            this.line129.Name = "line129";
+            this.line129.Top = 1.031102F;
+            this.line129.Width = 0F;
+            this.line129.X1 = 1.918504F;
+            this.line129.X2 = 1.918504F;
+            this.line129.Y1 = 1.031102F;
+            this.line129.Y2 = 1.447246F;
+            // 
+            // line130
+            // 
+            this.line130.Height = 0.0003943443F;
+            this.line130.Left = 3.059055F;
+            this.line130.LineWeight = 1F;
+            this.line130.Name = "line130";
+            this.line130.Top = 1.030708F;
+            this.line130.Width = 1.521654F;
+            this.line130.X1 = 3.059055F;
+            this.line130.X2 = 4.580709F;
+            this.line130.Y1 = 1.031102F;
+            this.line130.Y2 = 1.030708F;
+            // 
+            // line131
+            // 
+            this.line131.Height = 0.1563001F;
+            this.line131.Left = 3.059055F;
+            this.line131.LineWeight = 1F;
+            this.line131.Name = "line131";
+            this.line131.Top = 1.029921F;
+            this.line131.Width = 0F;
+            this.line131.X1 = 3.059055F;
+            this.line131.X2 = 3.059055F;
+            this.line131.Y1 = 1.029921F;
+            this.line131.Y2 = 1.186221F;
             // 
             // rpt_seisan_siji_section
             // 
@@ -3573,5 +3922,28 @@
         private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox95;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox102;
         private GrapeCity.ActiveReports.SectionReportModel.TextBox textBox96;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line60;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line64;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line87;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line108;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line109;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line114;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line115;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line116;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line117;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line118;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line119;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line120;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line121;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line122;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line123;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line124;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line125;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line126;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line127;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line128;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line129;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line130;
+        private GrapeCity.ActiveReports.SectionReportModel.Line line131;
     }
 }

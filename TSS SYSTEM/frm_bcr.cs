@@ -119,7 +119,7 @@ namespace TSS_SYSTEM
             if (out_01 != pub_bcr_identification)
             {
                 Console.Beep(1500, 500);
-                lbl_msg1.Text = "不明なバーコードです。（ != SJ1 ）";
+                lbl_msg1.Text = "不明なバーコードです。（ != " + pub_bcr_identification + " ）";
                 lbl_msg1.ForeColor = Color.Red;
             }
             else
