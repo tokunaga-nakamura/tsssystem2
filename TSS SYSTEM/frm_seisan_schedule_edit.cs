@@ -966,7 +966,14 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            //if (e.FormattedValue.ToString() == "") return;
+
+            DataGridView dgv = (DataGridView)sender;
+            //コード内で追加したカラムの場合は何も処理しない
+            if (dgv.Columns[e.ColumnIndex].Name == "seisanzumi" || dgv.Columns[e.ColumnIndex].Name == "seisan_yotei" || dgv.Columns[e.ColumnIndex].Name == "kazusoku")
+            {
+                return;
+            }
+
             //変更後の値
             string str1 = e.FormattedValue.ToString();
             //変更前の値
@@ -976,7 +983,9 @@ namespace TSS_SYSTEM
             {
                 return;
             }
-            DataGridView dgv = (DataGridView)sender;
+
+
+            //開始時刻・終了時刻
             if (dgv.Columns[e.ColumnIndex].Name == "START_TIME" || dgv.Columns[e.ColumnIndex].Name == "END_TIME")
             {
                 if(tss.try_string_to_time(e.FormattedValue.ToString()) == false)
