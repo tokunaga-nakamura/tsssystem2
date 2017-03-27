@@ -1217,23 +1217,23 @@ namespace TSS_SYSTEM
                 }
                 //生産予定数の値
                 string str3 = dgv_today.CurrentRow.Cells["seisan_yotei"].Value.ToString();
-                   if (dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value != null)
-                   {
-                     //過不足計算
-                     decimal kabusoku = decimal.Parse(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value.ToString());
-                     decimal henkou = decimal.Parse(str1) - decimal.Parse(str2);
-                     kabusoku = kabusoku + henkou;
-                     dgv_today.CurrentRow.Cells["kabusoku"].Value = kabusoku.ToString();
+                if (dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value != null)
+                {
+                    //過不足計算
+                    decimal kabusoku = decimal.Parse(dgv_today.Rows[e.RowIndex].Cells["kabusoku"].Value.ToString());
+                    decimal henkou = decimal.Parse(str1) - decimal.Parse(str2);
+                    kabusoku = kabusoku + henkou;
+                    dgv_today.CurrentRow.Cells["kabusoku"].Value = kabusoku.ToString();
                     //生産予定数再計算
                     decimal seisan_yotei_su = henkou + decimal.Parse(str3);
                     dgv_today.CurrentRow.Cells["seisan_yotei"].Value = seisan_yotei_su.ToString();
-                    }
-                   MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
-                   end_time_keisan(dgv_today.CurrentRow.Index);
-                    if (seisan_time_keisan(e.RowIndex.ToString(), e.FormattedValue.ToString(), dgv_today.Rows[e.RowIndex].Cells["tact_time"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["dandori_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["tuika_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["hoju_kousu"].Value.ToString()) == false)
-                    {
-                        return;
-                    }
+                }
+                MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
+                end_time_keisan(dgv_today.CurrentRow.Index);
+                if (seisan_time_keisan(e.RowIndex.ToString(), e.FormattedValue.ToString(), dgv_today.Rows[e.RowIndex].Cells["tact_time"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["dandori_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["tuika_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["hoju_kousu"].Value.ToString()) == false)
+                {
+                    return;
+                }
             }
 
             //タクトタイムを変更したとき
@@ -1458,7 +1458,7 @@ namespace TSS_SYSTEM
                     //10時休憩
                     if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(),5), "10:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(),5), "10:00") >= 0)
                     {
-                        w_kyuukei_time = w_kyuukei_time + 30;
+                        w_kyuukei_time = w_kyuukei_time + 300;
                         TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
                         time2 = time2 + w_ts_kyuukei_time;
                     }
@@ -1472,7 +1472,7 @@ namespace TSS_SYSTEM
                     //15時休憩
                     if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(),5), "15:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(),5), "15:00") >= 0)
                     {
-                        w_kyuukei_time = w_kyuukei_time + 60;
+                        w_kyuukei_time = w_kyuukei_time + 600;
                         TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
                         time2 = time2 + w_ts_kyuukei_time;
                     }
@@ -1731,7 +1731,6 @@ namespace TSS_SYSTEM
                     tb_update_user_cd.Text = "";
                     tb_update_datetime.Text = "";
                 }
-
                 kabusoku();
             }
             else
@@ -1807,11 +1806,11 @@ namespace TSS_SYSTEM
         private void dgv_chk()
         {
             //権限チェック
-            if (tss.User_Kengen_Check(2, 5) == false)
-            {
-                MessageBox.Show("権限がありません");
-                return;
-            }
+            //if (tss.User_Kengen_Check(2, 5) == false)
+            //{
+            //    MessageBox.Show("権限がありません");
+            //    return;
+            //}
             int roc = w_dt_today.Rows.Count;
             if(roc != 0)
             {
@@ -2478,6 +2477,13 @@ namespace TSS_SYSTEM
         {
             //ドロップ先のrowとドラッグ元のrowを受け取り、ドラッグ元のデータをドラッグ先のrowに入れて返す
             tss.GetUser();
+            //入れ替え前に各型に合わせてエラー回避処理
+            //人数
+            if(in_dgv_row.Cells[23].Value.ToString() == "")
+            {
+                in_dgv_row.Cells[23].Value = 0;
+            }
+
             in_datarow["seisan_yotei_date"] = lbl_seisan_yotei_date_today.Text;
             in_datarow["busyo_cd"] = cb_today_busyo.SelectedValue.ToString();  // in_dgv_row.Cells[1].Value.ToString();
             in_datarow["busyo_name"] = cb_today_busyo.Text; //in_dgv_row.Cells[2].Value.ToString();
