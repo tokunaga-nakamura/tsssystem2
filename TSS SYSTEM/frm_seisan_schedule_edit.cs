@@ -1229,7 +1229,7 @@ namespace TSS_SYSTEM
                     dgv_today.CurrentRow.Cells["seisan_yotei"].Value = seisan_yotei_su.ToString();
                 }
                 MessageBox.Show("生産数を変更しても、翌日以降の生産数は自動で更新されませんのでご注意ください。");
-                end_time_keisan(dgv_today.CurrentRow.Index);
+                //end_time_keisan(dgv_today.CurrentRow.Index);
                 if (seisan_time_keisan(e.RowIndex.ToString(), e.FormattedValue.ToString(), dgv_today.Rows[e.RowIndex].Cells["tact_time"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["dandori_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["tuika_kousu"].Value.ToString(), dgv_today.Rows[e.RowIndex].Cells["hoju_kousu"].Value.ToString()) == false)
                 {
                     return;
@@ -1250,7 +1250,7 @@ namespace TSS_SYSTEM
                     {
                         return;
                     }
-                    end_time_keisan(dgv_today.CurrentRow.Index);
+                    //end_time_keisan(dgv_today.CurrentRow.Index);
                 }
             }
 
@@ -1268,7 +1268,7 @@ namespace TSS_SYSTEM
                     {
                         return;
                     }
-                    end_time_keisan(dgv_today.CurrentRow.Index);
+                    //end_time_keisan(dgv_today.CurrentRow.Index);
                 }
             }
 
@@ -1286,7 +1286,7 @@ namespace TSS_SYSTEM
                     {
                         return;
                     }
-                    end_time_keisan(dgv_today.CurrentRow.Index);
+                    //end_time_keisan(dgv_today.CurrentRow.Index);
                 }
             }
 
@@ -1304,7 +1304,7 @@ namespace TSS_SYSTEM
                     {
                         return;
                     }
-                    end_time_keisan(dgv_today.CurrentRow.Index);
+                    //end_time_keisan(dgv_today.CurrentRow.Index);
                 }
             }
         }
@@ -2805,6 +2805,15 @@ namespace TSS_SYSTEM
                         }
                     }
                 }
+            }
+        }
+
+        private void dgv_today_CellValidated_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 15 || e.ColumnIndex == 16 || e.ColumnIndex == 17 || e.ColumnIndex == 18 || e.ColumnIndex == 19 || e.ColumnIndex == 20 || e.ColumnIndex == 21) 
+            {
+                //各項目の入力が確定した時点で終了時刻を計算する（validatingだと、検証前の値で計算されてしまう為）
+                end_time_keisan(e.RowIndex);
             }
         }
     }
