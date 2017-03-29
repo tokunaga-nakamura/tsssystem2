@@ -44,7 +44,7 @@ namespace TSS_SYSTEM
             {
                 DataTable dt_work2 = new DataTable();
                 dt_work2 = tss.OracleSelect("select * from tss_seihin_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
-                              
+
                 if (dt_work2.Rows.Count <= 0)
                 {
                     MessageBox.Show("この製品は製品マスタに登録されていません。");
@@ -936,8 +936,7 @@ namespace TSS_SYSTEM
 
         private void tb_bikou_Validating(object sender, CancelEventArgs e)
         {
-            if (tb_bikou.Text.ToString() != "")
-            {
+           
                 //変更を一時的に保持・・・・データテーブル内のデータを変更
 
                 //画面表示のため、データテーブルから条件を抽出
@@ -953,7 +952,7 @@ namespace TSS_SYSTEM
                 {
                     rows[i]["bikou"] = str;
                 }
-            }
+            
         }
 
         private void tb_comments_Validating(object sender, CancelEventArgs e)
@@ -2208,6 +2207,8 @@ namespace TSS_SYSTEM
                 dgv_koutei.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+
+       
        
     }
 }
