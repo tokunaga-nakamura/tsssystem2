@@ -14,7 +14,6 @@ namespace TSS_SYSTEM
     {
         TssSystemLibrary tss = new TssSystemLibrary();
         string[] w_from = {"000000"};
-        int w_from_max = 0;
         string[] w_to = new string[100];
         int w_to_max;
 

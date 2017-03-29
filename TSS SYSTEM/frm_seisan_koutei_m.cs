@@ -44,11 +44,12 @@ namespace TSS_SYSTEM
             {
                 DataTable dt_work2 = new DataTable();
                 dt_work2 = tss.OracleSelect("select * from tss_seihin_m where seihin_cd  = '" + tb_seihin_cd.Text.ToString() + "'");
-
+                              
                 if (dt_work2.Rows.Count <= 0)
                 {
                     MessageBox.Show("この製品は製品マスタに登録されていません。");
                     tb_seihin_cd.Focus();
+                    splitContainer4.Enabled = false;
                     return;
                 }
             }
@@ -60,8 +61,11 @@ namespace TSS_SYSTEM
                 {
                     MessageBox.Show("製品コードに異常があります。");
                     e.Cancel = true;
+                    splitContainer4.Enabled = false;
+                    return;
                 }
             }
+            splitContainer4.Enabled = true;
         }
 
         private bool chk_seihin_cd()
@@ -936,7 +940,8 @@ namespace TSS_SYSTEM
 
         private void tb_bikou_Validating(object sender, CancelEventArgs e)
         {
-           
+            if (tb_bikou.Text.ToString() != "")
+            {
                 //変更を一時的に保持・・・・データテーブル内のデータを変更
 
                 //画面表示のため、データテーブルから条件を抽出
@@ -952,7 +957,7 @@ namespace TSS_SYSTEM
                 {
                     rows[i]["bikou"] = str;
                 }
-            
+            }
         }
 
         private void tb_comments_Validating(object sender, CancelEventArgs e)
@@ -2208,7 +2213,11 @@ namespace TSS_SYSTEM
             }
         }
 
-       
+        private void frm_seisan_koutei_m_Load(object sender, EventArgs e)
+        {
+            //製品コード入力前に他の項目を操作されてしまうと、内部配列が無い状態なのでエラーが発生してしまうので、splitcontainerを無効にして対応する
+            splitContainer4.Enabled = false;
+        }
        
     }
 }

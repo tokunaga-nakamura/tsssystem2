@@ -135,15 +135,18 @@ namespace TSS_SYSTEM
             tb_busyo_cd.Text = tss.StringMidByte(w_bcr_moji, 13, 4).TrimEnd();
             tb_busyo_name.Text = tss.get_busyo_name(tb_busyo_cd.Text);
             tb_koutei_cd.Text = tss.StringMidByte(w_bcr_moji, 17, 3).TrimEnd();
+            tb_koutei_name.Text = tss.get_koutei_name(tb_koutei_cd.Text);
             tb_line_cd.Text = tss.StringMidByte(w_bcr_moji, 20, 3).TrimEnd();
             tb_line_name.Text = tss.get_line_name(tb_line_cd.Text);
             tb_schedule_seq.Text = tss.StringMidByte(w_bcr_moji, 23, 3).TrimEnd();
             tb_torihikisaki_cd.Text = tss.StringMidByte(w_bcr_moji, 26, 6).TrimEnd();
+            tb_torihikisaki_name.Text = tss.get_torihikisaki_name(tb_torihikisaki_cd.Text);
             tb_juchu_cd1.Text = tss.StringMidByte(w_bcr_moji, 32, 16).TrimEnd();
             tb_juchu_cd2.Text = tss.StringMidByte(w_bcr_moji, 48, 16).TrimEnd();
+            tb_juchu_su.Text = tss.get_juchu_juchu_su(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+            tb_seisan_zumi_su.Text = tss.get_seisan_su(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
             tb_seisankisyu.Text = tss.get_seisankisyu(tb_seihin_cd.Text, tb_koutei_cd.Text);
             //同一バーコードの生産実績があるか確認
-            //w_dt = tss.OracleSelect("select * from tss_seisan_jisseki_f where barcode = '" + w_bcr_moji + "'");
             w_dt = read_seisan_jisseki();
             if (w_dt.Rows.Count >= 1)
             {

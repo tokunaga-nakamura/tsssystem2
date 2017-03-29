@@ -1268,6 +1268,7 @@
             this.btn_seisan_schedule_print.TabIndex = 4;
             this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
             this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
+            this.btn_seisan_schedule_print.Visible = false;
             this.btn_seisan_schedule_print.Click += new System.EventHandler(this.btn_seisan_schedule_print_Click);
             // 
             // btn_seisan_schedule_remake
@@ -1286,7 +1287,7 @@
             this.btn_seisan_schedule.Name = "btn_seisan_schedule";
             this.btn_seisan_schedule.Size = new System.Drawing.Size(222, 23);
             this.btn_seisan_schedule.TabIndex = 1;
-            this.btn_seisan_schedule.Text = "生産スケジュール調整";
+            this.btn_seisan_schedule.Text = "生産スケジュール編集";
             this.btn_seisan_schedule.UseVisualStyleBackColor = true;
             this.btn_seisan_schedule.Click += new System.EventHandler(this.btn_seisan_schedule_Click);
             // 

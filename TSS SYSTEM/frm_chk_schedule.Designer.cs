@@ -40,6 +40,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.tb_nouhin_yotei1 = new System.Windows.Forms.TextBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.btn_insatu1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -54,7 +55,7 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_insatu1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // splitContainer4.Panel1
             // 
+            this.splitContainer4.Panel1.Controls.Add(this.label5);
             this.splitContainer4.Panel1.Controls.Add(this.textBox6);
             this.splitContainer4.Panel1.Controls.Add(this.cb_busyo);
             this.splitContainer4.Panel1.Controls.Add(this.tb_nouhin_yotei2);
@@ -246,15 +248,25 @@
             this.splitContainer5.SplitterDistance = 36;
             this.splitContainer5.TabIndex = 23;
             // 
+            // btn_insatu1
+            // 
+            this.btn_insatu1.Location = new System.Drawing.Point(787, 7);
+            this.btn_insatu1.Name = "btn_insatu1";
+            this.btn_insatu1.Size = new System.Drawing.Size(75, 23);
+            this.btn_insatu1.TabIndex = 3;
+            this.btn_insatu1.Text = "印刷";
+            this.btn_insatu1.UseVisualStyleBackColor = true;
+            this.btn_insatu1.Click += new System.EventHandler(this.btn_insatu1_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.Location = new System.Drawing.Point(4, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 13);
+            this.label4.Size = new System.Drawing.Size(354, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "1.受注数と生産数に差異あり";
+            this.label4.Text = "1.受注数と生産数（生産スケジュール＋生産実績）に差異あり";
             // 
             // dgv_m
             // 
@@ -279,6 +291,7 @@
             // 
             this.splitContainer6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
@@ -332,7 +345,7 @@
             this.dgv_no_schedule.Location = new System.Drawing.Point(0, 0);
             this.dgv_no_schedule.Name = "dgv_no_schedule";
             this.dgv_no_schedule.RowTemplate.Height = 21;
-            this.dgv_no_schedule.Size = new System.Drawing.Size(878, 57);
+            this.dgv_no_schedule.Size = new System.Drawing.Size(878, 65);
             this.dgv_no_schedule.TabIndex = 21;
             // 
             // splitContainer1
@@ -377,7 +390,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_cancel);
             this.splitContainer2.Size = new System.Drawing.Size(882, 155);
-            this.splitContainer2.SplitterDistance = 90;
+            this.splitContainer2.SplitterDistance = 98;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -398,7 +411,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_no_schedule);
-            this.splitContainer7.Size = new System.Drawing.Size(882, 90);
+            this.splitContainer7.Size = new System.Drawing.Size(882, 98);
             this.splitContainer7.SplitterDistance = 25;
             this.splitContainer7.TabIndex = 1;
             // 
@@ -432,15 +445,14 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // btn_insatu1
+            // label5
             // 
-            this.btn_insatu1.Location = new System.Drawing.Point(787, 7);
-            this.btn_insatu1.Name = "btn_insatu1";
-            this.btn_insatu1.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu1.TabIndex = 3;
-            this.btn_insatu1.Text = "印刷";
-            this.btn_insatu1.UseVisualStyleBackColor = true;
-            this.btn_insatu1.Click += new System.EventHandler(this.btn_insatu1_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(360, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(430, 12);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "※検索を開始すると、時間がかかり応答が無くなる場合があります。そのままお待ちください。";
             // 
             // frm_chk_schedule
             // 
@@ -522,5 +534,6 @@
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_insatu1;
+        private System.Windows.Forms.Label label5;
     }
 }

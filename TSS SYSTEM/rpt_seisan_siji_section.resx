@@ -121,7 +121,7 @@
     <value>#,##0.00</value>
   </data>
   <data name="textBox12.OutputFormat" xml:space="preserve">
-    <value>#,##0.00</value>
+    <value>#,##0.##</value>
   </data>
   <data name="textBox44.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
