@@ -75,9 +75,6 @@ namespace TSS_SYSTEM
             }
         }
 
-
-
-
         public frm_search_torihikisaki()
         {
             InitializeComponent();
@@ -96,6 +93,7 @@ namespace TSS_SYSTEM
                     mode2();
                     if (str_name != "")
                     {
+                        tb_torihikisaki_name.Text = str_name;
                         DataTable w_dt = new DataTable();
                         w_dt = tss.OracleSelect("select torihikisaki_cd,torihikisaki_name,jusyo1,jusyo2,tel_no from tss_torihikisaki_m where torihikisaki_cd like '" + str_name + "%' or torihikisaki_name like '%" + str_name + "%'");
                         list_disp(w_dt);
@@ -226,7 +224,6 @@ namespace TSS_SYSTEM
             list_disp(dt_kensaku);
         }
 
-
         private void list_disp(DataTable in_dt)
         {
             //リードオンリーにする
@@ -300,7 +297,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_torihikisaki_cd2_Validating(object sender, CancelEventArgs e)
@@ -310,7 +306,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_torihikisaki_name_Validating(object sender, CancelEventArgs e)
@@ -320,7 +315,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_jusyo1_Validating(object sender, CancelEventArgs e)
@@ -330,7 +324,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_jusyo2_Validating(object sender, CancelEventArgs e)
@@ -340,7 +333,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_tel_no_Validating(object sender, CancelEventArgs e)
@@ -350,7 +342,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
     }
 }

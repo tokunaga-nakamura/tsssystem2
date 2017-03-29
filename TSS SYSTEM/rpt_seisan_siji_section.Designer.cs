@@ -959,7 +959,7 @@
     "e";
             this.textBox13.Text = "受注コード1";
             this.textBox13.Top = 0.7086615F;
-            this.textBox13.Width = 0.5830708F;
+            this.textBox13.Width = 0.666535F;
             // 
             // textBox14
             // 
@@ -2350,7 +2350,7 @@
             this.line52.LineWeight = 1F;
             this.line52.Name = "line52";
             this.line52.Top = 1.989764F;
-            this.line52.Width = 4.511811F;
+            this.line52.Width = 4.511812F;
             this.line52.X1 = 0.07795237F;
             this.line52.X2 = 4.589764F;
             this.line52.Y1 = 1.989764F;
@@ -2363,7 +2363,7 @@
             this.line53.LineWeight = 1F;
             this.line53.Name = "line53";
             this.line53.Top = 2.583859F;
-            this.line53.Width = 4.511811F;
+            this.line53.Width = 4.511812F;
             this.line53.X1 = 0.07795237F;
             this.line53.X2 = 4.589764F;
             this.line53.Y1 = 2.583859F;
@@ -2376,7 +2376,7 @@
             this.line54.LineWeight = 1F;
             this.line54.Name = "line54";
             this.line54.Top = 2.187796F;
-            this.line54.Width = 4.324803F;
+            this.line54.Width = 4.324804F;
             this.line54.X1 = 0.2649602F;
             this.line54.X2 = 4.589764F;
             this.line54.Y1 = 2.187796F;
@@ -2389,7 +2389,7 @@
             this.line55.LineWeight = 1F;
             this.line55.Name = "line55";
             this.line55.Top = 2.385827F;
-            this.line55.Width = 4.324803F;
+            this.line55.Width = 4.324804F;
             this.line55.X1 = 0.2649602F;
             this.line55.X2 = 4.589764F;
             this.line55.Y1 = 2.385827F;
@@ -2996,13 +2996,13 @@
             // 
             this.textBox93.DataField = "juchu_cd1";
             this.textBox93.Height = 0.1562992F;
-            this.textBox93.Left = 1.937795F;
+            this.textBox93.Left = 2.02126F;
             this.textBox93.Name = "textBox93";
             this.textBox93.Padding = new GrapeCity.ActiveReports.PaddingEx(2, 0, 0, 0);
             this.textBox93.Style = "font-size: 9pt; vertical-align: middle";
             this.textBox93.Text = null;
             this.textBox93.Top = 0.7086615F;
-            this.textBox93.Width = 1.084646F;
+            this.textBox93.Width = 1.001181F;
             // 
             // textBox94
             // 
@@ -3148,7 +3148,7 @@
             // 
             // line113
             // 
-            this.line113.Height = 0.001574874F;
+            this.line113.Height = 0.001574993F;
             this.line113.Left = 0.07795277F;
             this.line113.LineWeight = 1F;
             this.line113.Name = "line113";
@@ -3213,7 +3213,7 @@
             // 
             // line105
             // 
-            this.line105.Height = 0.1563001F;
+            this.line105.Height = 0.1562999F;
             this.line105.Left = 3.444095F;
             this.line105.LineWeight = 1F;
             this.line105.Name = "line105";
@@ -3240,13 +3240,13 @@
             // line76
             // 
             this.line76.Height = 0.1562992F;
-            this.line76.Left = 1.937795F;
+            this.line76.Left = 2.02126F;
             this.line76.LineWeight = 1F;
             this.line76.Name = "line76";
             this.line76.Top = 0.7086615F;
             this.line76.Width = 0F;
-            this.line76.X1 = 1.937795F;
-            this.line76.X2 = 1.937795F;
+            this.line76.X1 = 2.02126F;
+            this.line76.X2 = 2.02126F;
             this.line76.Y1 = 0.7086615F;
             this.line76.Y2 = 0.8649607F;
             // 
@@ -3400,7 +3400,7 @@
             this.line118.LineWeight = 1F;
             this.line118.Name = "line118";
             this.line118.Top = 1.186221F;
-            this.line118.Width = 1.521654F;
+            this.line118.Width = 1.521653F;
             this.line118.X1 = 3.059056F;
             this.line118.X2 = 4.580709F;
             this.line118.Y1 = 1.186615F;
@@ -3551,7 +3551,7 @@
             // 
             // line130
             // 
-            this.line130.Height = 0.0003943443F;
+            this.line130.Height = 0.0003939867F;
             this.line130.Left = 3.059055F;
             this.line130.LineWeight = 1F;
             this.line130.Name = "line130";
@@ -3564,7 +3564,7 @@
             // 
             // line131
             // 
-            this.line131.Height = 0.1563001F;
+            this.line131.Height = 0.1562999F;
             this.line131.Left = 3.059055F;
             this.line131.LineWeight = 1F;
             this.line131.Name = "line131";

@@ -38,6 +38,8 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.tb_schedule_seq = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.tb_koutei_cd = new System.Windows.Forms.TextBox();
             this.tb_jisseki_seq = new System.Windows.Forms.TextBox();
             this.textBox53 = new System.Windows.Forms.TextBox();
@@ -53,16 +55,8 @@
             this.tb_koutei_name = new System.Windows.Forms.TextBox();
             this.tb_torihikisaki_name = new System.Windows.Forms.TextBox();
             this.tb_seisanbi = new System.Windows.Forms.TextBox();
-            this.tb_schedule_seq = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tb_line_cd = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.tb_busyo_cd = new System.Windows.Forms.TextBox();
             this.tb_bcr = new System.Windows.Forms.TextBox();
-            this.tb_busyo_name = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tb_line_name = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.tb_seihin_name = new System.Windows.Forms.TextBox();
             this.tb_juchu_su = new System.Windows.Forms.TextBox();
@@ -78,10 +72,16 @@
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.dgv_schedule = new System.Windows.Forms.DataGridView();
             this.splitContainer11 = new System.Windows.Forms.SplitContainer();
+            this.tb_line_cd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tb_line_name = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.tb_jisseki_seisan_su = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.tb_busyo_cd = new System.Windows.Forms.TextBox();
             this.tb_jisseki_end_time = new System.Windows.Forms.TextBox();
             this.tb_jisseki_start_time = new System.Windows.Forms.TextBox();
+            this.tb_busyo_name = new System.Windows.Forms.TextBox();
             this.tb_jisseki_tact_time = new System.Windows.Forms.TextBox();
             this.textBox50 = new System.Windows.Forms.TextBox();
             this.tb_jisseki_seisan_time = new System.Windows.Forms.TextBox();
@@ -316,6 +316,28 @@
             this.splitContainer5.TabIndex = 14;
             this.splitContainer5.TabStop = false;
             // 
+            // tb_schedule_seq
+            // 
+            this.tb_schedule_seq.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_schedule_seq.Location = new System.Drawing.Point(770, 28);
+            this.tb_schedule_seq.Name = "tb_schedule_seq";
+            this.tb_schedule_seq.ReadOnly = true;
+            this.tb_schedule_seq.Size = new System.Drawing.Size(100, 19);
+            this.tb_schedule_seq.TabIndex = 25;
+            this.tb_schedule_seq.TabStop = false;
+            this.tb_schedule_seq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox3.Location = new System.Drawing.Point(683, 28);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(87, 19);
+            this.textBox3.TabIndex = 24;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "スケジュールSEQ";
+            // 
             // tb_koutei_cd
             // 
             this.tb_koutei_cd.BackColor = System.Drawing.Color.PowderBlue;
@@ -472,71 +494,6 @@
             this.tb_seisanbi.TabIndex = 0;
             this.tb_seisanbi.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seisanbi_Validating);
             // 
-            // tb_schedule_seq
-            // 
-            this.tb_schedule_seq.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_schedule_seq.Location = new System.Drawing.Point(770, 28);
-            this.tb_schedule_seq.Name = "tb_schedule_seq";
-            this.tb_schedule_seq.ReadOnly = true;
-            this.tb_schedule_seq.Size = new System.Drawing.Size(100, 19);
-            this.tb_schedule_seq.TabIndex = 25;
-            this.tb_schedule_seq.TabStop = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox3.Location = new System.Drawing.Point(683, 28);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(87, 19);
-            this.textBox3.TabIndex = 24;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "スケジュールSEQ";
-            // 
-            // tb_line_cd
-            // 
-            this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_line_cd.Location = new System.Drawing.Point(69, 28);
-            this.tb_line_cd.MaxLength = 3;
-            this.tb_line_cd.Name = "tb_line_cd";
-            this.tb_line_cd.Size = new System.Drawing.Size(29, 19);
-            this.tb_line_cd.TabIndex = 1;
-            this.tb_line_cd.DoubleClick += new System.EventHandler(this.tb_line_cd_DoubleClick);
-            this.tb_line_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_cd_Validating);
-            // 
-            // textBox16
-            // 
-            this.textBox16.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox16.Location = new System.Drawing.Point(8, 28);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(61, 19);
-            this.textBox16.TabIndex = 3;
-            this.textBox16.TabStop = false;
-            this.textBox16.Text = "ラインコード";
-            // 
-            // textBox13
-            // 
-            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
-            this.textBox13.Location = new System.Drawing.Point(8, 3);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(61, 19);
-            this.textBox13.TabIndex = 0;
-            this.textBox13.TabStop = false;
-            this.textBox13.Text = "部署コード";
-            // 
-            // tb_busyo_cd
-            // 
-            this.tb_busyo_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_busyo_cd.Location = new System.Drawing.Point(69, 3);
-            this.tb_busyo_cd.MaxLength = 4;
-            this.tb_busyo_cd.Name = "tb_busyo_cd";
-            this.tb_busyo_cd.Size = new System.Drawing.Size(34, 19);
-            this.tb_busyo_cd.TabIndex = 0;
-            this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
-            this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
-            // 
             // tb_bcr
             // 
             this.tb_bcr.BackColor = System.Drawing.Color.Gainsboro;
@@ -546,16 +503,6 @@
             this.tb_bcr.Size = new System.Drawing.Size(593, 19);
             this.tb_bcr.TabIndex = 23;
             this.tb_bcr.TabStop = false;
-            // 
-            // tb_busyo_name
-            // 
-            this.tb_busyo_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_busyo_name.Location = new System.Drawing.Point(103, 3);
-            this.tb_busyo_name.Name = "tb_busyo_name";
-            this.tb_busyo_name.ReadOnly = true;
-            this.tb_busyo_name.Size = new System.Drawing.Size(77, 19);
-            this.tb_busyo_name.TabIndex = 99;
-            this.tb_busyo_name.TabStop = false;
             // 
             // textBox2
             // 
@@ -567,16 +514,6 @@
             this.textBox2.TabIndex = 22;
             this.textBox2.TabStop = false;
             this.textBox2.Text = "BC情報";
-            // 
-            // tb_line_name
-            // 
-            this.tb_line_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_line_name.Location = new System.Drawing.Point(98, 28);
-            this.tb_line_name.Name = "tb_line_name";
-            this.tb_line_name.ReadOnly = true;
-            this.tb_line_name.Size = new System.Drawing.Size(105, 19);
-            this.tb_line_name.TabIndex = 100;
-            this.tb_line_name.TabStop = false;
             // 
             // textBox23
             // 
@@ -608,6 +545,7 @@
             this.tb_juchu_su.Size = new System.Drawing.Size(102, 19);
             this.tb_juchu_su.TabIndex = 21;
             this.tb_juchu_su.TabStop = false;
+            this.tb_juchu_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tb_seisan_zumi_su
             // 
@@ -618,6 +556,7 @@
             this.tb_seisan_zumi_su.Size = new System.Drawing.Size(100, 19);
             this.tb_seisan_zumi_su.TabIndex = 2;
             this.tb_seisan_zumi_su.TabStop = false;
+            this.tb_seisan_zumi_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tb_seihin_cd
             // 
@@ -782,6 +721,17 @@
             this.splitContainer11.SplitterDistance = 52;
             this.splitContainer11.TabIndex = 0;
             // 
+            // tb_line_cd
+            // 
+            this.tb_line_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_line_cd.Location = new System.Drawing.Point(69, 28);
+            this.tb_line_cd.MaxLength = 3;
+            this.tb_line_cd.Name = "tb_line_cd";
+            this.tb_line_cd.Size = new System.Drawing.Size(29, 19);
+            this.tb_line_cd.TabIndex = 1;
+            this.tb_line_cd.DoubleClick += new System.EventHandler(this.tb_line_cd_DoubleClick);
+            this.tb_line_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_line_cd_Validating);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -790,6 +740,27 @@
             this.label5.Size = new System.Drawing.Size(159, 24);
             this.label5.TabIndex = 32;
             this.label5.Text = "※生産に関わる時刻\r\n8:30～8:29を1日とみなされます。";
+            // 
+            // tb_line_name
+            // 
+            this.tb_line_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_line_name.Location = new System.Drawing.Point(98, 28);
+            this.tb_line_name.Name = "tb_line_name";
+            this.tb_line_name.ReadOnly = true;
+            this.tb_line_name.Size = new System.Drawing.Size(105, 19);
+            this.tb_line_name.TabIndex = 100;
+            this.tb_line_name.TabStop = false;
+            // 
+            // textBox16
+            // 
+            this.textBox16.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox16.Location = new System.Drawing.Point(8, 28);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(61, 19);
+            this.textBox16.TabIndex = 3;
+            this.textBox16.TabStop = false;
+            this.textBox16.Text = "ラインコード";
             // 
             // tb_jisseki_seisan_su
             // 
@@ -800,6 +771,28 @@
             this.tb_jisseki_seisan_su.TabIndex = 4;
             this.tb_jisseki_seisan_su.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tb_jisseki_seisan_su.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jisseki_seisan_su_Validating);
+            // 
+            // textBox13
+            // 
+            this.textBox13.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox13.Location = new System.Drawing.Point(8, 3);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(61, 19);
+            this.textBox13.TabIndex = 0;
+            this.textBox13.TabStop = false;
+            this.textBox13.Text = "部署コード";
+            // 
+            // tb_busyo_cd
+            // 
+            this.tb_busyo_cd.BackColor = System.Drawing.Color.PowderBlue;
+            this.tb_busyo_cd.Location = new System.Drawing.Point(69, 3);
+            this.tb_busyo_cd.MaxLength = 4;
+            this.tb_busyo_cd.Name = "tb_busyo_cd";
+            this.tb_busyo_cd.Size = new System.Drawing.Size(34, 19);
+            this.tb_busyo_cd.TabIndex = 0;
+            this.tb_busyo_cd.DoubleClick += new System.EventHandler(this.tb_busyo_cd_DoubleClick);
+            this.tb_busyo_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_busyo_cd_Validating);
             // 
             // tb_jisseki_end_time
             // 
@@ -820,6 +813,16 @@
             this.tb_jisseki_start_time.TabIndex = 2;
             this.tb_jisseki_start_time.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_jisseki_start_time.Validating += new System.ComponentModel.CancelEventHandler(this.tb_jisseki_start_time_Validating);
+            // 
+            // tb_busyo_name
+            // 
+            this.tb_busyo_name.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb_busyo_name.Location = new System.Drawing.Point(103, 3);
+            this.tb_busyo_name.Name = "tb_busyo_name";
+            this.tb_busyo_name.ReadOnly = true;
+            this.tb_busyo_name.Size = new System.Drawing.Size(77, 19);
+            this.tb_busyo_name.TabIndex = 99;
+            this.tb_busyo_name.TabStop = false;
             // 
             // tb_jisseki_tact_time
             // 

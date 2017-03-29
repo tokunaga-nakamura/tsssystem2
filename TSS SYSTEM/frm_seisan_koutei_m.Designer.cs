@@ -911,6 +911,7 @@
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seisan_koutei_m";
             this.Text = "生産工程マスタ";
+            this.Load += new System.EventHandler(this.frm_seisan_koutei_m_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

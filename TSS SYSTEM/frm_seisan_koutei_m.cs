@@ -49,6 +49,7 @@ namespace TSS_SYSTEM
                 {
                     MessageBox.Show("この製品は製品マスタに登録されていません。");
                     tb_seihin_cd.Focus();
+                    splitContainer4.Enabled = false;
                     return;
                 }
             }
@@ -60,8 +61,11 @@ namespace TSS_SYSTEM
                 {
                     MessageBox.Show("製品コードに異常があります。");
                     e.Cancel = true;
+                    splitContainer4.Enabled = false;
+                    return;
                 }
             }
+            splitContainer4.Enabled = true;
         }
 
         private bool chk_seihin_cd()
@@ -2207,6 +2211,12 @@ namespace TSS_SYSTEM
                 //コミットする
                 dgv_koutei.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void frm_seisan_koutei_m_Load(object sender, EventArgs e)
+        {
+            //製品コード入力前に他の項目を操作されてしまうと、内部配列が無い状態なのでエラーが発生してしまうので、splitcontainerを無効にして対応する
+            splitContainer4.Enabled = false;
         }
        
     }
