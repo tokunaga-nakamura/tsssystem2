@@ -366,6 +366,12 @@
     <Compile Include="frm_seisan_schedule_preview.Designer.cs">
       <DependentUpon>frm_seisan_schedule_preview.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_seisan_schedule_preview2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_seisan_schedule_preview2.Designer.cs">
+      <DependentUpon>frm_seisan_schedule_preview2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_seisan_schedule_remake.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -959,6 +965,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seisan_schedule_preview.resx">
       <DependentUpon>frm_seisan_schedule_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_seisan_schedule_preview2.resx">
+      <DependentUpon>frm_seisan_schedule_preview2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_seisan_schedule_remake.resx">
       <DependentUpon>frm_seisan_schedule_remake.cs</DependentUpon>

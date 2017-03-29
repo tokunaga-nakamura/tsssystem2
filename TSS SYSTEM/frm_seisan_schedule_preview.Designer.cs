@@ -148,7 +148,7 @@
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_seisan_schedule_preview";
-            this.Text = "生産スケジュール印刷";
+            this.Text = "生産スケジュール印刷プレビュー";
             this.Load += new System.EventHandler(this.frm_seisan_schedule_preview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

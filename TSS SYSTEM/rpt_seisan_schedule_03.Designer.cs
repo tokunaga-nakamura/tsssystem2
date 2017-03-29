@@ -1020,6 +1020,7 @@
             this.textBox6,
             this.textBox1});
             this.groupHeader1.DataField = "koutei_cd";
+            this.groupHeader1.GroupKeepTogether = GrapeCity.ActiveReports.SectionReportModel.GroupKeepTogether.All;
             this.groupHeader1.Height = 0.1980643F;
             this.groupHeader1.Name = "groupHeader1";
             // 

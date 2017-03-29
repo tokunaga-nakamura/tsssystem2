@@ -159,7 +159,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 539);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 540);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -210,8 +210,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 473);
-            this.splitContainer2.SplitterDistance = 436;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 474);
+            this.splitContainer2.SplitterDistance = 437;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
@@ -243,7 +243,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(884, 436);
+            this.splitContainer3.Size = new System.Drawing.Size(884, 437);
             this.splitContainer3.SplitterDistance = 54;
             this.splitContainer3.TabIndex = 91;
             this.splitContainer3.TabStop = false;
@@ -388,7 +388,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer7);
-            this.splitContainer4.Size = new System.Drawing.Size(884, 378);
+            this.splitContainer4.Size = new System.Drawing.Size(884, 379);
             this.splitContainer4.SplitterDistance = 221;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -412,7 +412,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dgv_koutei);
-            this.splitContainer5.Size = new System.Drawing.Size(221, 378);
+            this.splitContainer5.Size = new System.Drawing.Size(221, 379);
             this.splitContainer5.SplitterDistance = 33;
             this.splitContainer5.TabIndex = 50;
             this.splitContainer5.TabStop = false;
@@ -454,7 +454,7 @@
             this.dgv_koutei.Location = new System.Drawing.Point(0, 0);
             this.dgv_koutei.Name = "dgv_koutei";
             this.dgv_koutei.RowTemplate.Height = 21;
-            this.dgv_koutei.Size = new System.Drawing.Size(217, 337);
+            this.dgv_koutei.Size = new System.Drawing.Size(217, 338);
             this.dgv_koutei.TabIndex = 2;
             this.dgv_koutei.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellClick);
             this.dgv_koutei.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_koutei_CellDoubleClick);
@@ -494,7 +494,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer7.Size = new System.Drawing.Size(655, 374);
+            this.splitContainer7.Size = new System.Drawing.Size(655, 375);
             this.splitContainer7.SplitterDistance = 125;
             this.splitContainer7.TabIndex = 108;
             // 
@@ -675,8 +675,8 @@
             this.splitContainer8.Panel2.Controls.Add(this.label2);
             this.splitContainer8.Panel2.Controls.Add(this.textBox10);
             this.splitContainer8.Panel2.Controls.Add(this.tb_seisan_start_day);
-            this.splitContainer8.Size = new System.Drawing.Size(655, 245);
-            this.splitContainer8.SplitterDistance = 140;
+            this.splitContainer8.Size = new System.Drawing.Size(655, 246);
+            this.splitContainer8.SplitterDistance = 141;
             this.splitContainer8.TabIndex = 0;
             // 
             // splitContainer9
@@ -694,7 +694,7 @@
             // splitContainer9.Panel2
             // 
             this.splitContainer9.Panel2.Controls.Add(this.dgv_line);
-            this.splitContainer9.Size = new System.Drawing.Size(655, 140);
+            this.splitContainer9.Size = new System.Drawing.Size(655, 141);
             this.splitContainer9.SplitterDistance = 100;
             this.splitContainer9.TabIndex = 92;
             // 
@@ -706,7 +706,7 @@
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 140);
+            this.textBox4.Size = new System.Drawing.Size(100, 141);
             this.textBox4.TabIndex = 91;
             this.textBox4.TabStop = false;
             this.textBox4.Text = "使用ライン";
@@ -718,7 +718,7 @@
             this.dgv_line.Location = new System.Drawing.Point(0, 0);
             this.dgv_line.Name = "dgv_line";
             this.dgv_line.RowTemplate.Height = 21;
-            this.dgv_line.Size = new System.Drawing.Size(551, 140);
+            this.dgv_line.Size = new System.Drawing.Size(551, 141);
             this.dgv_line.TabIndex = 6;
             this.dgv_line.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_line_CellDoubleClick);
             this.dgv_line.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_line_CellValidating);
@@ -895,7 +895,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
@@ -905,7 +905,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(900, 600);

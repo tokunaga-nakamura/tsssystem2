@@ -1366,7 +1366,15 @@ namespace TSS_SYSTEM
 
         private void btn_seisan_schedule_print_Click(object sender, EventArgs e)
         {
-
+            //生産スケジュールチェック
+            if (tss.User_Kengen_Check(7, 1) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_seisan_schedule_preview2 frm_seisan_sc = new frm_seisan_schedule_preview2();
+            frm_seisan_sc.ShowDialog(this);
+            frm_seisan_sc.Dispose();
         }
     }
 }

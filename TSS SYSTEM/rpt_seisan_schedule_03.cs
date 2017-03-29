@@ -45,7 +45,8 @@ namespace TSS_SYSTEM
             this.PageSettings.Margins.Right = GrapeCity.ActiveReports.SectionReport.CmToInch(1.0f);  //右マージン
             this.PageSettings.Margins.Bottom = GrapeCity.ActiveReports.SectionReport.CmToInch(1.0f);   //上マージン
 
-            tb_today.Text = DateTime.Now.ToString("yyyy年MM月dd日");
+            //tb_today.Text = DateTime.Now.ToString("yyyy年MM月dd日");
+            tb_today.Text = DateTime.Now.ToString();
             tb_seisan_yotei_date.Text = w_hd10;
             tb_busyo_cd.Text = w_hd11;
             tb_busyo_name.Text = w_hd12;
