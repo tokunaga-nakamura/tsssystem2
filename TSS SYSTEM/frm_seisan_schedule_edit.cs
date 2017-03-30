@@ -124,6 +124,8 @@ namespace TSS_SYSTEM
                 cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
                 dtp_before.Value = w_before_day;
             }
+
+
         }
 
         private void get_schedule_data(ComboBox in_cb,string in_str)
@@ -2227,6 +2229,12 @@ namespace TSS_SYSTEM
             //データの変更チェック
             if (henkou_check() == false)
             {
+                return;
+            }
+            //指示書の印刷
+            if (dgv_today.Rows.Count <= 0)
+            {
+                MessageBox.Show("印刷するデータがありません。");
                 return;
             }
             frm_seisan_schedule_preview frm_rpt = new frm_seisan_schedule_preview();
