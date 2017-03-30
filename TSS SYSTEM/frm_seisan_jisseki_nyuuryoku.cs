@@ -199,6 +199,8 @@ namespace TSS_SYSTEM
 
         private void btn_hyouji_Click(object sender, EventArgs e)
         {
+            //受注の無い実績の入力を考慮する為、取引先コード、受注コード１、受注コード２、製品コード等の空白を許可する
+
             //入力チェック
             if(tb_seisanbi.Text == "")
             {
@@ -215,20 +217,27 @@ namespace TSS_SYSTEM
                 MessageBox.Show("工程コードに異常があります。");
                 return;
             }
-            if (tss.get_torihikisaki_name(tb_torihikisaki_cd.Text) == null)
+            if(tb_torihikisaki_cd.Text != "")
             {
-                MessageBox.Show("取引先コードに異常があります。");
-                return;
+                if (tss.get_torihikisaki_name(tb_torihikisaki_cd.Text) == null)
+                {
+                    MessageBox.Show("取引先コードに異常があります。");
+                    return;
+                }
             }
-            if (tb_juchu_cd1.Text == "")
+            //if (tb_juchu_cd1.Text == "")
+            //{
+            //    MessageBox.Show("受注コード１に異常があります。");
+            //    return;
+            //}
+            //受注番号３つの内、1つでも入力されていたら、受注のチェックを行う（3つとも入力されていない場合は許容する）
+            if(tb_torihikisaki_cd.Text != "" || tb_juchu_cd1.Text != "" || tb_juchu_cd2.Text != "")
             {
-                MessageBox.Show("受注コード１に異常があります。");
-                return;
-            }
-            if(tss.check_juchu(tb_torihikisaki_cd.Text,tb_juchu_cd1.Text,tb_juchu_cd2.Text) == false)
-            {
-                MessageBox.Show("入力された受注は存在しません。");
-                return;
+                if (tss.check_juchu(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text) == false)
+                {
+                    MessageBox.Show("入力された受注は存在しません。");
+                    return;
+                }
             }
 
             //実績レコードチェック
@@ -393,7 +402,7 @@ namespace TSS_SYSTEM
             frm_sd.w_lbl2_text = "行う処理を選択してください。";
             frm_sd.w_lbl3_text = "  「修正」：選択されたデータを表示して修正します。";
             frm_sd.w_lbl4_text = "  「新規」：別の実績として入力します。";
-            frm_sd.w_lbl4_text = "  「戻る」：入力し直します。";
+            frm_sd.w_lbl5_text = "  「戻る」：入力し直します。";
             frm_sd.w_select_dt = in_dt.Copy();
             frm_sd.w_select_dt.Columns["seisan_jisseki_no"].ColumnName = "実績番号";
             frm_sd.w_select_dt.Columns["seisan_date"].ColumnName = "生産日";
@@ -739,18 +748,25 @@ namespace TSS_SYSTEM
                 return;
             }
             //取引先コード
-            if(tss.get_torihikisaki_name(tb_torihikisaki_cd.Text) == null)
+            if(tb_torihikisaki_cd.Text != "")
             {
-                MessageBox.Show("取引先コードに異常があります。");
-                return;
+                if (tss.get_torihikisaki_name(tb_torihikisaki_cd.Text) == null)
+                {
+                    MessageBox.Show("取引先コードに異常があります。");
+                    return;
+                }
             }
             //受注コード
             string w_seihin_cd;
-            w_seihin_cd = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text,tb_juchu_cd1.Text,tb_juchu_cd2.Text);
-            if(w_seihin_cd == null)
+            w_seihin_cd = "";
+            if(tb_torihikisaki_cd.Text != "" || tb_juchu_cd1.Text != "" || tb_juchu_cd2.Text != "")
             {
-                MessageBox.Show("受注コード1または受注コード2に異常があります。");
-                return;
+                w_seihin_cd = tss.get_juchu_to_seihin_cd(tb_torihikisaki_cd.Text, tb_juchu_cd1.Text, tb_juchu_cd2.Text);
+                if (w_seihin_cd == null)
+                {
+                    MessageBox.Show("受注コード1または受注コード2に異常があります。");
+                    return;
+                }
             }
             //製品コード
             if(tb_seihin_cd.Text != w_seihin_cd)

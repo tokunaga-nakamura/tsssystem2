@@ -90,6 +90,7 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_help = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -182,6 +183,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btn_help);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             // 
@@ -979,6 +981,17 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_help
+            // 
+            this.btn_help.Location = new System.Drawing.Point(995, 10);
+            this.btn_help.Name = "btn_help";
+            this.btn_help.Size = new System.Drawing.Size(75, 23);
+            this.btn_help.TabIndex = 2;
+            this.btn_help.TabStop = false;
+            this.btn_help.Text = "説明・補足";
+            this.btn_help.UseVisualStyleBackColor = true;
+            this.btn_help.Click += new System.EventHandler(this.btn_help_Click);
+            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1133,5 +1146,6 @@
         private System.Windows.Forms.Label lbl_row_koutei;
         private System.Windows.Forms.Label lbl_row_seihin;
         private System.Windows.Forms.Label lbl_row_juchu_cd;
+        private System.Windows.Forms.Button btn_help;
     }
 }

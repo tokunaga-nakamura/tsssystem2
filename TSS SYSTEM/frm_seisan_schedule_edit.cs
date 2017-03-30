@@ -1448,12 +1448,14 @@ namespace TSS_SYSTEM
         {
             DateTime time1;
             DateTime time2;
-            //int rowindex = int.Parse(in_rowindex);
-            int result;
             int w_kyuukei_time;
-
-            if (int.TryParse(dgv_today.Rows[in_rowindex].Cells["seisan_time"].Value.ToString(), out result) == true)
+            int result;
+            //timespan型に変換する値はint型でなければならない（小数点以下は不可）ので、一度double型で工数を受け取り、小数点以下を切り捨ててからintにキャストする
+            double w_kousu;
+            if(double.TryParse(dgv_today.Rows[in_rowindex].Cells["seisan_time"].Value.ToString(),out w_kousu))
             {
+                w_kousu = Math.Floor(w_kousu);
+                result = (int)w_kousu;
                 TimeSpan ts = new TimeSpan(0, 0, result);
                 if (dgv_today.Rows[in_rowindex].Cells["start_time"].Value != DBNull.Value)
                 {
@@ -1464,21 +1466,21 @@ namespace TSS_SYSTEM
                     //※開始時間と終了時間の間に休憩時間が入っている場合のみ、休憩時間分の延長をする
                     w_kyuukei_time = 0;
                     //10時休憩
-                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(),5), "10:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(),5), "10:00") >= 0)
+                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(), 5), "10:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(), 5), "10:00") >= 0)
                     {
                         w_kyuukei_time = w_kyuukei_time + 300;
                         TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
                         time2 = time2 + w_ts_kyuukei_time;
                     }
                     //12時休憩
-                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(),5), "12:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(),5), "12:00") >= 0)
+                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(), 5), "12:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(), 5), "12:00") >= 0)
                     {
                         w_kyuukei_time = w_kyuukei_time + 2400;
                         TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
                         time2 = time2 + w_ts_kyuukei_time;
                     }
                     //15時休憩
-                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(),5), "15:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(),5), "15:00") >= 0)
+                    if (string.Compare(tss.StringRight("00000" + time1.ToShortTimeString(), 5), "15:00") <= 0 && string.Compare(tss.StringRight("00000" + time2.ToShortTimeString(), 5), "15:00") >= 0)
                     {
                         w_kyuukei_time = w_kyuukei_time + 600;
                         TimeSpan w_ts_kyuukei_time = new TimeSpan(0, 0, w_kyuukei_time);
@@ -1493,6 +1495,11 @@ namespace TSS_SYSTEM
 
                     dgv_today.Rows[in_rowindex].Cells["end_time"].Value = time2.ToShortTimeString();
                 }
+            }
+            else
+            {
+                MessageBox.Show("生産工数に数値として処理できない値が有ります。\n行数=" + in_rowindex.ToString() + " 値=" + dgv_today.Rows[in_rowindex].Cells["seisan_time"].Value.ToString());
+                return;
             }
         }
 
@@ -1617,7 +1624,7 @@ namespace TSS_SYSTEM
                     else
                     {
                         dgv_today.CurrentRow.Cells["line_name"].Value = get_line_name(dgv_today.CurrentCell.Value.ToString());
-                }
+                    }
                     seihin_cd_change(dgv_today.CurrentRow.Cells["seihin_cd"].Value.ToString());
                 }
                 else
@@ -2799,6 +2806,40 @@ namespace TSS_SYSTEM
             {
                 end_time_keisan(e.RowIndex);
             }
+        }
+
+        private void btn_help_Click(object sender, EventArgs e)
+        {
+            frm_text frm_txt = new frm_text();
+            //受け渡す値のセット
+            frm_txt.in_text = "生産スケジュールの編集画面では、いくつかの注意点があります。"
+                            + "\n"
+                            + "\n■画面左上の「生産予定日」は初期表示用の日付であり、初期表示後は画面中央の日付が有効な日付となります。"
+                            + "\n例えば、一覧表や指示書の印刷は、画面中央に表示されている日付及びデータが印刷されます。"
+                            + "\n"
+                            + "\n■画面左上の部署を「全ての部署」以外を選択しないと、データの登録が行えません。"
+                            + "\n生産スケジュールは、各部署毎に生産順や時刻を設定しなければいけません。"
+                            + "\n"
+                            + "\n■画面左上の「生産予定日」と「部署」を入力・設定後、必ず「表示」ボタンを押してください。"
+                            + "\n「表示」ボタンを押さなくても、部署を選択するとデータが表示されますが、"
+                            + "\nこの時点ではまだ表示されていない項目もありますし、内部的に編集可能な状態ではありません。"
+                            + "\n"
+                            + "\n■正式な受注分の生産は受注番号を、受注分ではないものは受注番号は空白にしてください。"
+                            + "\n例えば、資材補充分の生産は受注番号（取引先コード＋受注コード１＋受注コード２）を空白にし製品コードを入力。"
+                            + "\n社内イベント（清掃等）は受注番号と製品コードを空白にします。"
+                            + "\n"
+                            + "\n■生産済数は画面の日付に関係なく、現在までの実績情報の合計になります。"
+                            + "\n過去の日付を表示させても、その時点での実績表示にはなりませんので注意してください。"
+                            + "\n"
+                            + "\n■行の削除は、Deleteキーです。"
+                            + "\n削除したい行のヘッダー部（行の一番左）をクリックして行全体が選択された状態にし、"
+                            + "\nキーボードのDeleteキーで削除します。"
+                            + "\n"
+                            + "\n"
+                            + "\n";
+            frm_txt.ShowDialog(this);
+            frm_txt.Dispose();
+
         }
     }
 }
