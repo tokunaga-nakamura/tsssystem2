@@ -366,6 +366,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "frm_seisan_schedule_preview2";
             this.Text = "生産スケジュール印刷プレビュー";
+            this.Load += new System.EventHandler(this.frm_seisan_schedule_preview2_Load);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);

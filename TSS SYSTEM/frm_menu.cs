@@ -1373,6 +1373,8 @@ namespace TSS_SYSTEM
                 return;
             }
             frm_seisan_schedule_preview2 frm_seisan_sc = new frm_seisan_schedule_preview2();
+
+            frm_seisan_sc.mode = "1";
             frm_seisan_sc.ShowDialog(this);
             frm_seisan_sc.Dispose();
         }

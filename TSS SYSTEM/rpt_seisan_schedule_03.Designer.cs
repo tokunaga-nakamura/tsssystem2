@@ -636,7 +636,7 @@
             // 
             // textBox19
             // 
-            this.textBox19.DataField = "seisan_zumisu";
+            this.textBox19.DataField = "seisanzumi";
             this.textBox19.Height = 0.146063F;
             this.textBox19.Left = 8.638189F;
             this.textBox19.Name = "textBox19";

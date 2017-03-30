@@ -154,6 +154,7 @@ namespace TSS_SYSTEM
             {
                 case "cb_today_busyo":
                     w_dt_today = tss.OracleSelect(w_sql);
+                    w_dt_today.Columns.Add("seisanzumi", Type.GetType("System.Int32")).SetOrdinal(27); 
                     break;
                 case "cb_before_busyo":
                     w_dt_before = tss.OracleSelect(w_sql);
@@ -306,6 +307,7 @@ namespace TSS_SYSTEM
             w_dgv.Columns["hensyu_flg"].HeaderText = "編集";
             w_dgv.Columns["bikou"].HeaderText = "備考";
             
+            
             //右詰
             w_dgv.Columns["seq"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             w_dgv.Columns["juchu_su"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -379,21 +381,26 @@ namespace TSS_SYSTEM
 
             if(w_dgv.Name == "dgv_today")
             {
-                //データグリッドビューに生産済カラムの追加
-                if (w_dgv.ColumnCount == 31)
-                {
-                    //列が自動的に作成されないようにする
-                    w_dgv.AutoGenerateColumns = false;
-                    //DataGridViewTextBoxColumn列を作成する
-                    DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
-                    //名前とヘッダーを設定する
-                    textColumn.Name = "seisanzumi";
-                    textColumn.HeaderText = "生産済";
-                    //列を追加する
-                    w_dgv.Columns.Add(textColumn);
-                    w_dgv.Columns["seisanzumi"].Width = 60;
-                    w_dgv.Columns["seisanzumi"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
+                w_dgv.Columns["seisanzumi"].Width = 60;
+                w_dgv.Columns["seisanzumi"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                w_dgv.Columns["seisanzumi"].HeaderText = "生産済";
+                
+                
+                ////データグリッドビューに生産済カラムの追加
+                //if (w_dgv.ColumnCount == 3)
+                //{
+                //    //列が自動的に作成されないようにする
+                //    w_dgv.AutoGenerateColumns = false;
+                //    //DataGridViewTextBoxColumn列を作成する
+                //    DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
+                //    //名前とヘッダーを設定する
+                //    textColumn.Name = "seisanzumi";
+                //    textColumn.HeaderText = "生産済";
+                //    //列を追加する
+                //    w_dgv.Columns.Add(textColumn);
+                //    w_dgv.Columns["seisanzumi"].Width = 60;
+                //    w_dgv.Columns["seisanzumi"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                //}
                 //データグリッドビューに生産予定カラムの追加
                 if(w_dgv.ColumnCount == 32)
                 {
@@ -2224,55 +2231,25 @@ namespace TSS_SYSTEM
             {
                 return;
             }
-            //指示書の印刷
+            //印刷データチェック
             if (dgv_today.Rows.Count <= 0)
             {
                 MessageBox.Show("印刷するデータがありません。");
                 return;
             }
-            frm_seisan_schedule_preview frm_rpt = new frm_seisan_schedule_preview();
-            //子画面のプロパティに値をセットする
-            frm_rpt.ppt_dt = w_dt_today;
-            string yyyymmdd = lbl_seisan_yotei_date_today.Text.Substring(0, 4) + "年" + lbl_seisan_yotei_date_today.Text.Substring(5, 2) + "月" + lbl_seisan_yotei_date_today.Text.Substring(8, 2) + "日";
-            frm_rpt.w_hd10 = yyyymmdd;
-            if (cb_today_busyo.Text.ToString() == "")
-            {
-                frm_rpt.w_hd11 = "指定なし";
-                frm_rpt.w_hd12 = "指定なし";
-            }
-            else
-            {
-                frm_rpt.w_hd12 = cb_today_busyo.Text;
-            }
-            if (tb_create_user_cd.Text.ToString() != "")
-            {
-                DataTable dt1 = new DataTable();
-                dt1 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_create_user_cd.Text.ToString() + "'");
 
-                frm_rpt.w_hd40 = dt1.Rows[0]["user_name"].ToString();
-                frm_rpt.w_hd41 = tb_create_datetime.Text;
-            }
-            else
-            {
-                frm_rpt.w_hd40 = "";
-                frm_rpt.w_hd41 = "";
-            }
-            if (tb_update_user_cd.Text.ToString() != "")
-            {
-                DataTable dt2 = new DataTable();
-                dt2 = tss.OracleSelect("select * from TSS_USER_M where user_cd = '" + tb_update_user_cd.Text.ToString() + "'");
+            frm_seisan_schedule_preview2 frm_seisan_sc = new frm_seisan_schedule_preview2();
+            
+            string yyyymmdd = lbl_seisan_yotei_date_today.Text;
+            string yyyymmdd_2 = lbl_seisan_yotei_date_today.Text.Substring(0, 4) + "年" + lbl_seisan_yotei_date_today.Text.Substring(5, 2) + "月" + lbl_seisan_yotei_date_today.Text.Substring(8, 2) + "日";
 
-                frm_rpt.w_hd50 = dt2.Rows[0]["user_name"].ToString();
-                frm_rpt.w_hd51 = tb_update_datetime.Text;
-            }
-            else
-            {
-                frm_rpt.w_hd50 = "";
-                frm_rpt.w_hd51 = "";
-            }
-            frm_rpt.ShowDialog();
-            //子画面から値を取得する
-            frm_rpt.Dispose();
+            frm_seisan_sc.w_hd10 = yyyymmdd;
+            frm_seisan_sc.w_hd11 = cb_today_busyo.SelectedValue.ToString();
+            frm_seisan_sc.mode = "2";
+
+            frm_seisan_sc.ShowDialog(this);
+            frm_seisan_sc.Dispose();
+            
         }
 
         private void btn_csv_Click(object sender, EventArgs e)

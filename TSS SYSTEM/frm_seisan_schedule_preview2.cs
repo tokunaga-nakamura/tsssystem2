@@ -16,6 +16,10 @@ namespace TSS_SYSTEM
         DataTable w_dt_meisai = new DataTable();    //印刷するデータ
         DataTable w_dt = new DataTable();
 
+
+        //画面モード
+        public string mode;//メニュー画面から・・・1　生産スケジュール調整画面から・・・2
+
         //ヘッダーの受け渡し変数の定義
         public string w_yyyymmdd;
         public string w_hd10;//生産予定日
@@ -109,7 +113,39 @@ namespace TSS_SYSTEM
             sql = sql + " order by koutei_cd,line_cd,A.start_time ";
 
             w_dt = tss.OracleSelect(sql);
+            w_dt.Columns.Add("seisanzumi", Type.GetType("System.Int32")).SetOrdinal(27);
+            
+            seisanzumi();
 
+        }
+
+        //生産済数の取得
+        public void seisanzumi()
+        {
+            decimal dc_seisanzumi;
+            DataTable w_dt_jisseki = new DataTable();
+
+            int rc = w_dt.Rows.Count;
+            if (rc > 0)
+            {
+                for (int i = 0; i <= rc - 1; i++)
+                {
+
+                    w_dt_jisseki = tss.OracleSelect("select seisan_date,torihikisaki_cd,juchu_cd1,juchu_cd2,koutei_cd,seisan_su from tss_seisan_jisseki_f where koutei_cd = '" + w_dt.Rows[i]["koutei_cd"].ToString() + "'and torihikisaki_cd = '" + w_dt.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt.Rows[i]["juchu_cd2"].ToString() + "' order by seisan_date desc");
+
+                    if (w_dt_jisseki.Rows.Count == 0)
+                    {
+                        dc_seisanzumi = 0;
+                    }
+                    else
+                    {
+                        Object obj = w_dt_jisseki.Compute("Sum(seisan_su)", null);
+                        dc_seisanzumi = decimal.Parse(obj.ToString());
+                    }
+                    //生産済数を格納
+                    w_dt.Rows[i]["seisanzumi"] = dc_seisanzumi.ToString();
+                }
+            }
         }
 
         private void viewer_disp()
@@ -340,6 +376,37 @@ namespace TSS_SYSTEM
         private void btn_syuuryou_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frm_seisan_schedule_preview2_Load(object sender, EventArgs e)
+        {
+            //メニュー画面から開いた場合
+            if(mode == "1")
+            {
+                //何もしない
+
+            }
+            //生産スケジュール調整画面から開いた場合
+            if (mode == "2")
+            {
+                //生産スケジュール調整画面から渡された　生産予定日、部署に合わせてプレビュー表示
+                //生産予定日
+                tb_seisan_yotei_date.Text = w_hd10;
+                //部署
+                if (w_hd11 != "000000")
+                {
+                    tb_busyo_cd.Text = w_hd11;
+                    tb_busyo_name.Text = get_busyo_name(w_hd11);
+                }
+                else
+                {
+                    tb_busyo_cd.Text = "";
+                    tb_busyo_name.Text = "";
+                }
+
+                seisan_schedule_preview();       
+            }
+            
         }
 
     }

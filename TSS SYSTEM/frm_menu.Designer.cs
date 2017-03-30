@@ -1268,7 +1268,6 @@
             this.btn_seisan_schedule_print.TabIndex = 4;
             this.btn_seisan_schedule_print.Text = "生産スケジュール一覧表　印刷";
             this.btn_seisan_schedule_print.UseVisualStyleBackColor = true;
-            this.btn_seisan_schedule_print.Visible = false;
             this.btn_seisan_schedule_print.Click += new System.EventHandler(this.btn_seisan_schedule_print_Click);
             // 
             // btn_seisan_schedule_remake
