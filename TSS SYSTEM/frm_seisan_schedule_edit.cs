@@ -2118,9 +2118,28 @@ namespace TSS_SYSTEM
 
         private void cb_today_busyo_SelectedValueChanged(object sender, EventArgs e)
         {
-            get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
+            //get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
+            //disp_schedule_data(dgv_today, w_dt_today);
+            //kabusoku();
+            get_schedule_data(cb_today_busyo, tb_seisan_yotei_date.Text);
             disp_schedule_data(dgv_today, w_dt_today);
+            lbl_seisan_yotei_date_today.Text = tb_seisan_yotei_date.Text;
+            if (dgv_today.Rows.Count >= 1)
+            {
+                tb_create_user_cd.Text = w_dt_today.Rows[0]["create_user_cd"].ToString();
+                tb_create_datetime.Text = w_dt_today.Rows[0]["create_datetime"].ToString();
+                tb_update_user_cd.Text = w_dt_today.Rows[0]["update_user_cd"].ToString();
+                tb_update_datetime.Text = w_dt_today.Rows[0]["update_datetime"].ToString();
+            }
+            else
+            {
+                tb_create_user_cd.Text = "";
+                tb_create_datetime.Text = "";
+                tb_update_user_cd.Text = "";
+                tb_update_datetime.Text = "";
+            }
             kabusoku();
+            
             //-1
             DateTime w_before_day;
             if (tb_seisan_yotei_date.Text.ToString() != "")
