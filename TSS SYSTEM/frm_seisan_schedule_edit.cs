@@ -124,8 +124,6 @@ namespace TSS_SYSTEM
                 cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
                 dtp_before.Value = w_before_day;
             }
-
-
         }
 
         private void get_schedule_data(ComboBox in_cb,string in_str)
@@ -154,7 +152,7 @@ namespace TSS_SYSTEM
             {
                 case "cb_today_busyo":
                     w_dt_today = tss.OracleSelect(w_sql);
-                    w_dt_today.Columns.Add("seisanzumi", Type.GetType("System.Int32")).SetOrdinal(27); 
+                    w_dt_today.Columns.Add("seisanzumi", Type.GetType("System.Int32")).SetOrdinal(27);
                     break;
                 case "cb_before_busyo":
                     w_dt_before = tss.OracleSelect(w_sql);
@@ -168,7 +166,16 @@ namespace TSS_SYSTEM
             DateTime keisan_day = new DateTime(); //生産実績のある直近の日付
             DateTime today = new DateTime(); //dgv_todayの日付
             DateTime today_1 = new DateTime(); //dgv_todayの前の日の日付
-            today = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString());
+            if (lbl_seisan_yotei_date_today.Text.ToString() != "")
+            {
+                today = DateTime.Parse(lbl_seisan_yotei_date_today.Text.ToString());
+            }
+            else
+            {
+                MessageBox.Show("日付が入力されていません");
+                return;
+            }
+            
             today_1 = today.AddDays(-1);
 
             DataTable w_dt_jisseki = new DataTable();
@@ -245,7 +252,10 @@ namespace TSS_SYSTEM
                    dgv_today.Rows[i].Cells["seisan_yotei"].Value = (dc_seisan_yotei + dc_seisan_yotei2 + dc_today_seisan).ToString();
                    dc_kabusoku = (dc_juchu_su - dc_seisanzumi - dc_seisan_yotei - dc_seisan_yotei2 - dc_today_seisan)*-1;
                    dgv_today.Rows[i].Cells["kabusoku"].Value = dc_kabusoku.ToString();
-                   dgv_today.EndEdit();                   
+                   dgv_today.EndEdit();
+
+                   //ここで一旦データテーブルの変更を確定させる（getchangesにヒットしないようにする）
+                   w_dt_today.AcceptChanges();
                }
            }     
         }
@@ -384,10 +394,10 @@ namespace TSS_SYSTEM
                 w_dgv.Columns["seisanzumi"].Width = 60;
                 w_dgv.Columns["seisanzumi"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 w_dgv.Columns["seisanzumi"].HeaderText = "生産済";
-                
-                
+
+
                 ////データグリッドビューに生産済カラムの追加
-                //if (w_dgv.ColumnCount == 3)
+                //if (w_dgv.ColumnCount == 32)
                 //{
                 //    //列が自動的に作成されないようにする
                 //    w_dgv.AutoGenerateColumns = false;
@@ -555,7 +565,6 @@ namespace TSS_SYSTEM
             bool bl;    //戻り値用
             bl = true;
             DataTable w_dt_changedRecord = w_dt_today.GetChanges();
-
             if (w_dt_changedRecord == null)
             {
                 bl = true;
@@ -629,13 +638,24 @@ namespace TSS_SYSTEM
                     tb_update_datetime.Text = "";
                 }
                 kabusoku();
+                
                 //-1
-                DateTime w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
-                w_before_day = w_before_day.AddDays(-1);
-                get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
-                disp_schedule_data(dgv_before , w_dt_before);
-                cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
-                dtp_before.Value = w_before_day;
+                DateTime w_before_day;
+                if(tb_seisan_yotei_date.Text.ToString() != "")
+                {
+                    w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
+                    w_before_day = w_before_day.AddDays(-1);
+                    get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
+                    disp_schedule_data(dgv_before, w_dt_before);
+                    cb_before_busyo.SelectedValue = cb_before_busyo.SelectedValue.ToString();
+                    dtp_before.Value = w_before_day;
+                }
+                else
+                {
+                    //何もしない
+                }
+
+               
                 //member
                 get_member();
                 disp_member_data();
