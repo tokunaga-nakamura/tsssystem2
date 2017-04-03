@@ -2121,6 +2121,21 @@ namespace TSS_SYSTEM
             get_schedule_data(cb_today_busyo, lbl_seisan_yotei_date_today.Text);
             disp_schedule_data(dgv_today, w_dt_today);
             kabusoku();
+            //-1
+            DateTime w_before_day;
+            if (tb_seisan_yotei_date.Text.ToString() != "")
+            {
+                w_before_day = DateTime.Parse(tb_seisan_yotei_date.Text.ToString());
+                w_before_day = w_before_day.AddDays(-1);
+                get_schedule_data(cb_before_busyo, w_before_day.ToShortDateString());
+                disp_schedule_data(dgv_before, w_dt_before);
+                cb_before_busyo.SelectedValue = cb_today_busyo.SelectedValue.ToString();
+                dtp_before.Value = w_before_day;
+            }
+            else
+            {
+                //何もしない
+            }
         }
 
         private void cb_before_busyo_SelectedValueChanged(object sender, EventArgs e)
