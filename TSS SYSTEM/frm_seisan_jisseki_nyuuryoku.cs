@@ -730,6 +730,11 @@ namespace TSS_SYSTEM
             tb_jisseki_seisan_time.Text = w_ts_seisan_jikan.TotalMinutes.ToString("#.##");
             //タクトタイムの表示
             tb_jisseki_tact_time.Text = w_dou_tact_time.ToString("#.##");
+            //生産数と生産時間のどちらかが０だった場合、タクトの計算ができないので、タクトを0にする
+            if(w_seisan_su == 0 || w_dou_seisan_jikan == 0)
+            {
+                tb_jisseki_tact_time.Text = "0";
+            }
         }
 
         private void btn_touroku_Click(object sender, EventArgs e)
@@ -769,10 +774,18 @@ namespace TSS_SYSTEM
                 }
             }
             //製品コード
-            if(tb_seihin_cd.Text != w_seihin_cd)
+            //受注コードが入力されていた場合は製品コードは受注と一致しているかチェックする
+            //受注コードが入力されていなくても製品コードだけの登録は可能とする
+            if(tb_seihin_cd.Text != "")
             {
-                MessageBox.Show("受注情報と製品コードが不一致、\nまたは製品コードに異常があります。");
-                return;
+                if (tb_torihikisaki_cd.Text != "" || tb_juchu_cd1.Text != "" || tb_juchu_cd2.Text != "")
+                {
+                    if (tb_seihin_cd.Text != w_seihin_cd)
+                    {
+                        MessageBox.Show("受注情報と製品コードが不一致、\nまたは製品コードに異常があります。");
+                        return;
+                    }
+                }
             }
             //部署コード
             if(tss.get_busyo_name(tb_busyo_cd.Text) == null)

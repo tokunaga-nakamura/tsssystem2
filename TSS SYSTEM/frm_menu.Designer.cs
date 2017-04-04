@@ -142,10 +142,10 @@
             this.btn_kubun_meisyou_m = new System.Windows.Forms.Button();
             this.btn_quick_seisan_jisseki = new System.Windows.Forms.Button();
             this.btn_quick_seisan_schedule = new System.Windows.Forms.Button();
-            this.btn_quick_seisan_kousu = new System.Windows.Forms.Button();
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -361,9 +361,9 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_jisseki);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_schedule);
-            this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_kousu);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_nouhin_schedule);
             this.splitContainer3.Size = new System.Drawing.Size(994, 423);
             this.splitContainer3.SplitterDistance = 842;
@@ -1545,23 +1545,13 @@
             // 
             // btn_quick_seisan_schedule
             // 
-            this.btn_quick_seisan_schedule.Location = new System.Drawing.Point(3, 61);
+            this.btn_quick_seisan_schedule.Location = new System.Drawing.Point(3, 32);
             this.btn_quick_seisan_schedule.Name = "btn_quick_seisan_schedule";
             this.btn_quick_seisan_schedule.Size = new System.Drawing.Size(138, 23);
             this.btn_quick_seisan_schedule.TabIndex = 2;
             this.btn_quick_seisan_schedule.Text = "生産スケジュール調整";
             this.btn_quick_seisan_schedule.UseVisualStyleBackColor = true;
             this.btn_quick_seisan_schedule.Click += new System.EventHandler(this.btn_seisan_schedule_Click);
-            // 
-            // btn_quick_seisan_kousu
-            // 
-            this.btn_quick_seisan_kousu.Location = new System.Drawing.Point(3, 32);
-            this.btn_quick_seisan_kousu.Name = "btn_quick_seisan_kousu";
-            this.btn_quick_seisan_kousu.Size = new System.Drawing.Size(138, 23);
-            this.btn_quick_seisan_kousu.TabIndex = 1;
-            this.btn_quick_seisan_kousu.Text = "生産工数参照";
-            this.btn_quick_seisan_kousu.UseVisualStyleBackColor = true;
-            this.btn_quick_seisan_kousu.Click += new System.EventHandler(this.btn_seisan_kousu_Click);
             // 
             // btn_quick_nouhin_schedule
             // 
@@ -1592,6 +1582,16 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 61);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "生産スケジュール一覧表";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btn_seisan_schedule_print_Click);
             // 
             // frm_menu
             // 
@@ -1779,7 +1779,6 @@
         private System.Windows.Forms.Label lbl_msg2;
         private System.Windows.Forms.Label lbl_msg1;
         private System.Windows.Forms.Button btn_quick_seisan_schedule;
-        private System.Windows.Forms.Button btn_quick_seisan_kousu;
         private System.Windows.Forms.Button btn_quick_nouhin_schedule;
         private System.Windows.Forms.Button btn_gamen_kousin;
         private System.Windows.Forms.Button btn_chat_hyouji_sentaku;
@@ -1794,6 +1793,7 @@
         private System.Windows.Forms.Button btn_seisan_jisseki;
         private System.Windows.Forms.Button btn_jisseki_kensaku;
         private System.Windows.Forms.Button btn_quick_seisan_jisseki;
+        private System.Windows.Forms.Button button2;
     }
 }
 

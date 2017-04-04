@@ -141,7 +141,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 401);
+            this.viewer1.Size = new System.Drawing.Size(880, 420);
             this.viewer1.TabIndex = 0;
             // 
             // btn_preview
@@ -246,7 +246,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.viewer1);
             this.splitContainer4.Size = new System.Drawing.Size(884, 460);
-            this.splitContainer4.SplitterDistance = 51;
+            this.splitContainer4.SplitterDistance = 32;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
             // 
