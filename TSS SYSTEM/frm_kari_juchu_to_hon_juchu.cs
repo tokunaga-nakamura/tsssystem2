@@ -255,7 +255,7 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-            if(juchu_cd22_check() == false)
+            if(juchu_cd_check() == false)
             {
                 MessageBox.Show("入力された受注コードは既に使用されているため処理できません。");
                 e.Cancel = true;
@@ -264,11 +264,11 @@ namespace TSS_SYSTEM
         }
 
 
-        private bool juchu_cd22_check()
+        private bool juchu_cd_check()
         {
             //存在しない受注コードかチェックする
             DataTable w_dt_sin = new DataTable();
-            w_dt_sin = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            w_dt_sin = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             if (w_dt_sin.Rows.Count >= 1)
             {
                 return false;
@@ -284,7 +284,7 @@ namespace TSS_SYSTEM
                 MessageBox.Show("本登録する受注コードを入力してください。");
                 return;
             }
-            if (juchu_cd22_check() == false)
+            if (juchu_cd_check() == false)
             {
                 MessageBox.Show("入力された受注コードは既に使用されているため処理できません。");
                 return;
@@ -306,6 +306,7 @@ namespace TSS_SYSTEM
 
             tb_log.AppendText("torihikisaki_cd:" + tb_torihikisaki_cd.Text + "\n");
             tb_log.AppendText("juchu_cd1:" + tb_juchu_cd1.Text + "\n");
+            tb_log.AppendText("juchu_cd12:" + tb_juchu_cd12.Text + "\n");
             tb_log.AppendText("juchu_cd2:" + tb_juchu_cd2.Text + "\n");
             tb_log.AppendText("juchu_cd22:" + tb_juchu_cd22.Text + "\n");
 
@@ -313,6 +314,7 @@ namespace TSS_SYSTEM
             //元側：必ず有る
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_juchu_m\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
             if (w_dt1.Rows.Count <= 0)
@@ -321,6 +323,7 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
+            //更新先チェック
             w_dt2 = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)  //受注マスタは1レコードしかないが、他のマスタは複数あり得る
@@ -329,7 +332,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql ="update tss_juchu_m SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',kari_juchu_kbn = '0',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_juchu_m SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',kari_juchu_kbn = '0',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if(tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -345,6 +349,7 @@ namespace TSS_SYSTEM
             //元側：必ず有る
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_juchu_rireki_f\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_juchu_rireki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
             if (w_dt1.Rows.Count <= 0)
@@ -353,7 +358,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_dt2 = tss.OracleSelect("select * from tss_juchu_rireki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_juchu_rireki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -361,7 +367,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_juchu_rireki_f SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_juchu_rireki_f SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -377,9 +384,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_nouhin_schedule_m\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_nouhin_schedule_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -387,7 +396,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_nouhin_schedule_m SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_nouhin_schedule_m SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -403,9 +413,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_buhin_zaiko_m\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_buhin_zaiko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -413,7 +425,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_buhin_zaiko_m SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_buhin_zaiko_m SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -429,9 +442,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_buhin_nyusyukko_m\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_buhin_nyusyukko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_buhin_nyusyukko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック（通常の受注コード）
+            w_dt2 = tss.OracleSelect("select * from tss_buhin_nyusyukko_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -439,7 +454,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_dt2 = tss.OracleSelect("select * from tss_buhin_nyusyukko_m where idousaki_torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and idousaki_juchu_cd1 = '" + tb_juchu_cd1.Text + "' and idousaki_juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック（移動先の受注コード）
+            w_dt2 = tss.OracleSelect("select * from tss_buhin_nyusyukko_m where idousaki_torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and idousaki_juchu_cd1 = '" + tb_juchu_cd12.Text + "' and idousaki_juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -447,7 +463,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_buhin_nyusyukko_m SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理（通常の受注コード）
+            w_sql = "update tss_buhin_nyusyukko_m SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update1 done\n\n");
@@ -458,7 +475,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_buhin_nyusyukko_m SET idousaki_juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where idousaki_torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and idousaki_juchu_cd1 = '" + tb_juchu_cd1.Text + "' and idousaki_juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新先チェック（移動先の受注コード）
+            w_sql = "update tss_buhin_nyusyukko_m SET idousaki_juchu_cd1 = '" + tb_juchu_cd12.Text + "',idousaki_juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where idousaki_torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and idousaki_juchu_cd1 = '" + tb_juchu_cd1.Text + "' and idousaki_juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update2 done\n\n");
@@ -474,9 +492,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_uriage_m\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_uriage_m where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -484,7 +504,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_uriage_m SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_uriage_m SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -500,8 +521,10 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_uriage_log_f\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_uriage_log_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
+            //更新先チェック
             w_dt2 = tss.OracleSelect("select * from tss_uriage_log_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
@@ -510,7 +533,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_uriage_log_f SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_uriage_log_f SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -526,9 +550,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_seisan_schedule_f\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_seisan_schedule_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_seisan_schedule_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_seisan_schedule_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -536,7 +562,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_seisan_schedule_f SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_seisan_schedule_f SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -552,9 +579,11 @@ namespace TSS_SYSTEM
             //元側：無い可能性あり
             tb_log.AppendText("----------\n");
             tb_log.AppendText("tss_seisan_jisseki_f\n");
+            //更新元チェック
             w_dt1 = tss.OracleSelect("select * from tss_seisan_jisseki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'");
             tb_log.AppendText("old rows count " + w_dt1.Rows.Count.ToString() + "\n");
-            w_dt2 = tss.OracleSelect("select * from tss_seisan_jisseki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
+            //更新先チェック
+            w_dt2 = tss.OracleSelect("select * from tss_seisan_jisseki_f where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd12.Text + "' and juchu_cd2 = '" + tb_juchu_cd22.Text + "'");
             tb_log.AppendText("new rows count " + w_dt2.Rows.Count.ToString() + "\n");
             if (w_dt2.Rows.Count >= 1)
             {
@@ -562,7 +591,8 @@ namespace TSS_SYSTEM
                 MessageBox.Show("エラーが発生しました。\nデータの整合性が取れなくなる恐れがあります。\n画面のlog情報をコピーするなどして、システム管理者に報告してください。");
                 return false;
             }
-            w_sql = "update tss_seisan_jisseki_f SET juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
+            //更新処理
+            w_sql = "update tss_seisan_jisseki_f SET juchu_cd1 = '" + tb_juchu_cd12.Text + "',juchu_cd2 = '" + tb_juchu_cd22.Text + "',update_user_cd = '" + tss.user_cd + "',update_datetime = SYSDATE where torihikisaki_cd = '" + tb_torihikisaki_cd.Text + "' and juchu_cd1 = '" + tb_juchu_cd1.Text + "' and juchu_cd2 = '" + tb_juchu_cd2.Text + "'";
             if (tss.OracleUpdate(w_sql))
             {
                 tb_log.AppendText("update done\n\n");
@@ -574,6 +604,34 @@ namespace TSS_SYSTEM
                 return false;
             }
             return true;
+        }
+
+        private void tb_juchu_cd12_Validating(object sender, CancelEventArgs e)
+        {
+            if (tss.Check_String_Escape(tb_juchu_cd12.Text) == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (tb_juchu_cd12.Text == "9999999999999999")
+            {
+                MessageBox.Show("受注コードのオール９は、システム予約コードの為、使用できません。");
+                e.Cancel = true;
+                return;
+            }
+            if (tb_juchu_cd12.Text.Length == 0)
+            {
+                MessageBox.Show("本登録する受注コードを入力してください。");
+                e.Cancel = true;
+                return;
+            }
+            if (juchu_cd_check() == false)
+            {
+                MessageBox.Show("入力された受注コードは既に使用されているため処理できません。");
+                e.Cancel = true;
+                return;
+            }
+
         }
     }
 }
