@@ -15,7 +15,7 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
         DataTable w_dt_insatu = new DataTable();
-        
+
         public frm_tankabetu_uriage()
         {
             InitializeComponent();
@@ -69,7 +69,6 @@ namespace TSS_SYSTEM
                 //無し
                 MessageBox.Show("入力された取引先コードが存在しません。取引先マスタに登録してください。");
                 tb_torihikisaki_cd.Focus();
-
             }
             else
             {
@@ -94,7 +93,6 @@ namespace TSS_SYSTEM
             }
             return bl;
         }
-
 
         private bool chk_uriage_date(string in_str)
         {
@@ -131,7 +129,6 @@ namespace TSS_SYSTEM
         {
             kensaku();
         }
-
 
         private void kensaku()
         {
@@ -170,8 +167,8 @@ namespace TSS_SYSTEM
                         tb_uriage_date.Focus();
                     }
                 }
-                    sql_where[sql_cnt] = "tss_uriage_m.uriage_date = TO_DATE('" + tb_uriage_date.Text.ToString() + "','YYYY/MM/DD')";
-                    sql_cnt++;
+                sql_where[sql_cnt] = "tss_uriage_m.uriage_date = TO_DATE('" + tb_uriage_date.Text.ToString() + "','YYYY/MM/DD')";
+                sql_cnt++;
             }
 
             //検索条件が全て空白
@@ -183,10 +180,7 @@ namespace TSS_SYSTEM
             
             //明細まで必要な場合
             if(checkBox1.Checked == false)
-             {
-
-                
-
+            {
                 string sql = "select max(torihikisaki_cd),max(torihikisaki_name),max(uriage_date),max(seihin_cd),max(seihin_name),sum(uriage_su),max(hanbai_tanka),sum(uriage_kingaku) from tss_uriage_m where ";
 
                 for (int i = 1; i <= sql_cnt; i++)
@@ -211,10 +205,8 @@ namespace TSS_SYSTEM
                     MessageBox.Show("指定した条件のデータがありません");
                     return;
                 }
-
                 else
                 {
-
                     dt_kensaku.Columns.Add("kouchin_tanka", Type.GetType("System.Decimal")).SetOrdinal(8);
                     dt_kensaku.Columns.Add("kouchin_kingaku", Type.GetType("System.Decimal")).SetOrdinal(9);
                     dt_kensaku.Columns.Add("hukusizai_tanka", Type.GetType("System.Decimal")).SetOrdinal(10);
@@ -226,8 +218,6 @@ namespace TSS_SYSTEM
 
                     for (int i = 0; i <= rc - 1; i++)
                     {
-
-
                         DataTable dt_kouchin = new DataTable();
                         dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
                         if (dt_kouchin.Rows.Count == 0)
@@ -248,7 +238,6 @@ namespace TSS_SYSTEM
                                 //dt_kensaku.Rows[i][9] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
                                 dt_kensaku.Rows[i][9] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_kouchin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_hukusizai = new DataTable();
@@ -271,7 +260,6 @@ namespace TSS_SYSTEM
                                 //dt_kensaku.Rows[i][11] = decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
                                 dt_kensaku.Rows[i][11] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) *decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_buhin = new DataTable();
@@ -294,12 +282,10 @@ namespace TSS_SYSTEM
                                 dt_kensaku.Rows[i][13] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_buhin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
                         }
-
                         dt_kensaku.Rows[i][14] = decimal.Parse(dt_kensaku.Rows[i][8].ToString()) + decimal.Parse(dt_kensaku.Rows[i][10].ToString());
                         dt_kensaku.Rows[i][15] = decimal.Parse(dt_kensaku.Rows[i][9].ToString()) + decimal.Parse(dt_kensaku.Rows[i][11].ToString());
-
                     }
-                  }
+                }
 
                 DataTable dt_kensaku_copy = dt_kensaku.Copy();
 
@@ -309,8 +295,26 @@ namespace TSS_SYSTEM
                 object obj_kouchin_ttl = dt_kensaku_copy.Compute("Sum(KOUCHIN_KINGAKU)", null);
                 object obj_hukusizai_ttl = dt_kensaku_copy.Compute("Sum(HUKUSIZAI_KINGAKU)", null);
                 object obj_buhin_ttl = dt_kensaku_copy.Compute("Sum(BUHIN_KINGAKU)", null);
-                decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
+                //20170630バグ対応 数値として認識できない場合は"0"を入れる
+                decimal w_dc3;   //バグ対応用の変数
+                if (decimal.TryParse(obj_uriage_ttl.ToString(), out w_dc3) == false)
+                {
+                    obj_uriage_ttl = "0";
+                }
+                if (decimal.TryParse(obj_kouchin_ttl.ToString(), out w_dc3) == false)
+                {
+                    obj_kouchin_ttl = "0";
+                }
+                if (decimal.TryParse(obj_hukusizai_ttl.ToString(), out w_dc3) == false)
+                {
+                    obj_hukusizai_ttl = "0";
+                }
+                if (decimal.TryParse(obj_buhin_ttl.ToString(), out w_dc3) == false)
+                {
+                    obj_buhin_ttl = "0";
+                }
 
+                decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
 
                 list_disp(dt_kensaku);
 
@@ -319,7 +323,6 @@ namespace TSS_SYSTEM
                 tb_hukusizai.Text = obj_hukusizai_ttl.ToString();
                 tb_buhin.Text = obj_buhin_ttl.ToString();
                 tb_kouchin_hukusizai.Text = dc_kouchin_hukusizai_ttl.ToString();
-
 
                 //集計後、カンマ区切り数にする
                 decimal number = decimal.Parse(tb_uriage.Text.ToString()); // 変換前の数値
@@ -341,8 +344,6 @@ namespace TSS_SYSTEM
                 number = decimal.Parse(tb_kouchin_hukusizai.Text.ToString()); // 変換前の数値
                 str = String.Format("{0:#,0}", number); // 変換後
                 tb_kouchin_hukusizai.Text = str;
-
-                
             }
 
             else //明細不要の場合
@@ -362,8 +363,6 @@ namespace TSS_SYSTEM
 
                 sql = sql + " order by max(torihikisaki_cd)  ";
 
-
-
                 dt_kensaku = tss.OracleSelect(sql);
 
                 int rc = dt_kensaku.Rows.Count;
@@ -373,10 +372,8 @@ namespace TSS_SYSTEM
                     MessageBox.Show("指定した条件のデータがありません");
                     return;
                 }
-
                 else
                 {
-
                     dt_kensaku.Columns.Add("kouchin_tanka", Type.GetType("System.Decimal")).SetOrdinal(8);
                     dt_kensaku.Columns.Add("kouchin_kingaku", Type.GetType("System.Decimal")).SetOrdinal(9);
                     dt_kensaku.Columns.Add("hukusizai_tanka", Type.GetType("System.Decimal")).SetOrdinal(10);
@@ -388,8 +385,6 @@ namespace TSS_SYSTEM
 
                     for (int i = 0; i <= rc - 1; i++)
                     {
-
-
                         DataTable dt_kouchin = new DataTable();
                         dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
                         if (dt_kouchin.Rows.Count == 0)
@@ -410,7 +405,6 @@ namespace TSS_SYSTEM
                                 //dt_kensaku.Rows[i][9] = double.Parse(dt_kouchin.Rows[0][0].ToString()) * double.Parse(dt_kensaku.Rows[i][5].ToString());
                                 dt_kensaku.Rows[i][9] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_kouchin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_hukusizai = new DataTable();
@@ -433,7 +427,6 @@ namespace TSS_SYSTEM
                                 //dt_kensaku.Rows[i][11] = decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString());
                                 dt_kensaku.Rows[i][11] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_buhin = new DataTable();
@@ -459,7 +452,6 @@ namespace TSS_SYSTEM
 
                         dt_kensaku.Rows[i][14] = decimal.Parse(dt_kensaku.Rows[i][8].ToString()) + decimal.Parse(dt_kensaku.Rows[i][10].ToString());
                         dt_kensaku.Rows[i][15] = decimal.Parse(dt_kensaku.Rows[i][9].ToString()) + decimal.Parse(dt_kensaku.Rows[i][11].ToString());
-
                     }
 
                     DataTable dt_kensaku2 = new DataTable();
@@ -482,13 +474,10 @@ namespace TSS_SYSTEM
                     dt_kensaku2.Columns.Add("buhin_kingaku", Type.GetType("System.Decimal")).SetOrdinal(5);
                     dt_kensaku2.Columns.Add("kouchin_hukusizai_kingaku", Type.GetType("System.Decimal")).SetOrdinal(6);
 
-
                     DataTable dt_cp = dt_kensaku.Copy();
 
                     dt_cp.Columns["MAX(TORIHIKISAKI_CD)"].ColumnName = "torihikisaki_cd";
                     dt_cp.Columns["SUM(URIAGE_KINGAKU)"].ColumnName = "uriage_kingaku";
-
-
 
                     for (int i = 0; i <= rc2 - 1; i++)
                     {
@@ -496,8 +485,25 @@ namespace TSS_SYSTEM
                         object obj_kouchin_goukei = dt_cp.Compute("Sum(KOUCHIN_KINGAKU)", " torihikisaki_cd = '" + dt_kensaku2.Rows[i][0].ToString() + "'");
                         object obj_hukusizai_goukei = dt_cp.Compute("Sum(HUKUSIZAI_KINGAKU)", " torihikisaki_cd = '" + dt_kensaku2.Rows[i][0].ToString() + "'");
                         object obj_buhin_goukei = dt_cp.Compute("Sum(BUHIN_KINGAKU)", " torihikisaki_cd = '" + dt_kensaku2.Rows[i][0].ToString() + "'");
+                        //20170630バグ対応 数値として認識できない場合は"0"を入れる
+                        decimal w_dc;   //バグ対応用の変数
+                        if (decimal.TryParse(obj_uriage_goukei.ToString(), out w_dc) == false)
+                        {
+                            obj_uriage_goukei = "0";
+                        }
+                        if (decimal.TryParse(obj_kouchin_goukei.ToString(), out w_dc) == false)
+                        {
+                            obj_kouchin_goukei = "0";
+                        }
+                        if (decimal.TryParse(obj_hukusizai_goukei.ToString(), out w_dc) == false)
+                        {
+                            obj_hukusizai_goukei = "0";
+                        }
+                        if (decimal.TryParse(obj_buhin_goukei.ToString(), out w_dc) == false)
+                        {
+                            obj_buhin_goukei = "0";
+                        }
                         decimal dc_kouchin_hukusizai_kingaku = decimal.Parse(obj_kouchin_goukei.ToString()) + decimal.Parse(obj_hukusizai_goukei.ToString());
-
 
                         dt_kensaku2.Rows[i][2] = obj_uriage_goukei;
                         dt_kensaku2.Rows[i][3] = obj_kouchin_goukei;
@@ -510,8 +516,26 @@ namespace TSS_SYSTEM
                     object obj_kouchin_ttl = dt_cp.Compute("Sum(KOUCHIN_KINGAKU)", null);
                     object obj_hukusizai_ttl = dt_cp.Compute("Sum(HUKUSIZAI_KINGAKU)", null);
                     object obj_buhin_ttl = dt_cp.Compute("Sum(BUHIN_KINGAKU)", null);
-                    decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
+                    //20170630バグ対応 数値として認識できない場合は"0"を入れる
+                    decimal w_dc2;   //バグ対応用の変数
+                    if (decimal.TryParse(obj_uriage_ttl.ToString(), out w_dc2) == false)
+                    {
+                        obj_uriage_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_kouchin_ttl.ToString(), out w_dc2) == false)
+                    {
+                        obj_kouchin_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_hukusizai_ttl.ToString(), out w_dc2) == false)
+                    {
+                        obj_hukusizai_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_buhin_ttl.ToString(), out w_dc2) == false)
+                    {
+                        obj_buhin_ttl = "0";
+                    }
 
+                    decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
 
                     list_disp2(dt_kensaku2);
 
@@ -520,7 +544,6 @@ namespace TSS_SYSTEM
                     tb_hukusizai.Text = obj_hukusizai_ttl.ToString();
                     tb_buhin.Text = obj_buhin_ttl.ToString();
                     tb_kouchin_hukusizai.Text = dc_kouchin_hukusizai_ttl.ToString();
-
 
                     //集計後、カンマ区切り数にする
                     decimal number = decimal.Parse(tb_uriage.Text.ToString()); // 変換前の数値
@@ -542,11 +565,8 @@ namespace TSS_SYSTEM
                     number = decimal.Parse(tb_kouchin_hukusizai.Text.ToString()); // 変換前の数値
                     str = String.Format("{0:#,0}", number); // 変換後
                     tb_kouchin_hukusizai.Text = str;
-
                 }
             }
-
-            
         }
 
         private void list_disp2(DataTable in_dt)
@@ -596,7 +616,6 @@ namespace TSS_SYSTEM
             
             w_dt_insatu = dt_m;
         }
-
 
         private void list_disp(DataTable in_dt)
         {
@@ -664,10 +683,8 @@ namespace TSS_SYSTEM
             dgv_m.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv_m.Columns[15].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-
             w_dt_insatu = dt_m;
         }
-
 
         public decimal hasu_keisan(string in_cd, decimal in_decimal)
         {
@@ -731,7 +748,6 @@ namespace TSS_SYSTEM
             return out_decimal;
         }
 
-
         private void btn_insatu_Click(object sender, EventArgs e)
         {
            //明細まで必要な場合
@@ -755,12 +771,10 @@ namespace TSS_SYSTEM
                     frm_rpt.w_hd20 = tb_torihikisaki_name.Text;
                 }
 
-
                 frm_rpt.ShowDialog();
                 //子画面から値を取得する
                 frm_rpt.Dispose();
             }
-            
             else//明細不要
             {
                 frm_tankabetu_uriage_t_prev frm_rpt = new frm_tankabetu_uriage_t_prev();
@@ -785,8 +799,6 @@ namespace TSS_SYSTEM
                 //子画面から値を取得する
                 frm_rpt.Dispose();
             }
-
-           
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -868,7 +880,6 @@ namespace TSS_SYSTEM
             //明細まで必要な場合
             if (checkBox1.Checked == false)
             {
-
                 string sql = "select tss_uriage_m.torihikisaki_cd,tss_uriage_m.torihikisaki_name,tss_uriage_m.uriage_date,tss_uriage_m.seihin_cd,tss_seihin_m.seihin_name,tss_uriage_m.uriage_su,tss_uriage_m.hanbai_tanka,tss_uriage_m.uriage_kingaku from tss_uriage_m inner join tss_seihin_m on tss_uriage_m.seihin_cd = tss_seihin_m.seihin_cd where ";
              
                 for (int i = 1; i <= sql_cnt; i++)
@@ -894,7 +905,6 @@ namespace TSS_SYSTEM
 
                 else
                 {
-
                     dt_kensaku.Columns.Add("kouchin_tanka", Type.GetType("System.Decimal")).SetOrdinal(8);
                     dt_kensaku.Columns.Add("kouchin_kingaku", Type.GetType("System.Decimal")).SetOrdinal(9);
                     dt_kensaku.Columns.Add("hukusizai_tanka", Type.GetType("System.Decimal")).SetOrdinal(10);
@@ -906,8 +916,6 @@ namespace TSS_SYSTEM
 
                     for (int i = 0; i <= rc - 1; i++)
                     {
-
-
                         DataTable dt_kouchin = new DataTable();
                         dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
                         if (dt_kouchin.Rows.Count == 0)
@@ -926,7 +934,6 @@ namespace TSS_SYSTEM
                             {
                                 dt_kensaku.Rows[i][9] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_kouchin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_hukusizai = new DataTable();
@@ -947,7 +954,6 @@ namespace TSS_SYSTEM
                             {
                                 dt_kensaku.Rows[i][11] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_buhin = new DataTable();
@@ -972,7 +978,6 @@ namespace TSS_SYSTEM
 
                         dt_kensaku.Rows[i][14] = decimal.Parse(dt_kensaku.Rows[i][8].ToString()) + decimal.Parse(dt_kensaku.Rows[i][10].ToString());
                         dt_kensaku.Rows[i][15] = decimal.Parse(dt_kensaku.Rows[i][9].ToString()) + decimal.Parse(dt_kensaku.Rows[i][11].ToString());
-
                     }
                 }
 
@@ -984,8 +989,25 @@ namespace TSS_SYSTEM
                 object obj_kouchin_ttl = dt_kensaku_copy.Compute("Sum(KOUCHIN_KINGAKU)", null);
                 object obj_hukusizai_ttl = dt_kensaku_copy.Compute("Sum(HUKUSIZAI_KINGAKU)", null);
                 object obj_buhin_ttl = dt_kensaku_copy.Compute("Sum(BUHIN_KINGAKU)", null);
-                decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
+                decimal w_dc4;   //バグ対応用の変数
+                if (decimal.TryParse(obj_uriage_ttl.ToString(), out w_dc4) == false)
+                {
+                    obj_uriage_ttl = "0";
+                }
+                if (decimal.TryParse(obj_kouchin_ttl.ToString(), out w_dc4) == false)
+                {
+                    obj_kouchin_ttl = "0";
+                }
+                if (decimal.TryParse(obj_hukusizai_ttl.ToString(), out w_dc4) == false)
+                {
+                    obj_hukusizai_ttl = "0";
+                }
+                if (decimal.TryParse(obj_buhin_ttl.ToString(), out w_dc4) == false)
+                {
+                    obj_buhin_ttl = "0";
+                }
 
+                decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
 
                 //重複を除去するため DataView を使う
                 DataView vw = new DataView(dt_kensaku);
@@ -1010,9 +1032,6 @@ namespace TSS_SYSTEM
                     row["kouchin_hukusizai_kingaku"] = dt_kensaku.Compute("SUM(kouchin_hukusizai_kingaku)", "seihin_cd = '" + row["seihin_cd"] + "'");
                 }
 
-         
-
-
                 list_disp(tblRes);
 
                 //list_disp(dt_kensaku);
@@ -1022,7 +1041,6 @@ namespace TSS_SYSTEM
                 tb_hukusizai.Text = obj_hukusizai_ttl.ToString();
                 tb_buhin.Text = obj_buhin_ttl.ToString();
                 tb_kouchin_hukusizai.Text = dc_kouchin_hukusizai_ttl.ToString();
-
 
                 //集計後、カンマ区切り数にする
                 decimal number = decimal.Parse(tb_uriage.Text.ToString()); // 変換前の数値
@@ -1044,10 +1062,7 @@ namespace TSS_SYSTEM
                 number = decimal.Parse(tb_kouchin_hukusizai.Text.ToString()); // 変換前の数値
                 str = String.Format("{0:#,0}", number); // 変換後
                 tb_kouchin_hukusizai.Text = str;
-
-
             }
-
             else //明細不要の場合
             {
                 string sql = "select tss_uriage_m.torihikisaki_cd,tss_uriage_m.torihikisaki_name,tss_uriage_m.uriage_date,tss_uriage_m.seihin_cd,tss_seihin_m.seihin_name,tss_uriage_m.uriage_su,tss_uriage_m.hanbai_tanka,tss_uriage_m.uriage_kingaku from tss_uriage_m inner join tss_seihin_m on tss_uriage_m.seihin_cd = tss_seihin_m.seihin_cd where ";
@@ -1063,7 +1078,6 @@ namespace TSS_SYSTEM
 
                 sql = sql + " order by tss_uriage_m.torihikisaki_cd,tss_uriage_m.seihin_cd ";
 
-
                 dt_kensaku = tss.OracleSelect(sql);
 
                 int rc = dt_kensaku.Rows.Count;
@@ -1073,7 +1087,6 @@ namespace TSS_SYSTEM
                     MessageBox.Show("指定した条件のデータがありません");
                     return;
                 }
-
                 else
                 {
 
@@ -1088,8 +1101,6 @@ namespace TSS_SYSTEM
 
                     for (int i = 0; i <= rc - 1; i++)
                     {
-
-
                         DataTable dt_kouchin = new DataTable();
                         dt_kouchin = tss.OracleSelect("select tanka from tss_seihin_tanka_m where seihin_cd  = '" + dt_kensaku.Rows[i][3].ToString() + "'and tanka_kbn = '01'");
                         if (dt_kouchin.Rows.Count == 0)
@@ -1108,7 +1119,6 @@ namespace TSS_SYSTEM
                             {
                                 dt_kensaku.Rows[i][9] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_kouchin.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_hukusizai = new DataTable();
@@ -1129,7 +1139,6 @@ namespace TSS_SYSTEM
                             {
                                 dt_kensaku.Rows[i][11] = hasu_keisan(dt_kensaku.Rows[i][0].ToString(), decimal.Parse(dt_hukusizai.Rows[0][0].ToString()) * decimal.Parse(dt_kensaku.Rows[i][5].ToString()));
                             }
-
                         }
 
                         DataTable dt_buhin = new DataTable();
@@ -1154,9 +1163,7 @@ namespace TSS_SYSTEM
 
                         dt_kensaku.Rows[i][14] = decimal.Parse(dt_kensaku.Rows[i][8].ToString()) + decimal.Parse(dt_kensaku.Rows[i][10].ToString());
                         dt_kensaku.Rows[i][15] = decimal.Parse(dt_kensaku.Rows[i][9].ToString()) + decimal.Parse(dt_kensaku.Rows[i][11].ToString());
-
                     }
-
 
                     DataTable dt_kensaku2 = new DataTable();
 
@@ -1178,7 +1185,6 @@ namespace TSS_SYSTEM
                     dt_kensaku2.Columns.Add("buhin_kingaku", Type.GetType("System.Decimal")).SetOrdinal(5);
                     dt_kensaku2.Columns.Add("kouchin_hukusizai_kingaku", Type.GetType("System.Decimal")).SetOrdinal(6);
 
-
                     //重複を除いたDataTableをループし、元のDataTableから集計値を求める
                     foreach (DataRow row in dt_kensaku2.Rows)
                     {
@@ -1193,8 +1199,25 @@ namespace TSS_SYSTEM
                     object obj_kouchin_ttl = dt_kensaku.Compute("Sum(KOUCHIN_KINGAKU)", null);
                     object obj_hukusizai_ttl = dt_kensaku.Compute("Sum(HUKUSIZAI_KINGAKU)", null);
                     object obj_buhin_ttl = dt_kensaku.Compute("Sum(BUHIN_KINGAKU)", null);
-                    decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
+                    decimal w_dc5;   //バグ対応用の変数
+                    if (decimal.TryParse(obj_uriage_ttl.ToString(), out w_dc5) == false)
+                    {
+                        obj_uriage_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_kouchin_ttl.ToString(), out w_dc5) == false)
+                    {
+                        obj_kouchin_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_hukusizai_ttl.ToString(), out w_dc5) == false)
+                    {
+                        obj_hukusizai_ttl = "0";
+                    }
+                    if (decimal.TryParse(obj_buhin_ttl.ToString(), out w_dc5) == false)
+                    {
+                        obj_buhin_ttl = "0";
+                    }
 
+                    decimal dc_kouchin_hukusizai_ttl = decimal.Parse(obj_kouchin_ttl.ToString()) + decimal.Parse(obj_hukusizai_ttl.ToString());
 
                     list_disp2(dt_kensaku2);
 
@@ -1203,7 +1226,6 @@ namespace TSS_SYSTEM
                     tb_hukusizai.Text = obj_hukusizai_ttl.ToString();
                     tb_buhin.Text = obj_buhin_ttl.ToString();
                     tb_kouchin_hukusizai.Text = dc_kouchin_hukusizai_ttl.ToString();
-
 
                     //集計後、カンマ区切り数にする
                     decimal number = decimal.Parse(tb_uriage.Text.ToString()); // 変換前の数値
@@ -1225,11 +1247,8 @@ namespace TSS_SYSTEM
                     number = decimal.Parse(tb_kouchin_hukusizai.Text.ToString()); // 変換前の数値
                     str = String.Format("{0:#,0}", number); // 変換後
                     tb_kouchin_hukusizai.Text = str;
-
                 }
             }
-
-
         }
     }
 }

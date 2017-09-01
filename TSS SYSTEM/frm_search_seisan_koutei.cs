@@ -190,7 +190,7 @@ namespace TSS_SYSTEM
                 return;
             }
 
-            string sql = "select distinct a1.seihin_cd,b1.seihin_name,a1.delete_flg from tss_seisan_koutei_m a1 left join tss_seihin_m b1 on a1.seihin_cd = b1.seihin_cd  where ";
+            string sql = "select distinct a1.seihin_cd,b1.seihin_name,a1.delete_flg from tss_seisan_koutei_m a1 left join tss_seihin_m b1 on a1.seihin_cd = b1.seihin_cd where ";
             for (int i = 1; i <= sql_cnt; i++)
             {
                 if (i >= 2)
@@ -198,14 +198,10 @@ namespace TSS_SYSTEM
                     sql = sql + " and ";
                 }
                 sql = sql + sql_where[i - 1];
-
-                sql = sql + " order by seihin_cd ";
-
                 //sql = sql + " and a1.delete_flg is null ";
-
             }
+            sql = sql + " order by a1.seihin_cd ";
             dt_kensaku = tss.OracleSelect(sql);
-            
             
             list_disp(dt_kensaku);
             if(dt_kensaku.Rows.Count == 0)

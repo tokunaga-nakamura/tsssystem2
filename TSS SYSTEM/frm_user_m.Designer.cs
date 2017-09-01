@@ -277,7 +277,7 @@
             // tb_kengen9_name
             // 
             this.tb_kengen9_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen9_name.Location = new System.Drawing.Point(551, 303);
+            this.tb_kengen9_name.Location = new System.Drawing.Point(545, 303);
             this.tb_kengen9_name.Name = "tb_kengen9_name";
             this.tb_kengen9_name.ReadOnly = true;
             this.tb_kengen9_name.Size = new System.Drawing.Size(100, 19);
@@ -287,7 +287,7 @@
             // tb_kengen8_name
             // 
             this.tb_kengen8_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen8_name.Location = new System.Drawing.Point(551, 278);
+            this.tb_kengen8_name.Location = new System.Drawing.Point(545, 278);
             this.tb_kengen8_name.Name = "tb_kengen8_name";
             this.tb_kengen8_name.ReadOnly = true;
             this.tb_kengen8_name.Size = new System.Drawing.Size(100, 19);
@@ -297,7 +297,7 @@
             // tb_kengen7_name
             // 
             this.tb_kengen7_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen7_name.Location = new System.Drawing.Point(551, 253);
+            this.tb_kengen7_name.Location = new System.Drawing.Point(545, 253);
             this.tb_kengen7_name.Name = "tb_kengen7_name";
             this.tb_kengen7_name.ReadOnly = true;
             this.tb_kengen7_name.Size = new System.Drawing.Size(100, 19);
@@ -308,8 +308,9 @@
             // 
             this.tb_kengen9.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen9.Location = new System.Drawing.Point(529, 303);
+            this.tb_kengen9.MaxLength = 1;
             this.tb_kengen9.Name = "tb_kengen9";
-            this.tb_kengen9.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen9.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen9.TabIndex = 17;
             this.tb_kengen9.DoubleClick += new System.EventHandler(this.tb_kengen9_DoubleClick);
             this.tb_kengen9.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen9_Validating);
@@ -329,8 +330,9 @@
             // 
             this.tb_kengen8.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen8.Location = new System.Drawing.Point(529, 278);
+            this.tb_kengen8.MaxLength = 1;
             this.tb_kengen8.Name = "tb_kengen8";
-            this.tb_kengen8.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen8.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen8.TabIndex = 16;
             this.tb_kengen8.DoubleClick += new System.EventHandler(this.tb_kengen8_DoubleClick);
             this.tb_kengen8.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen8_Validating);
@@ -350,8 +352,9 @@
             // 
             this.tb_kengen7.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen7.Location = new System.Drawing.Point(529, 253);
+            this.tb_kengen7.MaxLength = 1;
             this.tb_kengen7.Name = "tb_kengen7";
-            this.tb_kengen7.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen7.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen7.TabIndex = 15;
             this.tb_kengen7.DoubleClick += new System.EventHandler(this.tb_kengen7_DoubleClick);
             this.tb_kengen7.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen7_Validating);
@@ -428,7 +431,7 @@
             // tb_kengen6_name
             // 
             this.tb_kengen6_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen6_name.Location = new System.Drawing.Point(551, 228);
+            this.tb_kengen6_name.Location = new System.Drawing.Point(545, 228);
             this.tb_kengen6_name.Name = "tb_kengen6_name";
             this.tb_kengen6_name.ReadOnly = true;
             this.tb_kengen6_name.Size = new System.Drawing.Size(100, 19);
@@ -438,7 +441,7 @@
             // tb_kengen5_name
             // 
             this.tb_kengen5_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen5_name.Location = new System.Drawing.Point(551, 203);
+            this.tb_kengen5_name.Location = new System.Drawing.Point(545, 203);
             this.tb_kengen5_name.Name = "tb_kengen5_name";
             this.tb_kengen5_name.ReadOnly = true;
             this.tb_kengen5_name.Size = new System.Drawing.Size(100, 19);
@@ -448,7 +451,7 @@
             // tb_kengen4_name
             // 
             this.tb_kengen4_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen4_name.Location = new System.Drawing.Point(551, 178);
+            this.tb_kengen4_name.Location = new System.Drawing.Point(545, 178);
             this.tb_kengen4_name.Name = "tb_kengen4_name";
             this.tb_kengen4_name.ReadOnly = true;
             this.tb_kengen4_name.Size = new System.Drawing.Size(100, 19);
@@ -458,7 +461,7 @@
             // tb_kengen3_name
             // 
             this.tb_kengen3_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen3_name.Location = new System.Drawing.Point(551, 153);
+            this.tb_kengen3_name.Location = new System.Drawing.Point(545, 153);
             this.tb_kengen3_name.Name = "tb_kengen3_name";
             this.tb_kengen3_name.ReadOnly = true;
             this.tb_kengen3_name.Size = new System.Drawing.Size(100, 19);
@@ -468,7 +471,7 @@
             // tb_kengen2_name
             // 
             this.tb_kengen2_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen2_name.Location = new System.Drawing.Point(551, 128);
+            this.tb_kengen2_name.Location = new System.Drawing.Point(545, 128);
             this.tb_kengen2_name.Name = "tb_kengen2_name";
             this.tb_kengen2_name.ReadOnly = true;
             this.tb_kengen2_name.Size = new System.Drawing.Size(100, 19);
@@ -478,7 +481,7 @@
             // tb_kengen1_name
             // 
             this.tb_kengen1_name.BackColor = System.Drawing.Color.Gainsboro;
-            this.tb_kengen1_name.Location = new System.Drawing.Point(551, 103);
+            this.tb_kengen1_name.Location = new System.Drawing.Point(545, 103);
             this.tb_kengen1_name.Name = "tb_kengen1_name";
             this.tb_kengen1_name.ReadOnly = true;
             this.tb_kengen1_name.Size = new System.Drawing.Size(100, 19);
@@ -661,8 +664,9 @@
             // 
             this.tb_kengen6.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen6.Location = new System.Drawing.Point(529, 228);
+            this.tb_kengen6.MaxLength = 1;
             this.tb_kengen6.Name = "tb_kengen6";
-            this.tb_kengen6.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen6.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen6.TabIndex = 14;
             this.tb_kengen6.DoubleClick += new System.EventHandler(this.tb_kengen6_DoubleClick);
             this.tb_kengen6.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen6_Validating);
@@ -682,8 +686,9 @@
             // 
             this.tb_kengen5.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen5.Location = new System.Drawing.Point(529, 203);
+            this.tb_kengen5.MaxLength = 1;
             this.tb_kengen5.Name = "tb_kengen5";
-            this.tb_kengen5.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen5.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen5.TabIndex = 13;
             this.tb_kengen5.DoubleClick += new System.EventHandler(this.tb_kengen5_DoubleClick);
             this.tb_kengen5.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen5_Validating);
@@ -703,8 +708,9 @@
             // 
             this.tb_kengen4.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen4.Location = new System.Drawing.Point(529, 178);
+            this.tb_kengen4.MaxLength = 1;
             this.tb_kengen4.Name = "tb_kengen4";
-            this.tb_kengen4.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen4.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen4.TabIndex = 12;
             this.tb_kengen4.DoubleClick += new System.EventHandler(this.tb_kengen4_DoubleClick);
             this.tb_kengen4.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen4_Validating);
@@ -724,8 +730,9 @@
             // 
             this.tb_kengen3.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen3.Location = new System.Drawing.Point(529, 153);
+            this.tb_kengen3.MaxLength = 1;
             this.tb_kengen3.Name = "tb_kengen3";
-            this.tb_kengen3.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen3.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen3.TabIndex = 11;
             this.tb_kengen3.DoubleClick += new System.EventHandler(this.tb_kengen3_DoubleClick);
             this.tb_kengen3.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen3_Validating);
@@ -745,8 +752,9 @@
             // 
             this.tb_kengen2.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen2.Location = new System.Drawing.Point(529, 128);
+            this.tb_kengen2.MaxLength = 1;
             this.tb_kengen2.Name = "tb_kengen2";
-            this.tb_kengen2.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen2.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen2.TabIndex = 10;
             this.tb_kengen2.DoubleClick += new System.EventHandler(this.tb_kengen2_DoubleClick);
             this.tb_kengen2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen2_Validating);
@@ -766,8 +774,9 @@
             // 
             this.tb_kengen1.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_kengen1.Location = new System.Drawing.Point(529, 103);
+            this.tb_kengen1.MaxLength = 1;
             this.tb_kengen1.Name = "tb_kengen1";
-            this.tb_kengen1.Size = new System.Drawing.Size(22, 19);
+            this.tb_kengen1.Size = new System.Drawing.Size(16, 19);
             this.tb_kengen1.TabIndex = 9;
             this.tb_kengen1.DoubleClick += new System.EventHandler(this.tb_kengen1_DoubleClick);
             this.tb_kengen1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_kengen1_Validating);
@@ -923,7 +932,7 @@
             // tb_user_cd
             // 
             this.tb_user_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_user_cd.Location = new System.Drawing.Point(110, 3);
+            this.tb_user_cd.Location = new System.Drawing.Point(112, 6);
             this.tb_user_cd.MaxLength = 6;
             this.tb_user_cd.Name = "tb_user_cd";
             this.tb_user_cd.Size = new System.Drawing.Size(48, 19);

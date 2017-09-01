@@ -76,7 +76,7 @@
             this.btn_csv.Location = new System.Drawing.Point(85, 8);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 5;
+            this.btn_csv.TabIndex = 6;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
             this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
@@ -86,7 +86,7 @@
             this.btn_insatu.Location = new System.Drawing.Point(4, 8);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 4;
+            this.btn_insatu.TabIndex = 5;
             this.btn_insatu.Text = "印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
             this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
@@ -96,7 +96,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(795, 8);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 6;
+            this.btn_cancel.TabIndex = 7;
             this.btn_cancel.Text = "終了";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -106,7 +106,7 @@
             this.btn_kensaku.Location = new System.Drawing.Point(795, 41);
             this.btn_kensaku.Name = "btn_kensaku";
             this.btn_kensaku.Size = new System.Drawing.Size(75, 23);
-            this.btn_kensaku.TabIndex = 3;
+            this.btn_kensaku.TabIndex = 4;
             this.btn_kensaku.Text = "検索";
             this.btn_kensaku.UseVisualStyleBackColor = true;
             this.btn_kensaku.Click += new System.EventHandler(this.btn_kensaku_Click);
@@ -179,6 +179,7 @@
             this.tb_kouchin_hukusizai.ReadOnly = true;
             this.tb_kouchin_hukusizai.Size = new System.Drawing.Size(98, 19);
             this.tb_kouchin_hukusizai.TabIndex = 17;
+            this.tb_kouchin_hukusizai.TabStop = false;
             this.tb_kouchin_hukusizai.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox11
@@ -200,6 +201,7 @@
             this.tb_buhin.ReadOnly = true;
             this.tb_buhin.Size = new System.Drawing.Size(98, 19);
             this.tb_buhin.TabIndex = 15;
+            this.tb_buhin.TabStop = false;
             this.tb_buhin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox9
@@ -221,6 +223,7 @@
             this.tb_hukusizai.ReadOnly = true;
             this.tb_hukusizai.Size = new System.Drawing.Size(98, 19);
             this.tb_hukusizai.TabIndex = 13;
+            this.tb_hukusizai.TabStop = false;
             this.tb_hukusizai.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox5
@@ -242,6 +245,7 @@
             this.tb_kouchin.ReadOnly = true;
             this.tb_kouchin.Size = new System.Drawing.Size(94, 19);
             this.tb_kouchin.TabIndex = 11;
+            this.tb_kouchin.TabStop = false;
             this.tb_kouchin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
@@ -263,6 +267,7 @@
             this.tb_uriage.ReadOnly = true;
             this.tb_uriage.Size = new System.Drawing.Size(97, 19);
             this.tb_uriage.TabIndex = 9;
+            this.tb_uriage.TabStop = false;
             this.tb_uriage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox7
@@ -343,7 +348,7 @@
             this.checkBox1.Location = new System.Drawing.Point(398, 43);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
-            this.checkBox1.TabIndex = 10;
+            this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "明細不要";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 

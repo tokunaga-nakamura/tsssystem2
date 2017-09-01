@@ -15,6 +15,7 @@ namespace TSS_SYSTEM
         TssSystemLibrary tss = new TssSystemLibrary();
         DataTable dt_m = new DataTable();
         DataTable dt_insatsu = new DataTable();
+        string str_seq_n; //工程削除時の削除した工程seq_noを一時的に保持する変数。（削除後のデータテーブルのseq_no変更時に使用）
 
         public frm_seisan_koutei_m()
         {
@@ -440,10 +441,11 @@ namespace TSS_SYSTEM
             tb_create_datetime.Text = "";
             tb_update_user_cd.Text = "";
             tb_update_datetime.Text = "";
+            tb_seisankisyu.Text = "";
 
             dgv_koutei.DataSource = null;
             dgv_line.DataSource = null;
-            dgv_line_disp_sinki();
+            //dgv_line_disp_sinki();
         }
 
         private void dgv_koutei_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1077,7 +1079,7 @@ namespace TSS_SYSTEM
             dgv_line_disp();
         }
 
-        private void dgv_koutei_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        public void dgv_koutei_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
 
             DialogResult bRet = MessageBox.Show("工程を削除しますか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -1088,10 +1090,28 @@ namespace TSS_SYSTEM
             }
 
             //条件に合うデータ（行）を削除
-            string str = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
+            str_seq_n = dgv_koutei.CurrentRow.Cells[0].Value.ToString();
             int idx = dgv_koutei.CurrentRow.Index;
 
-            DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + str + "'");
+            
+            object obj = dt_m.Compute("Max(seq_no)", null);
+            string maxseq = obj.ToString();
+
+            if (maxseq != str_seq_n)
+            {
+                DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + str_seq_n + "'");
+            }
+
+            else
+            {
+                DataSetController.RemoveSelectRows(dt_m, "seq_no = '" + maxseq + "'");
+            }
+
+            if(dt_m.Rows.Count == 0)
+            {
+                //MessageBox.Show("0");
+                //tb_seisankisyu.Text = "";
+            }
 
         }
 
@@ -1142,10 +1162,11 @@ namespace TSS_SYSTEM
             /// <param name="filter">条件</param>
             /// <returns>0:正常終了 -1:異常終了</returns>
             public static int RemoveSelectRows(DataTable dt, string filter)
-            {
+            {              
                 try
                 {
                     DataRow[] rows = dt.Select(filter);
+
 
                     for (int i = 0; i < rows.Length; i++)
                     {
@@ -1156,6 +1177,8 @@ namespace TSS_SYSTEM
                     }
                     dt.AcceptChanges();
                     return 0;
+
+                   
                 }
                 catch (Exception)
                 {
@@ -1163,14 +1186,67 @@ namespace TSS_SYSTEM
                     return -1;
                 }
             }
+
         }
        
         //工程dgv削除後のイベント
-        private void dgv_koutei_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        public void dgv_koutei_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
+            DataTable changedRecordsTable = dt_m.GetChanges(DataRowState.Modified);
+            
             int rc = dt_m.Rows.Count;
-            if(rc > 0)
+
+            if (rc > 0)
             {
+                //工程削除後のseq_noが1だったらseqはそのまま
+                for (int i = 0; i < rc; i++)
+                {
+                   if (dt_m.Rows[i]["seq_no"].ToString() == "1")
+                   {
+                       //何もしない
+                   }
+
+                }
+      
+                //工程削除後の1行目seq_noが1じゃなかったら
+                if (dt_m.Rows[0]["seq_no"].ToString() != "1")
+                {
+                    for (int i = 0; i < rc; i++)
+                    {
+
+                        //現在の行のseq_noを置き換える
+                        dt_m.Rows[i]["seq_no"] = int.Parse(dt_m.Rows[i]["seq_no"].ToString()) - 1;
+
+                    }
+
+                    //ここまでの処理の動きOK
+                }
+
+                else
+                {
+                    //削除された行のseqno
+                    int k = int.Parse(str_seq_n);
+
+                    for (int i = 0; i < rc ; i++)
+                    {
+                        //現在の行のseq_no
+                        int j = int.Parse(dt_m.Rows[i]["seq_no"].ToString());
+                      
+
+                        //削除された行のseq_noと現在の行のseq_noを比較
+                        if( j < k)
+                        {
+                            //現在の行のseq_no<削除された行のseq_noなら何もしない
+                        }
+                        else
+                        {
+                            //現在の行のseq_no>削除された行のseq_noなら現在の行のseq_noを置きかえる（-1する）
+                            dt_m.Rows[i]["seq_no"] = int.Parse(dt_m.Rows[i]["seq_no"].ToString()) - 1;
+
+                        }
+                    }
+                }
+
                 dt_m.AcceptChanges();
                 dgv_koutei.DataSource = dt_m;
 
@@ -1179,7 +1255,7 @@ namespace TSS_SYSTEM
                 //vw = dt_m.DefaultView;
 
                 //Distinct（集計）をかける
-                DataTable resultDt = vw.ToTable("dt_koutei", true, "seq_no","KOUTEI_CD", "KOUTEI_NAME");
+                DataTable resultDt = vw.ToTable("dt_koutei", true, "seq_no", "KOUTEI_CD", "KOUTEI_NAME");
 
                 dgv_koutei.DataSource = resultDt;
 
@@ -1220,7 +1296,15 @@ namespace TSS_SYSTEM
             dt_m.Rows[rc - 1]["jisseki_kanri_kbn"] = null;
             dt_m.Rows[rc - 1]["line_select_kbn"] = null;
             dt_m.Rows[rc - 1]["seisan_start_day"] = DBNull.Value;
-            dt_m.Rows[rc - 1]["mae_koutei_seq"] = dt_m.Rows[rc-2]["seq_no"];
+            if(rc > 1)
+            {
+                dt_m.Rows[rc - 1]["mae_koutei_seq"] = dt_m.Rows[rc - 2]["seq_no"];
+            }
+            else
+            {
+                dt_m.Rows[rc - 1]["mae_koutei_seq"] = DBNull.Value;
+            }
+            
             dt_m.Rows[rc - 1]["koutei_start_time"] = DBNull.Value;
             dt_m.Rows[rc - 1]["bikou"] = null;
             dt_m.Rows[rc - 1]["seisankisyu"] = null;
@@ -1314,6 +1398,12 @@ namespace TSS_SYSTEM
                 tb_seihin_name.Focus();
                 return;
             }
+            if(dt_m.Rows.Count == 0)
+            {
+                MessageBox.Show("登録できるデータがありません");
+                return;
+            }
+
             int roc = dt_m.Rows.Count;
             for(int i = 0; i <= roc - 1; i++)
             {
@@ -1740,8 +1830,17 @@ namespace TSS_SYSTEM
                                        + "to_date('" + dt_seisan_koutei_line_m.Rows[i][11].ToString() + "','YYYY/MM/DD HH24:MI:SS'))");
                 }
 
-                tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
-                tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
+                if (dt_seisan_koutei_line_m.Rows.Count == 0)
+                {
+                    //何もしない
+                }
+                else
+                {
+                    tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
+                    tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
+                }
+
+
             }
             else
             {
@@ -1764,8 +1863,16 @@ namespace TSS_SYSTEM
                                        + tss.user_cd + "',SYSDATE)");
                 }
 
-                tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
-                tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
+                if (dt_seisan_koutei_line_m.Rows.Count == 0)
+                {
+                    //何もしない
+                }
+                else
+                {
+                    tb_create_user_cd.Text = dt_seisan_koutei_line_m.Rows[0][10].ToString();
+                    tb_create_datetime.Text = dt_seisan_koutei_line_m.Rows[0][11].ToString();
+                }
+
                 tb_update_user_cd.Text = tss.user_cd.ToString();
                 tb_update_datetime.Text = System.DateTime.Now.ToString();
             }
