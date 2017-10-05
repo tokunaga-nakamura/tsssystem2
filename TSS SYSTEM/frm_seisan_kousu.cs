@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    生産工数参照
+//  CREATE          T.NAKAMURA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

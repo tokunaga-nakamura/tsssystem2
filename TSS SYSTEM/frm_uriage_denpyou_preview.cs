@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    売上伝票印刷
+//  CREATE          ?????
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    単価区分別売上明細
+//  CREATE          J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

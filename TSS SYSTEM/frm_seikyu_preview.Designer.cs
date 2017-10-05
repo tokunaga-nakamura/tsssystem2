@@ -47,6 +47,7 @@
             this.tb_torihikisaki_cd2 = new System.Windows.Forms.TextBox();
             this.viewer1 = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.rb_kuuhaku = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -129,13 +130,13 @@
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.rb_kuuhaku);
             this.splitContainer3.Panel1.Controls.Add(this.label1);
             this.splitContainer3.Panel1.Controls.Add(this.rb_seikyu_no);
             this.splitContainer3.Panel1.Controls.Add(this.rb_torihikisaki_cd);
@@ -152,7 +153,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.viewer1);
             this.splitContainer3.Size = new System.Drawing.Size(884, 439);
-            this.splitContainer3.SplitterDistance = 79;
+            this.splitContainer3.SplitterDistance = 102;
             this.splitContainer3.TabIndex = 0;
             // 
             // label1
@@ -189,7 +190,7 @@
             // 
             // btn_preview
             // 
-            this.btn_preview.Location = new System.Drawing.Point(795, 49);
+            this.btn_preview.Location = new System.Drawing.Point(795, 69);
             this.btn_preview.Name = "btn_preview";
             this.btn_preview.Size = new System.Drawing.Size(75, 23);
             this.btn_preview.TabIndex = 5;
@@ -307,7 +308,7 @@
             this.viewer1.Sidebar.TocPanel.Text = "見出しマップラベル";
             this.viewer1.Sidebar.TocPanel.Width = 200;
             this.viewer1.Sidebar.Width = 200;
-            this.viewer1.Size = new System.Drawing.Size(880, 352);
+            this.viewer1.Size = new System.Drawing.Size(880, 329);
             this.viewer1.TabIndex = 0;
             // 
             // btn_syuuryou
@@ -319,6 +320,17 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // rb_kuuhaku
+            // 
+            this.rb_kuuhaku.AutoSize = true;
+            this.rb_kuuhaku.Location = new System.Drawing.Point(10, 76);
+            this.rb_kuuhaku.Name = "rb_kuuhaku";
+            this.rb_kuuhaku.Size = new System.Drawing.Size(93, 16);
+            this.rb_kuuhaku.TabIndex = 12;
+            this.rb_kuuhaku.TabStop = true;
+            this.rb_kuuhaku.Text = "白紙の請求書";
+            this.rb_kuuhaku.UseVisualStyleBackColor = true;
             // 
             // frm_seikyu_preview
             // 
@@ -369,5 +381,6 @@
         private System.Windows.Forms.TextBox tb_simebi;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer viewer1;
         private System.Windows.Forms.Button btn_preview;
+        private System.Windows.Forms.RadioButton rb_kuuhaku;
     }
 }

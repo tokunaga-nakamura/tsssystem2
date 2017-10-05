@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    部品マスタ
+//  CREATE          ?????
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -81,7 +87,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
 
         private bool chk_buhin_cd()
         {
@@ -802,7 +807,6 @@ namespace TSS_SYSTEM
 
                 }
             }
-
         }
 
         private void tb_kessan_kbn_Validating(object sender, CancelEventArgs e)
@@ -820,10 +824,7 @@ namespace TSS_SYSTEM
                     
                 }
             }
-
         }
-
-
 
         private void tb_torihikisaki_cd_DoubleClick(object sender, EventArgs e)
         {
@@ -848,7 +849,6 @@ namespace TSS_SYSTEM
                 tb_buhin_cd.Text = w_buhin_cd;
                 chk_buhin_cd();
             }
-
         }
 
         private void tb_siiresaki_cd_DoubleClick(object sender, EventArgs e)
@@ -884,7 +884,6 @@ namespace TSS_SYSTEM
                     tb_siire_kbn_name.Text = get_kubun_name("07", tb_siire_kbn.Text);
                 }
             }
-
         }
 
         private void tb_buhin_name_Validating_1(object sender, CancelEventArgs e)
@@ -894,7 +893,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_buhin_hosoku_Validating(object sender, CancelEventArgs e)
@@ -904,7 +902,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_maker_name_Validating(object sender, CancelEventArgs e)
@@ -914,7 +911,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_hokan_basyo_Validating(object sender, CancelEventArgs e)
@@ -924,7 +920,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void tb_bikou_Validating(object sender, CancelEventArgs e)
@@ -934,7 +929,6 @@ namespace TSS_SYSTEM
                 e.Cancel = true;
                 return;
             }
-
         }
 
         private void btn_nyuuko_Click(object sender, EventArgs e)

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    生産工程マスタ
+//  CREATE          J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -2323,6 +2329,11 @@ namespace TSS_SYSTEM
         {
             //製品コード入力前に他の項目を操作されてしまうと、内部配列が無い状態なのでエラーが発生してしまうので、splitcontainerを無効にして対応する
             splitContainer4.Enabled = false;
+        }
+
+        private void tb_seihin_cd_TextChanged(object sender, EventArgs e)
+        {
+
         }
        
     }

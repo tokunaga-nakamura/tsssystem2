@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    請求書印刷
+//  CREATE          ?????
+//  UPDATE LOG
+//  2017/09/27  t.nakamura  空白の請求書が印刷できるよう機能追加
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -72,35 +78,52 @@ namespace TSS_SYSTEM
 
         private void insatu_preview()
         {
-            if(rb_seikyu_no.Checked == true)
-            {
-                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where urikake_no = '" + tb_urikake_no.Text.ToString() + "'");
-            }
-            else
-            {
-                w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and uriage_simebi = '" + tb_simebi.Text.ToString() + "'");
-            }
-            if (w_dt_urikake.Rows.Count == 0)
-            {
-                MessageBox.Show("印刷するデータがありません。");
-                return;
-            }
-
             DataTable w_dt_uriage = new DataTable();
-            //w_dt_urikakeのレコード数分、印刷を繰り返す
-            foreach(DataRow dr in w_dt_urikake.Rows)
+
+            if(rb_kuuhaku.Checked == true)
             {
-                //明細印刷用の売上情報の読み込み
+                //空白の請求書を印刷
                 w_dt_uriage.Rows.Clear();
-                w_dt_uriage = tss.OracleSelect("select seihin_cd,seihin_name,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd,seihin_name order by seihin_cd asc,seihin_name asc");
+                w_dt_uriage = null; //白紙の印刷時はnullを渡す
                 rpt_seikyu rpt = new rpt_seikyu();
                 //レポートへデータを受け渡す
                 rpt.DataSource = w_dt_uriage;
-                rpt.w_dr = dr;  //ヘッダー用の売掛マスタレコード
+                rpt.w_dr = null;  //白紙の印刷時はnullを渡す
                 rpt.Run();
-                
                 this.viewer1.Document = rpt.Document;
-                //this.viewer1.Print(true,true,true);
+            }
+            else
+            {
+                //通常の印刷
+                if (rb_seikyu_no.Checked == true)
+                {
+                    w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where urikake_no = '" + tb_urikake_no.Text.ToString() + "'");
+                }
+                else
+                {
+                    w_dt_urikake = tss.OracleSelect("select * from tss_urikake_m where torihikisaki_cd >= '" + tb_torihikisaki_cd1.Text.ToString() + "' and torihikisaki_cd <= '" + tb_torihikisaki_cd2.Text.ToString() + "' and uriage_simebi = '" + tb_simebi.Text.ToString() + "'");
+                }
+                if (w_dt_urikake.Rows.Count == 0)
+                {
+                    MessageBox.Show("印刷するデータがありません。");
+                    return;
+                }
+
+                //w_dt_urikakeのレコード数分、印刷を繰り返す
+                foreach (DataRow dr in w_dt_urikake.Rows)
+                {
+                    //明細印刷用の売上情報の読み込み
+                    w_dt_uriage.Rows.Clear();
+                    w_dt_uriage = tss.OracleSelect("select seihin_cd,seihin_name,sum(uriage_su) uriage_su,sum(uriage_kingaku) uriage_kingaku,sum(syouhizeigaku) syouhizeigaku from tss_uriage_m where urikake_no = '" + dr["urikake_no"].ToString() + "' group by seihin_cd,seihin_name order by seihin_cd asc,seihin_name asc");
+                    rpt_seikyu rpt = new rpt_seikyu();
+                    //レポートへデータを受け渡す
+                    rpt.DataSource = w_dt_uriage;
+                    rpt.w_dr = dr;  //ヘッダー用の売掛マスタレコード
+                    rpt.Run();
+
+                    this.viewer1.Document = rpt.Document;
+                    //this.viewer1.Print(true,true,true);
+                }
             }
         }
 

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    請求書
+//  CREATE          ?????
+//  UPDATE LOG
+//  2017/09/27  t.nakamura  空白の請求書が印刷できるよう機能追加
+
+using System;
 using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,39 +41,54 @@ namespace TSS_SYSTEM
             //会社情報をヘッダーに割り当て
             set_kaisya();
             //ヘッダー情報を割り当て
-            tb_torihikisaki_cd.Text = w_dr["torihikisaki_cd"].ToString();
-            tb_hiduke.Text = w_dr["uriage_simebi"].ToString();
-            tb_kurikosi.Text = tss.try_string_to_decimal(w_dr["kurikosigaku"].ToString()).ToString("#,##0");
-            tb_uriage.Text = tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()).ToString("#,##0");
-            tb_syouhizei.Text = tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
-            tb_nyukin.Text = tss.try_string_to_decimal(w_dr["nyukingaku2"].ToString()).ToString("#,##0");
-            tb_zandaka.Text = tss.try_string_to_decimal(w_dr["urikake_zandaka"].ToString()).ToString("#,##0");
-            tb_seikyu.Text = (tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()) + tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString())).ToString("#,##0");
-            tb_mm.Text = tss.try_string_to_decimal(w_dr["uriage_simebi"].ToString().Substring(5, 2)).ToString("##");
-            tb_torihikisaki_name.Text = tss.get_torihikisaki_name(w_dr["torihikisaki_cd"].ToString()) + "  様";
-            tb_urikake_no.Text = w_dr["urikake_no"].ToString();
-            //フッター情報（消費税）を割り当て
-            //w_dt_syouhizei = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + w_dr["torihikisaki_cd"].ToString() + "'");
-            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "0")
-            //{
-            //    //請求合計
-            //    tb_footer_name.Text = "消費税";
-            //    tb_footer_syouhizei.Text = tss.try_string_to_double(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
-            //}
-            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "1")
-            //{
-            //    //明細毎
-            //    tb_footer_name.Text = "";
-            //    tb_footer_syouhizei.Text = "";
-            //}
-            //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "2")
-            //{
-            //    //伝票毎
-            //    tb_footer_name.Text = "消費税は伝票毎に算出させていただいている為、合計金額のみ記載させていただきます。";
-            //    tb_footer_syouhizei.Text = "";
-            //}
-
-            
+            if(w_dr == null)
+            {
+                tb_torihikisaki_cd.Text = "";
+                tb_hiduke.Text = "";
+                tb_kurikosi.Text = "";
+                tb_uriage.Text = "";
+                tb_syouhizei.Text = "";
+                tb_nyukin.Text = "";
+                tb_zandaka.Text = "";
+                tb_seikyu.Text = "";
+                tb_mm.Text = "";
+                tb_torihikisaki_name.Text = "";
+                tb_urikake_no.Text = "";
+            }
+            else
+            {
+                tb_torihikisaki_cd.Text = w_dr["torihikisaki_cd"].ToString();
+                tb_hiduke.Text = w_dr["uriage_simebi"].ToString();
+                tb_kurikosi.Text = tss.try_string_to_decimal(w_dr["kurikosigaku"].ToString()).ToString("#,##0");
+                tb_uriage.Text = tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()).ToString("#,##0");
+                tb_syouhizei.Text = tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
+                tb_nyukin.Text = tss.try_string_to_decimal(w_dr["nyukingaku2"].ToString()).ToString("#,##0");
+                tb_zandaka.Text = tss.try_string_to_decimal(w_dr["urikake_zandaka"].ToString()).ToString("#,##0");
+                tb_seikyu.Text = (tss.try_string_to_decimal(w_dr["uriage_kingaku"].ToString()) + tss.try_string_to_decimal(w_dr["syouhizeigaku"].ToString())).ToString("#,##0");
+                tb_mm.Text = tss.try_string_to_decimal(w_dr["uriage_simebi"].ToString().Substring(5, 2)).ToString("##");
+                tb_torihikisaki_name.Text = tss.get_torihikisaki_name(w_dr["torihikisaki_cd"].ToString()) + "  様";
+                tb_urikake_no.Text = w_dr["urikake_no"].ToString();
+                //フッター情報（消費税）を割り当て
+                //w_dt_syouhizei = tss.OracleSelect("select * from tss_torihikisaki_m where torihikisaki_cd = '" + w_dr["torihikisaki_cd"].ToString() + "'");
+                //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "0")
+                //{
+                //    //請求合計
+                //    tb_footer_name.Text = "消費税";
+                //    tb_footer_syouhizei.Text = tss.try_string_to_double(w_dr["syouhizeigaku"].ToString()).ToString("#,##0");
+                //}
+                //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "1")
+                //{
+                //    //明細毎
+                //    tb_footer_name.Text = "";
+                //    tb_footer_syouhizei.Text = "";
+                //}
+                //if (w_dt_syouhizei.Rows[0]["syouhizei_sansyutu_kbn"].ToString() == "2")
+                //{
+                //    //伝票毎
+                //    tb_footer_name.Text = "消費税は伝票毎に算出させていただいている為、合計金額のみ記載させていただきます。";
+                //    tb_footer_syouhizei.Text = "";
+                //}
+            }
         }
 
         private void set_kaisya()

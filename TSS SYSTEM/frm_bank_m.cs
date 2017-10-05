@@ -1,4 +1,11 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    銀行マスタ
+//  CREATE          J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

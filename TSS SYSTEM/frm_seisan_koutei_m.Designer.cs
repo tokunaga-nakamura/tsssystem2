@@ -297,6 +297,7 @@
             this.tb_seihin_cd.Name = "tb_seihin_cd";
             this.tb_seihin_cd.Size = new System.Drawing.Size(112, 19);
             this.tb_seihin_cd.TabIndex = 0;
+            this.tb_seihin_cd.TextChanged += new System.EventHandler(this.tb_seihin_cd_TextChanged);
             this.tb_seihin_cd.DoubleClick += new System.EventHandler(this.tb_seihin_cd_DoubleClick);
             this.tb_seihin_cd.Validating += new System.ComponentModel.CancelEventHandler(this.tb_seihin_cd_Validating);
             // 

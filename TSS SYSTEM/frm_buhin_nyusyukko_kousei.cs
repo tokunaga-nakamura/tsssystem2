@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    部品入出庫（製品構成を使用）
+//  CREATE          J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -312,7 +318,6 @@ namespace TSS_SYSTEM
                     return;
                 }
             }
-
         }
 
         private bool chk_syori_su(string in_str)
@@ -363,8 +368,6 @@ namespace TSS_SYSTEM
                         }
                         dgv_m.Rows[e.RowIndex].Cells[8].Value = w_dou_final_zaiko_su.ToString("0.00");
                     }
-
-
                 }
             }
         }
@@ -485,9 +488,5 @@ namespace TSS_SYSTEM
 
             dgv_m.DataSource = null;
         }
-
-
-
-
     }
 }

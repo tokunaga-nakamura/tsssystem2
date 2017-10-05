@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    TSS SYSTEMライブラリ
+//  CREATE          T.NAKAMURA,J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -118,6 +124,27 @@ using System.IO;                //StreamWriter
 //      4       2017/06/13  生産スケジュール調整画面において、タクトタイムや生産数など、リアルタイムに計算で使用する項目に、数値として認識できるか入力チェックを追加
 //      5       2017/06/30  ユーザーマスタ画面、権限のmaxlength、未設定→1桁に修正
 //                          単価別売上明細、代入される値が不確定な変数をdecimal.Parseを使用しているためこける。使用前にTryParseで確認しfalseの場合"0"を入れるようにして対応
+//      6       2017/09/04  ・生産工程マスタ、工程を空（未登録の状態）にできない（登録時にエラーが発生）症状を修正
+//                          ・生産スケジュール調整、入力チェック処理においてずれたカラムをチェックしていたバグを修正
+//      7       2017/09/27  空白の請求書が印刷できるよう機能追加
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -171,7 +198,7 @@ namespace TSS_SYSTEM
         {
             //コンストラクタ
             program_version = "1.06";
-            program_code_version = "5";
+            program_code_version = "7";
 
             fld_DataSource = null;
             fld_UserID = null;

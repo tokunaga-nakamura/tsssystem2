@@ -1,4 +1,10 @@
-﻿using System;
+﻿//  SYSTEM NAME     TSS SYSTEM
+//  PROGRAM NAME    部品入出庫移動履歴参照
+//  CREATE          J.OKUDA
+//  UPDATE LOG
+//  xxxx/xx/xx  NAMExxxx    NAIYOU
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -190,11 +196,8 @@ namespace TSS_SYSTEM
             //DataGridView1にユーザーが新しい行を追加できないようにする
             dgv_m.AllowUserToAddRows = false;
 
-
             if (rb_nyuko.Checked == true || rb_syukko.Checked == true)
             {
-               
-
                 dgv_m.DataSource = null;
                 dgv_m.DataSource = in_dt;
                 dt_m = in_dt;
@@ -208,7 +211,6 @@ namespace TSS_SYSTEM
                 dgv_m.Columns["create_datetime"].Visible = false;
                 dgv_m.Columns["update_user_cd"].Visible = false;
                 dgv_m.Columns["update_datetime"].Visible = false;
-
 
                 //DataGridViewのカラムヘッダーテキストを変更する
                 dgv_m.Columns[0].HeaderText = "入出庫移動区分";
@@ -230,10 +232,7 @@ namespace TSS_SYSTEM
                 //dgv_m.Columns[15].HeaderText = "作成日時";
                 //dgv_m.Columns[16].HeaderText = "更新者コード";
                 //dgv_m.Columns[17].HeaderText = "更新日時";
-
             }
-
-
             else
             {
                 dgv_m.DataSource = null;
@@ -245,7 +244,6 @@ namespace TSS_SYSTEM
                 dgv_m.Columns["create_datetime"].Visible = false;
                 dgv_m.Columns["update_user_cd"].Visible = false;
                 dgv_m.Columns["update_datetime"].Visible = false;
-
 
                 //DataGridViewのカラムヘッダーテキストを変更する
                 dgv_m.Columns[0].HeaderText = "入出庫移動区分";
@@ -272,11 +270,8 @@ namespace TSS_SYSTEM
                 dgv_m.Columns[21].HeaderText = "更新者コード";
                 dgv_m.Columns[22].HeaderText = "更新日時";
             }
-
             w_dt_insatu = dt_m;
-
         }
-
 
         private void btn_kensaku_Click(object sender, EventArgs e)
         {
@@ -437,7 +432,6 @@ namespace TSS_SYSTEM
                         w_dt_insatu.Rows[i][14] = "";
                     }
                 }
-
                 //子画面のプロパティに値をセットする
                 frm_rpt.ppt_dt = w_dt_insatu;
 
@@ -448,16 +442,10 @@ namespace TSS_SYSTEM
                 frm_rpt.w_hd30 = tb_buhin_cd1.Text;
                 frm_rpt.w_hd31 = tb_buhin_cd2.Text;
 
-
                 frm_rpt.ShowDialog();
                 //子画面から値を取得する
                 frm_rpt.Dispose();
             }
-            
-            
-            
-            
-            
             else
             {
                 frm_buhin_nyusyukkoidou_preview frm_rpt = new frm_buhin_nyusyukkoidou_preview();
@@ -496,7 +484,6 @@ namespace TSS_SYSTEM
                         w_dt_insatu.Rows[i][14] = "";
                     }
                 }
-
                 //子画面のプロパティに値をセットする
                 frm_rpt.ppt_dt = w_dt_insatu;
 
@@ -507,14 +494,10 @@ namespace TSS_SYSTEM
                 frm_rpt.w_hd30 = tb_buhin_cd1.Text;
                 frm_rpt.w_hd31 = tb_buhin_cd2.Text;
 
-
                 frm_rpt.ShowDialog();
                 //子画面から値を取得する
                 frm_rpt.Dispose();
             }
-            
         }
-
-
     }
 }
