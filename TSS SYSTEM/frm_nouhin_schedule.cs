@@ -1061,7 +1061,7 @@ namespace TSS_SYSTEM
                     btn_nouhin_jun_up.Enabled = false;
                     btn_nouhin_jun_down.Enabled = false;
                     btn_nouhin_jun_touroku.Enabled = false;
-                    lbl_nouhin_jun.Text = "変更には全ての条件入力が必要です";
+                    lbl_nouhin_jun.Text = "変更モードは取引先と納品スケジュール区分の指定が必要です。";
                 }
             }
         }
