@@ -188,6 +188,7 @@ namespace TSS_SYSTEM
                         DataTable w_dt_jisseki;//生産実績を求めるためのデータテーブル
                         DateTime seisan_jisseki_date;//生産開始日前の直近の実績日
 
+                        int seisan_jisseki_ruikei;
                         int seisan_yotei_ruikei;
                         int nouhin_yotei_ruikei2;
                          
@@ -234,6 +235,9 @@ namespace TSS_SYSTEM
                                 w_dt_chk.Rows[k]["seisan_jisseki_ruikei"] = w_dt_jisseki_ruikei_keisan.Rows[0][1]; //生産実績累計数がnullだとエラーになる
                             }
 
+                           
+                         
+
                             //生産予定累計取得
                             DataTable w_dt_seisan_ruikei_keisan = tss.OracleSelect("select Distinct Koutei_Cd,Sum(Seisan_Su) Over(Partition By Koutei_Cd) Seisan_yotei_Ruikei from tss_seisan_schedule_f where Torihikisaki_Cd = '" + w_dt_juchu.Rows[i]["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + w_dt_juchu.Rows[i]["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + w_dt_juchu.Rows[i]["juchu_cd2"].ToString() + "' and koutei_cd = '" + w_dt_chk.Rows[k]["koutei_cd"].ToString() + "' and seisan_yotei_date > '" + seisan_jisseki_date + "' and seisan_yotei_date <= '" + seisan_yotei_date + "'");
 
@@ -245,11 +249,17 @@ namespace TSS_SYSTEM
                             {
                                 w_dt_chk.Rows[k]["seisan_yotei_ruikei"] = w_dt_seisan_ruikei_keisan.Rows[0][1]; //生産予定累計数がnullだとエラーになる
                             }
+
+                            seisan_jisseki_ruikei = int.Parse(w_dt_chk.Rows[k]["seisan_jisseki_ruikei"].ToString());
                             seisan_yotei_ruikei = int.Parse(w_dt_chk.Rows[k]["seisan_yotei_ruikei"].ToString());
                             nouhin_yotei_ruikei2 = int.Parse(w_dt_chk.Rows[k]["nouhin_yotei_ruikei"].ToString());
-                        }                      
 
-                        if(seisan_yotei_ruikei == nouhin_yotei_ruikei2)
+                            //生産実績累計　+　生産予定累計
+                            seisan_yotei_ruikei = seisan_jisseki_ruikei + seisan_yotei_ruikei;
+
+                        }
+                                   
+                        if (seisan_yotei_ruikei  ==  nouhin_yotei_ruikei2)
                         {
                             w_dt_chk.Rows[k]["chk"] = "0"; ///生産予定数累計が納品予定数累計とイコールならチェックに0
                         }
