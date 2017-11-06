@@ -26,7 +26,7 @@ namespace TSS_SYSTEM
         DataTable w_dt_insatu2 = new DataTable();
         DataTable w_dt_insatu3 = new DataTable();
         DataRow[] selectedRows;
-        DataTable resultDt = new DataTable();
+       
 
         public string str_mode;     //
         public string str_date;     //
@@ -245,7 +245,7 @@ namespace TSS_SYSTEM
                             {
                                 w_dt_chk.Rows[k]["seisan_yotei_ruikei"] = w_dt_seisan_ruikei_keisan.Rows[0][1]; //生産予定累計数がnullだとエラーになる
                             }
-                            seisan_yotei_ruikei = int.Parse(w_dt_chk.Rows[k]["seisan_yotei_ruikei"].ToString()) + int.Parse(w_dt_chk.Rows[k]["seisan_jisseki_ruikei"].ToString());
+                            seisan_yotei_ruikei = int.Parse(w_dt_chk.Rows[k]["seisan_yotei_ruikei"].ToString());
                             nouhin_yotei_ruikei2 = int.Parse(w_dt_chk.Rows[k]["nouhin_yotei_ruikei"].ToString());
                         }                      
 
@@ -336,18 +336,11 @@ namespace TSS_SYSTEM
                 {
                     dt_kensaku.Rows.Clear();
                 }
-
-                //DataViewを取得
-                //DataView dv = dt_kensaku.DefaultView;
-
-                //dt_kensaku = dv.ToTable("dt_kensaku", true, "torihikisaki_cd", "取引先名", "juchu_cd1", "juchu_cd2", "seihin_cd", "製品名", "busyo_cd", "部署名", "koutei_cd", "工程名", "chk");  
+                
                 list_disp(dt_kensaku);
             }
             else
             {
-                //DataViewを取得
-                //DataView dv = dt_kensaku.DefaultView;
-                //dt_kensaku = dv.ToTable("dt_kensaku", true, "torihikisaki_cd", "取引先名", "juchu_cd1", "juchu_cd2", "seihin_cd", "製品名", "busyo_cd", "koutei_cd");
                 list_disp(dt_kensaku);
             }
             w_dt_insatu = dt_kensaku;
@@ -360,10 +353,8 @@ namespace TSS_SYSTEM
 
             //DataViewを取得
             DataView dv = dt_kensaku.DefaultView;
-            
             //Column1とColumn2で昇順に並び替える
-            dv.Sort = "torihikisaki_cd ASC,juchu_cd1 ASC,juchu_cd2 ASC";
-           
+            dv.Sort = "nouhin_yotei_date ASC";
         }
         
         private bool chk_busyo_cd(string in_busyo_cd)
@@ -433,9 +424,6 @@ namespace TSS_SYSTEM
 
             //非表示カラム
             dgv_m.Columns["seisan_start_day"].Visible = false;
-
-
-
 
             //右詰
             dgv_m.Columns["nouhin_yotei_ruikei"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
