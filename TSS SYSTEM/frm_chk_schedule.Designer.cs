@@ -47,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgv_m = new System.Windows.Forms.DataGridView();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
-            this.lbl_row_koutei = new System.Windows.Forms.Label();
             this.lbl_row_juchu_su = new System.Windows.Forms.Label();
             this.lbl_row_seihin = new System.Windows.Forms.Label();
             this.lbl_row_juchu_cd = new System.Windows.Forms.Label();
@@ -337,7 +336,6 @@
             // 
             // splitContainer9.Panel1
             // 
-            this.splitContainer9.Panel1.Controls.Add(this.lbl_row_koutei);
             this.splitContainer9.Panel1.Controls.Add(this.lbl_row_juchu_su);
             this.splitContainer9.Panel1.Controls.Add(this.lbl_row_seihin);
             this.splitContainer9.Panel1.Controls.Add(this.lbl_row_juchu_cd);
@@ -348,15 +346,6 @@
             this.splitContainer9.Panel2.Controls.Add(this.dgv_row_info);
             this.splitContainer9.Size = new System.Drawing.Size(432, 128);
             this.splitContainer9.TabIndex = 23;
-            // 
-            // lbl_row_koutei
-            // 
-            this.lbl_row_koutei.AutoSize = true;
-            this.lbl_row_koutei.Location = new System.Drawing.Point(323, 32);
-            this.lbl_row_koutei.Name = "lbl_row_koutei";
-            this.lbl_row_koutei.Size = new System.Drawing.Size(29, 12);
-            this.lbl_row_koutei.TabIndex = 4;
-            this.lbl_row_koutei.Text = "工程";
             // 
             // lbl_row_juchu_su
             // 
@@ -684,7 +673,6 @@
         private System.Windows.Forms.SplitContainer splitContainer9;
         private System.Windows.Forms.DataGridView dgv_row_info;
         private System.Windows.Forms.SplitContainer splitContainer8;
-        private System.Windows.Forms.Label lbl_row_koutei;
         private System.Windows.Forms.Label lbl_row_juchu_su;
         private System.Windows.Forms.Label lbl_row_seihin;
         private System.Windows.Forms.Label lbl_row_juchu_cd;

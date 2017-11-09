@@ -1121,7 +1121,6 @@ namespace TSS_SYSTEM
                 lbl_row_juchu_cd.Text = "";
                 lbl_row_juchu_su.Text = "";
                 lbl_row_seihin.Text = "";
-                lbl_row_koutei.Text = "";
                 return;
             }
             //受注情報を取得
@@ -1146,7 +1145,6 @@ namespace TSS_SYSTEM
             lbl_row_juchu_cd.Text = w_dt_juchu.Rows[0]["torihikisaki_cd"].ToString() + "-" + w_dt_juchu.Rows[0]["juchu_cd1"].ToString() + "-" + w_dt_juchu.Rows[0]["juchu_cd2"].ToString();
             lbl_row_juchu_su.Text = "受注数:" + w_dt_juchu.Rows[0]["juchu_su"].ToString();
             lbl_row_seihin.Text = w_dt_juchu.Rows[0]["seihin_cd"].ToString() + ":" + tss.get_seihin_name(w_dt_juchu.Rows[0]["seihin_cd"].ToString());
-            lbl_row_koutei.Text = dgv_m.Rows[in_row_index].Cells["koutei_cd"].Value.ToString() + ":" + tss.get_koutei_name(dgv_m.Rows[in_row_index].Cells["koutei_cd"].Value.ToString());
 
             //納品スケジュールと、生産工程毎に生産スケジュールと生産実績を取得し１つのdtにする（工程順に表示するためにseqが必要な為、このような処理にする）
             DataTable w_dt_nouhin = new DataTable();
