@@ -280,9 +280,15 @@ namespace TSS_SYSTEM
                 w_dr_schedule["seihin_name"] = w_dt_seihin_m.Rows[0]["seihin_name"].ToString();
                 w_dr_schedule["juchu_su"] = w_dt_juchu_m.Rows[0]["juchu_su"].ToString();
                 w_dr_schedule[w_date.Day.ToString("00")] = dr["nouhin_yotei_su"].ToString();
+                //備考を追加
                 if (w_dt_juchu_m.Rows[0]["bikou"].ToString() != "")
                 {
                     w_dr_schedule["bikou"] = w_dt_juchu_m.Rows[0]["bikou"].ToString();
+                }
+                //備考2を追加
+                if (w_dt_juchu_m.Rows[0]["bikou2"].ToString() != "")
+                {
+                    w_dr_schedule["bikou"] = w_dr_schedule["bikou"].ToString() + " " + w_dt_juchu_m.Rows[0]["bikou2"].ToString();
                 }
                 if (dr["bikou"].ToString() != "")
                 {
@@ -487,10 +493,15 @@ namespace TSS_SYSTEM
                     w_dr_schedule["seihin_name"] = w_dt_seihin_m.Rows[0]["seihin_name"].ToString();
                     w_dr_schedule["juchu_su"] = w_dt_juchu_m.Rows[0]["juchu_su"].ToString();
                     w_dr_schedule[w_date.Day.ToString("00")] = dr["nouhin_yotei_su"].ToString();
-
+                    //備考を追加
                     if (w_dt_juchu_m.Rows[0]["bikou"].ToString() != "")
                     {
                         w_dr_schedule["bikou"] = w_dt_juchu_m.Rows[0]["bikou"].ToString();
+                    }
+                    //備考2を追加
+                    if (w_dt_juchu_m.Rows[0]["bikou2"].ToString() != "")
+                    {
+                        w_dr_schedule["bikou"] = w_dr_schedule["bikou"].ToString() + " " + w_dt_juchu_m.Rows[0]["bikou2"].ToString();
                     }
                     if (dr["bikou"].ToString() != "")
                     {
@@ -590,7 +601,6 @@ namespace TSS_SYSTEM
             }
             return out_str;
         }
-
 
         private void make_nouhin_schedule_goukei()
         {
@@ -917,7 +927,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    MessageBox.Show("キャンセルまたはエラー");
+                    //MessageBox.Show("キャンセルまたはエラー");
                 }
             }
             else
@@ -1140,7 +1150,7 @@ namespace TSS_SYSTEM
         {
             DataGridView dgv = (DataGridView)sender;
             //生産スケジュールフラグをダブルクリックした時
-            if(e.ColumnIndex == 41)
+            if (e.ColumnIndex == 41)
             {
                 //ダブルクリックされた行（受注）の生産スケジュールを表示するフォームを表示する
                 frm_seisan_schedule_disp frm_ssd = new frm_seisan_schedule_disp();
@@ -1154,6 +1164,17 @@ namespace TSS_SYSTEM
                 frm_ssd.Dispose();
                 //生産スケジュールが調整された場合を想定し、○×の再表示
                 dgv.Rows[e.RowIndex].Cells[41].Value = seisan_schedule_ox(dgv.Rows[e.RowIndex].Cells["torihikisaki_cd"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_cd1"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_cd2"].Value.ToString(), dgv.Rows[e.RowIndex].Cells["juchu_su2"].Value.ToString());
+            }
+            //備考をダブルクリックした時
+            if (e.ColumnIndex == 38)
+            {
+                //ダブルクリックされた行（受注）の受注コメント入力画面を表示させる
+                frm_juchu_comment frm_juco = new frm_juchu_comment();
+                frm_juco.w_torihikisaki_cd = dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
+                frm_juco.w_juchu_cd1 = dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
+                frm_juco.w_juchu_cd2 = dgv.Rows[e.RowIndex].Cells[3].Value.ToString();
+                frm_juco.ShowDialog(this);
+                frm_juco.Dispose();
             }
         }
     }

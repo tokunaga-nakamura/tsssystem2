@@ -52,6 +52,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_msg4 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tb_color4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,6 +114,10 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.tb_color4);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox11);
+            this.splitContainer2.Panel1.Controls.Add(this.tb_msg4);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox6);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.tb_color3);
             this.splitContainer2.Panel1.Controls.Add(this.tb_color2);
@@ -140,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(705, 134);
+            this.label1.Location = new System.Drawing.Point(705, 158);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 12);
             this.label1.TabIndex = 16;
@@ -219,7 +227,7 @@
             this.textBox2.Size = new System.Drawing.Size(126, 19);
             this.textBox2.TabIndex = 8;
             this.textBox2.TabStop = false;
-            this.textBox2.Text = "メッセージ３";
+            this.textBox2.Text = "メッセージ3";
             // 
             // tb_system_cd
             // 
@@ -259,7 +267,7 @@
             this.textBox5.Size = new System.Drawing.Size(126, 19);
             this.textBox5.TabIndex = 4;
             this.textBox5.TabStop = false;
-            this.textBox5.Text = "メッセージ２";
+            this.textBox5.Text = "メッセージ2";
             // 
             // tb_msg1
             // 
@@ -277,7 +285,7 @@
             this.textBox3.Size = new System.Drawing.Size(126, 19);
             this.textBox3.TabIndex = 2;
             this.textBox3.TabStop = false;
-            this.textBox3.Text = "メッセージ１";
+            this.textBox3.Text = "メッセージ1";
             // 
             // tb_hyoujun_kousu
             // 
@@ -318,6 +326,43 @@
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox6.Location = new System.Drawing.Point(10, 128);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(126, 19);
+            this.textBox6.TabIndex = 17;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "メッセージ4";
+            // 
+            // tb_msg4
+            // 
+            this.tb_msg4.Location = new System.Drawing.Point(136, 128);
+            this.tb_msg4.Name = "tb_msg4";
+            this.tb_msg4.Size = new System.Drawing.Size(675, 19);
+            this.tb_msg4.TabIndex = 18;
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.Color.NavajoWhite;
+            this.textBox11.Location = new System.Drawing.Point(817, 128);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(24, 19);
+            this.textBox11.TabIndex = 19;
+            this.textBox11.TabStop = false;
+            this.textBox11.Text = "色";
+            // 
+            // tb_color4
+            // 
+            this.tb_color4.Location = new System.Drawing.Point(841, 128);
+            this.tb_color4.MaxLength = 1;
+            this.tb_color4.Name = "tb_color4";
+            this.tb_color4.Size = new System.Drawing.Size(23, 19);
+            this.tb_color4.TabIndex = 20;
             // 
             // frm_control_m
             // 
@@ -370,5 +415,9 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox tb_color1;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_color4;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tb_msg4;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

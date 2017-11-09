@@ -671,7 +671,7 @@
             // 
             // textBox22
             // 
-            this.textBox22.DataField = "bikou";
+            this.textBox22.DataField = "=bikou + \" \" + bikou2";
             this.textBox22.Height = 0.146063F;
             this.textBox22.Left = 10.18228F;
             this.textBox22.Name = "textBox22";

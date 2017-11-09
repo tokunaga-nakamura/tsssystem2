@@ -187,6 +187,12 @@
     <Compile Include="frm_getumatu_zaiko.Designer.cs">
       <DependentUpon>frm_getumatu_zaiko.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_juchu_comment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_juchu_comment.Designer.cs">
+      <DependentUpon>frm_juchu_comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_juchu_zan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -771,6 +777,12 @@
     <Compile Include="rpt_seikyu_ichiran.Designer.cs">
       <DependentUpon>rpt_seikyu_ichiran.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpt_seisan_koutei.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpt_seisan_koutei.Designer.cs">
+      <DependentUpon>rpt_seisan_koutei.cs</DependentUpon>
+    </Compile>
     <Compile Include="rpt_seisan_schedule_03.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -882,6 +894,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_getumatu_zaiko.resx">
       <DependentUpon>frm_getumatu_zaiko.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_juchu_comment.resx">
+      <DependentUpon>frm_juchu_comment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_juchu_zan.resx">
       <DependentUpon>frm_juchu_zan.cs</DependentUpon>
@@ -1183,6 +1198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seikyu_ichiran.resx">
       <DependentUpon>rpt_seikyu_ichiran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_seisan_koutei.resx">
+      <DependentUpon>rpt_seisan_koutei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rpt_seisan_schedule_03.resx">
       <DependentUpon>rpt_seisan_schedule_03.cs</DependentUpon>

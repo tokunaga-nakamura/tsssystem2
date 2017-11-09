@@ -22,7 +22,6 @@ namespace TSS_SYSTEM
         DataTable w_dt_meisai = new DataTable();    //印刷するデータ
         DataTable w_dt = new DataTable();
 
-
         //画面モード
         public string mode;//メニュー画面から・・・1　生産スケジュール調整画面から・・・2
 
@@ -75,7 +74,6 @@ namespace TSS_SYSTEM
         private void make_insatu_data()
         {
             w_dt = new DataTable();   //生産スケジュール用
-
      
             //画面の条件からsqlを作成しデータを抽出
             string[] sql_where = new string[7];
@@ -100,11 +98,12 @@ namespace TSS_SYSTEM
             }
             //string sql = "select * from tss_seisan_schedule_f where seisan_yotei_date = '" + tb_seisan_yotei_date.Text + "' ";
             
-            string sql = "select A.seisan_yotei_date,A.busyo_cd,B.busyo_name,A.koutei_cd,C.koutei_name,A.line_cd,D.line_name,A.seq,A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,A.seihin_name,A.seisankisyu,A.juchu_su,A.seisan_su,A.tact_time,A.dandori_kousu,A.tuika_kousu,A.hoju_kousu,A.seisan_time,A.start_time,A.end_time,A.ninzu,A.members,A.hensyu_flg,A.bikou,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime"
+            string sql = "select A.seisan_yotei_date,A.busyo_cd,B.busyo_name,A.koutei_cd,C.koutei_name,A.line_cd,D.line_name,A.seq,A.torihikisaki_cd,A.juchu_cd1,A.juchu_cd2,A.seihin_cd,A.seihin_name,A.seisankisyu,A.juchu_su,A.seisan_su,A.tact_time,A.dandori_kousu,A.tuika_kousu,A.hoju_kousu,A.seisan_time,A.start_time,A.end_time,A.ninzu,A.members,A.hensyu_flg,A.bikou,E.bikou2,A.create_user_cd,A.create_datetime,A.update_user_cd,A.update_datetime"
                   + " from tss_seisan_schedule_f A"
                   + " left outer join tss_busyo_m B on A.busyo_cd = B.busyo_cd"
                   + " left outer join tss_koutei_m C on A.koutei_cd = C.koutei_cd"
                   + " left outer join tss_line_m D on A.line_cd = D.line_cd"
+                  + " left outer join tss_juchu_m E on A.torihikisaki_cd = E.torihikisaki_cd and A.juchu_cd1 = E.juchu_cd1 and A.juchu_cd2 = E.juchu_cd2"
                   + " where seisan_yotei_date = '" + tb_seisan_yotei_date.Text + "' ";
            
             for (int i = 1; i <= sql_cnt; i++)
@@ -252,7 +251,6 @@ namespace TSS_SYSTEM
             this.viewer1.Document = rpt.Document;
         }
 
-
         private void tb_seisan_yotei_date_Validating(object sender, CancelEventArgs e)
         {
             if (tb_seisan_yotei_date.Text != "")
@@ -268,7 +266,6 @@ namespace TSS_SYSTEM
                 }
             }
         }
-
 
         private bool chk_seisan_yotei_date()
         {
@@ -390,7 +387,6 @@ namespace TSS_SYSTEM
             if(mode == "1")
             {
                 //何もしない
-
             }
             //生産スケジュール調整画面から開いた場合
             if (mode == "2")
@@ -409,11 +405,8 @@ namespace TSS_SYSTEM
                     tb_busyo_cd.Text = "";
                     tb_busyo_name.Text = "";
                 }
-
                 seisan_schedule_preview();       
             }
-            
         }
-
     }
 }

@@ -354,7 +354,7 @@
             this.tb_hd41.Style = "font-size: 8.25pt";
             this.tb_hd41.Text = null;
             this.tb_hd41.Top = 0.438189F;
-            this.tb_hd41.Width = 0.7811028F;
+            this.tb_hd41.Width = 1.508662F;
             // 
             // lbl_31
             // 
@@ -1158,7 +1158,7 @@
             this.tb_hd11.Style = "font-size: 8.25pt";
             this.tb_hd11.Text = null;
             this.tb_hd11.Top = 0F;
-            this.tb_hd11.Width = 0.7811028F;
+            this.tb_hd11.Width = 1.508662F;
             // 
             // tb_hd21
             // 
@@ -1168,7 +1168,7 @@
             this.tb_hd21.Style = "font-size: 8.25pt";
             this.tb_hd21.Text = null;
             this.tb_hd21.Top = 0.146063F;
-            this.tb_hd21.Width = 0.7811028F;
+            this.tb_hd21.Width = 1.508662F;
             // 
             // tb_hd31
             // 
@@ -1178,7 +1178,7 @@
             this.tb_hd31.Style = "font-size: 8.25pt";
             this.tb_hd31.Text = null;
             this.tb_hd31.Top = 0.292126F;
-            this.tb_hd31.Width = 0.7811028F;
+            this.tb_hd31.Width = 1.508662F;
             // 
             // tb_hd_torihikisaki_cd
             // 

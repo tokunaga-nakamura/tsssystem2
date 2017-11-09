@@ -237,9 +237,22 @@ namespace TSS_SYSTEM
 
         private void rireki_disp(string in_cd)
         {
+            string w_sql = "";
             dgv_buhin_nyusyukko_m.DataSource = null;
-            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc");
-            //dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by  buhin_syori_date desc");
+            if (rb_rireki_100.Checked)
+            {
+                w_sql = "select * from (select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc) WHERE rownum <= 100";
+            }
+            if (rb_rireki_1000.Checked)
+            {
+                w_sql = "select * from (select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc) WHERE rownum <= 1000";
+            }
+            if (rb_rireki_all.Checked)
+            {
+                w_sql = "select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc";
+            }
+            //dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect("select buhin_syori_date,buhin_syori_kbn,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,idousaki_zaiko_kbn,idousaki_torihikisaki_cd,idousaki_juchu_cd1,idousaki_juchu_cd2,syori_kbn,bikou from tss_buhin_nyusyukko_m where buhin_cd = '" + in_cd.ToString() + "' order by create_datetime desc");
+            dgv_buhin_nyusyukko_m.DataSource = tss.OracleSelect(w_sql);
             //リードオンリーにする（編集できなくなる）
             dgv_buhin_nyusyukko_m.ReadOnly = true;
             //行ヘッダーを非表示にする
@@ -993,6 +1006,21 @@ namespace TSS_SYSTEM
             frm_bts.in_cd = tb_buhin_cd.Text;
             frm_bts.ShowDialog();
             frm_bts.Dispose();
+        }
+
+        private void rb_rireki_100_CheckedChanged(object sender, EventArgs e)
+        {
+            rireki_disp(tb_buhin_cd.Text);
+        }
+
+        private void rb_rireki_1000_CheckedChanged(object sender, EventArgs e)
+        {
+            rireki_disp(tb_buhin_cd.Text);
+        }
+
+        private void rb_rireki_all_CheckedChanged(object sender, EventArgs e)
+        {
+            rireki_disp(tb_buhin_cd.Text);
         }
     }
 }

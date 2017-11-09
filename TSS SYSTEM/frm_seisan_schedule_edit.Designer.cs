@@ -31,9 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_seisan_schedule_edit));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btn_help = new System.Windows.Forms.Button();
+            this.splitContainer15 = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
+            this.btn_help = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
@@ -91,11 +93,14 @@
             this.btn_insatu = new System.Windows.Forms.Button();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer15)).BeginInit();
+            this.splitContainer15.Panel1.SuspendLayout();
+            this.splitContainer15.Panel2.SuspendLayout();
+            this.splitContainer15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -184,10 +189,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_help);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer15);
             // 
             // splitContainer1.Panel2
             // 
@@ -197,21 +199,41 @@
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             // 
-            // btn_help
+            // splitContainer15
             // 
-            this.btn_help.Location = new System.Drawing.Point(995, 10);
-            this.btn_help.Name = "btn_help";
-            this.btn_help.Size = new System.Drawing.Size(75, 23);
-            this.btn_help.TabIndex = 2;
-            this.btn_help.TabStop = false;
-            this.btn_help.Text = "説明・補足";
-            this.btn_help.UseVisualStyleBackColor = true;
-            this.btn_help.Click += new System.EventHandler(this.btn_help_Click);
+            this.splitContainer15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer15.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer15.IsSplitterFixed = true;
+            this.splitContainer15.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer15.Name = "splitContainer15";
+            // 
+            // splitContainer15.Panel1
+            // 
+            this.splitContainer15.Panel1.Controls.Add(this.label4);
+            this.splitContainer15.Panel1.Controls.Add(this.label2);
+            this.splitContainer15.Panel1.Controls.Add(this.btn_hardcopy);
+            // 
+            // splitContainer15.Panel2
+            // 
+            this.splitContainer15.Panel2.Controls.Add(this.btn_help);
+            this.splitContainer15.Size = new System.Drawing.Size(1080, 54);
+            this.splitContainer15.SplitterDistance = 993;
+            this.splitContainer15.TabIndex = 0;
+            this.splitContainer15.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(79, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(743, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "生産スケジュールの1日の開始は8:30と考えます。（0:00～8:29は翌日の日付と考えます。早出等のスケジュールは前日のスケジュールに入れる必要があります。）";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 10);
+            this.label2.Location = new System.Drawing.Point(79, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(704, 12);
             this.label2.TabIndex = 1;
@@ -227,6 +249,17 @@
             this.btn_hardcopy.TabStop = false;
             this.btn_hardcopy.UseVisualStyleBackColor = true;
             this.btn_hardcopy.Click += new System.EventHandler(this.btn_hardcopy_Click);
+            // 
+            // btn_help
+            // 
+            this.btn_help.Location = new System.Drawing.Point(3, 14);
+            this.btn_help.Name = "btn_help";
+            this.btn_help.Size = new System.Drawing.Size(75, 23);
+            this.btn_help.TabIndex = 2;
+            this.btn_help.TabStop = false;
+            this.btn_help.Text = "説明・補足";
+            this.btn_help.UseVisualStyleBackColor = true;
+            this.btn_help.Click += new System.EventHandler(this.btn_help_Click);
             // 
             // splitContainer2
             // 
@@ -968,7 +1001,7 @@
             this.btn_csv.Location = new System.Drawing.Point(84, 3);
             this.btn_csv.Name = "btn_csv";
             this.btn_csv.Size = new System.Drawing.Size(75, 23);
-            this.btn_csv.TabIndex = 2;
+            this.btn_csv.TabIndex = 1;
             this.btn_csv.Text = "CSV出力";
             this.btn_csv.UseVisualStyleBackColor = true;
             this.btn_csv.Click += new System.EventHandler(this.btn_csv_Click);
@@ -978,7 +1011,7 @@
             this.btn_insatu.Location = new System.Drawing.Point(165, 3);
             this.btn_insatu.Name = "btn_insatu";
             this.btn_insatu.Size = new System.Drawing.Size(75, 23);
-            this.btn_insatu.TabIndex = 1;
+            this.btn_insatu.TabIndex = 2;
             this.btn_insatu.Text = "一覧表印刷";
             this.btn_insatu.UseVisualStyleBackColor = true;
             this.btn_insatu.Click += new System.EventHandler(this.btn_insatu_Click);
@@ -1003,15 +1036,6 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(163, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(743, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "生産スケジュールの1日の開始は8:30と考えます。（0:00～8:29は翌日の日付と考えます。早出等のスケジュールは前日のスケジュールに入れる必要があります。）";
-            // 
             // frm_seisan_schedule_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1019,15 +1043,19 @@
             this.ClientSize = new System.Drawing.Size(1084, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
-            this.MinimumSize = new System.Drawing.Size(850, 450);
+            this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "frm_seisan_schedule_edit";
             this.Text = "生産スケジュール編集";
             this.Load += new System.EventHandler(this.frm_seisan_schedule_edit_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer15.Panel1.ResumeLayout(false);
+            this.splitContainer15.Panel1.PerformLayout();
+            this.splitContainer15.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer15)).EndInit();
+            this.splitContainer15.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -1168,5 +1196,6 @@
         private System.Windows.Forms.Label lbl_row_juchu_cd;
         private System.Windows.Forms.Button btn_help;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.SplitContainer splitContainer15;
     }
 }

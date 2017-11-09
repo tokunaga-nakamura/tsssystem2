@@ -515,7 +515,7 @@ namespace TSS_SYSTEM
                 }
                 else
                 {
-                    MessageBox.Show("キャンセルまたはエラー");
+                    //MessageBox.Show("キャンセルまたはエラー");
                 }
             }
             else

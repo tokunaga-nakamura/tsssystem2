@@ -34,6 +34,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.vwr = new GrapeCity.ActiveReports.Viewer.Win.Viewer();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -42,6 +43,9 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -91,9 +95,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(884, 495);
-            this.splitContainer2.SplitterDistance = 458;
+            this.splitContainer2.SplitterDistance = 457;
             this.splitContainer2.TabIndex = 0;
             // 
             // vwr
@@ -127,18 +131,33 @@
             this.vwr.Sidebar.TocPanel.ContextMenu = null;
             this.vwr.Sidebar.TocPanel.Width = 200;
             this.vwr.Sidebar.Width = 200;
-            this.vwr.Size = new System.Drawing.Size(880, 454);
+            this.vwr.Size = new System.Drawing.Size(880, 453);
             this.vwr.TabIndex = 0;
             // 
             // btn_syuuryou
             // 
-            this.btn_syuuryou.Location = new System.Drawing.Point(795, 3);
+            this.btn_syuuryou.Location = new System.Drawing.Point(3, 3);
             this.btn_syuuryou.Name = "btn_syuuryou";
             this.btn_syuuryou.Size = new System.Drawing.Size(75, 23);
             this.btn_syuuryou.TabIndex = 0;
             this.btn_syuuryou.Text = "終了";
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.btn_syuuryou);
+            this.splitContainer3.Size = new System.Drawing.Size(880, 30);
+            this.splitContainer3.SplitterDistance = 793;
+            this.splitContainer3.TabIndex = 1;
             // 
             // frm_nouhin_schedule_preview
             // 
@@ -158,6 +177,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -169,6 +191,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private GrapeCity.ActiveReports.Viewer.Win.Viewer vwr;
         private System.Windows.Forms.Button btn_syuuryou;
+        private System.Windows.Forms.SplitContainer splitContainer3;
 
     }
 }

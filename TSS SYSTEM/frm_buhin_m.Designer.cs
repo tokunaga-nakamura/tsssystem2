@@ -36,6 +36,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btn_buhin_seihin = new System.Windows.Forms.Button();
             this.lbl_buhin_cd = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tb_update_datetime = new System.Windows.Forms.TextBox();
@@ -87,13 +88,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tb_goukei_zaiko_su = new System.Windows.Forms.TextBox();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv_buhin_nyusyukko_m = new System.Windows.Forms.DataGridView();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
             this.btn_touroku = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
-            this.btn_buhin_seihin = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.rb_rireki_100 = new System.Windows.Forms.RadioButton();
+            this.rb_rireki_1000 = new System.Windows.Forms.RadioButton();
+            this.rb_rireki_all = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -273,6 +276,16 @@
             this.splitContainer3.SplitterDistance = 413;
             this.splitContainer3.TabIndex = 37;
             this.splitContainer3.TabStop = false;
+            // 
+            // btn_buhin_seihin
+            // 
+            this.btn_buhin_seihin.Location = new System.Drawing.Point(10, 405);
+            this.btn_buhin_seihin.Name = "btn_buhin_seihin";
+            this.btn_buhin_seihin.Size = new System.Drawing.Size(110, 23);
+            this.btn_buhin_seihin.TabIndex = 38;
+            this.btn_buhin_seihin.Text = "部品→製品検索";
+            this.btn_buhin_seihin.UseVisualStyleBackColor = true;
+            this.btn_buhin_seihin.Click += new System.EventHandler(this.btn_buhin_seihin_Click);
             // 
             // lbl_buhin_cd
             // 
@@ -847,6 +860,9 @@
             // 
             // splitContainer6.Panel1
             // 
+            this.splitContainer6.Panel1.Controls.Add(this.rb_rireki_all);
+            this.splitContainer6.Panel1.Controls.Add(this.rb_rireki_1000);
+            this.splitContainer6.Panel1.Controls.Add(this.rb_rireki_100);
             this.splitContainer6.Panel1.Controls.Add(this.label5);
             this.splitContainer6.Panel1.Controls.Add(this.label2);
             // 
@@ -857,6 +873,15 @@
             this.splitContainer6.SplitterDistance = 30;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(98, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(187, 12);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "[処理区分 01:入庫 02:出庫 03:移動]";
             // 
             // label2
             // 
@@ -917,24 +942,40 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
-            // btn_buhin_seihin
+            // rb_rireki_100
             // 
-            this.btn_buhin_seihin.Location = new System.Drawing.Point(10, 405);
-            this.btn_buhin_seihin.Name = "btn_buhin_seihin";
-            this.btn_buhin_seihin.Size = new System.Drawing.Size(110, 23);
-            this.btn_buhin_seihin.TabIndex = 38;
-            this.btn_buhin_seihin.Text = "部品→製品検索";
-            this.btn_buhin_seihin.UseVisualStyleBackColor = true;
-            this.btn_buhin_seihin.Click += new System.EventHandler(this.btn_buhin_seihin_Click);
+            this.rb_rireki_100.AutoSize = true;
+            this.rb_rireki_100.Checked = true;
+            this.rb_rireki_100.Location = new System.Drawing.Point(307, 6);
+            this.rb_rireki_100.Name = "rb_rireki_100";
+            this.rb_rireki_100.Size = new System.Drawing.Size(41, 16);
+            this.rb_rireki_100.TabIndex = 2;
+            this.rb_rireki_100.TabStop = true;
+            this.rb_rireki_100.Text = "100";
+            this.rb_rireki_100.UseVisualStyleBackColor = true;
+            this.rb_rireki_100.CheckedChanged += new System.EventHandler(this.rb_rireki_100_CheckedChanged);
             // 
-            // label5
+            // rb_rireki_1000
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(106, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(187, 12);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "[処理区分 01:入庫 02:出庫 03:移動]";
+            this.rb_rireki_1000.AutoSize = true;
+            this.rb_rireki_1000.Location = new System.Drawing.Point(354, 6);
+            this.rb_rireki_1000.Name = "rb_rireki_1000";
+            this.rb_rireki_1000.Size = new System.Drawing.Size(47, 16);
+            this.rb_rireki_1000.TabIndex = 3;
+            this.rb_rireki_1000.Text = "1000";
+            this.rb_rireki_1000.UseVisualStyleBackColor = true;
+            this.rb_rireki_1000.CheckedChanged += new System.EventHandler(this.rb_rireki_1000_CheckedChanged);
+            // 
+            // rb_rireki_all
+            // 
+            this.rb_rireki_all.AutoSize = true;
+            this.rb_rireki_all.Location = new System.Drawing.Point(407, 6);
+            this.rb_rireki_all.Name = "rb_rireki_all";
+            this.rb_rireki_all.Size = new System.Drawing.Size(44, 16);
+            this.rb_rireki_all.TabIndex = 4;
+            this.rb_rireki_all.Text = "全て";
+            this.rb_rireki_all.UseVisualStyleBackColor = true;
+            this.rb_rireki_all.CheckedChanged += new System.EventHandler(this.rb_rireki_all_CheckedChanged);
             // 
             // frm_buhin_m
             // 
@@ -1061,5 +1102,8 @@
         private System.Windows.Forms.SplitContainer splitContainer9;
         private System.Windows.Forms.Button btn_buhin_seihin;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rb_rireki_all;
+        private System.Windows.Forms.RadioButton rb_rireki_1000;
+        private System.Windows.Forms.RadioButton rb_rireki_100;
     }
 }

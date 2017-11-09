@@ -222,7 +222,8 @@ namespace TSS_SYSTEM
 
         private void make_insatu_data()
         {
-            DataTable w_dt = new DataTable();   //生産スケジュール用
+            DataTable w_dt = new DataTable();       //生産スケジュール用
+            DataTable w_dt_bikou = new DataTable(); //備考用
             DataRow w_dr;   //書込み用
 
             //画面の条件からsqlを作成しデータを抽出
@@ -318,6 +319,16 @@ namespace TSS_SYSTEM
                 w_dr["member12"] = "";
                 //備考
                 w_dr["bikou"] = loop_dr["bikou"].ToString();
+                //備考に受注マスタのbikouとbikou2を追加する
+                w_dt_bikou = tss.OracleSelect("select * from tss_juchu_m where torihikisaki_cd = '" + loop_dr["torihikisaki_cd"].ToString() + "' and juchu_cd1 = '" + loop_dr["juchu_cd1"].ToString() + "' and juchu_cd2 = '" + loop_dr["juchu_cd2"].ToString() + "'");
+                if(w_dt_bikou.Rows.Count <= 0)
+                {
+                    //受注が存在しない場合
+                }
+                else
+                {
+                    w_dr["bikou"] = w_dr["bikou"] + " " + w_dt_bikou.Rows[0]["bikou2"].ToString();
+                }
                 //タクトタイム
                 w_dr["tact_time"] = loop_dr["tact_time"].ToString();
                 //段取工数

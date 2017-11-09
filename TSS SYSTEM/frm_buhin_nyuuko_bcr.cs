@@ -452,20 +452,25 @@ namespace TSS_SYSTEM
                     w_kbn = "02";
                     w_torihikisaki_cd = tss.GetDainichi_cd();
                     w_juchu_cd1 = tss.try_string_to_decimal(dgv_m.Rows[i].Cells[5].Value.ToString().TrimEnd()).ToString("0");
-                    w_juchu_cd2 = "9999999999999999";   //tss.StringMidByte(dgv_m.Rows[i].Cells[2].Value.ToString(), 3, 4);
+                    w_juchu_cd2 = "9999999999999999";
                     //レコード有無確認
                     DataTable w_dt = new DataTable();
                     w_dt = tss.OracleSelect("select * from tss_buhin_zaiko_m where buhin_cd = '" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "' and zaiko_kbn = '02' and torihikisaki_cd = '" + w_torihikisaki_cd + "' and juchu_cd1 = '" + w_juchu_cd1 + "' and juchu_cd2 = '" + w_juchu_cd2 + "'");
                     if (w_dt.Rows.Count == 0)
                     {
                         //新規
-                        tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
+                        bool w_bl;
+                        w_bl = tss.OracleInsert("insert into tss_buhin_zaiko_m (buhin_cd, zaiko_kbn,torihikisaki_cd, juchu_cd1, juchu_cd2, zaiko_su,create_user_cd,create_datetime) values ('"
                                                  + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','02','"
                                                  + w_torihikisaki_cd + "','"
                                                  + w_juchu_cd1 + "','"
                                                  + w_juchu_cd2 + "','"
                                                  + tss.try_string_to_decimal(dgv_m.Rows[i].Cells[11].Value.ToString().TrimEnd()).ToString() + "','"
-                                                 + tss.user_cd + "',SYSDATE)");                    
+                                                 + tss.user_cd + "',SYSDATE)");
+                        if(w_bl == false)
+                        {
+                            tss.ErrorLogWrite(tss.user_cd, "部品入出庫BCRのtss_buhin_zaiko_mへのInsert", "書き込みエラー");
+                        }
                     }
                     else
                     {
@@ -477,11 +482,11 @@ namespace TSS_SYSTEM
                     }
                 }
                 //部品入出庫マスタの更新
-                tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
+                bool w_bl_rireki;
+                w_bl_rireki = tss.OracleInsert("INSERT INTO tss_buhin_nyusyukko_m (buhin_syori_kbn,buhin_syori_no,seq,buhin_syori_date,buhin_cd,zaiko_kbn,torihikisaki_cd,juchu_cd1,juchu_cd2,suryou,denpyou_no,barcode,syori_kbn,bikou,create_user_cd,create_datetime) VALUES ('"
                                         + "01" + "','"
                                         + w_seq + "','"
                                         + w_gyou.ToString() + "',"
-                                        //+ DateTime.Now.ToShortDateString() + "','"
                                         + "to_date('" + tb_syori_date.Text.ToString() + "','YYYY/MM/DD HH24:MI:SS'),'"
                                         + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd() + "','"
                                         + w_kbn + "','"
@@ -494,6 +499,10 @@ namespace TSS_SYSTEM
                                         + "01" + "','"
                                         + "" + "','"
                                         + tss.user_cd + "',SYSDATE)");
+                if(w_bl_rireki == false)
+                {
+                    tss.ErrorLogWrite(tss.user_cd, "部品入庫BCRのtss_buhin_nyusyukko_mへのInsert", "行:" + i.ToString() + " 移動区分:01 移動番号:" + w_seq + " seq:" + w_gyou.ToString() + "buhin_cd:" + dgv_m.Rows[i].Cells[14].Value.ToString().TrimEnd());
+                }
             }
             MessageBox.Show("登録しました。（入出庫移動番号:" + w_seq + "）");
             dgv_m.Rows.Clear();

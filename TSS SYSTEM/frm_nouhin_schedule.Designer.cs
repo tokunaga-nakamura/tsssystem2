@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_nouhin_schedule));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.lbl_nouhin_jun = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -61,7 +63,7 @@
             this.btn_csv = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -112,6 +114,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.btn_hardcopy);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_nouhin_jun);
@@ -123,6 +127,24 @@
             this.splitContainer1.SplitterDistance = 63;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(74, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(730, 12);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "生産スケジュールの○×は過去のスケジュールも加味されるので実際とは異なる場合があります。正確なチェックは「生産スケジュールチェック」で行ってください。";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(433, 12);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "生産スケジュールの項目をダブルクリックすると、その受注の生産スケジュールを参照できます。";
             // 
             // btn_hardcopy
             // 
@@ -137,7 +159,7 @@
             // lbl_nouhin_jun
             // 
             this.lbl_nouhin_jun.AutoSize = true;
-            this.lbl_nouhin_jun.Location = new System.Drawing.Point(472, 47);
+            this.lbl_nouhin_jun.Location = new System.Drawing.Point(553, 47);
             this.lbl_nouhin_jun.Name = "lbl_nouhin_jun";
             this.lbl_nouhin_jun.Size = new System.Drawing.Size(123, 12);
             this.lbl_nouhin_jun.TabIndex = 25;
@@ -551,14 +573,14 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(433, 12);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "生産スケジュールの項目をダブルクリックすると、その受注の生産スケジュールを参照できます。";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(74, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(331, 12);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "備考の項目をダブルクリックすると、その受注のコメント入力ができます。";
             // 
             // frm_nouhin_schedule
             // 
@@ -651,5 +673,7 @@
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer8;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

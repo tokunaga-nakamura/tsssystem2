@@ -98,19 +98,6 @@ namespace TSS_SYSTEM
         {
             status_disp();
             logout_write();
-            ////ユーザーコードの取得
-            //string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
-            ////まずログアウト情報更新
-            //string usercd;
-            //using (StreamReader sr = new StreamReader(TempPath + "user.txt"))
-            //{
-            //    usercd = sr.ReadToEnd();
-            //}
-            //TssSystemLibrary tsslib = new TssSystemLibrary();
-            //string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
-            //tsslib.OracleUpdate(sql);
-            ////ログイン履歴の更新
-            //tss.Login_Rireki("2");
             //ログイン画面へ
             string TempPath = ConfigurationManager.AppSettings["TempPath"];   //テンポラリフォルダのパスの取得
             string usercd;
@@ -135,7 +122,6 @@ namespace TSS_SYSTEM
             TssSystemLibrary tss = new TssSystemLibrary();
             tss.GetSystemSetting();
             tss.GetUser();
-            //tss.GetConnectionString();
             ss_status.Items.Clear();    //追加する前にクリアする
             ss_status.Items.Add(tss.system_name);
             ss_status.Items.Add(tss.system_version);
@@ -172,6 +158,7 @@ namespace TSS_SYSTEM
             lbl_msg1.Text = w_dt_ctrl.Rows[0]["msg1"].ToString();
             lbl_msg2.Text = w_dt_ctrl.Rows[0]["msg2"].ToString();
             lbl_msg3.Text = w_dt_ctrl.Rows[0]["msg3"].ToString();
+            lbl_msg4.Text = w_dt_ctrl.Rows[0]["msg4"].ToString();
             //メッセージの色の設定
             switch (w_dt_ctrl.Rows[0]["color1"].ToString())
             {
@@ -234,6 +221,27 @@ namespace TSS_SYSTEM
                     break;
                 default:
                     lbl_msg3.ForeColor = Color.Black;
+                    break;
+            }
+            switch (w_dt_ctrl.Rows[0]["color4"].ToString())
+            {
+                case "1":
+                    lbl_msg4.ForeColor = Color.Red;
+                    break;
+                case "2":
+                    lbl_msg4.ForeColor = Color.Blue;
+                    break;
+                case "3":
+                    lbl_msg4.ForeColor = Color.Green;
+                    break;
+                case "4":
+                    lbl_msg4.ForeColor = Color.Orange;
+                    break;
+                case "5":
+                    lbl_msg4.ForeColor = Color.Gray;
+                    break;
+                default:
+                    lbl_msg4.ForeColor = Color.Black;
                     break;
             }
         }
@@ -1383,6 +1391,14 @@ namespace TSS_SYSTEM
             frm_seisan_sc.mode = "1";
             frm_seisan_sc.ShowDialog(this);
             frm_seisan_sc.Dispose();
+        }
+
+        private void btn_juchu_comment_Click(object sender, EventArgs e)
+        {
+            //受注コメント登録
+            frm_juchu_comment frm_juco = new frm_juchu_comment();
+            frm_juco.ShowDialog(this);
+            frm_juco.Dispose();
         }
     }
 }
