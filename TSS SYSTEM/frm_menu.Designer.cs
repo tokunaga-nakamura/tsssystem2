@@ -151,6 +151,7 @@
             this.btn_quick_nouhin_schedule = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_syuuryou = new System.Windows.Forms.Button();
+            this.btn_quick_kintai_nyuuryoku = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -307,14 +308,12 @@
             // 
             // lbl_program_version
             // 
-            this.lbl_program_version.AutoSize = true;
             this.lbl_program_version.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_program_version.Location = new System.Drawing.Point(69, 89);
             this.lbl_program_version.Name = "lbl_program_version";
-            this.lbl_program_version.Size = new System.Drawing.Size(552, 12);
+            this.lbl_program_version.Size = new System.Drawing.Size(814, 36);
             this.lbl_program_version.TabIndex = 1;
-            this.lbl_program_version.Text = "プログラムの更新メッセージが表示された場合、TSSシステムを終了し、get new を実行してから再度起動してください。";
-            this.lbl_program_version.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_program_version.Text = "このラベルは２行分のコントロールサイズが必要です\r\nシステム起動中にバージョンの更新があった場合等にメッセージを表示します";
             // 
             // btn_message_log
             // 
@@ -376,6 +375,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.btn_quick_kintai_nyuuryoku);
             this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_jisseki);
             this.splitContainer3.Panel2.Controls.Add(this.btn_quick_seisan_schedule);
@@ -408,7 +408,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(830, 356);
+            this.tabPage1.Size = new System.Drawing.Size(830, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -429,7 +429,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer9);
             this.splitContainer4.Panel2MinSize = 280;
-            this.splitContainer4.Size = new System.Drawing.Size(824, 350);
+            this.splitContainer4.Size = new System.Drawing.Size(824, 390);
             this.splitContainer4.SplitterDistance = 280;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.TabStop = false;
@@ -456,7 +456,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(280, 350);
+            this.splitContainer5.Size = new System.Drawing.Size(280, 390);
             this.splitContainer5.SplitterDistance = 82;
             this.splitContainer5.TabIndex = 4;
             // 
@@ -534,8 +534,8 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.splitContainer8);
-            this.splitContainer6.Size = new System.Drawing.Size(280, 264);
-            this.splitContainer6.SplitterDistance = 161;
+            this.splitContainer6.Size = new System.Drawing.Size(280, 304);
+            this.splitContainer6.SplitterDistance = 185;
             this.splitContainer6.TabIndex = 0;
             this.splitContainer6.TabStop = false;
             // 
@@ -556,7 +556,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgv_kintai);
-            this.splitContainer7.Size = new System.Drawing.Size(276, 157);
+            this.splitContainer7.Size = new System.Drawing.Size(276, 181);
             this.splitContainer7.SplitterDistance = 25;
             this.splitContainer7.TabIndex = 0;
             // 
@@ -576,7 +576,7 @@
             this.dgv_kintai.Location = new System.Drawing.Point(0, 0);
             this.dgv_kintai.Name = "dgv_kintai";
             this.dgv_kintai.RowTemplate.Height = 21;
-            this.dgv_kintai.Size = new System.Drawing.Size(276, 128);
+            this.dgv_kintai.Size = new System.Drawing.Size(276, 152);
             this.dgv_kintai.TabIndex = 0;
             // 
             // splitContainer8
@@ -596,7 +596,7 @@
             // splitContainer8.Panel2
             // 
             this.splitContainer8.Panel2.Controls.Add(this.dgv_event);
-            this.splitContainer8.Size = new System.Drawing.Size(276, 95);
+            this.splitContainer8.Size = new System.Drawing.Size(276, 111);
             this.splitContainer8.SplitterDistance = 26;
             this.splitContainer8.TabIndex = 0;
             // 
@@ -616,7 +616,7 @@
             this.dgv_event.Location = new System.Drawing.Point(0, 0);
             this.dgv_event.Name = "dgv_event";
             this.dgv_event.RowTemplate.Height = 21;
-            this.dgv_event.Size = new System.Drawing.Size(276, 65);
+            this.dgv_event.Size = new System.Drawing.Size(276, 81);
             this.dgv_event.TabIndex = 0;
             // 
             // splitContainer9
@@ -636,7 +636,7 @@
             // splitContainer9.Panel2
             // 
             this.splitContainer9.Panel2.Controls.Add(this.splitContainer10);
-            this.splitContainer9.Size = new System.Drawing.Size(536, 346);
+            this.splitContainer9.Size = new System.Drawing.Size(536, 386);
             this.splitContainer9.SplitterDistance = 26;
             this.splitContainer9.TabIndex = 0;
             // 
@@ -669,7 +669,6 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(55, 16);
             this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "チャット";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -680,13 +679,13 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(71, 16);
             this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "受注情報";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(92, 6);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(44, 16);
@@ -729,8 +728,8 @@
             // splitContainer10.Panel2
             // 
             this.splitContainer10.Panel2.Controls.Add(this.splitContainer12);
-            this.splitContainer10.Size = new System.Drawing.Size(536, 316);
-            this.splitContainer10.SplitterDistance = 281;
+            this.splitContainer10.Size = new System.Drawing.Size(536, 356);
+            this.splitContainer10.SplitterDistance = 321;
             this.splitContainer10.TabIndex = 0;
             // 
             // dgv_timereport
@@ -740,7 +739,7 @@
             this.dgv_timereport.Location = new System.Drawing.Point(0, 0);
             this.dgv_timereport.Name = "dgv_timereport";
             this.dgv_timereport.RowTemplate.Height = 21;
-            this.dgv_timereport.Size = new System.Drawing.Size(536, 281);
+            this.dgv_timereport.Size = new System.Drawing.Size(536, 321);
             this.dgv_timereport.TabIndex = 0;
             // 
             // splitContainer12
@@ -1655,6 +1654,16 @@
             this.btn_syuuryou.UseVisualStyleBackColor = true;
             this.btn_syuuryou.Click += new System.EventHandler(this.btn_syuuryou_Click);
             // 
+            // btn_quick_kintai_nyuuryoku
+            // 
+            this.btn_quick_kintai_nyuuryoku.Location = new System.Drawing.Point(3, 120);
+            this.btn_quick_kintai_nyuuryoku.Name = "btn_quick_kintai_nyuuryoku";
+            this.btn_quick_kintai_nyuuryoku.Size = new System.Drawing.Size(138, 23);
+            this.btn_quick_kintai_nyuuryoku.TabIndex = 5;
+            this.btn_quick_kintai_nyuuryoku.Text = "勤怠入力";
+            this.btn_quick_kintai_nyuuryoku.UseVisualStyleBackColor = true;
+            this.btn_quick_kintai_nyuuryoku.Click += new System.EventHandler(this.btn_quick_kintai_nyuuryoku_Click);
+            // 
             // frm_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1861,6 +1870,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button btn_quick_kintai_nyuuryoku;
     }
 }
 
