@@ -548,6 +548,31 @@ namespace TSS_SYSTEM
                     }
                 }
             }
+            //二重登録防止チェック（キー違反）
+            for(int i=0;i < w_dt_kintai.Rows.Count;i++)
+            {
+                for(int n=0;n < w_dt_kintai.Rows.Count;n++)
+                {
+                    //自分の行は飛ばす
+                    if(i != n)
+                    {
+                        if (w_dt_kintai.Rows[i]["syain_cd"].ToString() == w_dt_kintai.Rows[n]["syain_cd"].ToString())
+                        {
+                            if (w_dt_kintai.Rows[i]["kintai_kbn"].ToString() == w_dt_kintai.Rows[n]["kintai_kbn"].ToString())
+                            {
+                                if (w_dt_kintai.Rows[i]["kintai_date1"].ToString() == w_dt_kintai.Rows[n]["kintai_date1"].ToString())
+                                {
+                                    if (w_dt_kintai.Rows[i]["kintai_time1"].ToString() == w_dt_kintai.Rows[n]["kintai_time1"].ToString())
+                                    {
+                                        MessageBox.Show("同一日時の勤怠があります。\n" + (i+1).ToString() + "行目　" + (n+1).ToString() + "行目");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             //既にあるデータを削除して新規に書き込む
             if (tss.OracleDelete("delete from tss_kintai_f where kintai_date1 = '" + tb_hizuke.Text + "'"))
             {

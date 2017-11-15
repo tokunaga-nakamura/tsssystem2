@@ -137,10 +137,10 @@ using System.IO;                //StreamWriter
 //              2017/10/25  部品マスタの移動履歴にラジオボタンを設け、表示数を変更可能にして速度アップ
 //                          （今後も更に移動履歴が増えることを考えると、範囲指定などが必要になってくるが現時点では未対応）
 //1.07  0       2017/11/09  tssライブラリzaiko_procにおいて、入出庫マスタの入出庫移動番号が入庫と出庫が混ざった状態で書き込んでいる不具合の修正                   
-//
-//
-//
-//
+//      x       2017/11/13  ・login時にlogin_fにてサイレントエラーが発生している件について想定対応（たぶんログイン画面にて終了を選んだ際に２回login_fへの書き込みが行われていて2回目はusercdが空白）
+//                          ・メニューの警告用ラベル、2行分の表示エリアを確保
+//                          ・クイックメニューに勤怠入力を追加
+//                          ・勤怠入力、キー違反防止のチェックを追加
 //
 //
 //
@@ -383,7 +383,13 @@ namespace TSS_SYSTEM
             string w_host_name;
             GetUser();
             w_host_name = System.Net.Dns.GetHostName();
-            OracleInsert("insert into tss_login_f (log_date,user_cd,login_kbn,host_name,create_user_cd,create_datetime) values (sysdate,'" + user_cd + "','" + in_kbn + "','" + w_host_name + "','" + user_cd + "',sysdate)");
+            string w_sql = "insert into tss_login_f (log_date,user_cd,login_kbn,host_name,create_user_cd,create_datetime) values (sysdate,'" + user_cd + "','" + in_kbn + "','" + w_host_name + "','" + user_cd + "',sysdate)";
+            bool w_bl_login_rireki;
+            w_bl_login_rireki = OracleInsert(w_sql);
+            //if(w_bl_login_rireki == false)
+            //{
+            //    MessageBox.Show("エラーが発生しました。下記のメッセージををシステム管理者へ見せてください。\n tss.Login_Rireki(" + in_kbn + ")\n w_sql = " + w_sql)
+            //}
         }
         #endregion
 

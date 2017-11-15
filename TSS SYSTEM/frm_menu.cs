@@ -1335,7 +1335,10 @@ namespace TSS_SYSTEM
             string sql = "UPDATE tss_user_m SET login_flg = '0',logout_datetime = sysdate WHERE user_cd = '" + usercd + "'";
             tsslib.OracleUpdate(sql);
             //ログイン履歴の更新
-            tss.Login_Rireki("2");
+            if (usercd != "" && usercd != "notlogin")
+            {
+                tss.Login_Rireki("2");
+            }
         }
 
         private void btn_seisan_jisseki_Click(object sender, EventArgs e)
@@ -1399,6 +1402,19 @@ namespace TSS_SYSTEM
             frm_juchu_comment frm_juco = new frm_juchu_comment();
             frm_juco.ShowDialog(this);
             frm_juco.Dispose();
+        }
+
+        private void btn_quick_kintai_nyuuryoku_Click(object sender, EventArgs e)
+        {
+            //勤怠入力
+            if (tss.User_Kengen_Check(1, 3) == false && tss.User_Kengen_Check(5, 3) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+            frm_kintai frm_kt = new frm_kintai();
+            frm_kt.ShowDialog(this);
+            frm_kt.Dispose();
         }
     }
 }

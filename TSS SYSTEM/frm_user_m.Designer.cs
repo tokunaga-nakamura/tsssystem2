@@ -932,7 +932,7 @@
             // tb_user_cd
             // 
             this.tb_user_cd.BackColor = System.Drawing.Color.PowderBlue;
-            this.tb_user_cd.Location = new System.Drawing.Point(112, 6);
+            this.tb_user_cd.Location = new System.Drawing.Point(110, 3);
             this.tb_user_cd.MaxLength = 6;
             this.tb_user_cd.Name = "tb_user_cd";
             this.tb_user_cd.Size = new System.Drawing.Size(48, 19);
