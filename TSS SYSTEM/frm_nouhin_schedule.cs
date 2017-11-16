@@ -229,6 +229,7 @@ namespace TSS_SYSTEM
             w_dt_schedule.Columns.Add("nouhin_schedule_kbn");
             w_dt_schedule.Columns.Add("seisan_schedule_flg");
             w_dt_schedule.Columns.Add("juchu_su2");
+            w_dt_schedule.Columns.Add("uriage_flg");
             
             //行追加
             DataTable w_dt_juchu_m = new DataTable();
@@ -296,6 +297,7 @@ namespace TSS_SYSTEM
                 }
                 w_dr_schedule["seq"] = dr["seq"].ToString();
                 w_dr_schedule["nouhin_schedule_kbn"] = dr["nouhin_schedule_kbn"].ToString();
+                w_dr_schedule["uriage_flg"] = w_dt_juchu_m.Rows[0]["uriage_kanryou_flg"].ToString();
                 w_dt_schedule.Rows.Add(w_dr_schedule);
             }
         }
@@ -400,6 +402,7 @@ namespace TSS_SYSTEM
             w_dt_schedule.Columns.Add("nouhin_schedule_kbn");
             w_dt_schedule.Columns.Add("seisan_schedule_flg");
             w_dt_schedule.Columns.Add("juchu_su2");
+            w_dt_schedule.Columns.Add("uriage_flg");
 
             //行追加
             DataTable w_dt_juchu_m = new DataTable();
@@ -510,6 +513,7 @@ namespace TSS_SYSTEM
                     w_dr_schedule["seq"] = dr["seq"].ToString();
                     w_dr_schedule["nouhin_schedule_kbn"] = dr["nouhin_schedule_kbn"].ToString();
                     w_dr_schedule["juchu_su2"] = w_dt_juchu_m.Rows[0]["juchu_su"].ToString();
+                    w_dr_schedule["uriage_flg"] = w_dt_juchu_m.Rows[0]["uriage_kanryou_flg"].ToString();
                     w_dt_schedule.Rows.Add(w_dr_schedule);
                     //行数カウント１up
                     w_int_gyou = w_int_gyou + 1;
@@ -679,6 +683,7 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["nouhin_schedule_kbn"].HeaderText = "納品区分";
             dgv_nouhin_schedule.Columns["seisan_schedule_flg"].HeaderText = "生産スケジュール";
             dgv_nouhin_schedule.Columns["juchu_su2"].HeaderText = "正式受注数";
+            dgv_nouhin_schedule.Columns["uriage_flg"].HeaderText = "売上完了フラグ";
 
             //休日をグレーにする
             horiday_color();
@@ -725,6 +730,26 @@ namespace TSS_SYSTEM
             dgv_nouhin_schedule.Columns["juchu_su"].Frozen = true;
             //並び替えができないようにする
             foreach (DataGridViewColumn c in dgv_nouhin_schedule.Columns) c.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            //その他、全ての行に行う処理
+            for(int w_gyou = 0;w_gyou <= dgv_nouhin_schedule.Rows.Count - 1;w_gyou++)
+            {
+                //売上完了フラグが立っている受注の納品数はグレー表示する
+                if(dgv_nouhin_schedule.Rows[w_gyou].Cells["uriage_flg"].Value.ToString() == "1")
+                {
+                    for(int w_i = 1;w_i <= 31;w_i++)
+                    {
+                        string w_day;
+                        w_day = w_i.ToString("00");
+                        if(dgv_nouhin_schedule.Rows[w_gyou].Cells[w_day].Value.ToString() != "")
+                        {
+                            dgv_nouhin_schedule.Rows[w_gyou].Cells[w_day].Style.BackColor = Color.LightGray;
+                        }
+                    }
+                }
+            }
+            //再描画
+            dgv_nouhin_schedule.Refresh();
         }
 
         private void horiday_color()
