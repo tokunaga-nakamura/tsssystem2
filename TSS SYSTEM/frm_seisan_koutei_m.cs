@@ -2346,23 +2346,18 @@ namespace TSS_SYSTEM
             }
 
             DataTable dt_chk;
-            dt_chk = tss.OracleSelect("Select * from tss_seisan_schedule_f where seihin_cd = '" + tb_seihin_cd.Text + "'");
+            dt_chk = tss.OracleSelect("Select seisan_yotei_date from tss_seisan_schedule_f where seihin_cd = '" + tb_seihin_cd.Text + "' group by seisan_yotei_date order by seisan_yotei_date");
 
             if(dt_chk.Rows.Count > 0)
             {
-                DialogResult bRet = MessageBox.Show("既に生産スケジュールデータがありますが、工程を削除しますか？ \r\n既に作成済みの生産スケジュールは削除されません。\r\n※この操作を実行すると元に戻せません。", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (bRet == DialogResult.Cancel)
+                string w_str;
+                w_str = "削除しようとしている生産工程と同一の製品の生産スケジュールデータがあります。\n生産スケジュールを削除してから再度行うか、システム管理者に相談してください。";
+                foreach(DataRow w_dr in dt_chk.Rows)
                 {
-                    MessageBox.Show("システム管理者に連絡してください");
-                    return;
+                    w_str = w_str + "\n" + w_dr["seisan_yotei_date"].ToString();
                 }
-                else
-                {
-                    tss.OracleDelete("Delete  from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
-                    tss.OracleDelete("Delete  from tss_seisan_koutei_line_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
-                    MessageBox.Show("工程を削除しました");
-                    gamen_clear();
-                }
+                MessageBox.Show(w_str);
+                return;
             }
             else
             {
@@ -2380,6 +2375,5 @@ namespace TSS_SYSTEM
                 }
             }
         } 
-       
     }
 }
