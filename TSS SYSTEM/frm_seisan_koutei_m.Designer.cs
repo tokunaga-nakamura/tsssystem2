@@ -36,6 +36,7 @@
             this.btn_hardcopy = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btn_koutei_sakujyo = new System.Windows.Forms.Button();
             this.btn_koutei_copy = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.lbl_seihin_cd = new System.Windows.Forms.Label();
@@ -227,6 +228,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.btn_koutei_sakujyo);
             this.splitContainer3.Panel1.Controls.Add(this.btn_koutei_copy);
             this.splitContainer3.Panel1.Controls.Add(this.textBox8);
             this.splitContainer3.Panel1.Controls.Add(this.lbl_seihin_cd);
@@ -248,10 +250,21 @@
             this.splitContainer3.TabIndex = 91;
             this.splitContainer3.TabStop = false;
             // 
+            // btn_koutei_sakujyo
+            // 
+            this.btn_koutei_sakujyo.BackColor = System.Drawing.Color.Coral;
+            this.btn_koutei_sakujyo.Location = new System.Drawing.Point(592, 24);
+            this.btn_koutei_sakujyo.Name = "btn_koutei_sakujyo";
+            this.btn_koutei_sakujyo.Size = new System.Drawing.Size(72, 23);
+            this.btn_koutei_sakujyo.TabIndex = 92;
+            this.btn_koutei_sakujyo.Text = "削除";
+            this.btn_koutei_sakujyo.UseVisualStyleBackColor = false;
+            this.btn_koutei_sakujyo.Click += new System.EventHandler(this.btn_koutei_sakujyo_Click);
+            // 
             // btn_koutei_copy
             // 
             this.btn_koutei_copy.BackColor = System.Drawing.Color.LightGreen;
-            this.btn_koutei_copy.Location = new System.Drawing.Point(433, 21);
+            this.btn_koutei_copy.Location = new System.Drawing.Point(418, 24);
             this.btn_koutei_copy.Name = "btn_koutei_copy";
             this.btn_koutei_copy.Size = new System.Drawing.Size(168, 23);
             this.btn_koutei_copy.TabIndex = 91;
@@ -1025,5 +1038,6 @@
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer8;
         private System.Windows.Forms.SplitContainer splitContainer9;
+        private System.Windows.Forms.Button btn_koutei_sakujyo;
     }
 }

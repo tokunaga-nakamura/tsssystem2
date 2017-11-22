@@ -2335,6 +2335,51 @@ namespace TSS_SYSTEM
         {
 
         }
+
+        private void btn_koutei_sakujyo_Click(object sender, EventArgs e)
+        {
+            string str_datetime = System.DateTime.Now.ToString();
+            if (tss.User_Kengen_Check(7, 5) == false)
+            {
+                MessageBox.Show("権限がありません");
+                return;
+            }
+
+            DataTable dt_chk;
+            dt_chk = tss.OracleSelect("Select * from tss_seisan_schedule_f where seihin_cd = '" + tb_seihin_cd.Text + "'");
+
+            if(dt_chk.Rows.Count > 0)
+            {
+                DialogResult bRet = MessageBox.Show("既に生産スケジュールデータがありますが、工程を削除しますか？ \r\n既に作成済みの生産スケジュールは削除されません。\r\n※この操作を実行すると元に戻せません。", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (bRet == DialogResult.Cancel)
+                {
+                    MessageBox.Show("システム管理者に連絡してください");
+                    return;
+                }
+                else
+                {
+                    tss.OracleDelete("Delete  from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
+                    tss.OracleDelete("Delete  from tss_seisan_koutei_line_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
+                    MessageBox.Show("工程を削除しました");
+                    gamen_clear();
+                }
+            }
+            else
+            {
+                DialogResult bRet = MessageBox.Show("この製品の生産工程をすべて削除しますか？\r\n※この操作を実行すると元に戻せません。", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (bRet == DialogResult.Cancel)
+                {
+                    return;
+                }
+                else
+                {
+                    tss.OracleDelete("Delete  from tss_seisan_koutei_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
+                    tss.OracleDelete("Delete  from tss_seisan_koutei_line_m where seihin_cd = '" + tb_seihin_cd.Text + "'");
+                    MessageBox.Show("工程を削除しました");
+                    gamen_clear();
+                }
+            }
+        } 
        
     }
 }

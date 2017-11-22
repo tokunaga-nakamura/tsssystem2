@@ -499,5 +499,49 @@ namespace TSS_SYSTEM
                 frm_rpt.Dispose();
             }
         }
+
+        private void tb_torihikisaki_cd1_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", "");
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd1.Text = w_cd;
+            }
+        }
+
+        private void tb_torihikisaki_cd2_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_cd;
+            w_cd = tss.search_torihikisaki("2", "");
+            if (w_cd != "")
+            {
+                tb_torihikisaki_cd2.Text = w_cd;
+            }
+        }
+
+        private void tb_buhin_cd1_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_buhin_cd;
+            w_buhin_cd = tss.search_buhin("2", tb_buhin_cd1.Text);
+            if (w_buhin_cd != "")
+            {
+                tb_buhin_cd1.Text = w_buhin_cd;
+            }
+        }
+
+        private void tb_buhin_cd2_DoubleClick(object sender, EventArgs e)
+        {
+            //選択画面へ
+            string w_buhin_cd;
+            w_buhin_cd = tss.search_buhin("2", tb_buhin_cd2.Text);
+            if (w_buhin_cd != "")
+            {
+                tb_buhin_cd2.Text = w_buhin_cd;
+            }
+        }
     }
 }

@@ -217,7 +217,7 @@
             this.dgv_m.Location = new System.Drawing.Point(0, 0);
             this.dgv_m.Name = "dgv_m";
             this.dgv_m.RowTemplate.Height = 21;
-            this.dgv_m.Size = new System.Drawing.Size(880, 356);
+            this.dgv_m.Size = new System.Drawing.Size(880, 357);
             this.dgv_m.TabIndex = 0;
             // 
             // splitContainer2
@@ -239,14 +239,14 @@
             this.splitContainer2.Panel2.Controls.Add(this.btn_csv);
             this.splitContainer2.Panel2.Controls.Add(this.btn_insatu);
             this.splitContainer2.Panel2.Controls.Add(this.btn_syuryou);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 422);
-            this.splitContainer2.SplitterDistance = 360;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 423);
+            this.splitContainer2.SplitterDistance = 361;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 2;
@@ -254,20 +254,24 @@
             // 
             // tb_buhin_cd2
             // 
+            this.tb_buhin_cd2.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_buhin_cd2.Location = new System.Drawing.Point(210, 68);
             this.tb_buhin_cd2.MaxLength = 16;
             this.tb_buhin_cd2.Name = "tb_buhin_cd2";
             this.tb_buhin_cd2.Size = new System.Drawing.Size(108, 19);
             this.tb_buhin_cd2.TabIndex = 6;
+            this.tb_buhin_cd2.DoubleClick += new System.EventHandler(this.tb_buhin_cd2_DoubleClick);
             this.tb_buhin_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd2_Validating);
             // 
             // tb_buhin_cd1
             // 
+            this.tb_buhin_cd1.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_buhin_cd1.Location = new System.Drawing.Point(85, 68);
             this.tb_buhin_cd1.MaxLength = 16;
             this.tb_buhin_cd1.Name = "tb_buhin_cd1";
             this.tb_buhin_cd1.Size = new System.Drawing.Size(108, 19);
             this.tb_buhin_cd1.TabIndex = 5;
+            this.tb_buhin_cd1.DoubleClick += new System.EventHandler(this.tb_buhin_cd1_DoubleClick);
             this.tb_buhin_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_buhin_cd1_Validating);
             // 
             // splitContainer1
@@ -287,7 +291,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 561);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
             this.splitContainer1.SplitterDistance = 135;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -385,20 +389,24 @@
             // 
             // tb_torihikisaki_cd2
             // 
+            this.tb_torihikisaki_cd2.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_torihikisaki_cd2.Location = new System.Drawing.Point(153, 43);
             this.tb_torihikisaki_cd2.MaxLength = 6;
             this.tb_torihikisaki_cd2.Name = "tb_torihikisaki_cd2";
             this.tb_torihikisaki_cd2.Size = new System.Drawing.Size(51, 19);
             this.tb_torihikisaki_cd2.TabIndex = 4;
+            this.tb_torihikisaki_cd2.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd2_DoubleClick);
             this.tb_torihikisaki_cd2.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd2_Validating);
             // 
             // tb_torihikisaki_cd1
             // 
+            this.tb_torihikisaki_cd1.BackColor = System.Drawing.Color.PowderBlue;
             this.tb_torihikisaki_cd1.Location = new System.Drawing.Point(85, 43);
             this.tb_torihikisaki_cd1.MaxLength = 6;
             this.tb_torihikisaki_cd1.Name = "tb_torihikisaki_cd1";
             this.tb_torihikisaki_cd1.Size = new System.Drawing.Size(51, 19);
             this.tb_torihikisaki_cd1.TabIndex = 3;
+            this.tb_torihikisaki_cd1.DoubleClick += new System.EventHandler(this.tb_torihikisaki_cd1_DoubleClick);
             this.tb_torihikisaki_cd1.Validating += new System.ComponentModel.CancelEventHandler(this.tb_torihikisaki_cd1_Validating);
             // 
             // textBox1
@@ -416,7 +424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 600);
