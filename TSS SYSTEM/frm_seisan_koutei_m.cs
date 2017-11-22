@@ -2,7 +2,9 @@
 //  PROGRAM NAME    生産工程マスタ
 //  CREATE          J.OKUDA
 //  UPDATE LOG
-//  xxxx/xx/xx  NAMExxxx    NAIYOU
+//  2017/11/22  j-okuda     削除機能追加
+//  2017/11/22  nakamura    削除時に、生産スケジュールに残っているデータがあった場合に、削除可能だった仕様を削除できないように変更
+//                          削除時に、生産スケジュールに残っているデータがあった場合に、知る方法が無いので、メッセージと一緒にスケジュールの日付を表示するように修正
 
 using System;
 using System.Collections.Generic;
